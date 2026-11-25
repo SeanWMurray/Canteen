@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 31 statements:** 13 proven, 14 encoded, 4 not formalized.
+**Status of the 33 statements:** 15 proven, 14 encoded, 4 not formalized.
 
 ## Dependency graph
 
@@ -23,24 +23,26 @@ graph TD
   n10["Pj · (j) SIFT wind-up shares before 2013"]:::encoded
   n11["D · The definition as a whole"]:::encoded
   n12["E · The English explanation agrees"]:::proven
-  n13["L1 · Restatement"]:::proven
-  n14["L2 · No loss, no superficial loss"]:::proven
-  n15["L3 · Exceptions always win"]:::proven
-  n16["L4 · Option expiry"]:::proven
-  n17["L5 · Death"]:::proven
-  n18["L6 · Nothing acquired"]:::proven
-  n19["L7 · Outside the period never matters"]:::proven
-  n20["L8 · Not held at the end never matters"]:::proven
-  n21["L9 · Unaffiliated buyers never matter"]:::proven
-  n22["L10 · More acquisitions only add"]:::proven
-  n23["L11 · Rights to acquire"]:::proven
-  n24["L12 · SIFT shares from 2013"]:::proven
-  n25["G0 · Opening words: the foreign affiliate carve-out"]:::encoded
-  n26["G1 · The loss is nil"]:::encoded
-  n27["N1 · Inputs decided by other provisions"]:::notFormalized
-  n28["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n29["N3 · Cost of the substituted property"]:::notFormalized
-  n30["N4 · Subparagraphs 40(2)(g)(ii) to (iv)"]:::notFormalized
+  n13["S · The definition in statute form"]:::proven
+  n14["L1 · Restatement"]:::proven
+  n15["L2 · No loss, no superficial loss"]:::proven
+  n16["L3 · Exceptions always win"]:::proven
+  n17["L4 · Option expiry"]:::proven
+  n18["L5 · Death"]:::proven
+  n19["L6 · Nothing acquired"]:::proven
+  n20["L7 · Outside the period never matters"]:::proven
+  n21["L8 · Not held at the end never matters"]:::proven
+  n22["L9 · Unaffiliated buyers never matter"]:::proven
+  n23["L10 · More acquisitions only add"]:::proven
+  n24["L11 · Rights to acquire"]:::proven
+  n25["L12 · SIFT shares from 2013"]:::proven
+  n26["G0 · Opening words: the foreign affiliate carve-out"]:::encoded
+  n27["G1 · The loss is nil"]:::encoded
+  n28["GS · 40(2)(g)(i) in statute form"]:::proven
+  n29["N1 · Inputs decided by other provisions"]:::notFormalized
+  n30["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n31["N3 · Cost of the substituted property"]:::notFormalized
+  n32["N4 · Subparagraphs 40(2)(g)(ii) to (iv)"]:::notFormalized
   n0 --> n11
   n1 --> n11
   n2 --> n11
@@ -54,36 +56,39 @@ graph TD
   n10 --> n11
   n11 --> n12
   n11 --> n13
-  n0 --> n14
   n11 --> n14
-  n3 --> n15
-  n4 --> n15
-  n5 --> n15
-  n6 --> n15
-  n7 --> n15
-  n8 --> n15
+  n0 --> n15
   n11 --> n15
-  n15 --> n16
-  n15 --> n17
-  n11 --> n18
-  n1 --> n19
+  n3 --> n16
+  n4 --> n16
+  n5 --> n16
+  n6 --> n16
+  n7 --> n16
+  n8 --> n16
+  n11 --> n16
+  n16 --> n17
+  n16 --> n18
   n11 --> n19
-  n2 --> n20
+  n1 --> n20
   n11 --> n20
-  n1 --> n21
+  n2 --> n21
   n11 --> n21
+  n1 --> n22
   n11 --> n22
-  n9 --> n23
-  n10 --> n24
-  n25 --> n26
-  n12 --> n26
-  n1 --> n27
-  n5 --> n27
-  n6 --> n27
-  n8 --> n27
-  n26 --> n28
-  n26 --> n29
-  n25 --> n30
+  n11 --> n23
+  n9 --> n24
+  n10 --> n25
+  n26 --> n27
+  n12 --> n27
+  n27 --> n28
+  n13 --> n28
+  n1 --> n29
+  n5 --> n29
+  n6 --> n29
+  n8 --> n29
+  n27 --> n30
+  n27 --> n31
+  n26 --> n32
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -199,6 +204,14 @@ A loss is a superficial loss if there is a loss, some acquired property meets bo
 For every set of facts, the English explanation reaches the same conclusion as the definition. It gives factual reasons before reasons that rest on a judgment call.
 
 **Lean:** [`Canteen.ITA.SuperficialLoss.explain_sound`](../../Canteen/ITA/S54/SuperficialLoss.lean#L418), [`Canteen.ITA.SuperficialLoss.rule`](../../Canteen/ITA/S54/SuperficialLoss.lean#L453)
+
+### S. The definition in statute form
+
+**Status:** proven · **Citation:** ITA 54 "superficial loss"  · **Uses:** D
+
+The definition written with the `statute` command, in the Act's own shape: a loss where (a) and (b), except where (c) to (h). Proven to be the same rule as the paragraph-by-paragraph encoding.
+
+**Lean:** [`Canteen.ITA.SuperficialLoss.superficialLossStatute`](../../Canteen/ITA/S54/SuperficialLossStatute.lean#L23), [`Canteen.ITA.SuperficialLoss.superficialLossStatute_eq`](../../Canteen/ITA/S54/SuperficialLossStatute.lean#L53)
 
 ## Truths proven about the definition
 
@@ -317,6 +330,14 @@ Paragraph 40(2)(g) does not reach a property that, for the purposes of computing
 “a taxpayer’s loss, if any, from the disposition of a property …, to the extent that it is (i) a superficial loss, … is nil”. Built from the definition and the carve-out with `Rule.and`, so its explanation is sound by construction.
 
 **Lean:** [`Canteen.ITA.LossDenial.rule`](../../Canteen/ITA/S40/LossDenial.lean#L78), [`Canteen.ITA.LossDenial.deniedLoss`](../../Canteen/ITA/S40/LossDenial.lean#L93)
+
+### GS. 40(2)(g)(i) in statute form
+
+**Status:** proven · **Citation:** ITA 40(2)(g)(i) · **Uses:** G1, S
+
+Subparagraph 40(2)(g)(i) written with the `statute` command, with the statute-form definition as subparagraph (i) and the carve-out as the exception. Proven to be the same rule as `LossDenial.rule`.
+
+**Lean:** [`Canteen.ITA.LossDenial.lossDenialStatute`](../../Canteen/ITA/S40/LossDenialStatute.lean#L16), [`Canteen.ITA.LossDenial.lossDenialStatute_eq`](../../Canteen/ITA/S40/LossDenialStatute.lean#L26)
 
 ## Not yet formalized
 

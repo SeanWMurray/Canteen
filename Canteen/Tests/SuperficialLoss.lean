@@ -150,46 +150,30 @@ def manyFailures : List Acquisition :=
 
 -- Shares repurchased within the period (identical: judgment call)
 #guard (SuperficialLoss.rule.explain ⟨sale, [buy ⟨2025, 6, 20⟩]⟩).renderWithJudgments yesReg ==
-  "1. The taxpayer disposed of 100 common shares of ABC Ltd. on 2025-06-15 for proceeds of $1,000.00. The adjusted cost base plus outlays and expenses was $1,509.99, so the taxpayer's loss from the disposition is $509.99. [ITA 40(1)(b)]
-" ++
-  "2. On 2025-06-20, within the period from 2025-05-16 to 2025-07-15, the taxpayer acquired 100 common shares of ABC Ltd. That property is identical to the particular property (judgment call J-ID). [ITA 54 \"superficial loss\" (a)]
-" ++
-  "3. At the end of that period, on 2025-07-15, the taxpayer or a person affiliated with the taxpayer owned or had a right to acquire that property. [ITA 54 \"superficial loss\" (b)]
-" ++
-  "4. The disposition is not one described in paragraphs (c) to (h), so the taxpayer's loss of $509.99 is a superficial loss. [ITA 54 \"superficial loss\"]
-" ++
-  "Relies on these judgment calls:
-" ++
-  "- J-ID: Are the shares bought identical to the shares sold? Assumed: yes. Risk: low.
-" ++
+  "1. The taxpayer disposed of 100 common shares of ABC Ltd. on 2025-06-15 for proceeds of $1,000.00. The adjusted cost base plus outlays and expenses was $1,509.99, so the taxpayer's loss from the disposition is $509.99. [ITA 40(1)(b)]\n" ++
+  "2. On 2025-06-20, within the period from 2025-05-16 to 2025-07-15, the taxpayer acquired 100 common shares of ABC Ltd. That property is identical to the particular property (judgment call J-ID). [ITA 54 \"superficial loss\" (a)]\n" ++
+  "3. At the end of that period, on 2025-07-15, the taxpayer or a person affiliated with the taxpayer owned or had a right to acquire that property. [ITA 54 \"superficial loss\" (b)]\n" ++
+  "4. The disposition is not one described in paragraphs (c) to (h), so the taxpayer's loss of $509.99 is a superficial loss. [ITA 54 \"superficial loss\"]\n" ++
+  "Relies on these judgment calls:\n" ++
+  "- J-ID: Are the shares bought identical to the shares sold? Assumed: yes. Risk: low.\n" ++
   "Overall risk: low."
 
 -- Four acquisitions, each failing for a different reason
 #guard (SuperficialLoss.rule.explain ⟨sale, manyFailures⟩).renderWithJudgments noReg ==
-  "1. The taxpayer disposed of 100 common shares of ABC Ltd. on 2025-06-15 for proceeds of $1,000.00. The adjusted cost base plus outlays and expenses was $1,509.99, so the taxpayer's loss from the disposition is $509.99. [ITA 40(1)(b)]
-" ++
-  "2. The property acquired on 2025-07-16 (100 common shares of ABC Ltd.) was acquired outside the period from 2025-05-16 to 2025-07-15, so it does not meet paragraph (a). [ITA 54 \"superficial loss\" (a)]
-" ++
-  "3. The property acquired on 2025-06-20 (100 common shares of ABC Ltd.) was acquired by the taxpayer's sibling, a person not affiliated with the taxpayer, so it does not meet paragraph (a). [ITA 54 \"superficial loss\" (a)]
-" ++
-  "4. At the end of the period, on 2025-07-15, neither the taxpayer nor a person affiliated with the taxpayer owned or had a right to acquire the property acquired on 2025-06-25 (100 common shares of ABC Ltd.), so it does not meet paragraph (b). [ITA 54 \"superficial loss\" (b)]
-" ++
-  "5. The property acquired on 2025-07-01 (100 common shares of ABC Ltd.) is not identical to the particular property (judgment call J-ID), so it does not meet paragraph (a). [ITA 54 \"superficial loss\" (a)]
-" ++
-  "6. No property meets both paragraphs (a) and (b), so the loss is not a superficial loss. [ITA 54 \"superficial loss\"]
-" ++
-  "Relies on these judgment calls:
-" ++
-  "- J-ID: Are the shares bought identical to the shares sold? Assumed: no. Risk: high.
-" ++
+  "1. The taxpayer disposed of 100 common shares of ABC Ltd. on 2025-06-15 for proceeds of $1,000.00. The adjusted cost base plus outlays and expenses was $1,509.99, so the taxpayer's loss from the disposition is $509.99. [ITA 40(1)(b)]\n" ++
+  "2. The property acquired on 2025-07-16 (100 common shares of ABC Ltd.) was acquired outside the period from 2025-05-16 to 2025-07-15, so it does not meet paragraph (a). [ITA 54 \"superficial loss\" (a)]\n" ++
+  "3. The property acquired on 2025-06-20 (100 common shares of ABC Ltd.) was acquired by the taxpayer's sibling, a person not affiliated with the taxpayer, so it does not meet paragraph (a). [ITA 54 \"superficial loss\" (a)]\n" ++
+  "4. At the end of the period, on 2025-07-15, neither the taxpayer nor a person affiliated with the taxpayer owned or had a right to acquire the property acquired on 2025-06-25 (100 common shares of ABC Ltd.), so it does not meet paragraph (b). [ITA 54 \"superficial loss\" (b)]\n" ++
+  "5. The property acquired on 2025-07-01 (100 common shares of ABC Ltd.) is not identical to the particular property (judgment call J-ID), so it does not meet paragraph (a). [ITA 54 \"superficial loss\" (a)]\n" ++
+  "6. No property meets both paragraphs (a) and (b), so the loss is not a superficial loss. [ITA 54 \"superficial loss\"]\n" ++
+  "Relies on these judgment calls:\n" ++
+  "- J-ID: Are the shares bought identical to the shares sold? Assumed: no. Risk: high.\n" ++
   "Overall risk: high."
 
 -- Nothing acquired
 #guard SuperficialLoss.rule.explainText ⟨sale, []⟩ ==
-  "1. The taxpayer disposed of 100 common shares of ABC Ltd. on 2025-06-15 for proceeds of $1,000.00. The adjusted cost base plus outlays and expenses was $1,509.99, so the taxpayer's loss from the disposition is $509.99. [ITA 40(1)(b)]
-" ++
-  "2. Neither the taxpayer nor a person affiliated with the taxpayer acquired the particular property or an identical property in the period from 2025-05-16 to 2025-07-15. [ITA 54 \"superficial loss\" (a)]
-" ++
+  "1. The taxpayer disposed of 100 common shares of ABC Ltd. on 2025-06-15 for proceeds of $1,000.00. The adjusted cost base plus outlays and expenses was $1,509.99, so the taxpayer's loss from the disposition is $509.99. [ITA 40(1)(b)]\n" ++
+  "2. Neither the taxpayer nor a person affiliated with the taxpayer acquired the particular property or an identical property in the period from 2025-05-16 to 2025-07-15. [ITA 54 \"superficial loss\" (a)]\n" ++
   "3. No property meets both paragraphs (a) and (b), so the loss is not a superficial loss. [ITA 54 \"superficial loss\"]"
 
 -- No loss
@@ -198,106 +182,70 @@ def manyFailures : List Acquisition :=
 
 -- Exception (c): deemed disposition on death (section 70)
 #guard SuperficialLoss.rule.explainText ⟨{ sale with deemedBy := some .s70 }, [buy ⟨2025, 6, 20⟩]⟩ ==
-  "1. The taxpayer disposed of 100 common shares of ABC Ltd. on 2025-06-15 for proceeds of $1,000.00. The adjusted cost base plus outlays and expenses was $1,509.99, so the taxpayer's loss from the disposition is $509.99. [ITA 40(1)(b)]
-" ++
+  "1. The taxpayer disposed of 100 common shares of ABC Ltd. on 2025-06-15 for proceeds of $1,000.00. The adjusted cost base plus outlays and expenses was $1,509.99, so the taxpayer's loss from the disposition is $509.99. [ITA 40(1)(b)]\n" ++
   "2. The disposition was deemed to have been made by section 70, so the loss is not a superficial loss. [ITA 54 \"superficial loss\" (c)]"
 
 -- Exception (f): loss restriction event within 30 days after
 #guard SuperficialLoss.rule.explainText ⟨{ sale with lossRestrictionEvent := some ⟨2025, 7, 15⟩ }, [buy ⟨2025, 6, 20⟩]⟩ ==
-  "1. The taxpayer disposed of 100 common shares of ABC Ltd. on 2025-06-15 for proceeds of $1,000.00. The adjusted cost base plus outlays and expenses was $1,509.99, so the taxpayer's loss from the disposition is $509.99. [ITA 40(1)(b)]
-" ++
+  "1. The taxpayer disposed of 100 common shares of ABC Ltd. on 2025-06-15 for proceeds of $1,000.00. The adjusted cost base plus outlays and expenses was $1,509.99, so the taxpayer's loss from the disposition is $509.99. [ITA 40(1)(b)]\n" ++
   "2. The taxpayer was subject to a loss restriction event on 2025-07-15, within 30 days after the disposition, so the loss is not a superficial loss. [ITA 54 \"superficial loss\" (f)]"
 
 -- Paragraph (i): a call option is deemed identical
 #guard SuperficialLoss.rule.explainText ⟨sale, [callOption false]⟩ ==
-  "1. The taxpayer disposed of 100 common shares of ABC Ltd. on 2025-06-15 for proceeds of $1,000.00. The adjusted cost base plus outlays and expenses was $1,509.99, so the taxpayer's loss from the disposition is $509.99. [ITA 40(1)(b)]
-" ++
-  "2. On 2025-06-20, within the period from 2025-05-16 to 2025-07-15, the taxpayer acquired a call option to acquire 100 common shares of ABC Ltd. That property is a right to acquire the particular property. [ITA 54 \"superficial loss\" (a)]
-" ++
-  "3. A right to acquire a property (other than a right, as security only, derived from a mortgage, hypothec, agreement for sale or similar obligation) is deemed to be a property that is identical to the property. [ITA 54 \"superficial loss\" (i)]
-" ++
-  "4. At the end of that period, on 2025-07-15, the taxpayer or a person affiliated with the taxpayer owned or had a right to acquire that property. [ITA 54 \"superficial loss\" (b)]
-" ++
+  "1. The taxpayer disposed of 100 common shares of ABC Ltd. on 2025-06-15 for proceeds of $1,000.00. The adjusted cost base plus outlays and expenses was $1,509.99, so the taxpayer's loss from the disposition is $509.99. [ITA 40(1)(b)]\n" ++
+  "2. On 2025-06-20, within the period from 2025-05-16 to 2025-07-15, the taxpayer acquired a call option to acquire 100 common shares of ABC Ltd. That property is a right to acquire the particular property. [ITA 54 \"superficial loss\" (a)]\n" ++
+  "3. A right to acquire a property (other than a right, as security only, derived from a mortgage, hypothec, agreement for sale or similar obligation) is deemed to be a property that is identical to the property. [ITA 54 \"superficial loss\" (i)]\n" ++
+  "4. At the end of that period, on 2025-07-15, the taxpayer or a person affiliated with the taxpayer owned or had a right to acquire that property. [ITA 54 \"superficial loss\" (b)]\n" ++
   "5. The disposition is not one described in paragraphs (c) to (h), so the taxpayer's loss of $509.99 is a superficial loss. [ITA 54 \"superficial loss\"]"
 
 -- Paragraph (j): SIFT wind-up share acquired before 2013
 #guard SuperficialLoss.rule.explainText ⟨siftUnits, [siftShare ⟨2012, 12, 31⟩]⟩ ==
-  "1. The taxpayer disposed of 200 units of XYZ Income Fund on 2013-01-10 for proceeds of $1,000.00. The adjusted cost base plus outlays and expenses was $1,509.99, so the taxpayer's loss from the disposition is $509.99. [ITA 40(1)(b)]
-" ++
-  "2. On 2012-12-31, within the period from 2012-12-11 to 2013-02-09, the taxpayer acquired 200 shares of XYZ Corp. That property is a share of the capital stock of a SIFT wind-up corporation in respect of the SIFT wind-up entity whose equity is the particular property. [ITA 54 \"superficial loss\" (a)]
-" ++
-  "3. The share was acquired before 2013, so it is deemed to be a property that is identical to equity in the SIFT wind-up entity. [ITA 54 \"superficial loss\" (j)]
-" ++
-  "4. At the end of that period, on 2013-02-09, the taxpayer or a person affiliated with the taxpayer owned or had a right to acquire that property. [ITA 54 \"superficial loss\" (b)]
-" ++
+  "1. The taxpayer disposed of 200 units of XYZ Income Fund on 2013-01-10 for proceeds of $1,000.00. The adjusted cost base plus outlays and expenses was $1,509.99, so the taxpayer's loss from the disposition is $509.99. [ITA 40(1)(b)]\n" ++
+  "2. On 2012-12-31, within the period from 2012-12-11 to 2013-02-09, the taxpayer acquired 200 shares of XYZ Corp. That property is a share of the capital stock of a SIFT wind-up corporation in respect of the SIFT wind-up entity whose equity is the particular property. [ITA 54 \"superficial loss\" (a)]\n" ++
+  "3. The share was acquired before 2013, so it is deemed to be a property that is identical to equity in the SIFT wind-up entity. [ITA 54 \"superficial loss\" (j)]\n" ++
+  "4. At the end of that period, on 2013-02-09, the taxpayer or a person affiliated with the taxpayer owned or had a right to acquire that property. [ITA 54 \"superficial loss\" (b)]\n" ++
   "5. The disposition is not one described in paragraphs (c) to (h), so the taxpayer's loss of $509.99 is a superficial loss. [ITA 54 \"superficial loss\"]"
 
 -- Two acquisitions: the factual one is cited, not the judgment one
 #guard (SuperficialLoss.rule.explain ⟨sale, [buy ⟨2025, 6, 20⟩, buy ⟨2025, 6, 22⟩ (who := .affiliated "the taxpayer's spouse") (identity := .same)]⟩).renderWithJudgments yesReg ==
-  "1. The taxpayer disposed of 100 common shares of ABC Ltd. on 2025-06-15 for proceeds of $1,000.00. The adjusted cost base plus outlays and expenses was $1,509.99, so the taxpayer's loss from the disposition is $509.99. [ITA 40(1)(b)]
-" ++
-  "2. On 2025-06-22, within the period from 2025-05-16 to 2025-07-15, the taxpayer's spouse, a person affiliated with the taxpayer, acquired 100 common shares of ABC Ltd. That property is the particular property. [ITA 54 \"superficial loss\" (a)]
-" ++
-  "3. At the end of that period, on 2025-07-15, the taxpayer or a person affiliated with the taxpayer owned or had a right to acquire that property. [ITA 54 \"superficial loss\" (b)]
-" ++
-  "4. The disposition is not one described in paragraphs (c) to (h), so the taxpayer's loss of $509.99 is a superficial loss. [ITA 54 \"superficial loss\"]
-" ++
+  "1. The taxpayer disposed of 100 common shares of ABC Ltd. on 2025-06-15 for proceeds of $1,000.00. The adjusted cost base plus outlays and expenses was $1,509.99, so the taxpayer's loss from the disposition is $509.99. [ITA 40(1)(b)]\n" ++
+  "2. On 2025-06-22, within the period from 2025-05-16 to 2025-07-15, the taxpayer's spouse, a person affiliated with the taxpayer, acquired 100 common shares of ABC Ltd. That property is the particular property. [ITA 54 \"superficial loss\" (a)]\n" ++
+  "3. At the end of that period, on 2025-07-15, the taxpayer or a person affiliated with the taxpayer owned or had a right to acquire that property. [ITA 54 \"superficial loss\" (b)]\n" ++
+  "4. The disposition is not one described in paragraphs (c) to (h), so the taxpayer's loss of $509.99 is a superficial loss. [ITA 54 \"superficial loss\"]\n" ++
   "Relies on no judgment calls."
 
 -- Both answers to the identity judgment call
 #guard SuperficialLoss.rule.renderBranches idCalls (withAnswer sale) ==
-  "Branch 1 (J-ID = yes):
-" ++
-  "1. The taxpayer disposed of 100 common shares of ABC Ltd. on 2025-06-15 for proceeds of $1,000.00. The adjusted cost base plus outlays and expenses was $1,509.99, so the taxpayer's loss from the disposition is $509.99. [ITA 40(1)(b)]
-" ++
-  "2. On 2025-06-20, within the period from 2025-05-16 to 2025-07-15, the taxpayer acquired 100 common shares of ABC Ltd. That property is identical to the particular property (judgment call J-ID). [ITA 54 \"superficial loss\" (a)]
-" ++
-  "3. At the end of that period, on 2025-07-15, the taxpayer or a person affiliated with the taxpayer owned or had a right to acquire that property. [ITA 54 \"superficial loss\" (b)]
-" ++
-  "4. The disposition is not one described in paragraphs (c) to (h), so the taxpayer's loss of $509.99 is a superficial loss. [ITA 54 \"superficial loss\"]
-" ++
-  "Conclusion: The superficial loss rule applies. Risk: low.
-" ++
-  "
-" ++
-  "Branch 2 (J-ID = no):
-" ++
-  "1. The taxpayer disposed of 100 common shares of ABC Ltd. on 2025-06-15 for proceeds of $1,000.00. The adjusted cost base plus outlays and expenses was $1,509.99, so the taxpayer's loss from the disposition is $509.99. [ITA 40(1)(b)]
-" ++
-  "2. The property acquired on 2025-06-20 (100 common shares of ABC Ltd.) is not identical to the particular property (judgment call J-ID), so it does not meet paragraph (a). [ITA 54 \"superficial loss\" (a)]
-" ++
-  "3. No property meets both paragraphs (a) and (b), so the loss is not a superficial loss. [ITA 54 \"superficial loss\"]
-" ++
-  "Conclusion: The superficial loss rule does not apply. Risk: high.
-" ++
-  "
-" ++
+  "Branch 1 (J-ID = yes):\n" ++
+  "1. The taxpayer disposed of 100 common shares of ABC Ltd. on 2025-06-15 for proceeds of $1,000.00. The adjusted cost base plus outlays and expenses was $1,509.99, so the taxpayer's loss from the disposition is $509.99. [ITA 40(1)(b)]\n" ++
+  "2. On 2025-06-20, within the period from 2025-05-16 to 2025-07-15, the taxpayer acquired 100 common shares of ABC Ltd. That property is identical to the particular property (judgment call J-ID). [ITA 54 \"superficial loss\" (a)]\n" ++
+  "3. At the end of that period, on 2025-07-15, the taxpayer or a person affiliated with the taxpayer owned or had a right to acquire that property. [ITA 54 \"superficial loss\" (b)]\n" ++
+  "4. The disposition is not one described in paragraphs (c) to (h), so the taxpayer's loss of $509.99 is a superficial loss. [ITA 54 \"superficial loss\"]\n" ++
+  "Conclusion: The superficial loss rule applies. Risk: low.\n" ++
+  "\n" ++
+  "Branch 2 (J-ID = no):\n" ++
+  "1. The taxpayer disposed of 100 common shares of ABC Ltd. on 2025-06-15 for proceeds of $1,000.00. The adjusted cost base plus outlays and expenses was $1,509.99, so the taxpayer's loss from the disposition is $509.99. [ITA 40(1)(b)]\n" ++
+  "2. The property acquired on 2025-06-20 (100 common shares of ABC Ltd.) is not identical to the particular property (judgment call J-ID), so it does not meet paragraph (a). [ITA 54 \"superficial loss\" (a)]\n" ++
+  "3. No property meets both paragraphs (a) and (b), so the loss is not a superficial loss. [ITA 54 \"superficial loss\"]\n" ++
+  "Conclusion: The superficial loss rule does not apply. Risk: high.\n" ++
+  "\n" ++
   "Summary: The superficial loss rule applies on 1 of 2 branches, so the conclusion depends on the judgment calls."
 
 -- Subparagraph 40(2)(g)(i): the loss is nil
 #guard (LossDenial.rule.explain ⟨⟨sale, [buy ⟨2025, 6, 20⟩]⟩, false⟩).renderWithJudgments yesReg ==
-  "1. The property is not excluded property being considered in computing a foreign affiliate's surplus or deficit, so the opening words of paragraph 40(2)(g) apply to it. [ITA 40(2)(g)]
-" ++
-  "2. The taxpayer disposed of 100 common shares of ABC Ltd. on 2025-06-15 for proceeds of $1,000.00. The adjusted cost base plus outlays and expenses was $1,509.99, so the taxpayer's loss from the disposition is $509.99. [ITA 40(1)(b)]
-" ++
-  "3. On 2025-06-20, within the period from 2025-05-16 to 2025-07-15, the taxpayer acquired 100 common shares of ABC Ltd. That property is identical to the particular property (judgment call J-ID). [ITA 54 \"superficial loss\" (a)]
-" ++
-  "4. At the end of that period, on 2025-07-15, the taxpayer or a person affiliated with the taxpayer owned or had a right to acquire that property. [ITA 54 \"superficial loss\" (b)]
-" ++
-  "5. The disposition is not one described in paragraphs (c) to (h), so the taxpayer's loss of $509.99 is a superficial loss. [ITA 54 \"superficial loss\"]
-" ++
-  "6. Therefore, under subparagraph 40(2)(g)(i), the taxpayer's loss from the disposition is nil to the extent that it is a superficial loss. [ITA 40(2)(g)(i)]
-" ++
-  "Relies on these judgment calls:
-" ++
-  "- J-ID: Are the shares bought identical to the shares sold? Assumed: yes. Risk: low.
-" ++
+  "1. The property is not excluded property being considered in computing a foreign affiliate's surplus or deficit, so the opening words of paragraph 40(2)(g) apply to it. [ITA 40(2)(g)]\n" ++
+  "2. The taxpayer disposed of 100 common shares of ABC Ltd. on 2025-06-15 for proceeds of $1,000.00. The adjusted cost base plus outlays and expenses was $1,509.99, so the taxpayer's loss from the disposition is $509.99. [ITA 40(1)(b)]\n" ++
+  "3. On 2025-06-20, within the period from 2025-05-16 to 2025-07-15, the taxpayer acquired 100 common shares of ABC Ltd. That property is identical to the particular property (judgment call J-ID). [ITA 54 \"superficial loss\" (a)]\n" ++
+  "4. At the end of that period, on 2025-07-15, the taxpayer or a person affiliated with the taxpayer owned or had a right to acquire that property. [ITA 54 \"superficial loss\" (b)]\n" ++
+  "5. The disposition is not one described in paragraphs (c) to (h), so the taxpayer's loss of $509.99 is a superficial loss. [ITA 54 \"superficial loss\"]\n" ++
+  "6. Therefore, under subparagraph 40(2)(g)(i), the taxpayer's loss from the disposition is nil to the extent that it is a superficial loss. [ITA 40(2)(g)(i)]\n" ++
+  "Relies on these judgment calls:\n" ++
+  "- J-ID: Are the shares bought identical to the shares sold? Assumed: yes. Risk: low.\n" ++
   "Overall risk: low."
 
 -- Subparagraph 40(2)(g)(i): foreign affiliate carve-out
 #guard LossDenial.rule.explainText ⟨⟨sale, [buy ⟨2025, 6, 20⟩]⟩, true⟩ ==
-  "1. The loss is being computed for the surplus or deficit of the taxpayer in respect of another taxpayer of which it is a foreign affiliate, and the property is excluded property, so paragraph 40(2)(g) does not apply to it. [ITA 40(2)(g)]
-" ++
+  "1. The loss is being computed for the surplus or deficit of the taxpayer in respect of another taxpayer of which it is a foreign affiliate, and the property is excluded property, so paragraph 40(2)(g) does not apply to it. [ITA 40(2)(g)]\n" ++
   "2. Therefore subparagraph 40(2)(g)(i) does not reduce the taxpayer's loss from the disposition. [ITA 40(2)(g)(i)]"
 
 end Canteen.Tests.SuperficialLoss

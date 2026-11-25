@@ -76,6 +76,7 @@ Pi: encoded
 Pj: encoded
 D: encoded
 E: proven
+S: proven
 L1: proven
 L2: proven
 L3: proven
@@ -90,6 +91,7 @@ L11: proven
 L12: proven
 G0: encoded
 G1: encoded
+GS: proven
 N1: not formalized
 N2: not formalized
 N3: not formalized

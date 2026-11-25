@@ -16,7 +16,7 @@ The full design is in [`docs/design.md`](docs/design.md).
 | 3. Chaining and series | Done | Chained arguments, rule combinators, branches over judgment calls with risk, series reports; a toy series renders a full English argument |
 | 4. First real provision | Encoded; awaiting review | Section 54 "superficial loss" with all its exceptions, and subparagraph 40(2)(g)(i); see [`docs/review/superficial-loss.md`](docs/review/superficial-loss.md) |
 | 5. Blueprint | Done | Memos whose statements link to Lean, with dependency graphs coloured by proven/unproven status; see [`docs/blueprint/`](docs/blueprint/README.md) |
-| 6. Ergonomics | Not started | Statute-like syntax for rules |
+| 6. Ergonomics | Done | The `statute` command: rules written in the statute's own shape, sound with nothing to prove |
 
 ## Building
 
@@ -48,6 +48,8 @@ Canteen/
     Render.lean              numbered, cited English for a single finding
     Argument.lean            chained arguments with judgment calls and overall risk
     Combine.lean             Rule.comap, Rule.and, Rule.or, Rule.not (sound by construction)
+    Statute.lean             Rule.statute: "applies where …, except where …" (sound once, for all)
+    StatuteSyntax.lean       the `statute` command
     Branch.lean              every branch of the judgment calls; SameOnEveryBranch
     Series.lean              TxStep, runSeries, traceSeries, invariant lemmas
     SeriesReport.lean        rules applied after every step; the series as one argument
@@ -58,8 +60,10 @@ Canteen/
     RuleZ.lean               Rule Z = Rule X and Rule Y, built with Rule.and
     ToySeries.lean           a three-step plan checked against Rule X on each branch
   ITA/                     Layer 1: the Income Tax Act, one file per provision
-    S54/SuperficialLoss.lean   section 54, "superficial loss"
+    S54/SuperficialLoss.lean   section 54, "superficial loss", paragraph by paragraph
+    S54/SuperficialLossStatute.lean   the same, in statute form (proven equal)
     S40/LossDenial.lean        subparagraph 40(2)(g)(i)
+    S40/LossDenialStatute.lean        the same, in statute form (proven equal)
   Lemmas/                  Layer 2: reusable truths about provisions
   Transactions/            Layer 3: concrete transactions, each step a theorem
     SpouseRepurchase.lean    shares sold at a loss and bought by the spouse
@@ -75,6 +79,23 @@ docs/design.md             the design
 
 ## Writing a rule
 
+The quickest way is the `statute` command, which reads like the provision:
+
+```lean
+statute ruleX (f : XFacts) named "Rule X" cites "s.X"
+  applies where
+    | (a) f.condA => "Condition A is met." else "Condition A is not met."
+    | (b) judgment "J-B" f.condB => "Condition B is met." else "Condition B is not met."
+  except where
+    | (c) f.exception => "The exception applies." else "The exception does not apply."
+```
+
+It defines `ruleX : Rule XFacts`, and needs no proof: every rule of this shape is sound by one theorem proven once (`Rule.statuteFinding_conclusion`).
+Each clause is cited as the rule's citation plus its label (`s.X(a)`), may rest on a judgment call (`judgment "J-B"`, or `judgments ids` computed from the facts), or may be a whole other rule (`| (i) := (otherRule.comap g)`).
+The explanation cites a failure on the facts before one that rests on a judgment call (`Rule.statute_explain_factual`).
+Section 54 "superficial loss" and subparagraph 40(2)(g)(i) are written this way in `Canteen/ITA/`, each proven equal to its paragraph-by-paragraph encoding.
+
+For full control over the explanation (dates, amounts, per-item reasons), write the rule by hand.
 A `Rule` bundles the rule (`holds`), its explanation (`explain`) and a proof (`sound`) that the two always agree.
 Lean will not build a rule whose English could contradict its logic. The pattern, from `Canteen/Examples/RuleX.lean`:
 
@@ -153,7 +174,7 @@ The memo for the spouse-repurchase transaction is [`docs/blueprint/spouse-repurc
 | Non-vacuity | `Rule.NonVacuous`; `ruleX_nonVacuous` in `Tests/RuleX.lean` |
 | No hidden gaps | `#audit_axioms` in `Audit.lean` fails the build on any `sorry`, `axiom` or `native_decide` |
 | Read-back | Every Rule X branch rendered and checked in `Tests/RuleX.lean` |
-| Broken rules caught | `brokenExplain_unsound`, plus `tests/should-fail/` (including a false claim that a judgment call doesn't matter) |
+| Broken rules caught | `brokenExplain_unsound`, plus `tests/should-fail/` (including a false claim that a judgment call doesn't matter, and a statute-form rule missing a clause) |
 | Continuous build | `.github/workflows/build.yml` |
 | Memos match the proofs | `docs/blueprint/` is regenerated and compared in CI; stale links and gaps are rejected (`tests/should-fail/`) |
 

@@ -2,6 +2,7 @@ import Canteen.Core.Blueprint
 import Canteen.ITA.S54.SuperficialLoss
 import Canteen.ITA.S40.LossDenial
 import Canteen.Lemmas.SuperficialLoss
+import Canteen.ITA.S40.LossDenialStatute
 
 /-!
 # Blueprint: section 54 "superficial loss" and subparagraph 40(2)(g)(i)
@@ -75,7 +76,11 @@ def blueprint : Blueprint where
         { id := "E", kind := .law, title := "The English explanation agrees", citation := cite ""
           statement := "For every set of facts, the English explanation reaches the same conclusion as the definition. It gives " ++
             "factual reasons before reasons that rest on a judgment call."
-          lean := [``explain_sound, ``SuperficialLoss.rule], uses := ["D"] } ] },
+          lean := [``explain_sound, ``SuperficialLoss.rule], uses := ["D"] },
+        { id := "S", kind := .law, title := "The definition in statute form", citation := cite ""
+          statement := "The definition written with the `statute` command, in the Act's own shape: a loss where (a) and (b), " ++
+            "except where (c) to (h). Proven to be the same rule as the paragraph-by-paragraph encoding."
+          lean := [``superficialLossStatute, ``superficialLossStatute_eq], uses := ["D"] } ] },
     { heading := "Truths proven about the definition"
       text := ["Proven once, for every set of facts, and reusable in any transaction (Layer 2)."]
       nodes := [
@@ -123,7 +128,11 @@ def blueprint : Blueprint where
         { id := "G1", kind := .law, title := "The loss is nil", citation := "ITA 40(2)(g)(i)"
           statement := "“a taxpayer’s loss, if any, from the disposition of a property …, to the extent that it is (i) a superficial " ++
             "loss, … is nil”. Built from the definition and the carve-out with `Rule.and`, so its explanation is sound by construction."
-          lean := [``LossDenial.rule, ``LossDenial.deniedLoss], uses := ["G0", "E"] } ] },
+          lean := [``LossDenial.rule, ``LossDenial.deniedLoss], uses := ["G0", "E"] },
+        { id := "GS", kind := .law, title := "40(2)(g)(i) in statute form", citation := "ITA 40(2)(g)(i)"
+          statement := "Subparagraph 40(2)(g)(i) written with the `statute` command, with the statute-form definition as " ++
+            "subparagraph (i) and the carve-out as the exception. Proven to be the same rule as `LossDenial.rule`."
+          lean := [``LossDenial.lossDenialStatute, ``LossDenial.lossDenialStatute_eq], uses := ["G1", "S"] } ] },
     { heading := "Not yet formalized"
       text := ["These statements are part of the analysis but have no Lean behind them yet. Anything resting on them says so."]
       nodes := [

@@ -8,6 +8,8 @@ import Canteen.Core.Rule
 import Canteen.Core.Render
 import Canteen.Core.Argument
 import Canteen.Core.Combine
+import Canteen.Core.Statute
+import Canteen.Core.StatuteSyntax
 import Canteen.Core.Branch
 import Canteen.Core.Series
 import Canteen.Core.SeriesReport
@@ -18,10 +20,13 @@ import Canteen.Core.Blueprint
 import Canteen.Examples.RuleX
 import Canteen.Examples.RuleZ
 import Canteen.Examples.ToySeries
+import Canteen.Examples.RuleXStatute
 
 -- Layer 1: statute encoding
 import Canteen.ITA.S54.SuperficialLoss
 import Canteen.ITA.S40.LossDenial
+import Canteen.ITA.S54.SuperficialLossStatute
+import Canteen.ITA.S40.LossDenialStatute
 
 -- Layer 2: reusable lemmas
 import Canteen.Lemmas.SuperficialLoss
@@ -44,3 +49,4 @@ import Canteen.Tests.ToySeries
 import Canteen.Tests.Date
 import Canteen.Tests.SuperficialLoss
 import Canteen.Tests.Blueprint
+import Canteen.Tests.Statute
