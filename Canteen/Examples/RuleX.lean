@@ -1,4 +1,4 @@
-import Canteen.Core.Render
+import Canteen.Core.Argument
 
 /-!
 # Worked example: Rule X

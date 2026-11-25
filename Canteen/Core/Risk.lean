@@ -73,6 +73,11 @@ theorem le_max_right (a b : Risk) : b.rank ≤ (a.max b).rank := by
 theorem max_eq_or (a b : Risk) : a.max b = a ∨ a.max b = b := by
   cases a <;> cases b <;> decide
 
+/-- Raising one input never lowers the combined risk. -/
+theorem max_mono_left {a a' : Risk} (h : a.rank ≤ a'.rank) (b : Risk) :
+    (a.max b).rank ≤ (a'.max b).rank := by
+  revert h; cases a <;> cases a' <;> cases b <;> decide
+
 end Risk
 
 end Canteen

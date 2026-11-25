@@ -1,4 +1,4 @@
-import Canteen.Core.Render
+import Canteen.Core.Argument
 
 /-!
 # Tests: core language

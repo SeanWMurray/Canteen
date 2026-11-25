@@ -19,23 +19,6 @@ namespace Finding
 def render (f : Finding) : String :=
   "\n".intercalate (renderSteps 1 f.steps)
 
-/-- The argument followed by the judgment calls it relies on, each with its
-question, assumed answer and risk, and the overall risk. Judgment ids missing
-from the registry are listed as unregistered so they are never silently dropped. -/
-def renderWithJudgments (registry : List Judgment) (f : Finding) : String :=
-  let answer (b : Bool) := if b then "yes" else "no"
-  let line (id : String) : String :=
-    match Judgment.find? registry id with
-    | some j => s!"- {j.id}: {j.question} Assumed: {answer j.answer}. Risk: {j.risk}."
-    | none => s!"- {id}: (not in the judgment registry)"
-  let tail :=
-    if f.reliesOn.isEmpty then
-      ["Relies on no judgment calls."]
-    else
-      "Relies on these judgment calls:" :: f.reliesOn.map line ++
-        [s!"Overall risk: {findingRisk registry f}."]
-  "\n".intercalate (renderSteps 1 f.steps ++ tail)
-
 end Finding
 
 theorem renderSteps_length (n : Nat) (ss : List Step) : (renderSteps n ss).length = ss.length := by
