@@ -15,7 +15,8 @@ The full design is in [`docs/design.md`](docs/design.md).
 | 2. Validation harness | Done | Tests, non-vacuity, read-back, axiom audit, CI, and broken rules caught automatically |
 | 3. Chaining and series | Done | Chained arguments, rule combinators, branches over judgment calls with risk, series reports; a toy series renders a full English argument |
 | 4. First real provision | Encoded; awaiting review | Section 54 "superficial loss" with all its exceptions, and subparagraph 40(2)(g)(i); see [`docs/review/superficial-loss.md`](docs/review/superficial-loss.md) |
-| 5–6 | Not started | Blueprint, ergonomics |
+| 5. Blueprint | Done | Memos whose statements link to Lean, with dependency graphs coloured by proven/unproven status; see [`docs/blueprint/`](docs/blueprint/README.md) |
+| 6. Ergonomics | Not started | Statute-like syntax for rules |
 
 ## Building
 
@@ -25,9 +26,11 @@ Install [elan](https://github.com/leanprover/elan) (the Lean version manager), t
 lake build --wfail            # build everything, run all tests and the axiom audit
 scripts/check-imports.sh      # every module is imported, so built and audited
 scripts/check-should-fail.sh  # broken rules and hidden gaps are rejected
+scripts/blueprint.sh --check  # the blueprint documents match the Lean sources
 ```
 
-CI (`.github/workflows/build.yml`) runs all three on every push and pull request.
+CI (`.github/workflows/build.yml`) runs all four on every push and pull request.
+After changing a blueprint or anything it links to, run `scripts/blueprint.sh` and commit `docs/blueprint/`.
 
 ## Layout
 
@@ -49,6 +52,7 @@ Canteen/
     Series.lean              TxStep, runSeries, traceSeries, invariant lemmas
     SeriesReport.lean        rules applied after every step; the series as one argument
     Audit.lean               the #audit_axioms command
+    Blueprint.lean           memos linked to Lean: status, dependency graph, Markdown
   Examples/                placeholders, not real provisions
     RuleX.lean               Rule X from design §4.4, with its lemmas
     RuleZ.lean               Rule Z = Rule X and Rule Y, built with Rule.and
@@ -57,10 +61,13 @@ Canteen/
     S54/SuperficialLoss.lean   section 54, "superficial loss"
     S40/LossDenial.lean        subparagraph 40(2)(g)(i)
   Lemmas/                  Layer 2: reusable truths about provisions
-  Transactions/            Layers 3–4 (later phases)
+  Transactions/            Layer 3: concrete transactions, each step a theorem
+    SpouseRepurchase.lean    shares sold at a loss and bought by the spouse
+  Blueprints/              memo-style documents linked to the Lean above
   Tests/                   known-answer, sanity, non-vacuity and read-back tests
 statute/                   verbatim statute text for each encoded provision, with its currency date
 docs/review/               review notes: statute-to-Lean mapping, interpretation choices, read-back
+docs/blueprint/            blueprints rendered to Markdown (generated; do not edit)
 tests/should-fail/         files that must fail to compile
 scripts/                   CI checks
 docs/design.md             the design
@@ -125,6 +132,18 @@ Whether a property is "identical" is a judgment call; inputs decided by provisio
 
 The statute-to-Lean mapping, the interpretation choices to confirm, and the full read-back are in [`docs/review/superficial-loss.md`](docs/review/superficial-loss.md).
 
+## Blueprints: memos linked to Lean
+
+A blueprint (`Canteen/Blueprints/`) is a memo whose statements each name the Lean declarations behind them and the earlier statements they use.
+`scripts/blueprint.sh` renders it to Markdown in [`docs/blueprint/`](docs/blueprint/README.md), with a dependency graph that GitHub draws.
+
+- **Status comes from Lean.** A statement backed by a theorem is *proven*; by definitions only, *encoded*; by nothing, *not formalized*. Facts and judgment calls are shown as such.
+- **Links can't go stale.** Declarations are written as ``` ``Name ``` literals, so a renamed or deleted theorem is a build error.
+- **Gaps are refused.** A statement backed by `sorry` is *unproven*, and the blueprint is not published.
+- **Every assumption is visible.** Each statement lists the facts, judgment calls and unformalized statements it rests on.
+
+The memo for the spouse-repurchase transaction is [`docs/blueprint/spouse-repurchase.md`](docs/blueprint/spouse-repurchase.md).
+
 ## Validation (design §6)
 
 | Practice | Where |
@@ -136,6 +155,7 @@ The statute-to-Lean mapping, the interpretation choices to confirm, and the full
 | Read-back | Every Rule X branch rendered and checked in `Tests/RuleX.lean` |
 | Broken rules caught | `brokenExplain_unsound`, plus `tests/should-fail/` (including a false claim that a judgment call doesn't matter) |
 | Continuous build | `.github/workflows/build.yml` |
+| Memos match the proofs | `docs/blueprint/` is regenerated and compared in CI; stale links and gaps are rejected (`tests/should-fail/`) |
 
 ## What Lean does and does not guarantee
 

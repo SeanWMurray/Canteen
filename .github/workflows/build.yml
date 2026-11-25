@@ -26,3 +26,6 @@ jobs:
 
       - name: Check broken rules and hidden gaps are rejected
         run: scripts/check-should-fail.sh
+
+      - name: Check the blueprint documents match the Lean sources
+        run: scripts/blueprint.sh --check

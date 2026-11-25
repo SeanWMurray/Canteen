@@ -12,6 +12,7 @@ import Canteen.Core.Branch
 import Canteen.Core.Series
 import Canteen.Core.SeriesReport
 import Canteen.Core.Audit
+import Canteen.Core.Blueprint
 
 -- Worked examples (placeholders, not real provisions)
 import Canteen.Examples.RuleX
@@ -25,6 +26,14 @@ import Canteen.ITA.S40.LossDenial
 -- Layer 2: reusable lemmas
 import Canteen.Lemmas.SuperficialLoss
 
+-- Layer 3: transactions
+import Canteen.Transactions.SpouseRepurchase
+
+-- Blueprints: memos linked to Lean
+import Canteen.Blueprints.SuperficialLoss
+import Canteen.Blueprints.SpouseRepurchase
+import Canteen.Blueprints.All
+
 -- Tests (known-answer, sanity, non-vacuity, read-back)
 import Canteen.Tests.Core
 import Canteen.Tests.RuleX
@@ -34,3 +43,4 @@ import Canteen.Tests.Branch
 import Canteen.Tests.ToySeries
 import Canteen.Tests.Date
 import Canteen.Tests.SuperficialLoss
+import Canteen.Tests.Blueprint

@@ -1,3 +1,5 @@
 # Layers 3 and 4: transactions and series
 
-Concrete fact patterns and multi-step plans, with outcomes proven. Empty for now; see `Canteen/Tests/Series.lean` for a toy series.
+Concrete fact patterns, with each step of the analysis proven as a theorem.
+
+- `SpouseRepurchase.lean`: shares sold at a loss and bought by the spouse five days later
