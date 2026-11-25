@@ -7,7 +7,7 @@ on). Properties of a whole series are proven by induction over the step list;
 `runSeries_invariant` and `traceSeries_invariant` package that induction once.
 -/
 
-namespace TaxLean
+namespace Canteen
 
 /-- One step of a transaction series. -/
 structure TxStep (State : Type) where
@@ -89,4 +89,4 @@ theorem traceSeries_invariant (P : State → Prop) (steps : List (TxStep State))
     · exact ih (fun st' h => hstep st' (List.mem_cons_of_mem _ h)) _
         (hstep st (List.mem_cons_self ..) s hs) t ht
 
-end TaxLean
+end Canteen

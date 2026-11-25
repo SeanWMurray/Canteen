@@ -7,7 +7,7 @@ conclusion resting on several judgment calls takes the highest of their risks
 (`Risk.max`).
 -/
 
-namespace TaxLean
+namespace Canteen
 
 /-- Confidence in the answer assumed for a judgment call. -/
 inductive Risk where
@@ -75,4 +75,4 @@ theorem max_eq_or (a b : Risk) : a.max b = a ∨ a.max b = b := by
 
 end Risk
 
-end TaxLean
+end Canteen

@@ -1,4 +1,4 @@
-import TaxLean.Core.Finding
+import Canteen.Core.Finding
 
 /-!
 # Rule
@@ -9,7 +9,7 @@ explanation and a proof (`sound`) that the two agree. Lean refuses to build a
 `Rule` whose explanation could ever contradict its logic.
 -/
 
-namespace TaxLean
+namespace Canteen
 
 /-- A statutory rule over a type of facts, with a checked English explanation. -/
 structure Rule (Facts : Type) where
@@ -58,4 +58,4 @@ def IndependentOf (r : Rule Facts) (set : Facts → Bool → Facts) : Prop :=
 
 end Rule
 
-end TaxLean
+end Canteen

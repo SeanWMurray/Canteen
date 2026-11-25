@@ -1,4 +1,4 @@
-# TaxLean: A Verified Reasoning Language for Tax Analysis
+# Canteen: A Verified Reasoning Language for Tax Analysis
 
 **Status:** Design draft, v0.1
 **Scope:** Purpose, architecture and the technical foundation (the core language). Encoding specific *Income Tax Act* provisions is out of scope here and comes in later phases.
@@ -9,7 +9,7 @@
 
 Tax analysis is a chain of reasoning: *these facts satisfy these conditions, so this provision applies, so this outcome follows.* Today that chain lives in memos and in people's heads. A missed condition, a misapplied exception, or a "therefore" that doesn't actually follow can go unnoticed.
 
-TaxLean is a framework built on the **Lean 4** proof assistant that lets us:
+Canteen is a framework built on the **Lean 4** proof assistant that lets us:
 
 1. **Encode statutory rules as precise definitions.** Each provision becomes a definition with its conditions and exceptions written out exactly.
 2. **Represent judgment calls explicitly.** Questions the statute leaves to judgment (for example, purpose tests) become named true/false switches with a risk rating. They are never silently assumed.
@@ -33,7 +33,7 @@ The right-hand column is managed through the validation practices in §6.
 
 ## 2. Key Concepts
 
-| Concept | Meaning in TaxLean |
+| Concept | Meaning in Canteen |
 |---|---|
 | **Rule** | A statutory provision encoded as a function from facts to a true/false result, bundled with its English explanation and a proof that the two agree. |
 | **Facts** | A structured record of the inputs a rule needs. Some fields are computed (e.g., amounts compared), others are judgment calls. |
@@ -96,19 +96,19 @@ Setup:
 curl https://elan.lean-lang.org/elan-init.sh -sSf | sh
 
 # Create the project
-lake new TaxLean
-cd TaxLean
+lake new canteen
+cd canteen
 lake build
 ```
 
 ### 4.2 Project layout
 
 ```
-TaxLean/
+Canteen/
 ├── lean-toolchain            # pinned Lean version
 ├── lakefile.toml             # build configuration
-├── TaxLean.lean              # root file; imports everything
-├── TaxLean/
+├── Canteen.lean              # root file; imports everything
+├── Canteen/
 │   ├── Core/                 # Layer 0 — generic language
 │   │   ├── Risk.lean
 │   │   ├── Judgment.lean
@@ -130,7 +130,7 @@ TaxLean/
 **Risk**: how confident we are in a judgment call.
 
 ```lean
-namespace TaxLean
+namespace Canteen
 
 inductive Risk where
   | low | medium | high

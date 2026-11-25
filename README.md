@@ -1,4 +1,4 @@
-# TaxLean
+# Canteen
 
 A verified reasoning language for tax analysis, built on the [Lean 4](https://lean-lang.org) proof assistant.
 Statutory rules are encoded as precise definitions. Judgment calls are named, risk-rated switches.
@@ -30,9 +30,9 @@ CI (`.github/workflows/build.yml`) runs all three on every push and pull request
 ## Layout
 
 ```
-TaxLean.lean               root: imports every module
+Canteen.lean               root: imports every module
 Audit.lean                 runs the axiom/sorry audit on every build
-TaxLean/
+Canteen/
   Core/                    Layer 0: the generic language
     Risk.lean                low < medium < high, and Risk.max
     Judgment.lean            named, risk-rated true/false switches
@@ -52,7 +52,7 @@ docs/design.md             the design
 ## Writing a rule
 
 A `Rule` bundles the rule (`holds`), its explanation (`explain`) and a proof (`sound`) that the two always agree.
-Lean will not build a rule whose English could contradict its logic. The pattern, from `TaxLean/Examples/RuleX.lean`:
+Lean will not build a rule whose English could contradict its logic. The pattern, from `Canteen/Examples/RuleX.lean`:
 
 ```lean
 def ruleX : Rule XFacts where
@@ -69,7 +69,7 @@ def ruleX : Rule XFacts where
 
 | Practice | Where |
 |---|---|
-| Known-answer tests | `TaxLean/Tests/*.lean` (`example … := rfl`, `#guard` on rendered text) |
+| Known-answer tests | `Canteen/Tests/*.lean` (`example … := rfl`, `#guard` on rendered text) |
 | Sanity theorems | `Risk` laws in `Core/Risk.lean`; Rule X lemmas in `Examples/RuleX.lean` |
 | Non-vacuity | `Rule.NonVacuous`; `ruleX_nonVacuous` in `Tests/RuleX.lean` |
 | No hidden gaps | `#audit_axioms` in `Audit.lean` fails the build on any `sorry`, `axiom` or `native_decide` |

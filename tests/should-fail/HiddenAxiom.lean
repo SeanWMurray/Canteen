@@ -1,14 +1,14 @@
--- expect: TaxLean.ShouldFail.conditionBAlwaysHolds
+-- expect: Canteen.ShouldFail.conditionBAlwaysHolds
 /-
 Phase 2 check: an `axiom` that quietly assumes away a judgment call must fail
 the audit, whether or not anything uses it.
 -/
-import TaxLean.Core.Audit
+import Canteen.Core.Audit
 
-namespace TaxLean.ShouldFail
+namespace Canteen.ShouldFail
 
 axiom conditionBAlwaysHolds : ∀ b : Bool, b = true
 
-end TaxLean.ShouldFail
+end Canteen.ShouldFail
 
-#audit_axioms TaxLean
+#audit_axioms Canteen

@@ -3,13 +3,13 @@
 Phase 2 check: `native_decide` trusts the compiler rather than Lean's kernel,
 so a proof that uses it must fail the audit.
 -/
-import TaxLean.Core.Audit
+import Canteen.Core.Audit
 
-namespace TaxLean.ShouldFail
+namespace Canteen.ShouldFail
 
 theorem viaCompiler : 2 + 2 = 4 := by
   native_decide
 
-end TaxLean.ShouldFail
+end Canteen.ShouldFail
 
-#audit_axioms TaxLean
+#audit_axioms Canteen

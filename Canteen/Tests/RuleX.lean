@@ -1,4 +1,4 @@
-import TaxLean.Examples.RuleX
+import Canteen.Examples.RuleX
 
 /-!
 # Tests: Rule X
@@ -8,9 +8,9 @@ known-answer tests, non-vacuity, read-back of every branch, and a deliberately
 broken explanation that Lean refuses to accept as a `Rule`.
 -/
 
-namespace TaxLean.Tests.RuleX
+namespace Canteen.Tests.RuleX
 
-open TaxLean TaxLean.Examples
+open Canteen Canteen.Examples
 
 /-! ## Known-answer tests -/
 
@@ -90,4 +90,4 @@ theorem brokenExplain_unsound : ¬ ∀ f, (brokenExplain f).conclusion = xHolds 
   have := h ⟨true, true, true⟩
   simp [brokenExplain, xHolds] at this
 
-end TaxLean.Tests.RuleX
+end Canteen.Tests.RuleX

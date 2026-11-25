@@ -1,4 +1,4 @@
-import TaxLean.Core.Render
+import Canteen.Core.Render
 
 /-!
 # Tests: core language
@@ -6,9 +6,9 @@ import TaxLean.Core.Render
 Known-answer and sanity tests for `Risk`, `Judgment`, `Finding` and rendering.
 -/
 
-namespace TaxLean.Tests.Core
+namespace Canteen.Tests.Core
 
-open TaxLean
+open Canteen
 
 /-! ## Risk -/
 
@@ -74,4 +74,4 @@ def twoSteps : Finding :=
   "- J-9: (not in the judgment registry)\n" ++
   "Overall risk: low."
 
-end TaxLean.Tests.Core
+end Canteen.Tests.Core

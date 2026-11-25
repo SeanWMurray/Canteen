@@ -1,4 +1,4 @@
-import TaxLean.Core.Rule
+import Canteen.Core.Rule
 
 /-!
 # Rendering
@@ -6,7 +6,7 @@ import TaxLean.Core.Rule
 Turning a `Finding` into a numbered, cited English argument (design §4.3, §5).
 -/
 
-namespace TaxLean
+namespace Canteen
 
 /-- Number the steps starting at `n`: `"n. claim [citation]"`. -/
 def renderSteps : Nat → List Step → List String
@@ -53,4 +53,4 @@ def explainText (r : Rule Facts) (f : Facts) : String :=
 
 end Rule
 
-end TaxLean
+end Canteen

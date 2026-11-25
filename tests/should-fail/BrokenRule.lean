@@ -5,9 +5,9 @@ Phase 2 check: a deliberately broken rule must be caught automatically.
 This explanation forgets the exception in s.X(c), so its soundness proof
 cannot succeed and the `Rule` cannot be built.
 -/
-import TaxLean.Examples.RuleX
+import Canteen.Examples.RuleX
 
-open TaxLean TaxLean.Examples
+open Canteen Canteen.Examples
 
 def brokenExplain (f : XFacts) : Finding :=
   if f.condA && f.condB then

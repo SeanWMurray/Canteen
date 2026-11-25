@@ -1,4 +1,4 @@
-import TaxLean.Core.Risk
+import Canteen.Core.Risk
 
 /-!
 # Judgment
@@ -9,7 +9,7 @@ question it answers, records the answer assumed on the current branch, and
 carries a risk rating. Judgment is never hidden (design principle 1).
 -/
 
-namespace TaxLean
+namespace Canteen
 
 /-- A judgment call: a named, risk-rated true/false switch. -/
 structure Judgment where
@@ -40,4 +40,4 @@ def find? (registry : List Judgment) (id : String) : Option Judgment :=
 
 end Judgment
 
-end TaxLean
+end Canteen

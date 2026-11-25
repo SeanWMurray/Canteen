@@ -1,4 +1,4 @@
-import TaxLean.Core.Render
+import Canteen.Core.Render
 
 /-!
 # Worked example: Rule X
@@ -8,7 +8,7 @@ A placeholder rule, **not a real provision** (design §4.4):
 Condition B is a judgment call (`J-B`); condition A and the exception are facts.
 -/
 
-namespace TaxLean.Examples
+namespace Canteen.Examples
 
 /-- The facts Rule X needs. -/
 structure XFacts where
@@ -81,4 +81,4 @@ theorem x_applies_relies_on_B (f : XFacts) (h : xHolds f = true) :
   obtain ⟨a, b, e⟩ := f
   cases a <;> cases b <;> cases e <;> simp_all [xExplain, xHolds]
 
-end TaxLean.Examples
+end Canteen.Examples

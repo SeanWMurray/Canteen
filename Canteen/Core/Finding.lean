@@ -1,4 +1,4 @@
-import TaxLean.Core.Judgment
+import Canteen.Core.Judgment
 
 /-!
 # Step and Finding
@@ -9,7 +9,7 @@ English steps that led there, and the ids of the judgment calls it relied on.
 judgment calls it relies on (design §4.5).
 -/
 
-namespace TaxLean
+namespace Canteen
 
 /-- One step of an English argument: a single sentence and its statutory reference. -/
 structure Step where
@@ -66,4 +66,4 @@ theorem findingRisk_of_reliesOn_nil (reg : List Judgment) (f : Finding)
 /-- Against an empty registry every finding has low risk. -/
 @[simp] theorem findingRisk_nil (f : Finding) : findingRisk [] f = .low := rfl
 
-end TaxLean
+end Canteen

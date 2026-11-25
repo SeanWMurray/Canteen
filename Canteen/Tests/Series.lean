@@ -1,4 +1,4 @@
-import TaxLean.Core.Series
+import Canteen.Core.Series
 
 /-!
 # Tests: transaction series
@@ -7,9 +7,9 @@ A toy series over a simple state, checking `runSeries`, `traceSeries` and the
 invariant lemmas.
 -/
 
-namespace TaxLean.Tests.Series
+namespace Canteen.Tests.Series
 
-open TaxLean
+open Canteen
 
 /-- A toy state: an adjusted cost base and a count of dispositions. -/
 structure ToyState where
@@ -40,4 +40,4 @@ theorem dispositions_monotone (n : Nat) :
   simp only [plan, List.mem_cons, List.not_mem_nil, or_false] at hst
   rcases hst with rfl | rfl | rfl | rfl <;> simp [buy, sellAll] <;> omega
 
-end TaxLean.Tests.Series
+end Canteen.Tests.Series

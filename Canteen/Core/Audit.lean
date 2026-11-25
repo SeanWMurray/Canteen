@@ -16,11 +16,11 @@ file) and fails if any of them:
 `#print axioms thm` still works for inspecting a single theorem.
 -/
 
-namespace TaxLean.Audit
+namespace Canteen.Audit
 
 open Lean Elab Command
 
-/-- The axioms a TaxLean proof may rely on: Lean's standard foundations. -/
+/-- The axioms a Canteen proof may rely on: Lean's standard foundations. -/
 def standardAxioms : List Name := [``propext, ``Classical.choice, ``Quot.sound]
 
 /-- Is `n` declared in a module under `pkg`, or in the file being elaborated? -/
@@ -57,4 +57,4 @@ elab "#audit_axioms " pkg:ident : command => do
     let lines := bad.toList.map fun (d, a) => m!"\n  {d} relies on {a}"
     throwError m!"Audit failed: {bad.size} problem(s) found:{MessageData.joinSep lines ""}"
 
-end TaxLean.Audit
+end Canteen.Audit
