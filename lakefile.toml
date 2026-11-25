@@ -1,0 +1,15 @@
+name = "TaxLean"
+version = "0.1.0"
+defaultTargets = ["TaxLean", "Audit"]
+
+[leanOptions]
+autoImplicit = false
+relaxedAutoImplicit = false
+
+# The library itself: core language, examples and tests.
+[[lean_lib]]
+name = "TaxLean"
+
+# Runs the axiom/sorry audit over everything in `TaxLean` on every build.
+[[lean_lib]]
+name = "Audit"

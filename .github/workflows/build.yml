@@ -1,0 +1,28 @@
+name: Build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install elan (Lean version manager)
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh \
+            | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      # Builds the library, runs every test, and runs the axiom/sorry audit.
+      # --wfail turns warnings (including "declaration uses 'sorry'") into errors.
+      - name: Build, test and audit
+        run: lake build --wfail
+
+      - name: Check every module is imported (and so built and audited)
+        run: scripts/check-imports.sh
+
+      - name: Check broken rules and hidden gaps are rejected
+        run: scripts/check-should-fail.sh
