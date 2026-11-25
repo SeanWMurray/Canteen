@@ -1,0 +1,19 @@
+Income Tax Act, R.S.C. 1985, c. 1 (5th Supp.), section 54, definition of "superficial loss"
+
+Source: Justice Canada consolidated Acts (XML), https://github.com/justicecanada/laws-lois-xml, file eng/acts/I-3.3.xml
+Current to: 2026-10-29. Last amended: 2026-06-18.
+Extracted verbatim; whitespace normalized; paragraph labels kept; continued text marked [continued].
+
+ superficial loss of a taxpayer means the taxpayer’s loss from the disposition of a particular property where
+  (a) during the period that begins 30 days before and ends 30 days after the disposition, the taxpayer or a person affiliated with the taxpayer acquires a property (in this definition referred to as the “substituted property”) that is, or is identical to, the particular property, and
+  (b) at the end of that period, the taxpayer or a person affiliated with the taxpayer owns or had a right to acquire the substituted property,
+  [continued] except where the disposition was
+  (c) a disposition deemed to have been made by subsection 45(1), section 48 as it read in its application before 1993, section 50 or 70, subsection 104(4), section 128.1, paragraph 132.2(3)(a) or (c), subsection 138(11.3) or 138.2(4) or 142.5(2), section 142.6 or any of subsections 144(4.1) and (4.2) and 149(10),
+  (d) the expiry of an option,
+  (e) a disposition to which paragraph 40(2)(e.1) applies,
+  (f) a disposition by a taxpayer that was subject to a loss restriction event within 30 days after the disposition,
+  (g) a disposition by a person that, within 30 days after the disposition, became or ceased to be exempt from tax under this Part on its taxable income, or
+  (h) a disposition to which subsection 40(3.4) or 69(5) applies,
+  [continued] and, for the purpose of this definition,
+  (i) a right to acquire a property (other than a right, as security only, derived from a mortgage, hypothec, agreement for sale or similar obligation) is deemed to be a property that is identical to the property, and
+  (j) a share of the capital stock of a SIFT wind-up corporation in respect of a SIFT wind-up entity is, if the share was acquired before 2013, deemed to be a property that is identical to equity in the SIFT wind-up entity. (perte apparente)

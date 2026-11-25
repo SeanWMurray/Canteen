@@ -1,0 +1,15 @@
+Income Tax Act, R.S.C. 1985, c. 1 (5th Supp.), paragraph 40(2)(g)
+
+Source: Justice Canada consolidated Acts (XML), https://github.com/justicecanada/laws-lois-xml, file eng/acts/I-3.3.xml
+Current to: 2026-10-29. Last amended: 2026-06-18.
+Extracted verbatim; whitespace normalized; paragraph labels kept; continued text marked [continued].
+
+(2) Notwithstanding subsection 40(1),
+  (g) a taxpayer’s loss, if any, from the disposition of a property (other than, for the purposes of computing the exempt surplus or exempt deficit, hybrid surplus or hybrid deficit, and taxable surplus or taxable deficit of the taxpayer in respect of another taxpayer, where the taxpayer or, if the taxpayer is a partnership, a member of the taxpayer is a foreign affiliate of the other taxpayer, a property that is, or would be, if the taxpayer were a foreign affiliate of the other taxpayer, excluded property (within the meaning assigned by subsection 95(1)) of the taxpayer), to the extent that it is
+    (i) a superficial loss,
+    (ii) a loss from the disposition of a debt or other right to receive an amount, unless the debt or right, as the case may be, was acquired by the taxpayer for the purpose of gaining or producing income from a business or property (other than exempt income) or as consideration for the disposition of capital property to a person with whom the taxpayer was dealing at arm’s length,
+    (iii) a loss from the disposition of any personal-use property of the taxpayer (other than listed personal property or a debt referred to in subsection 50(2)), or
+    (iv) a loss from the disposition of property to
+      (A) a trust governed by a deferred profit sharing plan, an employees profit sharing plan, a FHSA, a registered disability savings plan, a registered retirement income fund or a TFSA, under which the taxpayer is a beneficiary or immediately after the disposition becomes a beneficiary, or
+      (B) a trust governed by a registered retirement savings plan under which the taxpayer or the taxpayer’s spouse or common-law partner is an annuitant or becomes, within 60 days after the end of the taxation year, an annuitant,
+    [continued] is nil;

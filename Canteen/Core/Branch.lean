@@ -153,7 +153,8 @@ applies on and whether the judgment calls matter. -/
 def renderBranches (r : Rule Facts) (calls : List JudgmentCall)
     (mk : List Judgment → Facts) : String :=
   let outcomes := r.analyzeBranches calls mk
-  let verdict (b : Bool) := if b then s!"{r.name} applies" else s!"{r.name} does not apply"
+  let verdict (b : Bool) :=
+    (if b then s!"{r.name} applies" else s!"{r.name} does not apply").capitalize
   let parts := outcomes.zipIdx.map fun (o, i) =>
     s!"Branch {i + 1} ({describeBranch o.branch}):\n" ++
       "\n".intercalate (renderSteps 1 o.finding.steps) ++
@@ -163,7 +164,7 @@ def renderBranches (r : Rule Facts) (calls : List JudgmentCall)
   let summary :=
     if yes = n then s!"Summary: {verdict true} on every branch, so the judgment calls do not affect the conclusion."
     else if yes = 0 then s!"Summary: {verdict false} on any branch, so the judgment calls do not affect the conclusion."
-    else s!"Summary: {r.name} applies on {yes} of {n} branches, so the conclusion depends on the judgment calls."
+    else s!"Summary: {r.name.capitalize} applies on {yes} of {n} branches, so the conclusion depends on the judgment calls."
   "\n\n".intercalate (parts ++ [summary])
 
 end Rule

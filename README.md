@@ -14,7 +14,8 @@ The full design is in [`docs/design.md`](docs/design.md).
 | 1. Core language | Done | `Risk`, `Judgment`, `Step`, `Finding`, `Rule`, rendering, series, and the Rule X example with its soundness and branch lemmas |
 | 2. Validation harness | Done | Tests, non-vacuity, read-back, axiom audit, CI, and broken rules caught automatically |
 | 3. Chaining and series | Done | Chained arguments, rule combinators, branches over judgment calls with risk, series reports; a toy series renders a full English argument |
-| 4–6 | Not started | First real provision, blueprint, ergonomics |
+| 4. First real provision | Encoded; awaiting review | Section 54 "superficial loss" with all its exceptions, and subparagraph 40(2)(g)(i); see [`docs/review/superficial-loss.md`](docs/review/superficial-loss.md) |
+| 5–6 | Not started | Blueprint, ergonomics |
 
 ## Building
 
@@ -36,6 +37,8 @@ Audit.lean                 runs the axiom/sorry audit on every build
 Canteen/
   Core/                    Layer 0: the generic language
     Risk.lean                low < medium < high, and Risk.max
+    Date.lean                calendar dates, day arithmetic, "within 30 days" periods
+    Money.lean               amounts in cents, formatted as $1,234.56
     Judgment.lean            named, risk-rated true/false switches
     Finding.lean             Step, Finding, findingRisk
     Rule.lean                Rule (with its soundness proof), NonVacuous, IndependentOf
@@ -50,8 +53,14 @@ Canteen/
     RuleX.lean               Rule X from design §4.4, with its lemmas
     RuleZ.lean               Rule Z = Rule X and Rule Y, built with Rule.and
     ToySeries.lean           a three-step plan checked against Rule X on each branch
+  ITA/                     Layer 1: the Income Tax Act, one file per provision
+    S54/SuperficialLoss.lean   section 54, "superficial loss"
+    S40/LossDenial.lean        subparagraph 40(2)(g)(i)
+  Lemmas/                  Layer 2: reusable truths about provisions
+  Transactions/            Layers 3–4 (later phases)
   Tests/                   known-answer, sanity, non-vacuity and read-back tests
-  ITA/  Lemmas/  Transactions/   Layers 1–4 (later phases)
+statute/                   verbatim statute text for each encoded provision, with its currency date
+docs/review/               review notes: statute-to-Lean mapping, interpretation choices, read-back
 tests/should-fail/         files that must fail to compile
 scripts/                   CI checks
 docs/design.md             the design
@@ -100,6 +109,21 @@ Relies on these judgment calls:
 - J-B: Is condition B met? Assumed: yes. Risk: medium.
 Overall risk: medium.
 ```
+
+## The first real provision
+
+Section 54, "superficial loss", is encoded paragraph by paragraph: the loss, paragraphs (a) and (b), every exception in (c) to (h), and the deeming rules in (i) and (j).
+Subparagraph 40(2)(g)(i) applies it to make the loss nil.
+Whether a property is "identical" is a judgment call; inputs decided by provisions not yet encoded (affiliation under s. 251.1, for example) are taken as facts.
+
+```
+1. The taxpayer disposed of 100 common shares of ABC Ltd. on 2025-06-15 for proceeds of $1,000.00. The adjusted cost base plus outlays and expenses was $1,509.99, so the taxpayer's loss from the disposition is $509.99. [ITA 40(1)(b)]
+2. On 2025-06-20, within the period from 2025-05-16 to 2025-07-15, the taxpayer acquired 100 common shares of ABC Ltd. That property is identical to the particular property (judgment call J-ID). [ITA 54 "superficial loss" (a)]
+3. At the end of that period, on 2025-07-15, the taxpayer or a person affiliated with the taxpayer owned or had a right to acquire that property. [ITA 54 "superficial loss" (b)]
+4. The disposition is not one described in paragraphs (c) to (h), so the taxpayer's loss of $509.99 is a superficial loss. [ITA 54 "superficial loss"]
+```
+
+The statute-to-Lean mapping, the interpretation choices to confirm, and the full read-back are in [`docs/review/superficial-loss.md`](docs/review/superficial-loss.md).
 
 ## Validation (design §6)
 

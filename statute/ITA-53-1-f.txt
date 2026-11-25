@@ -1,0 +1,11 @@
+Income Tax Act, R.S.C. 1985, c. 1 (5th Supp.), paragraph 53(1)(f) (not yet encoded; kept for the next provision)
+
+Source: Justice Canada consolidated Acts (XML), https://github.com/justicecanada/laws-lois-xml, file eng/acts/I-3.3.xml
+Current to: 2026-10-29. Last amended: 2026-06-18.
+Extracted verbatim; whitespace normalized; paragraph labels kept; continued text marked [continued].
+
+(1) In computing the adjusted cost base to a taxpayer of property at any time, there shall be added to the cost to the taxpayer of the property such of the following amounts in respect of the property as are applicable:
+  (f) where the property is substituted property (within the meaning assigned by paragraph (a) of the definition superficial loss in section 54) of the taxpayer, the amount, if any, by which
+    (i) the amount of the loss that was, because of the acquisition by the taxpayer of the property, a superficial loss of any taxpayer from a disposition of a property
+    [continued] exceeds
+    (ii) where the property disposed of was a share of the capital stock of a corporation, the amount that would, but for paragraph 40(2)(g), be deducted under subsection 112(3), 112(3.1) or 112(3.2) in computing the loss of any taxpayer in respect of the disposition of the share;
