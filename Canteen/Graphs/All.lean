@@ -166,7 +166,8 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S51.ConvertibleProperty, "51 convertible property"),
    (`Canteen.ITA.S3.IndividualYear, "2(2), 3 an individual's year, to taxable income"),
    (`Canteen.ITA.S39.CanadianSecurities, "39(4) to (6) the Canadian securities election"),
-   (`Canteen.ITA.S50.BadDebtOrShare, "50(1) bad debts and worthless shares")]
+   (`Canteen.ITA.S50.BadDebtOrShare, "50(1) bad debts and worthless shares"),
+   (`Canteen.ITA.S43.PartialDisposition, "43(1) part of a property")]
 
 /-! ## The dashboard -/
 
@@ -239,6 +240,7 @@ def actMindmap : String := Id.run do
     (4, "(i) superficial losses"), (4, "(ii) debts"), (4, "(iii) personal-use property"),
     (4, "(iv) TFSAs, RRSPs and other plans"), (3, "40(2)(e.1): debts within a related group"),
     (3, "40(3.3) to (3.5): suspended losses"), (3, "40(3.6): shares to an affiliated corporation"), (3, "40(3): negative adjusted cost base"),
+    (2, "s. 43"), (3, "43(1): part of a property"),
     (2, "s. 44"), (3, "44(1): replacement property"),
     (2, "s. 45"), (3, "45(1): change in use"), (3, "45(2), (3), (4): the elections"),
     (2, "s. 47"), (3, "47(1): identical properties, average cost"),

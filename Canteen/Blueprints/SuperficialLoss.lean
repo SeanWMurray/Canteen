@@ -39,6 +39,7 @@ import Canteen.ITA.S51.ConvertibleProperty
 import Canteen.ITA.S3.IndividualYear
 import Canteen.ITA.S39.CanadianSecurities
 import Canteen.ITA.S50.BadDebtOrShare
+import Canteen.ITA.S43.PartialDisposition
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -472,6 +473,10 @@ def blueprint : Blueprint where
             "superficial loss (paragraph (c))."
           lean := [``BadDebtOrShare.applies, ``BadDebtOrShare.disposition, ``BadDebtOrShare.loss_is_cost,
             ``BadDebtOrShare.not_superficial], uses := ["R8", "D"] },
+        { id := "R38", kind := .law, title := "Disposing of part of a property", citation := "ITA 43(1)"
+          statement := "The cost of a part disposed of is the portion of the whole's adjusted cost base reasonably attributable " ++
+            "to it (usually by value, which can be a judgment call); the rest stays with the part kept. Proven: the two add up."
+          lean := [``PartialDisposition.partCost, ``PartialDisposition.costs_add_up], uses := ["R8"] },
         { id := "R11", kind := .law, title := "The principal residence exemption", citation := "ITA 40(2)(b); 54 \"principal residence\""
           statement := "A home is the principal residence for a year if owned, ordinarily inhabited by the family (or covered by " ++
             "a 45(2) or (3) election, for at most four years: (d)), designated, and not blocked by another family-unit " ++

@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 77 statements:** 58 proven, 16 encoded, 3 not formalized.
+**Status of the 78 statements:** 59 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -82,11 +82,12 @@ graph TD
   n69["R35 · An individual's year, to taxable income"]:::proven
   n70["R36 · The election for Canadian securities"]:::proven
   n71["R37 · Bad debts and worthless shares"]:::proven
-  n72["R11 · The principal residence exemption"]:::proven
-  n73["R2 · Cost of the substituted property"]:::proven
-  n74["N1 · Inputs decided by other provisions"]:::notFormalized
-  n75["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n76["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n72["R38 · Disposing of part of a property"]:::proven
+  n73["R11 · The principal residence exemption"]:::proven
+  n74["R2 · Cost of the substituted property"]:::proven
+  n75["N1 · Inputs decided by other provisions"]:::notFormalized
+  n76["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n77["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -205,20 +206,21 @@ graph TD
   n44 --> n71
   n12 --> n71
   n44 --> n72
-  n50 --> n72
-  n11 --> n73
-  n1 --> n74
-  n5 --> n74
-  n6 --> n74
-  n8 --> n74
-  n37 --> n74
-  n73 --> n74
-  n38 --> n74
-  n30 --> n75
-  n32 --> n76
-  n34 --> n76
-  n39 --> n76
-  n42 --> n76
+  n44 --> n73
+  n50 --> n73
+  n11 --> n74
+  n1 --> n75
+  n5 --> n75
+  n6 --> n75
+  n8 --> n75
+  n37 --> n75
+  n74 --> n75
+  n38 --> n75
+  n30 --> n76
+  n32 --> n77
+  n34 --> n77
+  n39 --> n77
+  n42 --> n77
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -307,11 +309,12 @@ graph TD
   n69["R35"]:::proven
   n70["R36"]:::proven
   n71["R37"]:::proven
-  n72["R11"]:::proven
-  n73["R2"]:::proven
-  n74["N1"]:::notFormalized
-  n75["N2"]:::notFormalized
-  n76["N4"]:::notFormalized
+  n72["R38"]:::proven
+  n73["R11"]:::proven
+  n74["R2"]:::proven
+  n75["N1"]:::notFormalized
+  n76["N2"]:::notFormalized
+  n77["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -510,20 +513,21 @@ graph TD
   n8 --> n71
   n44 -.-> n71
   n44 -.-> n72
-  n50 -.-> n72
-  n11 -.-> n73
-  n1 -.-> n74
-  n5 -.-> n74
-  n6 -.-> n74
-  n8 -.-> n74
-  n37 -.-> n74
-  n73 -.-> n74
-  n38 -.-> n74
-  n30 -.-> n75
-  n32 -.-> n76
-  n34 -.-> n76
-  n39 -.-> n76
-  n42 -.-> n76
+  n44 -.-> n73
+  n50 -.-> n73
+  n11 -.-> n74
+  n1 -.-> n75
+  n5 -.-> n75
+  n6 -.-> n75
+  n8 -.-> n75
+  n37 -.-> n75
+  n74 -.-> n75
+  n38 -.-> n75
+  n30 -.-> n76
+  n32 -.-> n77
+  n34 -.-> n77
+  n39 -.-> n77
+  n42 -.-> n77
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -1118,6 +1122,14 @@ A taxpayer who elects has every Canadian security (shares of resident corporatio
 A debt established to have become bad, or a share of a corporation that became bankrupt, was wound up insolvent, or is insolvent and dormant with its dissolution expected, is on election deemed disposed of at year end for nil and reacquired at nil: the whole cost is a capital loss (or business investment loss), never a superficial loss (paragraph (c)).
 
 **Lean:** [`Canteen.ITA.BadDebtOrShare.applies`](../../Canteen/ITA/S50/BadDebtOrShare.lean#L70), [`Canteen.ITA.BadDebtOrShare.disposition`](../../Canteen/ITA/S50/BadDebtOrShare.lean#L86), [`Canteen.ITA.BadDebtOrShare.loss_is_cost`](../../Canteen/ITA/S50/BadDebtOrShare.lean#L104), [`Canteen.ITA.BadDebtOrShare.not_superficial`](../../Canteen/ITA/S50/BadDebtOrShare.lean#L109)
+
+### R38. Disposing of part of a property
+
+**Status:** proven · **Citation:** ITA 43(1) · **Uses:** R8
+
+The cost of a part disposed of is the portion of the whole's adjusted cost base reasonably attributable to it (usually by value, which can be a judgment call); the rest stays with the part kept. Proven: the two add up.
+
+**Lean:** [`Canteen.ITA.PartialDisposition.partCost`](../../Canteen/ITA/S43/PartialDisposition.lean#L37), [`Canteen.ITA.PartialDisposition.costs_add_up`](../../Canteen/ITA/S43/PartialDisposition.lean#L61)
 
 ### R11. The principal residence exemption
 

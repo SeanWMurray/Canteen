@@ -1,0 +1,8 @@
+Income Tax Act, R.S.C. 1985, c. 1 (5th Supp.), subsection 43(1)
+
+Source: Justice Canada consolidated Acts (XML), https://github.com/justicecanada/laws-lois-xml, file eng/acts/I-3.3.xml
+Current to: 2026-10-29. Last amended: 2026-06-18.
+Extracted verbatim; whitespace normalized; paragraph labels kept.
+
+43
+  (1) For the purpose of computing a taxpayer’s gain or loss for a taxation year from the disposition of part of a property, the adjusted cost base to the taxpayer, immediately before the disposition, of that part is the portion of the adjusted cost base to the taxpayer at that time of the whole property that can reasonably be regarded as attributable to that part.

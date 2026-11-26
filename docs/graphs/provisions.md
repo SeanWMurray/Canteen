@@ -52,7 +52,8 @@ flowchart BT
   v43["2(2), 3 an individual's year, to taxable income"]:::prov
   v44["39(4) to (6) the Canadian securities election"]:::prov
   v45["50(1) bad debts and worthless shares"]:::prov
-  v46["50(2) bad personal-use debts"]:::prov
+  v46["43(1) part of a property"]:::prov
+  v47["50(2) bad personal-use debts"]:::prov
   v0 --> v1
   v0 --> v2
   v0 --> v3
@@ -108,5 +109,6 @@ flowchart BT
   v29 --> v43
   v17 --> v44
   v17 --> v45
+  v17 --> v46
   classDef prov fill:#bbdefb,stroke:#1565c0,color:#0d47a1
 ```
