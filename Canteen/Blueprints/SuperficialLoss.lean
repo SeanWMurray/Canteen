@@ -27,6 +27,7 @@ import Canteen.ITA.S82.Dividends
 import Canteen.ITA.S55.IntercorporateDividends
 import Canteen.ITA.S13.Depreciable
 import Canteen.ITA.S84.Redemption
+import Canteen.ITA.S89.CapitalDividendAccount
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -376,6 +377,13 @@ def blueprint : Blueprint where
             "being the paid-up capital."
           lean := [``Redemption.dividend, ``Redemption.proceeds, ``Redemption.sole_holder, ``Redemption.no_dividend_within_puc,
             ``Redemption.corporateDisposition], uses := ["R8", "R22", "R23"] },
+        { id := "R26", kind := .law, title := "The capital dividend account", citation := "ITA 83(2); 89(1) \"capital dividend account\""
+          statement := "A private corporation's untaxed half of its capital gains (less the unallowed half of its losses), " ++
+            "capital dividends received and life insurance proceeds, less capital dividends paid, can be paid out as capital " ++
+            "dividends, which no shareholder includes in income. Proven: a capital dividend never exceeds the account, and " ++
+            "one ordinary gain puts exactly its untaxed half in it."
+          lean := [``CapitalDividendAccount.account, ``CapitalDividendAccount.capitalDividend,
+            ``CapitalDividendAccount.capitalDividend_le_account, ``CapitalDividendAccount.untaxed_half], uses := ["R8"] },
         { id := "R11", kind := .law, title := "The principal residence exemption", citation := "ITA 40(2)(b); 54 \"principal residence\""
           statement := "A home is the principal residence for a year if owned, ordinarily inhabited by the family (or covered by " ++
             "a 45(2) or (3) election, for at most four years: (d)), designated, and not blocked by another family-unit " ++

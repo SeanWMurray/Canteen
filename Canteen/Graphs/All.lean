@@ -146,7 +146,8 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S82.Dividends, "82(1), 121 dividends, gross-up and credit"),
    (`Canteen.ITA.S55.IntercorporateDividends, "112(1), 55(2) intercorporate dividends"),
    (`Canteen.ITA.S13.Depreciable, "13(1), (21), 20(16) recapture and terminal loss"),
-   (`Canteen.ITA.S84.Redemption, "84(3) redemptions")]
+   (`Canteen.ITA.S84.Redemption, "84(3) redemptions"),
+   (`Canteen.ITA.S89.CapitalDividendAccount, "83(2), 89(1) capital dividends")]
 
 /-! ## The dashboard -/
 
@@ -226,11 +227,13 @@ def actMindmap : String := Id.run do
     (2, "ss. 74.1, 74.2, 74.5"), (3, "74.1(1), (2): income attributed back"), (3, "74.1(3): repaying debt"),
     (3, "74.2(1): capital gains attributed back"), (3, "74.5(1) to (3): fair market value, loans for value, separation"),
     (2, "s. 82"), (3, "82(1): taxable dividends and the gross-up"),
+    (2, "s. 83"), (3, "83(2): capital dividends"),
     (2, "s. 84"), (3, "84(3): redemptions, the deemed dividend"),
     (2, "s. 84.1"), (3, "84.1(1): paid-up capital, and the deemed dividend"), (3, "84.1(2): hard cost, arm's length"),
     (2, "s. 85"), (3, "85(1): the elected amount, and the cost of the consideration"), (3, "85(2.1): paid-up capital"),
     (2, "s. 110.6"), (3, "qualified small business corporation share"), (3, "annual and cumulative gains limits"),
     (3, "110.6(2.1): the deduction"),
+    (2, "s. 89"), (3, "89(1): capital dividend account"),
     (2, "s. 111"), (3, "111(8): net capital loss"), (3, "111(1)(b), (1.1): deduction"),
     (2, "s. 248"), (3, "248(1): majority-interest partner"),
     (2, "s. 251"), (3, "251(1): arm's length"), (3, "251(2), (3): related persons"), (3, "251(3.1), (3.2): amalgamations"),

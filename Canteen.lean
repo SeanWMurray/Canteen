@@ -52,6 +52,7 @@ import Canteen.ITA.S82.Dividends
 import Canteen.ITA.S55.IntercorporateDividends
 import Canteen.ITA.S13.Depreciable
 import Canteen.ITA.S84.Redemption
+import Canteen.ITA.S89.CapitalDividendAccount
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.ITA.S40.ShareToAffiliate
@@ -126,3 +127,4 @@ import Canteen.Tests.Dividends
 import Canteen.Tests.IntercorporateDividends
 import Canteen.Tests.Depreciable
 import Canteen.Tests.Redemption
+import Canteen.Tests.CapitalDividendAccount

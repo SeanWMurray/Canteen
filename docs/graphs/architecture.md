@@ -63,30 +63,31 @@ flowchart BT
     m55["ITA.S55.IntercorporateDividends"]
     m56["ITA.S13.Depreciable"]
     m57["ITA.S84.Redemption"]
-    m58["ITA.S50.BadDebtPersonalUse"]
-    m59["ITA.S54.Timeline"]
+    m58["ITA.S89.CapitalDividendAccount"]
+    m59["ITA.S50.BadDebtPersonalUse"]
+    m60["ITA.S54.Timeline"]
   end
   subgraph Lemmas["Layer 2: reusable lemmas"]
-    m60["Lemmas.SuperficialLoss"]
-    m61["Lemmas.SuspendedLoss"]
+    m61["Lemmas.SuperficialLoss"]
+    m62["Lemmas.SuspendedLoss"]
   end
   subgraph Transactions["Layer 3: transactions"]
-    m62["Transactions.SpouseRepurchase"]
-    m63["Transactions.SiblingAndLateRepurchase"]
-    m64["Transactions.TfsaContribution"]
-    m65["Transactions.HoldcoRepurchase"]
-    m66["Transactions.Crystallization"]
-    m67["Transactions.SisterCompanyRepurchase"]
+    m63["Transactions.SpouseRepurchase"]
+    m64["Transactions.SiblingAndLateRepurchase"]
+    m65["Transactions.TfsaContribution"]
+    m66["Transactions.HoldcoRepurchase"]
+    m67["Transactions.Crystallization"]
+    m68["Transactions.SisterCompanyRepurchase"]
   end
   subgraph Blueprints["Blueprints"]
-    m68["Blueprints.SuperficialLoss"]
-    m69["Blueprints.SpouseRepurchase"]
-    m70["Blueprints.SiblingAndLateRepurchase"]
-    m71["Blueprints.TfsaContribution"]
-    m72["Blueprints.HoldcoRepurchase"]
-    m73["Blueprints.Crystallization"]
-    m74["Blueprints.SisterCompanyRepurchase"]
-    m75["Blueprints.All"]
+    m69["Blueprints.SuperficialLoss"]
+    m70["Blueprints.SpouseRepurchase"]
+    m71["Blueprints.SiblingAndLateRepurchase"]
+    m72["Blueprints.TfsaContribution"]
+    m73["Blueprints.HoldcoRepurchase"]
+    m74["Blueprints.Crystallization"]
+    m75["Blueprints.SisterCompanyRepurchase"]
+    m76["Blueprints.All"]
   end
   subgraph Examples["Examples"]
     m19["Examples.RuleX"]
@@ -95,10 +96,10 @@ flowchart BT
     m22["Examples.RuleXStatute"]
   end
   subgraph Graphs["Graphs"]
-    m76["Graphs.All"]
+    m77["Graphs.All"]
   end
   subgraph Root["Root"]
-    m77["Canteen"]
+    m78["Canteen"]
   end
   m0 --> m3
   m3 --> m4
@@ -195,95 +196,97 @@ flowchart BT
   m41 --> m57
   m54 --> m57
   m55 --> m57
-  m12 --> m58
-  m10 --> m58
-  m2 --> m58
-  m23 --> m59
+  m41 --> m58
+  m12 --> m59
+  m10 --> m59
+  m2 --> m59
   m23 --> m60
-  m37 --> m61
-  m24 --> m62
-  m60 --> m62
-  m27 --> m62
-  m28 --> m62
+  m23 --> m61
+  m37 --> m62
   m24 --> m63
+  m61 --> m63
+  m27 --> m63
   m28 --> m63
-  m60 --> m63
-  m36 --> m64
+  m24 --> m64
   m28 --> m64
+  m61 --> m64
   m36 --> m65
-  m27 --> m65
-  m29 --> m65
-  m50 --> m66
-  m51 --> m66
-  m54 --> m66
+  m28 --> m65
+  m36 --> m66
   m27 --> m66
-  m37 --> m67
-  m29 --> m67
-  m16 --> m68
-  m60 --> m68
-  m26 --> m68
-  m27 --> m68
-  m28 --> m68
-  m31 --> m68
-  m43 --> m68
-  m45 --> m68
-  m46 --> m68
-  m48 --> m68
-  m50 --> m68
-  m51 --> m68
-  m52 --> m68
-  m53 --> m68
-  m56 --> m68
-  m57 --> m68
-  m58 --> m68
-  m61 --> m68
+  m29 --> m66
+  m50 --> m67
+  m51 --> m67
+  m54 --> m67
+  m27 --> m67
+  m37 --> m68
+  m29 --> m68
   m16 --> m69
-  m62 --> m69
-  m25 --> m69
+  m61 --> m69
+  m26 --> m69
+  m27 --> m69
+  m28 --> m69
+  m31 --> m69
+  m43 --> m69
+  m45 --> m69
+  m46 --> m69
+  m48 --> m69
+  m50 --> m69
+  m51 --> m69
+  m52 --> m69
+  m53 --> m69
+  m56 --> m69
+  m57 --> m69
+  m58 --> m69
   m59 --> m69
-  m42 --> m69
+  m62 --> m69
   m16 --> m70
-  m17 --> m70
   m63 --> m70
-  m59 --> m70
+  m25 --> m70
+  m60 --> m70
+  m42 --> m70
   m16 --> m71
   m17 --> m71
   m64 --> m71
-  m59 --> m71
+  m60 --> m71
   m16 --> m72
+  m17 --> m72
   m65 --> m72
-  m59 --> m72
+  m60 --> m72
   m16 --> m73
   m66 --> m73
+  m60 --> m73
   m16 --> m74
   m67 --> m74
+  m16 --> m75
   m68 --> m75
-  m69 --> m75
-  m70 --> m75
-  m71 --> m75
-  m72 --> m75
-  m74 --> m75
-  m73 --> m75
-  m22 --> m76
-  m21 --> m76
-  m59 --> m76
-  m26 --> m76
-  m62 --> m76
-  m63 --> m76
-  m64 --> m76
-  m65 --> m76
-  m31 --> m76
-  m58 --> m76
-  m45 --> m76
-  m46 --> m76
-  m48 --> m76
-  m52 --> m76
-  m53 --> m76
-  m55 --> m76
-  m67 --> m76
-  m66 --> m76
-  m18 --> m77
-  m20 --> m77
-  m75 --> m77
-  m76 --> m77
+  m69 --> m76
+  m70 --> m76
+  m71 --> m76
+  m72 --> m76
+  m73 --> m76
+  m75 --> m76
+  m74 --> m76
+  m22 --> m77
+  m21 --> m77
+  m60 --> m77
+  m26 --> m77
+  m63 --> m77
+  m64 --> m77
+  m65 --> m77
+  m66 --> m77
+  m31 --> m77
+  m59 --> m77
+  m45 --> m77
+  m46 --> m77
+  m48 --> m77
+  m52 --> m77
+  m53 --> m77
+  m55 --> m77
+  m68 --> m77
+  m67 --> m77
+  m18 --> m78
+  m20 --> m78
+  m76 --> m78
+  m77 --> m78
 ```
