@@ -49,6 +49,9 @@ It cannot prove that the definitions match the Act. That is what this review is 
 | 251.1(1)(e) a partnership and a majority-interest partner | `candidates` (e), `majorityInterestPartner?` | majority only with a spouse's share |
 | 251.1(1)(f)(i)–(iii) two partnerships | `candidates` (f) | common partner; (ii) reached through (i); groups; unrelated |
 | 251.1(1)(g)(i)–(ii) a person and a trust | `candidates` (g), `majorityInterestBeneficiary?` | income majority; spouse through (g)(ii); two trusts not under (g) |
+| 251.1(1)(h)(i)–(iii) two trusts, with affiliated contributors | `candidates` (h), `contributorsAffiliated`, `majorityInterestGroupsB` | each subparagraph; unrelated contributors |
+| 251.1(3) "contributor", "majority-interest group of beneficiaries" | `World.contributors` (a fact), `majorityInterestGroupsB` | as above |
+| 251.1(4)(d)(iv) individuals connected by blood, marriage, common-law partnership or adoption, for comparing contributors | `World.connected`, `contributorsAffiliated` | siblings |
 | 251.1(3) "affiliated group of persons", "controlled", "majority-interest beneficiary", "majority-interest group of partners" | `affiliatedGroup`, `Control.answer`, `majorityInterestBeneficiary?`, `majorityInterestGroups` | as above |
 | 251.1(4)(a) persons are affiliated with themselves; (4)(d)(iii) a trust as beneficiary of another | `aff`, `majorityInterestBeneficiary?` | ✓ |
 | 248(1) "majority-interest partner" (a) income and (b) winding-up shares, with affiliates' | `majorityInterestPartner?` | ✓ |
@@ -82,7 +85,8 @@ It cannot prove that the definitions match the Act. That is what this review is 
 22. **Control by "a person" and by "a group of persons" are kept apart,** as (b) and (c) distinguish them. For (d), "controlled by a particular group of persons" is read as a group; to treat one person as a group of one, give the control as a group with one member.
 23. **Majority-interest partner (248(1)):** the share the taxpayer "would" have had, holding every interest it or an affiliate holds, is taken as the sum of those interests' shares. A majority-interest group of partners is computed from all subsets of the partners: the group's combined shares exceed half, and no member can be dropped. With this reading, 251.1(1)(f)(ii) is always also reached through (f)(i).
 24. **Majority-interest beneficiary (251.1(3)):** interests are given at fair market value, after applying 251.1(4)(d)(i) (discretionary powers deemed exercised or not). A trust needs its own interest of the kind in question (251.1(4)(d)(iii)). 251.1(4)(d)(ii) (arm's length) is not needed for (a) to (g).
-25. **Not encoded:** paragraph 251.1(1)(h) (two trusts), which can be given as an input, subsection 251.1(2) (amalgamations), and 251.1(4)(d)(iv) (contributors, used only by (h)).
+25. **Paragraph (h):** whether a person is a "contributor" (251.1(3), with its arm's length and fair value exceptions) is a fact, and so is who is "connected by blood relationship, marriage, common-law partnership or adoption" (251.1(4)(d)(iv)). (g)(ii) reads the subsection without (g), so it includes (h).
+26. **Not encoded:** subsection 251.1(2) (amalgamations), and 251.1(4)(d)(ii) (arm's length with a trust).
 19. **"To the extent that" for (ii) to (iv)** is read as the whole loss: the loss is entirely from the disposition of the debt, personal-use property, or property transferred. `Paragraph40_2_g.deniedLoss` treats the whole loss as nil when any subparagraph applies, as `LossDenial.deniedLoss` does for (i).
 
 ## Reviewer checklist

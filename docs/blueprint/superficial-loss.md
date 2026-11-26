@@ -46,7 +46,7 @@ graph TD
   n33["G4 · (iv) transfers to registered plans"]:::proven
   n34["G5 · Paragraph 40(2)(g) as a whole"]:::proven
   n35["R1 · Spouses are affiliated"]:::proven
-  n36["R3 · Affiliated persons, paragraphs (a) to (g)"]:::proven
+  n36["R3 · Affiliated persons, paragraphs (a) to (h)"]:::proven
   n37["R2 · Cost of the substituted property"]:::proven
   n38["N1 · Inputs decided by other provisions"]:::notFormalized
   n39["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
@@ -600,13 +600,13 @@ The loss is nil if it is within any of subparagraphs (i) to (iv), unless the car
 
 **Lean:** [`Canteen.ITA.Affiliation.paragraphA`](../../Canteen/ITA/S251_1/Affiliation.lean#L33), [`Canteen.ITA.Affiliation.affiliated`](../../Canteen/ITA/S251_1/Affiliation.lean#L50), [`Canteen.ITA.Affiliation.spouses_affiliated`](../../Canteen/ITA/S251_1/Affiliation.lean#L58)
 
-### R3. Affiliated persons, paragraphs (a) to (g)
+### R3. Affiliated persons, paragraphs (a) to (h)
 
 **Status:** proven · **Citation:** ITA 251.1(1)–(4) · **Uses:** R1, Pa
 
-Corporations and their controllers (b), two corporations (c), a corporation and a partnership (d), a partnership and a majority-interest partner (e), two partnerships (f), and a person and a trust (g), with the definitions in 251.1(3), the rules in 251.1(4), and "majority-interest partner" in 248(1). Computed for a whole world of persons as the smallest relation closed under the paragraphs; reflexive and symmetric (proven).
+Corporations and their controllers (b), two corporations (c), a corporation and a partnership (d), a partnership and a majority-interest partner (e), two partnerships (f), a person and a trust (g), and two trusts (h), with the definitions in 251.1(3), the rules in 251.1(4), and "majority-interest partner" in 248(1). Computed for a whole world of persons as the smallest relation closed under the paragraphs; reflexive and symmetric (proven).
 
-**Lean:** [`Canteen.ITA.AffiliatedPersons.rule`](../../Canteen/ITA/S251_1/AffiliatedPersons.lean#L462), [`Canteen.ITA.AffiliatedPersons.affiliated_self`](../../Canteen/ITA/S251_1/AffiliatedPersons.lean#L472), [`Canteen.ITA.AffiliatedPersons.affiliated_symm`](../../Canteen/ITA/S251_1/AffiliatedPersons.lean#L476), [`Canteen.ITA.AffiliatedPersons.acquirer_isTaxpayerOrAffiliated`](../../Canteen/ITA/S251_1/AffiliatedPersons.lean#L497)
+**Lean:** [`Canteen.ITA.AffiliatedPersons.rule`](../../Canteen/ITA/S251_1/AffiliatedPersons.lean#L545), [`Canteen.ITA.AffiliatedPersons.affiliated_self`](../../Canteen/ITA/S251_1/AffiliatedPersons.lean#L555), [`Canteen.ITA.AffiliatedPersons.affiliated_symm`](../../Canteen/ITA/S251_1/AffiliatedPersons.lean#L559), [`Canteen.ITA.AffiliatedPersons.acquirer_isTaxpayerOrAffiliated`](../../Canteen/ITA/S251_1/AffiliatedPersons.lean#L580)
 
 ### R2. Cost of the substituted property
 
@@ -624,7 +624,7 @@ These statements are part of the analysis but have no Lean behind them yet. Anyt
 
 **Status:** not formalized · **Uses:** Pa, Pe, Pf, Ph, R1, R2, R3
 
-Affiliation under paragraph 251.1(1)(h) (two trusts) and subsection 251.1(2) (amalgamations), a loss restriction event (section 251.2), and whether paragraph 40(2)(e.1) or subsection 40(3.4) or 69(5) applies are taken as facts. So is the amount in subparagraph 53(1)(f)(ii) (subsections 112(3) to (3.2)).
+Affiliation under subsection 251.1(2) (amalgamations), who is a contributor to a trust, a loss restriction event (section 251.2), and whether paragraph 40(2)(e.1) or subsection 40(3.4) or 69(5) applies are taken as facts. So is the amount in subparagraph 53(1)(f)(ii) (subsections 112(3) to (3.2)).
 
 ### N2. How much is "to the extent that"
 

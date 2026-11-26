@@ -264,7 +264,7 @@ flowchart LR
 
 Spouses are affiliated (a); a corporation is affiliated with each member of an affiliated group of persons by which it is controlled (b)(ii); and so on, through paragraphs (c) to (g). Computed as the smallest relation closed under the paragraphs.
 
-**Lean:** [`Canteen.ITA.AffiliatedPersons.rule`](../../Canteen/ITA/S251_1/AffiliatedPersons.lean#L462), [`Canteen.ITA.AffiliatedPersons.affiliated_symm`](../../Canteen/ITA/S251_1/AffiliatedPersons.lean#L476)
+**Lean:** [`Canteen.ITA.AffiliatedPersons.rule`](../../Canteen/ITA/S251_1/AffiliatedPersons.lean#L545), [`Canteen.ITA.AffiliatedPersons.affiliated_symm`](../../Canteen/ITA/S251_1/AffiliatedPersons.lean#L559)
 
 ### L1. Superficial loss
 

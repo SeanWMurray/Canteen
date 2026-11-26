@@ -179,9 +179,9 @@ def blueprint : Blueprint where
           statement := "“an individual and a spouse or common-law partner of the individual” are affiliated persons. Used " ++
             "to decide who is \"a person affiliated with the taxpayer\" in paragraphs (a) and (b)."
           lean := [``Affiliation.paragraphA, ``Affiliation.affiliated, ``Affiliation.spouses_affiliated] },
-        { id := "R3", kind := .law, title := "Affiliated persons, paragraphs (a) to (g)", citation := "ITA 251.1(1)–(4)"
+        { id := "R3", kind := .law, title := "Affiliated persons, paragraphs (a) to (h)", citation := "ITA 251.1(1)–(4)"
           statement := "Corporations and their controllers (b), two corporations (c), a corporation and a partnership (d), a " ++
-            "partnership and a majority-interest partner (e), two partnerships (f), and a person and a trust (g), with the " ++
+            "partnership and a majority-interest partner (e), two partnerships (f), a person and a trust (g), and two trusts (h), with the " ++
             "definitions in 251.1(3), the rules in 251.1(4), and \"majority-interest partner\" in 248(1). Computed for a " ++
             "whole world of persons as the smallest relation closed under the paragraphs; reflexive and symmetric (proven)."
           lean := [``AffiliatedPersons.rule, ``AffiliatedPersons.affiliated_self, ``AffiliatedPersons.affiliated_symm,
@@ -195,7 +195,7 @@ def blueprint : Blueprint where
       text := ["These statements are part of the analysis but have no Lean behind them yet. Anything resting on them says so."]
       nodes := [
         { id := "N1", kind := .law, title := "Inputs decided by other provisions",
-          statement := "Affiliation under paragraph 251.1(1)(h) (two trusts) and subsection 251.1(2) (amalgamations), a loss " ++
+          statement := "Affiliation under subsection 251.1(2) (amalgamations), who is a contributor to a trust, a loss " ++
             "restriction event (section 251.2), and whether paragraph 40(2)(e.1) or subsection 40(3.4) or 69(5) applies " ++
             "are taken as facts. So is the amount in subparagraph 53(1)(f)(ii) (subsections 112(3) to (3.2))."
           uses := ["Pa", "Pe", "Pf", "Ph", "R1", "R2", "R3"] },

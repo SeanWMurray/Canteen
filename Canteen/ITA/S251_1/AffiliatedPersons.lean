@@ -4,9 +4,9 @@ import Canteen.ITA.S54.SuperficialLoss
 import Canteen.Core.Graphs
 
 /-!
-# Section 251.1: affiliated persons, paragraphs (a) to (g)
+# Section 251.1: affiliated persons, paragraphs (a) to (h)
 
-*Income Tax Act*, subsection 251.1(1) paragraphs (a) to (g), with the definitions in
+*Income Tax Act*, subsection 251.1(1) paragraphs (a) to (h), with the definitions in
 251.1(3), the interpretation rules in 251.1(4), and the definition "majority-interest
 partner" in 248(1). Verbatim in `statute/ITA-251-1.txt`.
 
@@ -14,8 +14,7 @@ Affiliation is defined in terms of itself: (c), (d), (f) and (g) turn on whether
 persons are affiliated, and so do the majority-interest tests. So it is computed for a whole
 `World` of persons at once, as the smallest relation that
 
-* contains every pair named by paragraphs (a) to (g) (and any pair given for paragraph (h),
-  which is not encoded), and
+* contains every pair named by paragraphs (a) to (h) (with any further pairs given for (h)), and
 * is symmetric, with every person affiliated with itself (251.1(4)(a)).
 
 The relation is built up step by step until nothing more is added. Paragraph (g)(ii) asks
@@ -85,7 +84,16 @@ structure World where
   controls : List Control := []
   partnershipInterests : List PartnershipInterest := []
   beneficialInterests : List BeneficialInterest := []
-  /-- Pairs affiliated under paragraph (h) (two trusts), which is not encoded: an input. -/
+  /-- Contributors to trusts, as (trust, contributor), within the meaning of 251.1(3): a person
+  who made a loan or transfer of property to or for the benefit of the trust, other than an arm's
+  length loan at a reasonable rate of interest or transfer for fair market value by a person who
+  is not then a majority-interest beneficiary. Taken as facts. -/
+  contributors : List (Nat × Nat) := []
+  /-- Pairs of individuals connected by blood relationship, marriage, common-law partnership or
+  adoption, deemed affiliated when comparing contributors (251.1(4)(d)(iv)). -/
+  connected : List (Nat × Nat) := []
+  /-- Further pairs affiliated under paragraph (h), given rather than computed (for example,
+  where the contributor or beneficiary facts are not modelled). -/
   paragraphH : List (Nat × Nat × Answer) := []
   deriving Repr, Inhabited
 
@@ -102,7 +110,7 @@ end World
 
 /-- The paragraph a pair is affiliated under. -/
 inductive Para where
-  | a | bi | bii | biii | ci | cii | ciii | d | e | fi | fii | fiii | gi | gii | h
+  | a | bi | bii | biii | ci | cii | ciii | d | e | fi | fii | fiii | gi | gii | hi | hii | hiii | h
   deriving Repr, DecidableEq, Inhabited
 
 def Para.cite : Para → String
@@ -110,7 +118,8 @@ def Para.cite : Para → String
   | .biii => "ITA 251.1(1)(b)(iii)" | .ci => "ITA 251.1(1)(c)(i)" | .cii => "ITA 251.1(1)(c)(ii)"
   | .ciii => "ITA 251.1(1)(c)(iii)" | .d => "ITA 251.1(1)(d)" | .e => "ITA 251.1(1)(e)"
   | .fi => "ITA 251.1(1)(f)(i)" | .fii => "ITA 251.1(1)(f)(ii)" | .fiii => "ITA 251.1(1)(f)(iii)"
-  | .gi => "ITA 251.1(1)(g)(i)" | .gii => "ITA 251.1(1)(g)(ii)" | .h => "ITA 251.1(1)(h)"
+  | .gi => "ITA 251.1(1)(g)(i)" | .gii => "ITA 251.1(1)(g)(ii)" | .hi => "ITA 251.1(1)(h)(i)"
+  | .hii => "ITA 251.1(1)(h)(ii)" | .hiii => "ITA 251.1(1)(h)(iii)" | .h => "ITA 251.1(1)(h)"
 
 /-- Why two persons are affiliated: the paragraph, a sentence, the pairs it relies on, and
 the judgment calls it rests on directly. -/
@@ -122,6 +131,11 @@ structure Derivation where
   parents : List (Nat × Nat) := []
   judgments : List String := []
   deriving Repr, Inhabited
+
+/-- A derivation. -/
+def dv (x y : Nat) (para : Para) (text : String) (parents : List (Nat × Nat) := [])
+    (judgments : List String := []) : Derivation :=
+  { x, y, para, text, parents, judgments }
 
 /-- `p` and `q` are affiliated in `D`: the same person (251.1(4)(a)), or a recorded pair, in
 either order. -/
@@ -204,6 +218,29 @@ def majorityInterestBeneficiary? (w : World) (D : List Derivation) (p T : Nat) :
     if byIncome || byCapital then
       some ((mine.map (·.beneficiary)).eraseDups.filterMap fun q => if q == p then none else some (p, q))
     else none
+
+/-- Would one person holding all of `g`'s interests be a majority-interest beneficiary? -/
+def groupMajorityB (w : World) (T : Nat) (g : List Nat) : Bool :=
+  let all := trustInterests w T
+  let theirs := all.filter (g.contains ·.beneficiary)
+  let sumBy (f : BeneficialInterest → Cents) (is : List BeneficialInterest) := is.foldl (· + f ·) 0
+  2 * sumBy (·.income) theirs > sumBy (·.income) all || 2 * sumBy (·.capital) theirs > sumBy (·.capital) all
+
+/-- "majority-interest group of beneficiaries" (251.1(3)): beneficiaries whose combined
+interests would make one holder a majority-interest beneficiary, none of whom can be left out. -/
+def majorityInterestGroupsB (w : World) (T : Nat) : List (List Nat) :=
+  let bens := ((trustInterests w T).map (·.beneficiary)).eraseDups
+  (subsets bens).filter fun g =>
+    !g.isEmpty && groupMajorityB w T g && g.all fun m => !groupMajorityB w T (g.erase m)
+
+/-- For comparing contributors to two trusts: affiliated, or individuals connected by blood
+relationship, marriage, common-law partnership or adoption (251.1(4)(d)(iv)). Returns the
+affiliation pair relied on, if any. -/
+def contributorsAffiliated (w : World) (D : List Derivation) (p q : Nat) : Option (List (Nat × Nat)) :=
+  if aff D p q then some (if p == q then [] else [(p, q)])
+  else if w.isKind .individual p && w.isKind .individual q &&
+      w.connected.any (fun (a, b) => (a == p && b == q) || (a == q && b == p)) then some []
+  else none
 
 /-! ## The paragraphs, as steps that add pairs -/
 
@@ -363,13 +400,59 @@ def candidates (w : World) (allowJudged withG : Bool) (noG D : List Derivation) 
               text := s!"{n p} would, if subsection 251.1(1) were read without reference to paragraph (g), be " ++
                 s!"affiliated with {n m}, a majority-interest beneficiary of {n T}." }]
           | none => pure ()
+  -- (h)
+  for T1 in w.ids .trust do
+    for T2 in w.ids .trust do
+      if T1 < T2 then
+        let c1 := (w.contributors.filter (·.1 == T1)).map (·.2)
+        let c2 := (w.contributors.filter (·.1 == T2)).map (·.2)
+        let contrib := c1.findSome? fun p => c2.findSome? fun q =>
+          (contributorsAffiliated w D p q).map fun ps => (p, q, ps)
+        match contrib with
+        | none => pure ()
+        | some (p, q, cps) =>
+          let link := if aff D p q then s!"{n p}, a contributor to {n T1}, is affiliated with {n q}, a contributor to {n T2}"
+            else s!"{n p}, a contributor to {n T1}, and {n q}, a contributor to {n T2}, are individuals connected by blood " ++
+              "relationship, marriage, common-law partnership or adoption, so are deemed affiliated (251.1(4)(d)(iv))"
+          let mibs (T : Nat) := (w.persons.map (·.id)).filter fun m => (majorityInterestBeneficiary? w D m T).isSome
+          let hi := (mibs T1).findSome? fun a => (mibs T2).findSome? fun b =>
+            if aff D a b then some (a, b) else none
+          match hi with
+          | some (a, b) =>
+            out := out ++ [dv T1 T2 .hi
+              (if a == b then s!"{link}; and {n a} is a majority-interest beneficiary of both trusts."
+                else s!"{link}; and {n a}, a majority-interest beneficiary of {n T1}, is affiliated with {n b}, a " ++
+                  s!"majority-interest beneficiary of {n T2}.")
+              (parents := cps ++ (if a == b then [] else [(a, b)]) ++ [(a, T1), (b, T2)])]
+          | none =>
+            let hii (A B : Nat) := (mibs A).findSome? fun a =>
+              (majorityInterestGroupsB w B).findSome? fun g => if g.all (aff D a ·) then some (a, A, g, B) else none
+            match hii T1 T2 <|> hii T2 T1 with
+            | some (a, A, g, B) =>
+              out := out ++ [dv T1 T2 .hii
+                (s!"{link}; and {n a}, a majority-interest beneficiary of {n A}, is affiliated with each member of " ++
+                  s!"{describeGroup w g}, a majority-interest group of beneficiaries of {n B}.")
+                (parents := cps ++ (g.filter (· != a)).map (a, ·) ++ [(a, A)])]
+            | none =>
+              let hiii := (majorityInterestGroupsB w T1).findSome? fun g1 =>
+                (majorityInterestGroupsB w T2).findSome? fun g2 =>
+                  match eachAffiliatedWithSome D g1 g2, eachAffiliatedWithSome D g2 g1 with
+                  | some ps1, some ps2 => some (g1, g2, ps1 ++ ps2)
+                  | _, _ => none
+              match hiii with
+              | some (g1, g2, ps) =>
+                out := out ++ [dv T1 T2 .hiii
+                  (s!"{link}; and each member of {describeGroup w g1}, a majority-interest group of beneficiaries of " ++
+                    s!"{n T1}, is affiliated with at least one member of {describeGroup w g2}, a majority-interest group " ++
+                    s!"of beneficiaries of {n T2}, and the reverse.")
+                  (parents := cps ++ ps)]
+              | none => pure ()
   -- (h), as given
   for (p, q, ans) in w.paragraphH do
     if ans.value && (allowJudged || ans.judgments.isEmpty) then
       out := out ++ [{
         x := p, y := q, para := .h, judgments := ans.judgments,
-        text := s!"{n p} and {n q} are affiliated under paragraph 251.1(1)(h){jnote ans.judgments} (an input: " ++
-          "paragraph (h) is not encoded)." }]
+        text := s!"{n p} and {n q} are affiliated under paragraph 251.1(1)(h){jnote ans.judgments} (given as an input)." }]
   return out
 
 /-- Add every new pair the paragraphs give. -/
@@ -409,7 +492,7 @@ structure Query where
   second : Nat
   deriving Inhabited
 
-/-- Subsection 251.1(1), paragraphs (a) to (g): the two persons are affiliated. -/
+/-- Subsection 251.1(1), paragraphs (a) to (h): the two persons are affiliated. -/
 def affiliated (q : Query) : Bool :=
   aff (relation q.world) q.first q.second
 
@@ -449,7 +532,7 @@ def explanation (q : Query) (c : Bool) : List Step × List String :=
       ch.foldl (fun ids d => mergeIds ids d.judgments) [])
   else
     let js := judgedNo w
-    ([⟨s!"No paragraph of subsection 251.1(1), from (a) to (g), alone or through other affiliated persons, makes " ++
+    ([⟨s!"No paragraph of subsection 251.1(1), from (a) to (h), alone or through other affiliated persons, makes " ++
         s!"{w.name p} and {w.name r} affiliated persons" ++
         (if js.isEmpty then "." else s!", on the answers given to judgment calls {", ".intercalate js}."), "ITA 251.1(1)"⟩],
       js)
@@ -459,7 +542,7 @@ def explain (q : Query) : Finding :=
 
 theorem explain_sound (q : Query) : (explain q).conclusion = affiliated q := rfl
 
-/-- Subsection 251.1(1), paragraphs (a) to (g). -/
+/-- Subsection 251.1(1), paragraphs (a) to (h). -/
 def rule : Rule Query where
   name := "affiliation under subsection 251.1(1)"
   citation := "ITA 251.1(1)"

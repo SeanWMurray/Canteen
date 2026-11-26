@@ -151,6 +151,56 @@ example : majorityInterestBeneficiary? wTrusts (relation wTrusts) 30 31 = none :
 example : aff? wTrusts 30 31 = false := by decide +kernel
 example : aff? wTrusts 0 30 = true ∧ aff? wTrusts 0 31 = true := by decide +kernel
 
+/-! ## (h) two trusts -/
+
+/-- Ann (0) and her brother Ed (4) each settle a trust. Bob (1) is Ann's spouse. -/
+def family : List Person := people ++ [ind 4 "Ed (Ann's brother)", trust 30 "Bob's Trust", trust 31 "Ann's Trust"]
+
+-- (h)(i): the contributors are siblings, deemed affiliated by 251.1(4)(d)(iv); the
+-- majority-interest beneficiaries (Bob of one, Ann of the other) are spouses.
+def wHi : World :=
+  { persons := family, spouses := [(0, 1)], connected := [(0, 4)],
+    contributors := [(30, 0), (31, 4)],
+    beneficialInterests := [⟨30, 1, 100, 100⟩, ⟨31, 0, 100, 100⟩] }
+example : aff? wHi 30 31 = true := by decide +kernel
+#guard ((relation wHi).find? fun d => d.x == 30 && d.y == 31).map (·.para) == some .hi
+
+-- Without the blood relationship, the contributors are not affiliated, and neither are the trusts.
+example : aff? { wHi with connected := [] } 30 31 = false := by decide +kernel
+-- Siblings are not affiliated outside the contributor test.
+example : aff? wHi 0 4 = false := by decide +kernel
+
+-- (h)(ii): Bob is a majority-interest beneficiary of Bob's Trust; Ann's Trust has no single
+-- majority beneficiary, but {Ann, Bob} is a majority-interest group of its beneficiaries.
+-- (Ann, with her spouse, is also a majority-interest beneficiary there, so (h)(i) is met first.)
+def wHii : World :=
+  { persons := family ++ [ind 5 "Fay"], spouses := [(0, 1)], connected := [(0, 4)],
+    contributors := [(30, 0), (31, 4)],
+    beneficialInterests := [⟨30, 1, 100, 100⟩, ⟨31, 0, 30, 30⟩, ⟨31, 1, 30, 30⟩, ⟨31, 5, 40, 40⟩] }
+example : aff? wHii 30 31 = true := by decide +kernel
+example : [0, 1] ∈ majorityInterestGroupsB wHii 31 := by decide +kernel
+
+-- (h)(iii): each trust's majority-interest group of beneficiaries is matched, member by member,
+-- by spouses in the other's: {Ann, Cy} and {Bob, Dee}.
+def wHiii : World :=
+  { persons := family ++ [ind 5 "Fay", ind 6 "Gus"], spouses := [(0, 1), (2, 3)], connected := [(0, 4)],
+    contributors := [(30, 0), (31, 4)],
+    beneficialInterests := [⟨30, 0, 26, 26⟩, ⟨30, 2, 26, 26⟩, ⟨30, 5, 48, 48⟩,
+                            ⟨31, 1, 26, 26⟩, ⟨31, 3, 26, 26⟩, ⟨31, 6, 48, 48⟩] }
+example : aff? wHiii 30 31 = true := by decide +kernel
+#guard ((relation wHiii).find? fun d => d.x == 30 && d.y == 31).map (·.para) == some .hiii
+
+-- Ann holds no interest in Bob's Trust, but with her spouse Bob's interest she is a
+-- majority-interest beneficiary of it too (251.1(3)), so she is one of both trusts.
+#guard (rule.explain ⟨wHi, 30, 31⟩).renderWithJudgments [] ==
+  "1. Ann and Bob are an individual and a spouse or common-law partner of the individual. [ITA 251.1(1)(a)]\n" ++
+  "2. Bob is a majority-interest beneficiary of Bob's Trust: its interest in the income or capital, together with those of the persons affiliated with it, exceeds half by fair market value. [ITA 251.1(1)(g)(i)]\n" ++
+  "3. Ann would, if subsection 251.1(1) were read without reference to paragraph (g), be affiliated with Bob, a majority-interest beneficiary of Bob's Trust. [ITA 251.1(1)(g)(ii)]\n" ++
+  "4. Ann is a majority-interest beneficiary of Ann's Trust: its interest in the income or capital, together with those of the persons affiliated with it, exceeds half by fair market value. [ITA 251.1(1)(g)(i)]\n" ++
+  "5. Ann, a contributor to Bob's Trust, and Ed (Ann's brother), a contributor to Ann's Trust, are individuals connected by blood relationship, marriage, common-law partnership or adoption, so are deemed affiliated (251.1(4)(d)(iv)); and Ann is a majority-interest beneficiary of both trusts. [ITA 251.1(1)(h)(i)]\n" ++
+  "6. So Bob's Trust and Ann's Trust are affiliated persons. [ITA 251.1(1)]\n" ++
+  "Relies on no judgment calls."
+
 /-! ## (h), as an input, and judgment calls -/
 
 def wH : World := { persons := [trust 30 "Trust A", trust 31 "Trust B"], paragraphH := [(30, 31, .fact true)] }
@@ -172,7 +222,7 @@ def wBoth : World :=
 
 /-! ## Every world's relation is closed -/
 
-example : [wA, wBi, wBii, wNotBii, wBiii, wCi, wCii, wCiii, wE, wD, wNotD, wFi, wFii, wFiii, wNotF, wG, wTrusts, wH,
+example : [wA, wBi, wBii, wNotBii, wBiii, wCi, wCii, wCiii, wE, wD, wNotD, wFi, wFii, wFiii, wNotF, wG, wTrusts, wH, wHi, wHii, wHiii,
     wJ true, wJ false, wBoth].all isClosed = true := by decide +kernel
 
 /-! ## Read-back -/
@@ -191,7 +241,7 @@ example : [wA, wBi, wBii, wNotBii, wBiii, wCi, wCii, wCiii, wE, wD, wNotD, wFi, 
   "Relies on no judgment calls."
 
 #guard (rule.explain ⟨wNotBii, 12, 0⟩).renderWithJudgments [] ==
-  "1. No paragraph of subsection 251.1(1), from (a) to (g), alone or through other affiliated persons, makes Pals Inc. and Ann affiliated persons. [ITA 251.1(1)]\n" ++
+  "1. No paragraph of subsection 251.1(1), from (a) to (h), alone or through other affiliated persons, makes Pals Inc. and Ann affiliated persons. [ITA 251.1(1)]\n" ++
   "Relies on no judgment calls."
 
 end Canteen.Tests.AffiliatedPersons
