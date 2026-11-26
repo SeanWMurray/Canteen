@@ -104,6 +104,75 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S251_1.AffiliatedPersons, "251.1 affiliated persons, with 248(1) and 251(6)"),
    (`Canteen.ITA.S251.RelatedPersons, "251(1) to (6) related persons, arm's length")]
 
+/-! ## The dashboard -/
+
+/-- Every judgment call in the transactions and examples, with where it arises. -/
+def allJudgmentCalls : List (String × JudgmentCall) :=
+  (Transactions.SpouseRepurchase.calls.map ("spouse repurchase", ·)) ++
+  (Transactions.SiblingAndLateRepurchase.calls.map ("sibling repurchase", ·)) ++
+  (Transactions.TfsaContribution.calls.map ("TFSA contribution", ·)) ++
+  (Transactions.HoldcoRepurchase.calls.map ("Holdco repurchase", ·)) ++
+  (Transactions.HoldcoRepurchase.friendCalls.map ("Holdco what-if", ·)) ++
+  (debtCalls.map ("debt example", ·)) ++ (ruleXCalls.map ("Rule X", ·))
+
+private def riskPos : Risk → Nat
+  | .low => 15 | .medium => 50 | .high => 85
+
+private def pct (n : Nat) : String := if n < 10 then s!"0.0{n}" else s!"0.{n}"
+
+/-- The judgment calls as a quadrant chart: risk of answering "yes" across, "no" up. Calls in
+the same place are spread out a little so each can be read. -/
+def judgmentQuadrant : String := Id.run do
+  let mut out := ["quadrantChart", "    title Judgment calls by risk",
+    "    x-axis Low risk if yes --> High risk if yes", "    y-axis Low risk if no --> High risk if no",
+    "    quadrant-1 Risky either way", "    quadrant-2 Safer to answer yes",
+    "    quadrant-3 Safe either way", "    quadrant-4 Safer to answer no"]
+  let mut seen : List (Nat × Nat) := []
+  for (whereFrom, c) in allJudgmentCalls do
+    let x0 := riskPos c.riskIfYes
+    let y0 := riskPos c.riskIfNo
+    let k := (seen.filter (· == (x0, y0))).length
+    seen := seen ++ [(x0, y0)]
+    let x := x0 + 4 * (k % 3)
+    let y := y0 + 4 * (k / 3)
+    out := out ++ [s!"    {c.id} in {whereFrom}: [{pct x}, {pct y}]"]
+  return "\n".intercalate out
+
+/-- The transactions' key dates, from their facts. -/
+def transactionTimeline : String :=
+  let ev (d : Date) (t : String) := s!"    {d} : {t}"
+  "\n".intercalate [
+    "timeline", "    title The transactions, by date",
+    ev Transactions.SiblingAndLateRepurchase.sale.date "Sibling repurchase, the sale",
+    ev (Transactions.SiblingAndLateRepurchase.lateRepurchase true).date "Sibling repurchase, buy-back on day 31",
+    ev Transactions.SpouseRepurchase.sale.date "Spouse repurchase, the sale",
+    ev (Transactions.SpouseRepurchase.spousePurchase true).date "Spouse repurchase, the spouse buys",
+    ev Transactions.SisterCompanyRepurchase.sale.date "Sister company, Opco sells",
+    ev Transactions.SisterCompanyRepurchase.sisterPurchase.date "Sister company, Sisterco buys",
+    ev Transactions.TfsaContribution.contribution.date "TFSA contribution in kind",
+    ev Transactions.HoldcoRepurchase.sale.date "Holdco repurchase, the sale",
+    ev (Transactions.HoldcoRepurchase.holdcoPurchase true).date "Holdco repurchase, Holdco buys",
+    ev ((SuspendedLoss.releaseDate Transactions.SisterCompanyRepurchase.facts).getD ⟨2026, 2, 2⟩)
+      "Sister company, the suspended loss is released"]
+
+/-- The Act as encoded, section by section. Each node is a Mermaid "markdown string", so the
+parentheses in citations are not read as node shapes. -/
+def actMindmap : String := Id.run do
+  let tree : List (Nat × String) := [
+    (2, "s. 40"), (3, "40(2)(g): losses that are nil"), (4, "(i) superficial losses"), (4, "(ii) debts"),
+    (4, "(iii) personal-use property"), (4, "(iv) TFSAs, RRSPs and other plans"),
+    (3, "40(3.3) to (3.5): suspended losses"),
+    (2, "s. 50"), (3, "50(2): bad personal-use debts"),
+    (2, "s. 53"), (3, "53(1)(f): cost of substituted property"),
+    (2, "s. 54"), (3, "superficial loss"), (3, "personal-use property"), (3, "listed personal property"),
+    (2, "s. 248"), (3, "248(1): majority-interest partner"),
+    (2, "s. 251"), (3, "251(1): arm's length"), (3, "251(2), (3): related persons"), (3, "251(6): blood, marriage, adoption"),
+    (2, "s. 251.1"), (3, "251.1(1)(a) to (h): affiliated persons"), (3, "251.1(3), (4): definitions and rules")]
+  let mut out := ["mindmap", "  root((Income Tax Act, as encoded))"]
+  for ((depth, label), i) in tree.zipIdx do
+    out := out ++ [("".pushn ' ' (2 * depth)) ++ s!"n{i}[\"`{label}`\"]"]
+  return "\n".intercalate out
+
 def pages : List Page := [
   { file := "flowcharts", title := "Flowcharts of the rules"
     intro := "Each rule written with the `statute` command, drawn from its outline: every condition must be met, and " ++

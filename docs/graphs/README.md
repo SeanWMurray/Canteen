@@ -11,6 +11,7 @@ Diagrams drawn from the Lean definitions, so they always show the rules as encod
 - [Who is related to whom](related.md): Three generations
 - [A transaction series, step by step](series.md): If condition B is met (J-B = yes), If condition B is not met (J-B = no)
 - [Provision map](provisions.md): which encoded provisions rely on which, read from the Lean
+- [Dashboard](dashboard.md): statements by status, judgment calls by risk, the transactions by date, and the Act as encoded
 - [Architecture](architecture.md): every module, by layer, and how they build on each other
 
 Each blueprint in [`docs/blueprint/`](../blueprint/README.md) also has its own dependency graphs.

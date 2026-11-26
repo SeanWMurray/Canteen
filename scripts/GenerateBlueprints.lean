@@ -54,6 +54,29 @@ def generated : String := "> Generated from the Lean sources by `scripts/bluepri
     "the 251(6) connections).\n\n" ++
     s!"```mermaid\n{pmap}\n```\n"
   gindex := gindex ++ "- [Provision map](provisions.md): which encoded provisions rely on which, read from the Lean\n"
+  -- Dashboard
+  let mut counts : List (Blueprint.Status × Nat) := []
+  for (_, bp) in Canteen.Blueprints.all do
+    for (_, st) in ← liftCoreM (Blueprint.statuses bp) do
+      counts := match counts.find? (·.1 == st) with
+        | some _ => counts.map fun (s, n) => if s == st then (s, n + 1) else (s, n)
+        | none => counts ++ [(st, 1)]
+  let total := counts.foldl (· + ·.2) 0
+  let pie := "pie showData title All " ++ toString total ++ " statements in the memos and blueprints, by status\n" ++
+    "\n".intercalate (counts.map fun (st, n) => s!"    \"{st.label}\" : {n}")
+  IO.FS.writeFile "docs/graphs/dashboard.md" <|
+    "# Dashboard\n\n" ++ generated ++
+    "An overview of the project, drawn from the Lean.\n\n" ++
+    "## Statements by status\n\nEvery statement in every blueprint, by the status Lean computes for it.\n\n" ++
+    s!"```mermaid\n{pie}\n```\n\n" ++
+    "## Judgment calls by risk\n\nEvery judgment call in the transactions and examples, placed by the risk of " ++
+    "answering \"yes\" (across) and \"no\" (up). Calls in the same place are spread out a little.\n\n" ++
+    s!"```mermaid\n{Canteen.Graphs.judgmentQuadrant}\n```\n\n" ++
+    "## The transactions, by date\n\nThe key dates, read from each transaction's facts.\n\n" ++
+    s!"```mermaid\n{Canteen.Graphs.transactionTimeline}\n```\n\n" ++
+    "## The Act, as encoded\n\n" ++
+    s!"```mermaid\n{Canteen.Graphs.actMindmap}\n```\n"
+  gindex := gindex ++ "- [Dashboard](dashboard.md): statements by status, judgment calls by risk, the transactions by date, and the Act as encoded\n"
   gindex := gindex ++ "- [Architecture](architecture.md): every module, by layer, and how they build on each other\n" ++
     "\nEach blueprint in [`docs/blueprint/`](../blueprint/README.md) also has its own dependency graphs.\n"
   IO.FS.writeFile "docs/graphs/README.md" gindex
