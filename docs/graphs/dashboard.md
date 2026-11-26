@@ -9,11 +9,11 @@ An overview of the project, drawn from the Lean.
 Every statement in every blueprint, by the status Lean computes for it.
 
 ```mermaid
-pie showData title All 198 statements in the memos and blueprints, by status
-    "encoded" : 33
-    "proven" : 124
+pie showData title All 209 statements in the memos and blueprints, by status
+    "encoded" : 36
+    "proven" : 130
     "not formalized" : 3
-    "fact" : 31
+    "fact" : 33
     "judgment call" : 7
 ```
 
@@ -65,6 +65,7 @@ timeline
     2026-03-02 : Crystallization, Holdco shares sold to Newco
     2025-09-01 : Sale through Holdco, Opco's dividends
     2025-09-15 : Sale through Holdco, the sale
+    2026-04-01 : Post-mortem pipeline, the estate sells to Newco
 ```
 
 ## The Act, as encoded

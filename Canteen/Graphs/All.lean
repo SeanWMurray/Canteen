@@ -218,7 +218,8 @@ def transactionTimeline : String :=
     ev ⟨2025, 6, 30⟩ "Crystallization, Opco shares to Holdco under 85(1)",
     ev Transactions.Crystallization.newcoPurchase.date "Crystallization, Holdco shares sold to Newco",
     ev ⟨2025, 9, 1⟩ "Sale through Holdco, Opco's dividends",
-    ev ⟨2025, 9, 15⟩ "Sale through Holdco, the sale"]
+    ev ⟨2025, 9, 15⟩ "Sale through Holdco, the sale",
+    ev ⟨2026, 4, 1⟩ "Post-mortem pipeline, the estate sells to Newco"]
 
 /-- The Act as encoded, section by section. Each node is a Mermaid "markdown string", so the
 parentheses in citations are not read as node shapes. -/
