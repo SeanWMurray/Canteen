@@ -4,6 +4,7 @@ import Canteen.ITA.S40.Paragraph40_2_g
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.ITA.S40.ShareToAffiliate
 import Canteen.ITA.S40.RelatedDebt
+import Canteen.ITA.S40.PrincipalResidence
 
 /-!
 # Capital gains and losses: 40(1), 39(1), 38, 41
@@ -60,6 +61,8 @@ structure Disposition where
   from income (for example, as business income). Often a judgment call. -/
   capitalAccount : Answer := .fact true
   propertyClass : PropertyClass := .ordinary
+  /-- 40(2)(b): the gain on a principal residence, after the exemption, where it applies. -/
+  principalResidenceGain : Option Cents := none
   /-- 40(1)(a)(ii): disposed of before the year; the reserve claimed in the preceding year. -/
   priorYearReserve : Option Cents := none
   /-- 40(1)(a)(iii): the reserve the taxpayer claims this year. -/
@@ -95,7 +98,7 @@ def reserveLimit (d : Disposition) : Cents :=
 def gain (d : Disposition) : Cents :=
   let base := match d.priorYearReserve with
     | some r => r
-    | none => d.excess
+    | none => d.principalResidenceGain.getD d.excess
   base - min d.reserveClaimed d.reserveLimit
 
 /-- 40(1)(b): the loss for the year (nil if disposed of before the year), and nil where
@@ -206,6 +209,10 @@ def ofRelatedDebt (f : RelatedDebt.Facts) (capitalAccount : Answer := .fact true
   { description := f.disposition.description, proceeds := f.disposition.proceeds,
     adjustedCostBase := f.disposition.adjustedCostBase, outlaysAndExpenses := f.disposition.outlaysAndExpenses,
     capitalAccount, lossNil := RelatedDebt.denied f }
+
+/-- A disposition of a home whose gain is decided by paragraph 40(2)(b). -/
+def ofPrincipalResidence (f : PrincipalResidence.Facts) (proceeds adjustedCostBase : Cents) : Disposition :=
+  { description := f.description, proceeds, adjustedCostBase, principalResidenceGain := some (PrincipalResidence.gain f) }
 
 /-! ## Truths about the computation -/
 

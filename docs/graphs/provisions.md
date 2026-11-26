@@ -22,10 +22,11 @@ flowchart BT
   v13["40(3.3) to (3.5) suspended losses"]:::prov
   v14["40(3.6), 53(1)(f.2) shares to an affiliated corporation"]:::prov
   v15["40(2)(e.1), 53(1)(f.1) debts within a related group"]:::prov
-  v16["38 to 41 capital gains and losses"]:::prov
-  v17["3 income for the year"]:::prov
-  v18["111 net capital losses, taxable income"]:::prov
-  v19["50(2) bad personal-use debts"]:::prov
+  v16["40(2)(b), 54 principal residence"]:::prov
+  v17["38 to 41 capital gains and losses"]:::prov
+  v18["3 income for the year"]:::prov
+  v19["111 net capital losses, taxable income"]:::prov
+  v20["50(2) bad personal-use debts"]:::prov
   v0 --> v1
   v0 --> v2
   v0 --> v3
@@ -44,11 +45,12 @@ flowchart BT
   v0 --> v13
   v5 --> v14
   v6 --> v15
-  v12 --> v16
-  v13 --> v16
-  v14 --> v16
-  v15 --> v16
+  v12 --> v17
+  v13 --> v17
+  v14 --> v17
+  v15 --> v17
   v16 --> v17
   v17 --> v18
+  v18 --> v19
   classDef prov fill:#bbdefb,stroke:#1565c0,color:#0d47a1
 ```

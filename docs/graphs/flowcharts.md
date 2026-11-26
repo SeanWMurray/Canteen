@@ -272,6 +272,37 @@ flowchart TD
   classDef start fill:#ffffff,stroke:#212121,color:#212121
 ```
 
+## Section 54 "principal residence", for an individual and a year
+
+```mermaid
+flowchart TD
+  S(["the definition #quot;principal residence#quot; · ITA 54 #quot;principal residence#quot;"]):::start
+  C0["<b>housing unit</b> The property is a housing unit, a leasehold<br/>interest in one, or a qualifying<br/>co-operative housing share<br/>[ITA 54 #quot;principal residence#quot; housing unit]"]:::fact
+  C1["<b>owned</b> The taxpayer owned it in the year<br/>[ITA 54 #quot;principal residence#quot; owned]"]:::fact
+  C2["<b>(a), (b)</b> It was ordinarily inhabited in the year by<br/>the taxpayer, the taxpayer's spouse or<br/>common-law partner or former one, or a child<br/>of the taxpayer, or an election under 45(2)<br/>or 45(3) covers the year<br/><i>judgment call: judgment calls computed from the facts</i><br/>[ITA 54 #quot;principal residence#quot; (a), (b)]"]:::judgment
+  C3["<b>(c) designation</b> The taxpayer designated it as principal<br/>residence for the year<br/>[ITA 54 #quot;principal residence#quot; (c) designation]"]:::fact
+  E0["<b>(c) other designations</b> Another property was designated for the year<br/>by the taxpayer or a member of the<br/>taxpayer's family unit<br/>[ITA 54 #quot;principal residence#quot; (c) other designations]"]:::fact
+  Y(["the definition #quot;principal residence#quot; applies"]):::yes
+  N(["the definition #quot;principal residence#quot; does not apply"]):::no
+  S --> C0
+  C0 -->|met| C1
+  C0 -->|not met| N
+  C1 -->|met| C2
+  C1 -->|not met| N
+  C2 -->|met| C3
+  C2 -->|not met| N
+  C3 -->|met| E0
+  C3 -->|not met| N
+  E0 -->|does not apply| Y
+  E0 -->|applies| N
+  classDef fact fill:#eeeeee,stroke:#616161,color:#212121
+  classDef judgment fill:#ffe0b2,stroke:#ef6c00,color:#e65100
+  classDef rule fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+  classDef yes fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
+  classDef no fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+  classDef start fill:#ffffff,stroke:#212121,color:#212121
+```
+
 ## Subparagraph 40(2)(g)(iv): transfers to registered plans
 
 ```mermaid

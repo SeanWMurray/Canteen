@@ -12,6 +12,7 @@ import Canteen.ITA.S3.Income
 import Canteen.ITA.S111.NetCapitalLoss
 import Canteen.ITA.S40.ShareToAffiliate
 import Canteen.ITA.S40.RelatedDebt
+import Canteen.ITA.S40.PrincipalResidence
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -251,6 +252,12 @@ def blueprint : Blueprint where
             "year's inclusion rate (111(1.1)(a)). A loss denied as superficial never becomes one."
           lean := [``NetCapitalLoss.netCapitalLoss, ``NetCapitalLoss.deduction, ``NetCapitalLoss.taxableIncome,
             ``NetCapitalLoss.deduction_le_para3b, ``NetCapitalLoss.not_allowed_far_future], uses := ["R8"] },
+        { id := "R11", kind := .law, title := "The principal residence exemption", citation := "ITA 40(2)(b); 54 \"principal residence\""
+          statement := "A home is the principal residence for a year if owned, ordinarily inhabited by the family (or covered by " ++
+            "a 45(2) or (3) election), designated, and not blocked by another family-unit designation; the gain is A − A × B / C " ++
+            "− D, so with the \"plus one\" a home designated for all but one of its years is fully exempt (proven)."
+          lean := [``PrincipalResidence.principalResidence, ``PrincipalResidence.gain, ``PrincipalResidence.exempt_of_b_ge_c,
+            ``PrincipalResidence.exempt_le, ``CapitalGains.ofPrincipalResidence], uses := ["R8"] },
         { id := "R2", kind := .law, title := "Cost of the substituted property", citation := "ITA 53(1)(f)"
           statement := "The superficial loss, less any amount described in subparagraph 53(1)(f)(ii), is added to the cost " ++
             "of the substituted property in computing its adjusted cost base."

@@ -21,3 +21,4 @@ The verbatim statute text for each is in `statute/`. Review notes are in `docs/r
 - `S111/NetCapitalLoss.lean`: net capital losses, 111(8), (1)(b), (1.1)
 - `S40/ShareToAffiliate.lean`: 40(3.6) and 53(1)(f.2)
 - `S40/RelatedDebt.lean`: 40(2)(e.1) and 53(1)(f.1)
+- `S40/PrincipalResidence.lean`: 40(2)(b) and 54 "principal residence"

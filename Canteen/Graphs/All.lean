@@ -17,6 +17,7 @@ import Canteen.ITA.S40.SuspendedLoss
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.ShareToAffiliate
 import Canteen.ITA.S40.RelatedDebt
+import Canteen.ITA.S40.PrincipalResidence
 import Canteen.Transactions.SisterCompanyRepurchase
 
 /-!
@@ -111,6 +112,7 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S40.SuspendedLoss, "40(3.3) to (3.5) suspended losses"),
    (`Canteen.ITA.S40.ShareToAffiliate, "40(3.6), 53(1)(f.2) shares to an affiliated corporation"),
    (`Canteen.ITA.S40.RelatedDebt, "40(2)(e.1), 53(1)(f.1) debts within a related group"),
+   (`Canteen.ITA.S40.PrincipalResidence, "40(2)(b), 54 principal residence"),
    (`Canteen.ITA.S50.BadDebtPersonalUse, "50(2) bad personal-use debts"),
    (`Canteen.ITA.S53.CostAddition, "53(1)(f) cost of substituted property"),
    (`Canteen.ITA.S251_1.Affiliation, "251.1(1)(a), two persons"),
@@ -179,13 +181,13 @@ def actMindmap : String := Id.run do
     (2, "s. 3"), (3, "income for the year: (a) to (f)"),
     (2, "ss. 38 to 41"), (3, "38: inclusion rates"), (3, "39(1): capital gains and losses"), (3, "40(1): gains and losses, reserves"),
     (3, "41: listed personal property"),
-    (2, "s. 40"), (3, "40(2)(g): losses that are nil"), (4, "(i) superficial losses"), (4, "(ii) debts"),
+    (2, "s. 40"), (3, "40(2)(b): the principal residence exemption"), (3, "40(2)(g): losses that are nil"), (4, "(i) superficial losses"), (4, "(ii) debts"),
     (4, "(iii) personal-use property"), (4, "(iv) TFSAs, RRSPs and other plans"),
     (3, "40(2)(e.1): debts within a related group"), (3, "40(3.3) to (3.5): suspended losses"),
     (3, "40(3.6): shares to an affiliated corporation"),
     (2, "s. 50"), (3, "50(2): bad personal-use debts"),
     (2, "s. 53"), (3, "53(1)(f): cost of substituted property"), (3, "53(1)(f.1), (f.2): cost after 40(2)(e.1), 40(3.6)"),
-    (2, "s. 54"), (3, "superficial loss"), (3, "personal-use property"), (3, "listed personal property"),
+    (2, "s. 54"), (3, "superficial loss"), (3, "principal residence"), (3, "personal-use property"), (3, "listed personal property"),
     (2, "s. 111"), (3, "111(8): net capital loss"), (3, "111(1)(b), (1.1): deduction"),
     (2, "s. 248"), (3, "248(1): majority-interest partner"),
     (2, "s. 251"), (3, "251(1): arm's length"), (3, "251(2), (3): related persons"), (3, "251(3.1), (3.2): amalgamations"),
@@ -212,6 +214,7 @@ def pages : List Page := [
       ("Subsection 50(2): a personal-use debt that goes bad", flowchart BadDebtPersonalUse.rule.outline),
       ("Subsection 40(3.6): a share disposed of to an affiliated corporation", flowchart ShareToAffiliate.applies.outline),
       ("Paragraph 40(2)(e.1): a debt within a related group", flowchart RelatedDebt.applies.outline),
+      ("Section 54 \"principal residence\", for an individual and a year", flowchart PrincipalResidence.principalResidence.outline),
       ("Subparagraph 40(2)(g)(iv): transfers to registered plans", flowchart Paragraph40_2_g.planTransferLoss.outline),
       ("Clause 40(2)(g)(iv)(A)", flowchart Paragraph40_2_g.planTransferA.outline),
       ("Clause 40(2)(g)(iv)(B)", flowchart Paragraph40_2_g.planTransferB.outline),
