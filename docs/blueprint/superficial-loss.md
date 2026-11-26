@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 61 statements:** 42 proven, 16 encoded, 3 not formalized.
+**Status of the 62 statements:** 43 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -66,11 +66,12 @@ graph TD
   n53["R19 · The capital gains deduction"]:::proven
   n54["R20 · Loss restriction events"]:::proven
   n55["R21 · Attribution of income to the transferor or lender"]:::proven
-  n56["R11 · The principal residence exemption"]:::proven
-  n57["R2 · Cost of the substituted property"]:::proven
-  n58["N1 · Inputs decided by other provisions"]:::notFormalized
-  n59["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n60["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n56["R22 · Taxable dividends: the gross-up and credit"]:::proven
+  n57["R11 · The principal residence exemption"]:::proven
+  n58["R2 · Cost of the substituted property"]:::proven
+  n59["N1 · Inputs decided by other provisions"]:::notFormalized
+  n60["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n61["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -163,21 +164,21 @@ graph TD
   n39 --> n54
   n6 --> n54
   n49 --> n55
-  n44 --> n56
-  n50 --> n56
-  n11 --> n57
-  n1 --> n58
-  n5 --> n58
-  n6 --> n58
-  n8 --> n58
-  n37 --> n58
-  n57 --> n58
-  n38 --> n58
-  n30 --> n59
-  n32 --> n60
-  n34 --> n60
-  n39 --> n60
-  n42 --> n60
+  n44 --> n57
+  n50 --> n57
+  n11 --> n58
+  n1 --> n59
+  n5 --> n59
+  n6 --> n59
+  n8 --> n59
+  n37 --> n59
+  n58 --> n59
+  n38 --> n59
+  n30 --> n60
+  n32 --> n61
+  n34 --> n61
+  n39 --> n61
+  n42 --> n61
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -250,11 +251,12 @@ graph TD
   n53["R19"]:::proven
   n54["R20"]:::proven
   n55["R21"]:::proven
-  n56["R11"]:::proven
-  n57["R2"]:::proven
-  n58["N1"]:::notFormalized
-  n59["N2"]:::notFormalized
-  n60["N4"]:::notFormalized
+  n56["R22"]:::proven
+  n57["R11"]:::proven
+  n58["R2"]:::proven
+  n59["N1"]:::notFormalized
+  n60["N2"]:::notFormalized
+  n61["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -420,21 +422,21 @@ graph TD
   n39 -.-> n54
   n6 -.-> n54
   n49 --> n55
-  n44 -.-> n56
-  n50 -.-> n56
-  n11 -.-> n57
-  n1 -.-> n58
-  n5 -.-> n58
-  n6 -.-> n58
-  n8 -.-> n58
-  n37 -.-> n58
-  n57 -.-> n58
-  n38 -.-> n58
-  n30 -.-> n59
-  n32 -.-> n60
-  n34 -.-> n60
-  n39 -.-> n60
-  n42 -.-> n60
+  n44 -.-> n57
+  n50 -.-> n57
+  n11 -.-> n58
+  n1 -.-> n59
+  n5 -.-> n59
+  n6 -.-> n59
+  n8 -.-> n59
+  n37 -.-> n59
+  n58 -.-> n59
+  n38 -.-> n59
+  n30 -.-> n60
+  n32 -.-> n61
+  n34 -.-> n61
+  n39 -.-> n61
+  n42 -.-> n61
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -901,6 +903,14 @@ A corporation is subject to a loss restriction event when a person or group acqu
 Income or loss from property transferred or lent to a spouse or common-law partner (in the period of residence and marriage), or to a minor not at arm's length or a niece or nephew (until the year the minor turns 18), is the individual's and not the recipient's; including a share of the income of other property whose debt the property paid down. Not for a transfer at fair market value (74.5(1)), a loan at the prescribed rate with interest paid on time (74.5(2)), or a period of separation (74.5(3)(a)).
 
 **Lean:** [`Canteen.ITA.IncomeAttribution.applies`](../../Canteen/ITA/S74/IncomeAttribution.lean#L113), [`Canteen.ITA.IncomeAttribution.attributedIncome`](../../Canteen/ITA/S74/IncomeAttribution.lean#L139), [`Canteen.ITA.IncomeAttribution.prescribed_rate_loan`](../../Canteen/ITA/S74/IncomeAttribution.lean#L174), [`Canteen.ITA.IncomeAttribution.adult_by_year_end`](../../Canteen/ITA/S74/IncomeAttribution.lean#L178), [`Canteen.ITA.IncomeAttribution.income_split`](../../Canteen/ITA/S74/IncomeAttribution.lean#L202), [`Canteen.ITA.IncomeAttribution.repayment_share_le`](../../Canteen/ITA/S74/IncomeAttribution.lean#L186)
+
+### R22. Taxable dividends: the gross-up and credit
+
+**Status:** proven · **Citation:** ITA 82(1); 121
+
+Taxable dividends from corporations resident in Canada are included in income; an individual adds a gross-up (15% for non-eligible dividends after 2018, 38% for eligible dividends after 2011) and deducts a credit from tax (9/13 and 6/11 of the gross-up). Proven: the credit never exceeds the gross-up.
+
+**Lean:** [`Canteen.ITA.Dividends.inclusion`](../../Canteen/ITA/S82/Dividends.lean#L92), [`Canteen.ITA.Dividends.credit`](../../Canteen/ITA/S82/Dividends.lean#L99), [`Canteen.ITA.Dividends.credit_le_grossUp`](../../Canteen/ITA/S82/Dividends.lean#L133), [`Canteen.ITA.Dividends.non_eligible_2025`](../../Canteen/ITA/S82/Dividends.lean#L155)
 
 ### R11. The principal residence exemption
 

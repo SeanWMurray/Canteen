@@ -141,7 +141,8 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S84_1.SurplusStripping, "84.1 shares to a non-arm's length corporation"),
    (`Canteen.ITA.S110_6.CapitalGainsDeduction, "110.6 the capital gains deduction"),
    (`Canteen.ITA.S251_2.LossRestrictionEvent, "251.2(2)(a), 256(7)(a) loss restriction events"),
-   (`Canteen.ITA.S74.IncomeAttribution, "74.1, 74.5(2), (3)(a) attribution of income")]
+   (`Canteen.ITA.S74.IncomeAttribution, "74.1, 74.5(2), (3)(a) attribution of income"),
+   (`Canteen.ITA.S82.Dividends, "82(1), 121 dividends, gross-up and credit")]
 
 /-! ## The dashboard -/
 
@@ -217,6 +218,7 @@ def actMindmap : String := Id.run do
     (2, "s. 73"), (3, "73(1), (1.01): the spousal rollover"),
     (2, "ss. 74.1, 74.2, 74.5"), (3, "74.1(1), (2): income attributed back"), (3, "74.1(3): repaying debt"),
     (3, "74.2(1): capital gains attributed back"), (3, "74.5(1) to (3): fair market value, loans for value, separation"),
+    (2, "s. 82"), (3, "82(1): taxable dividends and the gross-up"),
     (2, "s. 84.1"), (3, "84.1(1): paid-up capital, and the deemed dividend"), (3, "84.1(2): hard cost, arm's length"),
     (2, "s. 85"), (3, "85(1): the elected amount, and the cost of the consideration"), (3, "85(2.1): paid-up capital"),
     (2, "s. 110.6"), (3, "qualified small business corporation share"), (3, "annual and cumulative gains limits"),
@@ -225,6 +227,7 @@ def actMindmap : String := Id.run do
     (2, "s. 248"), (3, "248(1): majority-interest partner"),
     (2, "s. 251"), (3, "251(1): arm's length"), (3, "251(2), (3): related persons"), (3, "251(3.1), (3.2): amalgamations"),
     (3, "251(6): blood, marriage, adoption"),
+    (2, "s. 121"), (3, "121: the dividend tax credit"),
     (2, "s. 251.2"), (3, "251.2(2)(a): loss restriction event"), (2, "s. 256"), (3, "256(7)(a): control not acquired"),
     (2, "s. 251.1"), (3, "251.1(1)(a) to (h): affiliated persons"), (3, "251.1(2): amalgamations"), (3, "251.1(3), (4): definitions and rules")]
   let mut out := ["mindmap", "  root((Income Tax Act, as encoded))"]

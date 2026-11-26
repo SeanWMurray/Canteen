@@ -1,6 +1,7 @@
 import Canteen.ITA.S85.TransferToCorporation
 import Canteen.ITA.S84_1.SurplusStripping
 import Canteen.ITA.S110_6.CapitalGainsDeduction
+import Canteen.ITA.S82.Dividends
 import Canteen.ITA.S40.Paragraph40_2_g
 import Canteen.ITA.S53.CostAddition
 import Canteen.ITA.S251_1.AffiliatedPersons
@@ -154,6 +155,17 @@ theorem step2_loss_nil :
 
 /-- It is added to Newco's cost of the preferred shares (53(1)(f)): $2,500,100. -/
 theorem newco_cost : CostAddition.adjustedCostBase newcoCostFacts = 250010000 := by decide +kernel
+
+/-- The 84.1 dividend in the taxpayer's 2026 income: a taxable dividend that is not an eligible
+dividend (no designation under 89(14) is made). -/
+def dividendFacts (branch : List Judgment) : Dividends.Facts :=
+  { taxationYear := 2026,
+    dividends := [{ description := "the dividend deemed by 84.1(1)(b)", amount := SurplusStripping.dividend (step2 branch) }] }
+
+/-- Grossed up by 15%, $1,437,500 is included in income, with a dividend tax credit of $129,807.69. -/
+theorem step2_dividend_taxed :
+    Dividends.inclusion (dividendFacts position) = 143750000 ∧ Dividends.credit (dividendFacts position) = 12980769 := by
+  decide +kernel
 
 /-! ## If Opco is not a small business corporation -/
 

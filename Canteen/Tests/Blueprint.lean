@@ -124,6 +124,7 @@ R18: proven
 R19: proven
 R20: proven
 R21: proven
+R22: proven
 R11: proven
 R2: proven
 N1: not formalized

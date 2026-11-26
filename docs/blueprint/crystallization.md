@@ -10,7 +10,7 @@
 
 This is a constructed example, not advice on a real transaction.
 
-**Status of the 18 statements:** 9 proven, 4 encoded, 4 fact, 1 judgment call.
+**Status of the 20 statements:** 10 proven, 5 encoded, 4 fact, 1 judgment call.
 
 ## Dependency graph
 
@@ -20,60 +20,66 @@ graph TD
   n1["L2 · Shares sold to a non-arm's length corporation"]:::encoded
   n2["L3 · The capital gains deduction"]:::encoded
   n3["L4 · Superficial losses, and the cost addition"]:::encoded
-  n4["F1 · The taxpayer and the companies"]:::fact
-  n5["F2 · The Opco shares"]:::fact
-  n6["F3 · Step 1, 2025-06-30"]:::fact
-  n7["F4 · Step 2, 2026-03-02"]:::fact
-  n8["J-SBC · Opco is a small business corporation"]:::judgment
-  n9["A1 · The elected amount is $1,250,100"]:::proven
-  n10["A2 · 84.1 grinds the paid-up capital, but there is no dividend"]:::proven
-  n11["A3 · The $1,250,000 gain is sheltered"]:::proven
-  n12["A4 · Hard cost of $100"]:::proven
-  n13["A5 · A $1,250,000 dividend"]:::proven
-  n14["A6 · A $1,250,000 capital loss, made nil"]:::proven
-  n15["A7 · Newco's cost is $2,500,100"]:::proven
-  n16["K · Conclusion"]:::proven
-  n17["W1 · Taxed in 2025, but no dividend in 2026"]:::proven
-  n4 --> n7
-  n6 --> n9
-  n0 --> n9
-  n4 --> n10
-  n6 --> n10
+  n4["L5 · Taxable dividends"]:::encoded
+  n5["F1 · The taxpayer and the companies"]:::fact
+  n6["F2 · The Opco shares"]:::fact
+  n7["F3 · Step 1, 2025-06-30"]:::fact
+  n8["F4 · Step 2, 2026-03-02"]:::fact
+  n9["J-SBC · Opco is a small business corporation"]:::judgment
+  n10["A1 · The elected amount is $1,250,100"]:::proven
+  n11["A2 · 84.1 grinds the paid-up capital, but there is no dividend"]:::proven
+  n12["A3 · The $1,250,000 gain is sheltered"]:::proven
+  n13["A4 · Hard cost of $100"]:::proven
+  n14["A5 · A $1,250,000 dividend"]:::proven
+  n15["A5b · Taxed as a dividend"]:::proven
+  n16["A6 · A $1,250,000 capital loss, made nil"]:::proven
+  n17["A7 · Newco's cost is $2,500,100"]:::proven
+  n18["K · Conclusion"]:::proven
+  n19["W1 · Taxed in 2025, but no dividend in 2026"]:::proven
+  n5 --> n8
+  n7 --> n10
   n0 --> n10
-  n1 --> n10
   n5 --> n11
-  n6 --> n11
-  n8 --> n11
+  n7 --> n11
+  n0 --> n11
   n1 --> n11
-  n2 --> n11
-  n9 --> n11
-  n10 --> n11
+  n6 --> n12
+  n7 --> n12
   n9 --> n12
+  n1 --> n12
+  n2 --> n12
   n10 --> n12
   n11 --> n12
-  n4 --> n12
-  n7 --> n12
-  n0 --> n12
-  n1 --> n12
+  n10 --> n13
+  n11 --> n13
   n12 --> n13
-  n12 --> n14
+  n5 --> n13
+  n8 --> n13
+  n0 --> n13
+  n1 --> n13
   n13 --> n14
-  n7 --> n14
-  n1 --> n14
-  n3 --> n14
+  n13 --> n15
   n14 --> n15
-  n3 --> n15
-  n11 --> n16
+  n4 --> n15
   n13 --> n16
   n14 --> n16
-  n15 --> n16
-  n11 --> n17
-  n12 --> n17
-  n5 --> n17
-  n6 --> n17
-  n7 --> n17
-  n1 --> n17
-  n2 --> n17
+  n8 --> n16
+  n1 --> n16
+  n3 --> n16
+  n16 --> n17
+  n3 --> n17
+  n12 --> n18
+  n14 --> n18
+  n15 --> n18
+  n16 --> n18
+  n17 --> n18
+  n12 --> n19
+  n13 --> n19
+  n6 --> n19
+  n7 --> n19
+  n8 --> n19
+  n1 --> n19
+  n2 --> n19
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -94,71 +100,79 @@ graph TD
   n1["L2"]:::encoded
   n2["L3"]:::encoded
   n3["L4"]:::encoded
-  n4["F1"]:::fact
-  n5["F2"]:::fact
-  n6["F3"]:::fact
-  n7["F4"]:::fact
-  n8["J-SBC"]:::judgment
-  n9["A1"]:::proven
-  n10["A2"]:::proven
-  n11["A3"]:::proven
-  n12["A4"]:::proven
-  n13["A5"]:::proven
-  n14["A6"]:::proven
-  n15["A7"]:::proven
-  n16["K"]:::proven
-  n17["W1"]:::proven
-  n4 --> n7
-  n0 --> n9
-  n6 --> n9
-  n6 --> n10
-  n4 --> n10
+  n4["L5"]:::encoded
+  n5["F1"]:::fact
+  n6["F2"]:::fact
+  n7["F3"]:::fact
+  n8["F4"]:::fact
+  n9["J-SBC"]:::judgment
+  n10["A1"]:::proven
+  n11["A2"]:::proven
+  n12["A3"]:::proven
+  n13["A4"]:::proven
+  n14["A5"]:::proven
+  n15["A5b"]:::proven
+  n16["A6"]:::proven
+  n17["A7"]:::proven
+  n18["K"]:::proven
+  n19["W1"]:::proven
+  n5 --> n8
   n0 --> n10
-  n1 --> n10
-  n10 --> n11
-  n1 --> n11
+  n7 --> n10
+  n7 --> n11
   n5 --> n11
-  n2 --> n11
-  n8 --> n11
-  n6 -.-> n11
-  n9 -.-> n11
-  n0 --> n12
+  n0 --> n11
+  n1 --> n11
   n11 --> n12
   n1 --> n12
-  n10 --> n12
   n6 --> n12
-  n4 --> n12
-  n8 --> n12
-  n9 -.-> n12
+  n2 --> n12
+  n9 --> n12
   n7 -.-> n12
-  n1 --> n13
+  n10 -.-> n12
+  n0 --> n13
   n12 --> n13
-  n8 --> n13
+  n1 --> n13
+  n11 --> n13
+  n7 --> n13
+  n5 --> n13
+  n9 --> n13
+  n10 -.-> n13
+  n8 -.-> n13
   n1 --> n14
-  n12 --> n14
-  n7 --> n14
-  n8 --> n14
-  n3 --> n14
-  n13 -.-> n14
-  n14 --> n15
-  n8 --> n15
-  n3 --> n15
-  n11 --> n16
-  n8 --> n16
+  n13 --> n14
+  n9 --> n14
+  n1 --> n15
+  n13 --> n15
+  n4 --> n15
+  n9 --> n15
+  n14 -.-> n15
   n1 --> n16
-  n12 --> n16
+  n13 --> n16
+  n8 --> n16
+  n9 --> n16
   n3 --> n16
-  n14 --> n16
-  n13 -.-> n16
-  n15 -.-> n16
-  n11 --> n17
-  n8 --> n17
-  n1 --> n17
-  n12 --> n17
-  n5 -.-> n17
-  n6 -.-> n17
-  n7 -.-> n17
-  n2 -.-> n17
+  n14 -.-> n16
+  n16 --> n17
+  n9 --> n17
+  n3 --> n17
+  n12 --> n18
+  n9 --> n18
+  n1 --> n18
+  n13 --> n18
+  n3 --> n18
+  n16 --> n18
+  n14 -.-> n18
+  n15 -.-> n18
+  n17 -.-> n18
+  n12 --> n19
+  n9 --> n19
+  n1 --> n19
+  n13 --> n19
+  n6 -.-> n19
+  n7 -.-> n19
+  n8 -.-> n19
+  n2 -.-> n19
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -236,6 +250,14 @@ A loss on shares an affiliated person holds at the end of the period is nil, and
 
 **Lean:** [`Canteen.ITA.Paragraph40_2_g.paragraph`](../../Canteen/ITA/S40/Paragraph40_2_g.lean#L32), [`Canteen.ITA.Paragraph40_2_g.deniedLoss`](../../Canteen/ITA/S40/Paragraph40_2_g.lean#L41), [`Canteen.ITA.CostAddition.adjustedCostBase`](../../Canteen/ITA/S53/CostAddition.lean#L53)
 
+### L5. Taxable dividends
+
+**Status:** encoded · **Citation:** ITA 82(1); 121
+
+A taxable dividend that is not an eligible dividend is grossed up by 15% in income, with a credit of 9/13 of the gross-up.
+
+**Lean:** [`Canteen.ITA.Dividends.inclusion`](../../Canteen/ITA/S82/Dividends.lean#L92), [`Canteen.ITA.Dividends.credit`](../../Canteen/ITA/S82/Dividends.lean#L99)
+
 ## Facts
 
 ### F1. The taxpayer and the companies
@@ -244,7 +266,7 @@ A loss on shares an affiliated person holds at the end of the period is nil, and
 
 The taxpayer controls Opco, Holdco and Newco.
 
-**Lean:** [`Canteen.Transactions.Crystallization.world`](../../Canteen/Transactions/Crystallization.lean#L38)
+**Lean:** [`Canteen.Transactions.Crystallization.world`](../../Canteen/Transactions/Crystallization.lean#L39)
 
 ### F2. The Opco shares
 
@@ -252,7 +274,7 @@ The taxpayer controls Opco, Holdco and Newco.
 
 Paid-up capital and cost $100, worth $2,000,000, held by the taxpayer alone for over two years; 85% and 90% of Opco's assets' value in active business assets over the two years.
 
-**Lean:** [`Canteen.Transactions.Crystallization.opcoShares`](../../Canteen/Transactions/Crystallization.lean#L51)
+**Lean:** [`Canteen.Transactions.Crystallization.opcoShares`](../../Canteen/Transactions/Crystallization.lean#L52)
 
 ### F3. Step 1, 2025-06-30
 
@@ -260,7 +282,7 @@ Paid-up capital and cost $100, worth $2,000,000, held by the taxpayer alone for 
 
 The Opco shares are transferred to Holdco for preferred shares worth $2,000,000 with $1,250,100 of stated capital, jointly electing $1,250,100.
 
-**Lean:** [`Canteen.Transactions.Crystallization.transfer`](../../Canteen/Transactions/Crystallization.lean#L61), [`Canteen.Transactions.Crystallization.holdcoPreferred`](../../Canteen/Transactions/Crystallization.lean#L58)
+**Lean:** [`Canteen.Transactions.Crystallization.transfer`](../../Canteen/Transactions/Crystallization.lean#L62), [`Canteen.Transactions.Crystallization.holdcoPreferred`](../../Canteen/Transactions/Crystallization.lean#L59)
 
 ### F4. Step 2, 2026-03-02
 
@@ -268,7 +290,7 @@ The Opco shares are transferred to Holdco for preferred shares worth $2,000,000 
 
 The taxpayer sells the Holdco preferred shares to Newco for a $1,250,100 note; Newco keeps them.
 
-**Lean:** [`Canteen.Transactions.Crystallization.newcoPurchase`](../../Canteen/Transactions/Crystallization.lean#L100)
+**Lean:** [`Canteen.Transactions.Crystallization.newcoPurchase`](../../Canteen/Transactions/Crystallization.lean#L101)
 
 **Rests on:** facts F1.
 
@@ -280,7 +302,7 @@ The taxpayer sells the Holdco preferred shares to Newco for a $1,250,100 note; N
 
 All or substantially all of the value of Opco's assets is in assets used principally in an active business carried on primarily in Canada. Risk: low.
 
-**Lean:** [`Canteen.Transactions.Crystallization.calls`](../../Canteen/Transactions/Crystallization.lean#L45), [`Canteen.Transactions.Crystallization.position`](../../Canteen/Transactions/Crystallization.lean#L49)
+**Lean:** [`Canteen.Transactions.Crystallization.calls`](../../Canteen/Transactions/Crystallization.lean#L46), [`Canteen.Transactions.Crystallization.position`](../../Canteen/Transactions/Crystallization.lean#L50)
 
 ## Analysis
 
@@ -290,7 +312,7 @@ All or substantially all of the value of Opco's assets is in assets used princip
 
 85(1) applies; the elected amount is between the floor and fair market value, so it stands, and the preferred shares cost $1,250,100.
 
-**Lean:** [`Canteen.Transactions.Crystallization.step1_elected`](../../Canteen/Transactions/Crystallization.lean#L120)
+**Lean:** [`Canteen.Transactions.Crystallization.step1_elected`](../../Canteen/Transactions/Crystallization.lean#L121)
 
 **Rests on:** facts F3.
 
@@ -300,7 +322,7 @@ All or substantially all of the value of Opco's assets is in assets used princip
 
 The taxpayer and Holdco are related, so 84.1 applies. With no boot, there is no dividend; the preferred shares' paid-up capital is ground from $1,250,100 to $100.
 
-**Lean:** [`Canteen.Transactions.Crystallization.step1`](../../Canteen/Transactions/Crystallization.lean#L66), [`Canteen.Transactions.Crystallization.step1_paid_up_capital`](../../Canteen/Transactions/Crystallization.lean#L125)
+**Lean:** [`Canteen.Transactions.Crystallization.step1`](../../Canteen/Transactions/Crystallization.lean#L67), [`Canteen.Transactions.Crystallization.step1_paid_up_capital`](../../Canteen/Transactions/Crystallization.lean#L126)
 
 **Rests on:** facts F1, F3.
 
@@ -310,7 +332,7 @@ The taxpayer and Holdco are related, so 84.1 applies. With no boot, there is no 
 
 The Opco shares are qualified small business corporation shares, so the $625,000 taxable capital gain is deducted in full.
 
-**Lean:** [`Canteen.Transactions.Crystallization.disposition1`](../../Canteen/Transactions/Crystallization.lean#L71), [`Canteen.Transactions.Crystallization.deduction`](../../Canteen/Transactions/Crystallization.lean#L74), [`Canteen.Transactions.Crystallization.shelteredGain`](../../Canteen/Transactions/Crystallization.lean#L80), [`Canteen.Transactions.Crystallization.opco_qualified`](../../Canteen/Transactions/Crystallization.lean#L114), [`Canteen.Transactions.Crystallization.step1_gain`](../../Canteen/Transactions/Crystallization.lean#L131), [`Canteen.Transactions.Crystallization.step1_sheltered`](../../Canteen/Transactions/Crystallization.lean#L134)
+**Lean:** [`Canteen.Transactions.Crystallization.disposition1`](../../Canteen/Transactions/Crystallization.lean#L72), [`Canteen.Transactions.Crystallization.deduction`](../../Canteen/Transactions/Crystallization.lean#L75), [`Canteen.Transactions.Crystallization.shelteredGain`](../../Canteen/Transactions/Crystallization.lean#L81), [`Canteen.Transactions.Crystallization.opco_qualified`](../../Canteen/Transactions/Crystallization.lean#L115), [`Canteen.Transactions.Crystallization.step1_gain`](../../Canteen/Transactions/Crystallization.lean#L132), [`Canteen.Transactions.Crystallization.step1_sheltered`](../../Canteen/Transactions/Crystallization.lean#L135)
 
 **Rests on:** judgment calls J-SBC; facts F2, F3, F1.
 
@@ -320,7 +342,7 @@ The Opco shares are qualified small business corporation shares, so the $625,000
 
 The preferred shares were acquired from Holdco, not at arm's length, in substitution for the Opco shares, so their $1,250,100 cost is reduced by the $1,250,000 gain sheltered on the Opco shares.
 
-**Lean:** [`Canteen.Transactions.Crystallization.step2`](../../Canteen/Transactions/Crystallization.lean#L84), [`Canteen.Transactions.Crystallization.step2_dividend`](../../Canteen/Transactions/Crystallization.lean#L139)
+**Lean:** [`Canteen.Transactions.Crystallization.step2`](../../Canteen/Transactions/Crystallization.lean#L85), [`Canteen.Transactions.Crystallization.step2_dividend`](../../Canteen/Transactions/Crystallization.lean#L140)
 
 **Rests on:** judgment calls J-SBC; facts F3, F1, F2, F4.
 
@@ -330,7 +352,17 @@ The preferred shares were acquired from Holdco, not at arm's length, in substitu
 
 The note exceeds the greater of the $100 paid-up capital and the $100 hard cost by $1,250,000, a deemed dividend.
 
-**Lean:** [`Canteen.Transactions.Crystallization.step2_dividend`](../../Canteen/Transactions/Crystallization.lean#L139)
+**Lean:** [`Canteen.Transactions.Crystallization.step2_dividend`](../../Canteen/Transactions/Crystallization.lean#L140)
+
+**Rests on:** judgment calls J-SBC; facts F3, F1, F2, F4.
+
+### A5b. Taxed as a dividend
+
+**Status:** proven · **Citation:** ITA 82(1); 121 · **Uses:** A4, A5, L5
+
+The $1,250,000 dividend is not an eligible dividend: $1,437,500 is included in the taxpayer's 2026 income, with a dividend tax credit of $129,807.69.
+
+**Lean:** [`Canteen.Transactions.Crystallization.dividendFacts`](../../Canteen/Transactions/Crystallization.lean#L159), [`Canteen.Transactions.Crystallization.step2_dividend_taxed`](../../Canteen/Transactions/Crystallization.lean#L165)
 
 **Rests on:** judgment calls J-SBC; facts F3, F1, F2, F4.
 
@@ -340,7 +372,7 @@ The note exceeds the greater of the $100 paid-up capital and the $100 hard cost 
 
 The dividend is not proceeds, so the taxpayer's proceeds are $100 against a $1,250,100 cost. Newco, which the taxpayer controls, is affiliated with the taxpayer and holds the very shares, so the loss is a superficial loss, nil.
 
-**Lean:** [`Canteen.Transactions.Crystallization.sale2`](../../Canteen/Transactions/Crystallization.lean#L95), [`Canteen.Transactions.Crystallization.slFacts`](../../Canteen/Transactions/Crystallization.lean#L105), [`Canteen.Transactions.Crystallization.step2_loss`](../../Canteen/Transactions/Crystallization.lean#L145), [`Canteen.Transactions.Crystallization.step2_loss_nil`](../../Canteen/Transactions/Crystallization.lean#L149)
+**Lean:** [`Canteen.Transactions.Crystallization.sale2`](../../Canteen/Transactions/Crystallization.lean#L96), [`Canteen.Transactions.Crystallization.slFacts`](../../Canteen/Transactions/Crystallization.lean#L106), [`Canteen.Transactions.Crystallization.step2_loss`](../../Canteen/Transactions/Crystallization.lean#L146), [`Canteen.Transactions.Crystallization.step2_loss_nil`](../../Canteen/Transactions/Crystallization.lean#L150)
 
 **Rests on:** judgment calls J-SBC; facts F3, F1, F2, F4.
 
@@ -350,7 +382,7 @@ The dividend is not proceeds, so the taxpayer's proceeds are $100 against a $1,2
 
 The denied $1,250,000 is added to Newco's $1,250,100 cost of the preferred shares.
 
-**Lean:** [`Canteen.Transactions.Crystallization.newcoCostFacts`](../../Canteen/Transactions/Crystallization.lean#L108), [`Canteen.Transactions.Crystallization.newco_cost`](../../Canteen/Transactions/Crystallization.lean#L155)
+**Lean:** [`Canteen.Transactions.Crystallization.newcoCostFacts`](../../Canteen/Transactions/Crystallization.lean#L109), [`Canteen.Transactions.Crystallization.newco_cost`](../../Canteen/Transactions/Crystallization.lean#L156)
 
 **Rests on:** judgment calls J-SBC; facts F3, F1, F2, F4.
 
@@ -358,11 +390,11 @@ The denied $1,250,000 is added to Newco's $1,250,100 cost of the preferred share
 
 ### K. Conclusion
 
-**Status:** proven · **Uses:** A3, A5, A6, A7
+**Status:** proven · **Uses:** A3, A5, A5b, A6, A7
 
-The crystallization works: the 2025 gain is sheltered. The strip does not: $1,250,000 of the note is a dividend in 2026, and the matching capital loss is denied and moves to Newco's cost.
+The crystallization works: the 2025 gain is sheltered. The strip does not: $1,250,000 of the note is a dividend in 2026 ($1,437,500 of income after the gross-up), and the matching capital loss is denied and moves to Newco's cost.
 
-**Lean:** [`Canteen.Transactions.Crystallization.step1_sheltered`](../../Canteen/Transactions/Crystallization.lean#L134), [`Canteen.Transactions.Crystallization.step2_dividend`](../../Canteen/Transactions/Crystallization.lean#L139), [`Canteen.Transactions.Crystallization.step2_loss_nil`](../../Canteen/Transactions/Crystallization.lean#L149)
+**Lean:** [`Canteen.Transactions.Crystallization.step1_sheltered`](../../Canteen/Transactions/Crystallization.lean#L135), [`Canteen.Transactions.Crystallization.step2_dividend`](../../Canteen/Transactions/Crystallization.lean#L140), [`Canteen.Transactions.Crystallization.step2_loss_nil`](../../Canteen/Transactions/Crystallization.lean#L150)
 
 **Rests on:** judgment calls J-SBC; facts F2, F3, F1, F4.
 
@@ -374,7 +406,7 @@ The crystallization works: the 2025 gain is sheltered. The strip does not: $1,25
 
 The shares would not qualify, so nothing is deducted and the gain is taxed. Nothing then comes off the cost under 84.1(2)(a.1)(ii), and the note is within it: no dividend.
 
-**Lean:** [`Canteen.Transactions.Crystallization.not_sbc_no_deduction`](../../Canteen/Transactions/Crystallization.lean#L160), [`Canteen.Transactions.Crystallization.not_sbc_no_dividend`](../../Canteen/Transactions/Crystallization.lean#L163)
+**Lean:** [`Canteen.Transactions.Crystallization.not_sbc_no_deduction`](../../Canteen/Transactions/Crystallization.lean#L172), [`Canteen.Transactions.Crystallization.not_sbc_no_dividend`](../../Canteen/Transactions/Crystallization.lean#L175)
 
 **Rests on:** judgment calls J-SBC; facts F2, F3, F1, F4.
 

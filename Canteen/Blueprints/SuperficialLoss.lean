@@ -23,6 +23,7 @@ import Canteen.ITA.S84_1.SurplusStripping
 import Canteen.ITA.S110_6.CapitalGainsDeduction
 import Canteen.ITA.S251_2.LossRestrictionEvent
 import Canteen.ITA.S74.IncomeAttribution
+import Canteen.ITA.S82.Dividends
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -343,6 +344,11 @@ def blueprint : Blueprint where
           lean := [``IncomeAttribution.applies, ``IncomeAttribution.attributedIncome, ``IncomeAttribution.prescribed_rate_loan,
             ``IncomeAttribution.adult_by_year_end, ``IncomeAttribution.income_split, ``IncomeAttribution.repayment_share_le],
           uses := ["R15"] },
+        { id := "R22", kind := .law, title := "Taxable dividends: the gross-up and credit", citation := "ITA 82(1); 121"
+          statement := "Taxable dividends from corporations resident in Canada are included in income; an individual adds a " ++
+            "gross-up (15% for non-eligible dividends after 2018, 38% for eligible dividends after 2011) and deducts a credit " ++
+            "from tax (9/13 and 6/11 of the gross-up). Proven: the credit never exceeds the gross-up."
+          lean := [``Dividends.inclusion, ``Dividends.credit, ``Dividends.credit_le_grossUp, ``Dividends.non_eligible_2025] },
         { id := "R11", kind := .law, title := "The principal residence exemption", citation := "ITA 40(2)(b); 54 \"principal residence\""
           statement := "A home is the principal residence for a year if owned, ordinarily inhabited by the family (or covered by " ++
             "a 45(2) or (3) election, for at most four years: (d)), designated, and not blocked by another family-unit " ++

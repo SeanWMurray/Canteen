@@ -43,7 +43,11 @@ def memo : Blueprint where
         { id := "L4", kind := .law, title := "Superficial losses, and the cost addition", citation := "ITA 54; 40(2)(g)(i); 53(1)(f)"
           statement := "A loss on shares an affiliated person holds at the end of the period is nil, and is added to that " ++
             "person's cost."
-          lean := [``Paragraph40_2_g.paragraph, ``Paragraph40_2_g.deniedLoss, ``CostAddition.adjustedCostBase] } ] },
+          lean := [``Paragraph40_2_g.paragraph, ``Paragraph40_2_g.deniedLoss, ``CostAddition.adjustedCostBase] },
+        { id := "L5", kind := .law, title := "Taxable dividends", citation := "ITA 82(1); 121"
+          statement := "A taxable dividend that is not an eligible dividend is grossed up by 15% in income, with a credit of " ++
+            "9/13 of the gross-up."
+          lean := [``Dividends.inclusion, ``Dividends.credit] } ] },
     { heading := "Facts"
       nodes := [
         { id := "F1", kind := .fact, title := "The taxpayer and the companies"
@@ -89,6 +93,10 @@ def memo : Blueprint where
           statement := "The note exceeds the greater of the $100 paid-up capital and the $100 hard cost by $1,250,000, a " ++
             "deemed dividend."
           lean := [``step2_dividend], uses := ["A4"] },
+        { id := "A5b", kind := .step, title := "Taxed as a dividend", citation := "ITA 82(1); 121"
+          statement := "The $1,250,000 dividend is not an eligible dividend: $1,437,500 is included in the taxpayer's 2026 " ++
+            "income, with a dividend tax credit of $129,807.69."
+          lean := [``dividendFacts, ``step2_dividend_taxed], uses := ["A4", "A5", "L5"] },
         { id := "A6", kind := .step, title := "A $1,250,000 capital loss, made nil", citation := "ITA 54 \"proceeds of disposition\" (k); 40(2)(g)(i)"
           statement := "The dividend is not proceeds, so the taxpayer's proceeds are $100 against a $1,250,100 cost. Newco, " ++
             "which the taxpayer controls, is affiliated with the taxpayer and holds the very shares, so the loss is a " ++
@@ -101,8 +109,9 @@ def memo : Blueprint where
       nodes := [
         { id := "K", kind := .conclusion, title := "Conclusion"
           statement := "The crystallization works: the 2025 gain is sheltered. The strip does not: $1,250,000 of the note is " ++
-            "a dividend in 2026, and the matching capital loss is denied and moves to Newco's cost."
-          lean := [``step1_sheltered, ``step2_dividend, ``step2_loss_nil], uses := ["A3", "A5", "A6", "A7"] } ] },
+            "a dividend in 2026 ($1,437,500 of income after the gross-up), and the matching capital loss is denied and moves to " ++
+            "Newco's cost."
+          lean := [``step1_sheltered, ``step2_dividend, ``step2_loss_nil], uses := ["A3", "A5", "A5b", "A6", "A7"] } ] },
     { heading := "If Opco is not a small business corporation"
       nodes := [
         { id := "W1", kind := .step, title := "Taxed in 2025, but no dividend in 2026", citation := "ITA 110.6(2.1); 84.1(2)(a.1)"

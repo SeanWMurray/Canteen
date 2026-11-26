@@ -1,0 +1,39 @@
+Income Tax Act, R.S.C. 1985, c. 1 (5th Supp.), subsection 82(1) and section 121
+
+Source: Justice Canada consolidated Acts (XML), https://github.com/justicecanada/laws-lois-xml, file eng/acts/I-3.3.xml
+Current to: 2026-10-29. Last amended: 2026-06-18.
+Extracted verbatim; whitespace normalized; paragraph labels kept.
+
+82
+  (1) In computing the income of a taxpayer for a taxation year, there shall be included the total of the following amounts:
+    (a) the amount, if any, by which
+      (i) the total of all amounts, other than eligible dividends and amounts described in paragraph (c), (d) or (e), received by the taxpayer in the taxation year from corporations resident in Canada as, on account of, in lieu of payment of or in satisfaction of, taxable dividends,
+      [continued] exceeds
+      (ii) if the taxpayer is an individual, the total of all amounts each of which is, or is deemed by paragraph 260(12)(b) to have been, paid by the taxpayer in the taxation year and deemed by subsection 260(5.1) to have been received by another person as a taxable dividend (other than an eligible dividend);
+    (a.1) the amount, if any, by which
+      (i) the total of all amounts, other than amounts included in computing the income of the taxpayer because of paragraph (c), (d) or (e), received by the taxpayer in the taxation year from corporations resident in Canada as, on account of, in lieu of payment of or in satisfaction of, eligible dividends,
+      [continued] exceeds
+      (ii) if the taxpayer is an individual, the total of all amounts each of which is, or is deemed by paragraph 260(12)(b) to have been, paid by the taxpayer in the taxation year and deemed by subsection 260(5.1) to have been received by another person as an eligible dividend;
+    (b) if the taxpayer is an individual, other than a trust that is a registered charity, the total of
+      (i) the product of the amount determined under paragraph (a) in respect of the taxpayer for the taxation year multiplied by
+        (A) for the 2018 taxation year, 16%, and
+        (B) for taxation years after 2018, 15%, and
+      (ii) the product of the amount determined under paragraph (a.1) in respect of the taxpayer for the taxation year multiplied by
+        (A) for taxation years that end after 2005 and before 2010, 45%,
+        (B) for the 2010 taxation year, 44%,
+        (C) for the 2011 taxation year, 41%, and
+        (D) for taxation years that end after 2011, 38%;
+    (c) all taxable dividends received by the taxpayer in the taxation year, from corporations resident in Canada, under dividend rental arrangements of the taxpayer;
+    (d) all taxable dividends (other than taxable dividends described in paragraph (c)) received by the taxpayer in the taxation year from corporations resident in Canada that are not taxable Canadian corporations; and
+    (e) if the taxpayer is a trust, all amounts each of which is all or part of a taxable dividend (other than a taxable dividend described in paragraph (c) or (d)) that was received by the trust in the taxation year on a share of the capital stock of a taxable Canadian corporation and that can reasonably be considered to have been included in computing the income of a beneficiary under the trust who was non-resident at the end of the taxation year.
+
+121
+  There may be deducted from the tax otherwise payable under this Part by an individual for a taxation year the total of
+    (a) the product of the amount, if any, that is required by subparagraph 82(1)(b)(i) to be included in computing the individual’s income for the year multiplied by
+      (i) for the 2018 taxation year, 8/11, and
+      (ii) for taxation years after 2018, 9/13, and
+    (b) the product of the amount, if any, that is required by subparagraph 82(1)(b)(ii) to be included in computing the individual’s income for the year multiplied by
+      (i) for the 2009 taxation year, 11/18,
+      (ii) for the 2010 taxation year, 10/17,
+      (iii) for the 2011 taxation year, 13/23, and
+      (iv) for taxation years after 2011, 6/11.

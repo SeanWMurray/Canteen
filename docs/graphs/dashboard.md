@@ -9,9 +9,9 @@ An overview of the project, drawn from the Lean.
 Every statement in every blueprint, by the status Lean computes for it.
 
 ```mermaid
-pie showData title All 168 statements in the memos and blueprints, by status
-    "encoded" : 29
-    "proven" : 102
+pie showData title All 171 statements in the memos and blueprints, by status
+    "encoded" : 30
+    "proven" : 104
     "not formalized" : 3
     "fact" : 28
     "judgment call" : 6
@@ -111,32 +111,36 @@ mindmap
       n39["`74.1(3): repaying debt`"]
       n40["`74.2(1): capital gains attributed back`"]
       n41["`74.5(1) to (3): fair market value, loans for value, separation`"]
-    n42["`s. 84.1`"]
-      n43["`84.1(1): paid-up capital, and the deemed dividend`"]
-      n44["`84.1(2): hard cost, arm's length`"]
-    n45["`s. 85`"]
-      n46["`85(1): the elected amount, and the cost of the consideration`"]
-      n47["`85(2.1): paid-up capital`"]
-    n48["`s. 110.6`"]
-      n49["`qualified small business corporation share`"]
-      n50["`annual and cumulative gains limits`"]
-      n51["`110.6(2.1): the deduction`"]
-    n52["`s. 111`"]
-      n53["`111(8): net capital loss`"]
-      n54["`111(1)(b), (1.1): deduction`"]
-    n55["`s. 248`"]
-      n56["`248(1): majority-interest partner`"]
-    n57["`s. 251`"]
-      n58["`251(1): arm's length`"]
-      n59["`251(2), (3): related persons`"]
-      n60["`251(3.1), (3.2): amalgamations`"]
-      n61["`251(6): blood, marriage, adoption`"]
-    n62["`s. 251.2`"]
-      n63["`251.2(2)(a): loss restriction event`"]
-    n64["`s. 256`"]
-      n65["`256(7)(a): control not acquired`"]
-    n66["`s. 251.1`"]
-      n67["`251.1(1)(a) to (h): affiliated persons`"]
-      n68["`251.1(2): amalgamations`"]
-      n69["`251.1(3), (4): definitions and rules`"]
+    n42["`s. 82`"]
+      n43["`82(1): taxable dividends and the gross-up`"]
+    n44["`s. 84.1`"]
+      n45["`84.1(1): paid-up capital, and the deemed dividend`"]
+      n46["`84.1(2): hard cost, arm's length`"]
+    n47["`s. 85`"]
+      n48["`85(1): the elected amount, and the cost of the consideration`"]
+      n49["`85(2.1): paid-up capital`"]
+    n50["`s. 110.6`"]
+      n51["`qualified small business corporation share`"]
+      n52["`annual and cumulative gains limits`"]
+      n53["`110.6(2.1): the deduction`"]
+    n54["`s. 111`"]
+      n55["`111(8): net capital loss`"]
+      n56["`111(1)(b), (1.1): deduction`"]
+    n57["`s. 248`"]
+      n58["`248(1): majority-interest partner`"]
+    n59["`s. 251`"]
+      n60["`251(1): arm's length`"]
+      n61["`251(2), (3): related persons`"]
+      n62["`251(3.1), (3.2): amalgamations`"]
+      n63["`251(6): blood, marriage, adoption`"]
+    n64["`s. 121`"]
+      n65["`121: the dividend tax credit`"]
+    n66["`s. 251.2`"]
+      n67["`251.2(2)(a): loss restriction event`"]
+    n68["`s. 256`"]
+      n69["`256(7)(a): control not acquired`"]
+    n70["`s. 251.1`"]
+      n71["`251.1(1)(a) to (h): affiliated persons`"]
+      n72["`251.1(2): amalgamations`"]
+      n73["`251.1(3), (4): definitions and rules`"]
 ```
