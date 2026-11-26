@@ -533,6 +533,34 @@ flowchart TD
   classDef start fill:#ffffff,stroke:#212121,color:#212121
 ```
 
+## Subsections 74.1(1) and (2): income attribution
+
+```mermaid
+flowchart TD
+  S(["subsection 74.1(1) or (2) · ITA 74.1(1), (2)"]):::start
+  C0["<b>recipient</b> The property was transferred or lent to the<br/>individual's spouse or common-law partner,<br/>or to a minor not at arm's length with the<br/>individual or a niece or nephew<br/>[ITA 74.1(1), (2) recipient]"]:::fact
+  E0["<b>turned 18</b> The minor attained 18 years of age before<br/>the end of the year (74.1(2))<br/>[ITA 74.1(1), (2) turned 18]"]:::fact
+  E1["<b>74.5(1)</b> 74.5(1) applies<br/>[ITA 74.5(1)]"]:::rule
+  E2["<b>74.5(2)</b> 74.5(2) applies<br/>[ITA 74.5(2)]"]:::rule
+  Y(["subsection 74.1(1) or (2) applies"]):::yes
+  N(["subsection 74.1(1) or (2) does not apply"]):::no
+  S --> C0
+  C0 -->|met| E0
+  C0 -->|not met| N
+  E0 -->|does not apply| E1
+  E0 -->|applies| N
+  E1 -->|does not apply| E2
+  E1 -->|applies| N
+  E2 -->|does not apply| Y
+  E2 -->|applies| N
+  classDef fact fill:#eeeeee,stroke:#616161,color:#212121
+  classDef judgment fill:#ffe0b2,stroke:#ef6c00,color:#e65100
+  classDef rule fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+  classDef yes fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
+  classDef no fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+  classDef start fill:#ffffff,stroke:#212121,color:#212121
+```
+
 ## Subparagraph 40(2)(g)(iv): transfers to registered plans
 
 ```mermaid

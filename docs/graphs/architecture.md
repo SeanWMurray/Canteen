@@ -58,28 +58,29 @@ flowchart BT
     m50["ITA.S84_1.SurplusStripping"]
     m51["ITA.S110_6.CapitalGainsDeduction"]
     m52["ITA.S251_2.LossRestrictionEvent"]
-    m53["ITA.S50.BadDebtPersonalUse"]
-    m54["ITA.S54.Timeline"]
+    m53["ITA.S74.IncomeAttribution"]
+    m54["ITA.S50.BadDebtPersonalUse"]
+    m55["ITA.S54.Timeline"]
   end
   subgraph Lemmas["Layer 2: reusable lemmas"]
-    m55["Lemmas.SuperficialLoss"]
-    m56["Lemmas.SuspendedLoss"]
+    m56["Lemmas.SuperficialLoss"]
+    m57["Lemmas.SuspendedLoss"]
   end
   subgraph Transactions["Layer 3: transactions"]
-    m57["Transactions.SpouseRepurchase"]
-    m58["Transactions.SiblingAndLateRepurchase"]
-    m59["Transactions.TfsaContribution"]
-    m60["Transactions.HoldcoRepurchase"]
-    m61["Transactions.SisterCompanyRepurchase"]
+    m58["Transactions.SpouseRepurchase"]
+    m59["Transactions.SiblingAndLateRepurchase"]
+    m60["Transactions.TfsaContribution"]
+    m61["Transactions.HoldcoRepurchase"]
+    m62["Transactions.SisterCompanyRepurchase"]
   end
   subgraph Blueprints["Blueprints"]
-    m62["Blueprints.SuperficialLoss"]
-    m63["Blueprints.SpouseRepurchase"]
-    m64["Blueprints.SiblingAndLateRepurchase"]
-    m65["Blueprints.TfsaContribution"]
-    m66["Blueprints.HoldcoRepurchase"]
-    m67["Blueprints.SisterCompanyRepurchase"]
-    m68["Blueprints.All"]
+    m63["Blueprints.SuperficialLoss"]
+    m64["Blueprints.SpouseRepurchase"]
+    m65["Blueprints.SiblingAndLateRepurchase"]
+    m66["Blueprints.TfsaContribution"]
+    m67["Blueprints.HoldcoRepurchase"]
+    m68["Blueprints.SisterCompanyRepurchase"]
+    m69["Blueprints.All"]
   end
   subgraph Examples["Examples"]
     m19["Examples.RuleX"]
@@ -88,10 +89,10 @@ flowchart BT
     m22["Examples.RuleXStatute"]
   end
   subgraph Graphs["Graphs"]
-    m69["Graphs.All"]
+    m70["Graphs.All"]
   end
   subgraph Root["Root"]
-    m70["Canteen"]
+    m71["Canteen"]
   end
   m0 --> m3
   m3 --> m4
@@ -178,86 +179,87 @@ flowchart BT
   m41 --> m51
   m12 --> m52
   m30 --> m52
-  m12 --> m53
-  m10 --> m53
-  m2 --> m53
-  m23 --> m54
+  m47 --> m53
+  m12 --> m54
+  m10 --> m54
+  m2 --> m54
   m23 --> m55
-  m37 --> m56
-  m24 --> m57
-  m55 --> m57
-  m27 --> m57
-  m28 --> m57
+  m23 --> m56
+  m37 --> m57
   m24 --> m58
+  m56 --> m58
+  m27 --> m58
   m28 --> m58
-  m55 --> m58
-  m36 --> m59
+  m24 --> m59
   m28 --> m59
+  m56 --> m59
   m36 --> m60
-  m27 --> m60
-  m29 --> m60
-  m37 --> m61
+  m28 --> m60
+  m36 --> m61
+  m27 --> m61
   m29 --> m61
-  m16 --> m62
-  m55 --> m62
-  m26 --> m62
-  m27 --> m62
-  m28 --> m62
-  m31 --> m62
-  m43 --> m62
-  m45 --> m62
-  m46 --> m62
-  m47 --> m62
-  m48 --> m62
-  m50 --> m62
-  m51 --> m62
-  m52 --> m62
-  m53 --> m62
-  m56 --> m62
+  m37 --> m62
+  m29 --> m62
   m16 --> m63
-  m57 --> m63
-  m25 --> m63
+  m56 --> m63
+  m26 --> m63
+  m27 --> m63
+  m28 --> m63
+  m31 --> m63
+  m43 --> m63
+  m45 --> m63
+  m46 --> m63
+  m48 --> m63
+  m50 --> m63
+  m51 --> m63
+  m52 --> m63
+  m53 --> m63
   m54 --> m63
-  m42 --> m63
+  m57 --> m63
   m16 --> m64
-  m17 --> m64
   m58 --> m64
-  m54 --> m64
+  m25 --> m64
+  m55 --> m64
+  m42 --> m64
   m16 --> m65
   m17 --> m65
   m59 --> m65
-  m54 --> m65
+  m55 --> m65
   m16 --> m66
+  m17 --> m66
   m60 --> m66
-  m54 --> m66
+  m55 --> m66
   m16 --> m67
   m61 --> m67
+  m55 --> m67
+  m16 --> m68
   m62 --> m68
-  m63 --> m68
-  m64 --> m68
-  m65 --> m68
-  m66 --> m68
-  m67 --> m68
-  m22 --> m69
-  m21 --> m69
-  m54 --> m69
-  m26 --> m69
-  m57 --> m69
-  m58 --> m69
-  m59 --> m69
-  m60 --> m69
-  m31 --> m69
-  m53 --> m69
-  m45 --> m69
-  m46 --> m69
-  m47 --> m69
-  m48 --> m69
-  m50 --> m69
-  m51 --> m69
-  m52 --> m69
-  m61 --> m69
-  m18 --> m70
-  m20 --> m70
-  m68 --> m70
-  m69 --> m70
+  m63 --> m69
+  m64 --> m69
+  m65 --> m69
+  m66 --> m69
+  m67 --> m69
+  m68 --> m69
+  m22 --> m70
+  m21 --> m70
+  m55 --> m70
+  m26 --> m70
+  m58 --> m70
+  m59 --> m70
+  m60 --> m70
+  m61 --> m70
+  m31 --> m70
+  m54 --> m70
+  m45 --> m70
+  m46 --> m70
+  m48 --> m70
+  m50 --> m70
+  m51 --> m70
+  m52 --> m70
+  m53 --> m70
+  m62 --> m70
+  m18 --> m71
+  m20 --> m71
+  m69 --> m71
+  m70 --> m71
 ```

@@ -31,3 +31,4 @@ The verbatim statute text for each is in `statute/`. Review notes are in `docs/r
 - `S84_1/SurplusStripping.lean`: subsections 84.1(1) and (2)
 - `S110_6/CapitalGainsDeduction.lean`: subsections 110.6(1) (three definitions) and (2.1)
 - `S251_2/LossRestrictionEvent.lean`: paragraph 251.2(2)(a), with 256(7)(a)
+- `S74/IncomeAttribution.lean`: subsections 74.1(1) to (3), and 74.5(2) and (3)(a)

@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 60 statements:** 41 proven, 16 encoded, 3 not formalized.
+**Status of the 61 statements:** 42 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -65,11 +65,12 @@ graph TD
   n52["R18 · Shares sold to a non-arm's length corporation"]:::proven
   n53["R19 · The capital gains deduction"]:::proven
   n54["R20 · Loss restriction events"]:::proven
-  n55["R11 · The principal residence exemption"]:::proven
-  n56["R2 · Cost of the substituted property"]:::proven
-  n57["N1 · Inputs decided by other provisions"]:::notFormalized
-  n58["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n59["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n55["R21 · Attribution of income to the transferor or lender"]:::proven
+  n56["R11 · The principal residence exemption"]:::proven
+  n57["R2 · Cost of the substituted property"]:::proven
+  n58["N1 · Inputs decided by other provisions"]:::notFormalized
+  n59["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n60["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -161,21 +162,22 @@ graph TD
   n44 --> n53
   n39 --> n54
   n6 --> n54
-  n44 --> n55
-  n50 --> n55
-  n11 --> n56
-  n1 --> n57
-  n5 --> n57
-  n6 --> n57
-  n8 --> n57
-  n37 --> n57
-  n56 --> n57
-  n38 --> n57
-  n30 --> n58
-  n32 --> n59
-  n34 --> n59
-  n39 --> n59
-  n42 --> n59
+  n49 --> n55
+  n44 --> n56
+  n50 --> n56
+  n11 --> n57
+  n1 --> n58
+  n5 --> n58
+  n6 --> n58
+  n8 --> n58
+  n37 --> n58
+  n57 --> n58
+  n38 --> n58
+  n30 --> n59
+  n32 --> n60
+  n34 --> n60
+  n39 --> n60
+  n42 --> n60
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -247,11 +249,12 @@ graph TD
   n52["R18"]:::proven
   n53["R19"]:::proven
   n54["R20"]:::proven
-  n55["R11"]:::proven
-  n56["R2"]:::proven
-  n57["N1"]:::notFormalized
-  n58["N2"]:::notFormalized
-  n59["N4"]:::notFormalized
+  n55["R21"]:::proven
+  n56["R11"]:::proven
+  n57["R2"]:::proven
+  n58["N1"]:::notFormalized
+  n59["N2"]:::notFormalized
+  n60["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -416,21 +419,22 @@ graph TD
   n44 -.-> n53
   n39 -.-> n54
   n6 -.-> n54
-  n44 -.-> n55
-  n50 -.-> n55
-  n11 -.-> n56
-  n1 -.-> n57
-  n5 -.-> n57
-  n6 -.-> n57
-  n8 -.-> n57
-  n37 -.-> n57
-  n56 -.-> n57
-  n38 -.-> n57
-  n30 -.-> n58
-  n32 -.-> n59
-  n34 -.-> n59
-  n39 -.-> n59
-  n42 -.-> n59
+  n49 --> n55
+  n44 -.-> n56
+  n50 -.-> n56
+  n11 -.-> n57
+  n1 -.-> n58
+  n5 -.-> n58
+  n6 -.-> n58
+  n8 -.-> n58
+  n37 -.-> n58
+  n57 -.-> n58
+  n38 -.-> n58
+  n30 -.-> n59
+  n32 -.-> n60
+  n34 -.-> n60
+  n39 -.-> n60
+  n42 -.-> n60
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -889,6 +893,14 @@ A resident individual who disposes of qualified small business corporation share
 A corporation is subject to a loss restriction event when a person or group acquires control of it (de jure); but not solely because shares are acquired from a related person, by a person related to the corporation, by or from an estate on a death, on a redemption leaving only related persons in control, or by a related group each related to the corporation. The event's date feeds paragraph (f) of the definition.
 
 **Lean:** [`Canteen.ITA.LossRestrictionEvent.lossRestrictionEvent`](../../Canteen/ITA/S251_2/LossRestrictionEvent.lean#L139), [`Canteen.ITA.LossRestrictionEvent.eventDate`](../../Canteen/ITA/S251_2/LossRestrictionEvent.lean#L169), [`Canteen.ITA.LossRestrictionEvent.related_sale`](../../Canteen/ITA/S251_2/LossRestrictionEvent.lean#L180), [`Canteen.ITA.LossRestrictionEvent.no_new_controller`](../../Canteen/ITA/S251_2/LossRestrictionEvent.lean#L176), [`Canteen.ITA.LossRestrictionEvent.to_estate`](../../Canteen/ITA/S251_2/LossRestrictionEvent.lean#L185)
+
+### R21. Attribution of income to the transferor or lender
+
+**Status:** proven · **Citation:** ITA 74.1(1)–(3); 74.5(2), (3)(a) · **Uses:** R15
+
+Income or loss from property transferred or lent to a spouse or common-law partner (in the period of residence and marriage), or to a minor not at arm's length or a niece or nephew (until the year the minor turns 18), is the individual's and not the recipient's; including a share of the income of other property whose debt the property paid down. Not for a transfer at fair market value (74.5(1)), a loan at the prescribed rate with interest paid on time (74.5(2)), or a period of separation (74.5(3)(a)).
+
+**Lean:** [`Canteen.ITA.IncomeAttribution.applies`](../../Canteen/ITA/S74/IncomeAttribution.lean#L113), [`Canteen.ITA.IncomeAttribution.attributedIncome`](../../Canteen/ITA/S74/IncomeAttribution.lean#L139), [`Canteen.ITA.IncomeAttribution.prescribed_rate_loan`](../../Canteen/ITA/S74/IncomeAttribution.lean#L174), [`Canteen.ITA.IncomeAttribution.adult_by_year_end`](../../Canteen/ITA/S74/IncomeAttribution.lean#L178), [`Canteen.ITA.IncomeAttribution.income_split`](../../Canteen/ITA/S74/IncomeAttribution.lean#L202), [`Canteen.ITA.IncomeAttribution.repayment_share_le`](../../Canteen/ITA/S74/IncomeAttribution.lean#L186)
 
 ### R11. The principal residence exemption
 

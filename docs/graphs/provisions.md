@@ -35,7 +35,8 @@ flowchart BT
   v26["84.1 shares to a non-arm's length corporation"]:::prov
   v27["110.6 the capital gains deduction"]:::prov
   v28["251.2(2)(a), 256(7)(a) loss restriction events"]:::prov
-  v29["50(2) bad personal-use debts"]:::prov
+  v29["74.1, 74.5(2), (3)(a) attribution of income"]:::prov
+  v30["50(2) bad personal-use debts"]:::prov
   v0 --> v1
   v0 --> v2
   v0 --> v3
@@ -70,5 +71,6 @@ flowchart BT
   v25 --> v26
   v17 --> v27
   v6 --> v28
+  v23 --> v29
   classDef prov fill:#bbdefb,stroke:#1565c0,color:#0d47a1
 ```

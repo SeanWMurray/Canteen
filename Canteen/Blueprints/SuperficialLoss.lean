@@ -22,6 +22,7 @@ import Canteen.ITA.S85.TransferToCorporation
 import Canteen.ITA.S84_1.SurplusStripping
 import Canteen.ITA.S110_6.CapitalGainsDeduction
 import Canteen.ITA.S251_2.LossRestrictionEvent
+import Canteen.ITA.S74.IncomeAttribution
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -332,6 +333,15 @@ def blueprint : Blueprint where
           lean := [``LossRestrictionEvent.lossRestrictionEvent, ``LossRestrictionEvent.eventDate,
             ``LossRestrictionEvent.related_sale, ``LossRestrictionEvent.no_new_controller, ``LossRestrictionEvent.to_estate],
           uses := ["R4", "Pf"] },
+        { id := "R21", kind := .law, title := "Attribution of income to the transferor or lender", citation := "ITA 74.1(1)–(3); 74.5(2), (3)(a)"
+          statement := "Income or loss from property transferred or lent to a spouse or common-law partner (in the period of " ++
+            "residence and marriage), or to a minor not at arm's length or a niece or nephew (until the year the minor " ++
+            "turns 18), is the individual's and not the recipient's; including a share of the income of other property " ++
+            "whose debt the property paid down. Not for a transfer at fair market value (74.5(1)), a loan at the " ++
+            "prescribed rate with interest paid on time (74.5(2)), or a period of separation (74.5(3)(a))."
+          lean := [``IncomeAttribution.applies, ``IncomeAttribution.attributedIncome, ``IncomeAttribution.prescribed_rate_loan,
+            ``IncomeAttribution.adult_by_year_end, ``IncomeAttribution.income_split, ``IncomeAttribution.repayment_share_le],
+          uses := ["R15"] },
         { id := "R11", kind := .law, title := "The principal residence exemption", citation := "ITA 40(2)(b); 54 \"principal residence\""
           statement := "A home is the principal residence for a year if owned, ordinarily inhabited by the family (or covered by " ++
             "a 45(2) or (3) election, for at most four years: (d)), designated, and not blocked by another family-unit " ++

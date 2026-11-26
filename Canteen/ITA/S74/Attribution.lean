@@ -23,8 +23,8 @@ and an arm's length rate, paid each year within 30 days after year-end, and, for
 transferor elected out of 73(1). **74.5(3)(b)**: nor to a disposition while the two live apart
 because of a breakdown of the relationship, if they jointly elect.
 
-Not encoded: 74.1 (income attribution), 74.3, 74.4, and substituted property beyond being given
-as such.
+Income attribution (74.1) is in `IncomeAttribution`. Not encoded: 74.3, 74.4, and substituted
+property beyond being given as such.
 -/
 
 namespace Canteen.ITA.Attribution
