@@ -62,6 +62,7 @@ import Canteen.ITA.S88.WindingUp
 import Canteen.ITA.S87.Amalgamation
 import Canteen.ITA.S51.ConvertibleProperty
 import Canteen.ITA.S3.IndividualYear
+import Canteen.ITA.S39.CanadianSecurities
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.ITA.S40.ShareToAffiliate
@@ -150,3 +151,4 @@ import Canteen.Tests.WindingUp
 import Canteen.Tests.Amalgamation87
 import Canteen.Tests.ConvertibleProperty
 import Canteen.Tests.IndividualYear
+import Canteen.Tests.CanadianSecurities

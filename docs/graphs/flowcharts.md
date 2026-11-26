@@ -723,6 +723,31 @@ flowchart TD
   classDef start fill:#ffffff,stroke:#212121,color:#212121
 ```
 
+## Subsection 39(4): the Canadian securities election
+
+```mermaid
+flowchart TD
+  S(["subsection 39(4) · ITA 39(4)"]):::start
+  C0["<b>(6) Canadian security</b> The property is a Canadian security<br/>[ITA 39(4)(6) Canadian security]"]:::fact
+  C1["<b>election</b> The taxpayer elected under subsection 39(4)<br/>for this or an earlier year<br/>[ITA 39(4) election]"]:::fact
+  E0["<b>(5)</b> The taxpayer is a trader or dealer in<br/>securities, a financial institution, a<br/>money-lending corporation, or a non-resident<br/><i>judgment call: judgment calls computed from the facts</i><br/>[ITA 39(4)(5)]"]:::judgment
+  Y(["subsection 39(4) applies"]):::yes
+  N(["subsection 39(4) does not apply"]):::no
+  S --> C0
+  C0 -->|met| C1
+  C0 -->|not met| N
+  C1 -->|met| E0
+  C1 -->|not met| N
+  E0 -->|does not apply| Y
+  E0 -->|applies| N
+  classDef fact fill:#eeeeee,stroke:#616161,color:#212121
+  classDef judgment fill:#ffe0b2,stroke:#ef6c00,color:#e65100
+  classDef rule fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+  classDef yes fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
+  classDef no fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+  classDef start fill:#ffffff,stroke:#212121,color:#212121
+```
+
 ## Subparagraph 40(2)(g)(iv): transfers to registered plans
 
 ```mermaid

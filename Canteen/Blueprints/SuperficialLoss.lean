@@ -37,6 +37,7 @@ import Canteen.ITA.S88.WindingUp
 import Canteen.ITA.S87.Amalgamation
 import Canteen.ITA.S51.ConvertibleProperty
 import Canteen.ITA.S3.IndividualYear
+import Canteen.ITA.S39.CanadianSecurities
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -456,6 +457,13 @@ def blueprint : Blueprint where
           lean := [``IndividualYear.incomeFacts, ``IndividualYear.taxableIncome, ``IndividualYear.capitalGainsDeduction,
             ``IndividualYear.taxable_le_income, ``IndividualYear.capital_gains_deduction_le],
           uses := ["R8", "R9", "R19", "R21", "R22", "R24"] },
+        { id := "R36", kind := .law, title := "The election for Canadian securities", citation := "ITA 39(4)–(6)"
+          statement := "A taxpayer who elects has every Canadian security (shares of resident corporations, mutual fund trust " ++
+            "units, and debt of residents) treated as capital property in the election year and after, unless a trader or " ++
+            "dealer, financial institution, money-lender or non-resident. The election turns a capital-account judgment call " ++
+            "into a fact (proven)."
+          lean := [``CanadianSecurities.deemedCapital, ``CanadianSecurities.withElection,
+            ``CanadianSecurities.settles_capital_account, ``CanadianSecurities.not_for_non_resident], uses := ["R8"] },
         { id := "R11", kind := .law, title := "The principal residence exemption", citation := "ITA 40(2)(b); 54 \"principal residence\""
           statement := "A home is the principal residence for a year if owned, ordinarily inhabited by the family (or covered by " ++
             "a 45(2) or (3) election, for at most four years: (d)), designated, and not blocked by another family-unit " ++

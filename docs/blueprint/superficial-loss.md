@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 75 statements:** 56 proven, 16 encoded, 3 not formalized.
+**Status of the 76 statements:** 57 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -80,11 +80,12 @@ graph TD
   n67["R33 · Amalgamations"]:::proven
   n68["R34 · Convertible property"]:::proven
   n69["R35 · An individual's year, to taxable income"]:::proven
-  n70["R11 · The principal residence exemption"]:::proven
-  n71["R2 · Cost of the substituted property"]:::proven
-  n72["N1 · Inputs decided by other provisions"]:::notFormalized
-  n73["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n74["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n70["R36 · The election for Canadian securities"]:::proven
+  n71["R11 · The principal residence exemption"]:::proven
+  n72["R2 · Cost of the substituted property"]:::proven
+  n73["N1 · Inputs decided by other provisions"]:::notFormalized
+  n74["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n75["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -200,20 +201,21 @@ graph TD
   n56 --> n69
   n58 --> n69
   n44 --> n70
-  n50 --> n70
-  n11 --> n71
-  n1 --> n72
-  n5 --> n72
-  n6 --> n72
-  n8 --> n72
-  n37 --> n72
-  n71 --> n72
-  n38 --> n72
-  n30 --> n73
-  n32 --> n74
-  n34 --> n74
-  n39 --> n74
-  n42 --> n74
+  n44 --> n71
+  n50 --> n71
+  n11 --> n72
+  n1 --> n73
+  n5 --> n73
+  n6 --> n73
+  n8 --> n73
+  n37 --> n73
+  n72 --> n73
+  n38 --> n73
+  n30 --> n74
+  n32 --> n75
+  n34 --> n75
+  n39 --> n75
+  n42 --> n75
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -300,11 +302,12 @@ graph TD
   n67["R33"]:::proven
   n68["R34"]:::proven
   n69["R35"]:::proven
-  n70["R11"]:::proven
-  n71["R2"]:::proven
-  n72["N1"]:::notFormalized
-  n73["N2"]:::notFormalized
-  n74["N4"]:::notFormalized
+  n70["R36"]:::proven
+  n71["R11"]:::proven
+  n72["R2"]:::proven
+  n73["N1"]:::notFormalized
+  n74["N2"]:::notFormalized
+  n75["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -493,20 +496,21 @@ graph TD
   n44 --> n69
   n53 --> n69
   n44 -.-> n70
-  n50 -.-> n70
-  n11 -.-> n71
-  n1 -.-> n72
-  n5 -.-> n72
-  n6 -.-> n72
-  n8 -.-> n72
-  n37 -.-> n72
-  n71 -.-> n72
-  n38 -.-> n72
-  n30 -.-> n73
-  n32 -.-> n74
-  n34 -.-> n74
-  n39 -.-> n74
-  n42 -.-> n74
+  n44 -.-> n71
+  n50 -.-> n71
+  n11 -.-> n72
+  n1 -.-> n73
+  n5 -.-> n73
+  n6 -.-> n73
+  n8 -.-> n73
+  n37 -.-> n73
+  n72 -.-> n73
+  n38 -.-> n73
+  n30 -.-> n74
+  n32 -.-> n75
+  n34 -.-> n75
+  n39 -.-> n75
+  n42 -.-> n75
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -1085,6 +1089,14 @@ Shares or convertible debt of a corporation exchanged for its shares, with nothi
 Income from sources (employment and business, dividends with the gross-up, recapture, attributed income), net taxable capital gains, less terminal and other losses; then taxable income, after the net capital loss deduction and the capital gains deduction (which the former reduces). Proven: taxable income never exceeds income, and the capital gains deduction never exceeds the net taxable capital gains.
 
 **Lean:** [`Canteen.ITA.IndividualYear.incomeFacts`](../../Canteen/ITA/S3/IndividualYear.lean#L69), [`Canteen.ITA.IndividualYear.taxableIncome`](../../Canteen/ITA/S3/IndividualYear.lean#L90), [`Canteen.ITA.IndividualYear.capitalGainsDeduction`](../../Canteen/ITA/S3/IndividualYear.lean#L81), [`Canteen.ITA.IndividualYear.taxable_le_income`](../../Canteen/ITA/S3/IndividualYear.lean#L112), [`Canteen.ITA.IndividualYear.capital_gains_deduction_le`](../../Canteen/ITA/S3/IndividualYear.lean#L117)
+
+### R36. The election for Canadian securities
+
+**Status:** proven · **Citation:** ITA 39(4)–(6) · **Uses:** R8
+
+A taxpayer who elects has every Canadian security (shares of resident corporations, mutual fund trust units, and debt of residents) treated as capital property in the election year and after, unless a trader or dealer, financial institution, money-lender or non-resident. The election turns a capital-account judgment call into a fact (proven).
+
+**Lean:** [`Canteen.ITA.CanadianSecurities.deemedCapital`](../../Canteen/ITA/S39/CanadianSecurities.lean#L67), [`Canteen.ITA.CanadianSecurities.withElection`](../../Canteen/ITA/S39/CanadianSecurities.lean#L82), [`Canteen.ITA.CanadianSecurities.settles_capital_account`](../../Canteen/ITA/S39/CanadianSecurities.lean#L88), [`Canteen.ITA.CanadianSecurities.not_for_non_resident`](../../Canteen/ITA/S39/CanadianSecurities.lean#L93)
 
 ### R11. The principal residence exemption
 

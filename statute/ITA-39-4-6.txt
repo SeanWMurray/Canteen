@@ -1,0 +1,21 @@
+Income Tax Act, R.S.C. 1985, c. 1 (5th Supp.), subsections 39(4) to (6)
+
+Source: Justice Canada consolidated Acts (XML), https://github.com/justicecanada/laws-lois-xml, file eng/acts/I-3.3.xml
+Current to: 2026-10-29. Last amended: 2026-06-18.
+Extracted verbatim; whitespace normalized; paragraph labels kept.
+
+39
+  [Election concerning disposition of Canadian securities]
+  (4) Except as provided in subsection 39(5), where a Canadian security has been disposed of by a taxpayer in a taxation year and the taxpayer so elects in prescribed form in the taxpayer’s return of income under this Part for that year,
+    (a) every Canadian security owned by the taxpayer in that year or any subsequent taxation year shall be deemed to have been a capital property owned by the taxpayer in those years; and
+    (b) every disposition by the taxpayer of any such Canadian security shall be deemed to be a disposition by the taxpayer of a capital property.
+  [Exception]
+  (5) An election under subsection 39(4) does not apply to a disposition of a Canadian security by a taxpayer (other than a mutual fund corporation or a mutual fund trust) who at the time of the disposition is
+    (a) a trader or dealer in securities,
+    (b) a financial institution (as defined in subsection 142.2(1)),
+    (c) to (e) [Repealed, 1995, c. 21, s. 49]
+    (f) a corporation whose principal business is the lending of money or the purchasing of debt obligations or a combination thereof, or
+    (g) a non-resident,
+    [continued] or any combination thereof.
+  [Definition of Canadian security]
+  (6) For the purposes of this section, Canadian security means a security (other than a prescribed security) that is a share of the capital stock of a corporation resident in Canada, a unit of a mutual fund trust or a bond, debenture, bill, note, mortgage, hypothecary claim or similar obligation issued by a person resident in Canada.

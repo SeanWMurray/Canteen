@@ -33,6 +33,7 @@ import Canteen.ITA.S44.ReplacementProperty
 import Canteen.ITA.S186.Connected
 import Canteen.ITA.S88.WindingUp
 import Canteen.ITA.S87.Amalgamation
+import Canteen.ITA.S39.CanadianSecurities
 import Canteen.Transactions.SisterCompanyRepurchase
 import Canteen.Transactions.Crystallization
 import Canteen.Transactions.SaleThroughHoldco
@@ -162,7 +163,8 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S88.WindingUp, "88(1) winding-up and the bump"),
    (`Canteen.ITA.S87.Amalgamation, "87(1), (2)(e), (4) amalgamations"),
    (`Canteen.ITA.S51.ConvertibleProperty, "51 convertible property"),
-   (`Canteen.ITA.S3.IndividualYear, "2(2), 3 an individual's year, to taxable income")]
+   (`Canteen.ITA.S3.IndividualYear, "2(2), 3 an individual's year, to taxable income"),
+   (`Canteen.ITA.S39.CanadianSecurities, "39(4) to (6) the Canadian securities election")]
 
 /-! ## The dashboard -/
 
@@ -229,7 +231,7 @@ def actMindmap : String := Id.run do
     (2, "ss. 2, 3"), (3, "income for the year: (a) to (f)"), (3, "2(2): taxable income"),
     (2, "s. 13"), (3, "13(21): undepreciated capital cost"), (3, "13(1): recapture"),
     (2, "s. 20"), (3, "20(16): terminal loss"),
-    (2, "ss. 38 to 41"), (3, "38: inclusion rates"), (3, "39(1): capital gains and losses"),
+    (2, "ss. 38 to 41"), (3, "38: inclusion rates"), (3, "39(1): capital gains and losses"), (3, "39(4): the Canadian securities election"),
     (3, "40(1): gains and losses, reserves"), (3, "41: listed personal property"),
     (2, "s. 40"), (3, "40(2)(b): the principal residence exemption"), (3, "40(2)(g): losses that are nil"),
     (4, "(i) superficial losses"), (4, "(ii) debts"), (4, "(iii) personal-use property"),
@@ -308,6 +310,7 @@ def pages : List Page := [
       ("Subsection 186(4): connected corporations", flowchart Connected.connected.outline),
       ("Subsection 88(1): winding up a subsidiary", flowchart WindingUp.applies.outline),
       ("Subsection 87(1): amalgamation", flowchart Amalgamation87.amalgamation.outline),
+      ("Subsection 39(4): the Canadian securities election", flowchart CanadianSecurities.deemedCapital.outline),
       ("Subparagraph 40(2)(g)(iv): transfers to registered plans", flowchart Paragraph40_2_g.planTransferLoss.outline),
       ("Clause 40(2)(g)(iv)(A)", flowchart Paragraph40_2_g.planTransferA.outline),
       ("Clause 40(2)(g)(iv)(B)", flowchart Paragraph40_2_g.planTransferB.outline),
