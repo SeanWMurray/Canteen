@@ -26,6 +26,7 @@ import Canteen.ITA.S74.IncomeAttribution
 import Canteen.ITA.S82.Dividends
 import Canteen.ITA.S55.IntercorporateDividends
 import Canteen.ITA.S13.Depreciable
+import Canteen.ITA.S84.Redemption
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -368,6 +369,13 @@ def blueprint : Blueprint where
           lean := [``Depreciable.ClassFacts.ucc, ``Depreciable.ClassFacts.recapture, ``Depreciable.ClassFacts.terminalLoss,
             ``Depreciable.recapture_or_ucc, ``Depreciable.recapture_le_depreciation, ``Depreciable.sold_above_cost],
           uses := ["R8"] },
+        { id := "R25", kind := .law, title := "Redemptions of shares", citation := "ITA 84(3); 54 \"proceeds of disposition\" (j)"
+          statement := "A resident corporation that redeems its shares is deemed to pay a dividend of the amount paid over their " ++
+            "paid-up capital, shared among the holders by number of shares; the dividend is not proceeds, except to the extent " ++
+            "55(2)(b) makes it so. Proven: a sole holder's dividend and proceeds add up to the amount paid, the proceeds " ++
+            "being the paid-up capital."
+          lean := [``Redemption.dividend, ``Redemption.proceeds, ``Redemption.sole_holder, ``Redemption.no_dividend_within_puc,
+            ``Redemption.corporateDisposition], uses := ["R8", "R22", "R23"] },
         { id := "R11", kind := .law, title := "The principal residence exemption", citation := "ITA 40(2)(b); 54 \"principal residence\""
           statement := "A home is the principal residence for a year if owned, ordinarily inhabited by the family (or covered by " ++
             "a 45(2) or (3) election, for at most four years: (d)), designated, and not blocked by another family-unit " ++

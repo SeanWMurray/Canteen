@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 64 statements:** 45 proven, 16 encoded, 3 not formalized.
+**Status of the 65 statements:** 46 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -69,11 +69,12 @@ graph TD
   n56["R22 · Taxable dividends: the gross-up and credit"]:::proven
   n57["R23 · Intercorporate dividends, and when they are gains"]:::proven
   n58["R24 · Depreciable property: recapture and terminal losses"]:::proven
-  n59["R11 · The principal residence exemption"]:::proven
-  n60["R2 · Cost of the substituted property"]:::proven
-  n61["N1 · Inputs decided by other provisions"]:::notFormalized
-  n62["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n63["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n59["R25 · Redemptions of shares"]:::proven
+  n60["R11 · The principal residence exemption"]:::proven
+  n61["R2 · Cost of the substituted property"]:::proven
+  n62["N1 · Inputs decided by other provisions"]:::notFormalized
+  n63["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n64["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -168,20 +169,23 @@ graph TD
   n49 --> n55
   n44 --> n58
   n44 --> n59
-  n50 --> n59
-  n11 --> n60
-  n1 --> n61
-  n5 --> n61
-  n6 --> n61
-  n8 --> n61
-  n37 --> n61
-  n60 --> n61
-  n38 --> n61
-  n30 --> n62
-  n32 --> n63
-  n34 --> n63
-  n39 --> n63
-  n42 --> n63
+  n56 --> n59
+  n57 --> n59
+  n44 --> n60
+  n50 --> n60
+  n11 --> n61
+  n1 --> n62
+  n5 --> n62
+  n6 --> n62
+  n8 --> n62
+  n37 --> n62
+  n61 --> n62
+  n38 --> n62
+  n30 --> n63
+  n32 --> n64
+  n34 --> n64
+  n39 --> n64
+  n42 --> n64
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -257,11 +261,12 @@ graph TD
   n56["R22"]:::proven
   n57["R23"]:::proven
   n58["R24"]:::proven
-  n59["R11"]:::proven
-  n60["R2"]:::proven
-  n61["N1"]:::notFormalized
-  n62["N2"]:::notFormalized
-  n63["N4"]:::notFormalized
+  n59["R25"]:::proven
+  n60["R11"]:::proven
+  n61["R2"]:::proven
+  n62["N1"]:::notFormalized
+  n63["N2"]:::notFormalized
+  n64["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -428,21 +433,24 @@ graph TD
   n6 -.-> n54
   n49 --> n55
   n44 -.-> n58
+  n57 --> n59
   n44 -.-> n59
-  n50 -.-> n59
-  n11 -.-> n60
-  n1 -.-> n61
-  n5 -.-> n61
-  n6 -.-> n61
-  n8 -.-> n61
-  n37 -.-> n61
-  n60 -.-> n61
-  n38 -.-> n61
-  n30 -.-> n62
-  n32 -.-> n63
-  n34 -.-> n63
-  n39 -.-> n63
-  n42 -.-> n63
+  n56 -.-> n59
+  n44 -.-> n60
+  n50 -.-> n60
+  n11 -.-> n61
+  n1 -.-> n62
+  n5 -.-> n62
+  n6 -.-> n62
+  n8 -.-> n62
+  n37 -.-> n62
+  n61 -.-> n62
+  n38 -.-> n62
+  n30 -.-> n63
+  n32 -.-> n64
+  n34 -.-> n64
+  n39 -.-> n64
+  n42 -.-> n64
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -933,6 +941,14 @@ A corporation deducts taxable dividends from taxable Canadian corporations (112(
 A class's undepreciated capital cost is its capital cost (plus earlier recapture) less the capital cost allowance claimed and, for each disposition, the lesser of net proceeds and capital cost. If negative at year end it is recaptured into income; if positive with no property left, it is a terminal loss. Proven: recapture and UCC are never both positive, and recapture never exceeds the allowance claimed.
 
 **Lean:** [`Canteen.ITA.Depreciable.ClassFacts.ucc`](../../Canteen/ITA/S13/Depreciable.lean#L75), [`Canteen.ITA.Depreciable.ClassFacts.recapture`](../../Canteen/ITA/S13/Depreciable.lean#L78), [`Canteen.ITA.Depreciable.ClassFacts.terminalLoss`](../../Canteen/ITA/S13/Depreciable.lean#L81), [`Canteen.ITA.Depreciable.recapture_or_ucc`](../../Canteen/ITA/S13/Depreciable.lean#L123), [`Canteen.ITA.Depreciable.recapture_le_depreciation`](../../Canteen/ITA/S13/Depreciable.lean#L134), [`Canteen.ITA.Depreciable.sold_above_cost`](../../Canteen/ITA/S13/Depreciable.lean#L156)
+
+### R25. Redemptions of shares
+
+**Status:** proven · **Citation:** ITA 84(3); 54 "proceeds of disposition" (j) · **Uses:** R8, R22, R23
+
+A resident corporation that redeems its shares is deemed to pay a dividend of the amount paid over their paid-up capital, shared among the holders by number of shares; the dividend is not proceeds, except to the extent 55(2)(b) makes it so. Proven: a sole holder's dividend and proceeds add up to the amount paid, the proceeds being the paid-up capital.
+
+**Lean:** [`Canteen.ITA.Redemption.dividend`](../../Canteen/ITA/S84/Redemption.lean#L56), [`Canteen.ITA.Redemption.proceeds`](../../Canteen/ITA/S84/Redemption.lean#L62), [`Canteen.ITA.Redemption.sole_holder`](../../Canteen/ITA/S84/Redemption.lean#L103), [`Canteen.ITA.Redemption.no_dividend_within_puc`](../../Canteen/ITA/S84/Redemption.lean#L99), [`Canteen.ITA.Redemption.corporateDisposition`](../../Canteen/ITA/S84/Redemption.lean#L80)
 
 ### R11. The principal residence exemption
 

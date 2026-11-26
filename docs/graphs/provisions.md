@@ -39,7 +39,8 @@ flowchart BT
   v30["82(1), 121 dividends, gross-up and credit"]:::prov
   v31["112(1), 55(2) intercorporate dividends"]:::prov
   v32["13(1), (21), 20(16) recapture and terminal loss"]:::prov
-  v33["50(2) bad personal-use debts"]:::prov
+  v33["84(3) redemptions"]:::prov
+  v34["50(2) bad personal-use debts"]:::prov
   v0 --> v1
   v0 --> v2
   v0 --> v3
@@ -76,5 +77,8 @@ flowchart BT
   v6 --> v28
   v23 --> v29
   v17 --> v32
+  v17 --> v33
+  v30 --> v33
+  v31 --> v33
   classDef prov fill:#bbdefb,stroke:#1565c0,color:#0d47a1
 ```

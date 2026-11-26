@@ -1,0 +1,17 @@
+Income Tax Act, R.S.C. 1985, c. 1 (5th Supp.), subsection 84(3), and paragraph (j) of the definition "proceeds of disposition" in section 54
+
+Source: Justice Canada consolidated Acts (XML), https://github.com/justicecanada/laws-lois-xml, file eng/acts/I-3.3.xml
+Current to: 2026-10-29. Last amended: 2026-06-18.
+Extracted verbatim; whitespace normalized; paragraph labels kept.
+
+84
+  [Redemption, etc.]
+  (3) Where at any time after December 31, 1977 a corporation resident in Canada has redeemed, acquired or cancelled in any manner whatever (otherwise than by way of a transaction described in subsection 84(2)) any of the shares of any class of its capital stock,
+    (a) the corporation shall be deemed to have paid at that time a dividend on a separate class of shares comprising the shares so redeemed, acquired or cancelled equal to the amount, if any, by which the amount paid by the corporation on the redemption, acquisition or cancellation, as the case may be, of those shares exceeds the paid-up capital in respect of those shares immediately before that time; and
+    (b) a dividend shall be deemed to have been received at that time by each person who held any of the shares of that separate class at that time equal to that portion of the amount of the excess determined under paragraph 84(3)(a) that the number of those shares held by the person immediately before that time is of the total number of shares of that separate class that the corporation has redeemed, acquired or cancelled, at that time.
+
+54 proceeds of disposition
+  … but notwithstanding any other provision of this Part, does not include
+  (j) any amount that would otherwise be proceeds of disposition of a share to the extent that the amount is deemed by subsection 84(2) or (3) to be a dividend received except to the extent the dividend is deemed
+    (i) by paragraph 55(2)(b) to be proceeds of disposition of the share, or
+    (ii) by subparagraph 88(2)(b)(ii) not to be a dividend, or
