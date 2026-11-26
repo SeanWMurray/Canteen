@@ -440,6 +440,34 @@ flowchart TD
   classDef start fill:#ffffff,stroke:#212121,color:#212121
 ```
 
+## Subsection 84.1(1): shares sold to a non-arm's length corporation
+
+```mermaid
+flowchart TD
+  S(["subsection 84.1(1) · ITA 84.1(1)"]):::start
+  C0["<b>taxpayer</b> The taxpayer is resident in Canada and is<br/>not a corporation<br/>[ITA 84.1(1) taxpayer]"]:::fact
+  C1["<b>subject shares</b> The subject shares are capital property of<br/>the taxpayer, of a corporation resident in<br/>Canada<br/>[ITA 84.1(1) subject shares]"]:::fact
+  C2["<b>not at arm's length</b> The taxpayer does not deal at arm's length<br/>with the purchaser corporation (or is deemed<br/>not to by 84.1(2)(b) or (d))<br/><i>judgment call: judgment calls computed from the facts</i><br/>[ITA 84.1(1) not at arm's length]"]:::judgment
+  C3["<b>connected</b> Immediately after, the subject corporation<br/>is connected with the purchaser corporation<br/>(186(4))<br/>[ITA 84.1(1) connected]"]:::fact
+  Y(["subsection 84.1(1) applies"]):::yes
+  N(["subsection 84.1(1) does not apply"]):::no
+  S --> C0
+  C0 -->|met| C1
+  C0 -->|not met| N
+  C1 -->|met| C2
+  C1 -->|not met| N
+  C2 -->|met| C3
+  C2 -->|not met| N
+  C3 -->|met| Y
+  C3 -->|not met| N
+  classDef fact fill:#eeeeee,stroke:#616161,color:#212121
+  classDef judgment fill:#ffe0b2,stroke:#ef6c00,color:#e65100
+  classDef rule fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+  classDef yes fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
+  classDef no fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+  classDef start fill:#ffffff,stroke:#212121,color:#212121
+```
+
 ## Subparagraph 40(2)(g)(iv): transfers to registered plans
 
 ```mermaid

@@ -68,7 +68,8 @@ Proportions are rounded down to the cent.
 
 Not encoded: (c.2) (cash-method farm inventory), (e.1) (ordering of depreciable properties),
 (e.4), (e.5) (passenger vehicles), (i) (taxable Canadian property), 85(1.11), (1.12) and (1.2);
-85(2.1)(b); and section 84.1, which displaces 85(2.1) for shares of a connected corporation.
+and 85(2.1)(b). Where section 84.1 applies (`SurplusStripping`), it displaces 85(2.1): use its
+paid-up capital reduction instead of `pucReduction`.
 -/
 
 namespace Canteen.ITA.TransferToCorporation

@@ -19,6 +19,7 @@ import Canteen.ITA.S70.Death
 import Canteen.ITA.S74.Attribution
 import Canteen.ITA.S45.ChangeInUse
 import Canteen.ITA.S85.TransferToCorporation
+import Canteen.ITA.S84_1.SurplusStripping
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -303,6 +304,14 @@ def blueprint : Blueprint where
           lean := [``TransferToCorporation.rollover, ``TransferToCorporation.electedAmount, ``TransferToCorporation.commonCost,
             ``TransferToCorporation.at_cost_no_gain, ``TransferToCorporation.boot_le_elected,
             ``TransferToCorporation.puc_single_class], uses := ["R8"] },
+        { id := "R18", kind := .law, title := "Shares sold to a non-arm's length corporation", citation := "ITA 84.1(1), (2); 54 \"proceeds of disposition\" (k)"
+          statement := "An individual resident in Canada who disposes of shares to a corporation not at arm's length, connected " ++
+            "with the subject corporation after, has the new shares' paid-up capital ground down, and is deemed to receive " ++
+            "a dividend for what comes out above the greater of the shares' paid-up capital and their hard adjusted cost base; " ++
+            "the dividend is not proceeds. Proven: boot above that amount is a dividend, dollar for dollar."
+          lean := [``SurplusStripping.applies, ``SurplusStripping.dividend, ``SurplusStripping.proceeds,
+            ``SurplusStripping.boot_over_e_is_dividend, ``SurplusStripping.no_dividend_within_e,
+            ``SurplusStripping.ofTransfer], uses := ["R8", "R17"] },
         { id := "R11", kind := .law, title := "The principal residence exemption", citation := "ITA 40(2)(b); 54 \"principal residence\""
           statement := "A home is the principal residence for a year if owned, ordinarily inhabited by the family (or covered by " ++
             "a 45(2) or (3) election, for at most four years: (d)), designated, and not blocked by another family-unit " ++

@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 57 statements:** 38 proven, 16 encoded, 3 not formalized.
+**Status of the 58 statements:** 39 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -62,11 +62,12 @@ graph TD
   n49["R15 · Attribution of capital gains to the transferor"]:::proven
   n50["R16 · Change in use"]:::proven
   n51["R17 · Transfer of property to a corporation"]:::proven
-  n52["R11 · The principal residence exemption"]:::proven
-  n53["R2 · Cost of the substituted property"]:::proven
-  n54["N1 · Inputs decided by other provisions"]:::notFormalized
-  n55["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n56["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n52["R18 · Shares sold to a non-arm's length corporation"]:::proven
+  n53["R11 · The principal residence exemption"]:::proven
+  n54["R2 · Cost of the substituted property"]:::proven
+  n55["N1 · Inputs decided by other provisions"]:::notFormalized
+  n56["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n57["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -154,20 +155,22 @@ graph TD
   n12 --> n50
   n44 --> n51
   n44 --> n52
-  n50 --> n52
-  n11 --> n53
-  n1 --> n54
-  n5 --> n54
-  n6 --> n54
-  n8 --> n54
-  n37 --> n54
-  n53 --> n54
-  n38 --> n54
-  n30 --> n55
-  n32 --> n56
-  n34 --> n56
-  n39 --> n56
-  n42 --> n56
+  n51 --> n52
+  n44 --> n53
+  n50 --> n53
+  n11 --> n54
+  n1 --> n55
+  n5 --> n55
+  n6 --> n55
+  n8 --> n55
+  n37 --> n55
+  n54 --> n55
+  n38 --> n55
+  n30 --> n56
+  n32 --> n57
+  n34 --> n57
+  n39 --> n57
+  n42 --> n57
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -236,11 +239,12 @@ graph TD
   n49["R15"]:::proven
   n50["R16"]:::proven
   n51["R17"]:::proven
-  n52["R11"]:::proven
-  n53["R2"]:::proven
-  n54["N1"]:::notFormalized
-  n55["N2"]:::notFormalized
-  n56["N4"]:::notFormalized
+  n52["R18"]:::proven
+  n53["R11"]:::proven
+  n54["R2"]:::proven
+  n55["N1"]:::notFormalized
+  n56["N2"]:::notFormalized
+  n57["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -400,21 +404,23 @@ graph TD
   n8 --> n50
   n44 -.-> n50
   n44 -.-> n51
+  n51 --> n52
   n44 -.-> n52
-  n50 -.-> n52
-  n11 -.-> n53
-  n1 -.-> n54
-  n5 -.-> n54
-  n6 -.-> n54
-  n8 -.-> n54
-  n37 -.-> n54
-  n53 -.-> n54
-  n38 -.-> n54
-  n30 -.-> n55
-  n32 -.-> n56
-  n34 -.-> n56
-  n39 -.-> n56
-  n42 -.-> n56
+  n44 -.-> n53
+  n50 -.-> n53
+  n11 -.-> n54
+  n1 -.-> n55
+  n5 -.-> n55
+  n6 -.-> n55
+  n8 -.-> n55
+  n37 -.-> n55
+  n54 -.-> n55
+  n38 -.-> n55
+  n30 -.-> n56
+  n32 -.-> n57
+  n34 -.-> n57
+  n39 -.-> n57
+  n42 -.-> n57
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -848,7 +854,15 @@ A change in the use regularly made of a property between gaining or producing in
 
 Eligible property transferred to a taxable Canadian corporation for consideration including its shares, with a joint election, is disposed of at the elected amount: the amount agreed, but at least the boot and the lesser of cost and value (or, for depreciable property, the least of UCC, cost and value), and at most fair market value; plus any benefit conferred on a related person (e.2). The boot, preferred and common shares take their costs in that order, and the shares' paid-up capital is ground down to the cost less the boot.
 
-**Lean:** [`Canteen.ITA.TransferToCorporation.rollover`](../../Canteen/ITA/S85/TransferToCorporation.lean#L131), [`Canteen.ITA.TransferToCorporation.electedAmount`](../../Canteen/ITA/S85/TransferToCorporation.lean#L175), [`Canteen.ITA.TransferToCorporation.commonCost`](../../Canteen/ITA/S85/TransferToCorporation.lean#L194), [`Canteen.ITA.TransferToCorporation.at_cost_no_gain`](../../Canteen/ITA/S85/TransferToCorporation.lean#L272), [`Canteen.ITA.TransferToCorporation.boot_le_elected`](../../Canteen/ITA/S85/TransferToCorporation.lean#L264), [`Canteen.ITA.TransferToCorporation.puc_single_class`](../../Canteen/ITA/S85/TransferToCorporation.lean#L295)
+**Lean:** [`Canteen.ITA.TransferToCorporation.rollover`](../../Canteen/ITA/S85/TransferToCorporation.lean#L132), [`Canteen.ITA.TransferToCorporation.electedAmount`](../../Canteen/ITA/S85/TransferToCorporation.lean#L176), [`Canteen.ITA.TransferToCorporation.commonCost`](../../Canteen/ITA/S85/TransferToCorporation.lean#L195), [`Canteen.ITA.TransferToCorporation.at_cost_no_gain`](../../Canteen/ITA/S85/TransferToCorporation.lean#L273), [`Canteen.ITA.TransferToCorporation.boot_le_elected`](../../Canteen/ITA/S85/TransferToCorporation.lean#L265), [`Canteen.ITA.TransferToCorporation.puc_single_class`](../../Canteen/ITA/S85/TransferToCorporation.lean#L296)
+
+### R18. Shares sold to a non-arm's length corporation
+
+**Status:** proven · **Citation:** ITA 84.1(1), (2); 54 "proceeds of disposition" (k) · **Uses:** R8, R17
+
+An individual resident in Canada who disposes of shares to a corporation not at arm's length, connected with the subject corporation after, has the new shares' paid-up capital ground down, and is deemed to receive a dividend for what comes out above the greater of the shares' paid-up capital and their hard adjusted cost base; the dividend is not proceeds. Proven: boot above that amount is a dividend, dollar for dollar.
+
+**Lean:** [`Canteen.ITA.SurplusStripping.applies`](../../Canteen/ITA/S84_1/SurplusStripping.lean#L102), [`Canteen.ITA.SurplusStripping.dividend`](../../Canteen/ITA/S84_1/SurplusStripping.lean#L142), [`Canteen.ITA.SurplusStripping.proceeds`](../../Canteen/ITA/S84_1/SurplusStripping.lean#L145), [`Canteen.ITA.SurplusStripping.boot_over_e_is_dividend`](../../Canteen/ITA/S84_1/SurplusStripping.lean#L199), [`Canteen.ITA.SurplusStripping.no_dividend_within_e`](../../Canteen/ITA/S84_1/SurplusStripping.lean#L187), [`Canteen.ITA.SurplusStripping.ofTransfer`](../../Canteen/ITA/S84_1/SurplusStripping.lean#L153)
 
 ### R11. The principal residence exemption
 

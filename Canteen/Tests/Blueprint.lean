@@ -120,6 +120,7 @@ R14: proven
 R15: proven
 R16: proven
 R17: proven
+R18: proven
 R11: proven
 R2: proven
 N1: not formalized

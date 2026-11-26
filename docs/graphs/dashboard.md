@@ -9,9 +9,9 @@ An overview of the project, drawn from the Lean.
 Every statement in every blueprint, by the status Lean computes for it.
 
 ```mermaid
-pie showData title All 146 statements in the memos and blueprints, by status
+pie showData title All 147 statements in the memos and blueprints, by status
     "encoded" : 25
-    "proven" : 89
+    "proven" : 90
     "not formalized" : 3
     "fact" : 24
     "judgment call" : 5
@@ -106,21 +106,24 @@ mindmap
     n37["`ss. 74.2, 74.5`"]
       n38["`74.2(1): capital gains attributed back`"]
       n39["`74.5(1), (3): fair market value, separation`"]
-    n40["`s. 85`"]
-      n41["`85(1): the elected amount, and the cost of the consideration`"]
-      n42["`85(2.1): paid-up capital`"]
-    n43["`s. 111`"]
-      n44["`111(8): net capital loss`"]
-      n45["`111(1)(b), (1.1): deduction`"]
-    n46["`s. 248`"]
-      n47["`248(1): majority-interest partner`"]
-    n48["`s. 251`"]
-      n49["`251(1): arm's length`"]
-      n50["`251(2), (3): related persons`"]
-      n51["`251(3.1), (3.2): amalgamations`"]
-      n52["`251(6): blood, marriage, adoption`"]
-    n53["`s. 251.1`"]
-      n54["`251.1(1)(a) to (h): affiliated persons`"]
-      n55["`251.1(2): amalgamations`"]
-      n56["`251.1(3), (4): definitions and rules`"]
+    n40["`s. 84.1`"]
+      n41["`84.1(1): paid-up capital, and the deemed dividend`"]
+      n42["`84.1(2): hard cost, arm's length`"]
+    n43["`s. 85`"]
+      n44["`85(1): the elected amount, and the cost of the consideration`"]
+      n45["`85(2.1): paid-up capital`"]
+    n46["`s. 111`"]
+      n47["`111(8): net capital loss`"]
+      n48["`111(1)(b), (1.1): deduction`"]
+    n49["`s. 248`"]
+      n50["`248(1): majority-interest partner`"]
+    n51["`s. 251`"]
+      n52["`251(1): arm's length`"]
+      n53["`251(2), (3): related persons`"]
+      n54["`251(3.1), (3.2): amalgamations`"]
+      n55["`251(6): blood, marriage, adoption`"]
+    n56["`s. 251.1`"]
+      n57["`251.1(1)(a) to (h): affiliated persons`"]
+      n58["`251.1(2): amalgamations`"]
+      n59["`251.1(3), (4): definitions and rules`"]
 ```
