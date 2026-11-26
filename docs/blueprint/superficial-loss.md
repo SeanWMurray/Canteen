@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 51 statements:** 32 proven, 16 encoded, 3 not formalized.
+**Status of the 52 statements:** 33 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -56,11 +56,12 @@ graph TD
   n43["R6 · Suspended losses of corporations, trusts and partnerships"]:::proven
   n44["R8 · The tax result: capital gains and income"]:::proven
   n45["R9 · Net capital losses and taxable income"]:::proven
-  n46["R11 · The principal residence exemption"]:::proven
-  n47["R2 · Cost of the substituted property"]:::proven
-  n48["N1 · Inputs decided by other provisions"]:::notFormalized
-  n49["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n50["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n46["R12 · Transfers not at arm's length, and gifts"]:::proven
+  n47["R11 · The principal residence exemption"]:::proven
+  n48["R2 · Cost of the substituted property"]:::proven
+  n49["N1 · Inputs decided by other provisions"]:::notFormalized
+  n50["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n51["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -137,20 +138,22 @@ graph TD
   n36 --> n44
   n43 --> n44
   n44 --> n45
+  n39 --> n46
   n44 --> n46
-  n11 --> n47
-  n1 --> n48
-  n5 --> n48
-  n6 --> n48
-  n8 --> n48
-  n37 --> n48
-  n47 --> n48
-  n38 --> n48
-  n30 --> n49
-  n32 --> n50
-  n34 --> n50
-  n39 --> n50
-  n42 --> n50
+  n44 --> n47
+  n11 --> n48
+  n1 --> n49
+  n5 --> n49
+  n6 --> n49
+  n8 --> n49
+  n37 --> n49
+  n48 --> n49
+  n38 --> n49
+  n30 --> n50
+  n32 --> n51
+  n34 --> n51
+  n39 --> n51
+  n42 --> n51
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -213,11 +216,12 @@ graph TD
   n43["R6"]:::proven
   n44["R8"]:::proven
   n45["R9"]:::proven
-  n46["R11"]:::proven
-  n47["R2"]:::proven
-  n48["N1"]:::notFormalized
-  n49["N2"]:::notFormalized
-  n50["N4"]:::notFormalized
+  n46["R12"]:::proven
+  n47["R11"]:::proven
+  n48["R2"]:::proven
+  n49["N1"]:::notFormalized
+  n50["N2"]:::notFormalized
+  n51["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -360,20 +364,22 @@ graph TD
   n0 --> n44
   n43 --> n44
   n44 --> n45
+  n39 -.-> n46
   n44 -.-> n46
-  n11 -.-> n47
-  n1 -.-> n48
-  n5 -.-> n48
-  n6 -.-> n48
-  n8 -.-> n48
-  n37 -.-> n48
-  n47 -.-> n48
-  n38 -.-> n48
-  n30 -.-> n49
-  n32 -.-> n50
-  n34 -.-> n50
-  n39 -.-> n50
-  n42 -.-> n50
+  n44 -.-> n47
+  n11 -.-> n48
+  n1 -.-> n49
+  n5 -.-> n49
+  n6 -.-> n49
+  n8 -.-> n49
+  n37 -.-> n49
+  n48 -.-> n49
+  n38 -.-> n49
+  n30 -.-> n50
+  n32 -.-> n51
+  n34 -.-> n51
+  n39 -.-> n51
+  n42 -.-> n51
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -760,6 +766,14 @@ A loss made nil by 40(2)(g) or 40(3.4) is no capital loss (39(1)(b)), so no allo
 Allowable capital losses that 3(b) cannot use are a net capital loss (111(8)), deductible against taxable capital gains of preceding years and the three following years (111(1)(b)), adjusted for the loss year's inclusion rate (111(1.1)(a)). A loss denied as superficial never becomes one.
 
 **Lean:** [`Canteen.ITA.NetCapitalLoss.netCapitalLoss`](../../Canteen/ITA/S111/NetCapitalLoss.lean#L41), [`Canteen.ITA.NetCapitalLoss.deduction`](../../Canteen/ITA/S111/NetCapitalLoss.lean#L64), [`Canteen.ITA.NetCapitalLoss.taxableIncome`](../../Canteen/ITA/S111/NetCapitalLoss.lean#L81), [`Canteen.ITA.NetCapitalLoss.deduction_le_para3b`](../../Canteen/ITA/S111/NetCapitalLoss.lean#L105), [`Canteen.ITA.NetCapitalLoss.not_allowed_far_future`](../../Canteen/ITA/S111/NetCapitalLoss.lean#L118)
+
+### R12. Transfers not at arm's length, and gifts
+
+**Status:** proven · **Citation:** ITA 69(1) · **Uses:** R4, R8
+
+A sale below fair market value to a person not at arm's length, a gift, or a transfer to a trust without a change in beneficial ownership is at fair market value for the seller (b); an overpayment to such a person, or a gift received, is at fair market value for the buyer (a), (c). Proven: an undervalue sale is taxed twice.
+
+**Lean:** [`Canteen.ITA.NonArmsLength.sellerAtFairMarketValue`](../../Canteen/ITA/S69/NonArmsLength.lean#L46), [`Canteen.ITA.NonArmsLength.buyerAtFairMarketValue`](../../Canteen/ITA/S69/NonArmsLength.lean#L54), [`Canteen.ITA.NonArmsLength.undervalue_sale_double_counted`](../../Canteen/ITA/S69/NonArmsLength.lean#L76), [`Canteen.ITA.NonArmsLength.gift_at_fair_market_value`](../../Canteen/ITA/S69/NonArmsLength.lean#L90), [`Canteen.ITA.NonArmsLength.sellerDisposition`](../../Canteen/ITA/S69/NonArmsLength.lean#L70)
 
 ### R11. The principal residence exemption
 

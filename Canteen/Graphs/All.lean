@@ -121,7 +121,8 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S251.Amalgamation, "251.1(2), 251(3.1), (3.2) amalgamations"),
    (`Canteen.ITA.S38.CapitalGains, "38 to 41 capital gains and losses"),
    (`Canteen.ITA.S3.Income, "3 income for the year"),
-   (`Canteen.ITA.S111.NetCapitalLoss, "111 net capital losses, taxable income")]
+   (`Canteen.ITA.S111.NetCapitalLoss, "111 net capital losses, taxable income"),
+   (`Canteen.ITA.S69.NonArmsLength, "69(1) not at arm's length, and gifts")]
 
 /-! ## The dashboard -/
 
@@ -188,6 +189,7 @@ def actMindmap : String := Id.run do
     (2, "s. 50"), (3, "50(2): bad personal-use debts"),
     (2, "s. 53"), (3, "53(1)(f): cost of substituted property"), (3, "53(1)(f.1), (f.2): cost after 40(2)(e.1), 40(3.6)"),
     (2, "s. 54"), (3, "superficial loss"), (3, "principal residence"), (3, "personal-use property"), (3, "listed personal property"),
+    (2, "s. 69"), (3, "69(1): not at arm's length, gifts"),
     (2, "s. 111"), (3, "111(8): net capital loss"), (3, "111(1)(b), (1.1): deduction"),
     (2, "s. 248"), (3, "248(1): majority-interest partner"),
     (2, "s. 251"), (3, "251(1): arm's length"), (3, "251(2), (3): related persons"), (3, "251(3.1), (3.2): amalgamations"),

@@ -1,0 +1,14 @@
+Income Tax Act, R.S.C. 1985, c. 1 (5th Supp.), subsection 69(1)
+
+Source: Justice Canada consolidated Acts (XML), https://github.com/justicecanada/laws-lois-xml, file eng/acts/I-3.3.xml
+Current to: 2026-10-29. Last amended: 2026-06-18.
+Extracted verbatim; whitespace normalized; paragraph labels kept; continued text marked [continued].
+
+(1) Except as expressly otherwise provided in this Act,
+  (a) where a taxpayer has acquired anything from a person with whom the taxpayer was not dealing at arm’s length at an amount in excess of the fair market value thereof at the time the taxpayer so acquired it, the taxpayer shall be deemed to have acquired it at that fair market value;
+  (b) where a taxpayer has disposed of anything
+    (i) to a person with whom the taxpayer was not dealing at arm’s length for no proceeds or for proceeds less than the fair market value thereof at the time the taxpayer so disposed of it,
+    (ii) to any person by way of gift, or
+    (iii) to a trust because of a disposition of a property that does not result in a change in the beneficial ownership of the property;
+    [continued] the taxpayer shall be deemed to have received proceeds of disposition therefor equal to that fair market value; and
+  (c) where a taxpayer acquires a property by way of gift, bequest or inheritance or because of a disposition that does not result in a change in the beneficial ownership of the property, the taxpayer is deemed to acquire the property at its fair market value.

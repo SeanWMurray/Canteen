@@ -13,6 +13,7 @@ import Canteen.ITA.S111.NetCapitalLoss
 import Canteen.ITA.S40.ShareToAffiliate
 import Canteen.ITA.S40.RelatedDebt
 import Canteen.ITA.S40.PrincipalResidence
+import Canteen.ITA.S69.NonArmsLength
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -252,6 +253,13 @@ def blueprint : Blueprint where
             "year's inclusion rate (111(1.1)(a)). A loss denied as superficial never becomes one."
           lean := [``NetCapitalLoss.netCapitalLoss, ``NetCapitalLoss.deduction, ``NetCapitalLoss.taxableIncome,
             ``NetCapitalLoss.deduction_le_para3b, ``NetCapitalLoss.not_allowed_far_future], uses := ["R8"] },
+        { id := "R12", kind := .law, title := "Transfers not at arm's length, and gifts", citation := "ITA 69(1)"
+          statement := "A sale below fair market value to a person not at arm's length, a gift, or a transfer to a trust without " ++
+            "a change in beneficial ownership is at fair market value for the seller (b); an overpayment to such a person, " ++
+            "or a gift received, is at fair market value for the buyer (a), (c). Proven: an undervalue sale is taxed twice."
+          lean := [``NonArmsLength.sellerAtFairMarketValue, ``NonArmsLength.buyerAtFairMarketValue,
+            ``NonArmsLength.undervalue_sale_double_counted, ``NonArmsLength.gift_at_fair_market_value,
+            ``NonArmsLength.sellerDisposition], uses := ["R4", "R8"] },
         { id := "R11", kind := .law, title := "The principal residence exemption", citation := "ITA 40(2)(b); 54 \"principal residence\""
           statement := "A home is the principal residence for a year if owned, ordinarily inhabited by the family (or covered by " ++
             "a 45(2) or (3) election), designated, and not blocked by another family-unit designation; the gain is A − A × B / C " ++
