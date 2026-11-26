@@ -17,7 +17,7 @@ The full design is in [`docs/design.md`](docs/design.md).
 | 4. First real provision | Encoded; awaiting review | Section 54 "superficial loss" with all its exceptions, and subparagraph 40(2)(g)(i); see [`docs/review/superficial-loss.md`](docs/review/superficial-loss.md) |
 | 5. Blueprint | Done | Memos whose statements link to Lean, with dependency graphs coloured by proven/unproven status; see [`docs/blueprint/`](docs/blueprint/README.md) |
 | 6. Ergonomics | Done | The `statute` command: rules written in the statute's own shape, sound with nothing to prove |
-| Beyond the roadmap | Done | All of paragraph 40(2)(g), 53(1)(f) and 251.1(1)(a) encoded; three transactions; diagrams drawn from the Lean; memos checked against what their proofs use |
+| Beyond the roadmap | Done | All of paragraph 40(2)(g), 53(1)(f), and 251.1(1)(a) to (g) encoded; four transactions; diagrams drawn from the Lean; memos checked against what their proofs use |
 
 ## Building
 
@@ -73,13 +73,15 @@ Canteen/
     S40/PlanTransferLoss.lean  subparagraph 40(2)(g)(iv): transfers to TFSAs, RRSPs and other plans
     S40/Paragraph40_2_g.lean   paragraph 40(2)(g) as a whole
     S53/CostAddition.lean      paragraph 53(1)(f): the loss is added to the substituted property's cost
-    S251_1/Affiliation.lean    paragraph 251.1(1)(a): spouses are affiliated
+    S251_1/Affiliation.lean    paragraph 251.1(1)(a): spouses are affiliated (two persons, statute form)
+    S251_1/AffiliatedPersons.lean   section 251.1(1)(a) to (g) for a whole world of persons, with diagrams
     S54/Timeline.lean          a timeline chart of the superficial loss period
   Lemmas/                  Layer 2: reusable truths about provisions
   Transactions/            Layer 3: concrete transactions, each step a theorem
     SpouseRepurchase.lean    shares sold at a loss and bought by the spouse
     SiblingAndLateRepurchase.lean   a sibling buys, and the taxpayer buys back on day 31
     TfsaContribution.lean    shares contributed in kind to a TFSA at a loss
+    HoldcoRepurchase.lean    shares bought back by a holding company the spouses control
   Blueprints/              memo-style documents linked to the Lean above
   Graphs/                  the diagram pages
   Tests/                   known-answer, sanity, non-vacuity and read-back tests
@@ -157,7 +159,8 @@ Overall risk: medium.
 
 Section 54, "superficial loss", is encoded paragraph by paragraph: the loss, paragraphs (a) and (b), every exception in (c) to (h), and the deeming rules in (i) and (j).
 All of paragraph 40(2)(g) is encoded: (i) superficial losses, (ii) debts, (iii) personal-use property (with the s. 54 definitions it uses), and (iv) transfers to TFSAs, RRSPs and other plans, under the carve-out in its opening words.
-Paragraph 53(1)(f) adds a superficial loss to the cost of the substituted property, and paragraph 251.1(1)(a) makes spouses affiliated.
+Paragraph 53(1)(f) adds a superficial loss to the cost of the substituted property.
+Section 251.1, paragraphs (a) to (g), decides who is affiliated: spouses, corporations and their controllers, pairs of corporations, partnerships and their majority-interest partners, and trusts and their majority-interest beneficiaries. Because affiliation is defined in terms of itself, it is computed for a whole world of persons as the smallest relation closed under the paragraphs, and every affiliated pair keeps the chain of paragraphs that makes it so.
 Whether a property is "identical" is a judgment call; inputs decided by provisions not yet encoded (affiliation under s. 251.1, for example) are taken as facts.
 
 ```
@@ -180,7 +183,7 @@ A blueprint (`Canteen/Blueprints/`) is a memo whose statements each name the Lea
 - **Every assumption is visible.** Each statement lists the facts, judgment calls and unformalized statements it rests on.
 - **Memos can't understate their dependencies.** Lean reads the proofs to find which statements each one really uses; a memo that leaves one out is refused. Each memo shows this second graph alongside its own.
 
-Memos: [the spouse repurchase](docs/blueprint/spouse-repurchase.md) (the loss is denied and moves to the spouse's cost), [the sibling and day-31 repurchase](docs/blueprint/sibling-and-late-repurchase.md) (the loss stands, resting on no judgment call), and [a TFSA contribution in kind](docs/blueprint/tfsa-contribution.md) (the loss is nil under 40(2)(g)(iv) whether or not the TFSA trust is affiliated).
+Memos: [the spouse repurchase](docs/blueprint/spouse-repurchase.md) (the loss is denied and moves to the spouse's cost), [the sibling and day-31 repurchase](docs/blueprint/sibling-and-late-repurchase.md) (the loss stands, resting on no judgment call), [a TFSA contribution in kind](docs/blueprint/tfsa-contribution.md) (the loss is nil under 40(2)(g)(iv) whether or not the TFSA trust is affiliated), and [a family holding company's repurchase](docs/blueprint/holdco-repurchase.md) (Holdco is affiliated through 251.1(1)(b)(ii); with a friend as co-owner it would turn on de facto control).
 
 ## Graphs
 
@@ -189,6 +192,7 @@ Every diagram is drawn from the Lean definitions, so it always shows the rules a
 - [Flowcharts](docs/graphs/flowcharts.md) of each statute-form rule, from the outline the `statute` command records.
 - [Decision trees](docs/graphs/decision-trees.md) over the judgment calls, with the conclusion and risk on each branch.
 - [Timelines](docs/graphs/timelines.md) of the superficial loss period: the disposition, the 61 days, and every acquisition.
+- [Who is affiliated with whom](docs/graphs/affiliation.md): worlds of persons under section 251.1, each affiliated pair labelled with its paragraph.
 - [A transaction series](docs/graphs/series.md), state by state.
 - [The architecture](docs/graphs/architecture.md), read from the compiled modules.
 

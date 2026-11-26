@@ -17,7 +17,7 @@ namespace Canteen.ITA.SuperficialLoss
 acquisitions in the period and held at its end. -/
 def acquisitionJudgments (f : Facts) : List String :=
   (f.acquisitions.filter fun a => inPeriod f.disposition a && paraB a).foldl
-    (fun ids a => mergeIds ids (mergeIds a.acquirer.judgment?.toList a.identity.judgment?.toList)) []
+    (fun ids a => mergeIds ids (mergeIds a.acquirer.judgments a.identity.judgment?.toList)) []
 
 /-- **superficial loss** of a taxpayer means the taxpayer's loss from the disposition of a
 particular property where (a) … and (b) …, except where the disposition was (c) … (h) …. -/

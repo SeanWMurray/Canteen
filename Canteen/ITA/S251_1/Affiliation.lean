@@ -75,7 +75,7 @@ def acquirer (who : String) (f : Facts) : SuperficialLoss.Acquirer :=
     match f.otherParagraph with
     | .fact true => .affiliated who
     | .fact false => .notAffiliated who
-    | .judged j b => .judged who j b
+    | .judged j b => .judged who [j] b
 
 theorem acquirer_isTaxpayerOrAffiliated (who : String) (f : Facts) :
     (acquirer who f).isTaxpayerOrAffiliated = affiliated.holds f := by

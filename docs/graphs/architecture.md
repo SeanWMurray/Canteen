@@ -34,27 +34,30 @@ flowchart BT
     m26["ITA.S40.LossDenialStatute"]
     m27["ITA.S53.CostAddition"]
     m28["ITA.S251_1.Affiliation"]
-    m29["ITA.S54.Timeline"]
-    m30["ITA.S40.Paragraph40_2_g_Facts"]
-    m31["ITA.S40.DebtLoss"]
-    m32["ITA.S40.PersonalUseLoss"]
-    m33["ITA.S40.PlanTransferLoss"]
-    m34["ITA.S40.Paragraph40_2_g"]
+    m29["ITA.S251_1.AffiliatedPersons"]
+    m30["ITA.S54.Timeline"]
+    m31["ITA.S40.Paragraph40_2_g_Facts"]
+    m32["ITA.S40.DebtLoss"]
+    m33["ITA.S40.PersonalUseLoss"]
+    m34["ITA.S40.PlanTransferLoss"]
+    m35["ITA.S40.Paragraph40_2_g"]
   end
   subgraph Lemmas["Layer 2: reusable lemmas"]
-    m35["Lemmas.SuperficialLoss"]
+    m36["Lemmas.SuperficialLoss"]
   end
   subgraph Transactions["Layer 3: transactions"]
-    m36["Transactions.SpouseRepurchase"]
-    m37["Transactions.SiblingAndLateRepurchase"]
-    m38["Transactions.TfsaContribution"]
+    m37["Transactions.SpouseRepurchase"]
+    m38["Transactions.SiblingAndLateRepurchase"]
+    m39["Transactions.TfsaContribution"]
+    m40["Transactions.HoldcoRepurchase"]
   end
   subgraph Blueprints["Blueprints"]
-    m39["Blueprints.SuperficialLoss"]
-    m40["Blueprints.SpouseRepurchase"]
-    m41["Blueprints.SiblingAndLateRepurchase"]
-    m42["Blueprints.TfsaContribution"]
-    m43["Blueprints.All"]
+    m41["Blueprints.SuperficialLoss"]
+    m42["Blueprints.SpouseRepurchase"]
+    m43["Blueprints.SiblingAndLateRepurchase"]
+    m44["Blueprints.TfsaContribution"]
+    m45["Blueprints.HoldcoRepurchase"]
+    m46["Blueprints.All"]
   end
   subgraph Examples["Examples"]
     m19["Examples.RuleX"]
@@ -63,10 +66,10 @@ flowchart BT
     m22["Examples.RuleXStatute"]
   end
   subgraph Graphs["Graphs"]
-    m44["Graphs.All"]
+    m47["Graphs.All"]
   end
   subgraph Root["Root"]
-    m45["Canteen"]
+    m48["Canteen"]
   end
   m0 --> m3
   m3 --> m4
@@ -108,62 +111,73 @@ flowchart BT
   m12 --> m28
   m23 --> m28
   m10 --> m28
+  m10 --> m29
   m23 --> m29
-  m10 --> m30
+  m17 --> m29
   m23 --> m30
-  m12 --> m31
-  m30 --> m31
+  m10 --> m31
+  m23 --> m31
   m12 --> m32
-  m30 --> m32
+  m31 --> m32
   m12 --> m33
-  m30 --> m33
+  m31 --> m33
+  m12 --> m34
   m31 --> m34
-  m32 --> m34
-  m33 --> m34
-  m24 --> m34
-  m23 --> m35
-  m24 --> m36
-  m35 --> m36
-  m27 --> m36
-  m28 --> m36
+  m32 --> m35
+  m33 --> m35
+  m34 --> m35
+  m24 --> m35
+  m23 --> m36
   m24 --> m37
+  m36 --> m37
+  m27 --> m37
   m28 --> m37
-  m35 --> m37
-  m34 --> m38
+  m24 --> m38
   m28 --> m38
-  m16 --> m39
+  m36 --> m38
   m35 --> m39
-  m26 --> m39
-  m27 --> m39
   m28 --> m39
-  m34 --> m39
-  m16 --> m40
-  m17 --> m40
-  m36 --> m40
-  m25 --> m40
+  m35 --> m40
+  m27 --> m40
   m29 --> m40
   m16 --> m41
-  m17 --> m41
-  m37 --> m41
+  m36 --> m41
+  m26 --> m41
+  m27 --> m41
+  m28 --> m41
   m29 --> m41
+  m35 --> m41
   m16 --> m42
   m17 --> m42
-  m38 --> m42
-  m29 --> m42
-  m39 --> m43
-  m40 --> m43
-  m41 --> m43
-  m42 --> m43
+  m37 --> m42
+  m25 --> m42
+  m30 --> m42
+  m16 --> m43
+  m17 --> m43
+  m38 --> m43
+  m30 --> m43
+  m16 --> m44
   m17 --> m44
-  m22 --> m44
-  m21 --> m44
-  m29 --> m44
-  m26 --> m44
-  m36 --> m44
-  m37 --> m44
-  m38 --> m44
-  m18 --> m45
-  m20 --> m45
-  m43 --> m45
-  m44 --> m45
+  m39 --> m44
+  m30 --> m44
+  m16 --> m45
+  m40 --> m45
+  m30 --> m45
+  m41 --> m46
+  m42 --> m46
+  m43 --> m46
+  m44 --> m46
+  m45 --> m46
+  m22 --> m47
+  m21 --> m47
+  m30 --> m47
+  m26 --> m47
+  m37 --> m47
+  m38 --> m47
+  m39 --> m47
+  m40 --> m47
+  m18 --> m48
+  m20 --> m48
+  m46 --> m48
+  m47 --> m48
 ```

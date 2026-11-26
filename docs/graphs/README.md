@@ -7,6 +7,7 @@ Diagrams drawn from the Lean definitions, so they always show the rules as encod
 - [Flowcharts of the rules](flowcharts.md): Section 54, "superficial loss", Paragraph 40(2)(g) as a whole, Subparagraph 40(2)(g)(i), Subparagraph 40(2)(g)(ii): debts, Subparagraph 40(2)(g)(iii): personal-use property, Section 54 "personal-use property", Subparagraph 40(2)(g)(iv): transfers to registered plans, Clause 40(2)(g)(iv)(A), Clause 40(2)(g)(iv)(B), Paragraph 251.1(1)(a), Rule X (the placeholder from the design)
 - [Decision trees over the judgment calls](decision-trees.md): Spouse repurchase: are the shares identical?, Sibling and day-31 repurchase: two judgment calls, one answer, TFSA contribution: paragraph 40(2)(g) on both answers to J-AFF, A debt sold at a loss: income purpose and arm's length dealing both judged, Rule X with condition B and the exception both left to judgment
 - [Timelines of the superficial loss period](timelines.md): Spouse repurchase, Sibling purchase and day-31 repurchase, The edges of the period: days −31, −30, +30 and +31
+- [Who is affiliated with whom](affiliation.md): A family group, Holdco, owned by the taxpayer and spouse, Holdco, owned with a friend, if the taxpayer controls it de facto
 - [A transaction series, step by step](series.md): If condition B is met (J-B = yes), If condition B is not met (J-B = no)
 - [Architecture](architecture.md): every module, by layer, and how they build on each other
 

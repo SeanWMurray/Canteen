@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 40 statements:** 21 proven, 16 encoded, 3 not formalized.
+**Status of the 41 statements:** 22 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -46,10 +46,11 @@ graph TD
   n33["G4 · (iv) transfers to registered plans"]:::proven
   n34["G5 · Paragraph 40(2)(g) as a whole"]:::proven
   n35["R1 · Spouses are affiliated"]:::proven
-  n36["R2 · Cost of the substituted property"]:::proven
-  n37["N1 · Inputs decided by other provisions"]:::notFormalized
-  n38["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n39["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n36["R3 · Affiliated persons, paragraphs (a) to (g)"]:::proven
+  n37["R2 · Cost of the substituted property"]:::proven
+  n38["N1 · Inputs decided by other provisions"]:::notFormalized
+  n39["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n40["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -103,16 +104,19 @@ graph TD
   n30 --> n34
   n32 --> n34
   n33 --> n34
-  n11 --> n36
-  n1 --> n37
-  n5 --> n37
-  n6 --> n37
-  n8 --> n37
-  n35 --> n37
-  n36 --> n37
-  n28 --> n38
-  n30 --> n39
-  n32 --> n39
+  n35 --> n36
+  n1 --> n36
+  n11 --> n37
+  n1 --> n38
+  n5 --> n38
+  n6 --> n38
+  n8 --> n38
+  n35 --> n38
+  n37 --> n38
+  n36 --> n38
+  n28 --> n39
+  n30 --> n40
+  n32 --> n40
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -165,10 +169,11 @@ graph TD
   n33["G4"]:::proven
   n34["G5"]:::proven
   n35["R1"]:::proven
-  n36["R2"]:::proven
-  n37["N1"]:::notFormalized
-  n38["N2"]:::notFormalized
-  n39["N4"]:::notFormalized
+  n36["R3"]:::proven
+  n37["R2"]:::proven
+  n38["N1"]:::notFormalized
+  n39["N2"]:::notFormalized
+  n40["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -275,16 +280,19 @@ graph TD
   n12 --> n34
   n28 --> n34
   n27 -.-> n34
-  n11 -.-> n36
-  n1 -.-> n37
-  n5 -.-> n37
-  n6 -.-> n37
-  n8 -.-> n37
-  n35 -.-> n37
-  n36 -.-> n37
-  n28 -.-> n38
-  n30 -.-> n39
-  n32 -.-> n39
+  n1 --> n36
+  n35 -.-> n36
+  n11 -.-> n37
+  n1 -.-> n38
+  n5 -.-> n38
+  n6 -.-> n38
+  n8 -.-> n38
+  n35 -.-> n38
+  n37 -.-> n38
+  n36 -.-> n38
+  n28 -.-> n39
+  n30 -.-> n40
+  n32 -.-> n40
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -592,6 +600,14 @@ The loss is nil if it is within any of subparagraphs (i) to (iv), unless the car
 
 **Lean:** [`Canteen.ITA.Affiliation.paragraphA`](../../Canteen/ITA/S251_1/Affiliation.lean#L33), [`Canteen.ITA.Affiliation.affiliated`](../../Canteen/ITA/S251_1/Affiliation.lean#L50), [`Canteen.ITA.Affiliation.spouses_affiliated`](../../Canteen/ITA/S251_1/Affiliation.lean#L58)
 
+### R3. Affiliated persons, paragraphs (a) to (g)
+
+**Status:** proven · **Citation:** ITA 251.1(1)–(4) · **Uses:** R1, Pa
+
+Corporations and their controllers (b), two corporations (c), a corporation and a partnership (d), a partnership and a majority-interest partner (e), two partnerships (f), and a person and a trust (g), with the definitions in 251.1(3), the rules in 251.1(4), and "majority-interest partner" in 248(1). Computed for a whole world of persons as the smallest relation closed under the paragraphs; reflexive and symmetric (proven).
+
+**Lean:** [`Canteen.ITA.AffiliatedPersons.rule`](../../Canteen/ITA/S251_1/AffiliatedPersons.lean#L462), [`Canteen.ITA.AffiliatedPersons.affiliated_self`](../../Canteen/ITA/S251_1/AffiliatedPersons.lean#L472), [`Canteen.ITA.AffiliatedPersons.affiliated_symm`](../../Canteen/ITA/S251_1/AffiliatedPersons.lean#L476), [`Canteen.ITA.AffiliatedPersons.acquirer_isTaxpayerOrAffiliated`](../../Canteen/ITA/S251_1/AffiliatedPersons.lean#L497)
+
 ### R2. Cost of the substituted property
 
 **Status:** proven · **Citation:** ITA 53(1)(f) · **Uses:** Pa+
@@ -606,9 +622,9 @@ These statements are part of the analysis but have no Lean behind them yet. Anyt
 
 ### N1. Inputs decided by other provisions
 
-**Status:** not formalized · **Uses:** Pa, Pe, Pf, Ph, R1, R2
+**Status:** not formalized · **Uses:** Pa, Pe, Pf, Ph, R1, R2, R3
 
-Affiliation other than under paragraph 251.1(1)(a) (paragraphs 251.1(1)(b) to (g)), a loss restriction event (section 251.2), and whether paragraph 40(2)(e.1) or subsection 40(3.4) or 69(5) applies are taken as facts. So is the amount in subparagraph 53(1)(f)(ii) (subsections 112(3) to (3.2)).
+Affiliation under paragraph 251.1(1)(h) (two trusts) and subsection 251.1(2) (amalgamations), a loss restriction event (section 251.2), and whether paragraph 40(2)(e.1) or subsection 40(3.4) or 69(5) applies are taken as facts. So is the amount in subparagraph 53(1)(f)(ii) (subsections 112(3) to (3.2)).
 
 ### N2. How much is "to the extent that"
 

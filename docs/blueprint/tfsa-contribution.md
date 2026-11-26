@@ -220,7 +220,7 @@ gantt
     section Disposition
     2025-09-02 disposition of 80 common shares of JKL Corp. (loss $1,000.00) :milestone, disp, 2025-09-02, 0d
     section Acquisitions
-    2025-09-02 the trust governed by the taxpayer's TFSA (affiliated, judgment call J-AFF) acquires 80 common shares of JKL Corp. (in period, held at end) :milestone, crit, a0, 2025-09-02, 0d
+    2025-09-02 the trust governed by the taxpayer's TFSA (affiliated, judgment calls J-AFF) acquires 80 common shares of JKL Corp. (in period, held at end) :milestone, crit, a0, 2025-09-02, 0d
     section End of period (b)
     2025-10-02 end of period :milestone, endp, 2025-10-02, 0d
 ```

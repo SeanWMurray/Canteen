@@ -25,7 +25,7 @@ def timeline (f : Facts) : String :=
     | .taxpayer => "the taxpayer"
     | .affiliated w => s!"{w} (affiliated)"
     | .notAffiliated w => s!"{w} (not affiliated)"
-    | .judged w j b => s!"{w} ({if b then "affiliated" else "not affiliated"}, judgment call {j})"
+    | .judged w js b => s!"{w} ({if b then "affiliated" else "not affiliated"}, judgment calls {", ".intercalate js})"
   let acqs := f.acquisitions.zipIdx.map fun (a, i) =>
     let tags := if qualifies d a then "milestone, crit" else "milestone"
     let held := if a.heldAtEndOfPeriod then "held at end" else "not held at end"

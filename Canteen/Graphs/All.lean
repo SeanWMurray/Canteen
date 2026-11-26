@@ -9,6 +9,8 @@ import Canteen.ITA.S251_1.Affiliation
 import Canteen.Transactions.SpouseRepurchase
 import Canteen.Transactions.SiblingAndLateRepurchase
 import Canteen.Transactions.TfsaContribution
+import Canteen.Transactions.HoldcoRepurchase
+import Canteen.ITA.S251_1.AffiliatedPersons
 
 /-!
 # Every graph page, and what is on it
@@ -60,6 +62,16 @@ def debtFacts (b : List Judgment) : Paragraph40_2_g.Facts :=
     debt := { isDebtOrRight := true, incomePurpose := Answer.ofBranch "J-PURPOSE" b,
               considerationForCapitalProperty := true, armsLength := Answer.ofBranch "J-ARM" b } }
 
+/-- A family group: spouses, their companies, a partnership and a trust, and a friend. -/
+def familyGroup : AffiliatedPersons.World :=
+  { persons := [⟨0, "Ann", .individual⟩, ⟨1, "Bob (Ann's spouse)", .individual⟩, ⟨2, "Cy (a friend)", .individual⟩,
+                ⟨10, "Annco", .corporation⟩, ⟨11, "Famco", .corporation⟩, ⟨12, "Cyco", .corporation⟩,
+                ⟨20, "AB Partners", .partnership⟩, ⟨30, "The Family Trust", .trust⟩],
+    spouses := [(0, 1)],
+    controls := [⟨10, .person 0, .fact true⟩, ⟨11, .group [0, 1], .fact true⟩, ⟨12, .person 2, .fact true⟩],
+    partnershipInterests := [⟨20, 0, 30, 30⟩, ⟨20, 1, 30, 30⟩, ⟨20, 2, 40, 40⟩],
+    beneficialInterests := [⟨30, 1, 60, 60⟩, ⟨30, 2, 40, 40⟩] }
+
 def holding (h : Examples.Holding) : String :=
   s!"{h.units} units, election {if h.electionFiled then "filed" else "not filed"}"
 
@@ -103,6 +115,17 @@ def pages : List Page := [
         (Transactions.SpouseRepurchase.facts Transactions.SpouseRepurchase.position)),
       ("Sibling purchase and day-31 repurchase", SuperficialLoss.timeline (Transactions.SiblingAndLateRepurchase.facts [])),
       ("The edges of the period: days −31, −30, +30 and +31", SuperficialLoss.timeline boundaries)] },
+  { file := "affiliation", title := "Who is affiliated with whom"
+    intro := "Worlds of persons under section 251.1, drawn from the computed relation. Rounded boxes are individuals, " ++
+      "boxes corporations, hexagons partnerships, cylinders trusts. Dashed arrows are control (orange where a judgment " ++
+      "call); each solid line is an affiliated pair, labelled with the paragraph that makes it so. Affiliation is not " ++
+      "transitive: Cy's company is affiliated with Cy, but not with Ann."
+    diagrams := [
+      ("A family group", AffiliatedPersons.diagram familyGroup),
+      ("Holdco, owned by the taxpayer and spouse", AffiliatedPersons.diagram Transactions.HoldcoRepurchase.world),
+      ("Holdco, owned with a friend, if the taxpayer controls it de facto",
+        AffiliatedPersons.diagram (Transactions.HoldcoRepurchase.friendWorld
+          [(Transactions.HoldcoRepurchase.friendCalls.head!).assume true]))] },
   { file := "series", title := "A transaction series, step by step"
     intro := "The toy three-step plan from `Canteen/Examples/ToySeries.lean`, with Rule X checked after every step. " ++
       "Green states are ones where Rule X applies."

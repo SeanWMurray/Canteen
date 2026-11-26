@@ -121,9 +121,9 @@ inductive Acquirer where
   | affiliated (who : String)
   /-- A person not affiliated with the taxpayer. -/
   | notAffiliated (who : String)
-  /-- A person whose affiliation with the taxpayer is a judgment call; `affiliated` is the
-  answer assumed on this branch. -/
-  | judged (who : String) (judgment : String) (affiliated : Bool)
+  /-- A person whose affiliation with the taxpayer rests on judgment calls; `affiliated` is
+  the answer on this branch. -/
+  | judged (who : String) (judgments : List String) (affiliated : Bool)
   deriving Repr, DecidableEq
 
 /-- How an acquired property relates to the particular property. -/
@@ -185,10 +185,10 @@ def Acquirer.isTaxpayerOrAffiliated : Acquirer → Bool
   | .notAffiliated _ => false
   | .judged _ _ b => b
 
-/-- The judgment call an acquirer's affiliation rests on, if any. -/
-def Acquirer.judgment? : Acquirer → Option String
-  | .judged _ j _ => some j
-  | _ => none
+/-- The judgment calls an acquirer's affiliation rests on: none for a fact. -/
+def Acquirer.judgments : Acquirer → List String
+  | .judged _ js _ => js
+  | _ => []
 
 /-- (j) applies only to a share "acquired before 2013". -/
 def acquiredBefore2013 (a : Acquisition) : Bool :=
@@ -317,8 +317,8 @@ def Acquirer.phrase : Acquirer → String
   | .taxpayer => "the taxpayer"
   | .affiliated who => s!"{who}, a person affiliated with the taxpayer,"
   | .notAffiliated who => s!"{who}, a person not affiliated with the taxpayer,"
-  | .judged who j true => s!"{who}, a person affiliated with the taxpayer (judgment call {j}),"
-  | .judged who j false => s!"{who}, a person not affiliated with the taxpayer (judgment call {j}),"
+  | .judged who js true => s!"{who}, a person affiliated with the taxpayer (judgment calls: {", ".intercalate js}),"
+  | .judged who js false => s!"{who}, a person not affiliated with the taxpayer (judgment calls: {", ".intercalate js}),"
 
 /-- The judgment call an acquisition's identity relies on, if any. -/
 def Identity.judgment? : Identity → Option String
@@ -355,7 +355,7 @@ def failStep (d : Disposition) (a : Acquisition) : Step :=
   let identityFailsOnFacts := !isOrIsIdentical a && a.identity.judgment?.isNone
   if !inPeriod d a then
     ⟨s!"{prop} was acquired outside {periodText d}, so it does not meet paragraph (a).", cite "(a)"⟩
-  else if !a.acquirer.isTaxpayerOrAffiliated && a.acquirer.judgment?.isNone then
+  else if !a.acquirer.isTaxpayerOrAffiliated && a.acquirer.judgments.isEmpty then
     ⟨s!"{prop} was acquired by {a.acquirer.phrase} so it does not meet paragraph (a).", cite "(a)"⟩
   else if !paraB a then
     ⟨s!"At the end of the period, on {d.date.addDays 30}, neither the taxpayer nor a person affiliated with " ++
@@ -386,22 +386,22 @@ def failStep (d : Disposition) (a : Acquisition) : Step :=
 /-- The judgment calls a failed acquisition's failure rests on: those answered "no" when
 every factual condition is met. -/
 def failJudgments (d : Disposition) (a : Acquisition) : List String :=
-  if inPeriod d a && (a.acquirer.isTaxpayerOrAffiliated || a.acquirer.judgment?.isSome) && paraB a &&
+  if inPeriod d a && (a.acquirer.isTaxpayerOrAffiliated || !a.acquirer.judgments.isEmpty) && paraB a &&
       (isOrIsIdentical a || a.identity.judgment?.isSome) then
-    (if a.acquirer.isTaxpayerOrAffiliated then [] else a.acquirer.judgment?.toList) ++
+    (if a.acquirer.isTaxpayerOrAffiliated then [] else a.acquirer.judgments) ++
       (if isOrIsIdentical a then [] else a.identity.judgment?.toList)
   else []
 
 /-- Qualifies without relying on a judgment call. -/
 def qualifiesOnFacts (d : Disposition) (a : Acquisition) : Bool :=
-  qualifies d a && a.identity.judgment?.isNone && a.acquirer.judgment?.isNone
+  qualifies d a && a.identity.judgment?.isNone && a.acquirer.judgments.isEmpty
 
 def positive (d : Disposition) (a : Acquisition) : Finding :=
   ⟨true,
     [lossStep d] ++ qualifyingSteps d a ++
       [⟨s!"The disposition is not one described in paragraphs (c) to (h), so the taxpayer's loss of " ++
           s!"{formatCents (lossAmount d)} is a superficial loss.", citeDef⟩],
-    mergeIds a.acquirer.judgment?.toList a.identity.judgment?.toList⟩
+    mergeIds a.acquirer.judgments a.identity.judgment?.toList⟩
 
 def negative (d : Disposition) (as : List Acquisition) : Finding :=
   let reasons :=

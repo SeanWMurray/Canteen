@@ -38,7 +38,7 @@ example : Affiliation.affiliated.holds ⟨true, false, .fact true⟩ = true := r
 example : Affiliation.affiliated.holds ⟨false, true, .fact false⟩ = false := rfl   -- not an individual
 example : Affiliation.acquirer "X" ⟨true, true, .fact false⟩ = .affiliated "X" := rfl
 example : Affiliation.acquirer "X" ⟨true, false, .fact false⟩ = .notAffiliated "X" := rfl
-example : Affiliation.acquirer "X" ⟨true, false, .judged "J" true⟩ = .judged "X" "J" true := rfl
+example : Affiliation.acquirer "X" ⟨true, false, .judged "J" true⟩ = .judged "X" ["J"] true := rfl
 #guard (Affiliation.affiliated.explain ⟨true, false, .judged "J" true⟩).reliesOn == ["J"]
 
 #guard Affiliation.affiliated.explainText ⟨true, true, .fact false⟩ ==

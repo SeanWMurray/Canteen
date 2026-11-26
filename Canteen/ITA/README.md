@@ -11,3 +11,4 @@ The verbatim statute text for each is in `statute/`. Review notes are in `docs/r
 - `S54/Timeline.lean`: a timeline chart of the superficial loss period
 - `S40/DebtLoss.lean`, `S40/PersonalUseLoss.lean`, `S40/PlanTransferLoss.lean`: subparagraphs 40(2)(g)(ii) to (iv)
 - `S40/Paragraph40_2_g.lean`: paragraph 40(2)(g) as a whole (`S40/Paragraph40_2_g_Facts.lean` holds its facts)
+- `S251_1/AffiliatedPersons.lean`: section 251.1(1)(a) to (g), for a world of persons
