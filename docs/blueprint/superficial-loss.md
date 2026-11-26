@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 76 statements:** 57 proven, 16 encoded, 3 not formalized.
+**Status of the 77 statements:** 58 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -81,11 +81,12 @@ graph TD
   n68["R34 · Convertible property"]:::proven
   n69["R35 · An individual's year, to taxable income"]:::proven
   n70["R36 · The election for Canadian securities"]:::proven
-  n71["R11 · The principal residence exemption"]:::proven
-  n72["R2 · Cost of the substituted property"]:::proven
-  n73["N1 · Inputs decided by other provisions"]:::notFormalized
-  n74["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n75["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n71["R37 · Bad debts and worthless shares"]:::proven
+  n72["R11 · The principal residence exemption"]:::proven
+  n73["R2 · Cost of the substituted property"]:::proven
+  n74["N1 · Inputs decided by other provisions"]:::notFormalized
+  n75["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n76["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -202,20 +203,22 @@ graph TD
   n58 --> n69
   n44 --> n70
   n44 --> n71
-  n50 --> n71
-  n11 --> n72
-  n1 --> n73
-  n5 --> n73
-  n6 --> n73
-  n8 --> n73
-  n37 --> n73
-  n72 --> n73
-  n38 --> n73
-  n30 --> n74
-  n32 --> n75
-  n34 --> n75
-  n39 --> n75
-  n42 --> n75
+  n12 --> n71
+  n44 --> n72
+  n50 --> n72
+  n11 --> n73
+  n1 --> n74
+  n5 --> n74
+  n6 --> n74
+  n8 --> n74
+  n37 --> n74
+  n73 --> n74
+  n38 --> n74
+  n30 --> n75
+  n32 --> n76
+  n34 --> n76
+  n39 --> n76
+  n42 --> n76
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -303,11 +306,12 @@ graph TD
   n68["R34"]:::proven
   n69["R35"]:::proven
   n70["R36"]:::proven
-  n71["R11"]:::proven
-  n72["R2"]:::proven
-  n73["N1"]:::notFormalized
-  n74["N2"]:::notFormalized
-  n75["N4"]:::notFormalized
+  n71["R37"]:::proven
+  n72["R11"]:::proven
+  n73["R2"]:::proven
+  n74["N1"]:::notFormalized
+  n75["N2"]:::notFormalized
+  n76["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -496,21 +500,30 @@ graph TD
   n44 --> n69
   n53 --> n69
   n44 -.-> n70
+  n7 --> n71
+  n6 --> n71
+  n12 --> n71
+  n0 --> n71
+  n3 --> n71
+  n4 --> n71
+  n5 --> n71
+  n8 --> n71
   n44 -.-> n71
-  n50 -.-> n71
-  n11 -.-> n72
-  n1 -.-> n73
-  n5 -.-> n73
-  n6 -.-> n73
-  n8 -.-> n73
-  n37 -.-> n73
-  n72 -.-> n73
-  n38 -.-> n73
-  n30 -.-> n74
-  n32 -.-> n75
-  n34 -.-> n75
-  n39 -.-> n75
-  n42 -.-> n75
+  n44 -.-> n72
+  n50 -.-> n72
+  n11 -.-> n73
+  n1 -.-> n74
+  n5 -.-> n74
+  n6 -.-> n74
+  n8 -.-> n74
+  n37 -.-> n74
+  n73 -.-> n74
+  n38 -.-> n74
+  n30 -.-> n75
+  n32 -.-> n76
+  n34 -.-> n76
+  n39 -.-> n76
+  n42 -.-> n76
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -1097,6 +1110,14 @@ Income from sources (employment and business, dividends with the gross-up, recap
 A taxpayer who elects has every Canadian security (shares of resident corporations, mutual fund trust units, and debt of residents) treated as capital property in the election year and after, unless a trader or dealer, financial institution, money-lender or non-resident. The election turns a capital-account judgment call into a fact (proven).
 
 **Lean:** [`Canteen.ITA.CanadianSecurities.deemedCapital`](../../Canteen/ITA/S39/CanadianSecurities.lean#L67), [`Canteen.ITA.CanadianSecurities.withElection`](../../Canteen/ITA/S39/CanadianSecurities.lean#L82), [`Canteen.ITA.CanadianSecurities.settles_capital_account`](../../Canteen/ITA/S39/CanadianSecurities.lean#L88), [`Canteen.ITA.CanadianSecurities.not_for_non_resident`](../../Canteen/ITA/S39/CanadianSecurities.lean#L93)
+
+### R37. Bad debts and worthless shares
+
+**Status:** proven · **Citation:** ITA 50(1) · **Uses:** R8, D
+
+A debt established to have become bad, or a share of a corporation that became bankrupt, was wound up insolvent, or is insolvent and dormant with its dissolution expected, is on election deemed disposed of at year end for nil and reacquired at nil: the whole cost is a capital loss (or business investment loss), never a superficial loss (paragraph (c)).
+
+**Lean:** [`Canteen.ITA.BadDebtOrShare.applies`](../../Canteen/ITA/S50/BadDebtOrShare.lean#L70), [`Canteen.ITA.BadDebtOrShare.disposition`](../../Canteen/ITA/S50/BadDebtOrShare.lean#L86), [`Canteen.ITA.BadDebtOrShare.loss_is_cost`](../../Canteen/ITA/S50/BadDebtOrShare.lean#L104), [`Canteen.ITA.BadDebtOrShare.not_superficial`](../../Canteen/ITA/S50/BadDebtOrShare.lean#L109)
 
 ### R11. The principal residence exemption
 

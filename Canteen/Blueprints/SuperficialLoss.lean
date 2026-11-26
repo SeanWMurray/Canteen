@@ -38,6 +38,7 @@ import Canteen.ITA.S87.Amalgamation
 import Canteen.ITA.S51.ConvertibleProperty
 import Canteen.ITA.S3.IndividualYear
 import Canteen.ITA.S39.CanadianSecurities
+import Canteen.ITA.S50.BadDebtOrShare
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -464,6 +465,13 @@ def blueprint : Blueprint where
             "into a fact (proven)."
           lean := [``CanadianSecurities.deemedCapital, ``CanadianSecurities.withElection,
             ``CanadianSecurities.settles_capital_account, ``CanadianSecurities.not_for_non_resident], uses := ["R8"] },
+        { id := "R37", kind := .law, title := "Bad debts and worthless shares", citation := "ITA 50(1)"
+          statement := "A debt established to have become bad, or a share of a corporation that became bankrupt, was wound up " ++
+            "insolvent, or is insolvent and dormant with its dissolution expected, is on election deemed disposed of at year " ++
+            "end for nil and reacquired at nil: the whole cost is a capital loss (or business investment loss), never a " ++
+            "superficial loss (paragraph (c))."
+          lean := [``BadDebtOrShare.applies, ``BadDebtOrShare.disposition, ``BadDebtOrShare.loss_is_cost,
+            ``BadDebtOrShare.not_superficial], uses := ["R8", "D"] },
         { id := "R11", kind := .law, title := "The principal residence exemption", citation := "ITA 40(2)(b); 54 \"principal residence\""
           statement := "A home is the principal residence for a year if owned, ordinarily inhabited by the family (or covered by " ++
             "a 45(2) or (3) election, for at most four years: (d)), designated, and not blocked by another family-unit " ++

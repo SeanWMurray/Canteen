@@ -34,6 +34,7 @@ import Canteen.ITA.S186.Connected
 import Canteen.ITA.S88.WindingUp
 import Canteen.ITA.S87.Amalgamation
 import Canteen.ITA.S39.CanadianSecurities
+import Canteen.ITA.S50.BadDebtOrShare
 import Canteen.Transactions.SisterCompanyRepurchase
 import Canteen.Transactions.Crystallization
 import Canteen.Transactions.SaleThroughHoldco
@@ -164,7 +165,8 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S87.Amalgamation, "87(1), (2)(e), (4) amalgamations"),
    (`Canteen.ITA.S51.ConvertibleProperty, "51 convertible property"),
    (`Canteen.ITA.S3.IndividualYear, "2(2), 3 an individual's year, to taxable income"),
-   (`Canteen.ITA.S39.CanadianSecurities, "39(4) to (6) the Canadian securities election")]
+   (`Canteen.ITA.S39.CanadianSecurities, "39(4) to (6) the Canadian securities election"),
+   (`Canteen.ITA.S50.BadDebtOrShare, "50(1) bad debts and worthless shares")]
 
 /-! ## The dashboard -/
 
@@ -240,7 +242,7 @@ def actMindmap : String := Id.run do
     (2, "s. 44"), (3, "44(1): replacement property"),
     (2, "s. 45"), (3, "45(1): change in use"), (3, "45(2), (3), (4): the elections"),
     (2, "s. 47"), (3, "47(1): identical properties, average cost"),
-    (2, "s. 50"), (3, "50(2): bad personal-use debts"),
+    (2, "s. 50"), (3, "50(1): bad debts, worthless shares"), (3, "50(2): bad personal-use debts"),
     (2, "s. 51"), (3, "51(1), (2): convertible property"),
     (2, "s. 53"), (3, "53(1)(f): cost of substituted property"), (3, "53(1)(f.1), (f.2): cost after 40(2)(e.1), 40(3.6)"),
     (2, "s. 54"), (3, "superficial loss"), (3, "principal residence"), (3, "personal-use property"),
@@ -311,6 +313,7 @@ def pages : List Page := [
       ("Subsection 88(1): winding up a subsidiary", flowchart WindingUp.applies.outline),
       ("Subsection 87(1): amalgamation", flowchart Amalgamation87.amalgamation.outline),
       ("Subsection 39(4): the Canadian securities election", flowchart CanadianSecurities.deemedCapital.outline),
+      ("Subsection 50(1): bad debts and worthless shares", flowchart BadDebtOrShare.applies.outline),
       ("Subparagraph 40(2)(g)(iv): transfers to registered plans", flowchart Paragraph40_2_g.planTransferLoss.outline),
       ("Clause 40(2)(g)(iv)(A)", flowchart Paragraph40_2_g.planTransferA.outline),
       ("Clause 40(2)(g)(iv)(B)", flowchart Paragraph40_2_g.planTransferB.outline),

@@ -47,3 +47,4 @@ The verbatim statute text for each is in `statute/`. Review notes are in `docs/r
 - `S51/ConvertibleProperty.lean`: subsections 51(1), (2) and (4)
 - `S3/IndividualYear.lean`: an individual's year, from the encoded sources to taxable income (2(2), 3)
 - `S39/CanadianSecurities.lean`: subsections 39(4) to (6)
+- `S50/BadDebtOrShare.lean`: subsection 50(1)
