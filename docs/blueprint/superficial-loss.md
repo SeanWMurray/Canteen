@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 55 statements:** 36 proven, 16 encoded, 3 not formalized.
+**Status of the 56 statements:** 37 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -60,11 +60,12 @@ graph TD
   n47["R13 · The spousal rollover"]:::proven
   n48["R14 · Death"]:::proven
   n49["R15 · Attribution of capital gains to the transferor"]:::proven
-  n50["R11 · The principal residence exemption"]:::proven
-  n51["R2 · Cost of the substituted property"]:::proven
-  n52["N1 · Inputs decided by other provisions"]:::notFormalized
-  n53["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n54["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n50["R16 · Change in use"]:::proven
+  n51["R11 · The principal residence exemption"]:::proven
+  n52["R2 · Cost of the substituted property"]:::proven
+  n53["N1 · Inputs decided by other provisions"]:::notFormalized
+  n54["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n55["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -149,19 +150,22 @@ graph TD
   n44 --> n49
   n47 --> n49
   n44 --> n50
-  n11 --> n51
-  n1 --> n52
-  n5 --> n52
-  n6 --> n52
-  n8 --> n52
-  n37 --> n52
-  n51 --> n52
-  n38 --> n52
-  n30 --> n53
-  n32 --> n54
-  n34 --> n54
-  n39 --> n54
-  n42 --> n54
+  n12 --> n50
+  n44 --> n51
+  n50 --> n51
+  n11 --> n52
+  n1 --> n53
+  n5 --> n53
+  n6 --> n53
+  n8 --> n53
+  n37 --> n53
+  n52 --> n53
+  n38 --> n53
+  n30 --> n54
+  n32 --> n55
+  n34 --> n55
+  n39 --> n55
+  n42 --> n55
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -228,11 +232,12 @@ graph TD
   n47["R13"]:::proven
   n48["R14"]:::proven
   n49["R15"]:::proven
-  n50["R11"]:::proven
-  n51["R2"]:::proven
-  n52["N1"]:::notFormalized
-  n53["N2"]:::notFormalized
-  n54["N4"]:::notFormalized
+  n50["R16"]:::proven
+  n51["R11"]:::proven
+  n52["R2"]:::proven
+  n53["N1"]:::notFormalized
+  n54["N2"]:::notFormalized
+  n55["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -382,20 +387,30 @@ graph TD
   n3 -.-> n48
   n44 -.-> n49
   n47 -.-> n49
+  n7 --> n50
+  n6 --> n50
+  n12 --> n50
+  n0 --> n50
+  n3 --> n50
+  n4 --> n50
+  n5 --> n50
+  n8 --> n50
   n44 -.-> n50
-  n11 -.-> n51
-  n1 -.-> n52
-  n5 -.-> n52
-  n6 -.-> n52
-  n8 -.-> n52
-  n37 -.-> n52
-  n51 -.-> n52
-  n38 -.-> n52
-  n30 -.-> n53
-  n32 -.-> n54
-  n34 -.-> n54
-  n39 -.-> n54
-  n42 -.-> n54
+  n44 -.-> n51
+  n50 -.-> n51
+  n11 -.-> n52
+  n1 -.-> n53
+  n5 -.-> n53
+  n6 -.-> n53
+  n8 -.-> n53
+  n37 -.-> n53
+  n52 -.-> n53
+  n38 -.-> n53
+  n30 -.-> n54
+  n32 -.-> n55
+  n34 -.-> n55
+  n39 -.-> n55
+  n42 -.-> n55
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -815,13 +830,21 @@ After property is lent or transferred to a spouse or common-law partner, the net
 
 **Lean:** [`Canteen.ITA.Attribution.toIndividual`](../../Canteen/ITA/S74/Attribution.lean#L81), [`Canteen.ITA.Attribution.recipientYear`](../../Canteen/ITA/S74/Attribution.lean#L93), [`Canteen.ITA.Attribution.fairMarketValueException`](../../Canteen/ITA/S74/Attribution.lean#L54), [`Canteen.ITA.Attribution.net_one_way`](../../Canteen/ITA/S74/Attribution.lean#L104), [`Canteen.ITA.Attribution.nothing_on_fair_market_value`](../../Canteen/ITA/S74/Attribution.lean#L109)
 
+### R16. Change in use
+
+**Status:** proven · **Citation:** ITA 45(1)–(4) · **Uses:** R8, D
+
+A change in the use regularly made of a property between gaining or producing income and other purposes is a deemed disposition, at fair market value, of the proportion that changed, and a reacquisition at that amount; unless the taxpayer elects under 45(2) (toward income) or 45(3) (back to a principal residence, with no capital cost allowance claimed: 45(4)). Proven: the gains add up, and the deemed disposition is never a superficial loss (paragraph (c)).
+
+**Lean:** [`Canteen.ITA.ChangeInUse.deemedDisposition`](../../Canteen/ITA/S45/ChangeInUse.lean#L129), [`Canteen.ITA.ChangeInUse.proceeds`](../../Canteen/ITA/S45/ChangeInUse.lean#L147), [`Canteen.ITA.ChangeInUse.costAfter`](../../Canteen/ITA/S45/ChangeInUse.lean#L162), [`Canteen.ITA.ChangeInUse.elect_45_2`](../../Canteen/ITA/S45/ChangeInUse.lean#L239), [`Canteen.ITA.ChangeInUse.cca_defeats_45_3`](../../Canteen/ITA/S45/ChangeInUse.lean#L245), [`Canteen.ITA.ChangeInUse.gains_add_up`](../../Canteen/ITA/S45/ChangeInUse.lean#L251), [`Canteen.ITA.ChangeInUse.not_superficial`](../../Canteen/ITA/S45/ChangeInUse.lean#L262)
+
 ### R11. The principal residence exemption
 
-**Status:** proven · **Citation:** ITA 40(2)(b); 54 "principal residence" · **Uses:** R8
+**Status:** proven · **Citation:** ITA 40(2)(b); 54 "principal residence" · **Uses:** R8, R16
 
-A home is the principal residence for a year if owned, ordinarily inhabited by the family (or covered by a 45(2) or (3) election), designated, and not blocked by another family-unit designation; the gain is A − A × B / C − D, so with the "plus one" a home designated for all but one of its years is fully exempt (proven).
+A home is the principal residence for a year if owned, ordinarily inhabited by the family (or covered by a 45(2) or (3) election, for at most four years: (d)), designated, and not blocked by another family-unit designation; the gain is A − A × B / C − D, so with the "plus one" a home designated for all but one of its years is fully exempt (proven).
 
-**Lean:** [`Canteen.ITA.PrincipalResidence.principalResidence`](../../Canteen/ITA/S40/PrincipalResidence.lean#L100), [`Canteen.ITA.PrincipalResidence.gain`](../../Canteen/ITA/S40/PrincipalResidence.lean#L135), [`Canteen.ITA.PrincipalResidence.exempt_of_b_ge_c`](../../Canteen/ITA/S40/PrincipalResidence.lean#L169), [`Canteen.ITA.PrincipalResidence.exempt_le`](../../Canteen/ITA/S40/PrincipalResidence.lean#L163), [`Canteen.ITA.CapitalGains.ofPrincipalResidence`](../../Canteen/ITA/S38/CapitalGains.lean#L228)
+**Lean:** [`Canteen.ITA.PrincipalResidence.principalResidence`](../../Canteen/ITA/S40/PrincipalResidence.lean#L120), [`Canteen.ITA.PrincipalResidence.gain`](../../Canteen/ITA/S40/PrincipalResidence.lean#L158), [`Canteen.ITA.PrincipalResidence.exempt_of_b_ge_c`](../../Canteen/ITA/S40/PrincipalResidence.lean#L192), [`Canteen.ITA.PrincipalResidence.exempt_le`](../../Canteen/ITA/S40/PrincipalResidence.lean#L186), [`Canteen.ITA.PrincipalResidence.paraD`](../../Canteen/ITA/S40/PrincipalResidence.lean#L108), [`Canteen.ITA.CapitalGains.ofPrincipalResidence`](../../Canteen/ITA/S38/CapitalGains.lean#L228)
 
 ### R2. Cost of the substituted property
 

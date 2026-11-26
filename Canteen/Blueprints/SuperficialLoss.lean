@@ -17,6 +17,7 @@ import Canteen.ITA.S69.NonArmsLength
 import Canteen.ITA.S73.SpousalRollover
 import Canteen.ITA.S70.Death
 import Canteen.ITA.S74.Attribution
+import Canteen.ITA.S45.ChangeInUse
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -283,12 +284,23 @@ def blueprint : Blueprint where
             "or the two are separated and jointly elect."
           lean := [``Attribution.toIndividual, ``Attribution.recipientYear, ``Attribution.fairMarketValueException,
             ``Attribution.net_one_way, ``Attribution.nothing_on_fair_market_value], uses := ["R8", "R13"] },
+        { id := "R16", kind := .law, title := "Change in use", citation := "ITA 45(1)–(4)"
+          statement := "A change in the use regularly made of a property between gaining or producing income and other " ++
+            "purposes is a deemed disposition, at fair market value, of the proportion that changed, and a reacquisition at " ++
+            "that amount; unless the taxpayer elects under 45(2) (toward income) or 45(3) (back to a principal residence, " ++
+            "with no capital cost allowance claimed: 45(4)). Proven: the gains add up, and the deemed disposition is never " ++
+            "a superficial loss (paragraph (c))."
+          lean := [``ChangeInUse.deemedDisposition, ``ChangeInUse.proceeds, ``ChangeInUse.costAfter, ``ChangeInUse.elect_45_2,
+            ``ChangeInUse.cca_defeats_45_3, ``ChangeInUse.gains_add_up, ``ChangeInUse.not_superficial],
+          uses := ["R8", "D"] },
         { id := "R11", kind := .law, title := "The principal residence exemption", citation := "ITA 40(2)(b); 54 \"principal residence\""
           statement := "A home is the principal residence for a year if owned, ordinarily inhabited by the family (or covered by " ++
-            "a 45(2) or (3) election), designated, and not blocked by another family-unit designation; the gain is A − A × B / C " ++
+            "a 45(2) or (3) election, for at most four years: (d)), designated, and not blocked by another family-unit " ++
+            "designation; the gain is A − A × B / C " ++
             "− D, so with the \"plus one\" a home designated for all but one of its years is fully exempt (proven)."
           lean := [``PrincipalResidence.principalResidence, ``PrincipalResidence.gain, ``PrincipalResidence.exempt_of_b_ge_c,
-            ``PrincipalResidence.exempt_le, ``CapitalGains.ofPrincipalResidence], uses := ["R8"] },
+            ``PrincipalResidence.exempt_le, ``PrincipalResidence.paraD, ``CapitalGains.ofPrincipalResidence],
+          uses := ["R8", "R16"] },
         { id := "R2", kind := .law, title := "Cost of the substituted property", citation := "ITA 53(1)(f)"
           statement := "The superficial loss, less any amount described in subparagraph 53(1)(f)(ii), is added to the cost " ++
             "of the substituted property in computing its adjusted cost base."

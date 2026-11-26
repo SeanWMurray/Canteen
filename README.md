@@ -17,7 +17,7 @@ The full design is in [`docs/design.md`](docs/design.md).
 | 4. First real provision | Encoded; awaiting review | Section 54 "superficial loss" with all its exceptions, and subparagraph 40(2)(g)(i); see [`docs/review/superficial-loss.md`](docs/review/superficial-loss.md) |
 | 5. Blueprint | Done | Memos whose statements link to Lean, with dependency graphs coloured by proven/unproven status; see [`docs/blueprint/`](docs/blueprint/README.md) |
 | 6. Ergonomics | Done | The `statute` command: rules written in the statute's own shape, sound with nothing to prove |
-| Beyond the roadmap | Done | Sections 3, 38 to 41 and 111 (the capital gains computation, net capital losses and taxable income), 69(1), 70(5) and (6), 73(1), 74.2, the principal residence exemption, all of paragraph 40(2)(g), 40(2)(e.1), 40(3.3) to (3.6), 50(2), 53(1)(f), sections 251 and 251.1 (with the amalgamation rules) encoded; five transactions; diagrams drawn from the Lean; memos checked against what their proofs use |
+| Beyond the roadmap | Done | Sections 3, 38 to 41 and 111 (the capital gains computation, net capital losses and taxable income), 45(1) to (4), 69(1), 70(5) and (6), 73(1), 74.2, the principal residence exemption, all of paragraph 40(2)(g), 40(2)(e.1), 40(3.3) to (3.6), 50(2), 53(1)(f), sections 251 and 251.1 (with the amalgamation rules) encoded; five transactions; diagrams drawn from the Lean; memos checked against what their proofs use |
 
 ## Building
 
@@ -84,6 +84,7 @@ Canteen/
     S73/SpousalRollover.lean   73(1), (1.01): the spousal rollover, displacing 69(1)
     S70/Death.lean             70(5), (6), (6.2): deemed disposition on death, and the spousal rollover
     S74/Attribution.lean       74.2(1), 74.5(1), (3): capital gains attributed back to the transferor
+    S45/ChangeInUse.lean       45(1) to (4): change in use, and the 45(2) and (3) elections
     S50/BadDebtPersonalUse.lean   subsection 50(2): a personal-use debt that goes bad
     S40/SuspendedLoss.lean     subsections 40(3.3) to (3.5): suspended losses of corporations, trusts, partnerships
     S40/ShareToAffiliate.lean  40(3.6), 53(1)(f.2): a share disposed of to an affiliated corporation

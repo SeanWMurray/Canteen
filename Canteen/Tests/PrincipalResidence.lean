@@ -58,6 +58,32 @@ example : pr { one 2020 [] with inhabited := .fact false, changeInUseElection :=
 example : isPR { house [one 2020 []] with housingUnit := false } (one 2020 []) = false := by decide
 #guard (principalResidence.explain ⟨house [], { one 2020 [] with inhabited := .judged "J-INHABIT" true }⟩).reliesOn == ["J-INHABIT"]
 
+/-! ## (d): at most four years solely because of a 45(2) or (3) election -/
+
+-- The family moves out in 2016 and rents the house, electing under 45(2): 2016 to 2025 are covered
+-- by (b) alone. The first four (2016 to 2019) can be the principal residence; 2020 on cannot.
+def rented : List YearFacts :=
+  (List.range 11).map fun i =>
+    let y := 2015 + i
+    { year := y, designated := true, inhabited := .fact (y == 2015), changeInUseElection := 2016 ≤ y }
+def rentedHouse : Facts := house rented
+
+example : (rented.filter (isPR rentedHouse)).map (·.year) = [2015, 2016, 2017, 2018, 2019] := by decide
+-- B = 1 + 5 = 6 of C = 11.
+example : b rentedHouse = 6 := by decide
+-- Moving back in 2022: inhabited years are not limited by (d).
+example : isPR (house (rented.map fun y => if 2022 ≤ y.year then { y with inhabited := .fact true } else y))
+    { year := 2022, designated := true, changeInUseElection := true } = true := by decide
+-- Years not designated do not count toward the four.
+example : isPR (house (rented.map fun y => if y.year ≤ 2018 then { y with designated := false } else y))
+    { year := 2020, designated := true, inhabited := .fact false, changeInUseElection := true } = true := by decide
+-- Whether a fifth election year was inhabited is the judgment call (d) turns on.
+def judgedYear (y : Nat) : YearFacts :=
+  { year := y, designated := true, inhabited := .judged "J-INHABIT" false, changeInUseElection := true }
+#guard (principalResidence.explain ⟨rentedHouse, judgedYear 2020⟩).reliesOn == ["J-INHABIT"]
+-- With fewer than four preceding election years, (d) cannot apply, and the call is not relied on.
+#guard (principalResidence.explain ⟨rentedHouse, judgedYear 2018⟩).reliesOn == []
+
 /-! ## Read-back -/
 
 def lines : List String := (((rule.explain fiveYears).render).splitOn "\n").drop 9 |>.take 4

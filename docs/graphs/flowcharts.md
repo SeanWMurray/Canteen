@@ -282,6 +282,7 @@ flowchart TD
   C2["<b>(a), (b)</b> It was ordinarily inhabited in the year by<br/>the taxpayer, the taxpayer's spouse or<br/>common-law partner or former one, or a child<br/>of the taxpayer, or an election under 45(2)<br/>or 45(3) covers the year<br/><i>judgment call: judgment calls computed from the facts</i><br/>[ITA 54 #quot;principal residence#quot; (a), (b)]"]:::judgment
   C3["<b>(c) designation</b> The taxpayer designated it as principal<br/>residence for the year<br/>[ITA 54 #quot;principal residence#quot; (c) designation]"]:::fact
   E0["<b>(c) other designations</b> Another property was designated for the year<br/>by the taxpayer or a member of the<br/>taxpayer's family unit<br/>[ITA 54 #quot;principal residence#quot; (c) other designations]"]:::fact
+  E1["<b>(d)</b> It was not ordinarily inhabited in the year,<br/>and it would be the principal residence for<br/>the year solely because of a 45(2) or 45(3)<br/>election, as it would have been for 4 or<br/>more preceding years<br/><i>judgment call: judgment calls computed from the facts</i><br/>[ITA 54 #quot;principal residence#quot; (d)]"]:::judgment
   Y(["the definition #quot;principal residence#quot; applies"]):::yes
   N(["the definition #quot;principal residence#quot; does not apply"]):::no
   S --> C0
@@ -293,8 +294,10 @@ flowchart TD
   C2 -->|not met| N
   C3 -->|met| E0
   C3 -->|not met| N
-  E0 -->|does not apply| Y
+  E0 -->|does not apply| E1
   E0 -->|applies| N
+  E1 -->|does not apply| Y
+  E1 -->|applies| N
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
   classDef judgment fill:#ffe0b2,stroke:#ef6c00,color:#e65100
   classDef rule fill:#bbdefb,stroke:#1565c0,color:#0d47a1
@@ -376,6 +379,31 @@ flowchart TD
   C1 -->|not met| N
   C2 -->|met| Y
   C2 -->|not met| N
+  classDef fact fill:#eeeeee,stroke:#616161,color:#212121
+  classDef judgment fill:#ffe0b2,stroke:#ef6c00,color:#e65100
+  classDef rule fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+  classDef yes fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
+  classDef no fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+  classDef start fill:#ffffff,stroke:#212121,color:#212121
+```
+
+## Subsection 45(1): change in use, with the elections
+
+```mermaid
+flowchart TD
+  S(["subsection 45(1) · ITA 45(1)"]):::start
+  C0["<b>(a), (c)</b> The use regularly made of the property<br/>changed between gaining or producing income<br/>and other purposes<br/>[ITA 45(1)(a), (c)]"]:::fact
+  E0["<b>45(2)</b> 45(2) applies<br/>[ITA 45(2)(a), (b)]"]:::rule
+  E1["<b>45(3)</b> 45(3) applies<br/>[ITA 45(3), (4)]"]:::rule
+  Y(["subsection 45(1) applies"]):::yes
+  N(["subsection 45(1) does not apply"]):::no
+  S --> C0
+  C0 -->|met| E0
+  C0 -->|not met| N
+  E0 -->|does not apply| E1
+  E0 -->|applies| N
+  E1 -->|does not apply| Y
+  E1 -->|applies| N
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
   classDef judgment fill:#ffe0b2,stroke:#ef6c00,color:#e65100
   classDef rule fill:#bbdefb,stroke:#1565c0,color:#0d47a1

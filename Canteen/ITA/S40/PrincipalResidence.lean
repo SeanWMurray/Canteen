@@ -18,7 +18,8 @@ designated it for the year and no other property was designated for the year (i)
 the taxpayer, or (ii) after 1981, by the taxpayer, a spouse or common-law partner throughout the
 year (unless living apart under a judicial separation or written separation agreement), an
 unmarried minor child, or, where the taxpayer was an unmarried minor, a mother or father or an
-unmarried minor brother or sister.
+unmarried minor brother or sister; nor (d) because of paragraph (b), if solely because of (b) it
+would have been the principal residence for 4 or more preceding taxation years.
 
 **40(2)(b)** the gain is A − A × B / C − D: A the gain otherwise; B one plus (if resident in Canada
 in the acquisition year) the number of taxation years ending after the acquisition date for which
@@ -97,6 +98,25 @@ structure Query where
   year : YearFacts
   deriving Inhabited
 
+/-- (d): the preceding years in which the property would have been the principal residence (but
+for paragraph (d)) with an election under 45(2) or (3) covering the year, and designated and not
+blocked; `solely` keeps only those not ordinarily inhabited, so that (b) alone made them one. -/
+def electionYearsBefore (q : Query) (solely : Bool) : List YearFacts :=
+  q.facts.years.filter fun y => y.year < q.year.year && q.facts.housingUnit && y.owned && y.changeInUseElection &&
+    y.designated && !(y.otherDesignations.any (blocks y)) && (!solely || !y.inhabited.value)
+
+/-- (d) applies to the year: it would be the principal residence solely because of (b), and it would
+have been solely because of (b) for 4 or more preceding years. -/
+def paraD (q : Query) : Bool :=
+  q.year.changeInUseElection && !q.year.inhabited.value && 4 ≤ (electionYearsBefore q true).length
+
+/-- The judgment calls (d) turns on: whether the year and the preceding election years were
+ordinarily inhabited, once there are enough election years for (d) to matter. -/
+def paraDJudgments (q : Query) : List String :=
+  if q.year.changeInUseElection && 4 ≤ (electionYearsBefore q false).length then
+    (q.year :: electionYearsBefore q false).foldl (fun ids y => mergeIds ids y.inhabited.judgments) []
+  else []
+
 /-- Section 54 "principal residence", for an individual and a taxation year. -/
 statute principalResidence (q : Query) named "the definition \"principal residence\"" cites "ITA 54 \"principal residence\""
   applies where
@@ -117,6 +137,9 @@ statute principalResidence (q : Query) named "the definition \"principal residen
     | "(c) other designations" (q.year.otherDesignations.any (blocks q.year))
         => "Another property was designated for the year by the taxpayer or a member of the taxpayer's family unit."
         else "No other property was designated for the year by the taxpayer or a member of the taxpayer's family unit."
+    | "(d)" judgments (paraDJudgments q) (paraD q)
+        => "It was not ordinarily inhabited in the year, and it would be the principal residence for the year solely because of a 45(2) or 45(3) election, as it would have been for 4 or more preceding years."
+        else "Paragraph (d) does not apply: the year is not a fifth or later year that only a 45(2) or 45(3) election would make the principal residence."
 
 /-- Whether the property is the principal residence for a year. -/
 def isPR (f : Facts) (y : YearFacts) : Bool := principalResidence.holds ⟨f, y⟩
