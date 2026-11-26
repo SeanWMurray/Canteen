@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 41 statements:** 22 proven, 16 encoded, 3 not formalized.
+**Status of the 42 statements:** 23 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -47,10 +47,11 @@ graph TD
   n34["G5 · Paragraph 40(2)(g) as a whole"]:::proven
   n35["R1 · Spouses are affiliated"]:::proven
   n36["R3 · Affiliated persons, paragraphs (a) to (h)"]:::proven
-  n37["R2 · Cost of the substituted property"]:::proven
-  n38["N1 · Inputs decided by other provisions"]:::notFormalized
-  n39["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n40["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n37["R4 · Related persons and arm's length"]:::proven
+  n38["R2 · Cost of the substituted property"]:::proven
+  n39["N1 · Inputs decided by other provisions"]:::notFormalized
+  n40["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n41["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -106,17 +107,18 @@ graph TD
   n33 --> n34
   n35 --> n36
   n1 --> n36
-  n11 --> n37
-  n1 --> n38
-  n5 --> n38
-  n6 --> n38
-  n8 --> n38
-  n35 --> n38
-  n37 --> n38
-  n36 --> n38
-  n28 --> n39
-  n30 --> n40
-  n32 --> n40
+  n11 --> n38
+  n1 --> n39
+  n5 --> n39
+  n6 --> n39
+  n8 --> n39
+  n35 --> n39
+  n38 --> n39
+  n36 --> n39
+  n28 --> n40
+  n30 --> n41
+  n32 --> n41
+  n37 --> n41
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -170,10 +172,11 @@ graph TD
   n34["G5"]:::proven
   n35["R1"]:::proven
   n36["R3"]:::proven
-  n37["R2"]:::proven
-  n38["N1"]:::notFormalized
-  n39["N2"]:::notFormalized
-  n40["N4"]:::notFormalized
+  n37["R4"]:::proven
+  n38["R2"]:::proven
+  n39["N1"]:::notFormalized
+  n40["N2"]:::notFormalized
+  n41["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -282,17 +285,18 @@ graph TD
   n27 -.-> n34
   n1 --> n36
   n35 -.-> n36
-  n11 -.-> n37
-  n1 -.-> n38
-  n5 -.-> n38
-  n6 -.-> n38
-  n8 -.-> n38
-  n35 -.-> n38
-  n37 -.-> n38
-  n36 -.-> n38
-  n28 -.-> n39
-  n30 -.-> n40
-  n32 -.-> n40
+  n11 -.-> n38
+  n1 -.-> n39
+  n5 -.-> n39
+  n6 -.-> n39
+  n8 -.-> n39
+  n35 -.-> n39
+  n38 -.-> n39
+  n36 -.-> n39
+  n28 -.-> n40
+  n30 -.-> n41
+  n32 -.-> n41
+  n37 -.-> n41
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -606,7 +610,15 @@ The loss is nil if it is within any of subparagraphs (i) to (iv), unless the car
 
 Corporations and their controllers (b), two corporations (c), a corporation and a partnership (d), a partnership and a majority-interest partner (e), two partnerships (f), a person and a trust (g), and two trusts (h), with the definitions in 251.1(3), the rules in 251.1(4), and "majority-interest partner" in 248(1). Computed for a whole world of persons as the smallest relation closed under the paragraphs; reflexive and symmetric (proven).
 
-**Lean:** [`Canteen.ITA.AffiliatedPersons.rule`](../../Canteen/ITA/S251_1/AffiliatedPersons.lean#L545), [`Canteen.ITA.AffiliatedPersons.affiliated_self`](../../Canteen/ITA/S251_1/AffiliatedPersons.lean#L555), [`Canteen.ITA.AffiliatedPersons.affiliated_symm`](../../Canteen/ITA/S251_1/AffiliatedPersons.lean#L559), [`Canteen.ITA.AffiliatedPersons.acquirer_isTaxpayerOrAffiliated`](../../Canteen/ITA/S251_1/AffiliatedPersons.lean#L580)
+**Lean:** [`Canteen.ITA.AffiliatedPersons.rule`](../../Canteen/ITA/S251_1/AffiliatedPersons.lean#L606), [`Canteen.ITA.AffiliatedPersons.affiliated_self`](../../Canteen/ITA/S251_1/AffiliatedPersons.lean#L616), [`Canteen.ITA.AffiliatedPersons.affiliated_symm`](../../Canteen/ITA/S251_1/AffiliatedPersons.lean#L620), [`Canteen.ITA.AffiliatedPersons.acquirer_isTaxpayerOrAffiliated`](../../Canteen/ITA/S251_1/AffiliatedPersons.lean#L641)
+
+### R4. Related persons and arm's length
+
+**Status:** proven · **Citation:** ITA 251(1)–(6)
+
+Related persons (251(2), (3), with 251(6) for blood relationship, marriage, common-law partnership and adoption) are deemed not to deal at arm's length (251(1)(a)); otherwise it is a question of fact (c). Used for the arm's length exception in subparagraph 40(2)(g)(ii), and 251(6) also decides who is connected for 251.1(4)(d)(iv).
+
+**Lean:** [`Canteen.ITA.RelatedPersons.rule`](../../Canteen/ITA/S251/RelatedPersons.lean#L205), [`Canteen.ITA.RelatedPersons.armsLengthRule`](../../Canteen/ITA/S251/RelatedPersons.lean#L252), [`Canteen.ITA.RelatedPersons.armsLengthAnswer`](../../Canteen/ITA/S251/RelatedPersons.lean#L265), [`Canteen.ITA.RelatedPersons.not_armsLength_of_related`](../../Canteen/ITA/S251/RelatedPersons.lean#L260), [`Canteen.ITA.RelatedPersons.related_symm`](../../Canteen/ITA/S251/RelatedPersons.lean#L213)
 
 ### R2. Cost of the substituted property
 
@@ -634,7 +646,7 @@ Where only part of a loss is a superficial loss (for example, fewer shares acqui
 
 ### N4. Inputs for subparagraphs (ii) to (iv)
 
-**Status:** not formalized · **Citation:** ITA 40(2)(g) · **Uses:** G2, G3
+**Status:** not formalized · **Citation:** ITA 40(2)(g) · **Uses:** G2, G3, R4
 
-Debts referred to in subsection 50(2), arm's length dealing (section 251), and the ordinary meaning of personal-use property beyond the three categories its definition includes are taken as facts or judgment calls.
+Debts referred to in subsection 50(2), arm's length dealing between unrelated persons (a question of fact under 251(1)(c)), and the ordinary meaning of personal-use property beyond the three categories its definition includes are taken as facts or judgment calls.
 

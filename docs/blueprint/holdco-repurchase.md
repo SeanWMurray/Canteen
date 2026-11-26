@@ -264,7 +264,7 @@ flowchart LR
 
 Spouses are affiliated (a); a corporation is affiliated with each member of an affiliated group of persons by which it is controlled (b)(ii); and so on, through paragraphs (c) to (g). Computed as the smallest relation closed under the paragraphs.
 
-**Lean:** [`Canteen.ITA.AffiliatedPersons.rule`](../../Canteen/ITA/S251_1/AffiliatedPersons.lean#L545), [`Canteen.ITA.AffiliatedPersons.affiliated_symm`](../../Canteen/ITA/S251_1/AffiliatedPersons.lean#L559)
+**Lean:** [`Canteen.ITA.AffiliatedPersons.rule`](../../Canteen/ITA/S251_1/AffiliatedPersons.lean#L606), [`Canteen.ITA.AffiliatedPersons.affiliated_symm`](../../Canteen/ITA/S251_1/AffiliatedPersons.lean#L620)
 
 ### L1. Superficial loss
 
@@ -446,7 +446,7 @@ The taxpayer cannot use the $4,000.00 loss: Holdco is affiliated with the taxpay
 
 The taxpayer and a friend would control Holdco together, but they are not an affiliated group, so (b)(ii) would not apply. Holdco would be affiliated with the taxpayer, and the loss superficial, only if the taxpayer alone controlled Holdco "directly or indirectly in any manner whatever" (J-DEFACTO).
 
-**Lean:** [`Canteen.Transactions.HoldcoRepurchase.friend_turns_on_defacto`](../../Canteen/Transactions/HoldcoRepurchase.lean#L124), [`Canteen.Transactions.HoldcoRepurchase.friend_relies_on_defacto`](../../Canteen/Transactions/HoldcoRepurchase.lean#L130)
+**Lean:** [`Canteen.Transactions.HoldcoRepurchase.friend_turns_on_defacto`](../../Canteen/Transactions/HoldcoRepurchase.lean#L125), [`Canteen.Transactions.HoldcoRepurchase.friend_relies_on_defacto`](../../Canteen/Transactions/HoldcoRepurchase.lean#L131)
 
 **Rests on:** facts F1, F3, F2.
 

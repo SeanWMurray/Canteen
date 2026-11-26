@@ -38,22 +38,22 @@ example : Affiliation.affiliated.holds { individual := true, spouseOrCommonLawPa
 /-! ## (b) a corporation and its controllers -/
 
 -- (b)(i): Annco is controlled by Ann.
-def wBi : World := { persons := people ++ [corp 10 "Annco"], spouses := [(0, 1)], controls := [⟨10, .person 0, .fact true⟩] }
+def wBi : World := { persons := people ++ [corp 10 "Annco"], spouses := [(0, 1)], controls := [⟨10, .person 0, .fact true, false⟩] }
 example : aff? wBi 10 0 = true := by decide +kernel
 -- (b)(iii): and so with Ann's spouse.
 example : aff? wBi 10 1 = true := by decide +kernel
 example : aff? wBi 10 2 = false := by decide +kernel
 
 -- (b)(ii): Famco is controlled by Ann and Bob together, an affiliated group.
-def wBii : World := { persons := people ++ [corp 11 "Famco"], spouses := [(0, 1)], controls := [⟨11, .group [0, 1], .fact true⟩] }
+def wBii : World := { persons := people ++ [corp 11 "Famco"], spouses := [(0, 1)], controls := [⟨11, .group [0, 1], .fact true, false⟩] }
 example : aff? wBii 11 0 = true ∧ aff? wBii 11 1 = true := by decide +kernel
 
 -- Not (b)(ii): Pals Inc. is controlled by Ann and Cy together, who are not an affiliated group.
-def wNotBii : World := { persons := people ++ [corp 12 "Pals Inc."], spouses := [(0, 1)], controls := [⟨12, .group [0, 2], .fact true⟩] }
+def wNotBii : World := { persons := people ++ [corp 12 "Pals Inc."], spouses := [(0, 1)], controls := [⟨12, .group [0, 2], .fact true, false⟩] }
 example : aff? wNotBii 12 0 = false ∧ aff? wNotBii 12 2 = false := by decide +kernel
 
 -- (b)(iii) through a group: Dee's spouse Cy is a member of an affiliated group controlling Cyco.
-def wBiii : World := { persons := people ++ [corp 13 "Cyco"], spouses := [(2, 3)], controls := [⟨13, .group [2, 3], .fact true⟩] }
+def wBiii : World := { persons := people ++ [corp 13 "Cyco"], spouses := [(2, 3)], controls := [⟨13, .group [2, 3], .fact true, false⟩] }
 example : aff? wBiii 13 3 = true := by decide +kernel
 
 /-! ## (c) two corporations -/
@@ -61,7 +61,7 @@ example : aff? wBiii 13 3 = true := by decide +kernel
 -- (c)(i): both controlled by Ann; and one by Ann, the other by her spouse Bob.
 def wCi : World :=
   { persons := people ++ [corp 10 "Annco", corp 14 "Annco 2", corp 15 "Bobco", corp 16 "Cyco"], spouses := [(0, 1)],
-    controls := [⟨10, .person 0, .fact true⟩, ⟨14, .person 0, .fact true⟩, ⟨15, .person 1, .fact true⟩, ⟨16, .person 2, .fact true⟩] }
+    controls := [⟨10, .person 0, .fact true, false⟩, ⟨14, .person 0, .fact true, false⟩, ⟨15, .person 1, .fact true, false⟩, ⟨16, .person 2, .fact true, false⟩] }
 example : aff? wCi 10 14 = true := by decide +kernel
 example : aff? wCi 10 15 = true := by decide +kernel
 example : aff? wCi 10 16 = false := by decide +kernel     -- Cy is not affiliated with Ann
@@ -69,14 +69,14 @@ example : aff? wCi 10 16 = false := by decide +kernel     -- Cy is not affiliate
 -- (c)(ii): Annco controlled by Ann; Famco by the group Ann and Bob, each affiliated with Ann.
 def wCii : World :=
   { persons := people ++ [corp 10 "Annco", corp 11 "Famco"], spouses := [(0, 1)],
-    controls := [⟨10, .person 0, .fact true⟩, ⟨11, .group [0, 1], .fact true⟩] }
+    controls := [⟨10, .person 0, .fact true, false⟩, ⟨11, .group [0, 1], .fact true, false⟩] }
 example : aff? wCii 10 11 = true := by decide +kernel
 
 -- (c)(iii): two corporations each controlled by a group; each member of each group is
 -- affiliated with a member of the other (Ann and Cy; Bob and Dee).
 def wCiii : World :=
   { persons := people ++ [corp 17 "AC Ltd.", corp 18 "BD Ltd."], spouses := [(0, 1), (2, 3)],
-    controls := [⟨17, .group [0, 2], .fact true⟩, ⟨18, .group [1, 3], .fact true⟩] }
+    controls := [⟨17, .group [0, 2], .fact true, false⟩, ⟨18, .group [1, 3], .fact true, false⟩] }
 example : aff? wCiii 17 18 = true := by decide +kernel
 example : aff? wCiii 17 0 = false := by decide +kernel    -- Ann and Cy are not an affiliated group
 
@@ -91,11 +91,11 @@ example : aff? wE 20 2 = false := by decide +kernel       -- Cy's 40% is not a m
 example : majorityInterestGroups wE 20 = [[0, 1], [0, 2], [1, 2]] := by decide +kernel
 
 -- (d): Famco is controlled by Ann and Bob; {Ann, Bob} is a majority-interest group of partners.
-def wD : World := { wE with persons := wE.persons ++ [corp 11 "Famco"], controls := [⟨11, .group [0, 1], .fact true⟩] }
+def wD : World := { wE with persons := wE.persons ++ [corp 11 "Famco"], controls := [⟨11, .group [0, 1], .fact true, false⟩] }
 example : aff? wD 11 20 = true := by decide +kernel
 -- Not (d) when the controlling group is Ann and Cy (Cy is affiliated with no member of
 -- {Ann, Bob}, and Bob with no member of {Ann, Cy} other than Ann… so check the definition).
-def wNotD : World := { wE with persons := wE.persons ++ [corp 12 "Pals Inc."], controls := [⟨12, .group [0, 2], .fact true⟩] }
+def wNotD : World := { wE with persons := wE.persons ++ [corp 12 "Pals Inc."], controls := [⟨12, .group [0, 2], .fact true, false⟩] }
 example : aff? wNotD 12 20 = true := by decide +kernel    -- {Ann, Cy} is itself a majority-interest group
 
 -- (f)(i): Ann is a majority-interest partner of two partnerships.
@@ -159,14 +159,14 @@ def family : List Person := people ++ [ind 4 "Ed (Ann's brother)", trust 30 "Bob
 -- (h)(i): the contributors are siblings, deemed affiliated by 251.1(4)(d)(iv); the
 -- majority-interest beneficiaries (Bob of one, Ann of the other) are spouses.
 def wHi : World :=
-  { persons := family, spouses := [(0, 1)], connected := [(0, 4)],
+  { persons := family, spouses := [(0, 1)], siblings := [(0, 4)],
     contributors := [(30, 0), (31, 4)],
     beneficialInterests := [⟨30, 1, 100, 100⟩, ⟨31, 0, 100, 100⟩] }
 example : aff? wHi 30 31 = true := by decide +kernel
 #guard ((relation wHi).find? fun d => d.x == 30 && d.y == 31).map (·.para) == some .hi
 
 -- Without the blood relationship, the contributors are not affiliated, and neither are the trusts.
-example : aff? { wHi with connected := [] } 30 31 = false := by decide +kernel
+example : aff? { wHi with siblings := [] } 30 31 = false := by decide +kernel
 -- Siblings are not affiliated outside the contributor test.
 example : aff? wHi 0 4 = false := by decide +kernel
 
@@ -197,7 +197,7 @@ example : aff? wHiii 30 31 = true := by decide +kernel
   "2. Bob is a majority-interest beneficiary of Bob's Trust: its interest in the income or capital, together with those of the persons affiliated with it, exceeds half by fair market value. [ITA 251.1(1)(g)(i)]\n" ++
   "3. Ann would, if subsection 251.1(1) were read without reference to paragraph (g), be affiliated with Bob, a majority-interest beneficiary of Bob's Trust. [ITA 251.1(1)(g)(ii)]\n" ++
   "4. Ann is a majority-interest beneficiary of Ann's Trust: its interest in the income or capital, together with those of the persons affiliated with it, exceeds half by fair market value. [ITA 251.1(1)(g)(i)]\n" ++
-  "5. Ann, a contributor to Bob's Trust, and Ed (Ann's brother), a contributor to Ann's Trust, are individuals connected by blood relationship, marriage, common-law partnership or adoption, so are deemed affiliated (251.1(4)(d)(iv)); and Ann is a majority-interest beneficiary of both trusts. [ITA 251.1(1)(h)(i)]\n" ++
+  "5. Ann, a contributor to Bob's Trust, and Ed (Ann's brother), a contributor to Ann's Trust, are individuals connected by blood relationship (brother or sister), so are deemed affiliated (251.1(4)(d)(iv)); and Ann is a majority-interest beneficiary of both trusts. [ITA 251.1(1)(h)(i)]\n" ++
   "6. So Bob's Trust and Ann's Trust are affiliated persons. [ITA 251.1(1)]\n" ++
   "Relies on no judgment calls."
 
@@ -208,7 +208,7 @@ example : aff? wH 30 31 = true := by decide +kernel
 
 /-- De facto control of Annco by Cy is a judgment call. -/
 def wJ (b : Bool) : World :=
-  { persons := people ++ [corp 10 "Annco"], spouses := [(2, 3)], controls := [⟨10, .person 2, .judged "J-CTL" b⟩] }
+  { persons := people ++ [corp 10 "Annco"], spouses := [(2, 3)], controls := [⟨10, .person 2, .judged "J-CTL" b, false⟩] }
 example : aff? (wJ true) 10 3 = true ∧ aff? (wJ false) 10 3 = false := by decide +kernel
 #guard (rule.explain ⟨wJ true, 10, 3⟩).reliesOn == ["J-CTL"]
 #guard (rule.explain ⟨wJ false, 10, 3⟩).reliesOn == ["J-CTL"]   -- the "no" answer is relied on too
@@ -217,7 +217,7 @@ example : aff? (wJ true) 10 3 = true ∧ aff? (wJ false) 10 3 = false := by deci
 -- Facts first: when a pair follows from the facts and from a judgment call, it is explained by the facts.
 def wBoth : World :=
   { persons := people ++ [corp 10 "Annco"], spouses := [(0, 1)],
-    controls := [⟨10, .person 2, .judged "J-CTL" true⟩, ⟨10, .person 0, .fact true⟩] }
+    controls := [⟨10, .person 2, .judged "J-CTL" true, false⟩, ⟨10, .person 0, .fact true, false⟩] }
 #guard (rule.explain ⟨wBoth, 10, 1⟩).reliesOn == []
 
 /-! ## Every world's relation is closed -/

@@ -56,6 +56,9 @@ structure Control where
   corporation : Nat
   controller : Controller
   answer : Answer := .fact true
+  /-- The control is de facto only (not de jure). It counts for affiliation, where "controlled"
+  includes control "in any manner whatever", but not for related persons under 251(2). -/
+  deFactoOnly : Bool := false
   deriving Repr, DecidableEq, Inhabited
 
 /-- A partner's interest in a partnership, for the definition "majority-interest partner". -/
@@ -89,9 +92,15 @@ structure World where
   length loan at a reasonable rate of interest or transfer for fair market value by a person who
   is not then a majority-interest beneficiary. Taken as facts. -/
   contributors : List (Nat × Nat) := []
-  /-- Pairs of individuals connected by blood relationship, marriage, common-law partnership or
-  adoption, deemed affiliated when comparing contributors (251.1(4)(d)(iv)). -/
+  /-- Further pairs of individuals connected by blood relationship, marriage, common-law
+  partnership or adoption, beyond those computed from the family below (251(6)). -/
   connected : List (Nat × Nat) := []
+  /-- (parent, child): the child is a child of the parent by blood. -/
+  children : List (Nat × Nat) := []
+  /-- Pairs who are brother or sister, where their parents are not given. -/
+  siblings : List (Nat × Nat) := []
+  /-- (parent, child): the child was adopted, legally or in fact, as the child of the parent. -/
+  adoptions : List (Nat × Nat) := []
   /-- Further pairs affiliated under paragraph (h), given rather than computed (for example,
   where the contributor or beneficiary facts are not modelled). -/
   paragraphH : List (Nat × Nat × Answer) := []
@@ -103,6 +112,59 @@ def person? (w : World) (p : Nat) : Option Person := w.persons.find? (·.id == p
 def name (w : World) (p : Nat) : String := ((w.person? p).map (·.name)).getD s!"person {p}"
 def isKind (w : World) (k : Kind) (p : Nat) : Bool := ((w.person? p).map (·.kind == k)).getD false
 def ids (w : World) (k : Kind) : List Nat := (w.persons.filter (·.kind == k)).map (·.id)
+
+private def hasPair (ps : List (Nat × Nat)) (p q : Nat) : Bool :=
+  ps.any fun (a, b) => (a == p && b == q) || (a == q && b == p)
+
+/-- Married or in a common-law partnership. -/
+def married (w : World) (p q : Nat) : Bool := hasPair w.spouses p q
+
+/-- `d` is a child or other descendant of `a` by blood. -/
+def descendant (w : World) (a d : Nat) : Bool :=
+  let rec go : Nat → List Nat → Bool
+    | 0, _ => false
+    | fuel + 1, gen =>
+      let next := w.children.filterMap fun (par, ch) => if gen.contains par then some ch else none
+      next.contains d || (!next.isEmpty && go fuel next)
+  go w.persons.length [a]
+
+/-- Brother or sister: given as siblings, or sharing a parent. -/
+def sibling (w : World) (p q : Nat) : Bool :=
+  p != q && (hasPair w.siblings p q ||
+    w.children.any fun (par, c) => c == p && w.children.any fun (par', c') => par' == par && c' == q)
+
+/-- 251(6)(a): connected by blood relationship. -/
+def blood (w : World) (p q : Nat) : Bool :=
+  p != q && (w.descendant p q || w.descendant q p || w.sibling p q)
+
+/-- 251(6)(b), (b.1): connected by marriage or common-law partnership: married to the other,
+or to a person connected by blood relationship to the other. -/
+def byMarriage (w : World) (p q : Nat) : Bool :=
+  w.married p q || w.persons.any fun s =>
+    (w.married p s.id && w.blood s.id q) || (w.married q s.id && w.blood s.id p)
+
+/-- 251(6)(c): connected by adoption: adopted, legally or in fact, as the child of the other, or
+as the child of a person connected by blood relationship (otherwise than as a brother or sister)
+to the other. -/
+def byAdoption (w : World) (p q : Nat) : Bool :=
+  let adopted (child par : Nat) := hasPair (w.adoptions.filter fun (a, c) => a == par && c == child) par child
+  let lineal (a b : Nat) := w.descendant a b || w.descendant b a
+  adopted p q || adopted q p || w.persons.any fun s =>
+    (adopted p s.id && lineal s.id q) || (adopted q s.id && lineal s.id p)
+
+/-- Subsection 251(6): individuals connected by blood relationship, marriage, common-law
+partnership or adoption (or given as connected). -/
+def connectedPair (w : World) (p q : Nat) : Bool :=
+  p != q && (w.blood p q || w.byMarriage p q || w.byAdoption p q || hasPair w.connected p q)
+
+/-- How two persons are connected, in words, for explanations. -/
+def connectionText (w : World) (p q : Nat) : String :=
+  if w.descendant p q || w.descendant q p then "connected by blood relationship (one is a child or other descendant of the other)"
+  else if w.sibling p q then "connected by blood relationship (brother or sister)"
+  else if w.married p q then "connected by marriage or common-law partnership"
+  else if w.byMarriage p q then "connected by marriage or common-law partnership (one is married to a person connected by blood relationship to the other)"
+  else if w.byAdoption p q then "connected by adoption"
+  else "connected by blood relationship, marriage, common-law partnership or adoption"
 
 end World
 
@@ -238,8 +300,7 @@ relationship, marriage, common-law partnership or adoption (251.1(4)(d)(iv)). Re
 affiliation pair relied on, if any. -/
 def contributorsAffiliated (w : World) (D : List Derivation) (p q : Nat) : Option (List (Nat × Nat)) :=
   if aff D p q then some (if p == q then [] else [(p, q)])
-  else if w.isKind .individual p && w.isKind .individual q &&
-      w.connected.any (fun (a, b) => (a == p && b == q) || (a == q && b == p)) then some []
+  else if w.isKind .individual p && w.isKind .individual q && w.connectedPair p q then some []
   else none
 
 /-! ## The paragraphs, as steps that add pairs -/
@@ -254,7 +315,7 @@ def described (D : List Derivation) (c : Control) : List Nat :=
   | .person p => [p]
   | .group g => if affiliatedGroup D g then g else []
 
-/-- Every pair paragraphs (a) to (g) give, from the pairs found so far. -/
+/-- Every pair paragraphs (a) to (h) give, from the pairs found so far. -/
 def candidates (w : World) (allowJudged withG : Bool) (noG D : List Derivation) : List Derivation := Id.run do
   let n := w.name
   let controls := w.controls.filter fun c =>
@@ -412,8 +473,8 @@ def candidates (w : World) (allowJudged withG : Bool) (noG D : List Derivation) 
         | none => pure ()
         | some (p, q, cps) =>
           let link := if aff D p q then s!"{n p}, a contributor to {n T1}, is affiliated with {n q}, a contributor to {n T2}"
-            else s!"{n p}, a contributor to {n T1}, and {n q}, a contributor to {n T2}, are individuals connected by blood " ++
-              "relationship, marriage, common-law partnership or adoption, so are deemed affiliated (251.1(4)(d)(iv))"
+            else s!"{n p}, a contributor to {n T1}, and {n q}, a contributor to {n T2}, are individuals " ++
+              s!"{w.connectionText p q}, so are deemed affiliated (251.1(4)(d)(iv))"
           let mibs (T : Nat) := (w.persons.map (·.id)).filter fun m => (majorityInterestBeneficiary? w D m T).isSome
           let hi := (mibs T1).findSome? fun a => (mibs T2).findSome? fun b =>
             if aff D a b then some (a, b) else none
@@ -473,7 +534,7 @@ def withoutG (w : World) (allowJudged : Bool) : List Derivation :=
   let facts := closeFrom w false false [] (fuel w) []
   if allowJudged then closeFrom w true false [] (fuel w) facts else facts
 
-/-- The relation: paragraphs (a) to (g) (and any (h) pairs given), on the facts alone first,
+/-- The relation: paragraphs (a) to (h) (and any further (h) pairs given), on the facts alone first,
 then with the judgment calls. -/
 def relation (w : World) : List Derivation :=
   let facts := closeFrom w false true (withoutG w false) (fuel w) []

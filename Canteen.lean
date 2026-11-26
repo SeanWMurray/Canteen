@@ -33,6 +33,7 @@ import Canteen.ITA.S40.LossDenialStatute
 import Canteen.ITA.S53.CostAddition
 import Canteen.ITA.S251_1.Affiliation
 import Canteen.ITA.S251_1.AffiliatedPersons
+import Canteen.ITA.S251.RelatedPersons
 import Canteen.ITA.S54.Timeline
 import Canteen.ITA.S40.Paragraph40_2_g_Facts
 import Canteen.ITA.S40.DebtLoss
@@ -75,3 +76,4 @@ import Canteen.Tests.Related
 import Canteen.Tests.Graphs
 import Canteen.Tests.Paragraph40_2_g
 import Canteen.Tests.AffiliatedPersons
+import Canteen.Tests.RelatedPersons

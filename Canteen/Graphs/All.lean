@@ -11,6 +11,7 @@ import Canteen.Transactions.SiblingAndLateRepurchase
 import Canteen.Transactions.TfsaContribution
 import Canteen.Transactions.HoldcoRepurchase
 import Canteen.ITA.S251_1.AffiliatedPersons
+import Canteen.ITA.S251.RelatedPersons
 
 /-!
 # Every graph page, and what is on it
@@ -68,9 +69,17 @@ def familyGroup : AffiliatedPersons.World :=
                 ⟨10, "Annco", .corporation⟩, ⟨11, "Famco", .corporation⟩, ⟨12, "Cyco", .corporation⟩,
                 ⟨20, "AB Partners", .partnership⟩, ⟨30, "The Family Trust", .trust⟩],
     spouses := [(0, 1)],
-    controls := [⟨10, .person 0, .fact true⟩, ⟨11, .group [0, 1], .fact true⟩, ⟨12, .person 2, .fact true⟩],
+    controls := [⟨10, .person 0, .fact true, false⟩, ⟨11, .group [0, 1], .fact true, false⟩, ⟨12, .person 2, .fact true, false⟩],
     partnershipInterests := [⟨20, 0, 30, 30⟩, ⟨20, 1, 30, 30⟩, ⟨20, 2, 40, 40⟩],
     beneficialInterests := [⟨30, 1, 60, 60⟩, ⟨30, 2, 40, 40⟩] }
+
+/-- Three generations, with an in-law, a cousin, a child adopted in fact, and two companies. -/
+def threeGenerations : AffiliatedPersons.World :=
+  { persons := [⟨0, "Gran", .individual⟩, ⟨1, "Ann", .individual⟩, ⟨2, "Uncle", .individual⟩, ⟨3, "Bob", .individual⟩,
+                ⟨4, "Kid", .individual⟩, ⟨5, "Cousin", .individual⟩, ⟨6, "Ward", .individual⟩,
+                ⟨10, "Annco", .corporation⟩, ⟨11, "Cousinco", .corporation⟩],
+    spouses := [(1, 3)], children := [(0, 1), (0, 2), (1, 4), (2, 5)], adoptions := [(1, 6)],
+    controls := [⟨10, .person 1, .fact true, false⟩, ⟨11, .person 5, .fact true, false⟩] }
 
 def holding (h : Examples.Holding) : String :=
   s!"{h.units} units, election {if h.electionFiled then "filed" else "not filed"}"
@@ -126,6 +135,13 @@ def pages : List Page := [
       ("Holdco, owned with a friend, if the taxpayer controls it de facto",
         AffiliatedPersons.diagram (Transactions.HoldcoRepurchase.friendWorld
           [(Transactions.HoldcoRepurchase.friendCalls.head!).assume true]))] },
+  { file := "related", title := "Who is related to whom"
+    intro := "A family under section 251: children by blood (solid arrows), an adoption in fact (dotted), a marriage " ++
+      "(thick line) and control of two companies (dashed). Each thin line is a related pair, labelled with its " ++
+      "paragraph. Cousins, and an uncle and his nephew, are not related: blood relationship covers only descendants " ++
+      "and brothers and sisters (251(6)(a)). A step-parent is, through marriage (251(6)(b)). Cousinco is related to " ++
+      "Uncle, through Cousin (251(2)(b)(iii)), but not to Annco."
+    diagrams := [("Three generations", RelatedPersons.diagram threeGenerations)] },
   { file := "series", title := "A transaction series, step by step"
     intro := "The toy three-step plan from `Canteen/Examples/ToySeries.lean`, with Rule X checked after every step. " ++
       "Green states are ones where Rule X applies."

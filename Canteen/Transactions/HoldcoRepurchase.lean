@@ -37,7 +37,7 @@ def world : World :=
   { persons := [⟨taxpayer, "the taxpayer", .individual⟩, ⟨spouse, "the taxpayer's spouse", .individual⟩,
                 ⟨holdco, "Holdco", .corporation⟩],
     spouses := [(taxpayer, spouse)],
-    controls := [⟨holdco, .group [taxpayer, spouse], .fact true⟩] }
+    controls := [⟨holdco, .group [taxpayer, spouse], .fact true, false⟩] }
 
 def sale : Disposition :=
   { description := "500 common shares of MNO Ltd.", date := ⟨2025, 11, 3⟩,
@@ -111,8 +111,9 @@ judgment call `J-DEFACTO`. -/
 def friendWorld (branch : List Judgment) : World :=
   { persons := [⟨taxpayer, "the taxpayer", .individual⟩, ⟨friend, "a friend", .individual⟩,
                 ⟨holdco, "Holdco", .corporation⟩],
-    controls := [⟨holdco, .group [taxpayer, friend], .fact true⟩,
-                 ⟨holdco, .person taxpayer, Answer.ofBranch "J-DEFACTO" branch⟩] }
+    controls := [⟨holdco, .group [taxpayer, friend], .fact true, false⟩,
+                 { corporation := holdco, controller := .person taxpayer, answer := Answer.ofBranch "J-DEFACTO" branch,
+                   deFactoOnly := true }] }
 
 def friendCalls : List JudgmentCall :=
   [{ id := "J-DEFACTO", question := "Does the taxpayer alone control Holdco, directly or indirectly in any manner whatever?",

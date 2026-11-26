@@ -6,6 +6,7 @@ import Canteen.ITA.S40.LossDenialStatute
 import Canteen.ITA.S53.CostAddition
 import Canteen.ITA.S251_1.Affiliation
 import Canteen.ITA.S251_1.AffiliatedPersons
+import Canteen.ITA.S251.RelatedPersons
 import Canteen.ITA.S40.Paragraph40_2_g
 
 /-!
@@ -186,6 +187,13 @@ def blueprint : Blueprint where
             "whole world of persons as the smallest relation closed under the paragraphs; reflexive and symmetric (proven)."
           lean := [``AffiliatedPersons.rule, ``AffiliatedPersons.affiliated_self, ``AffiliatedPersons.affiliated_symm,
             ``AffiliatedPersons.acquirer_isTaxpayerOrAffiliated], uses := ["R1", "Pa"] },
+        { id := "R4", kind := .law, title := "Related persons and arm's length", citation := "ITA 251(1)–(6)"
+          statement := "Related persons (251(2), (3), with 251(6) for blood relationship, marriage, common-law partnership " ++
+            "and adoption) are deemed not to deal at arm's length (251(1)(a)); otherwise it is a question of fact (c). Used " ++
+            "for the arm's length exception in subparagraph 40(2)(g)(ii), and 251(6) also decides who is connected for " ++
+            "251.1(4)(d)(iv)."
+          lean := [``RelatedPersons.rule, ``RelatedPersons.armsLengthRule, ``RelatedPersons.armsLengthAnswer,
+            ``RelatedPersons.not_armsLength_of_related, ``RelatedPersons.related_symm] },
         { id := "R2", kind := .law, title := "Cost of the substituted property", citation := "ITA 53(1)(f)"
           statement := "The superficial loss, less any amount described in subparagraph 53(1)(f)(ii), is added to the cost " ++
             "of the substituted property in computing its adjusted cost base."
@@ -204,8 +212,9 @@ def blueprint : Blueprint where
             "made nil is not computed. The Act gives no formula."
           uses := ["G1"] },
         { id := "N4", kind := .law, title := "Inputs for subparagraphs (ii) to (iv)", citation := "ITA 40(2)(g)"
-          statement := "Debts referred to in subsection 50(2), arm's length dealing (section 251), and the ordinary meaning of " ++
+          statement := "Debts referred to in subsection 50(2), arm's length dealing between unrelated persons (a question of fact " ++
+            "under 251(1)(c)), and the ordinary meaning of " ++
             "personal-use property beyond the three categories its definition includes are taken as facts or judgment calls."
-          uses := ["G2", "G3"] } ] } ]
+          uses := ["G2", "G3", "R4"] } ] } ]
 
 end Canteen.Blueprints.SuperficialLoss

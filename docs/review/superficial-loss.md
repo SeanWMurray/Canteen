@@ -1,12 +1,12 @@
-# Review: section 54 "superficial loss", paragraph 40(2)(g), paragraph 53(1)(f) and section 251.1
+# Review: section 54 "superficial loss", paragraph 40(2)(g), paragraph 53(1)(f), and sections 251 and 251.1
 
 **Status:** encoded and tested; **awaiting review against the statute** (roadmap Phase 4).
 
 Lean proves that each explanation agrees with its rule, and that the conclusions follow from the definitions.
 It cannot prove that the definitions match the Act. That is what this review is for.
 
-- Statute text (verbatim, current to 2026-10-29): [`statute/ITA-54-superficial-loss.txt`](../../statute/ITA-54-superficial-loss.txt), [`statute/ITA-40-2-g.txt`](../../statute/ITA-40-2-g.txt), [`statute/ITA-53-1-f.txt`](../../statute/ITA-53-1-f.txt), [`statute/ITA-251-1-1-a.txt`](../../statute/ITA-251-1-1-a.txt), [`statute/ITA-54-personal-use-property.txt`](../../statute/ITA-54-personal-use-property.txt), [`statute/ITA-104-2.txt`](../../statute/ITA-104-2.txt), [`statute/ITA-251-1.txt`](../../statute/ITA-251-1.txt) (all of section 251.1, and "majority-interest partner" in 248(1))
-- Encoding: [`Canteen/ITA/S54/SuperficialLoss.lean`](../../Canteen/ITA/S54/SuperficialLoss.lean), [`Canteen/ITA/S40/LossDenial.lean`](../../Canteen/ITA/S40/LossDenial.lean), [`Canteen/ITA/S53/CostAddition.lean`](../../Canteen/ITA/S53/CostAddition.lean), [`Canteen/ITA/S251_1/Affiliation.lean`](../../Canteen/ITA/S251_1/Affiliation.lean), and for 40(2)(g)(ii) to (iv) and the paragraph as a whole: [`DebtLoss.lean`](../../Canteen/ITA/S40/DebtLoss.lean), [`PersonalUseLoss.lean`](../../Canteen/ITA/S40/PersonalUseLoss.lean), [`PlanTransferLoss.lean`](../../Canteen/ITA/S40/PlanTransferLoss.lean), [`Paragraph40_2_g.lean`](../../Canteen/ITA/S40/Paragraph40_2_g.lean), and for section 251.1 paragraphs (a) to (g): [`AffiliatedPersons.lean`](../../Canteen/ITA/S251_1/AffiliatedPersons.lean)
+- Statute text (verbatim, current to 2026-10-29): [`statute/ITA-54-superficial-loss.txt`](../../statute/ITA-54-superficial-loss.txt), [`statute/ITA-40-2-g.txt`](../../statute/ITA-40-2-g.txt), [`statute/ITA-53-1-f.txt`](../../statute/ITA-53-1-f.txt), [`statute/ITA-251-1-1-a.txt`](../../statute/ITA-251-1-1-a.txt), [`statute/ITA-54-personal-use-property.txt`](../../statute/ITA-54-personal-use-property.txt), [`statute/ITA-104-2.txt`](../../statute/ITA-104-2.txt), [`statute/ITA-251-1.txt`](../../statute/ITA-251-1.txt) (all of section 251.1, and "majority-interest partner" in 248(1)), [`statute/ITA-251.txt`](../../statute/ITA-251.txt)
+- Encoding: [`Canteen/ITA/S54/SuperficialLoss.lean`](../../Canteen/ITA/S54/SuperficialLoss.lean), [`Canteen/ITA/S40/LossDenial.lean`](../../Canteen/ITA/S40/LossDenial.lean), [`Canteen/ITA/S53/CostAddition.lean`](../../Canteen/ITA/S53/CostAddition.lean), [`Canteen/ITA/S251_1/Affiliation.lean`](../../Canteen/ITA/S251_1/Affiliation.lean), and for 40(2)(g)(ii) to (iv) and the paragraph as a whole: [`DebtLoss.lean`](../../Canteen/ITA/S40/DebtLoss.lean), [`PersonalUseLoss.lean`](../../Canteen/ITA/S40/PersonalUseLoss.lean), [`PlanTransferLoss.lean`](../../Canteen/ITA/S40/PlanTransferLoss.lean), [`Paragraph40_2_g.lean`](../../Canteen/ITA/S40/Paragraph40_2_g.lean), and for section 251.1 paragraphs (a) to (g): [`AffiliatedPersons.lean`](../../Canteen/ITA/S251_1/AffiliatedPersons.lean), and for section 251: [`RelatedPersons.lean`](../../Canteen/ITA/S251/RelatedPersons.lean)
 - Statute forms, each proven equal to the encoding: [`SuperficialLossStatute.lean`](../../Canteen/ITA/S54/SuperficialLossStatute.lean), [`LossDenialStatute.lean`](../../Canteen/ITA/S40/LossDenialStatute.lean)
 - Diagrams: [flowcharts](../graphs/flowcharts.md) and [timelines](../graphs/timelines.md) of the rules as encoded
 - Lemmas: [`Canteen/Lemmas/SuperficialLoss.lean`](../../Canteen/Lemmas/SuperficialLoss.lean)
@@ -55,6 +55,15 @@ It cannot prove that the definitions match the Act. That is what this review is 
 | 251.1(3) "affiliated group of persons", "controlled", "majority-interest beneficiary", "majority-interest group of partners" | `affiliatedGroup`, `Control.answer`, `majorityInterestBeneficiary?`, `majorityInterestGroups` | as above |
 | 251.1(4)(a) persons are affiliated with themselves; (4)(d)(iii) a trust as beneficiary of another | `aff`, `majorityInterestBeneficiary?` | ✓ |
 | 248(1) "majority-interest partner" (a) income and (b) winding-up shares, with affiliates' | `majorityInterestPartner?` | ✓ |
+| 251(6)(a) blood relationship: child or other descendant, brother or sister | `World.descendant`, `World.sibling`, `World.blood` | child, grandchild, siblings through a parent; not cousins, uncles or nephews |
+| 251(6)(b), (b.1) marriage or common-law partnership, including to a person connected by blood to the other | `World.byMarriage` | spouse; in-laws; step-parent |
+| 251(6)(c) adoption, legally or in fact, including as the child of a lineal relative of the other | `World.byAdoption` | adopted child; adopted grandchild; not by a sibling |
+| 251(2)(a) individuals so connected | `RelatedPersons.candidates` (a) | as above |
+| 251(2)(b)(i)–(iii) a corporation and its controller, members of a related controlling group, and persons related to them | `RelatedPersons.candidates` (b) | person, related group, unrelated group, de facto only |
+| 251(2)(c)(i)–(vi) two corporations | `RelatedPersons.candidates` (c) | each subparagraph |
+| 251(3) two corporations related to the same corporation | `RelatedPersons.candidates` (3) | ✓ |
+| 251(4) "related group", "unrelated group" | `relatedGroup` | ✓ |
+| 251(1)(a)–(c) arm's length | `armsLength`, `armsLengthAnswer` | related; personal trust; question of fact |
 
 ## Interpretation choices to confirm
 
@@ -87,6 +96,12 @@ It cannot prove that the definitions match the Act. That is what this review is 
 24. **Majority-interest beneficiary (251.1(3)):** interests are given at fair market value, after applying 251.1(4)(d)(i) (discretionary powers deemed exercised or not). A trust needs its own interest of the kind in question (251.1(4)(d)(iii)). 251.1(4)(d)(ii) (arm's length) is not needed for (a) to (g).
 25. **Paragraph (h):** whether a person is a "contributor" (251.1(3), with its arm's length and fair value exceptions) is a fact, and so is who is "connected by blood relationship, marriage, common-law partnership or adoption" (251.1(4)(d)(iv)). (g)(ii) reads the subsection without (g), so it includes (h).
 26. **Not encoded:** subsection 251.1(2) (amalgamations), and 251.1(4)(d)(ii) (arm's length with a trust).
+27. **"Controls" in 251(2) is read as de jure control** (control of the votes), since 251(2) does not say "directly or indirectly in any manner whatever". A control can be marked de facto only: it then counts for affiliation, not for 251(2). Rights under 251(5)(b), and 251(5)(a) (a related group in a position to control is deemed to control), must be reflected in the controls given.
+28. **A person is not related to itself,** except that 251(5)(c) makes a shareholder of two corporations related to itself in each capacity: the encoding lets one person satisfy "related to" in 251(2)(c) for that reason.
+29. **251(6)(a) "brother or sister"** is computed as sharing a parent (so half-siblings count), or given directly. Lineal descent is through children by blood; adoptions count only through 251(6)(c).
+30. **251(6)(c)** is read as: one adopted, legally or in fact, as the child of the other, or as the child of a person who is the other's ancestor or descendant (the words "otherwise than as a brother or sister" exclude siblings).
+31. **251(1)(b)** (personal trusts) is a fact, not computed: the 248(25) reference is not encoded.
+32. **Not encoded:** 251(3.1) and (3.2) (amalgamations), and the 125(7) purposes of 251(5).
 19. **"To the extent that" for (ii) to (iv)** is read as the whole loss: the loss is entirely from the disposition of the debt, personal-use property, or property transferred. `Paragraph40_2_g.deniedLoss` treats the whole loss as nil when any subparagraph applies, as `LossDenial.deniedLoss` does for (i).
 
 ## Reviewer checklist
