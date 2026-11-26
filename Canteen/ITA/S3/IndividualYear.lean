@@ -5,6 +5,7 @@ import Canteen.ITA.S82.Dividends
 import Canteen.ITA.S13.Depreciable
 import Canteen.ITA.S74.IncomeAttribution
 import Canteen.ITA.S117.Rates
+import Canteen.ITA.S118.PersonalCredits
 import Canteen.ITA.S120_4.SplitIncome
 
 /-!
@@ -26,7 +27,7 @@ This puts the encoded provisions together for one individual and one taxation ye
 Recapture is treated as income from the business, and a terminal loss as a business loss, of the
 year. Split income (120.4) is deducted from income (20(1)(ww)) and taxed at the highest rate. Federal
 tax is 117(2) on taxable income plus the split income tax, less the dividend tax credit (121) and
-other non-refundable credits (given; section 118 is not encoded). Amounts
+the basic personal and spouse credit (118(1)), and other non-refundable credits (given). Amounts
 are in cents, except section 3 and taxable income, in half-cents.
 -/
 
@@ -67,7 +68,12 @@ structure Facts where
   split : Option SplitIncome.Facts := none
   /-- The 117(2) bracket amounts for the year (2025 by default). -/
   brackets : Rates.Brackets := {}
-  /-- Non-refundable credits other than the dividend tax credit (118 and the rest), given. -/
+  /-- 118(1): the indexed amounts for the year, if the basic personal (and spouse) credit is claimed. -/
+  personalAmounts : Option PersonalCredits.Amounts := none
+  supportsSpouse : Bool := false
+  spouseIncome : Cents := 0
+  spouseInfirm : Bool := false
+  /-- Other non-refundable credits, given. -/
   otherCredits : Cents := 0
   deriving Inhabited
 
@@ -107,11 +113,20 @@ def capitalGainsDeduction (f : Facts) : HalfCents :=
 def taxableIncome (f : Facts) : HalfCents :=
   income f - netCapitalLossDeduction f - capitalGainsDeduction f - 2 * f.otherDivisionC
 
+/-- 118(1): the basic personal (and spouse) credit, on the individual's income for the year. -/
+def personalFacts (f : Facts) (a : PersonalCredits.Amounts) : PersonalCredits.Facts :=
+  { income := income f / 2, supportsSpouse := f.supportsSpouse, spouseIncome := f.spouseIncome, spouseInfirm := f.spouseInfirm, amounts := a, brackets := f.brackets }
+
+def personalCredit (f : Facts) : Cents :=
+  match f.personalAmounts with
+  | none => 0
+  | some a => PersonalCredits.credit (personalFacts f a)
+
 /-- Tax under 117(2) on taxable income, plus tax on split income (120.4(2)), less the dividend tax
-credit and other credits. -/
+credit, the personal credit and other credits. -/
 def federalTax (f : Facts) : Cents :=
   (Rates.tax (taxableIncome f / 2) f.brackets + (f.split.map SplitIncome.tax).getD 0) -
-    (Dividends.credit (dividendFacts f) + f.otherCredits)
+    (Dividends.credit (dividendFacts f) + personalCredit f + f.otherCredits)
 
 def explain (f : Facts) : Finding :=
   let h := formatHalfCents
@@ -129,7 +144,8 @@ def explain (f : Facts) : Finding :=
       "ITA 2(2); 111(1)(b); 110.6(2), (2.1)"⟩,
     ⟨s!"Tax under 117(2) on taxable income, {c (Rates.tax (taxableIncome f / 2) f.brackets)}" ++
       (if splitIncome f > 0 then s!", plus tax on split income of {c ((f.split.map SplitIncome.tax).getD 0)}" else "") ++
-      s!", less the dividend tax credit of {c (Dividends.credit (dividendFacts f))} and other credits of {c f.otherCredits}: " ++
+      s!", less the dividend tax credit of {c (Dividends.credit (dividendFacts f))}, the personal credit of {c (personalCredit f)} " ++
+      s!"and other credits of {c f.otherCredits}: " ++
       s!"{c (federalTax f)}.", "ITA 117(2); 120.4(2); 121"⟩], []⟩
 
 /-! ## Truths about the year -/

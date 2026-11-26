@@ -52,7 +52,7 @@ example : taxableIncome { year with deduction110_6 := none } = 2 * 32050000 := b
    "3. Losses: business $0.00, terminal $0.00, attributed $0.00. [ITA 3(d); 20(16); 74.1]",
    "4. Income for the year: $330,500.00. [ITA 3]",
    "5. Less the net capital loss deduction $10,000.00, the capital gains deduction $190,000.00, and other deductions $0.00: taxable income $130,500.00. [ITA 2(2); 111(1)(b); 110.6(2), (2.1)]",
-   "6. Tax under 117(2) on taxable income, $23,889.37, less the dividend tax credit of $1,038.46 and other credits of $0.00: $22,850.91. [ITA 117(2); 120.4(2); 121]"]
+   "6. Tax under 117(2) on taxable income, $23,889.37, less the dividend tax credit of $1,038.46, the personal credit of $0.00 and other credits of $0.00: $22,850.91. [ITA 117(2); 120.4(2); 121]"]
 
 /-! ## Federal tax -/
 
@@ -67,5 +67,10 @@ def childYear : Facts :=
 example : income childYear = 0 ∧ federalTax childYear = 275654 := by decide
 -- Without 120.4, the same dividend at the lowest rate would bear almost no tax.
 example : federalTax { childYear with split := none } = 57154 := by decide
+
+-- With the basic personal credit: income of $330,500 is above the 117(2)(e) threshold, so only the
+-- $12,298 base, a $1,721.72 credit.
+example : personalCredit { year with personalAmounts := some {} } = 172172 ∧ federalTax { year with personalAmounts := some {} } = 2112919 := by
+  decide
 
 end Canteen.Tests.IndividualYear

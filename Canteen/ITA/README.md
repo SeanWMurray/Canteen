@@ -52,3 +52,4 @@ The verbatim statute text for each is in `statute/`. Review notes are in `docs/r
 - `S74/CorporateAttribution.lean`: subsections 74.4(1), (2) and 74.5(5)
 - `S120_4/SplitIncome.lean`: subsections 120.4(1) to (3), and 20(1)(ww)
 - `S117/Rates.lean`: subsection 117(2)
+- `S118/PersonalCredits.lean`: subsections 118(1)(a), (c) and (1.1)

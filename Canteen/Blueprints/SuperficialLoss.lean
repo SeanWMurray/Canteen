@@ -43,6 +43,7 @@ import Canteen.ITA.S43.PartialDisposition
 import Canteen.ITA.S74.CorporateAttribution
 import Canteen.ITA.S120_4.SplitIncome
 import Canteen.ITA.S117.Rates
+import Canteen.ITA.S118.PersonalCredits
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -492,15 +493,21 @@ def blueprint : Blueprint where
           statement := "An individual's tax is 14% to $57,375, 20.5% to $114,750, 26% to $177,882, 29% to $253,414, and 33% " ++
             "above (2025 amounts, indexed after). Proven: more income never means less tax."
           lean := [``Rates.tax, ``Rates.tax_mono] },
+        { id := "R42", kind := .law, title := "The basic personal and spouse amounts", citation := "ITA 118(1)(a), (c), (1.1)"
+          statement := "An individual deducts 14% of the basic personal amount ($12,298 plus an enhancement up to $15,000, " ++
+            "phased out between the 117(2)(d) and (e) thresholds), plus, if supporting a spouse, the basic personal amount " ++
+            "less the spouse's income. Proven: the amount is always between the base and the enhanced amount."
+          lean := [``PersonalCredits.basicPersonalAmount, ``PersonalCredits.credit, ``PersonalCredits.bpa_between,
+            ``PersonalCredits.full_below], uses := ["R41"] },
         { id := "R35", kind := .law, title := "An individual's year, to taxable income and tax", citation := "ITA 2(2); 3; 111(1)(b); 110.6; 117(2)"
           statement := "Income from sources (employment and business, dividends with the gross-up, recapture, attributed " ++
             "income), net taxable capital gains, less terminal and other losses; then taxable income, after the net capital " ++
             "loss deduction and the capital gains deduction (which the former reduces). Proven: taxable income never exceeds " ++
             "income, and the capital gains deduction never exceeds the net taxable capital gains."
           lean := [``IndividualYear.incomeFacts, ``IndividualYear.taxableIncome, ``IndividualYear.capitalGainsDeduction,
-            ``IndividualYear.federalTax,
+            ``IndividualYear.federalTax, ``IndividualYear.personalCredit,
             ``IndividualYear.taxable_le_income, ``IndividualYear.capital_gains_deduction_le],
-          uses := ["R8", "R9", "R19", "R21", "R22", "R24", "R40", "R41"] },
+          uses := ["R8", "R9", "R19", "R21", "R22", "R24", "R40", "R41", "R42"] },
         { id := "R11", kind := .law, title := "The principal residence exemption", citation := "ITA 40(2)(b); 54 \"principal residence\""
           statement := "A home is the principal residence for a year if owned, ordinarily inhabited by the family (or covered by " ++
             "a 45(2) or (3) election, for at most four years: (d)), designated, and not blocked by another family-unit " ++

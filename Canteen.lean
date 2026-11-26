@@ -68,6 +68,7 @@ import Canteen.ITA.S43.PartialDisposition
 import Canteen.ITA.S74.CorporateAttribution
 import Canteen.ITA.S120_4.SplitIncome
 import Canteen.ITA.S117.Rates
+import Canteen.ITA.S118.PersonalCredits
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.ITA.S40.ShareToAffiliate
@@ -164,3 +165,4 @@ import Canteen.Tests.PartialDisposition
 import Canteen.Tests.CorporateAttribution
 import Canteen.Tests.SplitIncome
 import Canteen.Tests.Rates
+import Canteen.Tests.PersonalCredits

@@ -9,9 +9,9 @@ An overview of the project, drawn from the Lean.
 Every statement in every blueprint, by the status Lean computes for it.
 
 ```mermaid
-pie showData title All 226 statements in the memos and blueprints, by status
+pie showData title All 227 statements in the memos and blueprints, by status
     "encoded" : 38
-    "proven" : 142
+    "proven" : 143
     "not formalized" : 3
     "fact" : 35
     "judgment call" : 8
@@ -174,27 +174,30 @@ mindmap
       n96["`112(1): intercorporate dividend deduction`"]
     n97["`s. 117`"]
       n98["`117(2): the federal rates`"]
-    n99["`s. 120.4`"]
-      n100["`120.4(1): split income, excluded amounts`"]
-      n101["`120.4(2), (3): the tax`"]
-    n102["`s. 121`"]
-      n103["`121: the dividend tax credit`"]
-    n104["`s. 186`"]
-      n105["`186(4): connected corporations`"]
-      n106["`186(2): control with non-arm's length persons`"]
-    n107["`s. 248`"]
-      n108["`248(1): majority-interest partner`"]
-    n109["`s. 251`"]
-      n110["`251(1): arm's length`"]
-      n111["`251(2), (3): related persons`"]
-      n112["`251(3.1), (3.2): amalgamations`"]
-      n113["`251(6): blood, marriage, adoption`"]
-    n114["`s. 251.1`"]
-      n115["`251.1(1)(a) to (h): affiliated persons`"]
-      n116["`251.1(2): amalgamations`"]
-      n117["`251.1(3), (4): definitions and rules`"]
-    n118["`s. 251.2`"]
-      n119["`251.2(2)(a): loss restriction event`"]
-    n120["`s. 256`"]
-      n121["`256(7)(a): control not acquired`"]
+    n99["`s. 118`"]
+      n100["`118(1.1): basic personal amount`"]
+      n101["`118(1)(a): spouse amount`"]
+    n102["`s. 120.4`"]
+      n103["`120.4(1): split income, excluded amounts`"]
+      n104["`120.4(2), (3): the tax`"]
+    n105["`s. 121`"]
+      n106["`121: the dividend tax credit`"]
+    n107["`s. 186`"]
+      n108["`186(4): connected corporations`"]
+      n109["`186(2): control with non-arm's length persons`"]
+    n110["`s. 248`"]
+      n111["`248(1): majority-interest partner`"]
+    n112["`s. 251`"]
+      n113["`251(1): arm's length`"]
+      n114["`251(2), (3): related persons`"]
+      n115["`251(3.1), (3.2): amalgamations`"]
+      n116["`251(6): blood, marriage, adoption`"]
+    n117["`s. 251.1`"]
+      n118["`251.1(1)(a) to (h): affiliated persons`"]
+      n119["`251.1(2): amalgamations`"]
+      n120["`251.1(3), (4): definitions and rules`"]
+    n121["`s. 251.2`"]
+      n122["`251.2(2)(a): loss restriction event`"]
+    n123["`s. 256`"]
+      n124["`256(7)(a): control not acquired`"]
 ```
