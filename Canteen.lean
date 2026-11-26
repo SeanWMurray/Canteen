@@ -35,6 +35,8 @@ import Canteen.ITA.S251_1.Affiliation
 import Canteen.ITA.S251_1.AffiliatedPersons
 import Canteen.ITA.S251.RelatedPersons
 import Canteen.ITA.S251.Amalgamation
+import Canteen.ITA.S38.CapitalGains
+import Canteen.ITA.S3.Income
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.ITA.S54.Timeline
@@ -86,3 +88,4 @@ import Canteen.Tests.RelatedPersons
 import Canteen.Tests.BadDebt
 import Canteen.Tests.SuspendedLoss
 import Canteen.Tests.Amalgamation
+import Canteen.Tests.Income

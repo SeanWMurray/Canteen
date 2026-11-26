@@ -16,3 +16,5 @@ The verbatim statute text for each is in `statute/`. Review notes are in `docs/r
 - `S50/BadDebtPersonalUse.lean`: subsection 50(2)
 - `S40/SuspendedLoss.lean`: subsections 40(3.3) to (3.5)
 - `S251/Amalgamation.lean`: 251.1(2), 251(3.1) and (3.2)
+- `S38/CapitalGains.lean`: 40(1), 39(1), 38 and 41
+- `S3/Income.lean`: section 3

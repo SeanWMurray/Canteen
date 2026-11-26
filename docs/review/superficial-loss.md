@@ -72,6 +72,12 @@ It cannot prove that the definitions match the Act. That is what this review is 
 | 251.1(2) new corporation and predecessor deemed affiliated, supposing the new corporation existed immediately before with the shareholders it had immediately after | `Amalgamation.hypothetical`, `affiliatedRule` | sisters; parent and subsidiary; strangers 50/50 |
 | 251(3.1) the same, for related persons | `relatedHypothetical`, `relatedRule` | as above |
 | 251(3.2) predecessors each related to each other, "otherwise than because of a right referred to in paragraph 251(5)(b)" | `predecessorsRelated`, `Facts.beforeWithoutRights` | related only through an option |
+| 40(1)(a), (b) gain and loss; (a)(iii) reserve, at most a reasonable reserve and ⅕ of the gain times (4 − preceding years) | `Disposition.gain`, `loss`, `reserveLimit` | reserve over four years; outlays |
+| 39(1)(a), (b) capital gain and loss: not otherwise in income, other than excluded kinds (and depreciable property, for losses) | `capitalGain`, `capitalLoss` | income account; depreciable; excluded |
+| 39(1)(c) business investment loss | `businessInvestmentLoss` (a fact, with its reductions) | SBC shares |
+| 38(a), (a.1)(i), (b), (c) one half; nil for listed securities given to a qualified donee | `taxableCapitalGain`, `allowableCapitalLoss`, `allowableBusinessInvestmentLoss` | half cents; gift |
+| 41(1)–(3) listed personal property: pooled; losses of other years claimed; the year's loss | `Year.lppExcess`, `lppNetGain`, `lppTaxableNetGain`, `lppLoss` | pooled; cannot offset other gains; claims capped |
+| 3(a)–(f) income for the year | `Income.income`, `report` | other income; ABIL; capital losses not against other income |
 | 50(2) a personal-use debt owing by an arm's length person, established to be bad in the year | `BadDebtPersonalUse.rule` | each condition |
 | 50(2)(a) deemed proceeds: the amount, if any, by which (i) the debt's adjusted cost base exceeds (ii) the gain on the related disposition; (b) reacquisition at that amount | `deemedProceeds`, `reacquisitionCost`, `loss_eq_min` | gain larger, smaller, nil |
 
@@ -118,6 +124,9 @@ It cannot prove that the definitions match the Act. That is what this review is 
 35. **Not encoded:** 40(3.5)(c), which deems the corporation formed on a merger to own a share whose loss is suspended.
 36. **50(2):** "established by the taxpayer to have become a bad debt in the year" is a fact or a judgment call, and so is arm's length (which 251 can supply). "The amount, if any, by which (i) exceeds (ii)" is (i) minus (ii), or nil. The resulting loss is proven to be the lesser of the debt's cost and the gain.
 37. **"To the extent that" for (ii) to (iv)** is read as the whole loss: the loss is entirely from the disposition of the debt, personal-use property, or property transferred. `Paragraph40_2_g.deniedLoss` treats the whole loss as nil when any subparagraph applies, as `LossDenial.deniedLoss` does for (i).
+38. **Capital gains (38 to 41).** Taxable amounts are kept in half-cents, so ½ of an odd number of cents is exact (shown as, for example, $254.995). Whether a gain or loss is on capital account (39(1)(a), (b): "would not … be included in computing the taxpayer's income") is a fact or a judgment call. 39(1)(c) (business investment loss) is a fact with its reductions given; "small business corporation" and 39(9), (10) are not encoded. 38(a.2) and (a.3) are not encoded. The 40(1)(a)(iii) reserve is the amount claimed, capped at the lesser of a reasonable reserve and ⅕ of the gain times (4 − preceding years), with the product rounded down to the cent; 40(1.1) (ten-year reserves) is not encoded.
+39. **Section 41.** "Gains" and "losses" are 40(1) gains and losses. Listed-personal-property losses of other years are a single amount claimed; the ordering rules in 41(2)(b)(i), (ii) are for the taxpayer to respect. 39(1)(a)(i.1) property is excluded from the pool's gains, as an excluded kind.
+40. **Section 3.** Income from sources, Subdivision E deductions and losses from sources are given amounts. Unused allowable capital losses are reported, but the net capital loss carryover (111(1)(b), 111(8)) is not encoded.
 
 ## Reviewer checklist
 

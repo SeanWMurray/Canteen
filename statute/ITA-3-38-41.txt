@@ -1,0 +1,94 @@
+Income Tax Act, R.S.C. 1985, c. 1 (5th Supp.): section 3; section 38 paragraphs (a), (a.1), (b), (c); subsection 39(1); subsection 40(1); section 41
+
+Source: Justice Canada consolidated Acts (XML), https://github.com/justicecanada/laws-lois-xml, file eng/acts/I-3.3.xml
+Current to: 2026-10-29. Last amended: 2026-06-18.
+Extracted verbatim; whitespace normalized; paragraph labels kept; continued text marked [continued].
+
+3 The income of a taxpayer for a taxation year for the purposes of this Part is the taxpayer’s income for the year determined by the following rules:
+  (a) determine the total of all amounts each of which is the taxpayer’s income for the year (other than a taxable capital gain from the disposition of a property) from a source inside or outside Canada, including, without restricting the generality of the foregoing, the taxpayer’s income for the year from each office, employment, business and property,
+  (b) determine the amount, if any, by which
+    (i) the total of
+      (A) all of the taxpayer’s taxable capital gains for the year from dispositions of property other than listed personal property, and
+      (B) the taxpayer’s taxable net gain for the year from dispositions of listed personal property,
+    [continued] exceeds
+    (ii) the amount, if any, by which the taxpayer’s allowable capital losses for the year from dispositions of property other than listed personal property exceed the taxpayer’s allowable business investment losses for the year,
+  (c) determine the amount, if any, by which the total determined under paragraph (a) plus the amount determined under paragraph (b) exceeds the total of the deductions permitted by Subdivision E in computing the taxpayer’s income for the year (except to the extent that those deductions, if any, have been taken into account in determining the total referred to in paragraph (a), and
+  (d) determine the amount, if any, by which the amount determined under paragraph (c) exceeds the total of all amounts each of which is the taxpayer’s loss for the year from an office, employment, business or property or the taxpayer’s allowable business investment loss for the year,
+  [continued] and for the purposes of this Part,
+  (e) where an amount is determined under paragraph (d) for the year in respect of the taxpayer, the taxpayer’s income for the year is the amount so determined, and
+  (f) in any other case, the taxpayer shall be deemed to have income for the year in an amount equal to zero.
+
+38 For the purposes of this Act,
+  (a) subject to paragraphs (a.1) to (a.3), a taxpayer’s taxable capital gain for a taxation year from the disposition of any property is ½ of the taxpayer’s capital gain for the year from the disposition of the property;
+  (a.1) a taxpayer’s taxable capital gain for a taxation year from the disposition of a property is equal to zero if
+    (i) the disposition is the making of a gift to a qualified donee of a share, debt obligation or right listed on a designated stock exchange, a share of the capital stock of a mutual fund corporation, a unit of a mutual fund trust, an interest in a related segregated fund trust (within the meaning assigned by paragraph 138.1(1)(a)) or a prescribed debt obligation,
+    (ii) the disposition is deemed by section 70 to have occurred and the property is
+      (A) a security described in subparagraph (i), and
+      (B) the subject of a gift to which subsection 118.1(5.1) applies and that is made by the taxpayer’s estate to a qualified donee, or
+    (iii) the disposition is the exchange, for a security described in subparagraph (i), of a share of the capital stock of a corporation, which share included, at the time it was issued and at the time of the disposition, a condition allowing the holder to exchange it for the security, and the taxpayer
+      (A) receives no consideration on the exchange other than the security, and
+      (B) makes a gift of the security to a qualified donee not more than 30 days after the exchange;
+  (b) a taxpayer’s allowable capital loss for a taxation year from the disposition of any property is 1/2 of the taxpayer’s capital loss for the year from the disposition of that property; and
+  (c) a taxpayer’s allowable business investment loss for a taxation year from the disposition of any property is 1/2 of the taxpayer’s business investment loss for the year from the disposition of that property.
+
+(1) For the purposes of this Act,
+  (a) a taxpayer’s capital gain for a taxation year from the disposition of any property is the taxpayer’s gain for the year determined under this Subdivision (to the extent of the amount thereof that would not, if section 3 were read without reference to the expression “other than a taxable capital gain from the disposition of a property” in paragraph 3(a) and without reference to paragraph 3(b), be included in computing the taxpayer’s income for the year or any other taxation year) from the disposition of any property of the taxpayer other than
+    (i) [Repealed, 2016, c. 12, s. 13]
+    (i.1) an object that the Canadian Cultural Property Export Review Board has determined meets the criterion set out in paragraph 29(3)(b) of the Cultural Property Export and Import Act if
+      (A) the disposition is to an institution or a public authority in Canada that was, at the time of the disposition, designated under subsection 32(2) of that Act either generally or for a specified purpose related to that object, or
+      (B) the disposition is deemed by section 70 to have occurred and the object is the subject of a gift to which subsection 118.1(5.1) applies and that is made by the taxpayer’s estate to an institution that would be described in clause (A) if the disposition were made at the time the estate makes the gift,
+    (ii) a Canadian resource property,
+    (ii.1) a foreign resource property,
+    (ii.2) a property if the disposition is a disposition to which subsection 142.4(4) or (5) or 142.5(1) applies,
+    (iii) an insurance policy, including a life insurance policy, except for that part of a life insurance policy in respect of which a policyholder is deemed by paragraph 138.1(1)(e) to have an interest in a related segregated fund trust,
+    (iv) a timber resource property; or
+    (v) an interest of a beneficiary under a qualifying environmental trust;
+  (b) a taxpayer’s capital loss for a taxation year from the disposition of any property is the taxpayer’s loss for the year determined under this Subdivision (to the extent of the amount thereof that would not, if section 3 were read in the manner described in paragraph (a) of this subsection and without reference to the expression “or the taxpayer’s allowable business investment loss for the year” in paragraph 3(d), be deductible in computing the taxpayer’s income for the year or any other taxation year) from the disposition of any property of the taxpayer other than
+    (i) depreciable property, or
+    (ii) property described in any of subparagraphs 39(1)(a)(ii) to (iii) and (v); and
+  (c) a taxpayer’s business investment loss for a taxation year from the disposition of any property is the amount, if any, by which the taxpayer’s capital loss for the year from a disposition after 1977
+    (i) to which subsection 50(1) applies, or
+    (ii) to a person with whom the taxpayer was dealing at arm’s length
+    [continued] of any property that is
+    (iii) a share of the capital stock of a small business corporation, or
+    (iv) a debt owing to the taxpayer by a Canadian-controlled private corporation (other than, where the taxpayer is a corporation, a debt owing to it by a corporation with which it does not deal at arm’s length) that is
+      (A) a small business corporation,
+      (B) a bankrupt that was a small business corporation at the time it last became a bankrupt, or
+      (C) a corporation referred to in section 6 of the Winding-up and Restructuring Act that was insolvent (within the meaning of that Act) and was a small business corporation at the time a winding-up order under that Act was made in respect of the corporation,
+      [continued] exceeds the total of
+    (v) in the case of a share referred to in subparagraph 39(1)(c)(iii), the amount, if any, of the increase after 1977 by virtue of the application of subsection 85(4) in the adjusted cost base to the taxpayer of the share or of any share (in this subparagraph referred to as a “replaced share”) for which the share or a replaced share was substituted or exchanged,
+    (vi) in the case of a share referred to in subparagraph 39(1)(c)(iii) that was issued before 1972 or a share (in this subparagraph and subparagraph 39(1)(c)(vii) referred to as a “substituted share”) that was substituted or exchanged for such a share or for a substituted share, the total of all amounts each of which is an amount received after 1971 and before or on the disposition of the share or an amount receivable at the time of such a disposition by
+      (A) the taxpayer,
+      (B) where the taxpayer is an individual, the taxpayer’s spouse or common-law partner, or
+      (C) a trust of which the taxpayer or the taxpayer’s spouse or common-law partner was a beneficiary
+      [continued] as a taxable dividend on the share or on any other share in respect of which it is a substituted share, except that this subparagraph shall not apply in respect of a share or substituted share that was acquired after 1971 from a person with whom the taxpayer was dealing at arm’s length,
+    (vii) in the case of a share to which subparagraph (vi) applies and where the taxpayer is a trust for which a day is to be, or has been, determined under paragraph 104(4)(a), or (a.4) by reference to a death or later death, as the case may be, the total of all amounts each of which is an amount received after 1971 or receivable at the time of the disposition, as a taxable dividend on the share or on any other share in respect of which it is a substituted share, by an individual whose death is that death or later death, as the case may be, or a spouse or common-law partner of the individual, and
+    (viii) the amount determined in respect of the taxpayer under subsection 39(9) or 39(10), as the case may be.
+
+(1) Except as otherwise expressly provided in this Part
+  (a) a taxpayer’s gain for a taxation year from the disposition of any property is the amount, if any, by which
+    (i) if the property was disposed of in the year, the amount, if any, by which the taxpayer’s proceeds of disposition exceed the total of the adjusted cost base to the taxpayer of the property immediately before the disposition and any outlays and expenses to the extent that they were made or incurred by the taxpayer for the purpose of making the disposition, or
+    (ii) if the property was disposed of before the year, the amount, if any, claimed by the taxpayer under subparagraph 40(1)(a)(iii) in computing the taxpayer’s gain for the immediately preceding year from the disposition of the property,
+    [continued] exceeds
+    (iii) subject to subsections (1.1) to (1.4), such amount as the taxpayer may claim
+      (A) in the case of an individual (other than a trust) in prescribed form filed with the taxpayer’s return of income under this Part for the year, and
+      (B) in any other case, in the taxpayer’s return of income under this Part for the year,
+      [continued] as a deduction, not exceeding the lesser of
+      (C) a reasonable amount as a reserve in respect of such of the proceeds of disposition of the property that are payable to the taxpayer after the end of the year as can reasonably be regarded as a portion of the amount determined under subparagraph 40(1)(a)(i) in respect of the property, and
+      (D) an amount equal to the product obtained when 1/5 of the amount determined under subparagraph 40(1)(a)(i) in respect of the property is multiplied by the amount, if any, by which 4 exceeds the number of preceding taxation years of the taxpayer ending after the disposition of the property; and
+  (b) a taxpayer’s loss for a taxation year from the disposition of any property is,
+    (i) if the property was disposed of in the year, the amount, if any, by which the total of the adjusted cost base to the taxpayer of the property immediately before the disposition and any outlays and expenses to the extent that they were made or incurred by the taxpayer for the purpose of making the disposition, exceeds the taxpayer’s proceeds of disposition of the property, and
+    (ii) in any other case, nil.
+
+41 
+  (1) For the purposes of this Part, a taxpayer’s taxable net gain for a taxation year from dispositions of listed personal property is 1/2 of the amount determined under subsection 41(2) to be the taxpayer’s net gain for the year from dispositions of such property.
+  [Determination of net gain]
+  (2) A taxpayer’s net gain for a taxation year from dispositions of listed personal property is an amount determined as follows:
+    (a) determine the amount, if any, by which the total of the taxpayer’s gains for the year from the disposition of listed personal property, other than property described in subparagraph 39(1)(a)(i.1), exceeds the total of the taxpayer’s losses for the year from dispositions of listed personal property, and
+    (b) deduct from the amount determined under paragraph 41(2)(a) such portion as the taxpayer may claim of the taxpayer’s listed-personal-property losses for the 7 taxation years immediately preceding and the 3 taxation years immediately following the taxation year, except that for the purposes of this paragraph
+      (i) an amount in respect of a listed-personal-property loss is deductible for a taxation year only to the extent that it exceeds the total of amounts deducted under this paragraph in respect of that loss for preceding taxation years,
+      (ii) no amount is deductible in respect of the listed-personal-property loss of any year until the deductible listed-personal-property losses for previous years have been deducted, and
+      (iii) no amount is deductible in respect of listed-personal-property losses from the amount determined under paragraph 41(2)(a) for a taxation year except to the extent of the amount so determined for the year,
+    [continued] and the remainder determined under paragraph 41(2)(b) is the taxpayer’s net gain for the year from dispositions of listed personal property.
+  [Definition of listed-personal-property loss]
+  (3) In this section, listed-personal-property loss of a taxpayer for a taxation year means the amount, if any, by which the total of the taxpayer’s losses for the year from dispositions of listed personal property exceeds the total of the taxpayer’s gains for the year from dispositions of listed personal property, other than property described in subparagraph 39(1)(a)(i.1).

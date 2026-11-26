@@ -531,3 +531,28 @@ Conclusion: The superficial loss rule does not apply. Risk: high.
 Summary: The superficial loss rule applies on 1 of 2 branches, so the conclusion depends on the judgment calls.
 ```
 
+### Section 3 for the taxpayer's year (with $60,000.00 of employment income), on the position taken
+
+```
+1. 100 common shares of ABC Ltd.: the loss is nil under paragraph 40(2)(g) or subsection 40(3.4): so there is no capital loss. [ITA 40(1); 39(1); 38]
+2. Paragraph 3(a), income from sources other than taxable capital gains: $60,000.00. [ITA 3(a)]
+3. Paragraph 3(b): taxable capital gains $0.00 and taxable net gain from listed personal property $0.00, less allowable capital losses $0.00 in excess of allowable business investment losses $0.00: $0.00. [ITA 3(b)]
+4. Paragraph 3(c), less Subdivision E deductions of $0.00: $60,000.00. [ITA 3(c)]
+5. Paragraph 3(d), less losses from sources of $0.00 and allowable business investment losses of $0.00: $60,000.00. [ITA 3(d)]
+6. So the taxpayer's income for the year is $60,000.00. [ITA 3(e), (f)]
+Relies on no judgment calls.
+```
+
+### Section 3 for the taxpayer's year, if the shares were not identical
+
+```
+1. 100 common shares of ABC Ltd.: a loss of $509.99: a capital loss, of which ½, $254.995, is an allowable capital loss. [ITA 40(1); 39(1); 38]
+2. Paragraph 3(a), income from sources other than taxable capital gains: $60,000.00. [ITA 3(a)]
+3. Paragraph 3(b): taxable capital gains $0.00 and taxable net gain from listed personal property $0.00, less allowable capital losses $254.995 in excess of allowable business investment losses $0.00: $0.00. [ITA 3(b)]
+4. Paragraph 3(c), less Subdivision E deductions of $0.00: $60,000.00. [ITA 3(c)]
+5. Paragraph 3(d), less losses from sources of $0.00 and allowable business investment losses of $0.00: $60,000.00. [ITA 3(d)]
+6. So the taxpayer's income for the year is $60,000.00. [ITA 3(e), (f)]
+7. Allowable capital losses of $254.995 could not be used this year (they may be a net capital loss under 111(1)(b), not encoded). [ITA 3(b)]
+Relies on no judgment calls.
+```
+

@@ -8,6 +8,7 @@ import Canteen.ITA.S251_1.Affiliation
 import Canteen.ITA.S251_1.AffiliatedPersons
 import Canteen.ITA.S251.RelatedPersons
 import Canteen.ITA.S251.Amalgamation
+import Canteen.ITA.S3.Income
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -226,6 +227,13 @@ def blueprint : Blueprint where
             ``SuspendedLoss.not_superficial_of_applies, ``SuspendedLoss.not_individual, ``SuspendedLoss.not_of_excepted,
             ``SuspendedLoss.not_of_all_fail, ``SuspendedLoss.safe_harbour],
           uses := ["Pc", "Pd", "Pe", "Pf", "Pg", "Ph", "D", "R3"] },
+        { id := "R8", kind := .law, title := "The tax result: capital gains and income", citation := "ITA 3, 38–41"
+          statement := "A loss made nil by 40(2)(g) or 40(3.4) is no capital loss (39(1)(b)), so no allowable capital loss " ++
+            "(38(b)) reduces the year's taxable capital gains in 3(b). Capital losses reduce only capital gains; an " ++
+            "allowable business investment loss reduces any income (3(d)). Amounts are exact, in half-cents."
+          lean := [``CapitalGains.ofParagraph40_2_g, ``CapitalGains.ofSuspendedLoss, ``CapitalGains.capitalLoss_of_lossNil,
+            ``Income.income, ``Income.capital_losses_only_offset_gains, ``Income.abil_reduces_income],
+          uses := ["G5", "R6"] },
         { id := "R2", kind := .law, title := "Cost of the substituted property", citation := "ITA 53(1)(f)"
           statement := "The superficial loss, less any amount described in subparagraph 53(1)(f)(ii), is added to the cost " ++
             "of the substituted property in computing its adjusted cost base."
