@@ -1,0 +1,22 @@
+Income Tax Act, R.S.C. 1985, c. 1 (5th Supp.), subsections 73(1) and (1.01)
+
+Source: Justice Canada consolidated Acts (XML), https://github.com/justicecanada/laws-lois-xml, file eng/acts/I-3.3.xml
+Current to: 2026-10-29. Last amended: 2026-06-18.
+Extracted verbatim; whitespace normalized; paragraph labels kept.
+
+(1) For the purposes of this Part, where at any time any particular capital property of an individual (other than a trust) has been transferred in circumstances to which subsection (1.01) applies and both the individual and the transferee are resident in Canada at that time, unless the individual elects in the individual’s return of income under this Part for the taxation year in which the property was transferred that the provisions of this subsection not apply, the particular property is deemed
+  (a) to have been disposed of at that time by the individual for proceeds equal to,
+    (i) where the particular property is depreciable property of a prescribed class, that proportion of the undepreciated capital cost to the individual immediately before that time of all property of that class that the fair market value immediately before that time of the particular property is of the fair market value immediately before that time of all of that property of that class, and
+    (ii) in any other case, the adjusted cost base to the individual of the particular property immediately before that time; and
+  (b) to have been acquired at that time by the transferee for an amount equal to those proceeds.
+
+(1.01) Subject to subsection (1.02), property is transferred by an individual in circumstances to which this subsection applies where it is transferred to
+  (a) the individual’s spouse or common-law partner;
+  (b) a former spouse or common-law partner of the individual in settlement of rights arising out of their marriage or common-law partnership; or
+  (c) a trust created by the individual under which
+    (i) the individual’s spouse or common-law partner is entitled to receive all of the income of the trust that arises before the spouse’s or common-law partner’s death and no person except the spouse or common-law partner may, before the spouse’s or common-law partner’s death, receive or otherwise obtain the use of any of the income or capital of the trust,
+    (ii) the individual is entitled to receive all of the income of the trust that arises before the individual’s death and no person except the individual may, before the individual’s death, receive or otherwise obtain the use of any of the income or capital of the trust, or
+    (iii) either
+      (A) the individual or the individual’s spouse is, in combination with the other, entitled to receive all of the income of the trust that arises before the later of the death of the individual and the death of the spouse and no other person may, before the later of those deaths, receive or otherwise obtain the use of any of the income or capital of the trust, or
+      (B) the individual or the individual’s common-law partner is, in combination with the other, entitled to receive all of the income of the trust that arises before the later of the death of the individual and the death of the common-law partner and no other person may, before the later of those deaths, receive or otherwise obtain the use of any of the income or capital of the trust.
+

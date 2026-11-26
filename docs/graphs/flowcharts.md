@@ -303,6 +303,34 @@ flowchart TD
   classDef start fill:#ffffff,stroke:#212121,color:#212121
 ```
 
+## Subsection 73(1): the spousal rollover
+
+```mermaid
+flowchart TD
+  S(["subsection 73(1) · ITA 73(1)"]):::start
+  C0["<b>capital property of an individual</b> The property is capital property of an<br/>individual who is not a trust<br/>[ITA 73(1) capital property of an individual]"]:::fact
+  C1["<b>(1.01)</b> (1.01) applies<br/>[ITA 73(1.01)]"]:::rule
+  C2["<b>resident</b> Both the individual and the transferee are<br/>resident in Canada at the time<br/>[ITA 73(1) resident]"]:::fact
+  E0["<b>election</b> The individual elects that subsection 73(1)<br/>not apply<br/>[ITA 73(1) election]"]:::fact
+  Y(["subsection 73(1) applies"]):::yes
+  N(["subsection 73(1) does not apply"]):::no
+  S --> C0
+  C0 -->|met| C1
+  C0 -->|not met| N
+  C1 -->|met| C2
+  C1 -->|not met| N
+  C2 -->|met| E0
+  C2 -->|not met| N
+  E0 -->|does not apply| Y
+  E0 -->|applies| N
+  classDef fact fill:#eeeeee,stroke:#616161,color:#212121
+  classDef judgment fill:#ffe0b2,stroke:#ef6c00,color:#e65100
+  classDef rule fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+  classDef yes fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
+  classDef no fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+  classDef start fill:#ffffff,stroke:#212121,color:#212121
+```
+
 ## Subparagraph 40(2)(g)(iv): transfers to registered plans
 
 ```mermaid

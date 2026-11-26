@@ -14,6 +14,7 @@ import Canteen.ITA.S40.ShareToAffiliate
 import Canteen.ITA.S40.RelatedDebt
 import Canteen.ITA.S40.PrincipalResidence
 import Canteen.ITA.S69.NonArmsLength
+import Canteen.ITA.S73.SpousalRollover
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -260,6 +261,12 @@ def blueprint : Blueprint where
           lean := [``NonArmsLength.sellerAtFairMarketValue, ``NonArmsLength.buyerAtFairMarketValue,
             ``NonArmsLength.undervalue_sale_double_counted, ``NonArmsLength.gift_at_fair_market_value,
             ``NonArmsLength.sellerDisposition], uses := ["R4", "R8"] },
+        { id := "R13", kind := .law, title := "The spousal rollover", citation := "ITA 73(1), (1.01)"
+          statement := "Capital property of an individual transferred to a spouse or common-law partner, a former one in " ++
+            "settlement, or a qualifying spousal, alter ego or joint trust, both resident, passes at its adjusted cost base " ++
+            "unless the individual elects out; then 69(1) governs. Proven: no gain, and the cost carries over."
+          lean := [``SpousalRollover.rollover, ``SpousalRollover.proceeds, ``SpousalRollover.transfereeCost,
+            ``SpousalRollover.no_gain_on_rollover, ``SpousalRollover.elect_out], uses := ["R12"] },
         { id := "R11", kind := .law, title := "The principal residence exemption", citation := "ITA 40(2)(b); 54 \"principal residence\""
           statement := "A home is the principal residence for a year if owned, ordinarily inhabited by the family (or covered by " ++
             "a 45(2) or (3) election), designated, and not blocked by another family-unit designation; the gain is A − A × B / C " ++

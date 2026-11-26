@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 52 statements:** 33 proven, 16 encoded, 3 not formalized.
+**Status of the 53 statements:** 34 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -57,11 +57,12 @@ graph TD
   n44["R8 · The tax result: capital gains and income"]:::proven
   n45["R9 · Net capital losses and taxable income"]:::proven
   n46["R12 · Transfers not at arm's length, and gifts"]:::proven
-  n47["R11 · The principal residence exemption"]:::proven
-  n48["R2 · Cost of the substituted property"]:::proven
-  n49["N1 · Inputs decided by other provisions"]:::notFormalized
-  n50["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n51["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n47["R13 · The spousal rollover"]:::proven
+  n48["R11 · The principal residence exemption"]:::proven
+  n49["R2 · Cost of the substituted property"]:::proven
+  n50["N1 · Inputs decided by other provisions"]:::notFormalized
+  n51["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n52["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -140,20 +141,21 @@ graph TD
   n44 --> n45
   n39 --> n46
   n44 --> n46
-  n44 --> n47
-  n11 --> n48
-  n1 --> n49
-  n5 --> n49
-  n6 --> n49
-  n8 --> n49
-  n37 --> n49
-  n48 --> n49
-  n38 --> n49
-  n30 --> n50
-  n32 --> n51
-  n34 --> n51
-  n39 --> n51
-  n42 --> n51
+  n46 --> n47
+  n44 --> n48
+  n11 --> n49
+  n1 --> n50
+  n5 --> n50
+  n6 --> n50
+  n8 --> n50
+  n37 --> n50
+  n49 --> n50
+  n38 --> n50
+  n30 --> n51
+  n32 --> n52
+  n34 --> n52
+  n39 --> n52
+  n42 --> n52
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -217,11 +219,12 @@ graph TD
   n44["R8"]:::proven
   n45["R9"]:::proven
   n46["R12"]:::proven
-  n47["R11"]:::proven
-  n48["R2"]:::proven
-  n49["N1"]:::notFormalized
-  n50["N2"]:::notFormalized
-  n51["N4"]:::notFormalized
+  n47["R13"]:::proven
+  n48["R11"]:::proven
+  n49["R2"]:::proven
+  n50["N1"]:::notFormalized
+  n51["N2"]:::notFormalized
+  n52["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -366,20 +369,21 @@ graph TD
   n44 --> n45
   n39 -.-> n46
   n44 -.-> n46
-  n44 -.-> n47
-  n11 -.-> n48
-  n1 -.-> n49
-  n5 -.-> n49
-  n6 -.-> n49
-  n8 -.-> n49
-  n37 -.-> n49
-  n48 -.-> n49
-  n38 -.-> n49
-  n30 -.-> n50
-  n32 -.-> n51
-  n34 -.-> n51
-  n39 -.-> n51
-  n42 -.-> n51
+  n46 --> n47
+  n44 -.-> n48
+  n11 -.-> n49
+  n1 -.-> n50
+  n5 -.-> n50
+  n6 -.-> n50
+  n8 -.-> n50
+  n37 -.-> n50
+  n49 -.-> n50
+  n38 -.-> n50
+  n30 -.-> n51
+  n32 -.-> n52
+  n34 -.-> n52
+  n39 -.-> n52
+  n42 -.-> n52
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -774,6 +778,14 @@ Allowable capital losses that 3(b) cannot use are a net capital loss (111(8)), d
 A sale below fair market value to a person not at arm's length, a gift, or a transfer to a trust without a change in beneficial ownership is at fair market value for the seller (b); an overpayment to such a person, or a gift received, is at fair market value for the buyer (a), (c). Proven: an undervalue sale is taxed twice.
 
 **Lean:** [`Canteen.ITA.NonArmsLength.sellerAtFairMarketValue`](../../Canteen/ITA/S69/NonArmsLength.lean#L46), [`Canteen.ITA.NonArmsLength.buyerAtFairMarketValue`](../../Canteen/ITA/S69/NonArmsLength.lean#L54), [`Canteen.ITA.NonArmsLength.undervalue_sale_double_counted`](../../Canteen/ITA/S69/NonArmsLength.lean#L76), [`Canteen.ITA.NonArmsLength.gift_at_fair_market_value`](../../Canteen/ITA/S69/NonArmsLength.lean#L90), [`Canteen.ITA.NonArmsLength.sellerDisposition`](../../Canteen/ITA/S69/NonArmsLength.lean#L70)
+
+### R13. The spousal rollover
+
+**Status:** proven · **Citation:** ITA 73(1), (1.01) · **Uses:** R12
+
+Capital property of an individual transferred to a spouse or common-law partner, a former one in settlement, or a qualifying spousal, alter ego or joint trust, both resident, passes at its adjusted cost base unless the individual elects out; then 69(1) governs. Proven: no gain, and the cost carries over.
+
+**Lean:** [`Canteen.ITA.SpousalRollover.rollover`](../../Canteen/ITA/S73/SpousalRollover.lean#L68), [`Canteen.ITA.SpousalRollover.proceeds`](../../Canteen/ITA/S73/SpousalRollover.lean#L88), [`Canteen.ITA.SpousalRollover.transfereeCost`](../../Canteen/ITA/S73/SpousalRollover.lean#L92), [`Canteen.ITA.SpousalRollover.no_gain_on_rollover`](../../Canteen/ITA/S73/SpousalRollover.lean#L102), [`Canteen.ITA.SpousalRollover.elect_out`](../../Canteen/ITA/S73/SpousalRollover.lean#L109)
 
 ### R11. The principal residence exemption
 

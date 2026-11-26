@@ -39,6 +39,7 @@ import Canteen.ITA.S38.CapitalGains
 import Canteen.ITA.S3.Income
 import Canteen.ITA.S111.NetCapitalLoss
 import Canteen.ITA.S69.NonArmsLength
+import Canteen.ITA.S73.SpousalRollover
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.ITA.S40.ShareToAffiliate
@@ -98,3 +99,4 @@ import Canteen.Tests.NetCapitalLoss
 import Canteen.Tests.ShareAndDebt
 import Canteen.Tests.PrincipalResidence
 import Canteen.Tests.NonArmsLength
+import Canteen.Tests.SpousalRollover
