@@ -30,6 +30,7 @@ import Canteen.ITA.S84.Redemption
 import Canteen.ITA.S89.CapitalDividendAccount
 import Canteen.ITA.S86.ShareExchange
 import Canteen.ITA.S44.ReplacementProperty
+import Canteen.ITA.S47.IdenticalProperties
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -400,6 +401,12 @@ def blueprint : Blueprint where
             "and deferred add up to the gain otherwise, and full reinvestment defers all of it."
           lean := [``ReplacementProperty.applies, ``ReplacementProperty.gain, ``ReplacementProperty.replacementCostAfter,
             ``ReplacementProperty.gain_add_deferred, ``ReplacementProperty.fully_reinvested], uses := ["R8"] },
+        { id := "R29", kind := .law, title := "Identical properties: the average cost", citation := "ITA 47(1)"
+          statement := "Identical properties (such as shares of one class) form a pool, each at the average cost; a sale takes " ++
+            "its share of the pool's total cost, and additions to cost (such as a 53(1)(f) superficial loss) are averaged in. " ++
+            "Proven: the costs of everything sold plus what is left equal everything that went in, to the cent."
+          lean := [``IdenticalProperties.run, ``IdenticalProperties.Pool.average, ``IdenticalProperties.conserved,
+            ``IdenticalProperties.sell_all], uses := ["R8"] },
         { id := "R11", kind := .law, title := "The principal residence exemption", citation := "ITA 40(2)(b); 54 \"principal residence\""
           statement := "A home is the principal residence for a year if owned, ordinarily inhabited by the family (or covered by " ++
             "a 45(2) or (3) election, for at most four years: (d)), designated, and not blocked by another family-unit " ++

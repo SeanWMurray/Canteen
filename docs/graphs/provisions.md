@@ -43,7 +43,8 @@ flowchart BT
   v34["83(2), 89(1) capital dividends"]:::prov
   v35["86 share exchanges, estate freezes"]:::prov
   v36["44(1) replacement property"]:::prov
-  v37["50(2) bad personal-use debts"]:::prov
+  v37["47(1) identical properties"]:::prov
+  v38["50(2) bad personal-use debts"]:::prov
   v0 --> v1
   v0 --> v2
   v0 --> v3
@@ -86,5 +87,6 @@ flowchart BT
   v17 --> v34
   v25 --> v35
   v17 --> v36
+  v17 --> v37
   classDef prov fill:#bbdefb,stroke:#1565c0,color:#0d47a1
 ```
