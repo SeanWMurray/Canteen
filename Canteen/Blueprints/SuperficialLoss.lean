@@ -35,6 +35,7 @@ import Canteen.ITA.S186.Connected
 import Canteen.ITA.S84.ReturnOfCapital
 import Canteen.ITA.S88.WindingUp
 import Canteen.ITA.S87.Amalgamation
+import Canteen.ITA.S51.ConvertibleProperty
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -440,6 +441,12 @@ def blueprint : Blueprint where
             "person (87(4)). Proven: the shareholder rolls over with no gain or loss, and a gift portion never makes a loss."
           lean := [``Amalgamation87.amalgamation, ``Amalgamation87.newCorporationCost, ``Amalgamation87.Shareholder.proceeds,
             ``Amalgamation87.shareholder_rollover, ``Amalgamation87.no_loss_on_gift], uses := ["R8", "R17"] },
+        { id := "R34", kind := .law, title := "Convertible property", citation := "ITA 51(1), (2), (4)"
+          statement := "Shares or convertible debt of a corporation exchanged for its shares, with nothing else received, are " ++
+            "not disposed of; the new shares take over the cost. If a benefit is conferred on a related person, the gift " ++
+            "portion is taxed and any loss is nil. Not where 85 or 86 applies. Proven: a plain conversion is no disposition."
+          lean := [``ConvertibleProperty.disposition, ``ConvertibleProperty.costTotal, ``ConvertibleProperty.no_disposition,
+            ``ConvertibleProperty.not_with_rollover], uses := ["R8", "R17"] },
         { id := "R11", kind := .law, title := "The principal residence exemption", citation := "ITA 40(2)(b); 54 \"principal residence\""
           statement := "A home is the principal residence for a year if owned, ordinarily inhabited by the family (or covered by " ++
             "a 45(2) or (3) election, for at most four years: (d)), designated, and not blocked by another family-unit " ++

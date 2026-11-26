@@ -71,32 +71,33 @@ flowchart BT
     m63["ITA.S84.ReturnOfCapital"]
     m64["ITA.S88.WindingUp"]
     m65["ITA.S87.Amalgamation"]
-    m66["ITA.S50.BadDebtPersonalUse"]
-    m67["ITA.S54.Timeline"]
+    m66["ITA.S51.ConvertibleProperty"]
+    m67["ITA.S50.BadDebtPersonalUse"]
+    m68["ITA.S54.Timeline"]
   end
   subgraph Lemmas["Layer 2: reusable lemmas"]
-    m68["Lemmas.SuperficialLoss"]
-    m69["Lemmas.SuspendedLoss"]
+    m69["Lemmas.SuperficialLoss"]
+    m70["Lemmas.SuspendedLoss"]
   end
   subgraph Transactions["Layer 3: transactions"]
-    m70["Transactions.SpouseRepurchase"]
-    m71["Transactions.SiblingAndLateRepurchase"]
-    m72["Transactions.TfsaContribution"]
-    m73["Transactions.HoldcoRepurchase"]
-    m74["Transactions.Crystallization"]
-    m75["Transactions.SaleThroughHoldco"]
-    m76["Transactions.SisterCompanyRepurchase"]
+    m71["Transactions.SpouseRepurchase"]
+    m72["Transactions.SiblingAndLateRepurchase"]
+    m73["Transactions.TfsaContribution"]
+    m74["Transactions.HoldcoRepurchase"]
+    m75["Transactions.Crystallization"]
+    m76["Transactions.SaleThroughHoldco"]
+    m77["Transactions.SisterCompanyRepurchase"]
   end
   subgraph Blueprints["Blueprints"]
-    m77["Blueprints.SuperficialLoss"]
-    m78["Blueprints.SpouseRepurchase"]
-    m79["Blueprints.SiblingAndLateRepurchase"]
-    m80["Blueprints.TfsaContribution"]
-    m81["Blueprints.HoldcoRepurchase"]
-    m82["Blueprints.Crystallization"]
-    m83["Blueprints.SaleThroughHoldco"]
-    m84["Blueprints.SisterCompanyRepurchase"]
-    m85["Blueprints.All"]
+    m78["Blueprints.SuperficialLoss"]
+    m79["Blueprints.SpouseRepurchase"]
+    m80["Blueprints.SiblingAndLateRepurchase"]
+    m81["Blueprints.TfsaContribution"]
+    m82["Blueprints.HoldcoRepurchase"]
+    m83["Blueprints.Crystallization"]
+    m84["Blueprints.SaleThroughHoldco"]
+    m85["Blueprints.SisterCompanyRepurchase"]
+    m86["Blueprints.All"]
   end
   subgraph Examples["Examples"]
     m19["Examples.RuleX"]
@@ -105,10 +106,10 @@ flowchart BT
     m22["Examples.RuleXStatute"]
   end
   subgraph Graphs["Graphs"]
-    m86["Graphs.All"]
+    m87["Graphs.All"]
   end
   subgraph Root["Root"]
-    m87["Canteen"]
+    m88["Canteen"]
   end
   m0 --> m3
   m3 --> m4
@@ -214,113 +215,115 @@ flowchart BT
   m41 --> m63
   m41 --> m64
   m49 --> m65
-  m12 --> m66
-  m10 --> m66
-  m2 --> m66
-  m23 --> m67
+  m49 --> m66
+  m12 --> m67
+  m10 --> m67
+  m2 --> m67
   m23 --> m68
-  m37 --> m69
-  m24 --> m70
-  m68 --> m70
-  m27 --> m70
-  m28 --> m70
+  m23 --> m69
+  m37 --> m70
   m24 --> m71
+  m69 --> m71
+  m27 --> m71
   m28 --> m71
-  m68 --> m71
-  m36 --> m72
+  m24 --> m72
   m28 --> m72
+  m69 --> m72
   m36 --> m73
-  m27 --> m73
-  m29 --> m73
-  m50 --> m74
-  m51 --> m74
-  m54 --> m74
+  m28 --> m73
+  m36 --> m74
   m27 --> m74
-  m55 --> m75
-  m58 --> m75
-  m37 --> m76
-  m29 --> m76
-  m16 --> m77
-  m68 --> m77
-  m26 --> m77
-  m27 --> m77
-  m28 --> m77
-  m31 --> m77
-  m43 --> m77
-  m45 --> m77
-  m46 --> m77
-  m48 --> m77
-  m50 --> m77
-  m51 --> m77
-  m52 --> m77
-  m53 --> m77
-  m56 --> m77
-  m57 --> m77
-  m58 --> m77
-  m59 --> m77
-  m60 --> m77
-  m61 --> m77
-  m62 --> m77
-  m63 --> m77
-  m64 --> m77
-  m65 --> m77
-  m66 --> m77
-  m69 --> m77
+  m29 --> m74
+  m50 --> m75
+  m51 --> m75
+  m54 --> m75
+  m27 --> m75
+  m55 --> m76
+  m58 --> m76
+  m37 --> m77
+  m29 --> m77
   m16 --> m78
-  m70 --> m78
-  m25 --> m78
+  m69 --> m78
+  m26 --> m78
+  m27 --> m78
+  m28 --> m78
+  m31 --> m78
+  m43 --> m78
+  m45 --> m78
+  m46 --> m78
+  m48 --> m78
+  m50 --> m78
+  m51 --> m78
+  m52 --> m78
+  m53 --> m78
+  m56 --> m78
+  m57 --> m78
+  m58 --> m78
+  m59 --> m78
+  m60 --> m78
+  m61 --> m78
+  m62 --> m78
+  m63 --> m78
+  m64 --> m78
+  m65 --> m78
+  m66 --> m78
   m67 --> m78
-  m42 --> m78
+  m70 --> m78
   m16 --> m79
-  m17 --> m79
   m71 --> m79
-  m67 --> m79
+  m25 --> m79
+  m68 --> m79
+  m42 --> m79
   m16 --> m80
   m17 --> m80
   m72 --> m80
-  m67 --> m80
+  m68 --> m80
   m16 --> m81
+  m17 --> m81
   m73 --> m81
-  m67 --> m81
+  m68 --> m81
   m16 --> m82
   m74 --> m82
+  m68 --> m82
   m16 --> m83
   m75 --> m83
   m16 --> m84
   m76 --> m84
+  m16 --> m85
   m77 --> m85
-  m78 --> m85
-  m79 --> m85
-  m80 --> m85
-  m81 --> m85
-  m84 --> m85
-  m82 --> m85
-  m83 --> m85
-  m22 --> m86
-  m21 --> m86
-  m67 --> m86
-  m26 --> m86
-  m70 --> m86
-  m71 --> m86
-  m72 --> m86
-  m73 --> m86
-  m31 --> m86
-  m66 --> m86
-  m45 --> m86
-  m46 --> m86
-  m48 --> m86
-  m52 --> m86
-  m53 --> m86
-  m59 --> m86
-  m60 --> m86
-  m62 --> m86
-  m64 --> m86
-  m65 --> m86
-  m76 --> m86
-  m74 --> m86
-  m75 --> m86
-  m18 --> m87
-  m20 --> m87
-  m85 --> m87
-  m86 --> m87
+  m78 --> m86
+  m79 --> m86
+  m80 --> m86
+  m81 --> m86
+  m82 --> m86
+  m85 --> m86
+  m83 --> m86
+  m84 --> m86
+  m22 --> m87
+  m21 --> m87
+  m68 --> m87
+  m26 --> m87
+  m71 --> m87
+  m72 --> m87
+  m73 --> m87
+  m74 --> m87
+  m31 --> m87
+  m67 --> m87
+  m45 --> m87
+  m46 --> m87
+  m48 --> m87
+  m52 --> m87
+  m53 --> m87
+  m59 --> m87
+  m60 --> m87
+  m62 --> m87
+  m64 --> m87
+  m65 --> m87
+  m77 --> m87
+  m75 --> m87
+  m76 --> m87
+  m18 --> m88
+  m20 --> m88
+  m86 --> m88
+  m87 --> m88
 ```

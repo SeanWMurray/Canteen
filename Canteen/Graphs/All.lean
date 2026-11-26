@@ -160,7 +160,8 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S186.Connected, "186(2), (4) connected corporations"),
    (`Canteen.ITA.S84.ReturnOfCapital, "84(4), (4.1), 40(3) returns of capital"),
    (`Canteen.ITA.S88.WindingUp, "88(1) winding-up and the bump"),
-   (`Canteen.ITA.S87.Amalgamation, "87(1), (2)(e), (4) amalgamations")]
+   (`Canteen.ITA.S87.Amalgamation, "87(1), (2)(e), (4) amalgamations"),
+   (`Canteen.ITA.S51.ConvertibleProperty, "51 convertible property")]
 
 /-! ## The dashboard -/
 
@@ -236,6 +237,7 @@ def actMindmap : String := Id.run do
     (2, "s. 45"), (3, "45(1): change in use"), (3, "45(2), (3), (4): the elections"),
     (2, "s. 47"), (3, "47(1): identical properties, average cost"),
     (2, "s. 50"), (3, "50(2): bad personal-use debts"),
+    (2, "s. 51"), (3, "51(1), (2): convertible property"),
     (2, "s. 53"), (3, "53(1)(f): cost of substituted property"), (3, "53(1)(f.1), (f.2): cost after 40(2)(e.1), 40(3.6)"),
     (2, "s. 54"), (3, "superficial loss"), (3, "principal residence"), (3, "personal-use property"),
     (3, "listed personal property"),
