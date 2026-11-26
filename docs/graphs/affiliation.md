@@ -52,6 +52,24 @@ flowchart LR
   p2 ---|"(b)(ii)"| p1
 ```
 
+## An amalgamation: the hypothetical world of 251.1(2), with Newco supposed to exist immediately before
+
+```mermaid
+flowchart LR
+  p0("Ann")
+  p10["Pco"]
+  p11["Sco"]
+  p20["Newco (supposed)"]
+  p0 -.->|"controls"| p10
+  p10 -.->|"controls"| p11
+  p0 -.->|"controls"| p20
+  p10 ---|"(b)(i)"| p0
+  p11 ---|"(b)(i)"| p10
+  p20 ---|"(b)(i)"| p0
+  p10 ---|"(c)(i)"| p20
+  p11 ---|"(c)(i)"| p20
+```
+
 ## Holdco, owned with a friend, if the taxpayer controls it de facto
 
 ```mermaid

@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 46 statements:** 27 proven, 16 encoded, 3 not formalized.
+**Status of the 47 statements:** 28 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -50,12 +50,13 @@ graph TD
   n37["R1 · Spouses are affiliated"]:::proven
   n38["R3 · Affiliated persons, paragraphs (a) to (h)"]:::proven
   n39["R4 · Related persons and arm's length"]:::proven
-  n40["R5 · A personal-use debt that goes bad"]:::proven
-  n41["R6 · Suspended losses of corporations, trusts and partnerships"]:::proven
-  n42["R2 · Cost of the substituted property"]:::proven
-  n43["N1 · Inputs decided by other provisions"]:::notFormalized
-  n44["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n45["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n40["R7 · Amalgamations"]:::proven
+  n41["R5 · A personal-use debt that goes bad"]:::proven
+  n42["R6 · Suspended losses of corporations, trusts and partnerships"]:::proven
+  n43["R2 · Cost of the substituted property"]:::proven
+  n44["N1 · Inputs decided by other provisions"]:::notFormalized
+  n45["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n46["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -115,27 +116,29 @@ graph TD
   n35 --> n36
   n37 --> n38
   n1 --> n38
-  n3 --> n41
-  n4 --> n41
-  n5 --> n41
-  n6 --> n41
-  n7 --> n41
-  n8 --> n41
-  n12 --> n41
-  n38 --> n41
-  n11 --> n42
-  n1 --> n43
-  n5 --> n43
-  n6 --> n43
-  n8 --> n43
-  n37 --> n43
-  n42 --> n43
-  n38 --> n43
-  n30 --> n44
-  n32 --> n45
-  n34 --> n45
-  n39 --> n45
-  n40 --> n45
+  n38 --> n40
+  n39 --> n40
+  n3 --> n42
+  n4 --> n42
+  n5 --> n42
+  n6 --> n42
+  n7 --> n42
+  n8 --> n42
+  n12 --> n42
+  n38 --> n42
+  n11 --> n43
+  n1 --> n44
+  n5 --> n44
+  n6 --> n44
+  n8 --> n44
+  n37 --> n44
+  n43 --> n44
+  n38 --> n44
+  n30 --> n45
+  n32 --> n46
+  n34 --> n46
+  n39 --> n46
+  n41 --> n46
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -192,12 +195,13 @@ graph TD
   n37["R1"]:::proven
   n38["R3"]:::proven
   n39["R4"]:::proven
-  n40["R5"]:::proven
-  n41["R6"]:::proven
-  n42["R2"]:::proven
-  n43["N1"]:::notFormalized
-  n44["N2"]:::notFormalized
-  n45["N4"]:::notFormalized
+  n40["R7"]:::proven
+  n41["R5"]:::proven
+  n42["R6"]:::proven
+  n43["R2"]:::proven
+  n44["N1"]:::notFormalized
+  n45["N2"]:::notFormalized
+  n46["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -314,29 +318,31 @@ graph TD
   n29 -.-> n36
   n1 --> n38
   n37 -.-> n38
-  n7 --> n41
-  n1 --> n41
-  n6 --> n41
-  n3 --> n41
-  n4 --> n41
-  n5 --> n41
-  n0 --> n41
-  n12 --> n41
-  n8 --> n41
-  n38 -.-> n41
-  n11 -.-> n42
-  n1 -.-> n43
-  n5 -.-> n43
-  n6 -.-> n43
-  n8 -.-> n43
-  n37 -.-> n43
-  n42 -.-> n43
-  n38 -.-> n43
-  n30 -.-> n44
-  n32 -.-> n45
-  n34 -.-> n45
-  n39 -.-> n45
-  n40 -.-> n45
+  n38 -.-> n40
+  n39 -.-> n40
+  n7 --> n42
+  n1 --> n42
+  n6 --> n42
+  n3 --> n42
+  n4 --> n42
+  n5 --> n42
+  n0 --> n42
+  n12 --> n42
+  n8 --> n42
+  n38 -.-> n42
+  n11 -.-> n43
+  n1 -.-> n44
+  n5 -.-> n44
+  n6 -.-> n44
+  n8 -.-> n44
+  n37 -.-> n44
+  n43 -.-> n44
+  n38 -.-> n44
+  n30 -.-> n45
+  n32 -.-> n46
+  n34 -.-> n46
+  n39 -.-> n46
+  n41 -.-> n46
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -676,6 +682,14 @@ Related persons (251(2), (3), with 251(6) for blood relationship, marriage, comm
 
 **Lean:** [`Canteen.ITA.RelatedPersons.rule`](../../Canteen/ITA/S251/RelatedPersons.lean#L205), [`Canteen.ITA.RelatedPersons.armsLengthRule`](../../Canteen/ITA/S251/RelatedPersons.lean#L252), [`Canteen.ITA.RelatedPersons.armsLengthAnswer`](../../Canteen/ITA/S251/RelatedPersons.lean#L265), [`Canteen.ITA.RelatedPersons.not_armsLength_of_related`](../../Canteen/ITA/S251/RelatedPersons.lean#L260), [`Canteen.ITA.RelatedPersons.related_symm`](../../Canteen/ITA/S251/RelatedPersons.lean#L213)
 
+### R7. Amalgamations
+
+**Status:** proven · **Citation:** ITA 251.1(2), 251(3.1), (3.2) · **Uses:** R3, R4
+
+The new corporation and a predecessor are deemed affiliated (251.1(2)) or related (251(3.1)) if they would have been, had the new corporation existed immediately before with the shareholders it had immediately after; and related if the predecessors were each related to each other, otherwise than because of a 251(5)(b) right (251(3.2)). The counterfactual is a hypothetical world given to the affiliation and related-persons rules.
+
+**Lean:** [`Canteen.ITA.Amalgamation.hypothetical`](../../Canteen/ITA/S251/Amalgamation.lean#L54), [`Canteen.ITA.Amalgamation.affiliatedRule`](../../Canteen/ITA/S251/Amalgamation.lean#L102), [`Canteen.ITA.Amalgamation.relatedRule`](../../Canteen/ITA/S251/Amalgamation.lean#L158), [`Canteen.ITA.Amalgamation.related_of_predecessorsRelated`](../../Canteen/ITA/S251/Amalgamation.lean#L173)
+
 ### R5. A personal-use debt that goes bad
 
 **Status:** proven · **Citation:** ITA 50(2)
@@ -708,7 +722,7 @@ These statements are part of the analysis but have no Lean behind them yet. Anyt
 
 **Status:** not formalized · **Uses:** Pa, Pe, Pf, Ph, R1, R2, R3
 
-Affiliation under subsection 251.1(2) (amalgamations), who is a contributor to a trust, a loss restriction event (section 251.2), and whether paragraph 40(2)(e.1) or subsection 40(3.4) or 69(5) applies are taken as facts. So is the amount in subparagraph 53(1)(f)(ii) (subsections 112(3) to (3.2)).
+Who is a contributor to a trust, a loss restriction event (section 251.2), and whether paragraph 40(2)(e.1) or subsection 40(3.4) or 69(5) applies are taken as facts. So is the amount in subparagraph 53(1)(f)(ii) (subsections 112(3) to (3.2)).
 
 ### N2. How much is "to the extent that"
 

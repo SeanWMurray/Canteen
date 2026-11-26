@@ -12,6 +12,7 @@ import Canteen.Transactions.TfsaContribution
 import Canteen.Transactions.HoldcoRepurchase
 import Canteen.ITA.S251_1.AffiliatedPersons
 import Canteen.ITA.S251.RelatedPersons
+import Canteen.ITA.S251.Amalgamation
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.Transactions.SisterCompanyRepurchase
@@ -84,6 +85,14 @@ def threeGenerations : AffiliatedPersons.World :=
     spouses := [(1, 3)], children := [(0, 1), (0, 2), (1, 4), (2, 5)], adoptions := [(1, 6)],
     controls := [⟨10, .person 1, .fact true, false⟩, ⟨11, .person 5, .fact true, false⟩] }
 
+/-- A parent (Pco, controlled by Ann) and its subsidiary (Sco) amalgamate to form Newco,
+controlled by Ann. -/
+def parentSubAmalgamation : Amalgamation.Facts :=
+  { before := { persons := [⟨0, "Ann", .individual⟩, ⟨10, "Pco", .corporation⟩, ⟨11, "Sco", .corporation⟩],
+                controls := [⟨10, .person 0, .fact true, false⟩, ⟨11, .person 10, .fact true, false⟩] },
+    predecessors := [10, 11], newCorp := ⟨20, "Newco (supposed)", .corporation⟩,
+    controlAfter := [⟨20, .person 0, .fact true, false⟩] }
+
 def holding (h : Examples.Holding) : String :=
   s!"{h.units} units, election {if h.electionFiled then "filed" else "not filed"}"
 
@@ -102,7 +111,8 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S53.CostAddition, "53(1)(f) cost of substituted property"),
    (`Canteen.ITA.S251_1.Affiliation, "251.1(1)(a), two persons"),
    (`Canteen.ITA.S251_1.AffiliatedPersons, "251.1 affiliated persons, with 248(1) and 251(6)"),
-   (`Canteen.ITA.S251.RelatedPersons, "251(1) to (6) related persons, arm's length")]
+   (`Canteen.ITA.S251.RelatedPersons, "251(1) to (6) related persons, arm's length"),
+   (`Canteen.ITA.S251.Amalgamation, "251.1(2), 251(3.1), (3.2) amalgamations")]
 
 /-! ## The dashboard -/
 
@@ -166,8 +176,9 @@ def actMindmap : String := Id.run do
     (2, "s. 53"), (3, "53(1)(f): cost of substituted property"),
     (2, "s. 54"), (3, "superficial loss"), (3, "personal-use property"), (3, "listed personal property"),
     (2, "s. 248"), (3, "248(1): majority-interest partner"),
-    (2, "s. 251"), (3, "251(1): arm's length"), (3, "251(2), (3): related persons"), (3, "251(6): blood, marriage, adoption"),
-    (2, "s. 251.1"), (3, "251.1(1)(a) to (h): affiliated persons"), (3, "251.1(3), (4): definitions and rules")]
+    (2, "s. 251"), (3, "251(1): arm's length"), (3, "251(2), (3): related persons"), (3, "251(3.1), (3.2): amalgamations"),
+    (3, "251(6): blood, marriage, adoption"),
+    (2, "s. 251.1"), (3, "251.1(1)(a) to (h): affiliated persons"), (3, "251.1(2): amalgamations"), (3, "251.1(3), (4): definitions and rules")]
   let mut out := ["mindmap", "  root((Income Tax Act, as encoded))"]
   for ((depth, label), i) in tree.zipIdx do
     out := out ++ [("".pushn ' ' (2 * depth)) ++ s!"n{i}[\"`{label}`\"]"]
@@ -224,6 +235,8 @@ def pages : List Page := [
     diagrams := [
       ("A family group", AffiliatedPersons.diagram familyGroup),
       ("Holdco, owned by the taxpayer and spouse", AffiliatedPersons.diagram Transactions.HoldcoRepurchase.world),
+      ("An amalgamation: the hypothetical world of 251.1(2), with Newco supposed to exist immediately before",
+        AffiliatedPersons.diagram (Amalgamation.hypothetical parentSubAmalgamation)),
       ("Holdco, owned with a friend, if the taxpayer controls it de facto",
         AffiliatedPersons.diagram (Transactions.HoldcoRepurchase.friendWorld
           [(Transactions.HoldcoRepurchase.friendCalls.head!).assume true]))] },

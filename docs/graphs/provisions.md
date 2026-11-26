@@ -13,27 +13,29 @@ flowchart BT
   v4["251.1(1)(a), two persons"]:::prov
   v5["251.1 affiliated persons, with 248(1) and 251(6)"]:::prov
   v6["251(1) to (6) related persons, arm's length"]:::prov
-  v7["50(2) bad personal-use debts"]:::prov
-  v8["40(3.3) to (3.5) suspended losses"]:::prov
-  v9["40(2)(g): the facts"]:::prov
-  v10["40(2)(g)(ii) debts"]:::prov
-  v11["40(2)(g)(iii) personal-use property, with 54 definitions"]:::prov
-  v12["40(2)(g)(iv) registered plans"]:::prov
-  v13["40(2)(g) as a whole"]:::prov
+  v7["251.1(2), 251(3.1), (3.2) amalgamations"]:::prov
+  v8["50(2) bad personal-use debts"]:::prov
+  v9["40(3.3) to (3.5) suspended losses"]:::prov
+  v10["40(2)(g): the facts"]:::prov
+  v11["40(2)(g)(ii) debts"]:::prov
+  v12["40(2)(g)(iii) personal-use property, with 54 definitions"]:::prov
+  v13["40(2)(g)(iv) registered plans"]:::prov
+  v14["40(2)(g) as a whole"]:::prov
   v0 --> v1
   v0 --> v2
   v0 --> v3
   v0 --> v4
   v0 --> v5
   v5 --> v6
-  v0 --> v8
+  v6 --> v7
   v0 --> v9
-  v9 --> v10
-  v9 --> v11
-  v9 --> v12
+  v0 --> v10
+  v10 --> v11
+  v10 --> v12
   v10 --> v13
-  v11 --> v13
-  v12 --> v13
-  v1 --> v13
+  v11 --> v14
+  v12 --> v14
+  v13 --> v14
+  v1 --> v14
   classDef prov fill:#bbdefb,stroke:#1565c0,color:#0d47a1
 ```

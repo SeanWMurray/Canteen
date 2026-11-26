@@ -15,3 +15,4 @@ The verbatim statute text for each is in `statute/`. Review notes are in `docs/r
 - `S251/RelatedPersons.lean`: section 251, related persons and arm's length
 - `S50/BadDebtPersonalUse.lean`: subsection 50(2)
 - `S40/SuspendedLoss.lean`: subsections 40(3.3) to (3.5)
+- `S251/Amalgamation.lean`: 251.1(2), 251(3.1) and (3.2)

@@ -108,6 +108,7 @@ G5: proven
 R1: proven
 R3: proven
 R4: proven
+R7: proven
 R5: proven
 R6: proven
 R2: proven

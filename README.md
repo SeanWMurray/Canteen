@@ -17,7 +17,7 @@ The full design is in [`docs/design.md`](docs/design.md).
 | 4. First real provision | Encoded; awaiting review | Section 54 "superficial loss" with all its exceptions, and subparagraph 40(2)(g)(i); see [`docs/review/superficial-loss.md`](docs/review/superficial-loss.md) |
 | 5. Blueprint | Done | Memos whose statements link to Lean, with dependency graphs coloured by proven/unproven status; see [`docs/blueprint/`](docs/blueprint/README.md) |
 | 6. Ergonomics | Done | The `statute` command: rules written in the statute's own shape, sound with nothing to prove |
-| Beyond the roadmap | Done | All of paragraph 40(2)(g), 40(3.3) to (3.5), 50(2), 53(1)(f), 251.1(1)(a) to (h), and 251(1) to (6) encoded; five transactions; diagrams drawn from the Lean; memos checked against what their proofs use |
+| Beyond the roadmap | Done | All of paragraph 40(2)(g), 40(3.3) to (3.5), 50(2), 53(1)(f), sections 251 and 251.1 (with the amalgamation rules) encoded; five transactions; diagrams drawn from the Lean; memos checked against what their proofs use |
 
 ## Building
 
@@ -76,6 +76,7 @@ Canteen/
     S251_1/Affiliation.lean    paragraph 251.1(1)(a): spouses are affiliated (two persons, statute form)
     S251_1/AffiliatedPersons.lean   section 251.1(1)(a) to (h) for a whole world of persons, with diagrams
     S251/RelatedPersons.lean   section 251: related persons, blood relationship, and arm's length
+    S251/Amalgamation.lean     251.1(2), 251(3.1), (3.2): amalgamations, through a hypothetical world
     S50/BadDebtPersonalUse.lean   subsection 50(2): a personal-use debt that goes bad
     S40/SuspendedLoss.lean     subsections 40(3.3) to (3.5): suspended losses of corporations, trusts, partnerships
     S54/Timeline.lean          a timeline chart of the superficial loss period
@@ -164,7 +165,7 @@ Overall risk: medium.
 Section 54, "superficial loss", is encoded paragraph by paragraph: the loss, paragraphs (a) and (b), every exception in (c) to (h), and the deeming rules in (i) and (j).
 All of paragraph 40(2)(g) is encoded: (i) superficial losses, (ii) debts, (iii) personal-use property (with the s. 54 definitions it uses), and (iv) transfers to TFSAs, RRSPs and other plans, under the carve-out in its opening words.
 Paragraph 53(1)(f) adds a superficial loss to the cost of the substituted property.
-Section 251.1, paragraphs (a) to (h), decides who is affiliated: spouses, corporations and their controllers, pairs of corporations, partnerships and their majority-interest partners, trusts and their majority-interest beneficiaries, and pairs of trusts. Section 251 decides who is related (by blood, marriage, common-law partnership or adoption, and through control of corporations) and so who is deemed not to deal at arm's length. Because affiliation and relatedness are each defined in terms of themselves, each is computed for a whole world of persons as the smallest relation closed under the paragraphs, and every pair keeps the chain of paragraphs that makes it so.
+Section 251.1, paragraphs (a) to (h), decides who is affiliated: spouses, corporations and their controllers, pairs of corporations, partnerships and their majority-interest partners, trusts and their majority-interest beneficiaries, and pairs of trusts. Section 251 decides who is related (by blood, marriage, common-law partnership or adoption, and through control of corporations) and so who is deemed not to deal at arm's length. Amalgamations (251.1(2), 251(3.1), (3.2)) are encoded as the Act frames them: a hypothetical world in which the new corporation existed immediately before, with its later shareholders. Because affiliation and relatedness are each defined in terms of themselves, each is computed for a whole world of persons as the smallest relation closed under the paragraphs, and every pair keeps the chain of paragraphs that makes it so.
 Whether a property is "identical" is a judgment call; inputs decided by provisions not yet encoded (affiliation under s. 251.1, for example) are taken as facts.
 
 ```

@@ -7,6 +7,7 @@ import Canteen.ITA.S53.CostAddition
 import Canteen.ITA.S251_1.Affiliation
 import Canteen.ITA.S251_1.AffiliatedPersons
 import Canteen.ITA.S251.RelatedPersons
+import Canteen.ITA.S251.Amalgamation
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -204,6 +205,13 @@ def blueprint : Blueprint where
             "251.1(4)(d)(iv)."
           lean := [``RelatedPersons.rule, ``RelatedPersons.armsLengthRule, ``RelatedPersons.armsLengthAnswer,
             ``RelatedPersons.not_armsLength_of_related, ``RelatedPersons.related_symm] },
+        { id := "R7", kind := .law, title := "Amalgamations", citation := "ITA 251.1(2), 251(3.1), (3.2)"
+          statement := "The new corporation and a predecessor are deemed affiliated (251.1(2)) or related (251(3.1)) if they " ++
+            "would have been, had the new corporation existed immediately before with the shareholders it had immediately " ++
+            "after; and related if the predecessors were each related to each other, otherwise than because of a 251(5)(b) " ++
+            "right (251(3.2)). The counterfactual is a hypothetical world given to the affiliation and related-persons rules."
+          lean := [``Amalgamation.hypothetical, ``Amalgamation.affiliatedRule, ``Amalgamation.relatedRule,
+            ``Amalgamation.related_of_predecessorsRelated], uses := ["R3", "R4"] },
         { id := "R5", kind := .law, title := "A personal-use debt that goes bad", citation := "ITA 50(2)"
           statement := "A debt that is personal-use property, owing by an arm's length person and established to be bad, is " ++
             "deemed disposed of for its cost less the gain on the sale that gave rise to it; so the loss never exceeds that " ++
@@ -227,7 +235,7 @@ def blueprint : Blueprint where
       text := ["These statements are part of the analysis but have no Lean behind them yet. Anything resting on them says so."]
       nodes := [
         { id := "N1", kind := .law, title := "Inputs decided by other provisions",
-          statement := "Affiliation under subsection 251.1(2) (amalgamations), who is a contributor to a trust, a loss " ++
+          statement := "Who is a contributor to a trust, a loss " ++
             "restriction event (section 251.2), and whether paragraph 40(2)(e.1) or subsection 40(3.4) or 69(5) applies " ++
             "are taken as facts. So is the amount in subparagraph 53(1)(f)(ii) (subsections 112(3) to (3.2))."
           uses := ["Pa", "Pe", "Pf", "Ph", "R1", "R2", "R3"] },
