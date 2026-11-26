@@ -623,6 +623,31 @@ flowchart TD
   classDef start fill:#ffffff,stroke:#212121,color:#212121
 ```
 
+## Subsection 44(1): replacement property
+
+```mermaid
+flowchart TD
+  S(["subsection 44(1) · ITA 44(1)"]):::start
+  C0["<b>former property</b> The former property is capital property (not<br/>a share) whose proceeds are compensation for<br/>its loss, destruction or expropriation, or a<br/>former business property<br/>[ITA 44(1) former property]"]:::fact
+  C1["<b>(c), (d)</b> A replacement property was acquired in time<br/>(by the end of the second taxation year<br/>after the initial year for (a), the first<br/>for (b))<br/>[ITA 44(1)(c), (d)]"]:::fact
+  C2["<b>election</b> The taxpayer elects under subsection 44(1)<br/>[ITA 44(1) election]"]:::fact
+  Y(["subsection 44(1) applies"]):::yes
+  N(["subsection 44(1) does not apply"]):::no
+  S --> C0
+  C0 -->|met| C1
+  C0 -->|not met| N
+  C1 -->|met| C2
+  C1 -->|not met| N
+  C2 -->|met| Y
+  C2 -->|not met| N
+  classDef fact fill:#eeeeee,stroke:#616161,color:#212121
+  classDef judgment fill:#ffe0b2,stroke:#ef6c00,color:#e65100
+  classDef rule fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+  classDef yes fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
+  classDef no fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+  classDef start fill:#ffffff,stroke:#212121,color:#212121
+```
+
 ## Subparagraph 40(2)(g)(iv): transfers to registered plans
 
 ```mermaid

@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 67 statements:** 48 proven, 16 encoded, 3 not formalized.
+**Status of the 68 statements:** 49 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -72,11 +72,12 @@ graph TD
   n59["R25 · Redemptions of shares"]:::proven
   n60["R26 · The capital dividend account"]:::proven
   n61["R27 · Share exchanges in a reorganization of capital"]:::proven
-  n62["R11 · The principal residence exemption"]:::proven
-  n63["R2 · Cost of the substituted property"]:::proven
-  n64["N1 · Inputs decided by other provisions"]:::notFormalized
-  n65["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n66["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n62["R28 · Replacement property"]:::proven
+  n63["R11 · The principal residence exemption"]:::proven
+  n64["R2 · Cost of the substituted property"]:::proven
+  n65["N1 · Inputs decided by other provisions"]:::notFormalized
+  n66["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n67["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -177,20 +178,21 @@ graph TD
   n44 --> n61
   n51 --> n61
   n44 --> n62
-  n50 --> n62
-  n11 --> n63
-  n1 --> n64
-  n5 --> n64
-  n6 --> n64
-  n8 --> n64
-  n37 --> n64
-  n63 --> n64
-  n38 --> n64
-  n30 --> n65
-  n32 --> n66
-  n34 --> n66
-  n39 --> n66
-  n42 --> n66
+  n44 --> n63
+  n50 --> n63
+  n11 --> n64
+  n1 --> n65
+  n5 --> n65
+  n6 --> n65
+  n8 --> n65
+  n37 --> n65
+  n64 --> n65
+  n38 --> n65
+  n30 --> n66
+  n32 --> n67
+  n34 --> n67
+  n39 --> n67
+  n42 --> n67
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -269,11 +271,12 @@ graph TD
   n59["R25"]:::proven
   n60["R26"]:::proven
   n61["R27"]:::proven
-  n62["R11"]:::proven
-  n63["R2"]:::proven
-  n64["N1"]:::notFormalized
-  n65["N2"]:::notFormalized
-  n66["N4"]:::notFormalized
+  n62["R28"]:::proven
+  n63["R11"]:::proven
+  n64["R2"]:::proven
+  n65["N1"]:::notFormalized
+  n66["N2"]:::notFormalized
+  n67["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -447,20 +450,21 @@ graph TD
   n44 -.-> n61
   n51 -.-> n61
   n44 -.-> n62
-  n50 -.-> n62
-  n11 -.-> n63
-  n1 -.-> n64
-  n5 -.-> n64
-  n6 -.-> n64
-  n8 -.-> n64
-  n37 -.-> n64
-  n63 -.-> n64
-  n38 -.-> n64
-  n30 -.-> n65
-  n32 -.-> n66
-  n34 -.-> n66
-  n39 -.-> n66
-  n42 -.-> n66
+  n44 -.-> n63
+  n50 -.-> n63
+  n11 -.-> n64
+  n1 -.-> n65
+  n5 -.-> n65
+  n6 -.-> n65
+  n8 -.-> n65
+  n37 -.-> n65
+  n64 -.-> n65
+  n38 -.-> n65
+  n30 -.-> n66
+  n32 -.-> n67
+  n34 -.-> n67
+  n39 -.-> n67
+  n42 -.-> n67
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -975,6 +979,14 @@ A private corporation's untaxed half of its capital gains (less the unallowed ha
 All of a taxpayer's shares of a class exchanged in a reorganization of capital for other shares (and boot) are disposed of for the cost of what is received: the boot at its value, the new shares at the old cost less the boot. If the old shares are worth more than what is received and the excess benefits a related person, the proceeds include it and no loss is allowed (86(2)). Proven: an estate freeze has no gain.
 
 **Lean:** [`Canteen.ITA.ShareExchange.applies`](../../Canteen/ITA/S86/ShareExchange.lean#L73), [`Canteen.ITA.ShareExchange.proceeds`](../../Canteen/ITA/S86/ShareExchange.lean#L110), [`Canteen.ITA.ShareExchange.newCost`](../../Canteen/ITA/S86/ShareExchange.lean#L104), [`Canteen.ITA.ShareExchange.freeze_no_gain`](../../Canteen/ITA/S86/ShareExchange.lean#L155), [`Canteen.ITA.ShareExchange.benefit_taxed`](../../Canteen/ITA/S86/ShareExchange.lean#L169), [`Canteen.ITA.ShareExchange.not_with_85`](../../Canteen/ITA/S86/ShareExchange.lean#L176)
+
+### R28. Replacement property
+
+**Status:** proven · **Citation:** ITA 44(1) · **Uses:** R8
+
+Where property (not a share) is expropriated, destroyed or stolen, or a former business property is sold, and a replacement is acquired within two (or one) taxation years after, the taxpayer may elect to recognize only the proceeds not reinvested; the rest of the gain reduces the replacement's cost. Proven: the gain recognized and deferred add up to the gain otherwise, and full reinvestment defers all of it.
+
+**Lean:** [`Canteen.ITA.ReplacementProperty.applies`](../../Canteen/ITA/S44/ReplacementProperty.lean#L79), [`Canteen.ITA.ReplacementProperty.gain`](../../Canteen/ITA/S44/ReplacementProperty.lean#L98), [`Canteen.ITA.ReplacementProperty.replacementCostAfter`](../../Canteen/ITA/S44/ReplacementProperty.lean#L104), [`Canteen.ITA.ReplacementProperty.gain_add_deferred`](../../Canteen/ITA/S44/ReplacementProperty.lean#L135), [`Canteen.ITA.ReplacementProperty.fully_reinvested`](../../Canteen/ITA/S44/ReplacementProperty.lean#L141)
 
 ### R11. The principal residence exemption
 

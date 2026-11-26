@@ -29,6 +29,7 @@ import Canteen.ITA.S13.Depreciable
 import Canteen.ITA.S84.Redemption
 import Canteen.ITA.S89.CapitalDividendAccount
 import Canteen.ITA.S86.ShareExchange
+import Canteen.ITA.S44.ReplacementProperty
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -392,6 +393,13 @@ def blueprint : Blueprint where
             "proceeds include it and no loss is allowed (86(2)). Proven: an estate freeze has no gain."
           lean := [``ShareExchange.applies, ``ShareExchange.proceeds, ``ShareExchange.newCost, ``ShareExchange.freeze_no_gain,
             ``ShareExchange.benefit_taxed, ``ShareExchange.not_with_85], uses := ["R8", "R17"] },
+        { id := "R28", kind := .law, title := "Replacement property", citation := "ITA 44(1)"
+          statement := "Where property (not a share) is expropriated, destroyed or stolen, or a former business property is " ++
+            "sold, and a replacement is acquired within two (or one) taxation years after, the taxpayer may elect to recognize " ++
+            "only the proceeds not reinvested; the rest of the gain reduces the replacement's cost. Proven: the gain recognized " ++
+            "and deferred add up to the gain otherwise, and full reinvestment defers all of it."
+          lean := [``ReplacementProperty.applies, ``ReplacementProperty.gain, ``ReplacementProperty.replacementCostAfter,
+            ``ReplacementProperty.gain_add_deferred, ``ReplacementProperty.fully_reinvested], uses := ["R8"] },
         { id := "R11", kind := .law, title := "The principal residence exemption", citation := "ITA 40(2)(b); 54 \"principal residence\""
           statement := "A home is the principal residence for a year if owned, ordinarily inhabited by the family (or covered by " ++
             "a 45(2) or (3) election, for at most four years: (d)), designated, and not blocked by another family-unit " ++

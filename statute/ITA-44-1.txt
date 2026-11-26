@@ -1,0 +1,32 @@
+Income Tax Act, R.S.C. 1985, c. 1 (5th Supp.), subsection 44(1)
+
+Source: Justice Canada consolidated Acts (XML), https://github.com/justicecanada/laws-lois-xml, file eng/acts/I-3.3.xml
+Current to: 2026-10-29. Last amended: 2026-06-18.
+Extracted verbatim; whitespace normalized; paragraph labels kept.
+
+44
+  (1) Where at any time in a taxation year (in this subsection referred to as the “initial year”) an amount has become receivable by a taxpayer as proceeds of disposition of a capital property that is not a share of the capital stock of a corporation (which capital property is in this section referred to as the taxpayer’s “former property”) that is either
+    (a) property the proceeds of disposition of which are described in paragraph (b), (c) or (d) of the definition proceeds of disposition in subsection 13(21) or paragraph (b), (c) or (d) of the definition proceeds of disposition in section 54, or
+    (b) a property that was, immediately before the disposition, a former business property of the taxpayer,
+    [continued] and the taxpayer has
+    (c) if the former property is described in paragraph (a), before the later of the end of the second taxation year following the initial year and 24 months after the end of the initial year, and
+    (d) in any other case, before the later of the end of the first taxation year following the initial year and 12 months after the end of the initial year,
+    [continued] acquired a capital property that is a replacement property for the taxpayer’s former property and the replacement property has not been disposed of by the taxpayer before the time the taxpayer disposed of the taxpayer’s former property, notwithstanding subsection 40(1), if the taxpayer so elects under this subsection in the taxpayer’s return of income for the year in which the taxpayer acquired the replacement property,
+    (e) the gain for a particular taxation year from the disposition of the taxpayer’s former property shall be deemed to be the amount, if any, by which
+      (i) where the particular year is the initial year, the lesser of
+        (A) the amount, if any, by which the proceeds of disposition of the former property exceed
+          (I) in the case of depreciable property, the lesser of the proceeds of disposition of the former property computed without reference to subsection 44(6) and the total of its adjusted cost base to the taxpayer immediately before the disposition and any outlays and expenses to the extent that they were made or incurred by the taxpayer for the purpose of making the disposition, and
+          (II) in any other case, the total of its adjusted cost base to the taxpayer immediately before the disposition and any outlays and expenses to the extent that they were made or incurred by the taxpayer for the purpose of making the disposition, and
+        (B) the amount, if any, by which the proceeds of disposition of the former property exceed the total of the cost to the taxpayer, or in the case of depreciable property, the capital cost to the taxpayer, determined without reference to paragraph (f), of the taxpayer’s replacement property and any outlays and expenses to the extent that they were made or incurred by the taxpayer for the purpose of making the disposition, or
+      (ii) where the particular year is subsequent to the initial year, the amount, if any, claimed by the taxpayer under subparagraph 44(1)(e)(iii) in computing the taxpayer’s gain for the immediately preceding year from the disposition of the former property,
+      [continued] exceeds
+      (iii) subject to subsection 44(1.1), such amount as the taxpayer claims,
+        (A) in the case of an individual (other than a trust), in prescribed form filed with the taxpayer’s return of income under this Part for the particular year, and
+        (B) in any other case, in the taxpayer’s return of income under this Part for the particular year,
+        [continued] as a deduction, not exceeding the lesser of
+        (C) a reasonable amount as a reserve in respect of such of the proceeds of disposition of the former property that are payable to the taxpayer after the end of the particular year as can reasonably be regarded as a portion of the amount determined under subparagraph 44(1)(e)(i) in respect of the property, and
+        (D) an amount equal to the product obtained when 1/5 of the amount determined under subparagraph 44(1)(e)(i) in respect of the property is multiplied by the amount, if any, by which 4 exceeds the number of preceding taxation years of the taxpayer ending after the disposition of the property, and
+    (f) the cost to the taxpayer or, in the case of depreciable property, the capital cost to the taxpayer, of the taxpayer’s replacement property at any time after the time the taxpayer disposed of the taxpayer’s former property, shall be deemed to be
+      (i) the cost to the taxpayer or, in the case of depreciable property, the capital cost to the taxpayer of the taxpayer’s replacement property otherwise determined,
+      [continued] minus
+      (ii) the amount, if any, by which the amount determined under clause 44(1)(e)(i)(A) exceeds the amount determined under clause 44(1)(e)(i)(B).

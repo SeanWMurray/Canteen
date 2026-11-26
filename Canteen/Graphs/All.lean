@@ -29,6 +29,7 @@ import Canteen.ITA.S251_2.LossRestrictionEvent
 import Canteen.ITA.S74.IncomeAttribution
 import Canteen.ITA.S55.IntercorporateDividends
 import Canteen.ITA.S86.ShareExchange
+import Canteen.ITA.S44.ReplacementProperty
 import Canteen.Transactions.SisterCompanyRepurchase
 import Canteen.Transactions.Crystallization
 import Canteen.Transactions.SaleThroughHoldco
@@ -150,7 +151,8 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S13.Depreciable, "13(1), (21), 20(16) recapture and terminal loss"),
    (`Canteen.ITA.S84.Redemption, "84(3) redemptions"),
    (`Canteen.ITA.S89.CapitalDividendAccount, "83(2), 89(1) capital dividends"),
-   (`Canteen.ITA.S86.ShareExchange, "86 share exchanges, estate freezes")]
+   (`Canteen.ITA.S86.ShareExchange, "86 share exchanges, estate freezes"),
+   (`Canteen.ITA.S44.ReplacementProperty, "44(1) replacement property")]
 
 /-! ## The dashboard -/
 
@@ -222,6 +224,7 @@ def actMindmap : String := Id.run do
     (4, "(i) superficial losses"), (4, "(ii) debts"), (4, "(iii) personal-use property"),
     (4, "(iv) TFSAs, RRSPs and other plans"), (3, "40(2)(e.1): debts within a related group"),
     (3, "40(3.3) to (3.5): suspended losses"), (3, "40(3.6): shares to an affiliated corporation"),
+    (2, "s. 44"), (3, "44(1): replacement property"),
     (2, "s. 45"), (3, "45(1): change in use"), (3, "45(2), (3), (4): the elections"),
     (2, "s. 50"), (3, "50(2): bad personal-use debts"),
     (2, "s. 53"), (3, "53(1)(f): cost of substituted property"), (3, "53(1)(f.1), (f.2): cost after 40(2)(e.1), 40(3.6)"),
@@ -285,6 +288,7 @@ def pages : List Page := [
       ("Subsections 74.1(1) and (2): income attribution", flowchart IncomeAttribution.applies.outline),
       ("Subsection 55(2): dividends over safe income", flowchart IntercorporateDividends.subsection55_2.outline),
       ("Subsection 86(1): share exchanges", flowchart ShareExchange.applies.outline),
+      ("Subsection 44(1): replacement property", flowchart ReplacementProperty.applies.outline),
       ("Subparagraph 40(2)(g)(iv): transfers to registered plans", flowchart Paragraph40_2_g.planTransferLoss.outline),
       ("Clause 40(2)(g)(iv)(A)", flowchart Paragraph40_2_g.planTransferA.outline),
       ("Clause 40(2)(g)(iv)(B)", flowchart Paragraph40_2_g.planTransferB.outline),

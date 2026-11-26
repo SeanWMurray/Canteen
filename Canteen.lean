@@ -54,6 +54,7 @@ import Canteen.ITA.S13.Depreciable
 import Canteen.ITA.S84.Redemption
 import Canteen.ITA.S89.CapitalDividendAccount
 import Canteen.ITA.S86.ShareExchange
+import Canteen.ITA.S44.ReplacementProperty
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.ITA.S40.ShareToAffiliate
@@ -132,3 +133,4 @@ import Canteen.Tests.Depreciable
 import Canteen.Tests.Redemption
 import Canteen.Tests.CapitalDividendAccount
 import Canteen.Tests.ShareExchange
+import Canteen.Tests.ReplacementProperty
