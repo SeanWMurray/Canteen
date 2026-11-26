@@ -8,6 +8,7 @@ import Canteen.Blueprints.Crystallization
 import Canteen.Blueprints.SaleThroughHoldco
 import Canteen.Blueprints.PostMortemPipeline
 import Canteen.Blueprints.EstateFreeze
+import Canteen.Blueprints.DonatingShares
 
 /-!
 # Every blueprint, and the file each is rendered to
@@ -27,6 +28,7 @@ def all : List (String × Blueprint.Blueprint) :=
    ("crystallization", Crystallization.memo),
    ("sale-through-holdco", SaleThroughHoldco.memo),
    ("post-mortem-pipeline", PostMortemPipeline.memo),
-   ("estate-freeze", EstateFreeze.memo)]
+   ("estate-freeze", EstateFreeze.memo),
+   ("donating-shares", DonatingShares.memo)]
 
 end Canteen.Blueprints

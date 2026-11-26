@@ -14,5 +14,6 @@ Memo-style documents whose statements link to the Lean that proves or encodes th
 - [Memo: selling Opco through Holdco, with dividends first](sale-through-holdco.md): 15 statements, 8 proven, 0 not yet formalized
 - [Memo: a post-mortem pipeline](post-mortem-pipeline.md): 11 statements, 6 proven, 0 not yet formalized
 - [Memo: an estate freeze in favour of minor children](estate-freeze.md): 10 statements, 5 proven, 0 not yet formalized
+- [Memo: donating shares in kind, or selling them and donating the cash](donating-shares.md): 9 statements, 6 proven, 0 not yet formalized
 
 More diagrams: [`docs/graphs/`](../graphs/README.md).
