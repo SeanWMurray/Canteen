@@ -42,3 +42,4 @@ The verbatim statute text for each is in `statute/`. Review notes are in `docs/r
 - `S47/IdenticalProperties.lean`: subsection 47(1)
 - `S186/Connected.lean`: subsections 186(2), (4) and (7)
 - `S84/ReturnOfCapital.lean`: subsections 84(4), (4.1) and 40(3), and paragraphs 53(1)(a) and (2)(a)(ii)
+- `S88/WindingUp.lean`: subsection 88(1), paragraphs (a) to (d)

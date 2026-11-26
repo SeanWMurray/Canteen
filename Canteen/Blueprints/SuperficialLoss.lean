@@ -33,6 +33,7 @@ import Canteen.ITA.S44.ReplacementProperty
 import Canteen.ITA.S47.IdenticalProperties
 import Canteen.ITA.S186.Connected
 import Canteen.ITA.S84.ReturnOfCapital
+import Canteen.ITA.S88.WindingUp
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -423,6 +424,14 @@ def blueprint : Blueprint where
             "extraordinary proceeds. Proven: the adjusted cost base never goes below nil."
           lean := [``ReturnOfCapital.dividend, ``ReturnOfCapital.returnOfCapital, ``ReturnOfCapital.deemedGain,
             ``ReturnOfCapital.acb_after, ``ReturnOfCapital.no_dividend_at_puc], uses := ["R8"] },
+        { id := "R32", kind := .law, title := "Winding up a subsidiary, and the bump", citation := "ITA 88(1)(a)–(d)"
+          statement := "When a 90%-owned taxable Canadian subsidiary is wound up into its parent, its property passes at cost " ++
+            "amount; the parent's shares are disposed of for at least their cost; and the excess of that cost over the " ++
+            "subsidiary's net tax cost (and dividends received) may be added to the cost of eligible capital property, each up " ++
+            "to its value when control was acquired. Proven: no gain to the subsidiary, no loss on the shares, and the bump " ++
+            "never exceeds the room."
+          lean := [``WindingUp.applies, ``WindingUp.shareProceeds, ``WindingUp.bumpOf, ``WindingUp.bump_le_room,
+            ``WindingUp.no_share_loss, ``WindingUp.no_subsidiary_gain], uses := ["R8"] },
         { id := "R11", kind := .law, title := "The principal residence exemption", citation := "ITA 40(2)(b); 54 \"principal residence\""
           statement := "A home is the principal residence for a year if owned, ordinarily inhabited by the family (or covered by " ++
             "a 45(2) or (3) election, for at most four years: (d)), designated, and not blocked by another family-unit " ++
