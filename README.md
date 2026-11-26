@@ -17,7 +17,7 @@ The full design is in [`docs/design.md`](docs/design.md).
 | 4. First real provision | Encoded; awaiting review | Section 54 "superficial loss" with all its exceptions, and subparagraph 40(2)(g)(i); see [`docs/review/superficial-loss.md`](docs/review/superficial-loss.md) |
 | 5. Blueprint | Done | Memos whose statements link to Lean, with dependency graphs coloured by proven/unproven status; see [`docs/blueprint/`](docs/blueprint/README.md) |
 | 6. Ergonomics | Done | The `statute` command: rules written in the statute's own shape, sound with nothing to prove |
-| Beyond the roadmap | Done | Sections 3, 38 to 41 and 111, recapture and terminal losses (13(1), (21), 20(16)) (the capital gains computation, net capital losses and taxable income), 45(1) to (4), 69(1), 70(5) and (6), 73(1), 74.1, 74.2, 82(1) and 121, 112(1) and 55(2), 83(2) and 89(1) (capital dividends), 84(3), 84.1, 85(1) and (2.1), the capital gains deduction (110.6(2.1)), the principal residence exemption, all of paragraph 40(2)(g), 40(2)(e.1), 40(3.3) to (3.6), 50(2), 53(1)(f), sections 251 and 251.1 (with the amalgamation rules), loss restriction events (251.2(2)(a), 256(7)(a)) encoded; seven transactions; diagrams drawn from the Lean; memos checked against what their proofs use |
+| Beyond the roadmap | Done | Sections 3, 38 to 41 and 111, recapture and terminal losses (13(1), (21), 20(16)) (the capital gains computation, net capital losses and taxable income), 45(1) to (4), 69(1), 70(5) and (6), 73(1), 74.1, 74.2, 82(1) and 121, 112(1) and 55(2), 83(2) and 89(1) (capital dividends), 84(3), 84.1, 85(1) and (2.1), 86, the capital gains deduction (110.6(2.1)), the principal residence exemption, all of paragraph 40(2)(g), 40(2)(e.1), 40(3.3) to (3.6), 50(2), 53(1)(f), sections 251 and 251.1 (with the amalgamation rules), loss restriction events (251.2(2)(a), 256(7)(a)) encoded; seven transactions; diagrams drawn from the Lean; memos checked against what their proofs use |
 
 ## Building
 
@@ -90,6 +90,7 @@ Canteen/
     S13/Depreciable.lean       13(1), (21), 20(16): undepreciated capital cost, recapture, terminal loss
     S84/Redemption.lean        84(3): redemptions, the deemed dividend, and the proceeds
     S89/CapitalDividendAccount.lean   83(2), 89(1): the capital dividend account, and capital dividends
+    S86/ShareExchange.lean     86(1) to (3): share exchanges in a reorganization, estate freezes
     S45/ChangeInUse.lean       45(1) to (4): change in use, and the 45(2) and (3) elections
     S85/TransferToCorporation.lean   85(1), (2.1): the section 85 rollover, and paid-up capital
     S84_1/SurplusStripping.lean   84.1: shares sold to a non-arm's length corporation; the deemed dividend

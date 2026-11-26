@@ -28,6 +28,7 @@ import Canteen.ITA.S110_6.CapitalGainsDeduction
 import Canteen.ITA.S251_2.LossRestrictionEvent
 import Canteen.ITA.S74.IncomeAttribution
 import Canteen.ITA.S55.IntercorporateDividends
+import Canteen.ITA.S86.ShareExchange
 import Canteen.Transactions.SisterCompanyRepurchase
 import Canteen.Transactions.Crystallization
 import Canteen.Transactions.SaleThroughHoldco
@@ -148,7 +149,8 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S55.IntercorporateDividends, "112(1), 55(2) intercorporate dividends"),
    (`Canteen.ITA.S13.Depreciable, "13(1), (21), 20(16) recapture and terminal loss"),
    (`Canteen.ITA.S84.Redemption, "84(3) redemptions"),
-   (`Canteen.ITA.S89.CapitalDividendAccount, "83(2), 89(1) capital dividends")]
+   (`Canteen.ITA.S89.CapitalDividendAccount, "83(2), 89(1) capital dividends"),
+   (`Canteen.ITA.S86.ShareExchange, "86 share exchanges, estate freezes")]
 
 /-! ## The dashboard -/
 
@@ -236,6 +238,7 @@ def actMindmap : String := Id.run do
     (2, "s. 84"), (3, "84(3): redemptions, the deemed dividend"),
     (2, "s. 84.1"), (3, "84.1(1): paid-up capital, and the deemed dividend"), (3, "84.1(2): hard cost, arm's length"),
     (2, "s. 85"), (3, "85(1): the elected amount, and the cost of the consideration"), (3, "85(2.1): paid-up capital"),
+    (2, "s. 86"), (3, "86(1): share exchange in a reorganization"), (3, "86(2): benefit to a related person"),
     (2, "s. 89"), (3, "89(1): capital dividend account"),
     (2, "s. 110.6"), (3, "qualified small business corporation share"), (3, "annual and cumulative gains limits"),
     (3, "110.6(2.1): the deduction"),
@@ -281,6 +284,7 @@ def pages : List Page := [
       ("Paragraph 251.2(2)(a), with 256(7)(a): loss restriction events", flowchart LossRestrictionEvent.lossRestrictionEvent.outline),
       ("Subsections 74.1(1) and (2): income attribution", flowchart IncomeAttribution.applies.outline),
       ("Subsection 55(2): dividends over safe income", flowchart IntercorporateDividends.subsection55_2.outline),
+      ("Subsection 86(1): share exchanges", flowchart ShareExchange.applies.outline),
       ("Subparagraph 40(2)(g)(iv): transfers to registered plans", flowchart Paragraph40_2_g.planTransferLoss.outline),
       ("Clause 40(2)(g)(iv)(A)", flowchart Paragraph40_2_g.planTransferA.outline),
       ("Clause 40(2)(g)(iv)(B)", flowchart Paragraph40_2_g.planTransferB.outline),

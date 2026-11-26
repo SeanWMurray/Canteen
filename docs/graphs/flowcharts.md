@@ -595,6 +595,34 @@ flowchart TD
   classDef start fill:#ffffff,stroke:#212121,color:#212121
 ```
 
+## Subsection 86(1): share exchanges
+
+```mermaid
+flowchart TD
+  S(["subsection 86(1) · ITA 86(1)"]):::start
+  C0["<b>reorganization</b> The shares were disposed of in the course of<br/>a reorganization of the capital of the<br/>corporation<br/>[ITA 86(1) reorganization]"]:::fact
+  C1["<b>old shares</b> They were capital property, all the shares<br/>of their class the taxpayer owned<br/>[ITA 86(1) old shares]"]:::fact
+  C2["<b>new shares</b> Property receivable for them includes other<br/>shares of the corporation<br/>[ITA 86(1) new shares]"]:::fact
+  E0["<b>86(3)</b> 86(3) applies<br/>[ITA 86(3)]"]:::rule
+  Y(["subsection 86(1) applies"]):::yes
+  N(["subsection 86(1) does not apply"]):::no
+  S --> C0
+  C0 -->|met| C1
+  C0 -->|not met| N
+  C1 -->|met| C2
+  C1 -->|not met| N
+  C2 -->|met| E0
+  C2 -->|not met| N
+  E0 -->|does not apply| Y
+  E0 -->|applies| N
+  classDef fact fill:#eeeeee,stroke:#616161,color:#212121
+  classDef judgment fill:#ffe0b2,stroke:#ef6c00,color:#e65100
+  classDef rule fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+  classDef yes fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
+  classDef no fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+  classDef start fill:#ffffff,stroke:#212121,color:#212121
+```
+
 ## Subparagraph 40(2)(g)(iv): transfers to registered plans
 
 ```mermaid

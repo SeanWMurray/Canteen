@@ -1,0 +1,40 @@
+Income Tax Act, R.S.C. 1985, c. 1 (5th Supp.), subsections 86(1) to (3)
+
+Source: Justice Canada consolidated Acts (XML), https://github.com/justicecanada/laws-lois-xml, file eng/acts/I-3.3.xml
+Current to: 2026-10-29. Last amended: 2026-06-18.
+Extracted verbatim; whitespace normalized; paragraph labels kept.
+
+86
+  (1) Where, at a particular time after May 6, 1974, in the course of a reorganization of the capital of a corporation, a taxpayer has disposed of capital property that was all the shares of any particular class of the capital stock of the corporation that were owned by the taxpayer at the particular time (in this section referred to as the “old shares”), and property is receivable from the corporation therefor that includes other shares of the capital stock of the corporation (in this section referred to as the “new shares”), the following rules apply:
+    (a) the cost to the taxpayer of any property (other than new shares) receivable by the taxpayer for the old shares shall be deemed to be its fair market value at the time of the disposition;
+    (b) the cost to the taxpayer of any new shares of any class of the capital stock of the corporation receivable by the taxpayer for the old shares shall be deemed to be that proportion of the amount, if any, by which the total of the adjusted cost bases to the taxpayer, immediately before the disposition, of the old shares exceeds the fair market value at that time of the consideration receivable for the old shares (other than new shares) that
+      (i) the fair market value, immediately after the disposition, of those new shares of that class,
+      [continued] is of
+      (ii) the fair market value, immediately after the disposition, of all new shares of the capital stock of the corporation receivable by the taxpayer for the old shares; and
+    (c) the taxpayer shall be deemed to have disposed of the old shares for proceeds of disposition equal to the cost to the taxpayer of all new shares and other property receivable by the taxpayer for the old shares.
+  [Idem]
+  (2) Notwithstanding paragraphs 86(1)(b) and 86(1)(c), where a taxpayer has disposed of old shares in circumstances described in subsection 86(1) and the fair market value of the old shares immediately before the disposition exceeds the total of
+    (a) the cost to the taxpayer of the property (other than new shares) receivable by the taxpayer for the old shares as determined under paragraph 86(1)(a), and
+    (b) the fair market value of the new shares, immediately after the disposition,
+    [continued] and it is reasonable to regard any portion of the excess (in this subsection referred to as the “gift portion”) as a benefit that the taxpayer desired to have conferred on a person related to the taxpayer, the following rules apply:
+    (c) the taxpayer shall be deemed to have disposed of the old shares for proceeds of disposition equal to the lesser of
+      (i) the total of the cost to the taxpayer of the property as determined under paragraph 86(1)(a) and the gift portion
+      [continued] and
+      (ii) the fair market value of the old shares immediately before the disposition,
+    (d) the taxpayer’s capital loss from the disposition of the old shares shall be deemed to be nil, and
+    (e) the cost to the taxpayer of any new shares of any class of the capital stock of the corporation receivable by the taxpayer for the old shares shall be deemed to be that proportion of the amount, if any, by which the total of the adjusted cost bases to the taxpayer, immediately before the disposition, of the old shares exceeds the total determined under subparagraph 86(2)(c)(i) that
+      (i) the fair market value, immediately after the disposition, of the new shares of that class,
+      [continued] is of
+      (ii) the fair market value, immediately after the disposition, of all new shares of the capital stock of the corporation receivable by the taxpayer for the old shares.
+  [Computation of paid-up capital]
+  (2.1) Where subsection 86(1) applies to a disposition of shares of the capital stock of a corporation (in this subsection referred to as the “exchange”), in computing the paid-up capital in respect of a particular class of shares of the capital stock of the corporation at any particular time that is the time of, or any time after, the exchange,
+    (a) there shall be deducted the amount determined by the formula
+      [formula] (A - B) × C/AwhereAis the total of all amounts each of which is the increase, if any, as a result of the exchange, in the paid-up capital in respect of a class of shares of the capital stock of the corporation, computed without reference to this subsection as it applies to the exchange,Bis the amount, if any, by which the paid-up capital in respect of the old shares exceeds the fair market value of the consideration (other than shares of the capital stock of the corporation) given by the corporation for the old shares on the exchange, andCis the increase, if any, as a result of the exchange, in the paid-up capital in respect of the particular class of shares, computed without reference to this subsection as it applies to the exchange; and
+    (b) there shall be added an amount equal to the lesser of
+      (i) the amount, if any, by which
+        (A) the total of all amounts deemed by subsection 84(3), 84(4) or 84(4.1) to be a dividend on shares of that class paid by the corporation before the particular time
+        [continued] exceeds
+        (B) the total that would be determined under clause 86(2.1)(b)(i)(A) if this Act were read without reference to paragraph 86(2.1)(a), and
+      (ii) the total of all amounts required by paragraph 86(2.1)(a) to be deducted in respect of that particular class of shares before the particular time.
+  [Application]
+  (3) Subsections 86(1) and 86(2) do not apply in any case where subsection 85(1) or 85(2) applies.

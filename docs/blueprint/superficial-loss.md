@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 66 statements:** 47 proven, 16 encoded, 3 not formalized.
+**Status of the 67 statements:** 48 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -71,11 +71,12 @@ graph TD
   n58["R24 · Depreciable property: recapture and terminal losses"]:::proven
   n59["R25 · Redemptions of shares"]:::proven
   n60["R26 · The capital dividend account"]:::proven
-  n61["R11 · The principal residence exemption"]:::proven
-  n62["R2 · Cost of the substituted property"]:::proven
-  n63["N1 · Inputs decided by other provisions"]:::notFormalized
-  n64["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n65["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n61["R27 · Share exchanges in a reorganization of capital"]:::proven
+  n62["R11 · The principal residence exemption"]:::proven
+  n63["R2 · Cost of the substituted property"]:::proven
+  n64["N1 · Inputs decided by other provisions"]:::notFormalized
+  n65["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n66["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -174,20 +175,22 @@ graph TD
   n57 --> n59
   n44 --> n60
   n44 --> n61
-  n50 --> n61
-  n11 --> n62
-  n1 --> n63
-  n5 --> n63
-  n6 --> n63
-  n8 --> n63
-  n37 --> n63
-  n62 --> n63
-  n38 --> n63
-  n30 --> n64
-  n32 --> n65
-  n34 --> n65
-  n39 --> n65
-  n42 --> n65
+  n51 --> n61
+  n44 --> n62
+  n50 --> n62
+  n11 --> n63
+  n1 --> n64
+  n5 --> n64
+  n6 --> n64
+  n8 --> n64
+  n37 --> n64
+  n63 --> n64
+  n38 --> n64
+  n30 --> n65
+  n32 --> n66
+  n34 --> n66
+  n39 --> n66
+  n42 --> n66
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -265,11 +268,12 @@ graph TD
   n58["R24"]:::proven
   n59["R25"]:::proven
   n60["R26"]:::proven
-  n61["R11"]:::proven
-  n62["R2"]:::proven
-  n63["N1"]:::notFormalized
-  n64["N2"]:::notFormalized
-  n65["N4"]:::notFormalized
+  n61["R27"]:::proven
+  n62["R11"]:::proven
+  n63["R2"]:::proven
+  n64["N1"]:::notFormalized
+  n65["N2"]:::notFormalized
+  n66["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -441,20 +445,22 @@ graph TD
   n56 -.-> n59
   n44 -.-> n60
   n44 -.-> n61
-  n50 -.-> n61
-  n11 -.-> n62
-  n1 -.-> n63
-  n5 -.-> n63
-  n6 -.-> n63
-  n8 -.-> n63
-  n37 -.-> n63
-  n62 -.-> n63
-  n38 -.-> n63
-  n30 -.-> n64
-  n32 -.-> n65
-  n34 -.-> n65
-  n39 -.-> n65
-  n42 -.-> n65
+  n51 -.-> n61
+  n44 -.-> n62
+  n50 -.-> n62
+  n11 -.-> n63
+  n1 -.-> n64
+  n5 -.-> n64
+  n6 -.-> n64
+  n8 -.-> n64
+  n37 -.-> n64
+  n63 -.-> n64
+  n38 -.-> n64
+  n30 -.-> n65
+  n32 -.-> n66
+  n34 -.-> n66
+  n39 -.-> n66
+  n42 -.-> n66
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -961,6 +967,14 @@ A resident corporation that redeems its shares is deemed to pay a dividend of th
 A private corporation's untaxed half of its capital gains (less the unallowed half of its losses), capital dividends received and life insurance proceeds, less capital dividends paid, can be paid out as capital dividends, which no shareholder includes in income. Proven: a capital dividend never exceeds the account, and one ordinary gain puts exactly its untaxed half in it.
 
 **Lean:** [`Canteen.ITA.CapitalDividendAccount.account`](../../Canteen/ITA/S89/CapitalDividendAccount.lean#L62), [`Canteen.ITA.CapitalDividendAccount.capitalDividend`](../../Canteen/ITA/S89/CapitalDividendAccount.lean#L66), [`Canteen.ITA.CapitalDividendAccount.capitalDividend_le_account`](../../Canteen/ITA/S89/CapitalDividendAccount.lean#L90), [`Canteen.ITA.CapitalDividendAccount.untaxed_half`](../../Canteen/ITA/S89/CapitalDividendAccount.lean#L98)
+
+### R27. Share exchanges in a reorganization of capital
+
+**Status:** proven · **Citation:** ITA 86(1)–(3) · **Uses:** R8, R17
+
+All of a taxpayer's shares of a class exchanged in a reorganization of capital for other shares (and boot) are disposed of for the cost of what is received: the boot at its value, the new shares at the old cost less the boot. If the old shares are worth more than what is received and the excess benefits a related person, the proceeds include it and no loss is allowed (86(2)). Proven: an estate freeze has no gain.
+
+**Lean:** [`Canteen.ITA.ShareExchange.applies`](../../Canteen/ITA/S86/ShareExchange.lean#L73), [`Canteen.ITA.ShareExchange.proceeds`](../../Canteen/ITA/S86/ShareExchange.lean#L110), [`Canteen.ITA.ShareExchange.newCost`](../../Canteen/ITA/S86/ShareExchange.lean#L104), [`Canteen.ITA.ShareExchange.freeze_no_gain`](../../Canteen/ITA/S86/ShareExchange.lean#L155), [`Canteen.ITA.ShareExchange.benefit_taxed`](../../Canteen/ITA/S86/ShareExchange.lean#L169), [`Canteen.ITA.ShareExchange.not_with_85`](../../Canteen/ITA/S86/ShareExchange.lean#L176)
 
 ### R11. The principal residence exemption
 

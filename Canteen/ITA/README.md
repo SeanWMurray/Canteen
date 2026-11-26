@@ -37,3 +37,4 @@ The verbatim statute text for each is in `statute/`. Review notes are in `docs/r
 - `S13/Depreciable.lean`: subsections 13(1) and (21) "undepreciated capital cost", and 20(16)
 - `S84/Redemption.lean`: subsection 84(3), and 54 "proceeds of disposition" (j)
 - `S89/CapitalDividendAccount.lean`: subsection 83(2) and 89(1) "capital dividend account"
+- `S86/ShareExchange.lean`: subsections 86(1) to (3)

@@ -129,6 +129,7 @@ R23: proven
 R24: proven
 R25: proven
 R26: proven
+R27: proven
 R11: proven
 R2: proven
 N1: not formalized

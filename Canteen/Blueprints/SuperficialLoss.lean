@@ -28,6 +28,7 @@ import Canteen.ITA.S55.IntercorporateDividends
 import Canteen.ITA.S13.Depreciable
 import Canteen.ITA.S84.Redemption
 import Canteen.ITA.S89.CapitalDividendAccount
+import Canteen.ITA.S86.ShareExchange
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -384,6 +385,13 @@ def blueprint : Blueprint where
             "one ordinary gain puts exactly its untaxed half in it."
           lean := [``CapitalDividendAccount.account, ``CapitalDividendAccount.capitalDividend,
             ``CapitalDividendAccount.capitalDividend_le_account, ``CapitalDividendAccount.untaxed_half], uses := ["R8"] },
+        { id := "R27", kind := .law, title := "Share exchanges in a reorganization of capital", citation := "ITA 86(1)–(3)"
+          statement := "All of a taxpayer's shares of a class exchanged in a reorganization of capital for other shares (and " ++
+            "boot) are disposed of for the cost of what is received: the boot at its value, the new shares at the old cost less " ++
+            "the boot. If the old shares are worth more than what is received and the excess benefits a related person, the " ++
+            "proceeds include it and no loss is allowed (86(2)). Proven: an estate freeze has no gain."
+          lean := [``ShareExchange.applies, ``ShareExchange.proceeds, ``ShareExchange.newCost, ``ShareExchange.freeze_no_gain,
+            ``ShareExchange.benefit_taxed, ``ShareExchange.not_with_85], uses := ["R8", "R17"] },
         { id := "R11", kind := .law, title := "The principal residence exemption", citation := "ITA 40(2)(b); 54 \"principal residence\""
           statement := "A home is the principal residence for a year if owned, ordinarily inhabited by the family (or covered by " ++
             "a 45(2) or (3) election, for at most four years: (d)), designated, and not blocked by another family-unit " ++
