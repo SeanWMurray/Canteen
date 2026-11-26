@@ -155,7 +155,8 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S86.ShareExchange, "86 share exchanges, estate freezes"),
    (`Canteen.ITA.S44.ReplacementProperty, "44(1) replacement property"),
    (`Canteen.ITA.S47.IdenticalProperties, "47(1) identical properties"),
-   (`Canteen.ITA.S186.Connected, "186(2), (4) connected corporations")]
+   (`Canteen.ITA.S186.Connected, "186(2), (4) connected corporations"),
+   (`Canteen.ITA.S84.ReturnOfCapital, "84(4), (4.1), 40(3) returns of capital")]
 
 /-! ## The dashboard -/
 
@@ -226,7 +227,7 @@ def actMindmap : String := Id.run do
     (2, "s. 40"), (3, "40(2)(b): the principal residence exemption"), (3, "40(2)(g): losses that are nil"),
     (4, "(i) superficial losses"), (4, "(ii) debts"), (4, "(iii) personal-use property"),
     (4, "(iv) TFSAs, RRSPs and other plans"), (3, "40(2)(e.1): debts within a related group"),
-    (3, "40(3.3) to (3.5): suspended losses"), (3, "40(3.6): shares to an affiliated corporation"),
+    (3, "40(3.3) to (3.5): suspended losses"), (3, "40(3.6): shares to an affiliated corporation"), (3, "40(3): negative adjusted cost base"),
     (2, "s. 44"), (3, "44(1): replacement property"),
     (2, "s. 45"), (3, "45(1): change in use"), (3, "45(2), (3), (4): the elections"),
     (2, "s. 47"), (3, "47(1): identical properties, average cost"),
@@ -242,7 +243,7 @@ def actMindmap : String := Id.run do
     (3, "74.2(1): capital gains attributed back"), (3, "74.5(1) to (3): fair market value, loans for value, separation"),
     (2, "s. 82"), (3, "82(1): taxable dividends and the gross-up"),
     (2, "s. 83"), (3, "83(2): capital dividends"),
-    (2, "s. 84"), (3, "84(3): redemptions, the deemed dividend"),
+    (2, "s. 84"), (3, "84(3): redemptions, the deemed dividend"), (3, "84(4), (4.1): returns of capital"),
     (2, "s. 84.1"), (3, "84.1(1): paid-up capital, and the deemed dividend"), (3, "84.1(2): hard cost, arm's length"),
     (2, "s. 85"), (3, "85(1): the elected amount, and the cost of the consideration"), (3, "85(2.1): paid-up capital"),
     (2, "s. 86"), (3, "86(1): share exchange in a reorganization"), (3, "86(2): benefit to a related person"),

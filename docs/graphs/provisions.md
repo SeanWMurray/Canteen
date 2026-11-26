@@ -45,7 +45,8 @@ flowchart BT
   v36["44(1) replacement property"]:::prov
   v37["47(1) identical properties"]:::prov
   v38["186(2), (4) connected corporations"]:::prov
-  v39["50(2) bad personal-use debts"]:::prov
+  v39["84(4), (4.1), 40(3) returns of capital"]:::prov
+  v40["50(2) bad personal-use debts"]:::prov
   v0 --> v1
   v0 --> v2
   v0 --> v3
@@ -90,5 +91,6 @@ flowchart BT
   v17 --> v36
   v17 --> v37
   v6 --> v38
+  v17 --> v39
   classDef prov fill:#bbdefb,stroke:#1565c0,color:#0d47a1
 ```

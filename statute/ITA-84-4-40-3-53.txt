@@ -1,0 +1,33 @@
+Income Tax Act, R.S.C. 1985, c. 1 (5th Supp.), subsections 84(4) and (4.1), 40(3), paragraph 53(1)(a) and subparagraph 53(2)(a)(ii)
+
+Source: Justice Canada consolidated Acts (XML), https://github.com/justicecanada/laws-lois-xml, file eng/acts/I-3.3.xml
+Current to: 2026-10-29. Last amended: 2026-06-18.
+Extracted verbatim; whitespace normalized; paragraph labels kept.
+
+84
+  [Reduction of paid-up capital]
+  (4) Where at any time after March 31, 1977 a corporation resident in Canada has reduced the paid-up capital in respect of any class of shares of its capital stock otherwise than by way of a redemption, acquisition or cancellation of any shares of that class or a transaction described in subsection 84(2) or (4.1),
+    (a) the corporation shall be deemed to have paid at that time a dividend on shares of that class equal to the amount, if any, by which the amount paid by it on the reduction of the paid-up capital, exceeds the amount by which the paid-up capital in respect of that class of shares of the corporation has been so reduced; and
+    (b) a dividend shall be deemed to have been received at that time by each person who held any of the issued shares at that time equal to that proportion of the amount of the excess referred to in paragraph 84(4)(a) that the number of the shares of that class held by the person immediately before that time is of the number of the issued shares of that class outstanding immediately before that time.
+  [Deemed dividend on reduction of paid-up capital]
+  (4.1) Any amount paid by a public corporation on the reduction of the paid-up capital in respect of any class of shares of its capital stock, otherwise than by way of a redemption, acquisition or cancellation of any shares of that class or by way of a transaction described in subsection (2) or section 86, is deemed to have been paid by the corporation and received by the person to whom it was paid, as a dividend, unless
+    (a) the amount may reasonably be considered to be derived from proceeds of disposition realized by the public corporation, or by a person or partnership in which the public corporation had a direct or indirect interest at the time that the proceeds were realized, from a transaction that occurred
+      (i) outside the ordinary course of the business of the corporation, or of the person or partnership that realized the proceeds, and
+      (ii) within the period that commenced 24 months before the payment; and
+    (b) no amount that may reasonably be considered to be derived from those proceeds was paid by the public corporation on a previous reduction of the paid-up capital in respect of any class of shares of its capital stock.
+
+40
+  [Deemed gain where amounts to be deducted from adjusted cost base exceed cost plus amounts to be added to adjusted cost base]
+  (3) Where
+    (a) the total of all amounts required by subsection 53(2) (except paragraph 53(2)(c)) to be deducted in computing the adjusted cost base to a taxpayer of any property at any time in a taxation year
+    [continued] exceeds
+    (b) the total of
+      (i) the cost to the taxpayer of the property determined for the purpose of computing the adjusted cost base to the taxpayer of that property at that time, and
+      (ii) all amounts required by subsection 53(1) to be added to the cost to the taxpayer of the property in computing the adjusted cost base to the taxpayer of that property at that time,
+    [continued] the following rules apply:
+    (c) subject to paragraph 93(1)(b), the amount of the excess is deemed to be a gain of the taxpayer for the year from a disposition at that time of the property,
+    (d) for the purposes of section 93 and subsections 116(6) and (6.1), the property is deemed to have been disposed of by the taxpayer at that time, and
+    (e) for the purposes of subsection 2(3) and sections 110.6 and 150, the property is deemed to have been disposed of by the taxpayer in the year.
+
+53(1)(a) any amount deemed by subsection 40(3) to be a gain of the taxpayer for a taxation year from a disposition before that time of the property;
+53(2)(a)(ii) any amount received by the taxpayer after 1971 and before that time on a reduction of the paid-up capital of the corporation in respect of the share, except to the extent that the amount is deemed by subsection 84(4) or 84(4.1) to be a dividend received by the taxpayer,

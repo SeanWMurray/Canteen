@@ -32,6 +32,7 @@ import Canteen.ITA.S86.ShareExchange
 import Canteen.ITA.S44.ReplacementProperty
 import Canteen.ITA.S47.IdenticalProperties
 import Canteen.ITA.S186.Connected
+import Canteen.ITA.S84.ReturnOfCapital
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -415,6 +416,13 @@ def blueprint : Blueprint where
             "business corporation share definition."
           lean := [``Connected.connected, ``Connected.controlled186_2, ``Connected.wholly_owned, ``Connected.not_of_ten_percent],
           uses := ["R4"] },
+        { id := "R31", kind := .law, title := "Returns of capital, and negative adjusted cost base", citation := "ITA 84(4), (4.1); 53(2)(a)(ii); 40(3); 53(1)(a)"
+          statement := "A reduction of paid-up capital paid out by a private corporation is a dividend only to the extent it " ++
+            "exceeds the reduction; the rest reduces the shareholder's adjusted cost base, and any excess below nil is a gain " ++
+            "(40(3)), added back to bring it to nil. A public corporation's is all dividend unless it distributes recent " ++
+            "extraordinary proceeds. Proven: the adjusted cost base never goes below nil."
+          lean := [``ReturnOfCapital.dividend, ``ReturnOfCapital.returnOfCapital, ``ReturnOfCapital.deemedGain,
+            ``ReturnOfCapital.acb_after, ``ReturnOfCapital.no_dividend_at_puc], uses := ["R8"] },
         { id := "R11", kind := .law, title := "The principal residence exemption", citation := "ITA 40(2)(b); 54 \"principal residence\""
           statement := "A home is the principal residence for a year if owned, ordinarily inhabited by the family (or covered by " ++
             "a 45(2) or (3) election, for at most four years: (d)), designated, and not blocked by another family-unit " ++

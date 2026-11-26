@@ -57,6 +57,7 @@ import Canteen.ITA.S86.ShareExchange
 import Canteen.ITA.S44.ReplacementProperty
 import Canteen.ITA.S47.IdenticalProperties
 import Canteen.ITA.S186.Connected
+import Canteen.ITA.S84.ReturnOfCapital
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.ITA.S40.ShareToAffiliate
@@ -138,3 +139,4 @@ import Canteen.Tests.ShareExchange
 import Canteen.Tests.ReplacementProperty
 import Canteen.Tests.IdenticalProperties
 import Canteen.Tests.Connected
+import Canteen.Tests.ReturnOfCapital

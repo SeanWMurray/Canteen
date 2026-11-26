@@ -133,6 +133,7 @@ R27: proven
 R28: proven
 R29: proven
 R30: proven
+R31: proven
 R11: proven
 R2: proven
 N1: not formalized

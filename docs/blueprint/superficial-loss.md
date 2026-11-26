@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 70 statements:** 51 proven, 16 encoded, 3 not formalized.
+**Status of the 71 statements:** 52 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -75,11 +75,12 @@ graph TD
   n62["R28 · Replacement property"]:::proven
   n63["R29 · Identical properties: the average cost"]:::proven
   n64["R30 · Connected corporations"]:::proven
-  n65["R11 · The principal residence exemption"]:::proven
-  n66["R2 · Cost of the substituted property"]:::proven
-  n67["N1 · Inputs decided by other provisions"]:::notFormalized
-  n68["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n69["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n65["R31 · Returns of capital, and negative adjusted cost base"]:::proven
+  n66["R11 · The principal residence exemption"]:::proven
+  n67["R2 · Cost of the substituted property"]:::proven
+  n68["N1 · Inputs decided by other provisions"]:::notFormalized
+  n69["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n70["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -183,20 +184,21 @@ graph TD
   n44 --> n63
   n39 --> n64
   n44 --> n65
-  n50 --> n65
-  n11 --> n66
-  n1 --> n67
-  n5 --> n67
-  n6 --> n67
-  n8 --> n67
-  n37 --> n67
-  n66 --> n67
-  n38 --> n67
-  n30 --> n68
-  n32 --> n69
-  n34 --> n69
-  n39 --> n69
-  n42 --> n69
+  n44 --> n66
+  n50 --> n66
+  n11 --> n67
+  n1 --> n68
+  n5 --> n68
+  n6 --> n68
+  n8 --> n68
+  n37 --> n68
+  n67 --> n68
+  n38 --> n68
+  n30 --> n69
+  n32 --> n70
+  n34 --> n70
+  n39 --> n70
+  n42 --> n70
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -278,11 +280,12 @@ graph TD
   n62["R28"]:::proven
   n63["R29"]:::proven
   n64["R30"]:::proven
-  n65["R11"]:::proven
-  n66["R2"]:::proven
-  n67["N1"]:::notFormalized
-  n68["N2"]:::notFormalized
-  n69["N4"]:::notFormalized
+  n65["R31"]:::proven
+  n66["R11"]:::proven
+  n67["R2"]:::proven
+  n68["N1"]:::notFormalized
+  n69["N2"]:::notFormalized
+  n70["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -459,20 +462,21 @@ graph TD
   n44 -.-> n63
   n39 -.-> n64
   n44 -.-> n65
-  n50 -.-> n65
-  n11 -.-> n66
-  n1 -.-> n67
-  n5 -.-> n67
-  n6 -.-> n67
-  n8 -.-> n67
-  n37 -.-> n67
-  n66 -.-> n67
-  n38 -.-> n67
-  n30 -.-> n68
-  n32 -.-> n69
-  n34 -.-> n69
-  n39 -.-> n69
-  n42 -.-> n69
+  n44 -.-> n66
+  n50 -.-> n66
+  n11 -.-> n67
+  n1 -.-> n68
+  n5 -.-> n68
+  n6 -.-> n68
+  n8 -.-> n68
+  n37 -.-> n68
+  n67 -.-> n68
+  n38 -.-> n68
+  n30 -.-> n69
+  n32 -.-> n70
+  n34 -.-> n70
+  n39 -.-> n70
+  n42 -.-> n70
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -1011,6 +1015,14 @@ Identical properties (such as shares of one class) form a pool, each at the aver
 A payer corporation is connected with a particular corporation if controlled by it (de jure, or by 186(2): more than half the voting shares held by it and persons not at arm's length with it), or if it owns more than 10% of both the voting shares and the value of the payer's shares. Used by 84.1 and the qualified small business corporation share definition.
 
 **Lean:** [`Canteen.ITA.Connected.connected`](../../Canteen/ITA/S186/Connected.lean#L77), [`Canteen.ITA.Connected.controlled186_2`](../../Canteen/ITA/S186/Connected.lean#L62), [`Canteen.ITA.Connected.wholly_owned`](../../Canteen/ITA/S186/Connected.lean#L88), [`Canteen.ITA.Connected.not_of_ten_percent`](../../Canteen/ITA/S186/Connected.lean#L99)
+
+### R31. Returns of capital, and negative adjusted cost base
+
+**Status:** proven · **Citation:** ITA 84(4), (4.1); 53(2)(a)(ii); 40(3); 53(1)(a) · **Uses:** R8
+
+A reduction of paid-up capital paid out by a private corporation is a dividend only to the extent it exceeds the reduction; the rest reduces the shareholder's adjusted cost base, and any excess below nil is a gain (40(3)), added back to bring it to nil. A public corporation's is all dividend unless it distributes recent extraordinary proceeds. Proven: the adjusted cost base never goes below nil.
+
+**Lean:** [`Canteen.ITA.ReturnOfCapital.dividend`](../../Canteen/ITA/S84/ReturnOfCapital.lean#L66), [`Canteen.ITA.ReturnOfCapital.returnOfCapital`](../../Canteen/ITA/S84/ReturnOfCapital.lean#L72), [`Canteen.ITA.ReturnOfCapital.deemedGain`](../../Canteen/ITA/S84/ReturnOfCapital.lean#L75), [`Canteen.ITA.ReturnOfCapital.acb_after`](../../Canteen/ITA/S84/ReturnOfCapital.lean#L117), [`Canteen.ITA.ReturnOfCapital.no_dividend_at_puc`](../../Canteen/ITA/S84/ReturnOfCapital.lean#L106)
 
 ### R11. The principal residence exemption
 
