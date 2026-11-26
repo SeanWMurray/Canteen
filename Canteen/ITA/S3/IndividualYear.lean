@@ -34,6 +34,8 @@ open CapitalGains (HalfCents Disposition Year formatHalfCents)
 structure DeductionHistory where
   /-- The year's dispositions of qualified small business corporation shares (part of the year's). -/
   qualifying : List Disposition := []
+  /-- The year's dispositions of qualified farm or fishing property (part of the year's). -/
+  farmOrFishing : List Disposition := []
   limit : Cents := 62500000
   priorWeighted : HalfCents := 0
   priorDeductions : HalfCents := 0
@@ -78,12 +80,13 @@ def income (f : Facts) : HalfCents := Income.income (incomeFacts f)
 def netCapitalLossDeduction (f : Facts) : HalfCents :=
   NetCapitalLoss.deduction f.taxationYear f.capital.paragraph3b f.netCapitalLossClaims
 
-/-- 110.6(2.1), with the year's net capital loss deduction in its annual gains limit. -/
+/-- 110.6(2) and (2.1), with the year's net capital loss deduction in the annual gains limit. -/
 def capitalGainsDeduction (f : Facts) : HalfCents :=
   match f.deduction110_6 with
   | none => 0
-  | some h => CapitalGainsDeduction.deduction
-      { taxationYear := f.taxationYear, year := f.capital, qualifying := h.qualifying, limit := h.limit,
+  | some h => CapitalGainsDeduction.total
+      { taxationYear := f.taxationYear, year := f.capital, qualifying := h.qualifying, farmOrFishing := h.farmOrFishing,
+        limit := h.limit,
         priorWeighted := h.priorWeighted, priorDeductions := h.priorDeductions, priorA := h.priorA, priorB := h.priorB,
         cumulativeNetInvestmentLoss := h.cumulativeNetInvestmentLoss, netCapitalLossesDeducted := netCapitalLossDeduction f }
 
@@ -104,7 +107,7 @@ def explain (f : Facts) : Finding :=
     ⟨s!"Income for the year: {h (income f)}.", "ITA 3"⟩,
     ⟨s!"Less the net capital loss deduction {h (netCapitalLossDeduction f)}, the capital gains deduction " ++
       s!"{h (capitalGainsDeduction f)}, and other deductions {c f.otherDivisionC}: taxable income {h (taxableIncome f)}.",
-      "ITA 2(2); 111(1)(b); 110.6(2.1)"⟩,
+      "ITA 2(2); 111(1)(b); 110.6(2), (2.1)"⟩,
     ⟨s!"The dividend tax credit, against tax, is {c (Dividends.credit (dividendFacts f))}.", "ITA 121"⟩], []⟩
 
 /-! ## Truths about the year -/
@@ -120,7 +123,7 @@ theorem capital_gains_deduction_le (f : Facts) : capitalGainsDeduction f ≤ f.c
   split
   · exact Nat.zero_le _
   · rename_i h _
-    exact Nat.le_trans (CapitalGainsDeduction.deduction_le_annual _)
+    exact Nat.le_trans (CapitalGainsDeduction.total_le_annual _)
       (Nat.le_trans (Nat.sub_le _ _) (Nat.min_le_left _ _))
 
 end Canteen.ITA.IndividualYear

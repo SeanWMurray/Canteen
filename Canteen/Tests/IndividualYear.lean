@@ -51,7 +51,7 @@ example : taxableIncome { year with deduction110_6 := none } = 2 * 32050000 := b
    "2. Taxable capital gains, net: $200,000.00. [ITA 3(b)]",
    "3. Losses: business $0.00, terminal $0.00, attributed $0.00. [ITA 3(d); 20(16); 74.1]",
    "4. Income for the year: $330,500.00. [ITA 3]",
-   "5. Less the net capital loss deduction $10,000.00, the capital gains deduction $190,000.00, and other deductions $0.00: taxable income $130,500.00. [ITA 2(2); 111(1)(b); 110.6(2.1)]",
+   "5. Less the net capital loss deduction $10,000.00, the capital gains deduction $190,000.00, and other deductions $0.00: taxable income $130,500.00. [ITA 2(2); 111(1)(b); 110.6(2), (2.1)]",
    "6. The dividend tax credit, against tax, is $1,038.46. [ITA 121]"]
 
 end Canteen.Tests.IndividualYear

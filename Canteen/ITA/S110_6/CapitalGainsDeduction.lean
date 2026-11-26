@@ -3,7 +3,7 @@ import Canteen.Core.Answer
 import Canteen.ITA.S38.CapitalGains
 
 /-!
-# Subsection 110.6(2.1): the capital gains deduction for qualified small business corporation shares
+# Subsections 110.6(2) and (2.1): the capital gains deduction
 
 *Income Tax Act*, as consolidated to 2026-10-29 (verbatim in
 `statute/ITA-110.6-capital-gains-deduction.txt`):
@@ -39,9 +39,21 @@ The $625,000 is indexed for years beginning after 2025 (117.1(2)(c)); the indexe
 A + B + C + D (earlier deductions, with the pre-2000 weights) is given, as are the earlier years'
 A and B amounts, the 1985 3(e) amount and the cumulative net investment loss. The "small business
 corporation" test (248(1): all or substantially all of the assets' value attributable to active
-business assets and the like) is a fact or a judgment call. Not encoded: (d) to (f) of the
-definition, qualified farm or fishing property (110.6(2)) beyond the amount deducted, the 2024
-additional deduction (110.6(2.2), (2.3)), 110.6(7) to (11) (denials), and the alternative
+business assets and the like) is a fact or a judgment call.
+
+**"qualified farm or fishing property"** and **110.6(1.3)**: real property or a fishing vessel used
+in a farming or fishing business in Canada by the family (or its farm or fishing corporation or
+partnership), a share of a family farm or fishing corporation, an interest in a family farm or
+fishing partnership, or Class 14.1 property so used; real property and Class 14.1 property must
+also have been owned by the family for 24 months and either used principally in a business in which
+a family member was actively engaged, with farming or fishing gross revenue exceeding other income
+in two years, or used by the family corporation or partnership for 24 months. **110.6(2)** allows the
+same deduction for those gains. (2.1)(a) is read as what is left of the one lifetime limit after the
+year's 110.6(2) deduction, as the prescribed form computes it.
+
+Not encoded: (d) to (f) of the share definition, the definitions of family farm or fishing
+corporation and partnership (facts), 110.6(1.3)(c) (property acquired before June 18, 1987), the
+2024 additional deduction (110.6(2.2), (2.3)), 110.6(7) to (11) (denials), and the alternative
 minimum tax.
 -/
 
@@ -98,6 +110,59 @@ statute qualifiedShare (s : ShareFacts) named "the definition \"qualified small 
         => "Any share it was substituted for met paragraphs (b) and (c) up to the substitution."
         else "A share it was substituted for did not meet paragraphs (b) and (c) up to the substitution."
 
+/-! ## Qualified farm or fishing property -/
+
+/-- What the property is, for the definition "qualified farm or fishing property". -/
+inductive FarmPropertyKind where
+  /-- (a): real or immovable property, or a fishing vessel, used in a farming or fishing business in
+  Canada by the individual, a spouse, child or parent, a family farm or fishing corporation or partnership. -/
+  | realPropertyOrVessel
+  /-- (b): a share of a family farm or fishing corporation of the individual or spouse. -/
+  | familyCorporationShare
+  /-- (c): an interest in a family farm or fishing partnership of the individual or spouse. -/
+  | familyPartnershipInterest
+  /-- (d): Class 14.1 property (goodwill, quotas) so used. -/
+  | class14_1
+  | other
+  deriving Repr, DecidableEq, Inhabited
+
+structure FarmPropertyFacts where
+  description : String
+  kind : FarmPropertyKind
+  /-- Owned by the individual, the spouse, or a family farm or fishing partnership. -/
+  ownedByFamily : Bool := true
+  /-- (a), (d): used in a farming or fishing business carried on in Canada by one of the persons in (a)(i) to (v). -/
+  usedInCanadianFarmingOrFishing : Bool := true
+  /-- (1.3)(a)(i): owned by the family for the 24 months before. -/
+  owned24Months : Bool := true
+  /-- (1.3)(a)(ii)(A): in at least two years, the operator's farming or fishing gross revenue exceeded its other
+  income, and the property was used principally in a business in which a family member was actively engaged
+  on a regular and continuous basis (often a judgment call). -/
+  grossRevenueTest : Answer := .fact false
+  /-- (1.3)(a)(ii)(B): used for 24 months by a family farm or fishing corporation or partnership, a family
+  member actively engaged. -/
+  corporateUse24Months : Bool := false
+  deriving Repr, Inhabited
+
+/-- (1.3) applies to real property, vessels and Class 14.1 property, not shares or partnership interests. -/
+def FarmPropertyFacts.needs1_3 (p : FarmPropertyFacts) : Bool :=
+  p.kind == .realPropertyOrVessel || p.kind == .class14_1
+
+/-- Section 110.6(1) "qualified farm or fishing property", with 110.6(1.3). -/
+statute qualifiedFarmProperty (p : FarmPropertyFacts) named "the definition \"qualified farm or fishing property\""
+    cites "ITA 110.6(1) \"qualified farm or fishing property\""
+  applies where
+    | "owned" p.ownedByFamily
+        => "It is owned by the individual, the individual's spouse or common-law partner, or a family farm or fishing partnership."
+        else "It is not owned by the individual, a spouse or common-law partner, or a family farm or fishing partnership."
+    | "(a) to (d)" (p.kind != .other && (!p.needs1_3 || p.usedInCanadianFarmingOrFishing))
+        => "It is farm or fishing real property or a vessel, a family farm or fishing corporation share, a family partnership interest, or Class 14.1 property, used as the definition requires."
+        else "It is not property of a kind in paragraphs (a) to (d), used as they require."
+    | "(1.3)" judgments (if p.needs1_3 && p.owned24Months && !p.corporateUse24Months then p.grossRevenueTest.judgments else [])
+        (!p.needs1_3 || (p.owned24Months && (p.grossRevenueTest.value || p.corporateUse24Months)))
+        => "It was owned by the family for 24 months, and used principally in a farming or fishing business with a family member actively engaged (or used by a family corporation or partnership) as 110.6(1.3) requires."
+        else "It does not meet the ownership and use conditions of 110.6(1.3)."
+
 /-! ## The deduction -/
 
 structure Facts where
@@ -125,8 +190,6 @@ structure Facts where
   cumulativeNetInvestmentLoss : HalfCents := 0
   /-- Net capital losses of other years deducted under 111(1)(b) for the year. -/
   netCapitalLossesDeducted : HalfCents := 0
-  /-- The amount deducted under 110.6(2) (qualified farm or fishing property) for the year. -/
-  farmFishingDeduction : HalfCents := 0
   deriving Repr, Inhabited
 
 /-- The 3(b) amount if the only properties were those given. -/
@@ -150,12 +213,25 @@ def remainingLimit (f : Facts) : HalfCents := 2 * f.limit - f.priorWeighted
 /-- (2.1)(d): the 3(b) amount from qualified small business corporation shares alone. -/
 def sharesAmount (f : Facts) : HalfCents := paragraph3bOf f.qualifying
 
-/-- Subsection 110.6(2.1): the most the individual may deduct. -/
+/-- (2)(d): the 3(b) amount from qualified farm or fishing property alone. -/
+def farmAmount (f : Facts) : HalfCents := paragraph3bOf f.farmOrFishing
+
+/-- Subsection 110.6(2): the most the individual may deduct for qualified farm or fishing property. -/
+def farmFishingDeduction (f : Facts) : HalfCents :=
+  if f.residentIndividual && !f.farmOrFishing.isEmpty then
+    min (remainingLimit f) (min (cumulativeGainsLimit f) (min (annualGainsLimit f) (farmAmount f)))
+  else 0
+
+/-- Subsection 110.6(2.1): the most the individual may deduct for qualified small business
+corporation shares, after the 110.6(2) deduction. -/
 def deduction (f : Facts) : HalfCents :=
   if f.residentIndividual && !f.qualifying.isEmpty then
-    min (remainingLimit f) (min (cumulativeGainsLimit f - f.farmFishingDeduction)
-      (min (annualGainsLimit f - f.farmFishingDeduction) (sharesAmount f)))
+    min (remainingLimit f - farmFishingDeduction f) (min (cumulativeGainsLimit f - farmFishingDeduction f)
+      (min (annualGainsLimit f - farmFishingDeduction f) (sharesAmount f)))
   else 0
+
+/-- The year's whole capital gains deduction: 110.6(2) and (2.1). -/
+def total (f : Facts) : HalfCents := farmFishingDeduction f + deduction f
 
 def explain (f : Facts) : Finding :=
   let h := formatHalfCents
@@ -164,13 +240,14 @@ def explain (f : Facts) : Finding :=
       "small business corporation shares, so nothing may be deducted under subsection 110.6(2.1).", "ITA 110.6(2.1)"⟩], []⟩
   else
   ⟨deduction f > 0, [
-    ⟨s!"(a) What is left of the lifetime limit: {h (2 * f.limit)} less earlier deductions of {h f.priorWeighted}, {h (remainingLimit f)}.",
+    ⟨s!"(a) What is left of the lifetime limit: {h (2 * f.limit)} less earlier deductions of {h f.priorWeighted}, {h (remainingLimit f)}" ++
+      (if farmFishingDeduction f > 0 then s!", less this year's 110.6(2) deduction." else "."),
       "ITA 110.6(2.1)(a), (2)(a)"⟩,
     ⟨s!"(b) The cumulative gains limit, {h (cumulativeGainsLimit f)}" ++
-      (if f.farmFishingDeduction > 0 then s!", less the 110.6(2) deduction of {h f.farmFishingDeduction}." else "."),
+      (if farmFishingDeduction f > 0 then s!", less the 110.6(2) deduction of {h (farmFishingDeduction f)}." else "."),
       "ITA 110.6(2.1)(b); 110.6(1) \"cumulative gains limit\""⟩,
     ⟨s!"(c) The annual gains limit, {h (annualA f)} less {h (annualB f)}, {h (annualGainsLimit f)}" ++
-      (if f.farmFishingDeduction > 0 then s!", less the 110.6(2) deduction." else "."),
+      (if farmFishingDeduction f > 0 then s!", less the 110.6(2) deduction." else "."),
       "ITA 110.6(2.1)(c); 110.6(1) \"annual gains limit\""⟩,
     ⟨s!"(d) The 3(b) amount from qualified small business corporation shares alone, {h (sharesAmount f)}.", "ITA 110.6(2.1)(d)"⟩,
     ⟨s!"So the individual may deduct up to {h (deduction f)}, the least of these.", "ITA 110.6(2.1)"⟩], []⟩
@@ -190,14 +267,22 @@ theorem deduction_le_shares (f : Facts) : deduction f ≤ sharesAmount f := by
   · exact Nat.le_trans (Nat.min_le_right _ _) (Nat.le_trans (Nat.min_le_right _ _) (Nat.min_le_right _ _))
   · exact Nat.zero_le _
 
-/-- The deduction never takes the lifetime total past the limit. -/
-theorem lifetime_limit (f : Facts) (h : f.priorWeighted ≤ 2 * f.limit) : f.priorWeighted + deduction f ≤ 2 * f.limit := by
-  have : deduction f ≤ remainingLimit f := by
+private theorem stack (p a b L : Nat) (ha : a ≤ L - p) (hb : b ≤ (L - p) - a) (h : p ≤ L) : p + (a + b) ≤ L := by omega
+
+/-- **One lifetime limit.** The 110.6(2) and (2.1) deductions together never take the lifetime total
+past the limit. -/
+theorem lifetime_limit (f : Facts) (h : f.priorWeighted ≤ 2 * f.limit) :
+    f.priorWeighted + total f ≤ 2 * f.limit := by
+  have ha : farmFishingDeduction f ≤ remainingLimit f := by
+    unfold farmFishingDeduction; split
+    · exact Nat.min_le_left _ _
+    · exact Nat.zero_le _
+  have hb : deduction f ≤ remainingLimit f - farmFishingDeduction f := by
     unfold deduction; split
     · exact Nat.min_le_left _ _
     · exact Nat.zero_le _
-  unfold remainingLimit at this
-  exact Nat.le_trans (Nat.add_le_add_left this _) (Nat.le_of_eq (Nat.add_sub_of_le h))
+  unfold remainingLimit at ha hb
+  exact stack _ _ _ _ ha hb h
 
 /-- The deduction never exceeds the annual gains limit: losses and ABILs of the year come first. -/
 theorem deduction_le_annual (f : Facts) : deduction f ≤ annualGainsLimit f := by
@@ -206,19 +291,37 @@ theorem deduction_le_annual (f : Facts) : deduction f ≤ annualGainsLimit f := 
       (Nat.le_trans (Nat.min_le_left _ _) (Nat.sub_le _ _)))
   · exact Nat.zero_le _
 
-/-- A cumulative net investment loss reduces the deduction, never increases it. -/
+private theorem sub_add_le (a d g : Nat) (h1 : d ≤ g) (h2 : a ≤ g - d) : d + a ≤ g := by omega
+
+/-- Both deductions together never exceed the annual gains limit. -/
+theorem total_le_annual (f : Facts) : total f ≤ annualGainsLimit f := by
+  have h1 : farmFishingDeduction f ≤ annualGainsLimit f := by
+    unfold farmFishingDeduction; split
+    · exact Nat.le_trans (Nat.min_le_right _ _) (Nat.le_trans (Nat.min_le_right _ _) (Nat.min_le_left _ _))
+    · exact Nat.zero_le _
+  have h2 : deduction f ≤ annualGainsLimit f - farmFishingDeduction f := by
+    unfold deduction; split
+    · exact Nat.le_trans (Nat.min_le_right _ _) (Nat.le_trans (Nat.min_le_right _ _) (Nat.min_le_left _ _))
+    · exact Nat.zero_le _
+  exact sub_add_le _ _ _ h1 h2
+
 private theorem min_mono_right (a b c : Nat) (h : b ≤ c) : min a b ≤ min a c :=
   Nat.le_min.mpr ⟨Nat.min_le_left _ _, Nat.le_trans (Nat.min_le_right _ _) h⟩
 
-theorem cnil_never_helps (f : Facts) (c : HalfCents) (h : f.cumulativeNetInvestmentLoss ≤ c) :
+/-- A cumulative net investment loss reduces the deduction for shares, never increases it, in a
+year with no qualified farm or fishing property. (With one, a smaller 110.6(2) deduction can leave
+more room for 110.6(2.1).) -/
+theorem cnil_never_helps (f : Facts) (c : HalfCents) (h : f.cumulativeNetInvestmentLoss ≤ c) (hf : f.farmOrFishing = []) :
     deduction { f with cumulativeNetInvestmentLoss := c } ≤ deduction f := by
   have hc : cumulativeGainsLimit { f with cumulativeNetInvestmentLoss := c } ≤ cumulativeGainsLimit f := by
     unfold cumulativeGainsLimit annualB annualA; simp only
     exact Nat.sub_le_sub_left (Nat.add_le_add_left h _) _
-  unfold deduction; simp only
+  have h0 : farmFishingDeduction f = 0 := by simp [farmFishingDeduction, hf]
+  have h0' : farmFishingDeduction { f with cumulativeNetInvestmentLoss := c } = 0 := by simp [farmFishingDeduction, hf]
+  unfold deduction; simp only [h0, h0', Nat.sub_zero]
   split
   · refine min_mono_right _ _ _ ?_
-    exact Nat.le_min.mpr ⟨Nat.le_trans (Nat.min_le_left _ _) (Nat.sub_le_sub_right hc _), Nat.min_le_right _ _⟩
+    exact Nat.le_min.mpr ⟨Nat.le_trans (Nat.min_le_left _ _) hc, Nat.min_le_right _ _⟩
   · exact Nat.le_refl _
 
 end Canteen.ITA.CapitalGainsDeduction

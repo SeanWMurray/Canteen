@@ -334,7 +334,7 @@ def blueprint : Blueprint where
           lean := [``SurplusStripping.applies, ``SurplusStripping.dividend, ``SurplusStripping.proceeds,
             ``SurplusStripping.boot_over_e_is_dividend, ``SurplusStripping.no_dividend_within_e,
             ``SurplusStripping.ofTransfer], uses := ["R8", "R17"] },
-        { id := "R19", kind := .law, title := "The capital gains deduction", citation := "ITA 110.6(1), (2.1)"
+        { id := "R19", kind := .law, title := "The capital gains deduction", citation := "ITA 110.6(1), (1.3), (2), (2.1)"
           statement := "A resident individual who disposes of qualified small business corporation shares (a small business " ++
             "corporation share, held only by related persons for 24 months, in a CCPC with more than half its assets' value " ++
             "in active business assets) may deduct the least of what is left of the lifetime limit, the cumulative gains " ++
@@ -343,7 +343,8 @@ def blueprint : Blueprint where
           lean := [``CapitalGainsDeduction.qualifiedShare, ``CapitalGainsDeduction.deduction,
             ``CapitalGainsDeduction.annualGainsLimit, ``CapitalGainsDeduction.cumulativeGainsLimit,
             ``CapitalGainsDeduction.lifetime_limit, ``CapitalGainsDeduction.deduction_le_annual,
-            ``CapitalGainsDeduction.cnil_never_helps], uses := ["R8"] },
+            ``CapitalGainsDeduction.cnil_never_helps, ``CapitalGainsDeduction.qualifiedFarmProperty,
+            ``CapitalGainsDeduction.farmFishingDeduction, ``CapitalGainsDeduction.total_le_annual], uses := ["R8"] },
         { id := "R20", kind := .law, title := "Loss restriction events", citation := "ITA 251.2(2)(a); 256(7)(a)"
           statement := "A corporation is subject to a loss restriction event when a person or group acquires control of it " ++
             "(de jure); but not solely because shares are acquired from a related person, by a person related to the " ++

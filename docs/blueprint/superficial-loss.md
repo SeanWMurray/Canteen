@@ -979,11 +979,11 @@ An individual resident in Canada who disposes of shares to a corporation not at 
 
 ### R19. The capital gains deduction
 
-**Status:** proven · **Citation:** ITA 110.6(1), (2.1) · **Uses:** R8
+**Status:** proven · **Citation:** ITA 110.6(1), (1.3), (2), (2.1) · **Uses:** R8
 
 A resident individual who disposes of qualified small business corporation shares (a small business corporation share, held only by related persons for 24 months, in a CCPC with more than half its assets' value in active business assets) may deduct the least of what is left of the lifetime limit, the cumulative gains limit, the annual gains limit, and the 3(b) amount from those shares. Proven: never past the lifetime limit or the annual gains limit, and a cumulative net investment loss never helps.
 
-**Lean:** [`Canteen.ITA.CapitalGainsDeduction.qualifiedShare`](../../Canteen/ITA/S110_6/CapitalGainsDeduction.lean#L84), [`Canteen.ITA.CapitalGainsDeduction.deduction`](../../Canteen/ITA/S110_6/CapitalGainsDeduction.lean#L153), [`Canteen.ITA.CapitalGainsDeduction.annualGainsLimit`](../../Canteen/ITA/S110_6/CapitalGainsDeduction.lean#L142), [`Canteen.ITA.CapitalGainsDeduction.cumulativeGainsLimit`](../../Canteen/ITA/S110_6/CapitalGainsDeduction.lean#L144), [`Canteen.ITA.CapitalGainsDeduction.lifetime_limit`](../../Canteen/ITA/S110_6/CapitalGainsDeduction.lean#L193), [`Canteen.ITA.CapitalGainsDeduction.deduction_le_annual`](../../Canteen/ITA/S110_6/CapitalGainsDeduction.lean#L202), [`Canteen.ITA.CapitalGainsDeduction.cnil_never_helps`](../../Canteen/ITA/S110_6/CapitalGainsDeduction.lean#L213)
+**Lean:** [`Canteen.ITA.CapitalGainsDeduction.qualifiedShare`](../../Canteen/ITA/S110_6/CapitalGainsDeduction.lean#L96), [`Canteen.ITA.CapitalGainsDeduction.deduction`](../../Canteen/ITA/S110_6/CapitalGainsDeduction.lean#L225), [`Canteen.ITA.CapitalGainsDeduction.annualGainsLimit`](../../Canteen/ITA/S110_6/CapitalGainsDeduction.lean#L205), [`Canteen.ITA.CapitalGainsDeduction.cumulativeGainsLimit`](../../Canteen/ITA/S110_6/CapitalGainsDeduction.lean#L207), [`Canteen.ITA.CapitalGainsDeduction.lifetime_limit`](../../Canteen/ITA/S110_6/CapitalGainsDeduction.lean#L272), [`Canteen.ITA.CapitalGainsDeduction.deduction_le_annual`](../../Canteen/ITA/S110_6/CapitalGainsDeduction.lean#L287), [`Canteen.ITA.CapitalGainsDeduction.cnil_never_helps`](../../Canteen/ITA/S110_6/CapitalGainsDeduction.lean#L311), [`Canteen.ITA.CapitalGainsDeduction.qualifiedFarmProperty`](../../Canteen/ITA/S110_6/CapitalGainsDeduction.lean#L151), [`Canteen.ITA.CapitalGainsDeduction.farmFishingDeduction`](../../Canteen/ITA/S110_6/CapitalGainsDeduction.lean#L219), [`Canteen.ITA.CapitalGainsDeduction.total_le_annual`](../../Canteen/ITA/S110_6/CapitalGainsDeduction.lean#L296)
 
 ### R20. Loss restriction events
 
@@ -1111,7 +1111,7 @@ Shares or convertible debt of a corporation exchanged for its shares, with nothi
 
 Income from sources (employment and business, dividends with the gross-up, recapture, attributed income), net taxable capital gains, less terminal and other losses; then taxable income, after the net capital loss deduction and the capital gains deduction (which the former reduces). Proven: taxable income never exceeds income, and the capital gains deduction never exceeds the net taxable capital gains.
 
-**Lean:** [`Canteen.ITA.IndividualYear.incomeFacts`](../../Canteen/ITA/S3/IndividualYear.lean#L69), [`Canteen.ITA.IndividualYear.taxableIncome`](../../Canteen/ITA/S3/IndividualYear.lean#L90), [`Canteen.ITA.IndividualYear.capitalGainsDeduction`](../../Canteen/ITA/S3/IndividualYear.lean#L81), [`Canteen.ITA.IndividualYear.taxable_le_income`](../../Canteen/ITA/S3/IndividualYear.lean#L112), [`Canteen.ITA.IndividualYear.capital_gains_deduction_le`](../../Canteen/ITA/S3/IndividualYear.lean#L117)
+**Lean:** [`Canteen.ITA.IndividualYear.incomeFacts`](../../Canteen/ITA/S3/IndividualYear.lean#L71), [`Canteen.ITA.IndividualYear.taxableIncome`](../../Canteen/ITA/S3/IndividualYear.lean#L93), [`Canteen.ITA.IndividualYear.capitalGainsDeduction`](../../Canteen/ITA/S3/IndividualYear.lean#L83), [`Canteen.ITA.IndividualYear.taxable_le_income`](../../Canteen/ITA/S3/IndividualYear.lean#L115), [`Canteen.ITA.IndividualYear.capital_gains_deduction_le`](../../Canteen/ITA/S3/IndividualYear.lean#L120)
 
 ### R36. The election for Canadian securities
 

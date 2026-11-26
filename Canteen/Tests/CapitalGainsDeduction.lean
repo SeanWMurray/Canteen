@@ -73,3 +73,31 @@ example : deduction (facts [sale 40000000] []) = 0 := by decide
    "5. So the individual may deduct up to $125,000.00, the least of these. [ITA 110.6(2.1)]"]
 
 end Canteen.Tests.CapitalGainsDeduction
+
+/-! ## Qualified farm or fishing property (110.6(2)), sharing the limit -/
+
+namespace Canteen.Tests.CapitalGainsDeduction.Farm
+
+open Canteen Canteen.ITA Canteen.ITA.CapitalGainsDeduction CapitalGains
+
+def land : FarmPropertyFacts := { description := "the farm land", kind := .realPropertyOrVessel, grossRevenueTest := .judged "J-FARM" true }
+example : qualifiedFarmProperty.holds land = true := by decide
+#guard (qualifiedFarmProperty.explain land).reliesOn == ["J-FARM"]
+-- Used by the family corporation for 24 months instead: no judgment call needed.
+example : qualifiedFarmProperty.holds { land with grossRevenueTest := .fact false, corporateUse24Months := true } = true := by decide
+-- Not owned for 24 months.
+example : qualifiedFarmProperty.holds { land with owned24Months := false } = false := by decide
+-- A share of a family farm corporation needs no (1.3) test.
+example : qualifiedFarmProperty.holds { land with kind := .familyCorporationShare, grossRevenueTest := .fact false } = true := by decide
+
+def farmSale : Disposition := { description := "the farm land", proceeds := 100010000, adjustedCostBase := 10000 }
+def shareSale : Disposition := { description := "Opco shares", proceeds := 100010000, adjustedCostBase := 10000 }
+def both : Facts := { taxationYear := 2025, year := ⟨[farmSale, shareSale], 0, {}⟩, qualifying := [shareSale], farmOrFishing := [farmSale] }
+
+-- $1,000,000 of farm gain and $1,000,000 of share gain: 110.6(2) takes $500,000 of the $625,000
+-- limit, and 110.6(2.1) only the $125,000 left.
+example : farmFishingDeduction both = 2 * 50000000 ∧ deduction both = 2 * 12500000 ∧ total both = 2 * 62500000 := by decide
+-- Farm property alone.
+example : total { both with year := ⟨[farmSale], 0, {}⟩, qualifying := [] } = 2 * 50000000 := by decide
+
+end Canteen.Tests.CapitalGainsDeduction.Farm
