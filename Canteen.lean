@@ -43,6 +43,7 @@ import Canteen.ITA.S73.SpousalRollover
 import Canteen.ITA.S70.Death
 import Canteen.ITA.S74.Attribution
 import Canteen.ITA.S45.ChangeInUse
+import Canteen.ITA.S85.TransferToCorporation
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.ITA.S40.ShareToAffiliate
@@ -106,3 +107,4 @@ import Canteen.Tests.SpousalRollover
 import Canteen.Tests.Death
 import Canteen.Tests.Attribution
 import Canteen.Tests.ChangeInUse
+import Canteen.Tests.TransferToCorporation

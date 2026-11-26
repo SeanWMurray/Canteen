@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 56 statements:** 37 proven, 16 encoded, 3 not formalized.
+**Status of the 57 statements:** 38 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -61,11 +61,12 @@ graph TD
   n48["R14 · Death"]:::proven
   n49["R15 · Attribution of capital gains to the transferor"]:::proven
   n50["R16 · Change in use"]:::proven
-  n51["R11 · The principal residence exemption"]:::proven
-  n52["R2 · Cost of the substituted property"]:::proven
-  n53["N1 · Inputs decided by other provisions"]:::notFormalized
-  n54["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n55["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n51["R17 · Transfer of property to a corporation"]:::proven
+  n52["R11 · The principal residence exemption"]:::proven
+  n53["R2 · Cost of the substituted property"]:::proven
+  n54["N1 · Inputs decided by other provisions"]:::notFormalized
+  n55["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n56["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -152,20 +153,21 @@ graph TD
   n44 --> n50
   n12 --> n50
   n44 --> n51
-  n50 --> n51
-  n11 --> n52
-  n1 --> n53
-  n5 --> n53
-  n6 --> n53
-  n8 --> n53
-  n37 --> n53
-  n52 --> n53
-  n38 --> n53
-  n30 --> n54
-  n32 --> n55
-  n34 --> n55
-  n39 --> n55
-  n42 --> n55
+  n44 --> n52
+  n50 --> n52
+  n11 --> n53
+  n1 --> n54
+  n5 --> n54
+  n6 --> n54
+  n8 --> n54
+  n37 --> n54
+  n53 --> n54
+  n38 --> n54
+  n30 --> n55
+  n32 --> n56
+  n34 --> n56
+  n39 --> n56
+  n42 --> n56
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -233,11 +235,12 @@ graph TD
   n48["R14"]:::proven
   n49["R15"]:::proven
   n50["R16"]:::proven
-  n51["R11"]:::proven
-  n52["R2"]:::proven
-  n53["N1"]:::notFormalized
-  n54["N2"]:::notFormalized
-  n55["N4"]:::notFormalized
+  n51["R17"]:::proven
+  n52["R11"]:::proven
+  n53["R2"]:::proven
+  n54["N1"]:::notFormalized
+  n55["N2"]:::notFormalized
+  n56["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -397,20 +400,21 @@ graph TD
   n8 --> n50
   n44 -.-> n50
   n44 -.-> n51
-  n50 -.-> n51
-  n11 -.-> n52
-  n1 -.-> n53
-  n5 -.-> n53
-  n6 -.-> n53
-  n8 -.-> n53
-  n37 -.-> n53
-  n52 -.-> n53
-  n38 -.-> n53
-  n30 -.-> n54
-  n32 -.-> n55
-  n34 -.-> n55
-  n39 -.-> n55
-  n42 -.-> n55
+  n44 -.-> n52
+  n50 -.-> n52
+  n11 -.-> n53
+  n1 -.-> n54
+  n5 -.-> n54
+  n6 -.-> n54
+  n8 -.-> n54
+  n37 -.-> n54
+  n53 -.-> n54
+  n38 -.-> n54
+  n30 -.-> n55
+  n32 -.-> n56
+  n34 -.-> n56
+  n39 -.-> n56
+  n42 -.-> n56
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -837,6 +841,14 @@ After property is lent or transferred to a spouse or common-law partner, the net
 A change in the use regularly made of a property between gaining or producing income and other purposes is a deemed disposition, at fair market value, of the proportion that changed, and a reacquisition at that amount; unless the taxpayer elects under 45(2) (toward income) or 45(3) (back to a principal residence, with no capital cost allowance claimed: 45(4)). Proven: the gains add up, and the deemed disposition is never a superficial loss (paragraph (c)).
 
 **Lean:** [`Canteen.ITA.ChangeInUse.deemedDisposition`](../../Canteen/ITA/S45/ChangeInUse.lean#L129), [`Canteen.ITA.ChangeInUse.proceeds`](../../Canteen/ITA/S45/ChangeInUse.lean#L147), [`Canteen.ITA.ChangeInUse.costAfter`](../../Canteen/ITA/S45/ChangeInUse.lean#L162), [`Canteen.ITA.ChangeInUse.elect_45_2`](../../Canteen/ITA/S45/ChangeInUse.lean#L239), [`Canteen.ITA.ChangeInUse.cca_defeats_45_3`](../../Canteen/ITA/S45/ChangeInUse.lean#L245), [`Canteen.ITA.ChangeInUse.gains_add_up`](../../Canteen/ITA/S45/ChangeInUse.lean#L251), [`Canteen.ITA.ChangeInUse.not_superficial`](../../Canteen/ITA/S45/ChangeInUse.lean#L262)
+
+### R17. Transfer of property to a corporation
+
+**Status:** proven · **Citation:** ITA 85(1), (2.1) · **Uses:** R8
+
+Eligible property transferred to a taxable Canadian corporation for consideration including its shares, with a joint election, is disposed of at the elected amount: the amount agreed, but at least the boot and the lesser of cost and value (or, for depreciable property, the least of UCC, cost and value), and at most fair market value; plus any benefit conferred on a related person (e.2). The boot, preferred and common shares take their costs in that order, and the shares' paid-up capital is ground down to the cost less the boot.
+
+**Lean:** [`Canteen.ITA.TransferToCorporation.rollover`](../../Canteen/ITA/S85/TransferToCorporation.lean#L131), [`Canteen.ITA.TransferToCorporation.electedAmount`](../../Canteen/ITA/S85/TransferToCorporation.lean#L175), [`Canteen.ITA.TransferToCorporation.commonCost`](../../Canteen/ITA/S85/TransferToCorporation.lean#L194), [`Canteen.ITA.TransferToCorporation.at_cost_no_gain`](../../Canteen/ITA/S85/TransferToCorporation.lean#L272), [`Canteen.ITA.TransferToCorporation.boot_le_elected`](../../Canteen/ITA/S85/TransferToCorporation.lean#L264), [`Canteen.ITA.TransferToCorporation.puc_single_class`](../../Canteen/ITA/S85/TransferToCorporation.lean#L295)
 
 ### R11. The principal residence exemption
 

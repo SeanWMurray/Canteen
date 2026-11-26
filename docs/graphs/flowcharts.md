@@ -412,6 +412,34 @@ flowchart TD
   classDef start fill:#ffffff,stroke:#212121,color:#212121
 ```
 
+## Subsection 85(1): transfer of property to a corporation
+
+```mermaid
+flowchart TD
+  S(["subsection 85(1) · ITA 85(1)"]):::start
+  C0["<b>eligible property</b> The property is eligible property (85(1.1))<br/>[ITA 85(1) eligible property]"]:::fact
+  C1["<b>taxable Canadian corporation</b> It was disposed of to a taxable Canadian<br/>corporation<br/>[ITA 85(1) taxable Canadian corporation]"]:::fact
+  C2["<b>shares</b> The consideration includes shares of the<br/>capital stock of the corporation<br/>[ITA 85(1) shares]"]:::fact
+  C3["<b>election</b> The taxpayer and the corporation jointly<br/>elected in prescribed form and in time<br/>(85(6))<br/>[ITA 85(1) election]"]:::fact
+  Y(["subsection 85(1) applies"]):::yes
+  N(["subsection 85(1) does not apply"]):::no
+  S --> C0
+  C0 -->|met| C1
+  C0 -->|not met| N
+  C1 -->|met| C2
+  C1 -->|not met| N
+  C2 -->|met| C3
+  C2 -->|not met| N
+  C3 -->|met| Y
+  C3 -->|not met| N
+  classDef fact fill:#eeeeee,stroke:#616161,color:#212121
+  classDef judgment fill:#ffe0b2,stroke:#ef6c00,color:#e65100
+  classDef rule fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+  classDef yes fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
+  classDef no fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+  classDef start fill:#ffffff,stroke:#212121,color:#212121
+```
+
 ## Subparagraph 40(2)(g)(iv): transfers to registered plans
 
 ```mermaid

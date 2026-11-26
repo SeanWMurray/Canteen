@@ -18,6 +18,7 @@ import Canteen.ITA.S73.SpousalRollover
 import Canteen.ITA.S70.Death
 import Canteen.ITA.S74.Attribution
 import Canteen.ITA.S45.ChangeInUse
+import Canteen.ITA.S85.TransferToCorporation
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -293,6 +294,15 @@ def blueprint : Blueprint where
           lean := [``ChangeInUse.deemedDisposition, ``ChangeInUse.proceeds, ``ChangeInUse.costAfter, ``ChangeInUse.elect_45_2,
             ``ChangeInUse.cca_defeats_45_3, ``ChangeInUse.gains_add_up, ``ChangeInUse.not_superficial],
           uses := ["R8", "D"] },
+        { id := "R17", kind := .law, title := "Transfer of property to a corporation", citation := "ITA 85(1), (2.1)"
+          statement := "Eligible property transferred to a taxable Canadian corporation for consideration including its " ++
+            "shares, with a joint election, is disposed of at the elected amount: the amount agreed, but at least the boot " ++
+            "and the lesser of cost and value (or, for depreciable property, the least of UCC, cost and value), and at most " ++
+            "fair market value; plus any benefit conferred on a related person (e.2). The boot, preferred and common shares " ++
+            "take their costs in that order, and the shares' paid-up capital is ground down to the cost less the boot."
+          lean := [``TransferToCorporation.rollover, ``TransferToCorporation.electedAmount, ``TransferToCorporation.commonCost,
+            ``TransferToCorporation.at_cost_no_gain, ``TransferToCorporation.boot_le_elected,
+            ``TransferToCorporation.puc_single_class], uses := ["R8"] },
         { id := "R11", kind := .law, title := "The principal residence exemption", citation := "ITA 40(2)(b); 54 \"principal residence\""
           statement := "A home is the principal residence for a year if owned, ordinarily inhabited by the family (or covered by " ++
             "a 45(2) or (3) election, for at most four years: (d)), designated, and not blocked by another family-unit " ++

@@ -27,3 +27,4 @@ The verbatim statute text for each is in `statute/`. Review notes are in `docs/r
 - `S70/Death.lean`: subsections 70(5), (6) and (6.2)
 - `S74/Attribution.lean`: subsection 74.2(1), and 74.5(1) and (3)
 - `S45/ChangeInUse.lean`: subsections 45(1) to (4)
+- `S85/TransferToCorporation.lean`: subsections 85(1), (1.1) and (2.1)
