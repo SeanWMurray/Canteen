@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 82 statements:** 63 proven, 16 encoded, 3 not formalized.
+**Status of the 83 statements:** 64 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -86,12 +86,13 @@ graph TD
   n73["R40 · Tax on split income"]:::proven
   n74["R41 · The federal rates"]:::proven
   n75["R42 · The basic personal and spouse amounts"]:::proven
-  n76["R35 · An individual's year, to taxable income and tax"]:::proven
-  n77["R11 · The principal residence exemption"]:::proven
-  n78["R2 · Cost of the substituted property"]:::proven
-  n79["N1 · Inputs decided by other provisions"]:::notFormalized
-  n80["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n81["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n76["R43 · The charitable donation credit"]:::proven
+  n77["R35 · An individual's year, to taxable income and tax"]:::proven
+  n78["R11 · The principal residence exemption"]:::proven
+  n79["R2 · Cost of the substituted property"]:::proven
+  n80["N1 · Inputs decided by other provisions"]:::notFormalized
+  n81["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n82["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -208,30 +209,32 @@ graph TD
   n56 --> n72
   n56 --> n73
   n74 --> n75
-  n44 --> n76
-  n45 --> n76
-  n53 --> n76
-  n55 --> n76
-  n56 --> n76
-  n58 --> n76
-  n73 --> n76
   n74 --> n76
-  n75 --> n76
   n44 --> n77
-  n50 --> n77
-  n11 --> n78
-  n1 --> n79
-  n5 --> n79
-  n6 --> n79
-  n8 --> n79
-  n37 --> n79
-  n78 --> n79
-  n38 --> n79
-  n30 --> n80
-  n32 --> n81
-  n34 --> n81
-  n39 --> n81
-  n42 --> n81
+  n45 --> n77
+  n53 --> n77
+  n55 --> n77
+  n56 --> n77
+  n58 --> n77
+  n73 --> n77
+  n74 --> n77
+  n75 --> n77
+  n76 --> n77
+  n44 --> n78
+  n50 --> n78
+  n11 --> n79
+  n1 --> n80
+  n5 --> n80
+  n6 --> n80
+  n8 --> n80
+  n37 --> n80
+  n79 --> n80
+  n38 --> n80
+  n30 --> n81
+  n32 --> n82
+  n34 --> n82
+  n39 --> n82
+  n42 --> n82
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -324,12 +327,13 @@ graph TD
   n73["R40"]:::proven
   n74["R41"]:::proven
   n75["R42"]:::proven
-  n76["R35"]:::proven
-  n77["R11"]:::proven
-  n78["R2"]:::proven
-  n79["N1"]:::notFormalized
-  n80["N2"]:::notFormalized
-  n81["N4"]:::notFormalized
+  n76["R43"]:::proven
+  n77["R35"]:::proven
+  n78["R11"]:::proven
+  n79["R2"]:::proven
+  n80["N1"]:::notFormalized
+  n81["N2"]:::notFormalized
+  n82["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -526,30 +530,32 @@ graph TD
   n55 -.-> n72
   n56 --> n73
   n74 -.-> n75
-  n55 --> n76
-  n58 --> n76
-  n73 --> n76
-  n56 --> n76
-  n45 --> n76
-  n44 --> n76
-  n53 --> n76
-  n74 --> n76
-  n75 --> n76
-  n44 -.-> n77
-  n50 -.-> n77
-  n11 -.-> n78
-  n1 -.-> n79
-  n5 -.-> n79
-  n6 -.-> n79
-  n8 -.-> n79
-  n37 -.-> n79
-  n78 -.-> n79
-  n38 -.-> n79
-  n30 -.-> n80
-  n32 -.-> n81
-  n34 -.-> n81
-  n39 -.-> n81
-  n42 -.-> n81
+  n74 -.-> n76
+  n55 --> n77
+  n58 --> n77
+  n73 --> n77
+  n56 --> n77
+  n45 --> n77
+  n44 --> n77
+  n53 --> n77
+  n74 --> n77
+  n76 --> n77
+  n75 --> n77
+  n44 -.-> n78
+  n50 -.-> n78
+  n11 -.-> n79
+  n1 -.-> n80
+  n5 -.-> n80
+  n6 -.-> n80
+  n8 -.-> n80
+  n37 -.-> n80
+  n79 -.-> n80
+  n38 -.-> n80
+  n30 -.-> n81
+  n32 -.-> n82
+  n34 -.-> n82
+  n39 -.-> n82
+  n42 -.-> n82
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -1177,13 +1183,21 @@ An individual deducts 14% of the basic personal amount ($12,298 plus an enhancem
 
 **Lean:** [`Canteen.ITA.PersonalCredits.basicPersonalAmount`](../../Canteen/ITA/S118/PersonalCredits.lean#L54), [`Canteen.ITA.PersonalCredits.credit`](../../Canteen/ITA/S118/PersonalCredits.lean#L63), [`Canteen.ITA.PersonalCredits.bpa_between`](../../Canteen/ITA/S118/PersonalCredits.lean#L86), [`Canteen.ITA.PersonalCredits.full_below`](../../Canteen/ITA/S118/PersonalCredits.lean#L91)
 
+### R43. The charitable donation credit
+
+**Status:** proven · **Citation:** ITA 118.1(1), (3) · **Uses:** R41
+
+Gifts to qualified donees (of the year and five before) count up to 75% of income plus 25% of the gains on gifted property (all of income in the year of death); the credit is 14% of the first $200, 33% of gifts matched by income in the top bracket, and 29% of the rest. Proven: total gifts never exceed income.
+
+**Lean:** [`Canteen.ITA.Donations.totalGifts`](../../Canteen/ITA/S118_1/Donations.lean#L41), [`Canteen.ITA.Donations.credit`](../../Canteen/ITA/S118_1/Donations.lean#L49), [`Canteen.ITA.Donations.totalGifts_le_income`](../../Canteen/ITA/S118_1/Donations.lean#L67), [`Canteen.ITA.Donations.death_year`](../../Canteen/ITA/S118_1/Donations.lean#L73)
+
 ### R35. An individual's year, to taxable income and tax
 
-**Status:** proven · **Citation:** ITA 2(2); 3; 111(1)(b); 110.6; 117(2) · **Uses:** R8, R9, R19, R21, R22, R24, R40, R41, R42
+**Status:** proven · **Citation:** ITA 2(2); 3; 111(1)(b); 110.6; 117(2) · **Uses:** R8, R9, R19, R21, R22, R24, R40, R41, R42, R43
 
 Income from sources (employment and business, dividends with the gross-up, recapture, attributed income), net taxable capital gains, less terminal and other losses; then taxable income, after the net capital loss deduction and the capital gains deduction (which the former reduces). Proven: taxable income never exceeds income, and the capital gains deduction never exceeds the net taxable capital gains.
 
-**Lean:** [`Canteen.ITA.IndividualYear.incomeFacts`](../../Canteen/ITA/S3/IndividualYear.lean#L90), [`Canteen.ITA.IndividualYear.taxableIncome`](../../Canteen/ITA/S3/IndividualYear.lean#L112), [`Canteen.ITA.IndividualYear.capitalGainsDeduction`](../../Canteen/ITA/S3/IndividualYear.lean#L102), [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L125), [`Canteen.ITA.IndividualYear.personalCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L120), [`Canteen.ITA.IndividualYear.taxable_le_income`](../../Canteen/ITA/S3/IndividualYear.lean#L153), [`Canteen.ITA.IndividualYear.capital_gains_deduction_le`](../../Canteen/ITA/S3/IndividualYear.lean#L158)
+**Lean:** [`Canteen.ITA.IndividualYear.incomeFacts`](../../Canteen/ITA/S3/IndividualYear.lean#L96), [`Canteen.ITA.IndividualYear.taxableIncome`](../../Canteen/ITA/S3/IndividualYear.lean#L118), [`Canteen.ITA.IndividualYear.capitalGainsDeduction`](../../Canteen/ITA/S3/IndividualYear.lean#L108), [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L137), [`Canteen.ITA.IndividualYear.personalCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L126), [`Canteen.ITA.IndividualYear.donationCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L134), [`Canteen.ITA.IndividualYear.taxable_le_income`](../../Canteen/ITA/S3/IndividualYear.lean#L165), [`Canteen.ITA.IndividualYear.capital_gains_deduction_le`](../../Canteen/ITA/S3/IndividualYear.lean#L170)
 
 ### R11. The principal residence exemption
 

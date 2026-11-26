@@ -6,6 +6,7 @@ import Canteen.ITA.S13.Depreciable
 import Canteen.ITA.S74.IncomeAttribution
 import Canteen.ITA.S117.Rates
 import Canteen.ITA.S118.PersonalCredits
+import Canteen.ITA.S118_1.Donations
 import Canteen.ITA.S120_4.SplitIncome
 
 /-!
@@ -27,7 +28,8 @@ This puts the encoded provisions together for one individual and one taxation ye
 Recapture is treated as income from the business, and a terminal loss as a business loss, of the
 year. Split income (120.4) is deducted from income (20(1)(ww)) and taxed at the highest rate. Federal
 tax is 117(2) on taxable income plus the split income tax, less the dividend tax credit (121) and
-the basic personal and spouse credit (118(1)), and other non-refundable credits (given). Amounts
+the basic personal and spouse credit (118(1)), the donation credit (118.1), and other
+non-refundable credits (given). Amounts
 are in cents, except section 3 and taxable income, in half-cents.
 -/
 
@@ -73,6 +75,10 @@ structure Facts where
   supportsSpouse : Bool := false
   spouseIncome : Cents := 0
   spouseInfirm : Bool := false
+  /-- 118.1: total charitable gifts (with those carried forward), and the gains on gifts (B to D). -/
+  charitableGifts : Cents := 0
+  giftGains : Cents := 0
+  deathYear : Bool := false
   /-- Other non-refundable credits, given. -/
   otherCredits : Cents := 0
   deriving Inhabited
@@ -122,11 +128,17 @@ def personalCredit (f : Facts) : Cents :=
   | none => 0
   | some a => PersonalCredits.credit (personalFacts f a)
 
+def donationFacts (f : Facts) : Donations.Facts :=
+  { charitableGifts := f.charitableGifts, income := income f / 2, amountTaxable := taxableIncome f / 2, deathYear := f.deathYear, giftGains := f.giftGains, brackets := f.brackets }
+
+/-- 118.1(3): the donation credit. -/
+def donationCredit (f : Facts) : Cents := Donations.credit (donationFacts f)
+
 /-- Tax under 117(2) on taxable income, plus tax on split income (120.4(2)), less the dividend tax
-credit, the personal credit and other credits. -/
+credit, the personal credit, the donation credit and other credits. -/
 def federalTax (f : Facts) : Cents :=
   (Rates.tax (taxableIncome f / 2) f.brackets + (f.split.map SplitIncome.tax).getD 0) -
-    (Dividends.credit (dividendFacts f) + personalCredit f + f.otherCredits)
+    (Dividends.credit (dividendFacts f) + personalCredit f + donationCredit f + f.otherCredits)
 
 def explain (f : Facts) : Finding :=
   let h := formatHalfCents
@@ -144,9 +156,9 @@ def explain (f : Facts) : Finding :=
       "ITA 2(2); 111(1)(b); 110.6(2), (2.1)"⟩,
     ⟨s!"Tax under 117(2) on taxable income, {c (Rates.tax (taxableIncome f / 2) f.brackets)}" ++
       (if splitIncome f > 0 then s!", plus tax on split income of {c ((f.split.map SplitIncome.tax).getD 0)}" else "") ++
-      s!", less the dividend tax credit of {c (Dividends.credit (dividendFacts f))}, the personal credit of {c (personalCredit f)} " ++
-      s!"and other credits of {c f.otherCredits}: " ++
-      s!"{c (federalTax f)}.", "ITA 117(2); 120.4(2); 121"⟩], []⟩
+      s!", less the dividend tax credit of {c (Dividends.credit (dividendFacts f))}, the personal credit of {c (personalCredit f)}, " ++
+      s!"the donation credit of {c (donationCredit f)} and other credits of {c f.otherCredits}: " ++
+      s!"{c (federalTax f)}.", "ITA 117(2); 120.4(2); 121; 118; 118.1"⟩], []⟩
 
 /-! ## Truths about the year -/
 

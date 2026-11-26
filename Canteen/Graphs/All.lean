@@ -173,7 +173,8 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S74.CorporateAttribution, "74.4(2) corporate attribution"),
    (`Canteen.ITA.S120_4.SplitIncome, "120.4 tax on split income"),
    (`Canteen.ITA.S117.Rates, "117(2) the federal rates"),
-   (`Canteen.ITA.S118.PersonalCredits, "118(1), (1.1) personal amounts")]
+   (`Canteen.ITA.S118.PersonalCredits, "118(1), (1.1) personal amounts"),
+   (`Canteen.ITA.S118_1.Donations, "118.1 the donation credit")]
 
 /-! ## The dashboard -/
 
@@ -278,6 +279,7 @@ def actMindmap : String := Id.run do
     (2, "s. 112"), (3, "112(1): intercorporate dividend deduction"),
     (2, "s. 117"), (3, "117(2): the federal rates"),
     (2, "s. 118"), (3, "118(1.1): basic personal amount"), (3, "118(1)(a): spouse amount"),
+    (2, "s. 118.1"), (3, "118.1(1): total gifts"), (3, "118.1(3): the credit"),
     (2, "s. 120.4"), (3, "120.4(1): split income, excluded amounts"), (3, "120.4(2), (3): the tax"),
     (2, "s. 121"), (3, "121: the dividend tax credit"),
     (2, "s. 186"), (3, "186(4): connected corporations"), (3, "186(2): control with non-arm's length persons"),

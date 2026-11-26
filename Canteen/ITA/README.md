@@ -53,3 +53,4 @@ The verbatim statute text for each is in `statute/`. Review notes are in `docs/r
 - `S120_4/SplitIncome.lean`: subsections 120.4(1) to (3), and 20(1)(ww)
 - `S117/Rates.lean`: subsection 117(2)
 - `S118/PersonalCredits.lean`: subsections 118(1)(a), (c) and (1.1)
+- `S118_1/Donations.lean`: section 118.1, the definitions and subsection (3)

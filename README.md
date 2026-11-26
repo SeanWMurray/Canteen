@@ -17,7 +17,7 @@ The full design is in [`docs/design.md`](docs/design.md).
 | 4. First real provision | Encoded; awaiting review | Section 54 "superficial loss" with all its exceptions, and subparagraph 40(2)(g)(i); see [`docs/review/superficial-loss.md`](docs/review/superficial-loss.md) |
 | 5. Blueprint | Done | Memos whose statements link to Lean, with dependency graphs coloured by proven/unproven status; see [`docs/blueprint/`](docs/blueprint/README.md) |
 | 6. Ergonomics | Done | The `statute` command: rules written in the statute's own shape, sound with nothing to prove |
-| Beyond the roadmap | Done | Sections 3, 38 to 41 and 111, recapture and terminal losses (13(1), (21), 20(16)) (the capital gains computation, net capital losses and taxable income), 45(1) to (4), 69(1), 70(5) and (6), 73(1), 74.1, 74.2, 74.4(2), 82(1) and 121, tax on split income (120.4), the federal rates (117(2)) and personal amounts (118(1)), 112(1) and 55(2), 83(2) and 89(1) (capital dividends), 84(3), (4) and (4.1), 40(3), 84.1, 85(1) and (2.1), 51, 86, 87(1), (2)(e) and (4), 88(1), the capital gains deduction (110.6(2), (2.1)), the principal residence exemption, replacement property (44(1)), part dispositions (43(1)), identical properties (47(1)), the Canadian securities election (39(4)), all of paragraph 40(2)(g), 40(2)(e.1), 40(3.3) to (3.6), 50(1) and (2), 53(1)(f), sections 251 and 251.1 (with the amalgamation rules), loss restriction events (251.2(2)(a), 256(7)(a)), connected corporations (186(4)) encoded; nine transactions; diagrams drawn from the Lean; memos checked against what their proofs use |
+| Beyond the roadmap | Done | Sections 3, 38 to 41 and 111, recapture and terminal losses (13(1), (21), 20(16)) (the capital gains computation, net capital losses and taxable income), 45(1) to (4), 69(1), 70(5) and (6), 73(1), 74.1, 74.2, 74.4(2), 82(1) and 121, tax on split income (120.4), the federal rates (117(2)) and personal amounts (118(1)), the donation credit (118.1), 112(1) and 55(2), 83(2) and 89(1) (capital dividends), 84(3), (4) and (4.1), 40(3), 84.1, 85(1) and (2.1), 51, 86, 87(1), (2)(e) and (4), 88(1), the capital gains deduction (110.6(2), (2.1)), the principal residence exemption, replacement property (44(1)), part dispositions (43(1)), identical properties (47(1)), the Canadian securities election (39(4)), all of paragraph 40(2)(g), 40(2)(e.1), 40(3.3) to (3.6), 50(1) and (2), 53(1)(f), sections 251 and 251.1 (with the amalgamation rules), loss restriction events (251.2(2)(a), 256(7)(a)), connected corporations (186(4)) encoded; nine transactions; diagrams drawn from the Lean; memos checked against what their proofs use |
 
 ## Building
 
@@ -89,6 +89,7 @@ Canteen/
     S120_4/SplitIncome.lean    120.4: tax on split income, by age, at the highest rate
     S117/Rates.lean            117(2): the federal rates for individuals
     S118/PersonalCredits.lean   118(1), (1.1): the basic personal and spouse amounts
+    S118_1/Donations.lean      118.1: the charitable donation credit
     S82/Dividends.lean         82(1), 121: taxable dividends, the gross-up, and the dividend tax credit
     S55/IntercorporateDividends.lean   112(1), 55(2): intercorporate dividends, and when they are capital gains
     S13/Depreciable.lean       13(1), (21), 20(16): undepreciated capital cost, recapture, terminal loss
