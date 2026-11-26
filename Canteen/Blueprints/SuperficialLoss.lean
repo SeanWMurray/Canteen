@@ -40,6 +40,7 @@ import Canteen.ITA.S3.IndividualYear
 import Canteen.ITA.S39.CanadianSecurities
 import Canteen.ITA.S50.BadDebtOrShare
 import Canteen.ITA.S43.PartialDisposition
+import Canteen.ITA.S74.CorporateAttribution
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -477,6 +478,14 @@ def blueprint : Blueprint where
           statement := "The cost of a part disposed of is the portion of the whole's adjusted cost base reasonably attributable " ++
             "to it (usually by value, which can be a judgment call); the rest stays with the part kept. Proven: the two add up."
           lean := [``PartialDisposition.partCost, ``PartialDisposition.costs_add_up], uses := ["R8"] },
+        { id := "R39", kind := .law, title := "Corporate attribution", citation := "ITA 74.4(2); 74.5(5)"
+          statement := "An individual who transfers or lends property to a corporation, with a main purpose of reducing their " ++
+            "income and benefiting a spouse or minor child, niece or nephew who is a specified shareholder, is deemed to " ++
+            "receive interest at the prescribed rate on the amount outstanding, less interest received and dividends included " ++
+            "on the shares taken back; not while the corporation is a small business corporation. Proven: dividends on the " ++
+            "freeze shares at least equal to the prescribed interest leave nothing deemed."
+          lean := [``CorporateAttribution.applies, ``CorporateAttribution.deemedInterest, ``CorporateAttribution.dividends_cover,
+            ``CorporateAttribution.not_for_small_business], uses := ["R21", "R22"] },
         { id := "R11", kind := .law, title := "The principal residence exemption", citation := "ITA 40(2)(b); 54 \"principal residence\""
           statement := "A home is the principal residence for a year if owned, ordinarily inhabited by the family (or covered by " ++
             "a 45(2) or (3) election, for at most four years: (d)), designated, and not blocked by another family-unit " ++

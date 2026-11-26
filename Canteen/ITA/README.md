@@ -49,3 +49,4 @@ The verbatim statute text for each is in `statute/`. Review notes are in `docs/r
 - `S39/CanadianSecurities.lean`: subsections 39(4) to (6)
 - `S50/BadDebtOrShare.lean`: subsection 50(1)
 - `S43/PartialDisposition.lean`: subsection 43(1)
+- `S74/CorporateAttribution.lean`: subsections 74.4(1), (2) and 74.5(5)

@@ -35,6 +35,7 @@ import Canteen.ITA.S88.WindingUp
 import Canteen.ITA.S87.Amalgamation
 import Canteen.ITA.S39.CanadianSecurities
 import Canteen.ITA.S50.BadDebtOrShare
+import Canteen.ITA.S74.CorporateAttribution
 import Canteen.Transactions.SisterCompanyRepurchase
 import Canteen.Transactions.Crystallization
 import Canteen.Transactions.SaleThroughHoldco
@@ -167,7 +168,8 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S3.IndividualYear, "2(2), 3 an individual's year, to taxable income"),
    (`Canteen.ITA.S39.CanadianSecurities, "39(4) to (6) the Canadian securities election"),
    (`Canteen.ITA.S50.BadDebtOrShare, "50(1) bad debts and worthless shares"),
-   (`Canteen.ITA.S43.PartialDisposition, "43(1) part of a property")]
+   (`Canteen.ITA.S43.PartialDisposition, "43(1) part of a property"),
+   (`Canteen.ITA.S74.CorporateAttribution, "74.4(2) corporate attribution")]
 
 /-! ## The dashboard -/
 
@@ -253,8 +255,8 @@ def actMindmap : String := Id.run do
     (2, "s. 69"), (3, "69(1): not at arm's length, gifts"),
     (2, "s. 70"), (3, "70(5): deemed disposition on death"), (3, "70(6): rollover to a spouse or spousal trust"),
     (2, "s. 73"), (3, "73(1), (1.01): the spousal rollover"),
-    (2, "ss. 74.1, 74.2, 74.5"), (3, "74.1(1), (2): income attributed back"), (3, "74.1(3): repaying debt"),
-    (3, "74.2(1): capital gains attributed back"), (3, "74.5(1) to (3): fair market value, loans for value, separation"),
+    (2, "ss. 74.1, 74.2, 74.4, 74.5"), (3, "74.1(1), (2): income attributed back"), (3, "74.1(3): repaying debt"),
+    (3, "74.2(1): capital gains attributed back"), (3, "74.4(2): corporate attribution"), (3, "74.5(1) to (3): fair market value, loans for value, separation"),
     (2, "s. 82"), (3, "82(1): taxable dividends and the gross-up"),
     (2, "s. 83"), (3, "83(2): capital dividends"),
     (2, "s. 84"), (3, "84(3): redemptions, the deemed dividend"), (3, "84(4), (4.1): returns of capital"),
@@ -316,6 +318,7 @@ def pages : List Page := [
       ("Subsection 87(1): amalgamation", flowchart Amalgamation87.amalgamation.outline),
       ("Subsection 39(4): the Canadian securities election", flowchart CanadianSecurities.deemedCapital.outline),
       ("Subsection 50(1): bad debts and worthless shares", flowchart BadDebtOrShare.applies.outline),
+      ("Subsection 74.4(2): corporate attribution", flowchart CorporateAttribution.applies.outline),
       ("Subparagraph 40(2)(g)(iv): transfers to registered plans", flowchart Paragraph40_2_g.planTransferLoss.outline),
       ("Clause 40(2)(g)(iv)(A)", flowchart Paragraph40_2_g.planTransferA.outline),
       ("Clause 40(2)(g)(iv)(B)", flowchart Paragraph40_2_g.planTransferB.outline),

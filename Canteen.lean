@@ -65,6 +65,7 @@ import Canteen.ITA.S3.IndividualYear
 import Canteen.ITA.S39.CanadianSecurities
 import Canteen.ITA.S50.BadDebtOrShare
 import Canteen.ITA.S43.PartialDisposition
+import Canteen.ITA.S74.CorporateAttribution
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.ITA.S40.ShareToAffiliate
@@ -156,3 +157,4 @@ import Canteen.Tests.IndividualYear
 import Canteen.Tests.CanadianSecurities
 import Canteen.Tests.BadDebtOrShare
 import Canteen.Tests.PartialDisposition
+import Canteen.Tests.CorporateAttribution

@@ -776,6 +776,34 @@ flowchart TD
   classDef start fill:#ffffff,stroke:#212121,color:#212121
 ```
 
+## Subsection 74.4(2): corporate attribution
+
+```mermaid
+flowchart TD
+  S(["subsection 74.4(2) · ITA 74.4(2)"]):::start
+  C0["<b>main purpose</b> One of the main purposes of the transfer or<br/>loan may reasonably be considered to be to<br/>reduce the individual's income and benefit a<br/>designated person<br/><i>judgment call: judgment calls computed from the facts</i><br/>[ITA 74.4(2) main purpose]"]:::judgment
+  C1["<b>(a)</b> A designated person (a spouse or common-law<br/>partner, or a minor child, niece or nephew)<br/>is a specified shareholder of the<br/>corporation<br/>[ITA 74.4(2)(a)]"]:::fact
+  C2["<b>(b)</b> The individual was resident in Canada<br/>[ITA 74.4(2)(b)]"]:::fact
+  E0["<b>(c)</b> The corporation was a small business<br/>corporation throughout the period<br/><i>judgment call: judgment calls computed from the facts</i><br/>[ITA 74.4(2)(c)]"]:::judgment
+  Y(["subsection 74.4(2) applies"]):::yes
+  N(["subsection 74.4(2) does not apply"]):::no
+  S --> C0
+  C0 -->|met| C1
+  C0 -->|not met| N
+  C1 -->|met| C2
+  C1 -->|not met| N
+  C2 -->|met| E0
+  C2 -->|not met| N
+  E0 -->|does not apply| Y
+  E0 -->|applies| N
+  classDef fact fill:#eeeeee,stroke:#616161,color:#212121
+  classDef judgment fill:#ffe0b2,stroke:#ef6c00,color:#e65100
+  classDef rule fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+  classDef yes fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
+  classDef no fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+  classDef start fill:#ffffff,stroke:#212121,color:#212121
+```
+
 ## Subparagraph 40(2)(g)(iv): transfers to registered plans
 
 ```mermaid

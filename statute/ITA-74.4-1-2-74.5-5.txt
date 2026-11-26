@@ -1,0 +1,34 @@
+Income Tax Act, R.S.C. 1985, c. 1 (5th Supp.), subsections 74.4(1) and (2), and 74.5(5)
+
+Source: Justice Canada consolidated Acts (XML), https://github.com/justicecanada/laws-lois-xml, file eng/acts/I-3.3.xml
+Current to: 2026-10-29. Last amended: 2026-06-18.
+Extracted verbatim; whitespace normalized; paragraph labels kept.
+
+74.4
+  (1) In this section,
+     designated person, in respect of an individual, has the meaning assigned by subsection 74.5(5); (personne désignée)
+     excluded consideration, at any time, means consideration received by an individual that is
+      (a) indebtedness,
+      (b) a share of the capital stock of a corporation, or
+      (c) a right to receive indebtedness or a share of the capital stock of a corporation. (contrepartie exclue)
+  [Transfers and loans to corporations]
+  (2) Where an individual has transferred or lent property, either directly or indirectly, by means of a trust or by any other means whatever, to a corporation and one of the main purposes of the transfer or loan may reasonably be considered to be to reduce the income of the individual and to benefit, either directly or indirectly, by means of a trust or by any other means whatever, a person who is a designated person in respect of the individual, in computing the income of the individual for any taxation year that includes a period after the loan or transfer throughout which
+    (a) the person is a designated person in respect of the individual and would have been a specified shareholder of the corporation if the definition specified shareholder in subsection 248(1) were read without reference to paragraphs (a) and (d) of that definition and if the reference therein to “any other corporation that is related to the corporation” were read as a reference to “any other corporation (other than a small business corporation) that is related to the corporation”,
+    (b) the individual was resident in Canada, and
+    (c) the corporation was not a small business corporation,
+    [continued] the individual shall be deemed to have received as interest in the year the amount, if any, by which
+    (d) the amount that would be interest on the outstanding amount of the loan or transfer of the property for such periods in the year if the interest were computed thereon at the prescribed rate of interest for such periods
+    [continued] exceeds the total of
+    (e) any interest received in the year by the individual in respect of the transfer or loan (other than amounts deemed by this subsection to be interest),
+    (f) all amounts included in the individual’s income for the taxation year pursuant to subsection 82(1) or 90(1) in respect of taxable dividends received (other than dividends deemed by section 84 to have been received) by the individual in the year on shares that were received from the corporation as consideration for the transfer or as repayment for the loan that were excluded consideration at the time the dividends were received or on shares substituted therefor that were excluded consideration at that time, and
+    (g) where the designated person is a specified individual in relation to the year, the amount required to be included in computing the designated person’s income for the year in respect of all taxable dividends received by the designated person that
+      (i) can reasonably be considered to be part of the benefit sought to be conferred, and
+      (ii) are included in computing the designated person’s split income for any taxation year.
+
+74.5
+  [Definition of designated person]
+  (5) For the purposes of this section, designated person, in respect of an individual, means a person
+    (a) who is the spouse or common-law partner of the individual; or
+    (b) who is under 18 years of age and who
+      (i) does not deal with the individual at arm’s length, or
+      (ii) is the niece or nephew of the individual.

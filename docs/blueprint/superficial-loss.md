@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 78 statements:** 59 proven, 16 encoded, 3 not formalized.
+**Status of the 79 statements:** 60 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -83,11 +83,12 @@ graph TD
   n70["R36 · The election for Canadian securities"]:::proven
   n71["R37 · Bad debts and worthless shares"]:::proven
   n72["R38 · Disposing of part of a property"]:::proven
-  n73["R11 · The principal residence exemption"]:::proven
-  n74["R2 · Cost of the substituted property"]:::proven
-  n75["N1 · Inputs decided by other provisions"]:::notFormalized
-  n76["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n77["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n73["R39 · Corporate attribution"]:::proven
+  n74["R11 · The principal residence exemption"]:::proven
+  n75["R2 · Cost of the substituted property"]:::proven
+  n76["N1 · Inputs decided by other provisions"]:::notFormalized
+  n77["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n78["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -206,21 +207,23 @@ graph TD
   n44 --> n71
   n12 --> n71
   n44 --> n72
-  n44 --> n73
-  n50 --> n73
-  n11 --> n74
-  n1 --> n75
-  n5 --> n75
-  n6 --> n75
-  n8 --> n75
-  n37 --> n75
-  n74 --> n75
-  n38 --> n75
-  n30 --> n76
-  n32 --> n77
-  n34 --> n77
-  n39 --> n77
-  n42 --> n77
+  n55 --> n73
+  n56 --> n73
+  n44 --> n74
+  n50 --> n74
+  n11 --> n75
+  n1 --> n76
+  n5 --> n76
+  n6 --> n76
+  n8 --> n76
+  n37 --> n76
+  n75 --> n76
+  n38 --> n76
+  n30 --> n77
+  n32 --> n78
+  n34 --> n78
+  n39 --> n78
+  n42 --> n78
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -310,11 +313,12 @@ graph TD
   n70["R36"]:::proven
   n71["R37"]:::proven
   n72["R38"]:::proven
-  n73["R11"]:::proven
-  n74["R2"]:::proven
-  n75["N1"]:::notFormalized
-  n76["N2"]:::notFormalized
-  n77["N4"]:::notFormalized
+  n73["R39"]:::proven
+  n74["R11"]:::proven
+  n75["R2"]:::proven
+  n76["N1"]:::notFormalized
+  n77["N2"]:::notFormalized
+  n78["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -513,21 +517,23 @@ graph TD
   n8 --> n71
   n44 -.-> n71
   n44 -.-> n72
-  n44 -.-> n73
-  n50 -.-> n73
-  n11 -.-> n74
-  n1 -.-> n75
-  n5 -.-> n75
-  n6 -.-> n75
-  n8 -.-> n75
-  n37 -.-> n75
-  n74 -.-> n75
-  n38 -.-> n75
-  n30 -.-> n76
-  n32 -.-> n77
-  n34 -.-> n77
-  n39 -.-> n77
-  n42 -.-> n77
+  n56 --> n73
+  n55 -.-> n73
+  n44 -.-> n74
+  n50 -.-> n74
+  n11 -.-> n75
+  n1 -.-> n76
+  n5 -.-> n76
+  n6 -.-> n76
+  n8 -.-> n76
+  n37 -.-> n76
+  n75 -.-> n76
+  n38 -.-> n76
+  n30 -.-> n77
+  n32 -.-> n78
+  n34 -.-> n78
+  n39 -.-> n78
+  n42 -.-> n78
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -1130,6 +1136,14 @@ A debt established to have become bad, or a share of a corporation that became b
 The cost of a part disposed of is the portion of the whole's adjusted cost base reasonably attributable to it (usually by value, which can be a judgment call); the rest stays with the part kept. Proven: the two add up.
 
 **Lean:** [`Canteen.ITA.PartialDisposition.partCost`](../../Canteen/ITA/S43/PartialDisposition.lean#L37), [`Canteen.ITA.PartialDisposition.costs_add_up`](../../Canteen/ITA/S43/PartialDisposition.lean#L61)
+
+### R39. Corporate attribution
+
+**Status:** proven · **Citation:** ITA 74.4(2); 74.5(5) · **Uses:** R21, R22
+
+An individual who transfers or lends property to a corporation, with a main purpose of reducing their income and benefiting a spouse or minor child, niece or nephew who is a specified shareholder, is deemed to receive interest at the prescribed rate on the amount outstanding, less interest received and dividends included on the shares taken back; not while the corporation is a small business corporation. Proven: dividends on the freeze shares at least equal to the prescribed interest leave nothing deemed.
+
+**Lean:** [`Canteen.ITA.CorporateAttribution.applies`](../../Canteen/ITA/S74/CorporateAttribution.lean#L61), [`Canteen.ITA.CorporateAttribution.deemedInterest`](../../Canteen/ITA/S74/CorporateAttribution.lean#L85), [`Canteen.ITA.CorporateAttribution.dividends_cover`](../../Canteen/ITA/S74/CorporateAttribution.lean#L113), [`Canteen.ITA.CorporateAttribution.not_for_small_business`](../../Canteen/ITA/S74/CorporateAttribution.lean#L109)
 
 ### R11. The principal residence exemption
 
