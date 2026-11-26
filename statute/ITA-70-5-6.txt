@@ -1,0 +1,37 @@
+Income Tax Act, R.S.C. 1985, c. 1 (5th Supp.), subsections 70(5), (6) and (6.2)
+
+Source: Justice Canada consolidated Acts (XML), https://github.com/justicecanada/laws-lois-xml, file eng/acts/I-3.3.xml
+Current to: 2026-10-29. Last amended: 2026-06-18.
+Extracted verbatim; whitespace normalized; paragraph labels kept.
+
+(5) Where in a taxation year a taxpayer dies,
+  (a) the taxpayer shall be deemed to have, immediately before the taxpayer’s death, disposed of each capital property of the taxpayer and received proceeds of disposition therefor equal to the fair market value of the property immediately before the death;
+  (b) any person who as a consequence of the taxpayer’s death acquires any property that is deemed by paragraph 70(5)(a) to have been disposed of by the taxpayer shall be deemed to have acquired it at the time of the death at a cost equal to its fair market value immediately before the death;
+  (c) where any depreciable property of the taxpayer of a prescribed class that is deemed by paragraph 70(5)(a) to have been disposed of is acquired by any person as a consequence of the taxpayer’s death (other than where the taxpayer’s proceeds of disposition of the property under paragraph 70(5)(a) are redetermined under subsection 13(21.1)) and the amount that was the capital cost to the taxpayer of the property exceeds the amount determined under paragraph 70(5)(b) to be the cost to the person thereof, for the purposes of sections 13 and 20 and any regulations made for the purpose of paragraph 20(1)(a),
+    (i) the capital cost to the person of the property shall be deemed to be the amount that was the capital cost to the taxpayer of the property, and
+    (ii) the excess shall be deemed to have been allowed to the person in respect of the property under regulations made for the purpose of paragraph 20(1)(a) in computing income for taxation years that ended before the person acquired the property; and
+  (d) where a property of the taxpayer that was deemed by paragraph 70(5)(a) to have been disposed of is acquired by any person as a consequence of the taxpayer’s death and the taxpayer’s proceeds of disposition of the property under paragraph 70(5)(a) are redetermined under subsection 13(21.1), notwithstanding paragraph 70(5)(b),
+    (i) where the property was depreciable property of a prescribed class and the amount that was the capital cost to the taxpayer of the property exceeds the amount so redetermined under subsection 13(21.1), for the purposes of sections 13 and 20 and any regulations made for the purpose of paragraph 20(1)(a),
+      (A) its capital cost to the person shall be deemed to be the amount that was its capital cost to the taxpayer, and
+      (B) the excess shall be deemed to have been allowed to the person in respect of the property under regulations made for the purpose of paragraph 20(1)(a) in computing income for taxation years that ended before the person acquired the property, and
+    (ii) where the property is land (other than land to which subparagraph 70(5)(d)(i) applies), its cost to the person shall be deemed to be the amount that was the taxpayer’s proceeds of disposition of the land as redetermined under subsection 13(21.1).
+
+(6) Where any property of a taxpayer who was resident in Canada immediately before the taxpayer’s death that is a property to which subsection 70(5) would otherwise apply is, as a consequence of the death, transferred or distributed to
+  (a) the taxpayer’s spouse or common-law partner who was resident in Canada immediately before the taxpayer’s death, or
+  (b) a trust, created by the taxpayer’s will, that was resident in Canada immediately after the time the property vested indefeasibly in the trust and under which
+    (i) the taxpayer’s spouse or common-law partner is entitled to receive all of the income of the trust that arises before the spouse’s or common-law partner’s death, and
+    (ii) no person except the spouse or common-law partner may, before the spouse’s or common-law partner’s death, receive or otherwise obtain the use of any of the income or capital of the trust,
+  [continued] if it can be shown, within the period ending 36 months after the death of the taxpayer or, where written application therefor has been made to the Minister by the taxpayer’s legal representative within that period, within such longer period as the Minister considers reasonable in the circumstances, that the property has become vested indefeasibly in the spouse or common-law partner or trust, as the case may be, the following rules apply:
+  (c) paragraphs 70(5)(a) and 70(5)(b) do not apply in respect of the property,
+  (d) subject to paragraph 70(6)(d.1), the taxpayer shall be deemed to have, immediately before the taxpayer’s death, disposed of the property and received proceeds of disposition therefor equal to
+    (i) where the property was depreciable property of a prescribed class, the lesser of the capital cost and the cost amount to the taxpayer of the property immediately before the death, and
+    (ii) in any other case, its adjusted cost base to the taxpayer immediately before the death,
+    [continued] and the spouse or common-law partner or trust, as the case may be, shall be deemed to have acquired the property at the time of the death at a cost equal to those proceeds,
+  (d.1) where the property is an interest in a partnership (other than an interest in a partnership to which subsection 100(3) applies),
+    (i) the taxpayer shall, except for the purposes of paragraph 98(5)(g), be deemed not to have disposed of the property as a consequence of the taxpayer’s death,
+    (ii) the spouse or common-law partner or the trust, as the case may be, shall be deemed to have acquired the property at the time of the death at a cost equal to its cost to the taxpayer, and
+    (iii) each amount added or deducted in computing the adjusted cost base to the taxpayer of the property shall be deemed to be required by subsection 53(1) or 53(2) to be added or deducted, as the case may be, in computing the adjusted cost base to the spouse or common-law partner or the trust, as the case may be, of the property; and
+  (e) where the property was depreciable property of the taxpayer of a prescribed class, paragraph (5)(c) applies as if the references therein to “paragraph 70(6)(a)” and to “paragraph 70(6)(b)” were read as references to “paragraph 70(6)(d)”.
+
+(6.2) Subsection (5.1), (6) or (6.1) does not apply to any property of a deceased taxpayer in respect of which the taxpayer’s legal representative elects, in the taxpayer’s return of income under this Part (other than a return of income filed under subsection (2) or 104(23), paragraph 128(2)(e) or subsection 150(4)) for the year in which the taxpayer died, to have subsection (5) or (5.4), as the case may be, apply.
+

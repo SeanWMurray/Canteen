@@ -331,6 +331,34 @@ flowchart TD
   classDef start fill:#ffffff,stroke:#212121,color:#212121
 ```
 
+## Subsection 70(6): rollover on death
+
+```mermaid
+flowchart TD
+  S(["subsection 70(6) · ITA 70(6)"]):::start
+  C0["<b>resident</b> The deceased was resident in Canada<br/>immediately before death<br/>[ITA 70(6) resident]"]:::fact
+  C1["<b>(a), (b)</b> The property was transferred, as a<br/>consequence of the death, to the spouse or<br/>common-law partner, resident in Canada<br/>immediately before the death, or to a<br/>resident testamentary trust under which the<br/>spouse or common-law partner has all the<br/>income for life and no one else may use the<br/>income or capital<br/>[ITA 70(6)(a), (b)]"]:::fact
+  C2["<b>vesting</b> It can be shown that the property vested<br/>indefeasibly in the spouse or trust within<br/>36 months after the death<br/>[ITA 70(6) vesting]"]:::fact
+  E0["<b>election under 70(6.2)</b> The legal representative elects under<br/>subsection 70(6.2) that subsection 70(6) not<br/>apply to the property<br/>[ITA 70(6) election under 70(6.2)]"]:::fact
+  Y(["subsection 70(6) applies"]):::yes
+  N(["subsection 70(6) does not apply"]):::no
+  S --> C0
+  C0 -->|met| C1
+  C0 -->|not met| N
+  C1 -->|met| C2
+  C1 -->|not met| N
+  C2 -->|met| E0
+  C2 -->|not met| N
+  E0 -->|does not apply| Y
+  E0 -->|applies| N
+  classDef fact fill:#eeeeee,stroke:#616161,color:#212121
+  classDef judgment fill:#ffe0b2,stroke:#ef6c00,color:#e65100
+  classDef rule fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+  classDef yes fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
+  classDef no fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+  classDef start fill:#ffffff,stroke:#212121,color:#212121
+```
+
 ## Subparagraph 40(2)(g)(iv): transfers to registered plans
 
 ```mermaid

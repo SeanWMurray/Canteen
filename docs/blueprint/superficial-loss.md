@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 53 statements:** 34 proven, 16 encoded, 3 not formalized.
+**Status of the 54 statements:** 35 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -58,11 +58,12 @@ graph TD
   n45["R9 · Net capital losses and taxable income"]:::proven
   n46["R12 · Transfers not at arm's length, and gifts"]:::proven
   n47["R13 · The spousal rollover"]:::proven
-  n48["R11 · The principal residence exemption"]:::proven
-  n49["R2 · Cost of the substituted property"]:::proven
-  n50["N1 · Inputs decided by other provisions"]:::notFormalized
-  n51["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n52["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n48["R14 · Death"]:::proven
+  n49["R11 · The principal residence exemption"]:::proven
+  n50["R2 · Cost of the substituted property"]:::proven
+  n51["N1 · Inputs decided by other provisions"]:::notFormalized
+  n52["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n53["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -143,19 +144,21 @@ graph TD
   n44 --> n46
   n46 --> n47
   n44 --> n48
-  n11 --> n49
-  n1 --> n50
-  n5 --> n50
-  n6 --> n50
-  n8 --> n50
-  n37 --> n50
-  n49 --> n50
-  n38 --> n50
-  n30 --> n51
-  n32 --> n52
-  n34 --> n52
-  n39 --> n52
-  n42 --> n52
+  n3 --> n48
+  n44 --> n49
+  n11 --> n50
+  n1 --> n51
+  n5 --> n51
+  n6 --> n51
+  n8 --> n51
+  n37 --> n51
+  n50 --> n51
+  n38 --> n51
+  n30 --> n52
+  n32 --> n53
+  n34 --> n53
+  n39 --> n53
+  n42 --> n53
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -220,11 +223,12 @@ graph TD
   n45["R9"]:::proven
   n46["R12"]:::proven
   n47["R13"]:::proven
-  n48["R11"]:::proven
-  n49["R2"]:::proven
-  n50["N1"]:::notFormalized
-  n51["N2"]:::notFormalized
-  n52["N4"]:::notFormalized
+  n48["R14"]:::proven
+  n49["R11"]:::proven
+  n50["R2"]:::proven
+  n51["N1"]:::notFormalized
+  n52["N2"]:::notFormalized
+  n53["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -371,19 +375,21 @@ graph TD
   n44 -.-> n46
   n46 --> n47
   n44 -.-> n48
-  n11 -.-> n49
-  n1 -.-> n50
-  n5 -.-> n50
-  n6 -.-> n50
-  n8 -.-> n50
-  n37 -.-> n50
-  n49 -.-> n50
-  n38 -.-> n50
-  n30 -.-> n51
-  n32 -.-> n52
-  n34 -.-> n52
-  n39 -.-> n52
-  n42 -.-> n52
+  n3 -.-> n48
+  n44 -.-> n49
+  n11 -.-> n50
+  n1 -.-> n51
+  n5 -.-> n51
+  n6 -.-> n51
+  n8 -.-> n51
+  n37 -.-> n51
+  n50 -.-> n51
+  n38 -.-> n51
+  n30 -.-> n52
+  n32 -.-> n53
+  n34 -.-> n53
+  n39 -.-> n53
+  n42 -.-> n53
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -786,6 +792,14 @@ A sale below fair market value to a person not at arm's length, a gift, or a tra
 Capital property of an individual transferred to a spouse or common-law partner, a former one in settlement, or a qualifying spousal, alter ego or joint trust, both resident, passes at its adjusted cost base unless the individual elects out; then 69(1) governs. Proven: no gain, and the cost carries over.
 
 **Lean:** [`Canteen.ITA.SpousalRollover.rollover`](../../Canteen/ITA/S73/SpousalRollover.lean#L68), [`Canteen.ITA.SpousalRollover.proceeds`](../../Canteen/ITA/S73/SpousalRollover.lean#L88), [`Canteen.ITA.SpousalRollover.transfereeCost`](../../Canteen/ITA/S73/SpousalRollover.lean#L92), [`Canteen.ITA.SpousalRollover.no_gain_on_rollover`](../../Canteen/ITA/S73/SpousalRollover.lean#L102), [`Canteen.ITA.SpousalRollover.elect_out`](../../Canteen/ITA/S73/SpousalRollover.lean#L109)
+
+### R14. Death
+
+**Status:** proven · **Citation:** ITA 70(5), (6), (6.2) · **Uses:** R8, Pc
+
+On death, each capital property is deemed disposed of at fair market value (70(5)); property passing to a resident spouse or a qualifying spousal trust, vested within 36 months, rolls over at its adjusted cost base (70(6)), unless the representative elects out (70(6.2)). The deemed disposition is excepted from the superficial loss definition by its paragraph (c).
+
+**Lean:** [`Canteen.ITA.Death.rollover`](../../Canteen/ITA/S70/Death.lean#L71), [`Canteen.ITA.Death.proceeds`](../../Canteen/ITA/S70/Death.lean#L88), [`Canteen.ITA.Death.terminalDispositions`](../../Canteen/ITA/S70/Death.lean#L100), [`Canteen.ITA.Death.rollover_no_gain`](../../Canteen/ITA/S70/Death.lean#L138), [`Canteen.ITA.Death.to_child_at_fair_market_value`](../../Canteen/ITA/S70/Death.lean#L132), [`Canteen.ITA.Death.slDisposition`](../../Canteen/ITA/S70/Death.lean#L104)
 
 ### R11. The principal residence exemption
 

@@ -15,6 +15,7 @@ import Canteen.ITA.S40.RelatedDebt
 import Canteen.ITA.S40.PrincipalResidence
 import Canteen.ITA.S69.NonArmsLength
 import Canteen.ITA.S73.SpousalRollover
+import Canteen.ITA.S70.Death
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -267,6 +268,13 @@ def blueprint : Blueprint where
             "unless the individual elects out; then 69(1) governs. Proven: no gain, and the cost carries over."
           lean := [``SpousalRollover.rollover, ``SpousalRollover.proceeds, ``SpousalRollover.transfereeCost,
             ``SpousalRollover.no_gain_on_rollover, ``SpousalRollover.elect_out], uses := ["R12"] },
+        { id := "R14", kind := .law, title := "Death", citation := "ITA 70(5), (6), (6.2)"
+          statement := "On death, each capital property is deemed disposed of at fair market value (70(5)); property passing " ++
+            "to a resident spouse or a qualifying spousal trust, vested within 36 months, rolls over at its adjusted cost " ++
+            "base (70(6)), unless the representative elects out (70(6.2)). The deemed disposition is excepted from the " ++
+            "superficial loss definition by its paragraph (c)."
+          lean := [``Death.rollover, ``Death.proceeds, ``Death.terminalDispositions, ``Death.rollover_no_gain,
+            ``Death.to_child_at_fair_market_value, ``Death.slDisposition], uses := ["R8", "Pc"] },
         { id := "R11", kind := .law, title := "The principal residence exemption", citation := "ITA 40(2)(b); 54 \"principal residence\""
           statement := "A home is the principal residence for a year if owned, ordinarily inhabited by the family (or covered by " ++
             "a 45(2) or (3) election), designated, and not blocked by another family-unit designation; the gain is A − A × B / C " ++

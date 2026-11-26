@@ -116,6 +116,7 @@ R8: proven
 R9: proven
 R12: proven
 R13: proven
+R14: proven
 R11: proven
 R2: proven
 N1: not formalized
