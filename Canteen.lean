@@ -35,6 +35,7 @@ import Canteen.ITA.S251_1.Affiliation
 import Canteen.ITA.S251_1.AffiliatedPersons
 import Canteen.ITA.S251.RelatedPersons
 import Canteen.ITA.S50.BadDebtPersonalUse
+import Canteen.ITA.S40.SuspendedLoss
 import Canteen.ITA.S54.Timeline
 import Canteen.ITA.S40.Paragraph40_2_g_Facts
 import Canteen.ITA.S40.DebtLoss
@@ -50,6 +51,7 @@ import Canteen.Transactions.SpouseRepurchase
 import Canteen.Transactions.SiblingAndLateRepurchase
 import Canteen.Transactions.TfsaContribution
 import Canteen.Transactions.HoldcoRepurchase
+import Canteen.Transactions.SisterCompanyRepurchase
 
 -- Blueprints: memos linked to Lean
 import Canteen.Blueprints.SuperficialLoss
@@ -57,6 +59,7 @@ import Canteen.Blueprints.SpouseRepurchase
 import Canteen.Blueprints.SiblingAndLateRepurchase
 import Canteen.Blueprints.TfsaContribution
 import Canteen.Blueprints.HoldcoRepurchase
+import Canteen.Blueprints.SisterCompanyRepurchase
 import Canteen.Blueprints.All
 
 -- Graph pages
@@ -79,3 +82,4 @@ import Canteen.Tests.Paragraph40_2_g
 import Canteen.Tests.AffiliatedPersons
 import Canteen.Tests.RelatedPersons
 import Canteen.Tests.BadDebt
+import Canteen.Tests.SuspendedLoss

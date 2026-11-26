@@ -163,6 +163,62 @@ flowchart TD
   classDef start fill:#ffffff,stroke:#212121,color:#212121
 ```
 
+## Subsection 40(3.3): suspended losses
+
+```mermaid
+flowchart TD
+  S(["subsection 40(3.3) · ITA 40(3.3)"]):::start
+  C0["<b>(a)</b> The transferor is a corporation, trust or<br/>partnership<br/>[ITA 40(3.3)(a)]"]:::fact
+  C1["<b>(a) property</b> It disposed of a capital property that is<br/>not depreciable property of a prescribed<br/>class<br/>[ITA 40(3.3)(a) property]"]:::fact
+  C2["<b>(b), (c)</b> During the period that begins 30 days before<br/>and ends 30 days after the disposition, the<br/>transferor or a person affiliated with it<br/>acquired a property that is, or is identical<br/>to, the particular property, and at the end<br/>of that period the transferor or a person<br/>affiliated with it owns it<br/><i>judgment call: judgment calls computed from the facts</i><br/>[ITA 40(3.3)(b), (c)]"]:::judgment
+  E0["<b>(a) surplus carve-out</b> For the purposes of computing a foreign<br/>affiliate's surplus or deficit, the property<br/>is excluded property<br/>[ITA 40(3.3)(a) surplus carve-out]"]:::fact
+  E1["<b>(a) dispositions in 54 #quot;superficial loss#quot; (c) to (g)</b> The disposition is one described in<br/>paragraphs (c) to (g) of the definition<br/>#quot;superficial loss#quot; in section 54<br/>[ITA 40(3.3)(a) dispositions in 54 #quot;superficial loss#quot; (c) to (g)]"]:::fact
+  Y(["subsection 40(3.3) applies"]):::yes
+  N(["subsection 40(3.3) does not apply"]):::no
+  S --> C0
+  C0 -->|met| C1
+  C0 -->|not met| N
+  C1 -->|met| C2
+  C1 -->|not met| N
+  C2 -->|met| E0
+  C2 -->|not met| N
+  E0 -->|does not apply| E1
+  E0 -->|applies| N
+  E1 -->|does not apply| Y
+  E1 -->|applies| N
+  classDef fact fill:#eeeeee,stroke:#616161,color:#212121
+  classDef judgment fill:#ffe0b2,stroke:#ef6c00,color:#e65100
+  classDef rule fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+  classDef yes fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
+  classDef no fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+  classDef start fill:#ffffff,stroke:#212121,color:#212121
+```
+
+## Subsection 50(2): a personal-use debt that goes bad
+
+```mermaid
+flowchart TD
+  S(["subsection 50(2) · ITA 50(2)"]):::start
+  C0["<b>personal-use property</b> The debt is personal-use property of the<br/>taxpayer<br/>[ITA 50(2) personal-use property]"]:::fact
+  C1["<b>arm's length</b> It is owing by a person with whom the<br/>taxpayer deals at arm's length<br/><i>judgment call: judgment calls computed from the facts</i><br/>[ITA 50(2) arm's length]"]:::judgment
+  C2["<b>bad debt</b> The taxpayer establishes that it became a<br/>bad debt in the year<br/><i>judgment call: judgment calls computed from the facts</i><br/>[ITA 50(2) bad debt]"]:::judgment
+  Y(["subsection 50(2) applies"]):::yes
+  N(["subsection 50(2) does not apply"]):::no
+  S --> C0
+  C0 -->|met| C1
+  C0 -->|not met| N
+  C1 -->|met| C2
+  C1 -->|not met| N
+  C2 -->|met| Y
+  C2 -->|not met| N
+  classDef fact fill:#eeeeee,stroke:#616161,color:#212121
+  classDef judgment fill:#ffe0b2,stroke:#ef6c00,color:#e65100
+  classDef rule fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+  classDef yes fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
+  classDef no fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+  classDef start fill:#ffffff,stroke:#212121,color:#212121
+```
+
 ## Subparagraph 40(2)(g)(iv): transfers to registered plans
 
 ```mermaid

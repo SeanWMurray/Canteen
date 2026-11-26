@@ -6,3 +6,4 @@ Concrete fact patterns, with each step of the analysis proven as a theorem.
 - `SiblingAndLateRepurchase.lean`: a sibling buys in the period and the taxpayer buys back on day 31
 - `TfsaContribution.lean`: shares contributed in kind to a TFSA at a loss
 - `HoldcoRepurchase.lean`: shares bought back by a holding company the spouses control
+- `SisterCompanyRepurchase.lean`: a company's loss suspended when its sister company buys the shares

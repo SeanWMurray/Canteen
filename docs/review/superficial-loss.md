@@ -1,11 +1,11 @@
-# Review: section 54 "superficial loss", paragraph 40(2)(g), paragraph 53(1)(f), and sections 251 and 251.1
+# Review: section 54 "superficial loss", paragraph 40(2)(g), subsections 40(3.3) to (3.5), 50(2), paragraph 53(1)(f), and sections 251 and 251.1
 
 **Status:** encoded and tested; **awaiting review against the statute** (roadmap Phase 4).
 
 Lean proves that each explanation agrees with its rule, and that the conclusions follow from the definitions.
 It cannot prove that the definitions match the Act. That is what this review is for.
 
-- Statute text (verbatim, current to 2026-10-29): [`statute/ITA-54-superficial-loss.txt`](../../statute/ITA-54-superficial-loss.txt), [`statute/ITA-40-2-g.txt`](../../statute/ITA-40-2-g.txt), [`statute/ITA-53-1-f.txt`](../../statute/ITA-53-1-f.txt), [`statute/ITA-251-1-1-a.txt`](../../statute/ITA-251-1-1-a.txt), [`statute/ITA-54-personal-use-property.txt`](../../statute/ITA-54-personal-use-property.txt), [`statute/ITA-104-2.txt`](../../statute/ITA-104-2.txt), [`statute/ITA-251-1.txt`](../../statute/ITA-251-1.txt) (all of section 251.1, and "majority-interest partner" in 248(1)), [`statute/ITA-251.txt`](../../statute/ITA-251.txt)
+- Statute text (verbatim, current to 2026-10-29): [`statute/ITA-54-superficial-loss.txt`](../../statute/ITA-54-superficial-loss.txt), [`statute/ITA-40-2-g.txt`](../../statute/ITA-40-2-g.txt), [`statute/ITA-53-1-f.txt`](../../statute/ITA-53-1-f.txt), [`statute/ITA-251-1-1-a.txt`](../../statute/ITA-251-1-1-a.txt), [`statute/ITA-54-personal-use-property.txt`](../../statute/ITA-54-personal-use-property.txt), [`statute/ITA-104-2.txt`](../../statute/ITA-104-2.txt), [`statute/ITA-251-1.txt`](../../statute/ITA-251-1.txt) (all of section 251.1, and "majority-interest partner" in 248(1)), [`statute/ITA-251.txt`](../../statute/ITA-251.txt), [`statute/ITA-50-2.txt`](../../statute/ITA-50-2.txt), [`statute/ITA-40-3.3-3.5.txt`](../../statute/ITA-40-3.3-3.5.txt)
 - Encoding: [`Canteen/ITA/S54/SuperficialLoss.lean`](../../Canteen/ITA/S54/SuperficialLoss.lean), [`Canteen/ITA/S40/LossDenial.lean`](../../Canteen/ITA/S40/LossDenial.lean), [`Canteen/ITA/S53/CostAddition.lean`](../../Canteen/ITA/S53/CostAddition.lean), [`Canteen/ITA/S251_1/Affiliation.lean`](../../Canteen/ITA/S251_1/Affiliation.lean), and for 40(2)(g)(ii) to (iv) and the paragraph as a whole: [`DebtLoss.lean`](../../Canteen/ITA/S40/DebtLoss.lean), [`PersonalUseLoss.lean`](../../Canteen/ITA/S40/PersonalUseLoss.lean), [`PlanTransferLoss.lean`](../../Canteen/ITA/S40/PlanTransferLoss.lean), [`Paragraph40_2_g.lean`](../../Canteen/ITA/S40/Paragraph40_2_g.lean), and for section 251.1 paragraphs (a) to (g): [`AffiliatedPersons.lean`](../../Canteen/ITA/S251_1/AffiliatedPersons.lean), and for section 251: [`RelatedPersons.lean`](../../Canteen/ITA/S251/RelatedPersons.lean)
 - Statute forms, each proven equal to the encoding: [`SuperficialLossStatute.lean`](../../Canteen/ITA/S54/SuperficialLossStatute.lean), [`LossDenialStatute.lean`](../../Canteen/ITA/S40/LossDenialStatute.lean)
 - Diagrams: [flowcharts](../graphs/flowcharts.md) and [timelines](../graphs/timelines.md) of the rules as encoded
@@ -64,6 +64,11 @@ It cannot prove that the definitions match the Act. That is what this review is 
 | 251(3) two corporations related to the same corporation | `RelatedPersons.candidates` (3) | ✓ |
 | 251(4) "related group", "unrelated group" | `relatedGroup` | ✓ |
 | 251(1)(a)–(c) arm's length | `armsLength`, `armsLengthAnswer` | related; personal trust; question of fact |
+| 40(3.3)(a) a corporation, trust or partnership disposes of capital property (not prescribed depreciable property; not excluded property in an FA surplus computation), otherwise than in a disposition in 54 "superficial loss" (c) to (g) | `SuspendedLoss.applies` | each condition and exception |
+| 40(3.3)(b), (c) acquired in the period by the transferor or an affiliated person, and owned at its end | `SuspendedLoss.qualifies` | period edges; not affiliated; not owned |
+| 40(3.5)(a), (b), (b.1) rights to acquire; share exchanges under 51, 86, 87, or 85.1; SIFT wind-up shares | `SuspendedLoss.isOrIsIdentical` | each |
+| 40(3.4)(a) the loss is nil; (b) it arises immediately before the first of the times in (i) to (v) | `suspended`, `suspendedLoss`, `releaseDate` | earliest of several; (v) only for a corporation; times before the disposition ignored |
+| 54 "superficial loss" (h) "a disposition to which subsection 40(3.4) applies" | `SuspendedLoss.withSuspension`, `not_superficial_of_applies` | ✓ |
 | 50(2) a personal-use debt owing by an arm's length person, established to be bad in the year | `BadDebtPersonalUse.rule` | each condition |
 | 50(2)(a) deemed proceeds: the amount, if any, by which (i) the debt's adjusted cost base exceeds (ii) the gain on the related disposition; (b) reacquisition at that amount | `deemedProceeds`, `reacquisitionCost`, `loss_eq_min` | gain larger, smaller, nil |
 
@@ -104,6 +109,7 @@ It cannot prove that the definitions match the Act. That is what this review is 
 30. **251(6)(c)** is read as: one adopted, legally or in fact, as the child of the other, or as the child of a person who is the other's ancestor or descendant (the words "otherwise than as a brother or sister" exclude siblings).
 31. **251(1)(b)** (personal trusts) is a fact, not computed: the 248(25) reference is not encoded.
 32. **Not encoded:** 251(3.1) and (3.2) (amalgamations), and the 125(7) purposes of 251(5).
+34. **40(3.3) to (3.5):** "owns" in (3.3)(c) is a fact per acquisition (unlike the superficial loss definition, a right to acquire does not count there). Each release time in 40(3.4)(b)(i) to (v) is given as the date it occurs; (i) is the day the 30-day period without the property begins. The deeming rules in 40(3.5)(c) and (d) (mergers, wind-ups, redemptions) must be reflected in who owns the property. The partnership continuation rule at the end of 40(3.4) is not encoded.
 33. **50(2):** "established by the taxpayer to have become a bad debt in the year" is a fact or a judgment call, and so is arm's length (which 251 can supply). "The amount, if any, by which (i) exceeds (ii)" is (i) minus (ii), or nil. The resulting loss is proven to be the lesser of the debt's cost and the gain.
 19. **"To the extent that" for (ii) to (iv)** is read as the whole loss: the loss is entirely from the disposition of the debt, personal-use property, or property transferred. `Paragraph40_2_g.deniedLoss` treats the whole loss as nil when any subparagraph applies, as `LossDenial.deniedLoss` does for (i).
 

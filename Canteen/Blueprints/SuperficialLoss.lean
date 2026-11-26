@@ -8,6 +8,7 @@ import Canteen.ITA.S251_1.Affiliation
 import Canteen.ITA.S251_1.AffiliatedPersons
 import Canteen.ITA.S251.RelatedPersons
 import Canteen.ITA.S50.BadDebtPersonalUse
+import Canteen.ITA.S40.SuspendedLoss
 import Canteen.ITA.S40.Paragraph40_2_g
 
 /-!
@@ -201,6 +202,13 @@ def blueprint : Blueprint where
             "gain. Subparagraph 40(2)(g)(iii) excludes such a debt."
           lean := [``BadDebtPersonalUse.rule, ``BadDebtPersonalUse.deemedProceeds, ``BadDebtPersonalUse.loss_eq_min,
             ``BadDebtPersonalUse.loss_le_gain] },
+        { id := "R6", kind := .law, title := "Suspended losses of corporations, trusts and partnerships", citation := "ITA 40(3.3)–(3.5)"
+          statement := "The counterpart of the superficial loss rule for corporations, trusts and partnerships: the loss is " ++
+            "nil but suspended until the first of the times in 40(3.4)(b). Paragraph (h) of the superficial loss definition " ++
+            "defers to it, and it uses that definition's period and exceptions (c) to (g)."
+          lean := [``SuspendedLoss.applies, ``SuspendedLoss.rule, ``SuspendedLoss.releaseDate,
+            ``SuspendedLoss.not_superficial_of_applies, ``SuspendedLoss.not_individual, ``SuspendedLoss.not_of_excepted],
+          uses := ["Pc", "Pd", "Pe", "Pf", "Pg", "Ph", "D", "R3"] },
         { id := "R2", kind := .law, title := "Cost of the substituted property", citation := "ITA 53(1)(f)"
           statement := "The superficial loss, less any amount described in subparagraph 53(1)(f)(ii), is added to the cost " ++
             "of the substituted property in computing its adjusted cost base."

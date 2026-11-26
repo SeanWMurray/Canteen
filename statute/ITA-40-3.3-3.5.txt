@@ -1,0 +1,42 @@
+Income Tax Act, R.S.C. 1985, c. 1 (5th Supp.), subsections 40(3.3) to (3.5)
+
+Source: Justice Canada consolidated Acts (XML), https://github.com/justicecanada/laws-lois-xml, file eng/acts/I-3.3.xml
+Current to: 2026-10-29. Last amended: 2026-06-18.
+Extracted verbatim; whitespace normalized; paragraph labels kept; continued text marked [continued].
+
+(3.3) Subsection 40(3.4) applies when
+  (a) a corporation, trust or partnership (in this subsection and subsection (3.4) referred to as the “transferor”) disposes of a particular capital property — other than depreciable property of a prescribed class and other than, for the purposes of computing the exempt surplus or exempt deficit, hybrid surplus or hybrid deficit, and taxable surplus or taxable deficit of a foreign affiliate of a taxpayer, in respect of the taxpayer, where the transferor is the affiliate or is a partnership of which the affiliate is a member, property that is, or would be, if the transferor were a foreign affiliate of the taxpayer, excluded property (within the meaning assigned by subsection 95(1)) of the transferor — otherwise than in a disposition described in any of paragraphs (c) to (g) of the definition superficial loss in section 54;
+  (b) during the period that begins 30 days before and ends 30 days after the disposition, the transferor or a person affiliated with the transferor acquires a property (in this subsection and subsection 40(3.4) referred to as the “substituted property”) that is, or is identical to, the particular property; and
+  (c) at the end of the period, the transferor or a person affiliated with the transferor owns the substituted property.
+
+(3.4) If this subsection applies because of subsection 40(3.3) to a disposition of a particular property,
+  (a) the transferor’s loss, if any, from the disposition is deemed to be nil, and
+  (b) the amount of the transferor’s loss, if any, from the disposition (determined without reference to paragraph 40(2)(g) and this subsection) is deemed to be a loss of the transferor from a disposition of the particular property at the time that is immediately before the first time, after the disposition,
+    (i) at which a 30-day period begins throughout which neither the transferor nor a person affiliated with the transferor owns
+      (A) the substituted property, or
+      (B) a property that is identical to the substituted property and that was acquired after the day that is 31 days before the period begins,
+    (ii) at which the property would, if it were owned by the transferor, be deemed by section 128.1 or subsection 149(10) to have been disposed of by the transferor,
+    (iii) that is immediately before the transferor is subject to a loss restriction event,
+    (iv) at which the transferor or a person affiliated with the transferor is deemed by section 50 to have disposed of the property, where the substituted property is a debt or a share of the capital stock of a corporation, or
+    (v) if the transferor is a corporation,
+      (A) for the purposes of computing the transferor’s foreign accrual property income, exempt surplus or exempt deficit, hybrid surplus or hybrid deficit, and taxable surplus or taxable deficit, in respect of a taxpayer for a taxation year of the transferor where the transferor is a foreign affiliate of the taxpayer, at which the liquidation and dissolution of the transferor begins, unless the liquidation and dissolution is
+        (I) a qualifying liquidation and dissolution (within the meaning assigned by subsection 88(3.1)) of the transferor, or
+        (II) a designated liquidation and dissolution (within the meaning assigned by subsection 95(1)) of the transferor, and
+      (B) for any other purposes, at which the winding-up (other than a winding-up to which subsection 88(1) applies) of the transferor begins,
+    [continued] and for the purpose of paragraph 40(3.4)(b), where a partnership otherwise ceases to exist at any time after the disposition, the partnership is deemed not to have ceased to exist, and each person who was a member of the partnership immediately before the partnership would, but for this subsection, have ceased to exist is deemed to remain a member of the partnership, until the time that is immediately after the first time described in subparagraphs 40(3.4)(b)(i) to 40(3.4)(b)(v).
+
+(3.5) For the purposes of subsections 40(3.3) and 40(3.4),
+  (a) right to acquire a property (other than a right, as security only, derived from a mortgage, hypothec, agreement for sale or similar obligation) is deemed to be a property that is identical to the property;
+  (b) a share of the capital stock of a corporation that is acquired in exchange for another share in a transaction is deemed to be a property that is identical to the other share if
+    (i) section 51, 86 or 87 applies to the transaction, or
+    (ii) the following conditions are met, namely,
+      (A) section 85.1 applies to the transaction,
+      (B) subsection (3.4) applied to a prior disposition of the other share, and
+      (C) none of the times described in any of subparagraphs (3.4)(b)(i) to (v) has occurred in respect of the prior disposition;
+  (b.1) a share of the capital stock of a SIFT wind-up corporation in respect of a SIFT wind-up entity is, if the share was acquired before 2013, deemed to be a property that is identical to equity in the SIFT wind-up entity;
+  (c) if subsections (3.3) and (3.4) apply to the disposition by a transferor of a share of the capital stock of a particular corporation and after the disposition
+    (i) the particular corporation is merged or combined with one or more other corporations, otherwise than in a transaction in respect of which paragraph (b) applies to the share, then the corporation formed on the merger or combination is deemed to own the share while the corporation so formed is affiliated with the transferor,
+    (ii) the particular corporation is wound up in a winding-up to which subsection 88(1) applies, then the parent (within the meaning assigned by subsection 88(1)) is deemed to own the share while the parent is affiliated with the transferor, or
+    (iii) the particular corporation is liquidated and dissolved, the liquidation and dissolution is a qualifying liquidation and dissolution (within the meaning assigned by subsection 88(3.1)) of the corporation or a designated liquidation and dissolution (within the meaning assigned by subsection 95(1)) of the corporation, and the transferor is a foreign affiliate of a taxpayer, then for the purposes of computing the transferor’s foreign accrual property income, exempt surplus or exempt deficit, hybrid surplus or hybrid deficit, and taxable surplus or taxable deficit, in respect of the taxpayer for a taxation year of the transferor, the taxpayer referred to in subsection 88(3.1) or the particular shareholder referred to in the definition designated liquidation and dissolution in subsection 95(1), as the case may be, is deemed to own the share while the taxpayer or particular shareholder is affiliated with the transferor; and
+  (d) where subsections 40(3.3) and 40(3.4) apply to the disposition by a transferor of a share of the capital stock of a corporation, and after the disposition the share is redeemed, acquired or cancelled by the corporation, otherwise than in a transaction in respect of which paragraph 40(3.5)(b) or 40(3.5)(c) applies to the share, the transferor is deemed to own the share while the corporation is affiliated with the transferor.
+

@@ -12,6 +12,9 @@ import Canteen.Transactions.TfsaContribution
 import Canteen.Transactions.HoldcoRepurchase
 import Canteen.ITA.S251_1.AffiliatedPersons
 import Canteen.ITA.S251.RelatedPersons
+import Canteen.ITA.S40.SuspendedLoss
+import Canteen.ITA.S50.BadDebtPersonalUse
+import Canteen.Transactions.SisterCompanyRepurchase
 
 /-!
 # Every graph page, and what is on it
@@ -96,6 +99,8 @@ def pages : List Page := [
       ("Subparagraph 40(2)(g)(ii): debts", flowchart Paragraph40_2_g.debtLoss.outline),
       ("Subparagraph 40(2)(g)(iii): personal-use property", flowchart Paragraph40_2_g.personalUseLoss.outline),
       ("Section 54 \"personal-use property\"", flowchart Paragraph40_2_g.personalUseProperty.outline),
+      ("Subsection 40(3.3): suspended losses", flowchart SuspendedLoss.applies.outline),
+      ("Subsection 50(2): a personal-use debt that goes bad", flowchart BadDebtPersonalUse.rule.outline),
       ("Subparagraph 40(2)(g)(iv): transfers to registered plans", flowchart Paragraph40_2_g.planTransferLoss.outline),
       ("Clause 40(2)(g)(iv)(A)", flowchart Paragraph40_2_g.planTransferA.outline),
       ("Clause 40(2)(g)(iv)(B)", flowchart Paragraph40_2_g.planTransferB.outline),
@@ -123,7 +128,8 @@ def pages : List Page := [
       ("Spouse repurchase", SuperficialLoss.timeline
         (Transactions.SpouseRepurchase.facts Transactions.SpouseRepurchase.position)),
       ("Sibling purchase and day-31 repurchase", SuperficialLoss.timeline (Transactions.SiblingAndLateRepurchase.facts [])),
-      ("The edges of the period: days −31, −30, +30 and +31", SuperficialLoss.timeline boundaries)] },
+      ("The edges of the period: days −31, −30, +30 and +31", SuperficialLoss.timeline boundaries),
+      ("A suspended loss under 40(3.4): Opco and Sisterco", SuspendedLoss.timeline Transactions.SisterCompanyRepurchase.facts)] },
   { file := "affiliation", title := "Who is affiliated with whom"
     intro := "Worlds of persons under section 251.1, drawn from the computed relation. Rounded boxes are individuals, " ++
       "boxes corporations, hexagons partnerships, cylinders trusts. Dashed arrows are control (orange where a judgment " ++

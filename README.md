@@ -17,7 +17,7 @@ The full design is in [`docs/design.md`](docs/design.md).
 | 4. First real provision | Encoded; awaiting review | Section 54 "superficial loss" with all its exceptions, and subparagraph 40(2)(g)(i); see [`docs/review/superficial-loss.md`](docs/review/superficial-loss.md) |
 | 5. Blueprint | Done | Memos whose statements link to Lean, with dependency graphs coloured by proven/unproven status; see [`docs/blueprint/`](docs/blueprint/README.md) |
 | 6. Ergonomics | Done | The `statute` command: rules written in the statute's own shape, sound with nothing to prove |
-| Beyond the roadmap | Done | All of paragraph 40(2)(g), 50(2), 53(1)(f), 251.1(1)(a) to (h), and 251(1) to (6) encoded; four transactions; diagrams drawn from the Lean; memos checked against what their proofs use |
+| Beyond the roadmap | Done | All of paragraph 40(2)(g), 40(3.3) to (3.5), 50(2), 53(1)(f), 251.1(1)(a) to (h), and 251(1) to (6) encoded; five transactions; diagrams drawn from the Lean; memos checked against what their proofs use |
 
 ## Building
 
@@ -77,6 +77,7 @@ Canteen/
     S251_1/AffiliatedPersons.lean   section 251.1(1)(a) to (h) for a whole world of persons, with diagrams
     S251/RelatedPersons.lean   section 251: related persons, blood relationship, and arm's length
     S50/BadDebtPersonalUse.lean   subsection 50(2): a personal-use debt that goes bad
+    S40/SuspendedLoss.lean     subsections 40(3.3) to (3.5): suspended losses of corporations, trusts, partnerships
     S54/Timeline.lean          a timeline chart of the superficial loss period
   Lemmas/                  Layer 2: reusable truths about provisions
   Transactions/            Layer 3: concrete transactions, each step a theorem
@@ -84,6 +85,7 @@ Canteen/
     SiblingAndLateRepurchase.lean   a sibling buys, and the taxpayer buys back on day 31
     TfsaContribution.lean    shares contributed in kind to a TFSA at a loss
     HoldcoRepurchase.lean    shares bought back by a holding company the spouses control
+    SisterCompanyRepurchase.lean   a company's loss suspended when its sister company buys
   Blueprints/              memo-style documents linked to the Lean above
   Graphs/                  the diagram pages
   Tests/                   known-answer, sanity, non-vacuity and read-back tests
@@ -185,7 +187,7 @@ A blueprint (`Canteen/Blueprints/`) is a memo whose statements each name the Lea
 - **Every assumption is visible.** Each statement lists the facts, judgment calls and unformalized statements it rests on.
 - **Memos can't understate their dependencies.** Lean reads the proofs to find which statements each one really uses; a memo that leaves one out is refused. Each memo shows this second graph alongside its own.
 
-Memos: [the spouse repurchase](docs/blueprint/spouse-repurchase.md) (the loss is denied and moves to the spouse's cost), [the sibling and day-31 repurchase](docs/blueprint/sibling-and-late-repurchase.md) (the loss stands, resting on no judgment call), [a TFSA contribution in kind](docs/blueprint/tfsa-contribution.md) (the loss is nil under 40(2)(g)(iv) whether or not the TFSA trust is affiliated), and [a family holding company's repurchase](docs/blueprint/holdco-repurchase.md) (Holdco is affiliated through 251.1(1)(b)(ii); with a friend as co-owner it would turn on de facto control).
+Memos: [the spouse repurchase](docs/blueprint/spouse-repurchase.md) (the loss is denied and moves to the spouse's cost), [the sibling and day-31 repurchase](docs/blueprint/sibling-and-late-repurchase.md) (the loss stands, resting on no judgment call), [a TFSA contribution in kind](docs/blueprint/tfsa-contribution.md) (the loss is nil under 40(2)(g)(iv) whether or not the TFSA trust is affiliated), [a family holding company's repurchase](docs/blueprint/holdco-repurchase.md) (Holdco is affiliated through 251.1(1)(b)(ii); with a friend as co-owner it would turn on de facto control), and [a sister company's repurchase](docs/blueprint/sister-company-repurchase.md) (the company's loss is suspended under 40(3.4) and released when the sister sells).
 
 ## Graphs
 

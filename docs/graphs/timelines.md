@@ -59,3 +59,21 @@ gantt
     2025-07-15 end of period :milestone, endp, 2025-07-15, 0d
 ```
 
+## A suspended loss under 40(3.4): Opco and Sisterco
+
+```mermaid
+gantt
+    title Suspended loss for the disposition on 2025-08-01
+    dateFormat YYYY-MM-DD
+    axisFormat %b %d
+    section Period 40(3.3)(b)
+    2025-07-02 to 2025-08-31 :active, period, 2025-07-02, 61d
+    section Disposition
+    2025-08-01 disposition of 1,000 common shares of PQR Ltd. :milestone, disp, 2025-08-01, 0d
+    section Acquisitions
+    2025-08-15 Sisterco (affiliated) acquires 1,000 common shares of PQR Ltd. :milestone, crit, a0, 2025-08-15, 0d
+    section Suspended loss
+    $15,000.00 suspended :active, susp, 2025-08-01, 185d
+    2026-02-02 released (a 30-day period begins throughout which neither the transferor nor a person affiliated with it owns the substituted property ) :milestone, rel, 2026-02-02, 0d
+```
+

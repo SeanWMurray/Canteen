@@ -37,29 +37,32 @@ flowchart BT
     m29["ITA.S251_1.AffiliatedPersons"]
     m30["ITA.S251.RelatedPersons"]
     m31["ITA.S50.BadDebtPersonalUse"]
-    m32["ITA.S54.Timeline"]
-    m33["ITA.S40.Paragraph40_2_g_Facts"]
-    m34["ITA.S40.DebtLoss"]
-    m35["ITA.S40.PersonalUseLoss"]
-    m36["ITA.S40.PlanTransferLoss"]
-    m37["ITA.S40.Paragraph40_2_g"]
+    m32["ITA.S40.SuspendedLoss"]
+    m33["ITA.S54.Timeline"]
+    m34["ITA.S40.Paragraph40_2_g_Facts"]
+    m35["ITA.S40.DebtLoss"]
+    m36["ITA.S40.PersonalUseLoss"]
+    m37["ITA.S40.PlanTransferLoss"]
+    m38["ITA.S40.Paragraph40_2_g"]
   end
   subgraph Lemmas["Layer 2: reusable lemmas"]
-    m38["Lemmas.SuperficialLoss"]
+    m39["Lemmas.SuperficialLoss"]
   end
   subgraph Transactions["Layer 3: transactions"]
-    m39["Transactions.SpouseRepurchase"]
-    m40["Transactions.SiblingAndLateRepurchase"]
-    m41["Transactions.TfsaContribution"]
-    m42["Transactions.HoldcoRepurchase"]
+    m40["Transactions.SpouseRepurchase"]
+    m41["Transactions.SiblingAndLateRepurchase"]
+    m42["Transactions.TfsaContribution"]
+    m43["Transactions.HoldcoRepurchase"]
+    m44["Transactions.SisterCompanyRepurchase"]
   end
   subgraph Blueprints["Blueprints"]
-    m43["Blueprints.SuperficialLoss"]
-    m44["Blueprints.SpouseRepurchase"]
-    m45["Blueprints.SiblingAndLateRepurchase"]
-    m46["Blueprints.TfsaContribution"]
-    m47["Blueprints.HoldcoRepurchase"]
-    m48["Blueprints.All"]
+    m45["Blueprints.SuperficialLoss"]
+    m46["Blueprints.SpouseRepurchase"]
+    m47["Blueprints.SiblingAndLateRepurchase"]
+    m48["Blueprints.TfsaContribution"]
+    m49["Blueprints.HoldcoRepurchase"]
+    m50["Blueprints.SisterCompanyRepurchase"]
+    m51["Blueprints.All"]
   end
   subgraph Examples["Examples"]
     m19["Examples.RuleX"]
@@ -68,10 +71,10 @@ flowchart BT
     m22["Examples.RuleXStatute"]
   end
   subgraph Graphs["Graphs"]
-    m49["Graphs.All"]
+    m52["Graphs.All"]
   end
   subgraph Root["Root"]
-    m50["Canteen"]
+    m53["Canteen"]
   end
   m0 --> m3
   m3 --> m4
@@ -120,72 +123,82 @@ flowchart BT
   m12 --> m31
   m10 --> m31
   m2 --> m31
+  m12 --> m32
   m23 --> m32
-  m10 --> m33
   m23 --> m33
-  m12 --> m34
-  m33 --> m34
+  m10 --> m34
+  m23 --> m34
   m12 --> m35
-  m33 --> m35
+  m34 --> m35
   m12 --> m36
-  m33 --> m36
+  m34 --> m36
+  m12 --> m37
   m34 --> m37
-  m35 --> m37
-  m36 --> m37
-  m24 --> m37
-  m23 --> m38
-  m24 --> m39
-  m38 --> m39
-  m27 --> m39
-  m28 --> m39
+  m35 --> m38
+  m36 --> m38
+  m37 --> m38
+  m24 --> m38
+  m23 --> m39
   m24 --> m40
+  m39 --> m40
+  m27 --> m40
   m28 --> m40
-  m38 --> m40
-  m37 --> m41
+  m24 --> m41
   m28 --> m41
-  m37 --> m42
-  m27 --> m42
-  m29 --> m42
-  m16 --> m43
+  m39 --> m41
+  m38 --> m42
+  m28 --> m42
   m38 --> m43
-  m26 --> m43
   m27 --> m43
-  m28 --> m43
-  m30 --> m43
-  m31 --> m43
-  m37 --> m43
-  m16 --> m44
-  m17 --> m44
-  m39 --> m44
-  m25 --> m44
+  m29 --> m43
   m32 --> m44
+  m29 --> m44
   m16 --> m45
-  m17 --> m45
-  m40 --> m45
+  m39 --> m45
+  m26 --> m45
+  m27 --> m45
+  m28 --> m45
+  m30 --> m45
+  m31 --> m45
   m32 --> m45
+  m38 --> m45
   m16 --> m46
   m17 --> m46
-  m41 --> m46
-  m32 --> m46
+  m40 --> m46
+  m25 --> m46
+  m33 --> m46
   m16 --> m47
-  m42 --> m47
-  m32 --> m47
-  m43 --> m48
-  m44 --> m48
-  m45 --> m48
-  m46 --> m48
-  m47 --> m48
-  m22 --> m49
-  m21 --> m49
-  m32 --> m49
-  m26 --> m49
-  m39 --> m49
-  m40 --> m49
-  m41 --> m49
-  m42 --> m49
-  m30 --> m49
-  m18 --> m50
-  m20 --> m50
-  m48 --> m50
-  m49 --> m50
+  m17 --> m47
+  m41 --> m47
+  m33 --> m47
+  m16 --> m48
+  m17 --> m48
+  m42 --> m48
+  m33 --> m48
+  m16 --> m49
+  m43 --> m49
+  m33 --> m49
+  m16 --> m50
+  m44 --> m50
+  m45 --> m51
+  m46 --> m51
+  m47 --> m51
+  m48 --> m51
+  m49 --> m51
+  m50 --> m51
+  m22 --> m52
+  m21 --> m52
+  m33 --> m52
+  m26 --> m52
+  m40 --> m52
+  m41 --> m52
+  m42 --> m52
+  m43 --> m52
+  m30 --> m52
+  m31 --> m52
+  m44 --> m52
+  m18 --> m53
+  m20 --> m53
+  m51 --> m53
+  m52 --> m53
 ```
