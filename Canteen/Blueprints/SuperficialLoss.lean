@@ -31,6 +31,7 @@ import Canteen.ITA.S89.CapitalDividendAccount
 import Canteen.ITA.S86.ShareExchange
 import Canteen.ITA.S44.ReplacementProperty
 import Canteen.ITA.S47.IdenticalProperties
+import Canteen.ITA.S186.Connected
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -407,6 +408,13 @@ def blueprint : Blueprint where
             "Proven: the costs of everything sold plus what is left equal everything that went in, to the cent."
           lean := [``IdenticalProperties.run, ``IdenticalProperties.Pool.average, ``IdenticalProperties.conserved,
             ``IdenticalProperties.sell_all], uses := ["R8"] },
+        { id := "R30", kind := .law, title := "Connected corporations", citation := "ITA 186(2), (4), (7)"
+          statement := "A payer corporation is connected with a particular corporation if controlled by it (de jure, or by " ++
+            "186(2): more than half the voting shares held by it and persons not at arm's length with it), or if it owns more " ++
+            "than 10% of both the voting shares and the value of the payer's shares. Used by 84.1 and the qualified small " ++
+            "business corporation share definition."
+          lean := [``Connected.connected, ``Connected.controlled186_2, ``Connected.wholly_owned, ``Connected.not_of_ten_percent],
+          uses := ["R4"] },
         { id := "R11", kind := .law, title := "The principal residence exemption", citation := "ITA 40(2)(b); 54 \"principal residence\""
           statement := "A home is the principal residence for a year if owned, ordinarily inhabited by the family (or covered by " ++
             "a 45(2) or (3) election, for at most four years: (d)), designated, and not blocked by another family-unit " ++

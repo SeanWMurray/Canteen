@@ -40,3 +40,4 @@ The verbatim statute text for each is in `statute/`. Review notes are in `docs/r
 - `S86/ShareExchange.lean`: subsections 86(1) to (3)
 - `S44/ReplacementProperty.lean`: subsection 44(1)
 - `S47/IdenticalProperties.lean`: subsection 47(1)
+- `S186/Connected.lean`: subsections 186(2), (4) and (7)

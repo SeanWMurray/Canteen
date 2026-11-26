@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 69 statements:** 50 proven, 16 encoded, 3 not formalized.
+**Status of the 70 statements:** 51 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -74,11 +74,12 @@ graph TD
   n61["R27 · Share exchanges in a reorganization of capital"]:::proven
   n62["R28 · Replacement property"]:::proven
   n63["R29 · Identical properties: the average cost"]:::proven
-  n64["R11 · The principal residence exemption"]:::proven
-  n65["R2 · Cost of the substituted property"]:::proven
-  n66["N1 · Inputs decided by other provisions"]:::notFormalized
-  n67["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n68["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n64["R30 · Connected corporations"]:::proven
+  n65["R11 · The principal residence exemption"]:::proven
+  n66["R2 · Cost of the substituted property"]:::proven
+  n67["N1 · Inputs decided by other provisions"]:::notFormalized
+  n68["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n69["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -180,21 +181,22 @@ graph TD
   n51 --> n61
   n44 --> n62
   n44 --> n63
-  n44 --> n64
-  n50 --> n64
-  n11 --> n65
-  n1 --> n66
-  n5 --> n66
-  n6 --> n66
-  n8 --> n66
-  n37 --> n66
-  n65 --> n66
-  n38 --> n66
-  n30 --> n67
-  n32 --> n68
-  n34 --> n68
-  n39 --> n68
-  n42 --> n68
+  n39 --> n64
+  n44 --> n65
+  n50 --> n65
+  n11 --> n66
+  n1 --> n67
+  n5 --> n67
+  n6 --> n67
+  n8 --> n67
+  n37 --> n67
+  n66 --> n67
+  n38 --> n67
+  n30 --> n68
+  n32 --> n69
+  n34 --> n69
+  n39 --> n69
+  n42 --> n69
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -275,11 +277,12 @@ graph TD
   n61["R27"]:::proven
   n62["R28"]:::proven
   n63["R29"]:::proven
-  n64["R11"]:::proven
-  n65["R2"]:::proven
-  n66["N1"]:::notFormalized
-  n67["N2"]:::notFormalized
-  n68["N4"]:::notFormalized
+  n64["R30"]:::proven
+  n65["R11"]:::proven
+  n66["R2"]:::proven
+  n67["N1"]:::notFormalized
+  n68["N2"]:::notFormalized
+  n69["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -454,21 +457,22 @@ graph TD
   n51 -.-> n61
   n44 -.-> n62
   n44 -.-> n63
-  n44 -.-> n64
-  n50 -.-> n64
-  n11 -.-> n65
-  n1 -.-> n66
-  n5 -.-> n66
-  n6 -.-> n66
-  n8 -.-> n66
-  n37 -.-> n66
-  n65 -.-> n66
-  n38 -.-> n66
-  n30 -.-> n67
-  n32 -.-> n68
-  n34 -.-> n68
-  n39 -.-> n68
-  n42 -.-> n68
+  n39 -.-> n64
+  n44 -.-> n65
+  n50 -.-> n65
+  n11 -.-> n66
+  n1 -.-> n67
+  n5 -.-> n67
+  n6 -.-> n67
+  n8 -.-> n67
+  n37 -.-> n67
+  n66 -.-> n67
+  n38 -.-> n67
+  n30 -.-> n68
+  n32 -.-> n69
+  n34 -.-> n69
+  n39 -.-> n69
+  n42 -.-> n69
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -999,6 +1003,14 @@ Where property (not a share) is expropriated, destroyed or stolen, or a former b
 Identical properties (such as shares of one class) form a pool, each at the average cost; a sale takes its share of the pool's total cost, and additions to cost (such as a 53(1)(f) superficial loss) are averaged in. Proven: the costs of everything sold plus what is left equal everything that went in, to the cent.
 
 **Lean:** [`Canteen.ITA.IdenticalProperties.run`](../../Canteen/ITA/S47/IdenticalProperties.lean#L53), [`Canteen.ITA.IdenticalProperties.Pool.average`](../../Canteen/ITA/S47/IdenticalProperties.lean#L47), [`Canteen.ITA.IdenticalProperties.conserved`](../../Canteen/ITA/S47/IdenticalProperties.lean#L81), [`Canteen.ITA.IdenticalProperties.sell_all`](../../Canteen/ITA/S47/IdenticalProperties.lean#L100)
+
+### R30. Connected corporations
+
+**Status:** proven · **Citation:** ITA 186(2), (4), (7) · **Uses:** R4
+
+A payer corporation is connected with a particular corporation if controlled by it (de jure, or by 186(2): more than half the voting shares held by it and persons not at arm's length with it), or if it owns more than 10% of both the voting shares and the value of the payer's shares. Used by 84.1 and the qualified small business corporation share definition.
+
+**Lean:** [`Canteen.ITA.Connected.connected`](../../Canteen/ITA/S186/Connected.lean#L77), [`Canteen.ITA.Connected.controlled186_2`](../../Canteen/ITA/S186/Connected.lean#L62), [`Canteen.ITA.Connected.wholly_owned`](../../Canteen/ITA/S186/Connected.lean#L88), [`Canteen.ITA.Connected.not_of_ten_percent`](../../Canteen/ITA/S186/Connected.lean#L99)
 
 ### R11. The principal residence exemption
 

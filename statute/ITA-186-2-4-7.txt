@@ -1,0 +1,17 @@
+Income Tax Act, R.S.C. 1985, c. 1 (5th Supp.), subsections 186(2), (4) and (7)
+
+Source: Justice Canada consolidated Acts (XML), https://github.com/justicecanada/laws-lois-xml, file eng/acts/I-3.3.xml
+Current to: 2026-10-29. Last amended: 2026-06-18.
+Extracted verbatim; whitespace normalized; paragraph labels kept.
+
+186
+  [When corporation controlled]
+  (2) For the purposes of this Part, other than for the purpose of determining whether a corporation is a subject corporation, one corporation is controlled by another corporation if more than 50% of its issued share capital (having full voting rights under all circumstances) belongs to the other corporation, to persons with whom the other corporation does not deal at arm’s length, or to the other corporation and persons with whom the other corporation does not deal at arm’s length.
+  [Corporations connected with particular corporation]
+  (4) For the purposes of this Part, a payer corporation is connected with a particular corporation at any time in a taxation year (in this subsection referred to as the “particular year”) of the particular corporation if
+    (a) the payer corporation is controlled (otherwise than by virtue of a right referred to in paragraph 251(5)(b)) by the particular corporation at that time; or
+    (b) the particular corporation owned, at that time,
+      (i) more than 10% of the issued share capital (having full voting rights under all circumstances) of the payer corporation, and
+      (ii) shares of the capital stock of the payer corporation having a fair market value of more than 10% of the fair market value of all of the issued shares of the capital stock of the payer corporation.
+  [Interpretation]
+  (7) For greater certainty, where a provision of this Act or the regulations indicates that the term connected has the meaning assigned by subsection 186(4), that meaning shall be determined by taking into account the application of subsection 186(2) unless the provision expressly provides otherwise.

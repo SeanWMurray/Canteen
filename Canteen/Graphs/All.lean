@@ -30,6 +30,7 @@ import Canteen.ITA.S74.IncomeAttribution
 import Canteen.ITA.S55.IntercorporateDividends
 import Canteen.ITA.S86.ShareExchange
 import Canteen.ITA.S44.ReplacementProperty
+import Canteen.ITA.S186.Connected
 import Canteen.Transactions.SisterCompanyRepurchase
 import Canteen.Transactions.Crystallization
 import Canteen.Transactions.SaleThroughHoldco
@@ -153,7 +154,8 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S89.CapitalDividendAccount, "83(2), 89(1) capital dividends"),
    (`Canteen.ITA.S86.ShareExchange, "86 share exchanges, estate freezes"),
    (`Canteen.ITA.S44.ReplacementProperty, "44(1) replacement property"),
-   (`Canteen.ITA.S47.IdenticalProperties, "47(1) identical properties")]
+   (`Canteen.ITA.S47.IdenticalProperties, "47(1) identical properties"),
+   (`Canteen.ITA.S186.Connected, "186(2), (4) connected corporations")]
 
 /-! ## The dashboard -/
 
@@ -250,6 +252,7 @@ def actMindmap : String := Id.run do
     (2, "s. 111"), (3, "111(8): net capital loss"), (3, "111(1)(b), (1.1): deduction"),
     (2, "s. 112"), (3, "112(1): intercorporate dividend deduction"),
     (2, "s. 121"), (3, "121: the dividend tax credit"),
+    (2, "s. 186"), (3, "186(4): connected corporations"), (3, "186(2): control with non-arm's length persons"),
     (2, "s. 248"), (3, "248(1): majority-interest partner"),
     (2, "s. 251"), (3, "251(1): arm's length"), (3, "251(2), (3): related persons"), (3, "251(3.1), (3.2): amalgamations"),
     (3, "251(6): blood, marriage, adoption"),
@@ -291,6 +294,7 @@ def pages : List Page := [
       ("Subsection 55(2): dividends over safe income", flowchart IntercorporateDividends.subsection55_2.outline),
       ("Subsection 86(1): share exchanges", flowchart ShareExchange.applies.outline),
       ("Subsection 44(1): replacement property", flowchart ReplacementProperty.applies.outline),
+      ("Subsection 186(4): connected corporations", flowchart Connected.connected.outline),
       ("Subparagraph 40(2)(g)(iv): transfers to registered plans", flowchart Paragraph40_2_g.planTransferLoss.outline),
       ("Clause 40(2)(g)(iv)(A)", flowchart Paragraph40_2_g.planTransferA.outline),
       ("Clause 40(2)(g)(iv)(B)", flowchart Paragraph40_2_g.planTransferB.outline),

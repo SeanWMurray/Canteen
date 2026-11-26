@@ -648,6 +648,25 @@ flowchart TD
   classDef start fill:#ffffff,stroke:#212121,color:#212121
 ```
 
+## Subsection 186(4): connected corporations
+
+```mermaid
+flowchart TD
+  S(["subsection 186(4) · ITA 186(4)"]):::start
+  C0["<b>(a) or (b)</b> The payer is controlled by the particular<br/>corporation (de jure, or by 186(2) with<br/>persons not at arm's length with it), or the<br/>particular corporation owns more than 10% of<br/>its voting shares and more than 10% of the<br/>value of all its shares<br/>[ITA 186(4)(a) or (b)]"]:::fact
+  Y(["subsection 186(4) applies"]):::yes
+  N(["subsection 186(4) does not apply"]):::no
+  S --> C0
+  C0 -->|met| Y
+  C0 -->|not met| N
+  classDef fact fill:#eeeeee,stroke:#616161,color:#212121
+  classDef judgment fill:#ffe0b2,stroke:#ef6c00,color:#e65100
+  classDef rule fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+  classDef yes fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
+  classDef no fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+  classDef start fill:#ffffff,stroke:#212121,color:#212121
+```
+
 ## Subparagraph 40(2)(g)(iv): transfers to registered plans
 
 ```mermaid

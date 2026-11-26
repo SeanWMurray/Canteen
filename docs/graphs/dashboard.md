@@ -9,9 +9,9 @@ An overview of the project, drawn from the Lean.
 Every statement in every blueprint, by the status Lean computes for it.
 
 ```mermaid
-pie showData title All 193 statements in the memos and blueprints, by status
+pie showData title All 194 statements in the memos and blueprints, by status
     "encoded" : 33
-    "proven" : 119
+    "proven" : 120
     "not formalized" : 3
     "fact" : 31
     "judgment call" : 7
@@ -154,19 +154,22 @@ mindmap
       n79["`112(1): intercorporate dividend deduction`"]
     n80["`s. 121`"]
       n81["`121: the dividend tax credit`"]
-    n82["`s. 248`"]
-      n83["`248(1): majority-interest partner`"]
-    n84["`s. 251`"]
-      n85["`251(1): arm's length`"]
-      n86["`251(2), (3): related persons`"]
-      n87["`251(3.1), (3.2): amalgamations`"]
-      n88["`251(6): blood, marriage, adoption`"]
-    n89["`s. 251.1`"]
-      n90["`251.1(1)(a) to (h): affiliated persons`"]
-      n91["`251.1(2): amalgamations`"]
-      n92["`251.1(3), (4): definitions and rules`"]
-    n93["`s. 251.2`"]
-      n94["`251.2(2)(a): loss restriction event`"]
-    n95["`s. 256`"]
-      n96["`256(7)(a): control not acquired`"]
+    n82["`s. 186`"]
+      n83["`186(4): connected corporations`"]
+      n84["`186(2): control with non-arm's length persons`"]
+    n85["`s. 248`"]
+      n86["`248(1): majority-interest partner`"]
+    n87["`s. 251`"]
+      n88["`251(1): arm's length`"]
+      n89["`251(2), (3): related persons`"]
+      n90["`251(3.1), (3.2): amalgamations`"]
+      n91["`251(6): blood, marriage, adoption`"]
+    n92["`s. 251.1`"]
+      n93["`251.1(1)(a) to (h): affiliated persons`"]
+      n94["`251.1(2): amalgamations`"]
+      n95["`251.1(3), (4): definitions and rules`"]
+    n96["`s. 251.2`"]
+      n97["`251.2(2)(a): loss restriction event`"]
+    n98["`s. 256`"]
+      n99["`256(7)(a): control not acquired`"]
 ```
