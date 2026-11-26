@@ -21,6 +21,7 @@ import Canteen.ITA.S45.ChangeInUse
 import Canteen.ITA.S85.TransferToCorporation
 import Canteen.ITA.S84_1.SurplusStripping
 import Canteen.ITA.S110_6.CapitalGainsDeduction
+import Canteen.ITA.S251_2.LossRestrictionEvent
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -323,6 +324,14 @@ def blueprint : Blueprint where
             ``CapitalGainsDeduction.annualGainsLimit, ``CapitalGainsDeduction.cumulativeGainsLimit,
             ``CapitalGainsDeduction.lifetime_limit, ``CapitalGainsDeduction.deduction_le_annual,
             ``CapitalGainsDeduction.cnil_never_helps], uses := ["R8"] },
+        { id := "R20", kind := .law, title := "Loss restriction events", citation := "ITA 251.2(2)(a); 256(7)(a)"
+          statement := "A corporation is subject to a loss restriction event when a person or group acquires control of it " ++
+            "(de jure); but not solely because shares are acquired from a related person, by a person related to the " ++
+            "corporation, by or from an estate on a death, on a redemption leaving only related persons in control, or by " ++
+            "a related group each related to the corporation. The event's date feeds paragraph (f) of the definition."
+          lean := [``LossRestrictionEvent.lossRestrictionEvent, ``LossRestrictionEvent.eventDate,
+            ``LossRestrictionEvent.related_sale, ``LossRestrictionEvent.no_new_controller, ``LossRestrictionEvent.to_estate],
+          uses := ["R4", "Pf"] },
         { id := "R11", kind := .law, title := "The principal residence exemption", citation := "ITA 40(2)(b); 54 \"principal residence\""
           statement := "A home is the principal residence for a year if owned, ordinarily inhabited by the family (or covered by " ++
             "a 45(2) or (3) election, for at most four years: (d)), designated, and not blocked by another family-unit " ++

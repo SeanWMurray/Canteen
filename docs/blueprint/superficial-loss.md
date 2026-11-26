@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 59 statements:** 40 proven, 16 encoded, 3 not formalized.
+**Status of the 60 statements:** 41 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -64,11 +64,12 @@ graph TD
   n51["R17 · Transfer of property to a corporation"]:::proven
   n52["R18 · Shares sold to a non-arm's length corporation"]:::proven
   n53["R19 · The capital gains deduction"]:::proven
-  n54["R11 · The principal residence exemption"]:::proven
-  n55["R2 · Cost of the substituted property"]:::proven
-  n56["N1 · Inputs decided by other provisions"]:::notFormalized
-  n57["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n58["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n54["R20 · Loss restriction events"]:::proven
+  n55["R11 · The principal residence exemption"]:::proven
+  n56["R2 · Cost of the substituted property"]:::proven
+  n57["N1 · Inputs decided by other provisions"]:::notFormalized
+  n58["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n59["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -158,21 +159,23 @@ graph TD
   n44 --> n52
   n51 --> n52
   n44 --> n53
-  n44 --> n54
-  n50 --> n54
-  n11 --> n55
-  n1 --> n56
-  n5 --> n56
-  n6 --> n56
-  n8 --> n56
-  n37 --> n56
-  n55 --> n56
-  n38 --> n56
-  n30 --> n57
-  n32 --> n58
-  n34 --> n58
-  n39 --> n58
-  n42 --> n58
+  n39 --> n54
+  n6 --> n54
+  n44 --> n55
+  n50 --> n55
+  n11 --> n56
+  n1 --> n57
+  n5 --> n57
+  n6 --> n57
+  n8 --> n57
+  n37 --> n57
+  n56 --> n57
+  n38 --> n57
+  n30 --> n58
+  n32 --> n59
+  n34 --> n59
+  n39 --> n59
+  n42 --> n59
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -243,11 +246,12 @@ graph TD
   n51["R17"]:::proven
   n52["R18"]:::proven
   n53["R19"]:::proven
-  n54["R11"]:::proven
-  n55["R2"]:::proven
-  n56["N1"]:::notFormalized
-  n57["N2"]:::notFormalized
-  n58["N4"]:::notFormalized
+  n54["R20"]:::proven
+  n55["R11"]:::proven
+  n56["R2"]:::proven
+  n57["N1"]:::notFormalized
+  n58["N2"]:::notFormalized
+  n59["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -410,21 +414,23 @@ graph TD
   n51 --> n52
   n44 -.-> n52
   n44 -.-> n53
-  n44 -.-> n54
-  n50 -.-> n54
-  n11 -.-> n55
-  n1 -.-> n56
-  n5 -.-> n56
-  n6 -.-> n56
-  n8 -.-> n56
-  n37 -.-> n56
-  n55 -.-> n56
-  n38 -.-> n56
-  n30 -.-> n57
-  n32 -.-> n58
-  n34 -.-> n58
-  n39 -.-> n58
-  n42 -.-> n58
+  n39 -.-> n54
+  n6 -.-> n54
+  n44 -.-> n55
+  n50 -.-> n55
+  n11 -.-> n56
+  n1 -.-> n57
+  n5 -.-> n57
+  n6 -.-> n57
+  n8 -.-> n57
+  n37 -.-> n57
+  n56 -.-> n57
+  n38 -.-> n57
+  n30 -.-> n58
+  n32 -.-> n59
+  n34 -.-> n59
+  n39 -.-> n59
+  n42 -.-> n59
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -875,6 +881,14 @@ An individual resident in Canada who disposes of shares to a corporation not at 
 A resident individual who disposes of qualified small business corporation shares (a small business corporation share, held only by related persons for 24 months, in a CCPC with more than half its assets' value in active business assets) may deduct the least of what is left of the lifetime limit, the cumulative gains limit, the annual gains limit, and the 3(b) amount from those shares. Proven: never past the lifetime limit or the annual gains limit, and a cumulative net investment loss never helps.
 
 **Lean:** [`Canteen.ITA.CapitalGainsDeduction.qualifiedShare`](../../Canteen/ITA/S110_6/CapitalGainsDeduction.lean#L84), [`Canteen.ITA.CapitalGainsDeduction.deduction`](../../Canteen/ITA/S110_6/CapitalGainsDeduction.lean#L153), [`Canteen.ITA.CapitalGainsDeduction.annualGainsLimit`](../../Canteen/ITA/S110_6/CapitalGainsDeduction.lean#L142), [`Canteen.ITA.CapitalGainsDeduction.cumulativeGainsLimit`](../../Canteen/ITA/S110_6/CapitalGainsDeduction.lean#L144), [`Canteen.ITA.CapitalGainsDeduction.lifetime_limit`](../../Canteen/ITA/S110_6/CapitalGainsDeduction.lean#L193), [`Canteen.ITA.CapitalGainsDeduction.deduction_le_annual`](../../Canteen/ITA/S110_6/CapitalGainsDeduction.lean#L202), [`Canteen.ITA.CapitalGainsDeduction.cnil_never_helps`](../../Canteen/ITA/S110_6/CapitalGainsDeduction.lean#L213)
+
+### R20. Loss restriction events
+
+**Status:** proven · **Citation:** ITA 251.2(2)(a); 256(7)(a) · **Uses:** R4, Pf
+
+A corporation is subject to a loss restriction event when a person or group acquires control of it (de jure); but not solely because shares are acquired from a related person, by a person related to the corporation, by or from an estate on a death, on a redemption leaving only related persons in control, or by a related group each related to the corporation. The event's date feeds paragraph (f) of the definition.
+
+**Lean:** [`Canteen.ITA.LossRestrictionEvent.lossRestrictionEvent`](../../Canteen/ITA/S251_2/LossRestrictionEvent.lean#L139), [`Canteen.ITA.LossRestrictionEvent.eventDate`](../../Canteen/ITA/S251_2/LossRestrictionEvent.lean#L169), [`Canteen.ITA.LossRestrictionEvent.related_sale`](../../Canteen/ITA/S251_2/LossRestrictionEvent.lean#L180), [`Canteen.ITA.LossRestrictionEvent.no_new_controller`](../../Canteen/ITA/S251_2/LossRestrictionEvent.lean#L176), [`Canteen.ITA.LossRestrictionEvent.to_estate`](../../Canteen/ITA/S251_2/LossRestrictionEvent.lean#L185)
 
 ### R11. The principal residence exemption
 

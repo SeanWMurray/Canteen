@@ -1,0 +1,30 @@
+Income Tax Act, R.S.C. 1985, c. 1 (5th Supp.), subsection 251.2(2) and the opening words and paragraph (a) of subsection 256(7)
+
+Source: Justice Canada consolidated Acts (XML), https://github.com/justicecanada/laws-lois-xml, file eng/acts/I-3.3.xml
+Current to: 2026-10-29. Last amended: 2026-06-18.
+Extracted verbatim; whitespace normalized; paragraph labels kept.
+
+251.2
+  [Loss restriction event]
+  (2) For the purposes of this Act, a taxpayer is at any time subject to a loss restriction event if
+    (a) the taxpayer is a corporation and at that time control of the corporation is acquired by a person or group of persons; or
+    (b) the taxpayer is a trust and
+      (i) that time is after March 20, 2013 and after the time at which the trust is created, and
+      (ii) at that time a person becomes a majority-interest beneficiary, or a group of persons becomes a majority-interest group of beneficiaries, of the trust.
+
+256
+  [Acquiring control]
+  (7) For the purposes of this subsection, of section 55, subsections 66(11), 66.5(3), 66.7(10) and (11), 85(1.2), 88(1.1) and (1.2), 110.1(1.2) and 111(5.4) and paragraph 251.2(2)(a) and of subsection 5905(5.2) of the Income Tax Regulations,
+    (a) control of a particular corporation shall be deemed not to have been acquired solely because of
+      (i) the acquisition at any time of shares of any corporation by
+        (A) a particular person who acquired the shares from a person to whom the particular person was related (otherwise than because of a right referred to in paragraph 251(5)(b)) immediately before that time,
+        (B) a particular person who was related to the particular corporation (otherwise than because of a right referred to in paragraph 251(5)(b)) immediately before that time,
+        (C) an estate that acquired the shares because of the death of a person,
+        (D) a particular person who acquired the shares from an estate that arose on and as a consequence of the death of an individual, if the estate acquired the shares from the individual as a consequence of the death and the individual was related to the particular person immediately before the death,
+        (E) a corporation on a distribution (within the meaning assigned by subsection 55(1)) by a specified corporation (within the meaning assigned by that subsection) if a dividend, to which subsection 55(2) does not apply because of paragraph 55(3)(b), is received in the course of the reorganization in which the distribution occurs,
+      (ii) the redemption or cancellation at any particular time of, or a change at any particular time in the rights, privileges, restrictions or conditions attaching to, shares of the particular corporation or of a corporation controlling the particular corporation, where each person and each member of each group of persons that controls the particular corporation immediately after the particular time was related (otherwise than because of a right referred to in paragraph 251(5)(b)) to the corporation
+        (A) immediately before the particular time, or
+        (B) immediately before the death of a person, where the shares were held immediately before the particular time by an estate that acquired the shares because of the person’s death, or
+      (iii) the acquisition at any time of shares of the particular corporation if
+        (A) the acquisition of those shares would otherwise result in the acquisition of control of the particular corporation at that time by a related group of persons, and
+        (B) each member of each group of persons that controls the particular corporation at that time was related (otherwise than because of a right referred to in paragraph 251(5)(b)) to the particular corporation immediately before that time;

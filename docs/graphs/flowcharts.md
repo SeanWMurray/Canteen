@@ -496,6 +496,43 @@ flowchart TD
   classDef start fill:#ffffff,stroke:#212121,color:#212121
 ```
 
+## Paragraph 251.2(2)(a), with 256(7)(a): loss restriction events
+
+```mermaid
+flowchart TD
+  S(["paragraph 251.2(2)(a) · ITA 251.2(2)(a)"]):::start
+  C0["<b>corporation</b> The taxpayer is a corporation<br/>[ITA 251.2(2)(a) corporation]"]:::fact
+  C1["<b>control acquired</b> Control of the corporation is acquired by a<br/>person or group of persons: one controls it<br/>immediately after who did not immediately<br/>before<br/><i>judgment call: judgment calls computed from the facts</i><br/>[ITA 251.2(2)(a) control acquired]"]:::judgment
+  E0["<b>256(7)(a)(i)(A)</b> 256(7)(a)(i)(A) applies<br/>[ITA 256(7)(a)(i)(A)]"]:::rule
+  E1["<b>256(7)(a)(i)(B)</b> 256(7)(a)(i)(B) applies<br/>[ITA 256(7)(a)(i)(B)]"]:::rule
+  E2["<b>256(7)(a)(i)(C), (D)</b> 256(7)(a)(i)(C), (D) applies<br/>[ITA 256(7)(a)(i)(C), (D)]"]:::rule
+  E3["<b>256(7)(a)(ii)</b> 256(7)(a)(ii) applies<br/>[ITA 256(7)(a)(ii)]"]:::rule
+  E4["<b>256(7)(a)(iii)</b> 256(7)(a)(iii) applies<br/>[ITA 256(7)(a)(iii)]"]:::rule
+  Y(["paragraph 251.2(2)(a) applies"]):::yes
+  N(["paragraph 251.2(2)(a) does not apply"]):::no
+  S --> C0
+  C0 -->|met| C1
+  C0 -->|not met| N
+  C1 -->|met| E0
+  C1 -->|not met| N
+  E0 -->|does not apply| E1
+  E0 -->|applies| N
+  E1 -->|does not apply| E2
+  E1 -->|applies| N
+  E2 -->|does not apply| E3
+  E2 -->|applies| N
+  E3 -->|does not apply| E4
+  E3 -->|applies| N
+  E4 -->|does not apply| Y
+  E4 -->|applies| N
+  classDef fact fill:#eeeeee,stroke:#616161,color:#212121
+  classDef judgment fill:#ffe0b2,stroke:#ef6c00,color:#e65100
+  classDef rule fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+  classDef yes fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
+  classDef no fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+  classDef start fill:#ffffff,stroke:#212121,color:#212121
+```
+
 ## Subparagraph 40(2)(g)(iv): transfers to registered plans
 
 ```mermaid

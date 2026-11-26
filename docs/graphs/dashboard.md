@@ -9,9 +9,9 @@ An overview of the project, drawn from the Lean.
 Every statement in every blueprint, by the status Lean computes for it.
 
 ```mermaid
-pie showData title All 148 statements in the memos and blueprints, by status
+pie showData title All 149 statements in the memos and blueprints, by status
     "encoded" : 25
-    "proven" : 91
+    "proven" : 92
     "not formalized" : 3
     "fact" : 24
     "judgment call" : 5
@@ -126,8 +126,12 @@ mindmap
       n57["`251(2), (3): related persons`"]
       n58["`251(3.1), (3.2): amalgamations`"]
       n59["`251(6): blood, marriage, adoption`"]
-    n60["`s. 251.1`"]
-      n61["`251.1(1)(a) to (h): affiliated persons`"]
-      n62["`251.1(2): amalgamations`"]
-      n63["`251.1(3), (4): definitions and rules`"]
+    n60["`s. 251.2`"]
+      n61["`251.2(2)(a): loss restriction event`"]
+    n62["`s. 256`"]
+      n63["`256(7)(a): control not acquired`"]
+    n64["`s. 251.1`"]
+      n65["`251.1(1)(a) to (h): affiliated persons`"]
+      n66["`251.1(2): amalgamations`"]
+      n67["`251.1(3), (4): definitions and rules`"]
 ```

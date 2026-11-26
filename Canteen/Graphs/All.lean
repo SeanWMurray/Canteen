@@ -25,6 +25,7 @@ import Canteen.ITA.S45.ChangeInUse
 import Canteen.ITA.S85.TransferToCorporation
 import Canteen.ITA.S84_1.SurplusStripping
 import Canteen.ITA.S110_6.CapitalGainsDeduction
+import Canteen.ITA.S251_2.LossRestrictionEvent
 import Canteen.Transactions.SisterCompanyRepurchase
 
 /-!
@@ -136,7 +137,8 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S45.ChangeInUse, "45(1) to (4) change in use"),
    (`Canteen.ITA.S85.TransferToCorporation, "85(1), (2.1) transfer to a corporation"),
    (`Canteen.ITA.S84_1.SurplusStripping, "84.1 shares to a non-arm's length corporation"),
-   (`Canteen.ITA.S110_6.CapitalGainsDeduction, "110.6 the capital gains deduction")]
+   (`Canteen.ITA.S110_6.CapitalGainsDeduction, "110.6 the capital gains deduction"),
+   (`Canteen.ITA.S251_2.LossRestrictionEvent, "251.2(2)(a), 256(7)(a) loss restriction events")]
 
 /-! ## The dashboard -/
 
@@ -216,6 +218,7 @@ def actMindmap : String := Id.run do
     (2, "s. 248"), (3, "248(1): majority-interest partner"),
     (2, "s. 251"), (3, "251(1): arm's length"), (3, "251(2), (3): related persons"), (3, "251(3.1), (3.2): amalgamations"),
     (3, "251(6): blood, marriage, adoption"),
+    (2, "s. 251.2"), (3, "251.2(2)(a): loss restriction event"), (2, "s. 256"), (3, "256(7)(a): control not acquired"),
     (2, "s. 251.1"), (3, "251.1(1)(a) to (h): affiliated persons"), (3, "251.1(2): amalgamations"), (3, "251.1(3), (4): definitions and rules")]
   let mut out := ["mindmap", "  root((Income Tax Act, as encoded))"]
   for ((depth, label), i) in tree.zipIdx do
@@ -246,6 +249,7 @@ def pages : List Page := [
       ("Subsection 85(1): transfer of property to a corporation", flowchart TransferToCorporation.rollover.outline),
       ("Subsection 84.1(1): shares sold to a non-arm's length corporation", flowchart SurplusStripping.applies.outline),
       ("Section 110.6 \"qualified small business corporation share\"", flowchart CapitalGainsDeduction.qualifiedShare.outline),
+      ("Paragraph 251.2(2)(a), with 256(7)(a): loss restriction events", flowchart LossRestrictionEvent.lossRestrictionEvent.outline),
       ("Subparagraph 40(2)(g)(iv): transfers to registered plans", flowchart Paragraph40_2_g.planTransferLoss.outline),
       ("Clause 40(2)(g)(iv)(A)", flowchart Paragraph40_2_g.planTransferA.outline),
       ("Clause 40(2)(g)(iv)(B)", flowchart Paragraph40_2_g.planTransferB.outline),
