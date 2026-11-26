@@ -75,6 +75,7 @@ import Canteen.Transactions.SiblingAndLateRepurchase
 import Canteen.Transactions.TfsaContribution
 import Canteen.Transactions.HoldcoRepurchase
 import Canteen.Transactions.Crystallization
+import Canteen.Transactions.SaleThroughHoldco
 import Canteen.Transactions.SisterCompanyRepurchase
 
 -- Blueprints: memos linked to Lean
@@ -84,6 +85,7 @@ import Canteen.Blueprints.SiblingAndLateRepurchase
 import Canteen.Blueprints.TfsaContribution
 import Canteen.Blueprints.HoldcoRepurchase
 import Canteen.Blueprints.Crystallization
+import Canteen.Blueprints.SaleThroughHoldco
 import Canteen.Blueprints.SisterCompanyRepurchase
 import Canteen.Blueprints.All
 

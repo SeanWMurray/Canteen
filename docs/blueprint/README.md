@@ -11,5 +11,6 @@ Memo-style documents whose statements link to the Lean that proves or encodes th
 - [Memo: shares sold at a loss and bought by a family holding company](holdco-repurchase.md): 20 statements, 11 proven, 0 not yet formalized
 - [Memo: a company's loss suspended when its sister company buys the shares](sister-company-repurchase.md): 14 statements, 9 proven, 0 not yet formalized
 - [Memo: crystallizing the capital gains exemption, then stripping the cost](crystallization.md): 20 statements, 10 proven, 0 not yet formalized
+- [Memo: selling Opco through Holdco, with dividends first](sale-through-holdco.md): 15 statements, 8 proven, 0 not yet formalized
 
 More diagrams: [`docs/graphs/`](../graphs/README.md).

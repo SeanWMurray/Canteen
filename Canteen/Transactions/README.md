@@ -8,3 +8,4 @@ Concrete fact patterns, with each step of the analysis proven as a theorem.
 - `HoldcoRepurchase.lean`: shares bought back by a holding company the spouses control
 - `SisterCompanyRepurchase.lean`: a company's loss suspended when its sister company buys the shares
 - `Crystallization.lean`: the capital gains exemption crystallized under 85(1), then a surplus strip caught by 84.1
+- `SaleThroughHoldco.lean`: a capital dividend and a pre-sale dividend caught by 55(2), then a capital dividend out of Holdco
