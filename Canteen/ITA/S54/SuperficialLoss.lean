@@ -113,14 +113,17 @@ structure Disposition where
   applies69_5 : Bool := false
   deriving Repr, DecidableEq
 
-/-- Who acquired a property. Affiliation is as determined under section 251.1,
-taken as a fact until section 251.1 is encoded. -/
+/-- Who acquired a property. Affiliation is as determined under section 251.1
+(`Affiliation.acquirer` decides it under paragraph 251.1(1)(a)). -/
 inductive Acquirer where
   | taxpayer
   /-- A person affiliated with the taxpayer, e.g. `"the taxpayer's spouse"`. -/
   | affiliated (who : String)
   /-- A person not affiliated with the taxpayer. -/
   | notAffiliated (who : String)
+  /-- A person whose affiliation with the taxpayer is a judgment call; `affiliated` is the
+  answer assumed on this branch. -/
+  | judged (who : String) (judgment : String) (affiliated : Bool)
   deriving Repr, DecidableEq
 
 /-- How an acquired property relates to the particular property. -/
@@ -180,6 +183,12 @@ def Acquirer.isTaxpayerOrAffiliated : Acquirer → Bool
   | .taxpayer => true
   | .affiliated _ => true
   | .notAffiliated _ => false
+  | .judged _ _ b => b
+
+/-- The judgment call an acquirer's affiliation rests on, if any. -/
+def Acquirer.judgment? : Acquirer → Option String
+  | .judged _ j _ => some j
+  | _ => none
 
 /-- (j) applies only to a share "acquired before 2013". -/
 def acquiredBefore2013 (a : Acquisition) : Bool :=
@@ -308,6 +317,8 @@ def Acquirer.phrase : Acquirer → String
   | .taxpayer => "the taxpayer"
   | .affiliated who => s!"{who}, a person affiliated with the taxpayer,"
   | .notAffiliated who => s!"{who}, a person not affiliated with the taxpayer,"
+  | .judged who j true => s!"{who}, a person affiliated with the taxpayer (judgment call {j}),"
+  | .judged who j false => s!"{who}, a person not affiliated with the taxpayer (judgment call {j}),"
 
 /-- The judgment call an acquisition's identity relies on, if any. -/
 def Identity.judgment? : Identity → Option String
@@ -337,23 +348,21 @@ def qualifyingSteps (d : Disposition) (a : Acquisition) : List Step :=
     [⟨s!"At the end of that period, on {d.date.addDays 30}, the taxpayer or a person affiliated with the " ++
         "taxpayer owned or had a right to acquire that property.", cite "(b)"⟩]
 
-/-- Why an acquisition does not meet (a) and (b). Factual reasons are given before the
-judgment call on identity (design principle 3). -/
+/-- Why an acquisition does not meet (a) and (b). Factual reasons are given before
+judgment calls on affiliation and identity (design principle 3). -/
 def failStep (d : Disposition) (a : Acquisition) : Step :=
   let prop := s!"The property acquired on {a.date} ({a.description})"
+  let identityFailsOnFacts := !isOrIsIdentical a && a.identity.judgment?.isNone
   if !inPeriod d a then
     ⟨s!"{prop} was acquired outside {periodText d}, so it does not meet paragraph (a).", cite "(a)"⟩
-  else if !a.acquirer.isTaxpayerOrAffiliated then
+  else if !a.acquirer.isTaxpayerOrAffiliated && a.acquirer.judgment?.isNone then
     ⟨s!"{prop} was acquired by {a.acquirer.phrase} so it does not meet paragraph (a).", cite "(a)"⟩
   else if !paraB a then
     ⟨s!"At the end of the period, on {d.date.addDays 30}, neither the taxpayer nor a person affiliated with " ++
       s!"the taxpayer owned or had a right to acquire the property acquired on {a.date} ({a.description}), " ++
       "so it does not meet paragraph (b).", cite "(b)"⟩
-  else
+  else if identityFailsOnFacts then
     match a.identity with
-    | .identical j _ =>
-      ⟨s!"{prop} is not identical to the particular property (judgment call {j}), so it does not meet " ++
-        "paragraph (a).", cite "(a)"⟩
     | .rightToAcquire _ =>
       ⟨s!"{prop} is a right, as security only, derived from a mortgage, hypothec, agreement for sale or " ++
         "similar obligation, so it is not deemed to be identical to the particular property and does not " ++
@@ -364,22 +373,35 @@ def failStep (d : Disposition) (a : Acquisition) : Step :=
     | _ =>
       ⟨s!"{prop} is neither the particular property nor identical to it, so it does not meet paragraph (a).",
         cite "(a)"⟩
+  else if !a.acquirer.isTaxpayerOrAffiliated then
+    ⟨s!"{prop} was acquired by {a.acquirer.phrase} so it does not meet paragraph (a).", cite "(a)"⟩
+  else
+    match a.identity with
+    | .identical j _ =>
+      ⟨s!"{prop} is not identical to the particular property (judgment call {j}), so it does not meet " ++
+        "paragraph (a).", cite "(a)"⟩
+    | _ =>
+      ⟨s!"{prop} does not meet paragraph (a).", cite "(a)"⟩
 
-/-- The judgment call a failed acquisition's reason relies on: only when every factual
-condition is met and identity was judged "no". -/
-def failJudgment? (d : Disposition) (a : Acquisition) : Option String :=
-  if inPeriod d a && a.acquirer.isTaxpayerOrAffiliated && paraB a then a.identity.judgment? else none
+/-- The judgment calls a failed acquisition's failure rests on: those answered "no" when
+every factual condition is met. -/
+def failJudgments (d : Disposition) (a : Acquisition) : List String :=
+  if inPeriod d a && (a.acquirer.isTaxpayerOrAffiliated || a.acquirer.judgment?.isSome) && paraB a &&
+      (isOrIsIdentical a || a.identity.judgment?.isSome) then
+    (if a.acquirer.isTaxpayerOrAffiliated then [] else a.acquirer.judgment?.toList) ++
+      (if isOrIsIdentical a then [] else a.identity.judgment?.toList)
+  else []
 
 /-- Qualifies without relying on a judgment call. -/
 def qualifiesOnFacts (d : Disposition) (a : Acquisition) : Bool :=
-  qualifies d a && a.identity.judgment?.isNone
+  qualifies d a && a.identity.judgment?.isNone && a.acquirer.judgment?.isNone
 
 def positive (d : Disposition) (a : Acquisition) : Finding :=
   ⟨true,
     [lossStep d] ++ qualifyingSteps d a ++
       [⟨s!"The disposition is not one described in paragraphs (c) to (h), so the taxpayer's loss of " ++
           s!"{formatCents (lossAmount d)} is a superficial loss.", citeDef⟩],
-    a.identity.judgment?.toList⟩
+    mergeIds a.acquirer.judgment?.toList a.identity.judgment?.toList⟩
 
 def negative (d : Disposition) (as : List Acquisition) : Finding :=
   let reasons :=
@@ -390,7 +412,7 @@ def negative (d : Disposition) (as : List Acquisition) : Finding :=
   ⟨false,
     [lossStep d] ++ reasons ++
       [⟨"No property meets both paragraphs (a) and (b), so the loss is not a superficial loss.", citeDef⟩],
-    as.foldl (fun ids a => mergeIds ids (failJudgment? d a).toList) []⟩
+    as.foldl (fun ids a => mergeIds ids (failJudgments d a)) []⟩
 
 /-- The definition, with reasons: no loss; else an exception; else a qualifying
 acquisition (one resting on facts first); else why none qualifies. -/
@@ -434,7 +456,7 @@ theorem explain_sound (f : Facts) : (explain f).conclusion = superficialLoss f :
         have hm := List.mem_of_find?_eq_some h1
         simp only [qualifiesOnFacts, Bool.and_eq_true] at hq
         simp only [positive]
-        exact (List.any_eq_true.mpr ⟨a, hm, hq.1⟩).symm
+        exact (List.any_eq_true.mpr ⟨a, hm, hq.1.1⟩).symm
       | none =>
         cases h2 : f.acquisitions.find? (qualifies f.disposition) with
         | some a =>

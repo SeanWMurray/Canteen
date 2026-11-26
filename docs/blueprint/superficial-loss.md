@@ -1,10 +1,10 @@
-# Section 54 "superficial loss", subparagraph 40(2)(g)(i), and related provisions
+# Section 54 "superficial loss", paragraph 40(2)(g), and related provisions
 
 > Generated from the Lean sources by `scripts/blueprint.sh`. Do not edit by hand.
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 35 statements:** 17 proven, 15 encoded, 3 not formalized.
+**Status of the 40 statements:** 21 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -40,11 +40,16 @@ graph TD
   n27["G0 · Opening words: the foreign affiliate carve-out"]:::encoded
   n28["G1 · The loss is nil"]:::encoded
   n29["GS · 40(2)(g)(i) in statute form"]:::proven
-  n30["R1 · Spouses are affiliated"]:::proven
-  n31["R2 · Cost of the substituted property"]:::proven
-  n32["N1 · Inputs decided by other provisions"]:::notFormalized
-  n33["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n34["N4 · Subparagraphs 40(2)(g)(ii) to (iv)"]:::notFormalized
+  n30["G2 · (ii) losses on debts"]:::proven
+  n31["PUP · Personal-use and listed personal property"]:::encoded
+  n32["G3 · (iii) losses on personal-use property"]:::proven
+  n33["G4 · (iv) transfers to registered plans"]:::proven
+  n34["G5 · Paragraph 40(2)(g) as a whole"]:::proven
+  n35["R1 · Spouses are affiliated"]:::proven
+  n36["R2 · Cost of the substituted property"]:::proven
+  n37["N1 · Inputs decided by other provisions"]:::notFormalized
+  n38["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n39["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -88,15 +93,26 @@ graph TD
   n13 --> n28
   n28 --> n29
   n14 --> n29
-  n11 --> n31
-  n1 --> n32
-  n5 --> n32
-  n6 --> n32
-  n8 --> n32
-  n30 --> n32
+  n0 --> n30
+  n0 --> n32
   n31 --> n32
-  n28 --> n33
+  n0 --> n33
   n27 --> n34
+  n28 --> n34
+  n13 --> n34
+  n30 --> n34
+  n32 --> n34
+  n33 --> n34
+  n11 --> n36
+  n1 --> n37
+  n5 --> n37
+  n6 --> n37
+  n8 --> n37
+  n35 --> n37
+  n36 --> n37
+  n28 --> n38
+  n30 --> n39
+  n32 --> n39
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -143,11 +159,16 @@ graph TD
   n27["G0"]:::encoded
   n28["G1"]:::encoded
   n29["GS"]:::proven
-  n30["R1"]:::proven
-  n31["R2"]:::proven
-  n32["N1"]:::notFormalized
-  n33["N2"]:::notFormalized
-  n34["N4"]:::notFormalized
+  n30["G2"]:::proven
+  n31["PUP"]:::encoded
+  n32["G3"]:::proven
+  n33["G4"]:::proven
+  n34["G5"]:::proven
+  n35["R1"]:::proven
+  n36["R2"]:::proven
+  n37["N1"]:::notFormalized
+  n38["N2"]:::notFormalized
+  n39["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -168,6 +189,7 @@ graph TD
   n1 --> n13
   n6 --> n13
   n12 --> n13
+  n11 --> n13
   n0 --> n13
   n3 --> n13
   n4 --> n13
@@ -175,8 +197,8 @@ graph TD
   n8 --> n13
   n7 --> n14
   n2 --> n14
-  n1 --> n14
   n6 --> n14
+  n1 --> n14
   n0 --> n14
   n3 --> n14
   n4 --> n14
@@ -241,15 +263,28 @@ graph TD
   n14 --> n29
   n28 --> n29
   n12 --> n29
-  n11 -.-> n31
-  n1 -.-> n32
-  n5 -.-> n32
-  n6 -.-> n32
-  n8 -.-> n32
-  n30 -.-> n32
-  n31 -.-> n32
-  n28 -.-> n33
+  n0 --> n30
+  n31 --> n32
+  n0 --> n32
+  n0 --> n33
+  n30 --> n34
+  n32 --> n34
+  n13 --> n34
+  n33 --> n34
+  n0 --> n34
+  n12 --> n34
+  n28 --> n34
   n27 -.-> n34
+  n11 -.-> n36
+  n1 -.-> n37
+  n5 -.-> n37
+  n6 -.-> n37
+  n8 -.-> n37
+  n35 -.-> n37
+  n36 -.-> n37
+  n28 -.-> n38
+  n30 -.-> n39
+  n32 -.-> n39
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -265,7 +300,7 @@ graph TD
 
 “superficial loss of a taxpayer means the taxpayer’s loss from the disposition of a particular property where”. The loss is the amount by which the adjusted cost base plus outlays and expenses exceeds the proceeds (paragraph 40(1)(b)).
 
-**Lean:** [`Canteen.ITA.SuperficialLoss.isLoss`](../../Canteen/ITA/S54/SuperficialLoss.lean#L164), [`Canteen.ITA.SuperficialLoss.lossAmount`](../../Canteen/ITA/S54/SuperficialLoss.lean#L169)
+**Lean:** [`Canteen.ITA.SuperficialLoss.isLoss`](../../Canteen/ITA/S54/SuperficialLoss.lean#L167), [`Canteen.ITA.SuperficialLoss.lossAmount`](../../Canteen/ITA/S54/SuperficialLoss.lean#L172)
 
 ### Pa. (a) acquisition in the 61-day period
 
@@ -273,7 +308,7 @@ graph TD
 
 “(a) during the period that begins 30 days before and ends 30 days after the disposition, the taxpayer or a person affiliated with the taxpayer acquires a property (in this definition referred to as the “substituted property”) that is, or is identical to, the particular property, and”
 
-**Lean:** [`Canteen.ITA.SuperficialLoss.inPeriod`](../../Canteen/ITA/S54/SuperficialLoss.lean#L173), [`Canteen.ITA.SuperficialLoss.Acquirer.isTaxpayerOrAffiliated`](../../Canteen/ITA/S54/SuperficialLoss.lean#L178), [`Canteen.ITA.SuperficialLoss.Acquirer`](../../Canteen/ITA/S54/SuperficialLoss.lean#L116)
+**Lean:** [`Canteen.ITA.SuperficialLoss.inPeriod`](../../Canteen/ITA/S54/SuperficialLoss.lean#L176), [`Canteen.ITA.SuperficialLoss.Acquirer.isTaxpayerOrAffiliated`](../../Canteen/ITA/S54/SuperficialLoss.lean#L181), [`Canteen.ITA.SuperficialLoss.Acquirer`](../../Canteen/ITA/S54/SuperficialLoss.lean#L116)
 
 ### Pb. (b) held at the end of the period
 
@@ -281,7 +316,7 @@ graph TD
 
 “(b) at the end of that period, the taxpayer or a person affiliated with the taxpayer owns or had a right to acquire the substituted property,”
 
-**Lean:** [`Canteen.ITA.SuperficialLoss.paraB`](../../Canteen/ITA/S54/SuperficialLoss.lean#L202)
+**Lean:** [`Canteen.ITA.SuperficialLoss.paraB`](../../Canteen/ITA/S54/SuperficialLoss.lean#L211)
 
 ### Pc. (c) listed deemed dispositions
 
@@ -289,7 +324,7 @@ graph TD
 
 “except where the disposition was (c) a disposition deemed to have been made by subsection 45(1), section 48 as it read in its application before 1993, section 50 or 70, subsection 104(4), section 128.1, paragraph 132.2(3)(a) or (c), subsection 138(11.3) or 138.2(4) or 142.5(2), section 142.6 or any of subsections 144(4.1) and (4.2) and 149(10),”
 
-**Lean:** [`Canteen.ITA.SuperficialLoss.DeemingProvision`](../../Canteen/ITA/S54/SuperficialLoss.lean#L40), [`Canteen.ITA.SuperficialLoss.DeemingProvision.listedInC`](../../Canteen/ITA/S54/SuperficialLoss.lean#L83), [`Canteen.ITA.SuperficialLoss.paraC`](../../Canteen/ITA/S54/SuperficialLoss.lean#L210)
+**Lean:** [`Canteen.ITA.SuperficialLoss.DeemingProvision`](../../Canteen/ITA/S54/SuperficialLoss.lean#L40), [`Canteen.ITA.SuperficialLoss.DeemingProvision.listedInC`](../../Canteen/ITA/S54/SuperficialLoss.lean#L83), [`Canteen.ITA.SuperficialLoss.paraC`](../../Canteen/ITA/S54/SuperficialLoss.lean#L219)
 
 ### Pd. (d) expiry of an option
 
@@ -297,7 +332,7 @@ graph TD
 
 “(d) the expiry of an option,”
 
-**Lean:** [`Canteen.ITA.SuperficialLoss.paraD`](../../Canteen/ITA/S54/SuperficialLoss.lean#L216)
+**Lean:** [`Canteen.ITA.SuperficialLoss.paraD`](../../Canteen/ITA/S54/SuperficialLoss.lean#L225)
 
 ### Pe. (e) paragraph 40(2)(e.1) applies
 
@@ -305,7 +340,7 @@ graph TD
 
 “(e) a disposition to which paragraph 40(2)(e.1) applies,”
 
-**Lean:** [`Canteen.ITA.SuperficialLoss.paraE`](../../Canteen/ITA/S54/SuperficialLoss.lean#L220)
+**Lean:** [`Canteen.ITA.SuperficialLoss.paraE`](../../Canteen/ITA/S54/SuperficialLoss.lean#L229)
 
 ### Pf. (f) loss restriction event
 
@@ -313,7 +348,7 @@ graph TD
 
 “(f) a disposition by a taxpayer that was subject to a loss restriction event within 30 days after the disposition,”
 
-**Lean:** [`Canteen.ITA.SuperficialLoss.paraF`](../../Canteen/ITA/S54/SuperficialLoss.lean#L224)
+**Lean:** [`Canteen.ITA.SuperficialLoss.paraF`](../../Canteen/ITA/S54/SuperficialLoss.lean#L233)
 
 ### Pg. (g) change in exempt status
 
@@ -321,7 +356,7 @@ graph TD
 
 “(g) a disposition by a person that, within 30 days after the disposition, became or ceased to be exempt from tax under this Part on its taxable income, or”
 
-**Lean:** [`Canteen.ITA.SuperficialLoss.paraG`](../../Canteen/ITA/S54/SuperficialLoss.lean#L231)
+**Lean:** [`Canteen.ITA.SuperficialLoss.paraG`](../../Canteen/ITA/S54/SuperficialLoss.lean#L240)
 
 ### Ph. (h) 40(3.4) or 69(5) applies
 
@@ -329,7 +364,7 @@ graph TD
 
 “(h) a disposition to which subsection 40(3.4) or 69(5) applies,”
 
-**Lean:** [`Canteen.ITA.SuperficialLoss.paraH`](../../Canteen/ITA/S54/SuperficialLoss.lean#L238)
+**Lean:** [`Canteen.ITA.SuperficialLoss.paraH`](../../Canteen/ITA/S54/SuperficialLoss.lean#L247)
 
 ### Pi. (i) rights to acquire are identical
 
@@ -337,7 +372,7 @@ graph TD
 
 “and, for the purpose of this definition, (i) a right to acquire a property (other than a right, as security only, derived from a mortgage, hypothec, agreement for sale or similar obligation) is deemed to be a property that is identical to the property, and”
 
-**Lean:** [`Canteen.ITA.SuperficialLoss.Identity`](../../Canteen/ITA/S54/SuperficialLoss.lean#L126)
+**Lean:** [`Canteen.ITA.SuperficialLoss.Identity`](../../Canteen/ITA/S54/SuperficialLoss.lean#L129)
 
 ### Pj. (j) SIFT wind-up shares before 2013
 
@@ -345,7 +380,7 @@ graph TD
 
 “(j) a share of the capital stock of a SIFT wind-up corporation in respect of a SIFT wind-up entity is, if the share was acquired before 2013, deemed to be a property that is identical to equity in the SIFT wind-up entity.”
 
-**Lean:** [`Canteen.ITA.SuperficialLoss.acquiredBefore2013`](../../Canteen/ITA/S54/SuperficialLoss.lean#L184)
+**Lean:** [`Canteen.ITA.SuperficialLoss.acquiredBefore2013`](../../Canteen/ITA/S54/SuperficialLoss.lean#L193)
 
 ### Pa+. (a) with the deeming rules
 
@@ -353,7 +388,7 @@ graph TD
 
 Whether an acquired property “is, or is identical to, the particular property”, with paragraphs (i) and (j) applied, and paragraph (a) as a whole.
 
-**Lean:** [`Canteen.ITA.SuperficialLoss.isOrIsIdentical`](../../Canteen/ITA/S54/SuperficialLoss.lean#L188), [`Canteen.ITA.SuperficialLoss.paraA`](../../Canteen/ITA/S54/SuperficialLoss.lean#L198)
+**Lean:** [`Canteen.ITA.SuperficialLoss.isOrIsIdentical`](../../Canteen/ITA/S54/SuperficialLoss.lean#L197), [`Canteen.ITA.SuperficialLoss.paraA`](../../Canteen/ITA/S54/SuperficialLoss.lean#L207)
 
 ### D. The definition as a whole
 
@@ -361,7 +396,7 @@ Whether an acquired property “is, or is identical to, the particular property�
 
 A loss is a superficial loss if there is a loss, some acquired property meets both (a) and (b), and none of (c) to (h) applies.
 
-**Lean:** [`Canteen.ITA.SuperficialLoss.superficialLoss`](../../Canteen/ITA/S54/SuperficialLoss.lean#L246), [`Canteen.ITA.SuperficialLoss.qualifies`](../../Canteen/ITA/S54/SuperficialLoss.lean#L206), [`Canteen.ITA.SuperficialLoss.excepted`](../../Canteen/ITA/S54/SuperficialLoss.lean#L242)
+**Lean:** [`Canteen.ITA.SuperficialLoss.superficialLoss`](../../Canteen/ITA/S54/SuperficialLoss.lean#L255), [`Canteen.ITA.SuperficialLoss.qualifies`](../../Canteen/ITA/S54/SuperficialLoss.lean#L215), [`Canteen.ITA.SuperficialLoss.excepted`](../../Canteen/ITA/S54/SuperficialLoss.lean#L251)
 
 ### E. The English explanation agrees
 
@@ -369,7 +404,7 @@ A loss is a superficial loss if there is a loss, some acquired property meets bo
 
 For every set of facts, the English explanation reaches the same conclusion as the definition. It gives factual reasons before reasons that rest on a judgment call.
 
-**Lean:** [`Canteen.ITA.SuperficialLoss.explain_sound`](../../Canteen/ITA/S54/SuperficialLoss.lean#L418), [`Canteen.ITA.SuperficialLoss.rule`](../../Canteen/ITA/S54/SuperficialLoss.lean#L453)
+**Lean:** [`Canteen.ITA.SuperficialLoss.explain_sound`](../../Canteen/ITA/S54/SuperficialLoss.lean#L440), [`Canteen.ITA.SuperficialLoss.rule`](../../Canteen/ITA/S54/SuperficialLoss.lean#L475)
 
 ### S. The definition in statute form
 
@@ -377,7 +412,7 @@ For every set of facts, the English explanation reaches the same conclusion as t
 
 The definition written with the `statute` command, in the Act's own shape: a loss where (a) and (b), except where (c) to (h). Proven to be the same rule as the paragraph-by-paragraph encoding.
 
-**Lean:** [`Canteen.ITA.SuperficialLoss.superficialLossStatute`](../../Canteen/ITA/S54/SuperficialLossStatute.lean#L23), [`Canteen.ITA.SuperficialLoss.superficialLossStatute_eq`](../../Canteen/ITA/S54/SuperficialLossStatute.lean#L53)
+**Lean:** [`Canteen.ITA.SuperficialLoss.superficialLossStatute`](../../Canteen/ITA/S54/SuperficialLossStatute.lean#L22), [`Canteen.ITA.SuperficialLoss.superficialLossStatute_eq`](../../Canteen/ITA/S54/SuperficialLossStatute.lean#L52)
 
 ## Truths proven about the definition
 
@@ -505,6 +540,48 @@ Subparagraph 40(2)(g)(i) written with the `statute` command, with the statute-fo
 
 **Lean:** [`Canteen.ITA.LossDenial.lossDenialStatute`](../../Canteen/ITA/S40/LossDenialStatute.lean#L16), [`Canteen.ITA.LossDenial.lossDenialStatute_eq`](../../Canteen/ITA/S40/LossDenialStatute.lean#L26)
 
+## Subparagraphs 40(2)(g)(ii) to (iv), and the paragraph as a whole
+
+### G2. (ii) losses on debts
+
+**Status:** proven · **Citation:** ITA 40(2)(g)(ii) · **Uses:** P0
+
+“a loss from the disposition of a debt or other right to receive an amount, unless the debt or right, as the case may be, was acquired by the taxpayer for the purpose of gaining or producing income from a business or property (other than exempt income) or as consideration for the disposition of capital property to a person with whom the taxpayer was dealing at arm’s length,”
+
+**Lean:** [`Canteen.ITA.Paragraph40_2_g.debtLoss`](../../Canteen/ITA/S40/DebtLoss.lean#L24), [`Canteen.ITA.Paragraph40_2_g.debtLoss_holds`](../../Canteen/ITA/S40/DebtLoss.lean#L42)
+
+### PUP. Personal-use and listed personal property
+
+**Status:** encoded · **Citation:** ITA 54
+
+Personal-use property includes (a) property used primarily for the personal use or enjoyment of the taxpayer or related individuals, (b) a debt owing in respect of the disposition of personal-use property, and (c) an option to acquire personal-use property. Listed personal property is personal-use property that is, or is a portion of or an interest in or right to, a work of art, jewellery, a rare folio, manuscript or book, a stamp, or a coin.
+
+**Lean:** [`Canteen.ITA.Paragraph40_2_g.personalUseProperty`](../../Canteen/ITA/S40/PersonalUseLoss.lean#L22), [`Canteen.ITA.Paragraph40_2_g.isListed`](../../Canteen/ITA/S40/PersonalUseLoss.lean#L31)
+
+### G3. (iii) losses on personal-use property
+
+**Status:** proven · **Citation:** ITA 40(2)(g)(iii) · **Uses:** P0, PUP
+
+“a loss from the disposition of any personal-use property of the taxpayer (other than listed personal property or a debt referred to in subsection 50(2)),”
+
+**Lean:** [`Canteen.ITA.Paragraph40_2_g.personalUseLoss`](../../Canteen/ITA/S40/PersonalUseLoss.lean#L35), [`Canteen.ITA.Paragraph40_2_g.personalUseLoss_holds`](../../Canteen/ITA/S40/PersonalUseLoss.lean#L50)
+
+### G4. (iv) transfers to registered plans
+
+**Status:** proven · **Citation:** ITA 40(2)(g)(iv) · **Uses:** P0
+
+A loss from the disposition of property to (A) a trust governed by a DPSP, EPSP, FHSA, RDSP, RRIF or TFSA under which the taxpayer is, or immediately after becomes, a beneficiary, or (B) a trust governed by an RRSP under which the taxpayer or the taxpayer's spouse or common-law partner is, or within 60 days after the end of the year becomes, an annuitant.
+
+**Lean:** [`Canteen.ITA.Paragraph40_2_g.planTransferLoss`](../../Canteen/ITA/S40/PlanTransferLoss.lean#L45), [`Canteen.ITA.Paragraph40_2_g.planTransferA`](../../Canteen/ITA/S40/PlanTransferLoss.lean#L25), [`Canteen.ITA.Paragraph40_2_g.planTransferB`](../../Canteen/ITA/S40/PlanTransferLoss.lean#L35), [`Canteen.ITA.Paragraph40_2_g.planTransferLoss_holds`](../../Canteen/ITA/S40/PlanTransferLoss.lean#L53)
+
+### G5. Paragraph 40(2)(g) as a whole
+
+**Status:** proven · **Citation:** ITA 40(2)(g) · **Uses:** G0, G1, E, G2, G3, G4
+
+The loss is nil if it is within any of subparagraphs (i) to (iv), unless the carve-out in the opening words applies. Proven to deny exactly what subparagraph (i) denies when (ii) to (iv) don't apply.
+
+**Lean:** [`Canteen.ITA.Paragraph40_2_g.paragraph`](../../Canteen/ITA/S40/Paragraph40_2_g.lean#L32), [`Canteen.ITA.Paragraph40_2_g.paragraph_holds`](../../Canteen/ITA/S40/Paragraph40_2_g.lean#L45), [`Canteen.ITA.Paragraph40_2_g.paragraph_eq_lossDenial`](../../Canteen/ITA/S40/Paragraph40_2_g.lean#L52), [`Canteen.ITA.Paragraph40_2_g.paragraph_of_lossDenial`](../../Canteen/ITA/S40/Paragraph40_2_g.lean#L60), [`Canteen.ITA.Paragraph40_2_g.deniedLoss`](../../Canteen/ITA/S40/Paragraph40_2_g.lean#L41)
+
 ## Related provisions
 
 ### R1. Spouses are affiliated
@@ -513,7 +590,7 @@ Subparagraph 40(2)(g)(i) written with the `statute` command, with the statute-fo
 
 “an individual and a spouse or common-law partner of the individual” are affiliated persons. Used to decide who is "a person affiliated with the taxpayer" in paragraphs (a) and (b).
 
-**Lean:** [`Canteen.ITA.Affiliation.paragraphA`](../../Canteen/ITA/S251_1/Affiliation.lean#L31), [`Canteen.ITA.Affiliation.affiliated`](../../Canteen/ITA/S251_1/Affiliation.lean#L47), [`Canteen.ITA.Affiliation.spouses_affiliated`](../../Canteen/ITA/S251_1/Affiliation.lean#L55)
+**Lean:** [`Canteen.ITA.Affiliation.paragraphA`](../../Canteen/ITA/S251_1/Affiliation.lean#L33), [`Canteen.ITA.Affiliation.affiliated`](../../Canteen/ITA/S251_1/Affiliation.lean#L50), [`Canteen.ITA.Affiliation.spouses_affiliated`](../../Canteen/ITA/S251_1/Affiliation.lean#L58)
 
 ### R2. Cost of the substituted property
 
@@ -539,9 +616,9 @@ Affiliation other than under paragraph 251.1(1)(a) (paragraphs 251.1(1)(b) to (g
 
 Where only part of a loss is a superficial loss (for example, fewer shares acquired than sold), the amount made nil is not computed. The Act gives no formula.
 
-### N4. Subparagraphs 40(2)(g)(ii) to (iv)
+### N4. Inputs for subparagraphs (ii) to (iv)
 
-**Status:** not formalized · **Citation:** ITA 40(2)(g) · **Uses:** G0
+**Status:** not formalized · **Citation:** ITA 40(2)(g) · **Uses:** G2, G3
 
-Debts, personal-use property and dispositions to listed plans are not encoded.
+Debts referred to in subsection 50(2), arm's length dealing (section 251), and the ordinary meaning of personal-use property beyond the three categories its definition includes are taken as facts or judgment calls.
 

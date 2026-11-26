@@ -1,0 +1,10 @@
+Income Tax Act, R.S.C. 1985, c. 1 (5th Supp.), subsection 104(2)
+
+Source: Justice Canada consolidated Acts (XML), https://github.com/justicecanada/laws-lois-xml, file eng/acts/I-3.3.xml
+Current to: 2026-10-29. Last amended: 2026-06-18.
+Extracted verbatim; whitespace normalized; paragraph labels kept; continued text marked [continued].
+
+(2) A trust shall, for the purposes of this Act, and without affecting the liability of the trustee or legal representative for that person’s own income tax, be deemed to be in respect of the trust property an individual, but where there is more than one trust and
+  (a) substantially all of the property of the various trusts has been received from one person, and
+  (b) the various trusts are conditioned so that the income thereof accrues or will ultimately accrue to the same beneficiary, or group or class of beneficiaries,
+  [continued] such of the trustees as the Minister may designate shall, for the purposes of this Act, be deemed to be in respect of all the trusts an individual whose property is the property of all the trusts and whose income is the income of all the trusts.

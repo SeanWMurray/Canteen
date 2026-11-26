@@ -17,7 +17,7 @@ The full design is in [`docs/design.md`](docs/design.md).
 | 4. First real provision | Encoded; awaiting review | Section 54 "superficial loss" with all its exceptions, and subparagraph 40(2)(g)(i); see [`docs/review/superficial-loss.md`](docs/review/superficial-loss.md) |
 | 5. Blueprint | Done | Memos whose statements link to Lean, with dependency graphs coloured by proven/unproven status; see [`docs/blueprint/`](docs/blueprint/README.md) |
 | 6. Ergonomics | Done | The `statute` command: rules written in the statute's own shape, sound with nothing to prove |
-| Beyond the roadmap | Done | 53(1)(f) and 251.1(1)(a) encoded; a second transaction; diagrams drawn from the Lean; memos checked against what their proofs use |
+| Beyond the roadmap | Done | All of paragraph 40(2)(g), 53(1)(f) and 251.1(1)(a) encoded; three transactions; diagrams drawn from the Lean; memos checked against what their proofs use |
 
 ## Building
 
@@ -49,6 +49,7 @@ Canteen/
     Render.lean              numbered, cited English for a single finding
     Argument.lean            chained arguments with judgment calls and overall risk
     Combine.lean             Rule.comap, Rule.and, Rule.or, Rule.not (sound by construction)
+    Answer.lean              an answer that is either a fact or a judgment call
     Statute.lean             Rule.statute: "applies where …, except where …" (sound once, for all)
     StatuteSyntax.lean       the `statute` command
     Branch.lean              every branch of the judgment calls; SameOnEveryBranch
@@ -67,6 +68,10 @@ Canteen/
     S54/SuperficialLossStatute.lean   the same, in statute form (proven equal)
     S40/LossDenial.lean        subparagraph 40(2)(g)(i)
     S40/LossDenialStatute.lean        the same, in statute form (proven equal)
+    S40/DebtLoss.lean          subparagraph 40(2)(g)(ii): debts
+    S40/PersonalUseLoss.lean   subparagraph 40(2)(g)(iii), with "personal-use property" and "listed personal property"
+    S40/PlanTransferLoss.lean  subparagraph 40(2)(g)(iv): transfers to TFSAs, RRSPs and other plans
+    S40/Paragraph40_2_g.lean   paragraph 40(2)(g) as a whole
     S53/CostAddition.lean      paragraph 53(1)(f): the loss is added to the substituted property's cost
     S251_1/Affiliation.lean    paragraph 251.1(1)(a): spouses are affiliated
     S54/Timeline.lean          a timeline chart of the superficial loss period
@@ -74,6 +79,7 @@ Canteen/
   Transactions/            Layer 3: concrete transactions, each step a theorem
     SpouseRepurchase.lean    shares sold at a loss and bought by the spouse
     SiblingAndLateRepurchase.lean   a sibling buys, and the taxpayer buys back on day 31
+    TfsaContribution.lean    shares contributed in kind to a TFSA at a loss
   Blueprints/              memo-style documents linked to the Lean above
   Graphs/                  the diagram pages
   Tests/                   known-answer, sanity, non-vacuity and read-back tests
@@ -147,10 +153,11 @@ Relies on these judgment calls:
 Overall risk: medium.
 ```
 
-## The first real provision
+## The provisions encoded
 
 Section 54, "superficial loss", is encoded paragraph by paragraph: the loss, paragraphs (a) and (b), every exception in (c) to (h), and the deeming rules in (i) and (j).
-Subparagraph 40(2)(g)(i) applies it to make the loss nil.
+All of paragraph 40(2)(g) is encoded: (i) superficial losses, (ii) debts, (iii) personal-use property (with the s. 54 definitions it uses), and (iv) transfers to TFSAs, RRSPs and other plans, under the carve-out in its opening words.
+Paragraph 53(1)(f) adds a superficial loss to the cost of the substituted property, and paragraph 251.1(1)(a) makes spouses affiliated.
 Whether a property is "identical" is a judgment call; inputs decided by provisions not yet encoded (affiliation under s. 251.1, for example) are taken as facts.
 
 ```
@@ -173,7 +180,7 @@ A blueprint (`Canteen/Blueprints/`) is a memo whose statements each name the Lea
 - **Every assumption is visible.** Each statement lists the facts, judgment calls and unformalized statements it rests on.
 - **Memos can't understate their dependencies.** Lean reads the proofs to find which statements each one really uses; a memo that leaves one out is refused. Each memo shows this second graph alongside its own.
 
-Memos: [the spouse repurchase](docs/blueprint/spouse-repurchase.md) (the loss is denied and moves to the spouse's cost) and [the sibling and day-31 repurchase](docs/blueprint/sibling-and-late-repurchase.md) (the loss stands, resting on no judgment call).
+Memos: [the spouse repurchase](docs/blueprint/spouse-repurchase.md) (the loss is denied and moves to the spouse's cost), [the sibling and day-31 repurchase](docs/blueprint/sibling-and-late-repurchase.md) (the loss stands, resting on no judgment call), and [a TFSA contribution in kind](docs/blueprint/tfsa-contribution.md) (the loss is nil under 40(2)(g)(iv) whether or not the TFSA trust is affiliated).
 
 ## Graphs
 

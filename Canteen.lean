@@ -8,6 +8,7 @@ import Canteen.Core.Rule
 import Canteen.Core.Render
 import Canteen.Core.Argument
 import Canteen.Core.Combine
+import Canteen.Core.Answer
 import Canteen.Core.Statute
 import Canteen.Core.StatuteSyntax
 import Canteen.Core.Branch
@@ -32,6 +33,11 @@ import Canteen.ITA.S40.LossDenialStatute
 import Canteen.ITA.S53.CostAddition
 import Canteen.ITA.S251_1.Affiliation
 import Canteen.ITA.S54.Timeline
+import Canteen.ITA.S40.Paragraph40_2_g_Facts
+import Canteen.ITA.S40.DebtLoss
+import Canteen.ITA.S40.PersonalUseLoss
+import Canteen.ITA.S40.PlanTransferLoss
+import Canteen.ITA.S40.Paragraph40_2_g
 
 -- Layer 2: reusable lemmas
 import Canteen.Lemmas.SuperficialLoss
@@ -39,11 +45,13 @@ import Canteen.Lemmas.SuperficialLoss
 -- Layer 3: transactions
 import Canteen.Transactions.SpouseRepurchase
 import Canteen.Transactions.SiblingAndLateRepurchase
+import Canteen.Transactions.TfsaContribution
 
 -- Blueprints: memos linked to Lean
 import Canteen.Blueprints.SuperficialLoss
 import Canteen.Blueprints.SpouseRepurchase
 import Canteen.Blueprints.SiblingAndLateRepurchase
+import Canteen.Blueprints.TfsaContribution
 import Canteen.Blueprints.All
 
 -- Graph pages
@@ -62,3 +70,4 @@ import Canteen.Tests.Blueprint
 import Canteen.Tests.Statute
 import Canteen.Tests.Related
 import Canteen.Tests.Graphs
+import Canteen.Tests.Paragraph40_2_g

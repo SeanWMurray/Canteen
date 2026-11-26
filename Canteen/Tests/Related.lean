@@ -32,14 +32,16 @@ example : CostAddition.rule.holds { base with stopLossAmount := 50999 } = false 
 
 /-! ## Paragraph 251.1(1)(a) -/
 
-example : Affiliation.affiliated.holds ⟨true, true, false⟩ = true := rfl     -- spouses
-example : Affiliation.affiliated.holds ⟨true, false, false⟩ = false := rfl   -- siblings
-example : Affiliation.affiliated.holds ⟨true, false, true⟩ = true := rfl     -- another paragraph
-example : Affiliation.affiliated.holds ⟨false, true, false⟩ = false := rfl   -- not an individual
-example : Affiliation.acquirer "X" ⟨true, true, false⟩ = .affiliated "X" := rfl
-example : Affiliation.acquirer "X" ⟨true, false, false⟩ = .notAffiliated "X" := rfl
+example : Affiliation.affiliated.holds ⟨true, true, .fact false⟩ = true := rfl     -- spouses
+example : Affiliation.affiliated.holds ⟨true, false, .fact false⟩ = false := rfl   -- siblings
+example : Affiliation.affiliated.holds ⟨true, false, .fact true⟩ = true := rfl     -- another paragraph
+example : Affiliation.affiliated.holds ⟨false, true, .fact false⟩ = false := rfl   -- not an individual
+example : Affiliation.acquirer "X" ⟨true, true, .fact false⟩ = .affiliated "X" := rfl
+example : Affiliation.acquirer "X" ⟨true, false, .fact false⟩ = .notAffiliated "X" := rfl
+example : Affiliation.acquirer "X" ⟨true, false, .judged "J" true⟩ = .judged "X" "J" true := rfl
+#guard (Affiliation.affiliated.explain ⟨true, false, .judged "J" true⟩).reliesOn == ["J"]
 
-#guard Affiliation.affiliated.explainText ⟨true, true, false⟩ ==
+#guard Affiliation.affiliated.explainText ⟨true, true, .fact false⟩ ==
   "1. The first person is an individual. [ITA 251.1(1)(a)]\n" ++
   "2. The second person is a spouse or common-law partner of the individual. [ITA 251.1(1)(a)]\n" ++
   "3. Therefore paragraph 251.1(1)(a) applies. [ITA 251.1(1)(a)]\n" ++

@@ -112,8 +112,8 @@ graph TD
   n21["C2"]:::proven
   n22["K"]:::proven
   n1 --> n2
-  n0 --> n6
   n5 --> n6
+  n0 -.-> n6
   n0 --> n11
   n5 --> n11
   n4 --> n12
@@ -276,7 +276,7 @@ flowchart TD
 
 “an individual and a spouse or common-law partner of the individual” are affiliated persons.
 
-**Lean:** [`Canteen.ITA.Affiliation.affiliated`](../../Canteen/ITA/S251_1/Affiliation.lean#L47), [`Canteen.ITA.Affiliation.spouses_affiliated`](../../Canteen/ITA/S251_1/Affiliation.lean#L55)
+**Lean:** [`Canteen.ITA.Affiliation.affiliated`](../../Canteen/ITA/S251_1/Affiliation.lean#L50), [`Canteen.ITA.Affiliation.spouses_affiliated`](../../Canteen/ITA/S251_1/Affiliation.lean#L58)
 
 ### L1. Superficial loss
 
@@ -284,7 +284,7 @@ flowchart TD
 
 A loss is a superficial loss if there is a loss, some property acquired by the taxpayer or an affiliated person in the period from 30 days before to 30 days after the disposition is, or is identical to, the property sold and is held at the end of the period, and no exception in (c) to (h) applies. See the provision's blueprint.
 
-**Lean:** [`Canteen.ITA.SuperficialLoss.superficialLoss`](../../Canteen/ITA/S54/SuperficialLoss.lean#L246), [`Canteen.ITA.SuperficialLoss.superficialLoss_iff`](../../Canteen/Lemmas/SuperficialLoss.lean#L11)
+**Lean:** [`Canteen.ITA.SuperficialLoss.superficialLoss`](../../Canteen/ITA/S54/SuperficialLoss.lean#L255), [`Canteen.ITA.SuperficialLoss.superficialLoss_iff`](../../Canteen/Lemmas/SuperficialLoss.lean#L11)
 
 ### L2. The loss is nil
 

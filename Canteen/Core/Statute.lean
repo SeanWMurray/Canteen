@@ -145,6 +145,70 @@ theorem statute_explain_factual (name citation : String) (conds excs : List (Rul
     · exact h1 r hr (by simp [hf, hfa])
     · exact h2 r hr (by simp [ht, hfa])
 
+/-! ## Any of several rules -/
+
+/-- The explanation for "any of these rules applies": one that applies on the facts alone;
+else any that applies; else the reasons none applies. -/
+def anyFinding (name citation : String) (rs : List (Rule Facts)) (f : Facts) : Finding :=
+  let pos (r : Rule Facts) : Finding :=
+    ⟨true, (r.explain f).steps ++ [therefore name citation true], (r.explain f).reliesOn⟩
+  match rs.find? (fun r => (r.explain f).conclusion && (r.explain f).isFactual) with
+  | some r => pos r
+  | none =>
+    match rs.find? (fun r => (r.explain f).conclusion) with
+    | some r => pos r
+    | none =>
+      ⟨false, rs.flatMap (fun r => (r.explain f).steps) ++ [therefore name citation false],
+        rs.foldl (fun ids r => mergeIds ids (r.explain f).reliesOn) []⟩
+
+theorem anyFinding_conclusion (name citation : String) (rs : List (Rule Facts)) (f : Facts) :
+    (anyFinding name citation rs f).conclusion = rs.any (·.holds f) := by
+  unfold anyFinding
+  cases h1 : rs.find? (fun r => (r.explain f).conclusion && (r.explain f).isFactual) with
+  | some r =>
+    have hp := List.find?_some h1
+    have hm := List.mem_of_find?_eq_some h1
+    simp only [explain_conclusion, Bool.and_eq_true] at hp
+    exact (List.any_eq_true.mpr ⟨r, hm, hp.1⟩).symm
+  | none =>
+  cases h2 : rs.find? (fun r => (r.explain f).conclusion) with
+  | some r =>
+    have hp := List.find?_some h2
+    have hm := List.mem_of_find?_eq_some h2
+    simp only [explain_conclusion] at hp
+    exact (List.any_eq_true.mpr ⟨r, hm, hp⟩).symm
+  | none =>
+    rw [List.find?_eq_none] at h2
+    exact (List.any_eq_false.mpr fun r hr => by simpa using h2 r hr).symm
+
+/-- The rule `name` applies when any of `rs` applies. Sound by `anyFinding_conclusion`. -/
+def anyOf (name citation : String) (rs : List (Rule Facts)) : Rule Facts where
+  name := name
+  citation := citation
+  holds := fun f => rs.any (·.holds f)
+  explain := anyFinding name citation rs
+  sound := anyFinding_conclusion name citation rs
+
+@[simp] theorem anyOf_holds (name citation : String) (rs : List (Rule Facts)) (f : Facts) :
+    (anyOf name citation rs).holds f = rs.any (·.holds f) := rfl
+
+/-- Prefer facts over judgment: if any of the rules applies on the facts alone, the
+explanation relies on no judgment call. -/
+theorem anyOf_explain_factual (name citation : String) (rs : List (Rule Facts)) (f : Facts)
+    (h : ∃ r ∈ rs, r.holds f = true ∧ (r.explain f).isFactual = true) :
+    ((anyOf name citation rs).explain f).isFactual = true := by
+  simp only [anyOf, anyFinding]
+  cases h1 : rs.find? (fun r => (r.explain f).conclusion && (r.explain f).isFactual) with
+  | some r =>
+    have hp := List.find?_some h1
+    simp only [Bool.and_eq_true] at hp
+    simpa [Finding.isFactual] using hp.2
+  | none =>
+    exfalso
+    rw [List.find?_eq_none] at h1
+    obtain ⟨r, hr, ht, hfa⟩ := h
+    exact h1 r hr (by simp [ht, hfa])
+
 end Canteen.Rule
 
 namespace Canteen

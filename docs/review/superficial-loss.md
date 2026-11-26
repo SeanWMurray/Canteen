@@ -1,12 +1,12 @@
-# Review: section 54 "superficial loss", subparagraph 40(2)(g)(i), paragraph 53(1)(f) and paragraph 251.1(1)(a)
+# Review: section 54 "superficial loss", paragraph 40(2)(g), paragraph 53(1)(f) and paragraph 251.1(1)(a)
 
 **Status:** encoded and tested; **awaiting review against the statute** (roadmap Phase 4).
 
 Lean proves that each explanation agrees with its rule, and that the conclusions follow from the definitions.
 It cannot prove that the definitions match the Act. That is what this review is for.
 
-- Statute text (verbatim, current to 2026-10-29): [`statute/ITA-54-superficial-loss.txt`](../../statute/ITA-54-superficial-loss.txt), [`statute/ITA-40-2-g.txt`](../../statute/ITA-40-2-g.txt), [`statute/ITA-53-1-f.txt`](../../statute/ITA-53-1-f.txt), [`statute/ITA-251-1-1-a.txt`](../../statute/ITA-251-1-1-a.txt)
-- Encoding: [`Canteen/ITA/S54/SuperficialLoss.lean`](../../Canteen/ITA/S54/SuperficialLoss.lean), [`Canteen/ITA/S40/LossDenial.lean`](../../Canteen/ITA/S40/LossDenial.lean), [`Canteen/ITA/S53/CostAddition.lean`](../../Canteen/ITA/S53/CostAddition.lean), [`Canteen/ITA/S251_1/Affiliation.lean`](../../Canteen/ITA/S251_1/Affiliation.lean)
+- Statute text (verbatim, current to 2026-10-29): [`statute/ITA-54-superficial-loss.txt`](../../statute/ITA-54-superficial-loss.txt), [`statute/ITA-40-2-g.txt`](../../statute/ITA-40-2-g.txt), [`statute/ITA-53-1-f.txt`](../../statute/ITA-53-1-f.txt), [`statute/ITA-251-1-1-a.txt`](../../statute/ITA-251-1-1-a.txt), [`statute/ITA-54-personal-use-property.txt`](../../statute/ITA-54-personal-use-property.txt), [`statute/ITA-104-2.txt`](../../statute/ITA-104-2.txt)
+- Encoding: [`Canteen/ITA/S54/SuperficialLoss.lean`](../../Canteen/ITA/S54/SuperficialLoss.lean), [`Canteen/ITA/S40/LossDenial.lean`](../../Canteen/ITA/S40/LossDenial.lean), [`Canteen/ITA/S53/CostAddition.lean`](../../Canteen/ITA/S53/CostAddition.lean), [`Canteen/ITA/S251_1/Affiliation.lean`](../../Canteen/ITA/S251_1/Affiliation.lean), and for 40(2)(g)(ii) to (iv) and the paragraph as a whole: [`DebtLoss.lean`](../../Canteen/ITA/S40/DebtLoss.lean), [`PersonalUseLoss.lean`](../../Canteen/ITA/S40/PersonalUseLoss.lean), [`PlanTransferLoss.lean`](../../Canteen/ITA/S40/PlanTransferLoss.lean), [`Paragraph40_2_g.lean`](../../Canteen/ITA/S40/Paragraph40_2_g.lean)
 - Statute forms, each proven equal to the encoding: [`SuperficialLossStatute.lean`](../../Canteen/ITA/S54/SuperficialLossStatute.lean), [`LossDenialStatute.lean`](../../Canteen/ITA/S40/LossDenialStatute.lean)
 - Diagrams: [flowcharts](../graphs/flowcharts.md) and [timelines](../graphs/timelines.md) of the rules as encoded
 - Lemmas: [`Canteen/Lemmas/SuperficialLoss.lean`](../../Canteen/Lemmas/SuperficialLoss.lean)
@@ -34,6 +34,15 @@ It cannot prove that the definitions match the Act. That is what this review is 
 | 53(1)(f) substituted property "of the taxpayer" | `CostAddition.Facts.substitutedProperty` | substituted or not |
 | 53(1)(f) "the amount, if any, by which (i) … exceeds (ii) …" | `CostAddition.addition` (truncated difference), `adjustedCostBase` | (ii) nil, smaller, equal, larger |
 | 251.1(1)(a) "an individual and a spouse or common-law partner of the individual" | `Affiliation.paragraphA`, `affiliated`, `acquirer` | spouses, siblings, not an individual, another paragraph |
+| 40(2)(g)(ii) "a loss from the disposition of a debt or other right to receive an amount" | `debtLoss` (`isDebtOrRight`) | debt, not a debt, gain |
+| 40(2)(g)(ii) "unless … acquired … for the purpose of gaining or producing income from a business or property (other than exempt income)" | `debtLoss` exception, `incomePurpose` (fact or judgment call) | purpose met; judged |
+| 40(2)(g)(ii) "or as consideration for the disposition of capital property to a person with whom the taxpayer was dealing at arm's length" | `debtLoss` exception, `considerationForCapitalProperty`, `armsLength` (fact or judgment call) | arm's length and not |
+| 54 "personal-use property" (a), (b), (c) | `personalUseProperty` | each paragraph |
+| 54 "listed personal property" (a) to (e) | `ListedKind`, `isListed` | coin as an investment; art for personal use |
+| 40(2)(g)(iii) "personal-use property … (other than listed personal property or a debt referred to in subsection 50(2))" | `personalUseLoss` | listed, 50(2) debt, neither |
+| 40(2)(g)(iv)(A) the six listed plans, "under which the taxpayer is a beneficiary or immediately after the disposition becomes a beneficiary" | `planTransferA`, `PlanTrust.inA` | each plan, with and without the taxpayer a beneficiary |
+| 40(2)(g)(iv)(B) RRSP, "the taxpayer or the taxpayer's spouse or common-law partner is an annuitant or becomes, within 60 days after the end of the taxation year, an annuitant" | `planTransferB` | RRSP with and without an annuitant; TFSA not in (B) |
+| 40(2)(g) "(i) …, (ii) …, (iii) …, or (iv) …" | `paragraph` (`Rule.anyOf` under the carve-out), `deniedLoss` | each subparagraph; carve-out |
 
 ## Interpretation choices to confirm
 
@@ -50,10 +59,16 @@ It cannot prove that the definitions match the Act. That is what this review is 
    - the 40(2)(g) foreign affiliate carve-out.
 8. **Any one qualifying acquisition is enough.** When several qualify, the explanation cites one that rests on facts before one that rests on judgment.
 9. **"To the extent that" is not quantified.** The rule decides whether the loss is a superficial loss. `deniedLoss` treats the whole loss as denied. Partial cases (for example, fewer shares bought back than sold) are left for a later phase. The Act gives no formula for them.
-10. **Not encoded:** 40(2)(g)(ii) to (iv).
+10. **Not encoded:** subsection 50(2) (which debts it refers to), section 251 (arm's length), and the amount in 53(1)(f)(ii); each is an input.
 11. **53(1)(f), amount (i):** "the amount of the loss that was, because of the acquisition by the taxpayer of the property, a superficial loss" is an input. In the spouse transaction it is the whole denied loss, which assumes the spouse's shares are the only substituted property.
 12. **53(1)(f), amount (ii):** the amount that would be deducted under 112(3) to (3.2) is an input (nil in the examples). "The amount, if any, by which (i) exceeds (ii)" is read as (i) minus (ii), or nil.
 13. **251.1(1)(a)** is read as requiring the first person to be an individual and the second to be that individual's spouse or common-law partner. It is symmetric in practice, but the encoding takes the facts in that order.
+14. **Affiliation can be a judgment call.** Whether one of paragraphs 251.1(1)(b) to (g) applies is a fact or a judgment call. When it is a judgment call, the superficial loss acquirer records it (`Acquirer.judged`), and every finding that turns on it relies on it.
+15. **40(2)(g)(ii):** "acquired … for the purpose of gaining or producing income" and arm's length dealing are each a fact or a judgment call. The "unless" is read as two alternative exceptions. Exempt income is not separately modelled: the income purpose must be "other than exempt income".
+16. **"Personal-use property" says "includes".** Its three listed categories are encoded. Any ordinary meaning beyond them must come in through the judgment call in paragraph (a). The partnership part of the definition is not encoded.
+17. **"Listed personal property"** is read as personal-use property that is, or is a portion of or an interest in or right to, one of the five listed kinds. Which kind it is, if any, is a fact.
+18. **40(2)(g)(iv):** the TFSA holder is treated as "a beneficiary" under the TFSA. "Within 60 days after the end of the taxation year" in (B) is a single fact, not computed from dates.
+19. **"To the extent that" for (ii) to (iv)** is read as the whole loss: the loss is entirely from the disposition of the debt, personal-use property, or property transferred. `Paragraph40_2_g.deniedLoss` treats the whole loss as nil when any subparagraph applies, as `LossDenial.deniedLoss` does for (i).
 
 ## Reviewer checklist
 

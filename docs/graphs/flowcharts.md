@@ -44,6 +44,28 @@ flowchart TD
   classDef start fill:#ffffff,stroke:#212121,color:#212121
 ```
 
+## Paragraph 40(2)(g) as a whole
+
+```mermaid
+flowchart TD
+  S(["paragraph 40(2)(g) · ITA 40(2)(g)"]):::start
+  C0["<b>(i) to (iv)</b> one of subparagraphs 40(2)(g)(i) to (iv)<br/>applies<br/>[ITA 40(2)(g)]"]:::rule
+  E0["<b>opening words</b> For the purposes of computing the surplus or<br/>deficit of the taxpayer in respect of<br/>another taxpayer of which it is a foreign<br/>affiliate, the property is excluded property<br/>[ITA 40(2)(g) opening words]"]:::fact
+  Y(["paragraph 40(2)(g) applies"]):::yes
+  N(["paragraph 40(2)(g) does not apply"]):::no
+  S --> C0
+  C0 -->|met| E0
+  C0 -->|not met| N
+  E0 -->|does not apply| Y
+  E0 -->|applies| N
+  classDef fact fill:#eeeeee,stroke:#616161,color:#212121
+  classDef judgment fill:#ffe0b2,stroke:#ef6c00,color:#e65100
+  classDef rule fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+  classDef yes fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
+  classDef no fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+  classDef start fill:#ffffff,stroke:#212121,color:#212121
+```
+
 ## Subparagraph 40(2)(g)(i)
 
 ```mermaid
@@ -58,6 +80,147 @@ flowchart TD
   C0 -->|not met| N
   E0 -->|does not apply| Y
   E0 -->|applies| N
+  classDef fact fill:#eeeeee,stroke:#616161,color:#212121
+  classDef judgment fill:#ffe0b2,stroke:#ef6c00,color:#e65100
+  classDef rule fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+  classDef yes fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
+  classDef no fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+  classDef start fill:#ffffff,stroke:#212121,color:#212121
+```
+
+## Subparagraph 40(2)(g)(ii): debts
+
+```mermaid
+flowchart TD
+  S(["subparagraph 40(2)(g)(ii) · ITA 40(2)(g)(ii)"]):::start
+  C0["<b>loss</b> The taxpayer has a loss from the disposition<br/>[ITA 40(2)(g)(ii) loss]"]:::fact
+  C1["<b>debt</b> The property disposed of is a debt or other<br/>right to receive an amount<br/>[ITA 40(2)(g)(ii) debt]"]:::fact
+  E0["<b>income purpose</b> The taxpayer acquired the debt or right for<br/>the purpose of gaining or producing income<br/>from a business or property (other than<br/>exempt income)<br/><i>judgment call: judgment calls computed from the facts</i><br/>[ITA 40(2)(g)(ii) income purpose]"]:::judgment
+  E1["<b>arm's length sale</b> The taxpayer acquired the debt or right as<br/>consideration for the disposition of capital<br/>property to a person with whom the taxpayer<br/>was dealing at arm's length<br/><i>judgment call: judgment calls computed from the facts</i><br/>[ITA 40(2)(g)(ii) arm's length sale]"]:::judgment
+  Y(["subparagraph 40(2)(g)(ii) applies"]):::yes
+  N(["subparagraph 40(2)(g)(ii) does not apply"]):::no
+  S --> C0
+  C0 -->|met| C1
+  C0 -->|not met| N
+  C1 -->|met| E0
+  C1 -->|not met| N
+  E0 -->|does not apply| E1
+  E0 -->|applies| N
+  E1 -->|does not apply| Y
+  E1 -->|applies| N
+  classDef fact fill:#eeeeee,stroke:#616161,color:#212121
+  classDef judgment fill:#ffe0b2,stroke:#ef6c00,color:#e65100
+  classDef rule fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+  classDef yes fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
+  classDef no fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+  classDef start fill:#ffffff,stroke:#212121,color:#212121
+```
+
+## Subparagraph 40(2)(g)(iii): personal-use property
+
+```mermaid
+flowchart TD
+  S(["subparagraph 40(2)(g)(iii) · ITA 40(2)(g)(iii)"]):::start
+  C0["<b>loss</b> The taxpayer has a loss from the disposition<br/>[ITA 40(2)(g)(iii) loss]"]:::fact
+  C1["<b>personal-use property</b> personal-use property applies<br/>[ITA 54 #quot;personal-use property#quot;]"]:::rule
+  E0["<b>listed personal property</b> The property is listed personal property:<br/>personal-use property that is, or is a<br/>portion of or an interest in or right to, a<br/>print, etching, drawing, painting, sculpture<br/>or other similar work of art, jewellery, a<br/>rare folio, rare manuscript or rare book, a<br/>stamp, or a coin<br/>[ITA 40(2)(g)(iii) listed personal property]"]:::fact
+  E1["<b>debt under 50(2)</b> The property is a debt referred to in<br/>subsection 50(2)<br/>[ITA 40(2)(g)(iii) debt under 50(2)]"]:::fact
+  Y(["subparagraph 40(2)(g)(iii) applies"]):::yes
+  N(["subparagraph 40(2)(g)(iii) does not apply"]):::no
+  S --> C0
+  C0 -->|met| C1
+  C0 -->|not met| N
+  C1 -->|met| E0
+  C1 -->|not met| N
+  E0 -->|does not apply| E1
+  E0 -->|applies| N
+  E1 -->|does not apply| Y
+  E1 -->|applies| N
+  classDef fact fill:#eeeeee,stroke:#616161,color:#212121
+  classDef judgment fill:#ffe0b2,stroke:#ef6c00,color:#e65100
+  classDef rule fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+  classDef yes fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
+  classDef no fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+  classDef start fill:#ffffff,stroke:#212121,color:#212121
+```
+
+## Section 54 "personal-use property"
+
+```mermaid
+flowchart TD
+  S(["personal-use property · ITA 54 #quot;personal-use property#quot;"]):::start
+  C0["<b>(a) to (c)</b> The property is personal-use property of the<br/>taxpayer: property used primarily for the<br/>personal use or enjoyment of the taxpayer or<br/>related individuals, a debt owing in respect<br/>of the disposition of personal-use property,<br/>or an option to acquire personal-use<br/>property<br/><i>judgment call: judgment calls computed from the facts</i><br/>[ITA 54 #quot;personal-use property#quot; (a) to (c)]"]:::judgment
+  Y(["personal-use property applies"]):::yes
+  N(["personal-use property does not apply"]):::no
+  S --> C0
+  C0 -->|met| Y
+  C0 -->|not met| N
+  classDef fact fill:#eeeeee,stroke:#616161,color:#212121
+  classDef judgment fill:#ffe0b2,stroke:#ef6c00,color:#e65100
+  classDef rule fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+  classDef yes fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
+  classDef no fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+  classDef start fill:#ffffff,stroke:#212121,color:#212121
+```
+
+## Subparagraph 40(2)(g)(iv): transfers to registered plans
+
+```mermaid
+flowchart TD
+  S(["subparagraph 40(2)(g)(iv) · ITA 40(2)(g)(iv)"]):::start
+  C0["<b>loss</b> The taxpayer has a loss from the disposition<br/>[ITA 40(2)(g)(iv) loss]"]:::fact
+  C1["<b>(A) or (B)</b> clause (A) or (B) applies<br/>[ITA 40(2)(g)(iv)]"]:::rule
+  Y(["subparagraph 40(2)(g)(iv) applies"]):::yes
+  N(["subparagraph 40(2)(g)(iv) does not apply"]):::no
+  S --> C0
+  C0 -->|met| C1
+  C0 -->|not met| N
+  C1 -->|met| Y
+  C1 -->|not met| N
+  classDef fact fill:#eeeeee,stroke:#616161,color:#212121
+  classDef judgment fill:#ffe0b2,stroke:#ef6c00,color:#e65100
+  classDef rule fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+  classDef yes fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
+  classDef no fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+  classDef start fill:#ffffff,stroke:#212121,color:#212121
+```
+
+## Clause 40(2)(g)(iv)(A)
+
+```mermaid
+flowchart TD
+  S(["clause 40(2)(g)(iv)(A) · ITA 40(2)(g)(iv)(A)"]):::start
+  C0["<b>trust</b> The property was disposed of to a trust<br/>governed by a deferred profit sharing plan,<br/>an employees profit sharing plan, a FHSA, a<br/>registered disability savings plan, a<br/>registered retirement income fund or a TFSA<br/>[ITA 40(2)(g)(iv)(A) trust]"]:::fact
+  C1["<b>beneficiary</b> The taxpayer is, or immediately after the<br/>disposition becomes, a beneficiary under it<br/>[ITA 40(2)(g)(iv)(A) beneficiary]"]:::fact
+  Y(["clause 40(2)(g)(iv)(A) applies"]):::yes
+  N(["clause 40(2)(g)(iv)(A) does not apply"]):::no
+  S --> C0
+  C0 -->|met| C1
+  C0 -->|not met| N
+  C1 -->|met| Y
+  C1 -->|not met| N
+  classDef fact fill:#eeeeee,stroke:#616161,color:#212121
+  classDef judgment fill:#ffe0b2,stroke:#ef6c00,color:#e65100
+  classDef rule fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+  classDef yes fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
+  classDef no fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+  classDef start fill:#ffffff,stroke:#212121,color:#212121
+```
+
+## Clause 40(2)(g)(iv)(B)
+
+```mermaid
+flowchart TD
+  S(["clause 40(2)(g)(iv)(B) · ITA 40(2)(g)(iv)(B)"]):::start
+  C0["<b>trust</b> The property was disposed of to a trust<br/>governed by a registered retirement savings<br/>plan<br/>[ITA 40(2)(g)(iv)(B) trust]"]:::fact
+  C1["<b>annuitant</b> The taxpayer or the taxpayer's spouse or<br/>common-law partner is an annuitant under it,<br/>or becomes one within 60 days after the end<br/>of the taxation year<br/>[ITA 40(2)(g)(iv)(B) annuitant]"]:::fact
+  Y(["clause 40(2)(g)(iv)(B) applies"]):::yes
+  N(["clause 40(2)(g)(iv)(B) does not apply"]):::no
+  S --> C0
+  C0 -->|met| C1
+  C0 -->|not met| N
+  C1 -->|met| Y
+  C1 -->|not met| N
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
   classDef judgment fill:#ffe0b2,stroke:#ef6c00,color:#e65100
   classDef rule fill:#bbdefb,stroke:#1565c0,color:#0d47a1

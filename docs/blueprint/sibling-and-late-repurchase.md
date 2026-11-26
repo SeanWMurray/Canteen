@@ -82,8 +82,8 @@ graph TD
   n14["A5"]:::proven
   n15["A6"]:::proven
   n16["K"]:::proven
-  n0 --> n5
   n4 --> n5
+  n0 -.-> n5
   n3 --> n10
   n0 --> n11
   n4 --> n11
@@ -173,7 +173,7 @@ flowchart LR
 
 Two individuals who are not spouses or common-law partners are affiliated only if one of paragraphs 251.1(1)(b) to (g) applies.
 
-**Lean:** [`Canteen.ITA.Affiliation.affiliated`](../../Canteen/ITA/S251_1/Affiliation.lean#L47), [`Canteen.ITA.Affiliation.individuals_not_spouses`](../../Canteen/ITA/S251_1/Affiliation.lean#L60)
+**Lean:** [`Canteen.ITA.Affiliation.affiliated`](../../Canteen/ITA/S251_1/Affiliation.lean#L50), [`Canteen.ITA.Affiliation.individuals_not_spouses`](../../Canteen/ITA/S251_1/Affiliation.lean#L63)
 
 ### L1. Acquisitions that never matter
 

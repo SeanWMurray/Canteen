@@ -1,0 +1,21 @@
+Income Tax Act, R.S.C. 1985, c. 1 (5th Supp.), section 54, definitions of "personal-use property" and "listed personal property"
+
+Source: Justice Canada consolidated Acts (XML), https://github.com/justicecanada/laws-lois-xml, file eng/acts/I-3.3.xml
+Current to: 2026-10-29. Last amended: 2026-06-18.
+Extracted verbatim; whitespace normalized; paragraph labels kept; continued text marked [continued].
+
+ personal-use property of a taxpayer includes
+  (a) property owned by the taxpayer that is used primarily for the personal use or enjoyment of the taxpayer or for the personal use or enjoyment of one or more individuals each of whom is
+    (i) the taxpayer,
+    (ii) a person related to the taxpayer, or
+    (iii) where the taxpayer is a trust, a beneficiary under the trust or any person related to the beneficiary,
+  (b) any debt owing to the taxpayer in respect of the disposition of property that was the taxpayer’s personal-use property, and
+  (c) any property of the taxpayer that is an option to acquire property that would, if the taxpayer acquired it, be personal-use property of the taxpayer,
+  [continued] and personal-use property of a partnership includes any partnership property that is used primarily for the personal use or enjoyment of any member of the partnership or for the personal use or enjoyment of one or more individuals each of whom is a member of the partnership or a person related to such a member; (biens à usage personnel)
+
+ listed personal property of a taxpayer means the taxpayer’s personal-use property that is all or any portion of, or any interest in or right to — or, for civil law, any right in or to — any
+  (a) print, etching, drawing, painting, sculpture, or other similar work of art,
+  (b) jewellery,
+  (c) rare folio, rare manuscript, or rare book,
+  (d) stamp, or
+  (e) coin; (biens meubles déterminés)

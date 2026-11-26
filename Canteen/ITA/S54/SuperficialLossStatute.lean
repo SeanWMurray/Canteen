@@ -13,12 +13,11 @@ gives dates, amounts and per-acquisition reasons).
 
 namespace Canteen.ITA.SuperficialLoss
 
-/-- The identity judgment calls that can matter: those of acquisitions that meet every
-other part of (a) and (b). -/
-def identityJudgments (f : Facts) : List String :=
-  (f.acquisitions.filter fun a =>
-      inPeriod f.disposition a && a.acquirer.isTaxpayerOrAffiliated && paraB a).filterMap
-    (·.identity.judgment?)
+/-- The judgment calls that can matter: the affiliation and identity judgment calls of
+acquisitions in the period and held at its end. -/
+def acquisitionJudgments (f : Facts) : List String :=
+  (f.acquisitions.filter fun a => inPeriod f.disposition a && paraB a).foldl
+    (fun ids a => mergeIds ids (mergeIds a.acquirer.judgment?.toList a.identity.judgment?.toList)) []
 
 /-- **superficial loss** of a taxpayer means the taxpayer's loss from the disposition of a
 particular property where (a) … and (b) …, except where the disposition was (c) … (h) …. -/
@@ -27,7 +26,7 @@ statute superficialLossStatute (f : Facts) named "the superficial loss rule" cit
     | "opening words" isLoss f.disposition
         => "The taxpayer has a loss from the disposition of the particular property."
         else "The taxpayer has no loss from the disposition of the particular property."
-    | "(a), (b)" judgments (identityJudgments f) f.acquisitions.any (qualifies f.disposition)
+    | "(a), (b)" judgments (acquisitionJudgments f) f.acquisitions.any (qualifies f.disposition)
         => "During the period that begins 30 days before and ends 30 days after the disposition, the taxpayer or a person affiliated with the taxpayer acquired a property that is, or is identical to, the particular property, and at the end of that period the taxpayer or a person affiliated with the taxpayer owned or had a right to acquire it."
         else "No property that is, or is identical to, the particular property was both acquired by the taxpayer or a person affiliated with the taxpayer during the period that begins 30 days before and ends 30 days after the disposition, and owned by them, or subject to their right to acquire it, at the end of that period."
   except where

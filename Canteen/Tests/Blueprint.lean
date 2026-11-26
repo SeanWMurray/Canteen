@@ -98,6 +98,11 @@ L12: proven
 G0: encoded
 G1: encoded
 GS: proven
+G2: proven
+PUP: encoded
+G3: proven
+G4: proven
+G5: proven
 R1: proven
 R2: proven
 N1: not formalized
@@ -131,6 +136,10 @@ K: proven -/
 -- The sibling memo's conclusion rests on no judgment call.
 #guard (Canteen.Blueprints.SiblingAndLateRepurchase.memo.restsOn "K").all
   fun id => !["J-SIB", "J-LATE"].contains id
+
+-- The TFSA memo's conclusion rests on no judgment call, though a step along the way does.
+#guard (Canteen.Blueprints.TfsaContribution.memo.restsOn "K").all (· != "J-AFF")
+#guard (Canteen.Blueprints.TfsaContribution.memo.restsOn "A3").contains "J-AFF"
 
 -- Every blueprint passes `check`: well formed, and nothing unproven.
 #eval show CoreM Unit from do

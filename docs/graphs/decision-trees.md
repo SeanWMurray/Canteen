@@ -46,6 +46,48 @@ flowchart LR
   classDef start fill:#ffffff,stroke:#212121,color:#212121
 ```
 
+## TFSA contribution: paragraph 40(2)(g) on both answers to J-AFF
+
+```mermaid
+flowchart LR
+  B{"J-AFF<br/>Is the trust governed by the<br/>taxpayer's TFSA affiliated with the<br/>taxpayer under one of paragraphs<br/>251.1(1)(b) to (g)?"}:::judgment
+  B -->|"yes (risk medium)"| By
+  B -->|"no (risk medium)"| Bn
+  By(["Paragraph 40(2)(g) applies<br/>risk: low"]):::yes
+  Bn(["Paragraph 40(2)(g) applies<br/>risk: low"]):::yes
+  classDef fact fill:#eeeeee,stroke:#616161,color:#212121
+  classDef judgment fill:#ffe0b2,stroke:#ef6c00,color:#e65100
+  classDef rule fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+  classDef yes fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
+  classDef no fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+  classDef start fill:#ffffff,stroke:#212121,color:#212121
+```
+
+## A debt sold at a loss: income purpose and arm's length dealing both judged
+
+```mermaid
+flowchart LR
+  B{"J-PURPOSE<br/>Was the debt acquired to gain or<br/>produce income from a business or<br/>property?"}:::judgment
+  B -->|"yes (risk medium)"| By
+  B -->|"no (risk medium)"| Bn
+  By{"J-ARM<br/>Was the taxpayer dealing at arm's<br/>length with the buyer?"}:::judgment
+  By -->|"yes (risk medium)"| Byy
+  By -->|"no (risk low)"| Byn
+  Byy(["Subparagraph 40(2)(g)(ii) does not apply<br/>risk: medium"]):::no
+  Byn(["Subparagraph 40(2)(g)(ii) does not apply<br/>risk: medium"]):::no
+  Bn{"J-ARM<br/>Was the taxpayer dealing at arm's<br/>length with the buyer?"}:::judgment
+  Bn -->|"yes (risk medium)"| Bny
+  Bn -->|"no (risk low)"| Bnn
+  Bny(["Subparagraph 40(2)(g)(ii) does not apply<br/>risk: medium"]):::no
+  Bnn(["Subparagraph 40(2)(g)(ii) applies<br/>risk: medium"]):::yes
+  classDef fact fill:#eeeeee,stroke:#616161,color:#212121
+  classDef judgment fill:#ffe0b2,stroke:#ef6c00,color:#e65100
+  classDef rule fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+  classDef yes fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
+  classDef no fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+  classDef start fill:#ffffff,stroke:#212121,color:#212121
+```
+
 ## Rule X with condition B and the exception both left to judgment
 
 ```mermaid

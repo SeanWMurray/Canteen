@@ -5,6 +5,7 @@ import Canteen.Lemmas.SuperficialLoss
 import Canteen.ITA.S40.LossDenialStatute
 import Canteen.ITA.S53.CostAddition
 import Canteen.ITA.S251_1.Affiliation
+import Canteen.ITA.S40.Paragraph40_2_g
 
 /-!
 # Blueprint: section 54 "superficial loss" and subparagraph 40(2)(g)(i)
@@ -20,7 +21,7 @@ open Canteen.Blueprint Canteen.ITA Canteen.ITA.SuperficialLoss
 def cite (p : String) : String := s!"ITA 54 \"superficial loss\" {p}"
 
 def blueprint : Blueprint where
-  title := "Section 54 \"superficial loss\", subparagraph 40(2)(g)(i), and related provisions"
+  title := "Section 54 \"superficial loss\", paragraph 40(2)(g), and related provisions"
   summary := [
     "Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to " ++
       "2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. " ++
@@ -139,6 +140,38 @@ def blueprint : Blueprint where
           statement := "Subparagraph 40(2)(g)(i) written with the `statute` command, with the statute-form definition as " ++
             "subparagraph (i) and the carve-out as the exception. Proven to be the same rule as `LossDenial.rule`."
           lean := [``LossDenial.lossDenialStatute, ``LossDenial.lossDenialStatute_eq], uses := ["G1", "S"] } ] },
+    { heading := "Subparagraphs 40(2)(g)(ii) to (iv), and the paragraph as a whole"
+      nodes := [
+        { id := "G2", kind := .law, title := "(ii) losses on debts", citation := "ITA 40(2)(g)(ii)"
+          statement := "“a loss from the disposition of a debt or other right to receive an amount, unless the debt or right, " ++
+            "as the case may be, was acquired by the taxpayer for the purpose of gaining or producing income from a business " ++
+            "or property (other than exempt income) or as consideration for the disposition of capital property to a person " ++
+            "with whom the taxpayer was dealing at arm’s length,”"
+          lean := [``Paragraph40_2_g.debtLoss, ``Paragraph40_2_g.debtLoss_holds], uses := ["P0"] },
+        { id := "PUP", kind := .law, title := "Personal-use and listed personal property", citation := "ITA 54"
+          statement := "Personal-use property includes (a) property used primarily for the personal use or enjoyment of the " ++
+            "taxpayer or related individuals, (b) a debt owing in respect of the disposition of personal-use property, and " ++
+            "(c) an option to acquire personal-use property. Listed personal property is personal-use property that is, or " ++
+            "is a portion of or an interest in or right to, a work of art, jewellery, a rare folio, manuscript or book, a " ++
+            "stamp, or a coin."
+          lean := [``Paragraph40_2_g.personalUseProperty, ``Paragraph40_2_g.isListed] },
+        { id := "G3", kind := .law, title := "(iii) losses on personal-use property", citation := "ITA 40(2)(g)(iii)"
+          statement := "“a loss from the disposition of any personal-use property of the taxpayer (other than listed personal " ++
+            "property or a debt referred to in subsection 50(2)),”"
+          lean := [``Paragraph40_2_g.personalUseLoss, ``Paragraph40_2_g.personalUseLoss_holds], uses := ["P0", "PUP"] },
+        { id := "G4", kind := .law, title := "(iv) transfers to registered plans", citation := "ITA 40(2)(g)(iv)"
+          statement := "A loss from the disposition of property to (A) a trust governed by a DPSP, EPSP, FHSA, RDSP, RRIF or " ++
+            "TFSA under which the taxpayer is, or immediately after becomes, a beneficiary, or (B) a trust governed by an RRSP " ++
+            "under which the taxpayer or the taxpayer's spouse or common-law partner is, or within 60 days after the end of " ++
+            "the year becomes, an annuitant."
+          lean := [``Paragraph40_2_g.planTransferLoss, ``Paragraph40_2_g.planTransferA, ``Paragraph40_2_g.planTransferB,
+            ``Paragraph40_2_g.planTransferLoss_holds], uses := ["P0"] },
+        { id := "G5", kind := .law, title := "Paragraph 40(2)(g) as a whole", citation := "ITA 40(2)(g)"
+          statement := "The loss is nil if it is within any of subparagraphs (i) to (iv), unless the carve-out in the opening " ++
+            "words applies. Proven to deny exactly what subparagraph (i) denies when (ii) to (iv) don't apply."
+          lean := [``Paragraph40_2_g.paragraph, ``Paragraph40_2_g.paragraph_holds, ``Paragraph40_2_g.paragraph_eq_lossDenial,
+            ``Paragraph40_2_g.paragraph_of_lossDenial, ``Paragraph40_2_g.deniedLoss],
+          uses := ["G0", "G1", "E", "G2", "G3", "G4"] } ] },
     { heading := "Related provisions"
       nodes := [
         { id := "R1", kind := .law, title := "Spouses are affiliated", citation := "ITA 251.1(1)(a)"
@@ -162,7 +195,9 @@ def blueprint : Blueprint where
           statement := "Where only part of a loss is a superficial loss (for example, fewer shares acquired than sold), the amount " ++
             "made nil is not computed. The Act gives no formula."
           uses := ["G1"] },
-        { id := "N4", kind := .law, title := "Subparagraphs 40(2)(g)(ii) to (iv)", citation := "ITA 40(2)(g)"
-          statement := "Debts, personal-use property and dispositions to listed plans are not encoded.", uses := ["G0"] } ] } ]
+        { id := "N4", kind := .law, title := "Inputs for subparagraphs (ii) to (iv)", citation := "ITA 40(2)(g)"
+          statement := "Debts referred to in subsection 50(2), arm's length dealing (section 251), and the ordinary meaning of " ++
+            "personal-use property beyond the three categories its definition includes are taken as facts or judgment calls."
+          uses := ["G2", "G3"] } ] } ]
 
 end Canteen.Blueprints.SuperficialLoss
