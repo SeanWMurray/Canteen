@@ -34,3 +34,4 @@ The verbatim statute text for each is in `statute/`. Review notes are in `docs/r
 - `S74/IncomeAttribution.lean`: subsections 74.1(1) to (3), and 74.5(2) and (3)(a)
 - `S82/Dividends.lean`: subsection 82(1) and section 121
 - `S55/IntercorporateDividends.lean`: subsection 112(1), and 55(2), (2.1), (3) and (5)(f)
+- `S13/Depreciable.lean`: subsections 13(1) and (21) "undepreciated capital cost", and 20(16)

@@ -144,7 +144,8 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S251_2.LossRestrictionEvent, "251.2(2)(a), 256(7)(a) loss restriction events"),
    (`Canteen.ITA.S74.IncomeAttribution, "74.1, 74.5(2), (3)(a) attribution of income"),
    (`Canteen.ITA.S82.Dividends, "82(1), 121 dividends, gross-up and credit"),
-   (`Canteen.ITA.S55.IntercorporateDividends, "112(1), 55(2) intercorporate dividends")]
+   (`Canteen.ITA.S55.IntercorporateDividends, "112(1), 55(2) intercorporate dividends"),
+   (`Canteen.ITA.S13.Depreciable, "13(1), (21), 20(16) recapture and terminal loss")]
 
 /-! ## The dashboard -/
 
@@ -205,12 +206,14 @@ parentheses in citations are not read as node shapes. -/
 def actMindmap : String := Id.run do
   let tree : List (Nat × String) := [
     (2, "s. 3"), (3, "income for the year: (a) to (f)"),
+    (2, "s. 13"), (3, "13(21): undepreciated capital cost"), (3, "13(1): recapture"),
     (2, "ss. 38 to 41"), (3, "38: inclusion rates"), (3, "39(1): capital gains and losses"), (3, "40(1): gains and losses, reserves"),
     (3, "41: listed personal property"),
     (2, "s. 40"), (3, "40(2)(b): the principal residence exemption"), (3, "40(2)(g): losses that are nil"), (4, "(i) superficial losses"), (4, "(ii) debts"),
     (4, "(iii) personal-use property"), (4, "(iv) TFSAs, RRSPs and other plans"),
     (3, "40(2)(e.1): debts within a related group"), (3, "40(3.3) to (3.5): suspended losses"),
     (3, "40(3.6): shares to an affiliated corporation"),
+    (2, "s. 20"), (3, "20(16): terminal loss"),
     (2, "s. 45"), (3, "45(1): change in use"), (3, "45(2), (3), (4): the elections"),
     (2, "s. 50"), (3, "50(2): bad personal-use debts"),
     (2, "s. 53"), (3, "53(1)(f): cost of substituted property"), (3, "53(1)(f.1), (f.2): cost after 40(2)(e.1), 40(3.6)"),

@@ -25,6 +25,7 @@ import Canteen.ITA.S251_2.LossRestrictionEvent
 import Canteen.ITA.S74.IncomeAttribution
 import Canteen.ITA.S82.Dividends
 import Canteen.ITA.S55.IntercorporateDividends
+import Canteen.ITA.S13.Depreciable
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -359,6 +360,14 @@ def blueprint : Blueprint where
           lean := [``IntercorporateDividends.subsection55_2, ``IntercorporateDividends.caught, ``IntercorporateDividends.deduction,
             ``IntercorporateDividends.within_safe_income, ``IntercorporateDividends.related_redemption,
             ``IntercorporateDividends.conserved] },
+        { id := "R24", kind := .law, title := "Depreciable property: recapture and terminal losses", citation := "ITA 13(1), (21); 20(16)"
+          statement := "A class's undepreciated capital cost is its capital cost (plus earlier recapture) less the capital cost " ++
+            "allowance claimed and, for each disposition, the lesser of net proceeds and capital cost. If negative at year " ++
+            "end it is recaptured into income; if positive with no property left, it is a terminal loss. Proven: recapture " ++
+            "and UCC are never both positive, and recapture never exceeds the allowance claimed."
+          lean := [``Depreciable.ClassFacts.ucc, ``Depreciable.ClassFacts.recapture, ``Depreciable.ClassFacts.terminalLoss,
+            ``Depreciable.recapture_or_ucc, ``Depreciable.recapture_le_depreciation, ``Depreciable.sold_above_cost],
+          uses := ["R8"] },
         { id := "R11", kind := .law, title := "The principal residence exemption", citation := "ITA 40(2)(b); 54 \"principal residence\""
           statement := "A home is the principal residence for a year if owned, ordinarily inhabited by the family (or covered by " ++
             "a 45(2) or (3) election, for at most four years: (d)), designated, and not blocked by another family-unit " ++
