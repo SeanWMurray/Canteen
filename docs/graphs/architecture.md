@@ -43,31 +43,33 @@ flowchart BT
     m35["ITA.S40.PlanTransferLoss"]
     m36["ITA.S40.Paragraph40_2_g"]
     m37["ITA.S40.SuspendedLoss"]
-    m38["ITA.S38.CapitalGains"]
-    m39["ITA.S3.Income"]
-    m40["ITA.S111.NetCapitalLoss"]
-    m41["ITA.S50.BadDebtPersonalUse"]
-    m42["ITA.S54.Timeline"]
+    m38["ITA.S40.ShareToAffiliate"]
+    m39["ITA.S40.RelatedDebt"]
+    m40["ITA.S38.CapitalGains"]
+    m41["ITA.S3.Income"]
+    m42["ITA.S111.NetCapitalLoss"]
+    m43["ITA.S50.BadDebtPersonalUse"]
+    m44["ITA.S54.Timeline"]
   end
   subgraph Lemmas["Layer 2: reusable lemmas"]
-    m43["Lemmas.SuperficialLoss"]
-    m44["Lemmas.SuspendedLoss"]
+    m45["Lemmas.SuperficialLoss"]
+    m46["Lemmas.SuspendedLoss"]
   end
   subgraph Transactions["Layer 3: transactions"]
-    m45["Transactions.SpouseRepurchase"]
-    m46["Transactions.SiblingAndLateRepurchase"]
-    m47["Transactions.TfsaContribution"]
-    m48["Transactions.HoldcoRepurchase"]
-    m49["Transactions.SisterCompanyRepurchase"]
+    m47["Transactions.SpouseRepurchase"]
+    m48["Transactions.SiblingAndLateRepurchase"]
+    m49["Transactions.TfsaContribution"]
+    m50["Transactions.HoldcoRepurchase"]
+    m51["Transactions.SisterCompanyRepurchase"]
   end
   subgraph Blueprints["Blueprints"]
-    m50["Blueprints.SuperficialLoss"]
-    m51["Blueprints.SpouseRepurchase"]
-    m52["Blueprints.SiblingAndLateRepurchase"]
-    m53["Blueprints.TfsaContribution"]
-    m54["Blueprints.HoldcoRepurchase"]
-    m55["Blueprints.SisterCompanyRepurchase"]
-    m56["Blueprints.All"]
+    m52["Blueprints.SuperficialLoss"]
+    m53["Blueprints.SpouseRepurchase"]
+    m54["Blueprints.SiblingAndLateRepurchase"]
+    m55["Blueprints.TfsaContribution"]
+    m56["Blueprints.HoldcoRepurchase"]
+    m57["Blueprints.SisterCompanyRepurchase"]
+    m58["Blueprints.All"]
   end
   subgraph Examples["Examples"]
     m19["Examples.RuleX"]
@@ -76,10 +78,10 @@ flowchart BT
     m22["Examples.RuleXStatute"]
   end
   subgraph Graphs["Graphs"]
-    m57["Graphs.All"]
+    m59["Graphs.All"]
   end
   subgraph Root["Root"]
-    m58["Canteen"]
+    m60["Canteen"]
   end
   m0 --> m3
   m3 --> m4
@@ -141,77 +143,84 @@ flowchart BT
   m24 --> m36
   m12 --> m37
   m23 --> m37
-  m36 --> m38
-  m37 --> m38
-  m38 --> m39
+  m12 --> m38
+  m29 --> m38
+  m12 --> m39
+  m30 --> m39
+  m36 --> m40
+  m37 --> m40
+  m38 --> m40
   m39 --> m40
-  m12 --> m41
-  m10 --> m41
-  m2 --> m41
-  m23 --> m42
-  m23 --> m43
-  m37 --> m44
-  m24 --> m45
-  m43 --> m45
-  m27 --> m45
-  m28 --> m45
-  m24 --> m46
-  m28 --> m46
-  m43 --> m46
-  m36 --> m47
+  m40 --> m41
+  m41 --> m42
+  m12 --> m43
+  m10 --> m43
+  m2 --> m43
+  m23 --> m44
+  m23 --> m45
+  m37 --> m46
+  m24 --> m47
+  m45 --> m47
+  m27 --> m47
   m28 --> m47
-  m36 --> m48
-  m27 --> m48
-  m29 --> m48
-  m37 --> m49
-  m29 --> m49
-  m16 --> m50
-  m43 --> m50
-  m26 --> m50
+  m24 --> m48
+  m28 --> m48
+  m45 --> m48
+  m36 --> m49
+  m28 --> m49
+  m36 --> m50
   m27 --> m50
-  m28 --> m50
-  m31 --> m50
-  m40 --> m50
-  m41 --> m50
-  m44 --> m50
-  m16 --> m51
-  m17 --> m51
-  m45 --> m51
-  m25 --> m51
-  m42 --> m51
-  m39 --> m51
+  m29 --> m50
+  m37 --> m51
+  m29 --> m51
   m16 --> m52
-  m17 --> m52
-  m46 --> m52
+  m45 --> m52
+  m26 --> m52
+  m27 --> m52
+  m28 --> m52
+  m31 --> m52
   m42 --> m52
+  m43 --> m52
+  m46 --> m52
   m16 --> m53
-  m17 --> m53
   m47 --> m53
-  m42 --> m53
+  m25 --> m53
+  m44 --> m53
+  m41 --> m53
   m16 --> m54
+  m17 --> m54
   m48 --> m54
-  m42 --> m54
+  m44 --> m54
   m16 --> m55
+  m17 --> m55
   m49 --> m55
+  m44 --> m55
+  m16 --> m56
   m50 --> m56
-  m51 --> m56
-  m52 --> m56
-  m53 --> m56
-  m54 --> m56
-  m55 --> m56
-  m22 --> m57
-  m21 --> m57
-  m42 --> m57
-  m26 --> m57
-  m45 --> m57
-  m46 --> m57
-  m47 --> m57
-  m48 --> m57
-  m31 --> m57
-  m41 --> m57
-  m49 --> m57
-  m18 --> m58
-  m20 --> m58
+  m44 --> m56
+  m16 --> m57
+  m51 --> m57
+  m52 --> m58
+  m53 --> m58
+  m54 --> m58
+  m55 --> m58
   m56 --> m58
   m57 --> m58
+  m22 --> m59
+  m21 --> m59
+  m44 --> m59
+  m26 --> m59
+  m47 --> m59
+  m48 --> m59
+  m49 --> m59
+  m50 --> m59
+  m31 --> m59
+  m43 --> m59
+  m38 --> m59
+  m39 --> m59
+  m51 --> m59
+  m18 --> m60
+  m20 --> m60
+  m58 --> m60
+  m59 --> m60
 ```

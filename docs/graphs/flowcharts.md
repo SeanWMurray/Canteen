@@ -219,6 +219,59 @@ flowchart TD
   classDef start fill:#ffffff,stroke:#212121,color:#212121
 ```
 
+## Subsection 40(3.6): a share disposed of to an affiliated corporation
+
+```mermaid
+flowchart TD
+  S(["subsection 40(3.6) · ITA 40(3.6)"]):::start
+  C0["<b>share</b> The taxpayer disposed of a share of a class<br/>of the capital stock of the corporation to<br/>that corporation<br/>[ITA 40(3.6) share]"]:::fact
+  C1["<b>affiliated immediately after</b> affiliation under subsection 251.1(1)<br/>applies<br/>[ITA 251.1(1)]"]:::rule
+  E0["<b>distress preferred share</b> The share is a distress preferred share<br/>[ITA 40(3.6) distress preferred share]"]:::fact
+  E1["<b>surplus carve-out</b> For the purposes of computing a foreign<br/>affiliate's surplus or deficit, the share is<br/>excluded property<br/>[ITA 40(3.6) surplus carve-out]"]:::fact
+  Y(["subsection 40(3.6) applies"]):::yes
+  N(["subsection 40(3.6) does not apply"]):::no
+  S --> C0
+  C0 -->|met| C1
+  C0 -->|not met| N
+  C1 -->|met| E0
+  C1 -->|not met| N
+  E0 -->|does not apply| E1
+  E0 -->|applies| N
+  E1 -->|does not apply| Y
+  E1 -->|applies| N
+  classDef fact fill:#eeeeee,stroke:#616161,color:#212121
+  classDef judgment fill:#ffe0b2,stroke:#ef6c00,color:#e65100
+  classDef rule fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+  classDef yes fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
+  classDef no fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+  classDef start fill:#ffffff,stroke:#212121,color:#212121
+```
+
+## Paragraph 40(2)(e.1): a debt within a related group
+
+```mermaid
+flowchart TD
+  S(["paragraph 40(2)(e.1) · ITA 40(2)(e.1)"]):::start
+  C0["<b>obligation</b> The taxpayer disposed of an obligation that,<br/>immediately after, was payable by another<br/>person or partnership to the person or<br/>partnership it was disposed of to<br/>[ITA 40(2)(e.1) obligation]"]:::fact
+  C1["<b>related</b> the three related to each other applies<br/>[ITA 40(2)(e.1); 251(2)]"]:::rule
+  E0["<b>surplus carve-out</b> For the purposes of computing a foreign<br/>affiliate's surplus or deficit, the<br/>obligation is excluded property<br/>[ITA 40(2)(e.1) surplus carve-out]"]:::fact
+  Y(["paragraph 40(2)(e.1) applies"]):::yes
+  N(["paragraph 40(2)(e.1) does not apply"]):::no
+  S --> C0
+  C0 -->|met| C1
+  C0 -->|not met| N
+  C1 -->|met| E0
+  C1 -->|not met| N
+  E0 -->|does not apply| Y
+  E0 -->|applies| N
+  classDef fact fill:#eeeeee,stroke:#616161,color:#212121
+  classDef judgment fill:#ffe0b2,stroke:#ef6c00,color:#e65100
+  classDef rule fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+  classDef yes fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
+  classDef no fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+  classDef start fill:#ffffff,stroke:#212121,color:#212121
+```
+
 ## Subparagraph 40(2)(g)(iv): transfers to registered plans
 
 ```mermaid

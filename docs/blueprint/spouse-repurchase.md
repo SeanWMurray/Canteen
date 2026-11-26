@@ -534,7 +534,7 @@ Summary: The superficial loss rule applies on 1 of 2 branches, so the conclusion
 ### Section 3 for the taxpayer's year (with $60,000.00 of employment income), on the position taken
 
 ```
-1. 100 common shares of ABC Ltd.: the loss is nil under paragraph 40(2)(g) or subsection 40(3.4): so there is no capital loss. [ITA 40(1); 39(1); 38]
+1. 100 common shares of ABC Ltd.: the loss is nil (paragraph 40(2)(g) or (e.1), or subsection 40(3.4) or (3.6)): so there is no capital loss. [ITA 40(1); 39(1); 38]
 2. Paragraph 3(a), income from sources other than taxable capital gains: $60,000.00. [ITA 3(a)]
 3. Paragraph 3(b): taxable capital gains $0.00 and taxable net gain from listed personal property $0.00, less allowable capital losses $0.00 in excess of allowable business investment losses $0.00: $0.00. [ITA 3(b)]
 4. Paragraph 3(c), less Subdivision E deductions of $0.00: $60,000.00. [ITA 3(c)]

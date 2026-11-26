@@ -17,7 +17,7 @@ The full design is in [`docs/design.md`](docs/design.md).
 | 4. First real provision | Encoded; awaiting review | Section 54 "superficial loss" with all its exceptions, and subparagraph 40(2)(g)(i); see [`docs/review/superficial-loss.md`](docs/review/superficial-loss.md) |
 | 5. Blueprint | Done | Memos whose statements link to Lean, with dependency graphs coloured by proven/unproven status; see [`docs/blueprint/`](docs/blueprint/README.md) |
 | 6. Ergonomics | Done | The `statute` command: rules written in the statute's own shape, sound with nothing to prove |
-| Beyond the roadmap | Done | Sections 3, 38 to 41 and 111 (the capital gains computation, net capital losses and taxable income), all of paragraph 40(2)(g), 40(3.3) to (3.5), 50(2), 53(1)(f), sections 251 and 251.1 (with the amalgamation rules) encoded; five transactions; diagrams drawn from the Lean; memos checked against what their proofs use |
+| Beyond the roadmap | Done | Sections 3, 38 to 41 and 111 (the capital gains computation, net capital losses and taxable income), all of paragraph 40(2)(g), 40(2)(e.1), 40(3.3) to (3.6), 50(2), 53(1)(f), sections 251 and 251.1 (with the amalgamation rules) encoded; five transactions; diagrams drawn from the Lean; memos checked against what their proofs use |
 
 ## Building
 
@@ -82,6 +82,8 @@ Canteen/
     S111/NetCapitalLoss.lean   111(8), (1)(b), (1.1): net capital losses, and taxable income
     S50/BadDebtPersonalUse.lean   subsection 50(2): a personal-use debt that goes bad
     S40/SuspendedLoss.lean     subsections 40(3.3) to (3.5): suspended losses of corporations, trusts, partnerships
+    S40/ShareToAffiliate.lean  40(3.6), 53(1)(f.2): a share disposed of to an affiliated corporation
+    S40/RelatedDebt.lean       40(2)(e.1), 53(1)(f.1): a debt disposed of within a related group
     S54/Timeline.lean          a timeline chart of the superficial loss period
   Lemmas/                  Layer 2: reusable truths about provisions
   Transactions/            Layer 3: concrete transactions, each step a theorem

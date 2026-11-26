@@ -1,0 +1,21 @@
+Income Tax Act, R.S.C. 1985, c. 1 (5th Supp.): subsection 40(3.6), paragraph 40(2)(e.1), and paragraphs 53(1)(f.1) and (f.2)
+
+Source: Justice Canada consolidated Acts (XML), https://github.com/justicecanada/laws-lois-xml, file eng/acts/I-3.3.xml
+Current to: 2026-10-29. Last amended: 2026-06-18.
+Extracted verbatim; whitespace normalized; paragraph labels kept.
+
+(3.6) If at any time a taxpayer disposes, to a corporation that is affiliated with the taxpayer immediately after the disposition, of a share of a class of the capital stock of the corporation (other than a share that is a distress preferred share (within the meaning assigned by subsection 80(1)) and other than, for the purposes of computing the exempt surplus or exempt deficit, hybrid surplus or hybrid deficit, and taxable surplus or taxable deficit of the taxpayer in respect of another taxpayer, where the taxpayer or, if the taxpayer is a partnership, a member of the taxpayer is a foreign affiliate of the other taxpayer, a property that is, or would be, if the taxpayer were a foreign affiliate of the other taxpayer, excluded property (within the meaning assigned by subsection 95(1)) of the taxpayer),
+  (a) the taxpayer’s loss, if any, from the disposition is deemed to be nil; and
+  (b) in computing the adjusted cost base to the taxpayer after that time of a share of a class of the capital stock of the corporation owned by the taxpayer immediately after the disposition, there shall be added the proportion of the amount of the taxpayer’s loss from the disposition (determined without reference to paragraph 40(2)(g) and this subsection) that
+    (i) the fair market value, immediately after the disposition, of the share
+    [continued] is of
+    (ii) the fair market value, immediately after the disposition, of all shares of the capital stock of the corporation owned by the taxpayer.
+
+40(2)(e.1)a particular taxpayer’s loss, if any, from the disposition at any time to a particular person or partnership of an obligation — other than, for the purposes of computing the exempt surplus or exempt deficit and taxable surplus or taxable deficit of the particular taxpayer in respect of another taxpayer, where the particular taxpayer or, if the particular taxpayer is a partnership, a member of the particular taxpayer is a foreign affiliate of the other taxpayer, an obligation that is, or would be, if the particular taxpayer were a foreign affiliate of the other taxpayer, excluded property (within the meaning assigned by subsection 95(1)) of the particular taxpayer — that was, immediately after that time, payable by another person or partnership to the particular person or partnership is nil if the particular taxpayer, the particular person or partnership and the other person or partnership are related to each other at that time or would be related to each other at that time if paragraph 80(2)(j) applied for the purpose of this paragraph;
+
+  (f.1) where the taxpayer is a taxable Canadian corporation and the property was disposed of by another taxable Canadian corporation to the taxpayer in circumstances such that
+    (i) paragraph 53(1)(f.2) does not apply to increase the adjusted cost base to the other corporation of shares of the capital stock of the taxpayer, and
+    (ii) the capital loss from the disposition was deemed by paragraph 40(2)(e.1) (or, where the property was acquired by the taxpayer before 1996, by paragraph 40(2)(e) or 85(4)(a) as those paragraphs read in their application to property acquired before April 26, 1995) to be nil,
+    [continued] the amount that would otherwise have been the capital loss from the disposition;
+  (f.11) where the property was disposed of by a person (other than a non-resident person or a person exempt from tax under this Part on the person’s taxable income) or by an eligible Canadian partnership (as defined in subsection 80(1)) to the taxpayer in circumstances such that
+  (f.2) where the property is a share, any amount required by paragraph 40(3.6)(b) (or, where the property was acquired by the taxpayer before 1996, by paragraph 85(4)(b) as it read in its application to property disposed of before April 26, 1995) to be added in computing the adjusted cost base to the taxpayer of the share;

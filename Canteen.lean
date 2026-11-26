@@ -40,6 +40,8 @@ import Canteen.ITA.S3.Income
 import Canteen.ITA.S111.NetCapitalLoss
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
+import Canteen.ITA.S40.ShareToAffiliate
+import Canteen.ITA.S40.RelatedDebt
 import Canteen.ITA.S54.Timeline
 import Canteen.ITA.S40.Paragraph40_2_g_Facts
 import Canteen.ITA.S40.DebtLoss
@@ -91,3 +93,4 @@ import Canteen.Tests.SuspendedLoss
 import Canteen.Tests.Amalgamation
 import Canteen.Tests.Income
 import Canteen.Tests.NetCapitalLoss
+import Canteen.Tests.ShareAndDebt

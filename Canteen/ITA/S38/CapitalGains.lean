@@ -2,6 +2,8 @@ import Canteen.Core.Answer
 import Canteen.Core.Money
 import Canteen.ITA.S40.Paragraph40_2_g
 import Canteen.ITA.S40.SuspendedLoss
+import Canteen.ITA.S40.ShareToAffiliate
+import Canteen.ITA.S40.RelatedDebt
 
 /-!
 # Capital gains and losses: 40(1), 39(1), 38, 41
@@ -21,8 +23,9 @@ import Canteen.ITA.S40.SuspendedLoss
 
 Taxable amounts are ½ of whole cents, so they are kept exactly, in **half-cents**.
 
-A loss made nil by paragraph 40(2)(g) or subsection 40(3.4) is nil here: `ofParagraph40_2_g`
-and `ofSuspendedLoss` build a disposition from those encodings.
+A loss made nil by paragraph 40(2)(g) or (e.1), or subsection 40(3.4) or (3.6), is nil here:
+`ofParagraph40_2_g`, `ofRelatedDebt`, `ofSuspendedLoss` and `ofShareToAffiliate` build a
+disposition from those encodings.
 -/
 
 namespace Canteen.ITA.CapitalGains
@@ -65,7 +68,7 @@ structure Disposition where
   reasonableReserve : Cents := 0
   /-- 40(1)(a)(iii)(D): the number of preceding taxation years ending after the disposition. -/
   precedingYears : Nat := 0
-  /-- The loss is nil under paragraph 40(2)(g) or subsection 40(3.4). -/
+  /-- The loss is nil under paragraph 40(2)(g) or (e.1), or subsection 40(3.4) or (3.6). -/
   lossNil : Bool := false
   /-- 38(a.1)(i): a gift to a qualified donee of a listed share, debt obligation or right, a
   mutual fund share or unit, a related segregated fund trust interest, or a prescribed debt obligation. -/
@@ -191,6 +194,18 @@ def ofSuspendedLoss (f : SuspendedLoss.Facts) (capitalAccount : Answer := .fact 
   { description := f.disposition.description, proceeds := f.disposition.proceeds,
     adjustedCostBase := f.disposition.adjustedCostBase, outlaysAndExpenses := f.disposition.outlaysAndExpenses,
     capitalAccount, lossNil := SuspendedLoss.suspended f }
+
+/-- A disposition whose loss is decided by subsection 40(3.6). -/
+def ofShareToAffiliate (f : ShareToAffiliate.Facts) (capitalAccount : Answer := .fact true) : Disposition :=
+  { description := f.disposition.description, proceeds := f.disposition.proceeds,
+    adjustedCostBase := f.disposition.adjustedCostBase, outlaysAndExpenses := f.disposition.outlaysAndExpenses,
+    capitalAccount, lossNil := ShareToAffiliate.denied f }
+
+/-- A disposition whose loss is decided by paragraph 40(2)(e.1). -/
+def ofRelatedDebt (f : RelatedDebt.Facts) (capitalAccount : Answer := .fact true) : Disposition :=
+  { description := f.disposition.description, proceeds := f.disposition.proceeds,
+    adjustedCostBase := f.disposition.adjustedCostBase, outlaysAndExpenses := f.disposition.outlaysAndExpenses,
+    capitalAccount, lossNil := RelatedDebt.denied f }
 
 /-! ## Truths about the computation -/
 

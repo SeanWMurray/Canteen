@@ -78,6 +78,10 @@ It cannot prove that the definitions match the Act. That is what this review is 
 | 38(a), (a.1)(i), (b), (c) one half; nil for listed securities given to a qualified donee | `taxableCapitalGain`, `allowableCapitalLoss`, `allowableBusinessInvestmentLoss` | half cents; gift |
 | 41(1)–(3) listed personal property: pooled; losses of other years claimed; the year's loss | `Year.lppExcess`, `lppNetGain`, `lppTaxableNetGain`, `lppLoss` | pooled; cannot offset other gains; claims capped |
 | 3(a)–(f) income for the year | `Income.income`, `report` | other income; ABIL; capital losses not against other income |
+| 40(3.6) a share of the corporation, disposed of to it, affiliated immediately after; not a distress preferred share; not excluded property | `ShareToAffiliate.applies` | redemption; unaffiliated corporation; distress preferred |
+| 40(3.6)(b), 53(1)(f.2) the loss spread over the remaining shares by fair market value | `ShareToAffiliate.additions`, `addition_le_loss` | 90:10 |
+| 40(2)(e.1) an obligation, payable immediately after by another to the transferee, the three related to each other (or so under 80(2)(j)) | `RelatedDebt.applies`, `relatedToEachOther` | family group; friend; 80(2)(j) |
+| 53(1)(f.1) the transferee's cost, between taxable Canadian corporations | `transfereeCostAddition` | ✓ |
 | 111(8) "net capital loss": A − B + C − D | `NetCapitalLoss.netCapitalLoss`, `ExpiredBIL` | gains and losses; ABIL excluded; C with and without a loss restriction event; D |
 | 111(1)(b) losses "for taxation years preceding and the three taxation years immediately following the year" | `Claim.allowedFor` | prior year; three years later; four years later; same year |
 | 111(1.1)(a) the lesser of 3(b) and Σ A × B / C | `Claim.adjusted`, `deduction` | capped at 3(b); a ¾ year |
@@ -131,6 +135,8 @@ It cannot prove that the definitions match the Act. That is what this review is 
 39. **Section 41.** "Gains" and "losses" are 40(1) gains and losses. Listed-personal-property losses of other years are a single amount claimed; the ordering rules in 41(2)(b)(i), (ii) are for the taxpayer to respect. 39(1)(a)(i.1) property is excluded from the pool's gains, as an excluded kind.
 40. **Section 3.** Income from sources, Subdivision E deductions and losses from sources are given amounts. Unused allowable capital losses are reported, but the net capital loss carryover (111(1)(b), 111(8)) is not encoded.
 41. **Net capital losses (111).** Each loss year's section 38 fraction is given (½ unless stated) rather than taken from a table of past rates, since the Act's current text states only ½. A × B / C is rounded down to the half-cent where it is not exact. The C term of 111(8) takes its three amounts as given. 111(1.1)(b) (pre-1986 losses) and (c) are not encoded. Taxable income (2(2)) is income less the net capital loss deduction and any other Division C deductions, given.
+42. **40(3.6).** Affiliation is decided on the world immediately after the disposition. The share's class and fair market values of the remaining shares are given; each share's addition is rounded down to the cent, so the additions can fall short of the loss by a few cents (proven never to exceed it). "Distress preferred share" (80(1)) is a fact.
+43. **40(2)(e.1).** "Related to each other" is read as each of the three pairs being related. Whether they would be related if 80(2)(j) applied is a fact. For 53(1)(f.1), whether both are taxable Canadian corporations, and whether 53(1)(f.2) applies, are facts.
 
 ## Reviewer checklist
 

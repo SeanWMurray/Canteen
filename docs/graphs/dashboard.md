@@ -9,9 +9,9 @@ An overview of the project, drawn from the Lean.
 Every statement in every blueprint, by the status Lean computes for it.
 
 ```mermaid
-pie showData title All 138 statements in the memos and blueprints, by status
+pie showData title All 139 statements in the memos and blueprints, by status
     "encoded" : 25
-    "proven" : 81
+    "proven" : 82
     "not formalized" : 3
     "fact" : 24
     "judgment call" : 5
@@ -79,27 +79,30 @@ mindmap
         n10["`(ii) debts`"]
         n11["`(iii) personal-use property`"]
         n12["`(iv) TFSAs, RRSPs and other plans`"]
-      n13["`40(3.3) to (3.5): suspended losses`"]
-    n14["`s. 50`"]
-      n15["`50(2): bad personal-use debts`"]
-    n16["`s. 53`"]
-      n17["`53(1)(f): cost of substituted property`"]
-    n18["`s. 54`"]
-      n19["`superficial loss`"]
-      n20["`personal-use property`"]
-      n21["`listed personal property`"]
-    n22["`s. 111`"]
-      n23["`111(8): net capital loss`"]
-      n24["`111(1)(b), (1.1): deduction`"]
-    n25["`s. 248`"]
-      n26["`248(1): majority-interest partner`"]
-    n27["`s. 251`"]
-      n28["`251(1): arm's length`"]
-      n29["`251(2), (3): related persons`"]
-      n30["`251(3.1), (3.2): amalgamations`"]
-      n31["`251(6): blood, marriage, adoption`"]
-    n32["`s. 251.1`"]
-      n33["`251.1(1)(a) to (h): affiliated persons`"]
-      n34["`251.1(2): amalgamations`"]
-      n35["`251.1(3), (4): definitions and rules`"]
+      n13["`40(2)(e.1): debts within a related group`"]
+      n14["`40(3.3) to (3.5): suspended losses`"]
+      n15["`40(3.6): shares to an affiliated corporation`"]
+    n16["`s. 50`"]
+      n17["`50(2): bad personal-use debts`"]
+    n18["`s. 53`"]
+      n19["`53(1)(f): cost of substituted property`"]
+      n20["`53(1)(f.1), (f.2): cost after 40(2)(e.1), 40(3.6)`"]
+    n21["`s. 54`"]
+      n22["`superficial loss`"]
+      n23["`personal-use property`"]
+      n24["`listed personal property`"]
+    n25["`s. 111`"]
+      n26["`111(8): net capital loss`"]
+      n27["`111(1)(b), (1.1): deduction`"]
+    n28["`s. 248`"]
+      n29["`248(1): majority-interest partner`"]
+    n30["`s. 251`"]
+      n31["`251(1): arm's length`"]
+      n32["`251(2), (3): related persons`"]
+      n33["`251(3.1), (3.2): amalgamations`"]
+      n34["`251(6): blood, marriage, adoption`"]
+    n35["`s. 251.1`"]
+      n36["`251.1(1)(a) to (h): affiliated persons`"]
+      n37["`251.1(2): amalgamations`"]
+      n38["`251.1(3), (4): definitions and rules`"]
 ```

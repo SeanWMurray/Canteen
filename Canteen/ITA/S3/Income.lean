@@ -57,7 +57,7 @@ def report (f : Facts) : Argument :=
   let y := f.capital
   let h := formatHalfCents
   let perDisposition := y.dispositions.flatMap fun d =>
-    let head := if d.lossNil then s!"{d.description}: the loss is nil under paragraph 40(2)(g) or subsection 40(3.4)"
+    let head := if d.lossNil then s!"{d.description}: the loss is nil (paragraph 40(2)(g) or (e.1), or subsection 40(3.4) or (3.6))"
       else if d.gain > 0 then s!"{d.description}: a gain of {formatCents d.gain}"
       else if d.loss > 0 then s!"{d.description}: a loss of {formatCents d.loss}"
       else s!"{d.description}: no gain or loss"

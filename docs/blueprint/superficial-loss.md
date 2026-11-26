@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 49 statements:** 30 proven, 16 encoded, 3 not formalized.
+**Status of the 50 statements:** 31 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -51,14 +51,15 @@ graph TD
   n38["R3 · Affiliated persons, paragraphs (a) to (h)"]:::proven
   n39["R4 · Related persons and arm's length"]:::proven
   n40["R7 · Amalgamations"]:::proven
-  n41["R5 · A personal-use debt that goes bad"]:::proven
-  n42["R6 · Suspended losses of corporations, trusts and partnerships"]:::proven
-  n43["R8 · The tax result: capital gains and income"]:::proven
-  n44["R9 · Net capital losses and taxable income"]:::proven
-  n45["R2 · Cost of the substituted property"]:::proven
-  n46["N1 · Inputs decided by other provisions"]:::notFormalized
-  n47["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n48["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n41["R10 · Shares to an affiliated corporation; debts within a related group"]:::proven
+  n42["R5 · A personal-use debt that goes bad"]:::proven
+  n43["R6 · Suspended losses of corporations, trusts and partnerships"]:::proven
+  n44["R8 · The tax result: capital gains and income"]:::proven
+  n45["R9 · Net capital losses and taxable income"]:::proven
+  n46["R2 · Cost of the substituted property"]:::proven
+  n47["N1 · Inputs decided by other provisions"]:::notFormalized
+  n48["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n49["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -120,30 +121,34 @@ graph TD
   n1 --> n38
   n38 --> n40
   n39 --> n40
-  n3 --> n42
-  n4 --> n42
-  n5 --> n42
-  n6 --> n42
-  n7 --> n42
-  n8 --> n42
-  n12 --> n42
-  n38 --> n42
-  n36 --> n43
-  n42 --> n43
+  n5 --> n41
+  n12 --> n41
+  n38 --> n41
+  n39 --> n41
+  n3 --> n43
+  n4 --> n43
+  n5 --> n43
+  n6 --> n43
+  n7 --> n43
+  n8 --> n43
+  n12 --> n43
+  n38 --> n43
+  n36 --> n44
   n43 --> n44
-  n11 --> n45
-  n1 --> n46
-  n5 --> n46
-  n6 --> n46
-  n8 --> n46
-  n37 --> n46
-  n45 --> n46
-  n38 --> n46
-  n30 --> n47
-  n32 --> n48
-  n34 --> n48
-  n39 --> n48
-  n41 --> n48
+  n44 --> n45
+  n11 --> n46
+  n1 --> n47
+  n5 --> n47
+  n6 --> n47
+  n8 --> n47
+  n37 --> n47
+  n46 --> n47
+  n38 --> n47
+  n30 --> n48
+  n32 --> n49
+  n34 --> n49
+  n39 --> n49
+  n42 --> n49
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -201,14 +206,15 @@ graph TD
   n38["R3"]:::proven
   n39["R4"]:::proven
   n40["R7"]:::proven
-  n41["R5"]:::proven
-  n42["R6"]:::proven
-  n43["R8"]:::proven
-  n44["R9"]:::proven
-  n45["R2"]:::proven
-  n46["N1"]:::notFormalized
-  n47["N2"]:::notFormalized
-  n48["N4"]:::notFormalized
+  n41["R10"]:::proven
+  n42["R5"]:::proven
+  n43["R6"]:::proven
+  n44["R8"]:::proven
+  n45["R9"]:::proven
+  n46["R2"]:::proven
+  n47["N1"]:::notFormalized
+  n48["N2"]:::notFormalized
+  n49["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -327,33 +333,43 @@ graph TD
   n37 -.-> n38
   n38 -.-> n40
   n39 -.-> n40
-  n7 --> n42
-  n1 --> n42
-  n6 --> n42
-  n3 --> n42
-  n4 --> n42
-  n5 --> n42
-  n0 --> n42
-  n12 --> n42
-  n8 --> n42
-  n38 -.-> n42
-  n36 --> n43
+  n38 --> n41
+  n0 --> n41
+  n39 --> n41
+  n7 --> n41
+  n6 --> n41
+  n12 --> n41
+  n3 --> n41
+  n4 --> n41
+  n5 --> n41
+  n8 --> n41
+  n7 --> n43
+  n1 --> n43
+  n6 --> n43
+  n3 --> n43
+  n4 --> n43
+  n5 --> n43
   n0 --> n43
-  n42 --> n43
+  n12 --> n43
+  n8 --> n43
+  n38 -.-> n43
+  n36 --> n44
+  n0 --> n44
   n43 --> n44
-  n11 -.-> n45
-  n1 -.-> n46
-  n5 -.-> n46
-  n6 -.-> n46
-  n8 -.-> n46
-  n37 -.-> n46
-  n45 -.-> n46
-  n38 -.-> n46
-  n30 -.-> n47
-  n32 -.-> n48
-  n34 -.-> n48
-  n39 -.-> n48
-  n41 -.-> n48
+  n44 --> n45
+  n11 -.-> n46
+  n1 -.-> n47
+  n5 -.-> n47
+  n6 -.-> n47
+  n8 -.-> n47
+  n37 -.-> n47
+  n46 -.-> n47
+  n38 -.-> n47
+  n30 -.-> n48
+  n32 -.-> n49
+  n34 -.-> n49
+  n39 -.-> n49
+  n42 -.-> n49
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -701,6 +717,14 @@ The new corporation and a predecessor are deemed affiliated (251.1(2)) or relate
 
 **Lean:** [`Canteen.ITA.Amalgamation.hypothetical`](../../Canteen/ITA/S251/Amalgamation.lean#L54), [`Canteen.ITA.Amalgamation.affiliatedRule`](../../Canteen/ITA/S251/Amalgamation.lean#L102), [`Canteen.ITA.Amalgamation.relatedRule`](../../Canteen/ITA/S251/Amalgamation.lean#L158), [`Canteen.ITA.Amalgamation.related_of_predecessorsRelated`](../../Canteen/ITA/S251/Amalgamation.lean#L173)
 
+### R10. Shares to an affiliated corporation; debts within a related group
+
+**Status:** proven · **Citation:** ITA 40(3.6), (2)(e.1); 53(1)(f.1), (f.2) · **Uses:** Pe, D, R3, R4
+
+A loss on a share disposed of to the issuing corporation, affiliated immediately after, is nil and spread over the taxpayer's remaining shares of it (40(3.6), 53(1)(f.2)). A loss on an obligation disposed of within a group of three related persons is nil (40(2)(e.1)), and paragraph (e) of the superficial loss definition then excludes it.
+
+**Lean:** [`Canteen.ITA.ShareToAffiliate.rule`](../../Canteen/ITA/S40/ShareToAffiliate.lean#L85), [`Canteen.ITA.ShareToAffiliate.addition_le_loss`](../../Canteen/ITA/S40/ShareToAffiliate.lean#L107), [`Canteen.ITA.ShareToAffiliate.not_of_not_affiliated`](../../Canteen/ITA/S40/ShareToAffiliate.lean#L122), [`Canteen.ITA.RelatedDebt.applies`](../../Canteen/ITA/S40/RelatedDebt.lean#L52), [`Canteen.ITA.RelatedDebt.denied`](../../Canteen/ITA/S40/RelatedDebt.lean#L64), [`Canteen.ITA.RelatedDebt.not_superficial`](../../Canteen/ITA/S40/RelatedDebt.lean#L76), [`Canteen.ITA.RelatedDebt.not_of_unrelated_transferee`](../../Canteen/ITA/S40/RelatedDebt.lean#L81)
+
 ### R5. A personal-use debt that goes bad
 
 **Status:** proven · **Citation:** ITA 50(2)
@@ -723,7 +747,7 @@ The counterpart of the superficial loss rule for corporations, trusts and partne
 
 A loss made nil by 40(2)(g) or 40(3.4) is no capital loss (39(1)(b)), so no allowable capital loss (38(b)) reduces the year's taxable capital gains in 3(b). Capital losses reduce only capital gains; an allowable business investment loss reduces any income (3(d)). Amounts are exact, in half-cents.
 
-**Lean:** [`Canteen.ITA.CapitalGains.ofParagraph40_2_g`](../../Canteen/ITA/S38/CapitalGains.lean#L183), [`Canteen.ITA.CapitalGains.ofSuspendedLoss`](../../Canteen/ITA/S38/CapitalGains.lean#L189), [`Canteen.ITA.CapitalGains.capitalLoss_of_lossNil`](../../Canteen/ITA/S38/CapitalGains.lean#L197), [`Canteen.ITA.Income.income`](../../Canteen/ITA/S3/Income.lean#L52), [`Canteen.ITA.Income.capital_losses_only_offset_gains`](../../Canteen/ITA/S3/Income.lean#L105), [`Canteen.ITA.Income.abil_reduces_income`](../../Canteen/ITA/S3/Income.lean#L114)
+**Lean:** [`Canteen.ITA.CapitalGains.ofParagraph40_2_g`](../../Canteen/ITA/S38/CapitalGains.lean#L186), [`Canteen.ITA.CapitalGains.ofSuspendedLoss`](../../Canteen/ITA/S38/CapitalGains.lean#L192), [`Canteen.ITA.CapitalGains.capitalLoss_of_lossNil`](../../Canteen/ITA/S38/CapitalGains.lean#L212), [`Canteen.ITA.Income.income`](../../Canteen/ITA/S3/Income.lean#L52), [`Canteen.ITA.Income.capital_losses_only_offset_gains`](../../Canteen/ITA/S3/Income.lean#L105), [`Canteen.ITA.Income.abil_reduces_income`](../../Canteen/ITA/S3/Income.lean#L114)
 
 ### R9. Net capital losses and taxable income
 

@@ -10,6 +10,8 @@ import Canteen.ITA.S251.RelatedPersons
 import Canteen.ITA.S251.Amalgamation
 import Canteen.ITA.S3.Income
 import Canteen.ITA.S111.NetCapitalLoss
+import Canteen.ITA.S40.ShareToAffiliate
+import Canteen.ITA.S40.RelatedDebt
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -214,6 +216,14 @@ def blueprint : Blueprint where
             "right (251(3.2)). The counterfactual is a hypothetical world given to the affiliation and related-persons rules."
           lean := [``Amalgamation.hypothetical, ``Amalgamation.affiliatedRule, ``Amalgamation.relatedRule,
             ``Amalgamation.related_of_predecessorsRelated], uses := ["R3", "R4"] },
+        { id := "R10", kind := .law, title := "Shares to an affiliated corporation; debts within a related group", citation := "ITA 40(3.6), (2)(e.1); 53(1)(f.1), (f.2)"
+          statement := "A loss on a share disposed of to the issuing corporation, affiliated immediately after, is nil and spread " ++
+            "over the taxpayer's remaining shares of it (40(3.6), 53(1)(f.2)). A loss on an obligation disposed of within a " ++
+            "group of three related persons is nil (40(2)(e.1)), and paragraph (e) of the superficial loss definition " ++
+            "then excludes it."
+          lean := [``ShareToAffiliate.rule, ``ShareToAffiliate.addition_le_loss, ``ShareToAffiliate.not_of_not_affiliated,
+            ``RelatedDebt.applies, ``RelatedDebt.denied, ``RelatedDebt.not_superficial, ``RelatedDebt.not_of_unrelated_transferee],
+          uses := ["Pe", "D", "R3", "R4"] },
         { id := "R5", kind := .law, title := "A personal-use debt that goes bad", citation := "ITA 50(2)"
           statement := "A debt that is personal-use property, owing by an arm's length person and established to be bad, is " ++
             "deemed disposed of for its cost less the gain on the sale that gave rise to it; so the loss never exceeds that " ++
