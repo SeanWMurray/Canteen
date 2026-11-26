@@ -41,6 +41,7 @@ import Canteen.ITA.S39.CanadianSecurities
 import Canteen.ITA.S50.BadDebtOrShare
 import Canteen.ITA.S43.PartialDisposition
 import Canteen.ITA.S74.CorporateAttribution
+import Canteen.ITA.S120_4.SplitIncome
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -487,6 +488,13 @@ def blueprint : Blueprint where
             "freeze shares at least equal to the prescribed interest leave nothing deemed."
           lean := [``CorporateAttribution.applies, ``CorporateAttribution.deemedInterest, ``CorporateAttribution.dividends_cover,
             ``CorporateAttribution.not_for_small_business], uses := ["R21", "R22"] },
+        { id := "R40", kind := .law, title := "Tax on split income", citation := "ITA 120.4(1)–(3); 20(1)(ww)"
+          statement := "A specified individual's private-company dividends and related-business income, other than excluded " ++
+            "amounts (by age: inherited property, exempt gains, no related business or an excluded business, a reasonable " ++
+            "return, excluded shares), are split income: deducted from income and taxed at the highest rate, less dividend " ++
+            "credits. Proven: excluded shares exclude an adult's dividends; a minor has no age-based exclusion."
+          lean := [``SplitIncome.splitIncome, ``SplitIncome.excluded, ``SplitIncome.tax, ``SplitIncome.minimumTax,
+            ``SplitIncome.excluded_shares, ``SplitIncome.minor_no_reasonable_return], uses := ["R22"] },
         { id := "R11", kind := .law, title := "The principal residence exemption", citation := "ITA 40(2)(b); 54 \"principal residence\""
           statement := "A home is the principal residence for a year if owned, ordinarily inhabited by the family (or covered by " ++
             "a 45(2) or (3) election, for at most four years: (d)), designated, and not blocked by another family-unit " ++

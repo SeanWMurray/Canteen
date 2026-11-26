@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 79 statements:** 60 proven, 16 encoded, 3 not formalized.
+**Status of the 80 statements:** 61 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -84,11 +84,12 @@ graph TD
   n71["R37 · Bad debts and worthless shares"]:::proven
   n72["R38 · Disposing of part of a property"]:::proven
   n73["R39 · Corporate attribution"]:::proven
-  n74["R11 · The principal residence exemption"]:::proven
-  n75["R2 · Cost of the substituted property"]:::proven
-  n76["N1 · Inputs decided by other provisions"]:::notFormalized
-  n77["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n78["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n74["R40 · Tax on split income"]:::proven
+  n75["R11 · The principal residence exemption"]:::proven
+  n76["R2 · Cost of the substituted property"]:::proven
+  n77["N1 · Inputs decided by other provisions"]:::notFormalized
+  n78["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n79["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -209,21 +210,22 @@ graph TD
   n44 --> n72
   n55 --> n73
   n56 --> n73
-  n44 --> n74
-  n50 --> n74
-  n11 --> n75
-  n1 --> n76
-  n5 --> n76
-  n6 --> n76
-  n8 --> n76
-  n37 --> n76
-  n75 --> n76
-  n38 --> n76
-  n30 --> n77
-  n32 --> n78
-  n34 --> n78
-  n39 --> n78
-  n42 --> n78
+  n56 --> n74
+  n44 --> n75
+  n50 --> n75
+  n11 --> n76
+  n1 --> n77
+  n5 --> n77
+  n6 --> n77
+  n8 --> n77
+  n37 --> n77
+  n76 --> n77
+  n38 --> n77
+  n30 --> n78
+  n32 --> n79
+  n34 --> n79
+  n39 --> n79
+  n42 --> n79
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -314,11 +316,12 @@ graph TD
   n71["R37"]:::proven
   n72["R38"]:::proven
   n73["R39"]:::proven
-  n74["R11"]:::proven
-  n75["R2"]:::proven
-  n76["N1"]:::notFormalized
-  n77["N2"]:::notFormalized
-  n78["N4"]:::notFormalized
+  n74["R40"]:::proven
+  n75["R11"]:::proven
+  n76["R2"]:::proven
+  n77["N1"]:::notFormalized
+  n78["N2"]:::notFormalized
+  n79["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -519,21 +522,22 @@ graph TD
   n44 -.-> n72
   n56 --> n73
   n55 -.-> n73
-  n44 -.-> n74
-  n50 -.-> n74
-  n11 -.-> n75
-  n1 -.-> n76
-  n5 -.-> n76
-  n6 -.-> n76
-  n8 -.-> n76
-  n37 -.-> n76
-  n75 -.-> n76
-  n38 -.-> n76
-  n30 -.-> n77
-  n32 -.-> n78
-  n34 -.-> n78
-  n39 -.-> n78
-  n42 -.-> n78
+  n56 --> n74
+  n44 -.-> n75
+  n50 -.-> n75
+  n11 -.-> n76
+  n1 -.-> n77
+  n5 -.-> n77
+  n6 -.-> n77
+  n8 -.-> n77
+  n37 -.-> n77
+  n76 -.-> n77
+  n38 -.-> n77
+  n30 -.-> n78
+  n32 -.-> n79
+  n34 -.-> n79
+  n39 -.-> n79
+  n42 -.-> n79
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -1144,6 +1148,14 @@ The cost of a part disposed of is the portion of the whole's adjusted cost base 
 An individual who transfers or lends property to a corporation, with a main purpose of reducing their income and benefiting a spouse or minor child, niece or nephew who is a specified shareholder, is deemed to receive interest at the prescribed rate on the amount outstanding, less interest received and dividends included on the shares taken back; not while the corporation is a small business corporation. Proven: dividends on the freeze shares at least equal to the prescribed interest leave nothing deemed.
 
 **Lean:** [`Canteen.ITA.CorporateAttribution.applies`](../../Canteen/ITA/S74/CorporateAttribution.lean#L61), [`Canteen.ITA.CorporateAttribution.deemedInterest`](../../Canteen/ITA/S74/CorporateAttribution.lean#L85), [`Canteen.ITA.CorporateAttribution.dividends_cover`](../../Canteen/ITA/S74/CorporateAttribution.lean#L113), [`Canteen.ITA.CorporateAttribution.not_for_small_business`](../../Canteen/ITA/S74/CorporateAttribution.lean#L109)
+
+### R40. Tax on split income
+
+**Status:** proven · **Citation:** ITA 120.4(1)–(3); 20(1)(ww) · **Uses:** R22
+
+A specified individual's private-company dividends and related-business income, other than excluded amounts (by age: inherited property, exempt gains, no related business or an excluded business, a reasonable return, excluded shares), are split income: deducted from income and taxed at the highest rate, less dividend credits. Proven: excluded shares exclude an adult's dividends; a minor has no age-based exclusion.
+
+**Lean:** [`Canteen.ITA.SplitIncome.splitIncome`](../../Canteen/ITA/S120_4/SplitIncome.lean#L119), [`Canteen.ITA.SplitIncome.excluded`](../../Canteen/ITA/S120_4/SplitIncome.lean#L108), [`Canteen.ITA.SplitIncome.tax`](../../Canteen/ITA/S120_4/SplitIncome.lean#L123), [`Canteen.ITA.SplitIncome.minimumTax`](../../Canteen/ITA/S120_4/SplitIncome.lean#L136), [`Canteen.ITA.SplitIncome.excluded_shares`](../../Canteen/ITA/S120_4/SplitIncome.lean#L165), [`Canteen.ITA.SplitIncome.minor_no_reasonable_return`](../../Canteen/ITA/S120_4/SplitIncome.lean#L169)
 
 ### R11. The principal residence exemption
 
