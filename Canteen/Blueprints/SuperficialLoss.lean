@@ -24,6 +24,7 @@ import Canteen.ITA.S110_6.CapitalGainsDeduction
 import Canteen.ITA.S251_2.LossRestrictionEvent
 import Canteen.ITA.S74.IncomeAttribution
 import Canteen.ITA.S82.Dividends
+import Canteen.ITA.S55.IntercorporateDividends
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -349,6 +350,15 @@ def blueprint : Blueprint where
             "gross-up (15% for non-eligible dividends after 2018, 38% for eligible dividends after 2011) and deducts a credit " ++
             "from tax (9/13 and 6/11 of the gross-up). Proven: the credit never exceeds the gross-up."
           lean := [``Dividends.inclusion, ``Dividends.credit, ``Dividends.credit_le_grossUp, ``Dividends.non_eligible_2025] },
+        { id := "R23", kind := .law, title := "Intercorporate dividends, and when they are gains", citation := "ITA 112(1); 55(2), (2.1), (3), (5)(f)"
+          statement := "A corporation deducts taxable dividends from taxable Canadian corporations (112(1)); but the part of a " ++
+            "dividend over safe income, paid with a purpose of reducing a capital gain (or a share's value, or increasing " ++
+            "cost), is a capital gain or proceeds of disposition instead (55(2)), unless it is a redemption in a series " ++
+            "with no unrelated person (55(3)(a)) or a butterfly. Proven: nothing within safe income is caught, and what is " ++
+            "caught moves from the deduction to proceeds or a gain."
+          lean := [``IntercorporateDividends.subsection55_2, ``IntercorporateDividends.caught, ``IntercorporateDividends.deduction,
+            ``IntercorporateDividends.within_safe_income, ``IntercorporateDividends.related_redemption,
+            ``IntercorporateDividends.conserved] },
         { id := "R11", kind := .law, title := "The principal residence exemption", citation := "ITA 40(2)(b); 54 \"principal residence\""
           statement := "A home is the principal residence for a year if owned, ordinarily inhabited by the family (or covered by " ++
             "a 45(2) or (3) election, for at most four years: (d)), designated, and not blocked by another family-unit " ++

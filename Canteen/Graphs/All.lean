@@ -27,6 +27,7 @@ import Canteen.ITA.S84_1.SurplusStripping
 import Canteen.ITA.S110_6.CapitalGainsDeduction
 import Canteen.ITA.S251_2.LossRestrictionEvent
 import Canteen.ITA.S74.IncomeAttribution
+import Canteen.ITA.S55.IntercorporateDividends
 import Canteen.Transactions.SisterCompanyRepurchase
 import Canteen.Transactions.Crystallization
 
@@ -142,7 +143,8 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S110_6.CapitalGainsDeduction, "110.6 the capital gains deduction"),
    (`Canteen.ITA.S251_2.LossRestrictionEvent, "251.2(2)(a), 256(7)(a) loss restriction events"),
    (`Canteen.ITA.S74.IncomeAttribution, "74.1, 74.5(2), (3)(a) attribution of income"),
-   (`Canteen.ITA.S82.Dividends, "82(1), 121 dividends, gross-up and credit")]
+   (`Canteen.ITA.S82.Dividends, "82(1), 121 dividends, gross-up and credit"),
+   (`Canteen.ITA.S55.IntercorporateDividends, "112(1), 55(2) intercorporate dividends")]
 
 /-! ## The dashboard -/
 
@@ -213,6 +215,7 @@ def actMindmap : String := Id.run do
     (2, "s. 50"), (3, "50(2): bad personal-use debts"),
     (2, "s. 53"), (3, "53(1)(f): cost of substituted property"), (3, "53(1)(f.1), (f.2): cost after 40(2)(e.1), 40(3.6)"),
     (2, "s. 54"), (3, "superficial loss"), (3, "principal residence"), (3, "personal-use property"), (3, "listed personal property"),
+    (2, "s. 55"), (3, "55(2), (2.1): dividends over safe income"), (3, "55(3): related parties, butterflies"),
     (2, "s. 69"), (3, "69(1): not at arm's length, gifts"),
     (2, "s. 70"), (3, "70(5): deemed disposition on death"), (3, "70(6): rollover to a spouse or spousal trust"),
     (2, "s. 73"), (3, "73(1), (1.01): the spousal rollover"),
@@ -227,6 +230,7 @@ def actMindmap : String := Id.run do
     (2, "s. 248"), (3, "248(1): majority-interest partner"),
     (2, "s. 251"), (3, "251(1): arm's length"), (3, "251(2), (3): related persons"), (3, "251(3.1), (3.2): amalgamations"),
     (3, "251(6): blood, marriage, adoption"),
+    (2, "s. 112"), (3, "112(1): intercorporate dividend deduction"),
     (2, "s. 121"), (3, "121: the dividend tax credit"),
     (2, "s. 251.2"), (3, "251.2(2)(a): loss restriction event"), (2, "s. 256"), (3, "256(7)(a): control not acquired"),
     (2, "s. 251.1"), (3, "251.1(1)(a) to (h): affiliated persons"), (3, "251.1(2): amalgamations"), (3, "251.1(3), (4): definitions and rules")]
@@ -261,6 +265,7 @@ def pages : List Page := [
       ("Section 110.6 \"qualified small business corporation share\"", flowchart CapitalGainsDeduction.qualifiedShare.outline),
       ("Paragraph 251.2(2)(a), with 256(7)(a): loss restriction events", flowchart LossRestrictionEvent.lossRestrictionEvent.outline),
       ("Subsections 74.1(1) and (2): income attribution", flowchart IncomeAttribution.applies.outline),
+      ("Subsection 55(2): dividends over safe income", flowchart IntercorporateDividends.subsection55_2.outline),
       ("Subparagraph 40(2)(g)(iv): transfers to registered plans", flowchart Paragraph40_2_g.planTransferLoss.outline),
       ("Clause 40(2)(g)(iv)(A)", flowchart Paragraph40_2_g.planTransferA.outline),
       ("Clause 40(2)(g)(iv)(B)", flowchart Paragraph40_2_g.planTransferB.outline),

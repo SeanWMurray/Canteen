@@ -561,6 +561,40 @@ flowchart TD
   classDef start fill:#ffffff,stroke:#212121,color:#212121
 ```
 
+## Subsection 55(2): dividends over safe income
+
+```mermaid
+flowchart TD
+  S(["subsection 55(2) · ITA 55(2)"]):::start
+  C0["<b>(2.1) recipient</b> The dividend recipient is a corporation<br/>resident in Canada<br/>[ITA 55(2)(2.1) recipient]"]:::fact
+  C1["<b>(2.1)(a)</b> (2.1)(a) applies<br/>[ITA 55(2.1)(a)]"]:::rule
+  C2["<b>(2.1)(b)</b> (2.1)(b) applies<br/>[ITA 55(2.1)(b)]"]:::rule
+  C3["<b>(2.1)(c), (5)(f)</b> (2.1)(c), (5)(f) applies<br/>[ITA 55(2.1)(c); 55(5)(f)]"]:::rule
+  E0["<b>(3)(a)</b> (3)(a) applies<br/>[ITA 55(3)(a)]"]:::rule
+  E1["<b>(3)(b)</b> (3)(b) applies<br/>[ITA 55(3)(b)]"]:::rule
+  Y(["subsection 55(2) applies"]):::yes
+  N(["subsection 55(2) does not apply"]):::no
+  S --> C0
+  C0 -->|met| C1
+  C0 -->|not met| N
+  C1 -->|met| C2
+  C1 -->|not met| N
+  C2 -->|met| C3
+  C2 -->|not met| N
+  C3 -->|met| E0
+  C3 -->|not met| N
+  E0 -->|does not apply| E1
+  E0 -->|applies| N
+  E1 -->|does not apply| Y
+  E1 -->|applies| N
+  classDef fact fill:#eeeeee,stroke:#616161,color:#212121
+  classDef judgment fill:#ffe0b2,stroke:#ef6c00,color:#e65100
+  classDef rule fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+  classDef yes fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
+  classDef no fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+  classDef start fill:#ffffff,stroke:#212121,color:#212121
+```
+
 ## Subparagraph 40(2)(g)(iv): transfers to registered plans
 
 ```mermaid

@@ -49,6 +49,7 @@ import Canteen.ITA.S110_6.CapitalGainsDeduction
 import Canteen.ITA.S251_2.LossRestrictionEvent
 import Canteen.ITA.S74.IncomeAttribution
 import Canteen.ITA.S82.Dividends
+import Canteen.ITA.S55.IntercorporateDividends
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.ITA.S40.ShareToAffiliate
@@ -120,3 +121,4 @@ import Canteen.Tests.CapitalGainsDeduction
 import Canteen.Tests.LossRestrictionEvent
 import Canteen.Tests.IncomeAttribution
 import Canteen.Tests.Dividends
+import Canteen.Tests.IntercorporateDividends

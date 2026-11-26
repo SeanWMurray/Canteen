@@ -37,7 +37,8 @@ flowchart BT
   v28["251.2(2)(a), 256(7)(a) loss restriction events"]:::prov
   v29["74.1, 74.5(2), (3)(a) attribution of income"]:::prov
   v30["82(1), 121 dividends, gross-up and credit"]:::prov
-  v31["50(2) bad personal-use debts"]:::prov
+  v31["112(1), 55(2) intercorporate dividends"]:::prov
+  v32["50(2) bad personal-use debts"]:::prov
   v0 --> v1
   v0 --> v2
   v0 --> v3

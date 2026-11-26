@@ -1,0 +1,55 @@
+Income Tax Act, R.S.C. 1985, c. 1 (5th Supp.), subsection 112(1), subsections 55(2), (2.1), (3) and (3.01)(a), and paragraph 55(5)(f)
+
+Source: Justice Canada consolidated Acts (XML), https://github.com/justicecanada/laws-lois-xml, file eng/acts/I-3.3.xml
+Current to: 2026-10-29. Last amended: 2026-06-18.
+Extracted verbatim; whitespace normalized; paragraph labels kept.
+
+112
+  (1) Where a corporation in a taxation year has received a taxable dividend from
+    (a) a taxable Canadian corporation, or
+    (b) a corporation resident in Canada (other than a non-resident-owned investment corporation or a corporation exempt from tax under this Part) and controlled by it,
+    [continued] an amount equal to the dividend may be deducted from the income of the receiving corporation for the year for the purpose of computing its taxable income.
+
+55
+  [Deemed proceeds or gain]
+  (2) If this subsection applies to a taxable dividend received by a dividend recipient, notwithstanding any other provision of this Act, the amount of the dividend (other than the portion of it, if any, subject to tax under Part IV that is not refunded as a consequence of the payment of a dividend by a corporation where the payment is part of the series referred to in subsection (2.1)) is deemed
+    (a) not to be a dividend received by the dividend recipient;
+    (b) if the dividend is received on a redemption, acquisition or cancellation of a share, by the corporation that issued the share, to which subsection 84(2) or (3) applies, to be proceeds of disposition of the share that is redeemed, acquired or cancelled except to the extent that the dividend is otherwise included in computing those proceeds; and
+    (c) if paragraph (b) does not apply to the dividend, to be a gain of the dividend recipient, for the year in which the dividend was received, from the disposition of a capital property.
+  [Application of subsection (2)]
+  (2.1) Subsection (2) applies to a taxable dividend received by a corporation resident in Canada (in subsections (2) to (2.2) and (2.4) referred to as the dividend recipient) as part of a transaction or event or a series of transactions or events if
+    (a) the dividend recipient is entitled to a deduction in respect of the dividend under subsection 112(1) or (2) or 138(6);
+    (b) it is the case that
+      (i) one of the purposes of the payment or receipt of the dividend (or, in the case of a dividend under subsection 84(3), one of the results of which) is to effect a significant reduction in the portion of the capital gain that, but for the dividend, would have been realized on a disposition at fair market value of any share of capital stock immediately before the dividend, or
+      (ii) the dividend (other than a dividend that is received on a redemption, acquisition or cancellation of a share, by the corporation that issued the share, to which subsection 84(2) or (3) applies) is received on a share that is held as capital property by the dividend recipient and one of the purposes of the payment or receipt of the dividend is to effect
+        (A) a significant reduction in the fair market value of any share, or
+        (B) a significant increase in the cost of property, such that the amount that is the total of the cost amounts of all properties of the dividend recipient immediately after the dividend is significantly greater than the amount that is the total of the cost amounts of all properties of the dividend recipient immediately before the dividend; and
+    (c) the amount of the dividend exceeds the amount of the income earned or realized by any corporation — after 1971 and before the safe-income determination time for the transaction, event or series — that could reasonably be considered to contribute to the capital gain that could be realized on a disposition at fair market value, immediately before the dividend, of the share on which the dividend is received.
+  [Application]
+  (3) Subsection 55(2) does not apply to any dividend received by a corporation (in this subsection and subsection 55(3.01) referred to as the “dividend recipient”)
+    (a) in the case of a dividend that is received on a redemption, acquisition or cancellation of a share, by the corporation that issued the share, to which subsection 84(2) or (3) applies, if, as part of a transaction or event or a series of transactions or events as a part of which the dividend is received, there was not at any particular time
+      (i) a disposition of property, other than
+        (A) money disposed of on the payment of a dividend or on a reduction of the paid-up capital of a share, and
+        (B) property disposed of for proceeds that are not less than its fair market value,
+        [continued] to a person or partnership that was an unrelated person immediately before the particular time,
+      (ii) a significant increase (other than as a consequence of a disposition of shares of the capital stock of a corporation for proceeds of disposition that are not less than their fair market value) in the total direct interest in any corporation of one or more persons or partnerships that were unrelated persons immediately before the particular time,
+      (iii) a disposition, to a person or partnership who was an unrelated person immediately before the particular time, of
+        (A) shares of the capital stock of the corporation that paid the dividend (referred to in this paragraph and subsection 55(3.01) as the “dividend payer”), or
+        (B) property (other than shares of the capital stock of the dividend recipient) more than 10% of the fair market value of which was, at any time during the series, derived from any combination of shares of the capital stock and debt of the dividend payer,
+      (iv) after the time the dividend was received, a disposition, to a person or partnership that was an unrelated person immediately before the particular time, of
+        (A) shares of the capital stock of the dividend recipient, or
+        (B) property more than 10% of the fair market value of which was, at any time during the series, derived from any combination of shares of the capital stock and debt of the dividend recipient, and
+      (v) a significant increase in the total of all direct interests in the dividend payer of one or more persons or partnerships who were unrelated persons immediately before the particular time; or
+    (b) if the dividend was received
+      (i) in the course of a reorganization in which
+        (A) a distributing corporation made a distribution to one or more transferee corporations, and
+        (B) the distributing corporation was wound up or all of the shares of its capital stock owned by each transferee corporation immediately before the distribution were redeemed or cancelled otherwise than on an exchange to which subsection 51(1), 85(1) or 86(1) applies, and
+      (ii) on a permitted redemption in relation to the distribution or on the winding-up of the distributing corporation.
+  [Interpretation for par. (3)(a)]
+  (3.01) For the purposes of paragraph 55(3)(a),
+    (a) an unrelated person means a person (other than the dividend recipient) to whom the dividend recipient is not related or a partnership any member of which (other than the dividend recipient) is not related to the dividend recipient;
+    (f) unless subsection (2.3) applies, if a corporation has received a dividend any portion of which is a taxable dividend (such a portion referred to as the taxable part in this paragraph), as part of a transaction or event or series of transactions or events
+      (i) a portion of the dividend is deemed to be a separate taxable dividend equal to the lesser of
+        (A) the taxable part, and
+        (B) the amount of the income earned or realized by any corporation — after 1971 and before the safe-income determination time for the transaction, event or series — that could reasonably be considered to contribute to the capital gain that could be realized on a disposition at fair market value, immediately before the dividend, of the share on which the dividend is received, and
+      (ii) the amount, if any, by which the taxable part exceeds the portion referred to in subparagraph (i) is deemed to be a separate taxable dividend.

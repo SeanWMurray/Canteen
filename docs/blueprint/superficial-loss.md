@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 62 statements:** 43 proven, 16 encoded, 3 not formalized.
+**Status of the 63 statements:** 44 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -67,11 +67,12 @@ graph TD
   n54["R20 · Loss restriction events"]:::proven
   n55["R21 · Attribution of income to the transferor or lender"]:::proven
   n56["R22 · Taxable dividends: the gross-up and credit"]:::proven
-  n57["R11 · The principal residence exemption"]:::proven
-  n58["R2 · Cost of the substituted property"]:::proven
-  n59["N1 · Inputs decided by other provisions"]:::notFormalized
-  n60["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n61["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n57["R23 · Intercorporate dividends, and when they are gains"]:::proven
+  n58["R11 · The principal residence exemption"]:::proven
+  n59["R2 · Cost of the substituted property"]:::proven
+  n60["N1 · Inputs decided by other provisions"]:::notFormalized
+  n61["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n62["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -164,21 +165,21 @@ graph TD
   n39 --> n54
   n6 --> n54
   n49 --> n55
-  n44 --> n57
-  n50 --> n57
-  n11 --> n58
-  n1 --> n59
-  n5 --> n59
-  n6 --> n59
-  n8 --> n59
-  n37 --> n59
-  n58 --> n59
-  n38 --> n59
-  n30 --> n60
-  n32 --> n61
-  n34 --> n61
-  n39 --> n61
-  n42 --> n61
+  n44 --> n58
+  n50 --> n58
+  n11 --> n59
+  n1 --> n60
+  n5 --> n60
+  n6 --> n60
+  n8 --> n60
+  n37 --> n60
+  n59 --> n60
+  n38 --> n60
+  n30 --> n61
+  n32 --> n62
+  n34 --> n62
+  n39 --> n62
+  n42 --> n62
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -252,11 +253,12 @@ graph TD
   n54["R20"]:::proven
   n55["R21"]:::proven
   n56["R22"]:::proven
-  n57["R11"]:::proven
-  n58["R2"]:::proven
-  n59["N1"]:::notFormalized
-  n60["N2"]:::notFormalized
-  n61["N4"]:::notFormalized
+  n57["R23"]:::proven
+  n58["R11"]:::proven
+  n59["R2"]:::proven
+  n60["N1"]:::notFormalized
+  n61["N2"]:::notFormalized
+  n62["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -422,21 +424,21 @@ graph TD
   n39 -.-> n54
   n6 -.-> n54
   n49 --> n55
-  n44 -.-> n57
-  n50 -.-> n57
-  n11 -.-> n58
-  n1 -.-> n59
-  n5 -.-> n59
-  n6 -.-> n59
-  n8 -.-> n59
-  n37 -.-> n59
-  n58 -.-> n59
-  n38 -.-> n59
-  n30 -.-> n60
-  n32 -.-> n61
-  n34 -.-> n61
-  n39 -.-> n61
-  n42 -.-> n61
+  n44 -.-> n58
+  n50 -.-> n58
+  n11 -.-> n59
+  n1 -.-> n60
+  n5 -.-> n60
+  n6 -.-> n60
+  n8 -.-> n60
+  n37 -.-> n60
+  n59 -.-> n60
+  n38 -.-> n60
+  n30 -.-> n61
+  n32 -.-> n62
+  n34 -.-> n62
+  n39 -.-> n62
+  n42 -.-> n62
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -911,6 +913,14 @@ Income or loss from property transferred or lent to a spouse or common-law partn
 Taxable dividends from corporations resident in Canada are included in income; an individual adds a gross-up (15% for non-eligible dividends after 2018, 38% for eligible dividends after 2011) and deducts a credit from tax (9/13 and 6/11 of the gross-up). Proven: the credit never exceeds the gross-up.
 
 **Lean:** [`Canteen.ITA.Dividends.inclusion`](../../Canteen/ITA/S82/Dividends.lean#L92), [`Canteen.ITA.Dividends.credit`](../../Canteen/ITA/S82/Dividends.lean#L99), [`Canteen.ITA.Dividends.credit_le_grossUp`](../../Canteen/ITA/S82/Dividends.lean#L133), [`Canteen.ITA.Dividends.non_eligible_2025`](../../Canteen/ITA/S82/Dividends.lean#L155)
+
+### R23. Intercorporate dividends, and when they are gains
+
+**Status:** proven · **Citation:** ITA 112(1); 55(2), (2.1), (3), (5)(f)
+
+A corporation deducts taxable dividends from taxable Canadian corporations (112(1)); but the part of a dividend over safe income, paid with a purpose of reducing a capital gain (or a share's value, or increasing cost), is a capital gain or proceeds of disposition instead (55(2)), unless it is a redemption in a series with no unrelated person (55(3)(a)) or a butterfly. Proven: nothing within safe income is caught, and what is caught moves from the deduction to proceeds or a gain.
+
+**Lean:** [`Canteen.ITA.IntercorporateDividends.subsection55_2`](../../Canteen/ITA/S55/IntercorporateDividends.lean#L113), [`Canteen.ITA.IntercorporateDividends.caught`](../../Canteen/ITA/S55/IntercorporateDividends.lean#L137), [`Canteen.ITA.IntercorporateDividends.deduction`](../../Canteen/ITA/S55/IntercorporateDividends.lean#L146), [`Canteen.ITA.IntercorporateDividends.within_safe_income`](../../Canteen/ITA/S55/IntercorporateDividends.lean#L173), [`Canteen.ITA.IntercorporateDividends.related_redemption`](../../Canteen/ITA/S55/IntercorporateDividends.lean#L185), [`Canteen.ITA.IntercorporateDividends.conserved`](../../Canteen/ITA/S55/IntercorporateDividends.lean#L189)
 
 ### R11. The principal residence exemption
 
