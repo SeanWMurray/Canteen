@@ -9,6 +9,7 @@ import Canteen.ITA.S251_1.AffiliatedPersons
 import Canteen.ITA.S251.RelatedPersons
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
+import Canteen.Lemmas.SuspendedLoss
 import Canteen.ITA.S40.Paragraph40_2_g
 
 /-!
@@ -128,7 +129,14 @@ def blueprint : Blueprint where
           lean := [``right_to_acquire_identical], uses := ["Pa+"] },
         { id := "L12", kind := .law, title := "SIFT shares from 2013",
           statement := "Paragraph (j) does not apply to a SIFT wind-up share acquired in 2013 or later.",
-          lean := [``sift_share_after_2012], uses := ["Pa+"] } ] },
+          lean := [``sift_share_after_2012], uses := ["Pa+"] },
+        { id := "L13", kind := .law, title := "When nothing qualifies", statement :=
+            "If every acquisition is outside the period, by someone not affiliated with the taxpayer, or not held at the " ++
+            "end of the period, the loss is not superficial, however any judgment calls are answered."
+          lean := [``not_of_all_fail], uses := ["Pa+", "Pb", "D"] },
+        { id := "L14", kind := .law, title := "The 31-day safe harbour", statement :=
+            "If every acquisition, by anyone, is more than 30 days after the disposition, the loss is not superficial."
+          lean := [``safe_harbour], uses := ["L13"] } ] },
     { heading := "Subparagraph 40(2)(g)(i)"
       nodes := [
         { id := "G0", kind := .law, title := "Opening words: the foreign affiliate carve-out", citation := "ITA 40(2)(g)"
@@ -207,7 +215,8 @@ def blueprint : Blueprint where
             "nil but suspended until the first of the times in 40(3.4)(b). Paragraph (h) of the superficial loss definition " ++
             "defers to it, and it uses that definition's period and exceptions (c) to (g)."
           lean := [``SuspendedLoss.applies, ``SuspendedLoss.rule, ``SuspendedLoss.releaseDate,
-            ``SuspendedLoss.not_superficial_of_applies, ``SuspendedLoss.not_individual, ``SuspendedLoss.not_of_excepted],
+            ``SuspendedLoss.not_superficial_of_applies, ``SuspendedLoss.not_individual, ``SuspendedLoss.not_of_excepted,
+            ``SuspendedLoss.not_of_all_fail, ``SuspendedLoss.safe_harbour],
           uses := ["Pc", "Pd", "Pe", "Pf", "Pg", "Ph", "D", "R3"] },
         { id := "R2", kind := .law, title := "Cost of the substituted property", citation := "ITA 53(1)(f)"
           statement := "The superficial loss, less any amount described in subparagraph 53(1)(f)(ii), is added to the cost " ++

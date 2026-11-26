@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 44 statements:** 25 proven, 16 encoded, 3 not formalized.
+**Status of the 46 statements:** 27 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -37,23 +37,25 @@ graph TD
   n24["L10 · More acquisitions only add"]:::proven
   n25["L11 · Rights to acquire"]:::proven
   n26["L12 · SIFT shares from 2013"]:::proven
-  n27["G0 · Opening words: the foreign affiliate carve-out"]:::encoded
-  n28["G1 · The loss is nil"]:::encoded
-  n29["GS · 40(2)(g)(i) in statute form"]:::proven
-  n30["G2 · (ii) losses on debts"]:::proven
-  n31["PUP · Personal-use and listed personal property"]:::encoded
-  n32["G3 · (iii) losses on personal-use property"]:::proven
-  n33["G4 · (iv) transfers to registered plans"]:::proven
-  n34["G5 · Paragraph 40(2)(g) as a whole"]:::proven
-  n35["R1 · Spouses are affiliated"]:::proven
-  n36["R3 · Affiliated persons, paragraphs (a) to (h)"]:::proven
-  n37["R4 · Related persons and arm's length"]:::proven
-  n38["R5 · A personal-use debt that goes bad"]:::proven
-  n39["R6 · Suspended losses of corporations, trusts and partnerships"]:::proven
-  n40["R2 · Cost of the substituted property"]:::proven
-  n41["N1 · Inputs decided by other provisions"]:::notFormalized
-  n42["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n43["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n27["L13 · When nothing qualifies"]:::proven
+  n28["L14 · The 31-day safe harbour"]:::proven
+  n29["G0 · Opening words: the foreign affiliate carve-out"]:::encoded
+  n30["G1 · The loss is nil"]:::encoded
+  n31["GS · 40(2)(g)(i) in statute form"]:::proven
+  n32["G2 · (ii) losses on debts"]:::proven
+  n33["PUP · Personal-use and listed personal property"]:::encoded
+  n34["G3 · (iii) losses on personal-use property"]:::proven
+  n35["G4 · (iv) transfers to registered plans"]:::proven
+  n36["G5 · Paragraph 40(2)(g) as a whole"]:::proven
+  n37["R1 · Spouses are affiliated"]:::proven
+  n38["R3 · Affiliated persons, paragraphs (a) to (h)"]:::proven
+  n39["R4 · Related persons and arm's length"]:::proven
+  n40["R5 · A personal-use debt that goes bad"]:::proven
+  n41["R6 · Suspended losses of corporations, trusts and partnerships"]:::proven
+  n42["R2 · Cost of the substituted property"]:::proven
+  n43["N1 · Inputs decided by other provisions"]:::notFormalized
+  n44["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n45["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -93,43 +95,47 @@ graph TD
   n12 --> n24
   n11 --> n25
   n11 --> n26
+  n11 --> n27
+  n2 --> n27
+  n12 --> n27
   n27 --> n28
-  n13 --> n28
-  n28 --> n29
-  n14 --> n29
-  n0 --> n30
+  n29 --> n30
+  n13 --> n30
+  n30 --> n31
+  n14 --> n31
   n0 --> n32
-  n31 --> n32
-  n0 --> n33
-  n27 --> n34
-  n28 --> n34
-  n13 --> n34
-  n30 --> n34
-  n32 --> n34
+  n0 --> n34
   n33 --> n34
+  n0 --> n35
+  n29 --> n36
+  n30 --> n36
+  n13 --> n36
+  n32 --> n36
+  n34 --> n36
   n35 --> n36
-  n1 --> n36
-  n3 --> n39
-  n4 --> n39
-  n5 --> n39
-  n6 --> n39
-  n7 --> n39
-  n8 --> n39
-  n12 --> n39
-  n36 --> n39
-  n11 --> n40
-  n1 --> n41
+  n37 --> n38
+  n1 --> n38
+  n3 --> n41
+  n4 --> n41
   n5 --> n41
   n6 --> n41
+  n7 --> n41
   n8 --> n41
-  n35 --> n41
-  n40 --> n41
-  n36 --> n41
-  n28 --> n42
-  n30 --> n43
-  n32 --> n43
+  n12 --> n41
+  n38 --> n41
+  n11 --> n42
+  n1 --> n43
+  n5 --> n43
+  n6 --> n43
+  n8 --> n43
   n37 --> n43
+  n42 --> n43
   n38 --> n43
+  n30 --> n44
+  n32 --> n45
+  n34 --> n45
+  n39 --> n45
+  n40 --> n45
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -173,23 +179,25 @@ graph TD
   n24["L10"]:::proven
   n25["L11"]:::proven
   n26["L12"]:::proven
-  n27["G0"]:::encoded
-  n28["G1"]:::encoded
-  n29["GS"]:::proven
-  n30["G2"]:::proven
-  n31["PUP"]:::encoded
-  n32["G3"]:::proven
-  n33["G4"]:::proven
-  n34["G5"]:::proven
-  n35["R1"]:::proven
-  n36["R3"]:::proven
-  n37["R4"]:::proven
-  n38["R5"]:::proven
-  n39["R6"]:::proven
-  n40["R2"]:::proven
-  n41["N1"]:::notFormalized
-  n42["N2"]:::notFormalized
-  n43["N4"]:::notFormalized
+  n27["L13"]:::proven
+  n28["L14"]:::proven
+  n29["G0"]:::encoded
+  n30["G1"]:::encoded
+  n31["GS"]:::proven
+  n32["G2"]:::proven
+  n33["PUP"]:::encoded
+  n34["G3"]:::proven
+  n35["G4"]:::proven
+  n36["G5"]:::proven
+  n37["R1"]:::proven
+  n38["R3"]:::proven
+  n39["R4"]:::proven
+  n40["R5"]:::proven
+  n41["R6"]:::proven
+  n42["R2"]:::proven
+  n43["N1"]:::notFormalized
+  n44["N2"]:::notFormalized
+  n45["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -278,49 +286,57 @@ graph TD
   n10 --> n25
   n11 --> n26
   n10 --> n26
+  n11 --> n27
+  n2 --> n27
+  n1 --> n27
+  n12 --> n27
+  n0 --> n27
   n27 --> n28
-  n13 --> n28
-  n0 --> n28
-  n14 --> n29
-  n28 --> n29
-  n12 --> n29
+  n1 --> n28
+  n12 --> n28
+  n29 --> n30
+  n13 --> n30
   n0 --> n30
-  n31 --> n32
+  n14 --> n31
+  n30 --> n31
+  n12 --> n31
   n0 --> n32
-  n0 --> n33
-  n30 --> n34
-  n32 --> n34
-  n13 --> n34
   n33 --> n34
   n0 --> n34
-  n12 --> n34
-  n28 --> n34
-  n27 -.-> n34
-  n1 --> n36
-  n35 -.-> n36
-  n7 --> n39
-  n1 --> n39
-  n6 --> n39
-  n3 --> n39
-  n4 --> n39
-  n5 --> n39
-  n0 --> n39
-  n12 --> n39
-  n8 --> n39
-  n36 -.-> n39
-  n11 -.-> n40
-  n1 -.-> n41
-  n5 -.-> n41
-  n6 -.-> n41
-  n8 -.-> n41
-  n35 -.-> n41
-  n40 -.-> n41
-  n36 -.-> n41
-  n28 -.-> n42
-  n30 -.-> n43
-  n32 -.-> n43
+  n0 --> n35
+  n32 --> n36
+  n34 --> n36
+  n13 --> n36
+  n35 --> n36
+  n0 --> n36
+  n12 --> n36
+  n30 --> n36
+  n29 -.-> n36
+  n1 --> n38
+  n37 -.-> n38
+  n7 --> n41
+  n1 --> n41
+  n6 --> n41
+  n3 --> n41
+  n4 --> n41
+  n5 --> n41
+  n0 --> n41
+  n12 --> n41
+  n8 --> n41
+  n38 -.-> n41
+  n11 -.-> n42
+  n1 -.-> n43
+  n5 -.-> n43
+  n6 -.-> n43
+  n8 -.-> n43
   n37 -.-> n43
+  n42 -.-> n43
   n38 -.-> n43
+  n30 -.-> n44
+  n32 -.-> n45
+  n34 -.-> n45
+  n39 -.-> n45
+  n40 -.-> n45
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -550,6 +566,22 @@ Paragraph (j) does not apply to a SIFT wind-up share acquired in 2013 or later.
 
 **Lean:** [`Canteen.ITA.SuperficialLoss.sift_share_after_2012`](../../Canteen/Lemmas/SuperficialLoss.lean#L80)
 
+### L13. When nothing qualifies
+
+**Status:** proven · **Uses:** Pa+, Pb, D
+
+If every acquisition is outside the period, by someone not affiliated with the taxpayer, or not held at the end of the period, the loss is not superficial, however any judgment calls are answered.
+
+**Lean:** [`Canteen.ITA.SuperficialLoss.not_of_all_fail`](../../Canteen/Lemmas/SuperficialLoss.lean#L87)
+
+### L14. The 31-day safe harbour
+
+**Status:** proven · **Uses:** L13
+
+If every acquisition, by anyone, is more than 30 days after the disposition, the loss is not superficial.
+
+**Lean:** [`Canteen.ITA.SuperficialLoss.safe_harbour`](../../Canteen/Lemmas/SuperficialLoss.lean#L100)
+
 ## Subparagraph 40(2)(g)(i)
 
 ### G0. Opening words: the foreign affiliate carve-out
@@ -658,7 +690,7 @@ A debt that is personal-use property, owing by an arm's length person and establ
 
 The counterpart of the superficial loss rule for corporations, trusts and partnerships: the loss is nil but suspended until the first of the times in 40(3.4)(b). Paragraph (h) of the superficial loss definition defers to it, and it uses that definition's period and exceptions (c) to (g).
 
-**Lean:** [`Canteen.ITA.SuspendedLoss.applies`](../../Canteen/ITA/S40/SuspendedLoss.lean#L123), [`Canteen.ITA.SuspendedLoss.rule`](../../Canteen/ITA/S40/SuspendedLoss.lean#L195), [`Canteen.ITA.SuspendedLoss.releaseDate`](../../Canteen/ITA/S40/SuspendedLoss.lean#L158), [`Canteen.ITA.SuspendedLoss.not_superficial_of_applies`](../../Canteen/ITA/S40/SuspendedLoss.lean#L261), [`Canteen.ITA.SuspendedLoss.not_individual`](../../Canteen/ITA/S40/SuspendedLoss.lean#L205), [`Canteen.ITA.SuspendedLoss.not_of_excepted`](../../Canteen/ITA/S40/SuspendedLoss.lean#L210)
+**Lean:** [`Canteen.ITA.SuspendedLoss.applies`](../../Canteen/ITA/S40/SuspendedLoss.lean#L123), [`Canteen.ITA.SuspendedLoss.rule`](../../Canteen/ITA/S40/SuspendedLoss.lean#L195), [`Canteen.ITA.SuspendedLoss.releaseDate`](../../Canteen/ITA/S40/SuspendedLoss.lean#L158), [`Canteen.ITA.SuspendedLoss.not_superficial_of_applies`](../../Canteen/ITA/S40/SuspendedLoss.lean#L261), [`Canteen.ITA.SuspendedLoss.not_individual`](../../Canteen/ITA/S40/SuspendedLoss.lean#L205), [`Canteen.ITA.SuspendedLoss.not_of_excepted`](../../Canteen/ITA/S40/SuspendedLoss.lean#L210), [`Canteen.ITA.SuspendedLoss.not_of_all_fail`](../../Canteen/Lemmas/SuspendedLoss.lean#L11), [`Canteen.ITA.SuspendedLoss.safe_harbour`](../../Canteen/Lemmas/SuspendedLoss.lean#L23)
 
 ### R2. Cost of the substituted property
 

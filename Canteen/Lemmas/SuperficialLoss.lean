@@ -82,4 +82,29 @@ theorem sift_share_after_2012 (a : Acquisition) (h : a.identity = .siftWindUpSha
     (hd : acquiredBefore2013 a = false) : isOrIsIdentical a = false := by
   simp [isOrIsIdentical, h, hd]
 
+/-! ## Planning a sale at a loss -/
+
+/-- If every acquisition is outside the period, made by someone not affiliated with the
+taxpayer, or not held at the end of the period, the loss is not superficial, however any
+identity or affiliation judgment calls are answered. -/
+theorem not_of_all_fail (f : Facts)
+    (h : ∀ a ∈ f.acquisitions, inPeriod f.disposition a = false ∨
+      a.acquirer.isTaxpayerOrAffiliated = false ∨ a.heldAtEndOfPeriod = false) :
+    superficialLoss f = false := by
+  simp only [superficialLoss, Bool.and_eq_false_iff]
+  left; right
+  rw [List.any_eq_false]
+  intro a ha
+  rcases h a ha with h | h | h <;> simp [qualifies, paraA, paraB, h]
+
+/-- **The 31-day safe harbour.** If nothing is acquired, by anyone, in the 30 days before the
+disposition, and every repurchase is on day 31 or later, the loss is not superficial. -/
+theorem safe_harbour (f : Facts)
+    (h : ∀ a ∈ f.acquisitions, f.disposition.date.toDays + 30 < a.date.toDays) :
+    superficialLoss f = false :=
+  not_of_all_fail f fun a ha => .inl (by
+    have := h a ha
+    simp only [inPeriod, Date.withinDaysAround, Bool.and_eq_false_iff, decide_eq_false_iff_not]
+    right; omega)
+
 end Canteen.ITA.SuperficialLoss

@@ -45,6 +45,7 @@ import Canteen.ITA.S40.Paragraph40_2_g
 
 -- Layer 2: reusable lemmas
 import Canteen.Lemmas.SuperficialLoss
+import Canteen.Lemmas.SuspendedLoss
 
 -- Layer 3: transactions
 import Canteen.Transactions.SpouseRepurchase
