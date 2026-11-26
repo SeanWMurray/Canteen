@@ -199,6 +199,7 @@ Every diagram is drawn from the Lean definitions, so it always shows the rules a
 - [Who is affiliated with whom](docs/graphs/affiliation.md): worlds of persons under section 251.1, each affiliated pair labelled with its paragraph.
 - [Who is related to whom](docs/graphs/related.md): a family tree under section 251, with each related pair.
 - [A transaction series](docs/graphs/series.md), state by state.
+- [The provision map](docs/graphs/provisions.md): which encoded provisions build on which.
 - [The architecture](docs/graphs/architecture.md), read from the compiled modules.
 
 ## Validation (design §6)

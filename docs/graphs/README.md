@@ -10,6 +10,7 @@ Diagrams drawn from the Lean definitions, so they always show the rules as encod
 - [Who is affiliated with whom](affiliation.md): A family group, Holdco, owned by the taxpayer and spouse, Holdco, owned with a friend, if the taxpayer controls it de facto
 - [Who is related to whom](related.md): Three generations
 - [A transaction series, step by step](series.md): If condition B is met (J-B = yes), If condition B is not met (J-B = no)
+- [Provision map](provisions.md): which encoded provisions rely on which, read from the Lean
 - [Architecture](architecture.md): every module, by layer, and how they build on each other
 
 Each blueprint in [`docs/blueprint/`](../blueprint/README.md) also has its own dependency graphs.

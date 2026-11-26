@@ -87,6 +87,23 @@ def threeGenerations : AffiliatedPersons.World :=
 def holding (h : Examples.Holding) : String :=
   s!"{h.units} units, election {if h.electionFiled then "filed" else "not filed"}"
 
+/-- The provisions on the provision map, by the module that encodes them. -/
+def provisions : List (Lean.Name × String) :=
+  [(`Canteen.ITA.S54.SuperficialLoss, "54 \"superficial loss\""),
+   (`Canteen.ITA.S54.SuperficialLossStatute, "54 \"superficial loss\", in statute form"),
+   (`Canteen.ITA.S40.LossDenial, "40(2)(g)(i) superficial losses"),
+   (`Canteen.ITA.S40.Paragraph40_2_g_Facts, "40(2)(g): the facts"),
+   (`Canteen.ITA.S40.DebtLoss, "40(2)(g)(ii) debts"),
+   (`Canteen.ITA.S40.PersonalUseLoss, "40(2)(g)(iii) personal-use property, with 54 definitions"),
+   (`Canteen.ITA.S40.PlanTransferLoss, "40(2)(g)(iv) registered plans"),
+   (`Canteen.ITA.S40.Paragraph40_2_g, "40(2)(g) as a whole"),
+   (`Canteen.ITA.S40.SuspendedLoss, "40(3.3) to (3.5) suspended losses"),
+   (`Canteen.ITA.S50.BadDebtPersonalUse, "50(2) bad personal-use debts"),
+   (`Canteen.ITA.S53.CostAddition, "53(1)(f) cost of substituted property"),
+   (`Canteen.ITA.S251_1.Affiliation, "251.1(1)(a), two persons"),
+   (`Canteen.ITA.S251_1.AffiliatedPersons, "251.1 affiliated persons, with 248(1) and 251(6)"),
+   (`Canteen.ITA.S251.RelatedPersons, "251(1) to (6) related persons, arm's length")]
+
 def pages : List Page := [
   { file := "flowcharts", title := "Flowcharts of the rules"
     intro := "Each rule written with the `statute` command, drawn from its outline: every condition must be met, and " ++

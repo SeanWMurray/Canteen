@@ -285,7 +285,7 @@ def timeline (f : Facts) : String :=
     | some r => if suspended f then
         [ "    section Suspended loss",
           s!"    {task s!"{formatCents (suspendedLoss f)} suspended"} :active, susp, {d.date}, {r.toDays - d.date.toDays}d",
-          s!"    {task s!"{r} released ({(releaseReason f).takeWhile (· != '(')})"} :milestone, rel, {r}, 0d"]
+          s!"    {task s!"{r} released, {((releaseReason f).takeWhile (· != '(')).trimAsciiEnd}"} :milestone, rel, {r}, 0d"]
       else []
     | none => if suspended f then
         [ "    section Suspended loss", s!"    {task s!"{formatCents (suspendedLoss f)} suspended, not yet released"} :active, susp, {d.date}, 120d"]

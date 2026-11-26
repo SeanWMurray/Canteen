@@ -74,6 +74,6 @@ gantt
     2025-08-15 Sisterco (affiliated) acquires 1,000 common shares of PQR Ltd. :milestone, crit, a0, 2025-08-15, 0d
     section Suspended loss
     $15,000.00 suspended :active, susp, 2025-08-01, 185d
-    2026-02-02 released (a 30-day period begins throughout which neither the transferor nor a person affiliated with it owns the substituted property ) :milestone, rel, 2026-02-02, 0d
+    2026-02-02 released, a 30-day period begins throughout which neither the transferor nor a person affiliated with it owns the substituted property :milestone, rel, 2026-02-02, 0d
 ```
 

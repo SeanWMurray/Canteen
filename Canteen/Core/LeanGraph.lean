@@ -1,5 +1,6 @@
 import Lean
 import Canteen.Core.Graphs
+import Canteen.Core.Blueprint
 
 /-!
 # The project's architecture, from its imports
@@ -71,6 +72,24 @@ def architecture (pkg : Name := `Canteen) (skip : Name → Bool := fun _ => fals
   for (m, imps) in g do
     for i in imps do
       out := out ++ [s!"  {idOf i} --> {idOf m}"]
+  return "\n".intercalate out
+
+/-- A map of provisions: one box per encoded provision (its module), with an arrow from a
+provision to each provision whose encoding builds on it, read from the module imports (with
+those already implied by others left out). -/
+def provisionMap (labels : List (Name × String)) (pkg : Name := `Canteen) : CoreM String := do
+  let inMap (m : Name) := labels.any (·.1 == m)
+  let g := transitiveReduction (← moduleImports pkg (fun m => !inMap m))
+  let ids := g.zipIdx.map fun ((m, _), i) => (m, s!"v{i}")
+  let idOf (m : Name) := ((ids.find? (·.1 == m)).map (·.2)).getD "v"
+  let label (m : Name) := ((labels.find? (·.1 == m)).map (·.2)).getD m.toString
+  let mut out := ["flowchart BT"]
+  for (m, _) in g do
+    out := out ++ [s!"  {idOf m}[\"{Graphs.esc (label m)}\"]:::prov"]
+  for (m, imps) in g do
+    for i in imps do
+      out := out ++ [s!"  {idOf i} --> {idOf m}"]
+  out := out ++ ["  classDef prov fill:#bbdefb,stroke:#1565c0,color:#0d47a1"]
   return "\n".intercalate out
 
 end Canteen.LeanGraph

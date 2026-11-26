@@ -45,6 +45,15 @@ def generated : String := "> Generated from the Lean sources by `scripts/bluepri
     "Every module of the library (tests left out), grouped by layer, with an arrow from a module to each module " ++
     "that builds on it. Imports already implied by others are left out. Read from the compiled modules.\n\n" ++
     s!"```mermaid\n{arch}\n```\n"
+  let pmap ← liftCoreM (LeanGraph.provisionMap Canteen.Graphs.provisions)
+  IO.FS.writeFile "docs/graphs/provisions.md" <|
+    "# Provision map\n\n" ++ generated ++
+    "Every encoded provision, with an arrow from a provision to each one whose encoding builds on it, read from the " ++
+    "compiled modules (arrows already implied by others are left out). For example, 40(3.3) to (3.5) builds on the " ++
+    "superficial loss definition (its period and exceptions), and section 251 on section 251.1 (its world of persons and " ++
+    "the 251(6) connections).\n\n" ++
+    s!"```mermaid\n{pmap}\n```\n"
+  gindex := gindex ++ "- [Provision map](provisions.md): which encoded provisions rely on which, read from the Lean\n"
   gindex := gindex ++ "- [Architecture](architecture.md): every module, by layer, and how they build on each other\n" ++
     "\nEach blueprint in [`docs/blueprint/`](../blueprint/README.md) also has its own dependency graphs.\n"
   IO.FS.writeFile "docs/graphs/README.md" gindex
