@@ -10,5 +10,6 @@ Memo-style documents whose statements link to the Lean that proves or encodes th
 - [Memo: shares contributed in kind to a TFSA at a loss](tfsa-contribution.md): 15 statements, 8 proven, 0 not yet formalized
 - [Memo: shares sold at a loss and bought by a family holding company](holdco-repurchase.md): 20 statements, 11 proven, 0 not yet formalized
 - [Memo: a company's loss suspended when its sister company buys the shares](sister-company-repurchase.md): 14 statements, 9 proven, 0 not yet formalized
+- [Memo: crystallizing the capital gains exemption, then stripping the cost](crystallization.md): 18 statements, 9 proven, 0 not yet formalized
 
 More diagrams: [`docs/graphs/`](../graphs/README.md).

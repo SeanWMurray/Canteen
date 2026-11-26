@@ -28,6 +28,7 @@ import Canteen.ITA.S110_6.CapitalGainsDeduction
 import Canteen.ITA.S251_2.LossRestrictionEvent
 import Canteen.ITA.S74.IncomeAttribution
 import Canteen.Transactions.SisterCompanyRepurchase
+import Canteen.Transactions.Crystallization
 
 /-!
 # Every graph page, and what is on it
@@ -151,6 +152,7 @@ def allJudgmentCalls : List (String × JudgmentCall) :=
   (Transactions.TfsaContribution.calls.map ("TFSA contribution", ·)) ++
   (Transactions.HoldcoRepurchase.calls.map ("Holdco repurchase", ·)) ++
   (Transactions.HoldcoRepurchase.friendCalls.map ("Holdco what-if", ·)) ++
+  (Transactions.Crystallization.calls.map ("crystallization", ·)) ++
   (debtCalls.map ("debt example", ·)) ++ (ruleXCalls.map ("Rule X", ·))
 
 private def riskPos : Risk → Nat
@@ -191,7 +193,9 @@ def transactionTimeline : String :=
     ev Transactions.HoldcoRepurchase.sale.date "Holdco repurchase, the sale",
     ev (Transactions.HoldcoRepurchase.holdcoPurchase true).date "Holdco repurchase, Holdco buys",
     ev ((SuspendedLoss.releaseDate Transactions.SisterCompanyRepurchase.facts).getD ⟨2026, 2, 2⟩)
-      "Sister company, the suspended loss is released"]
+      "Sister company, the suspended loss is released",
+    ev ⟨2025, 6, 30⟩ "Crystallization, Opco shares to Holdco under 85(1)",
+    ev Transactions.Crystallization.newcoPurchase.date "Crystallization, Holdco shares sold to Newco"]
 
 /-- The Act as encoded, section by section. Each node is a Mermaid "markdown string", so the
 parentheses in citations are not read as node shapes. -/
