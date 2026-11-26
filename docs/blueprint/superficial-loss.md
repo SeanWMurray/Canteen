@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 42 statements:** 23 proven, 16 encoded, 3 not formalized.
+**Status of the 43 statements:** 24 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -48,10 +48,11 @@ graph TD
   n35["R1 · Spouses are affiliated"]:::proven
   n36["R3 · Affiliated persons, paragraphs (a) to (h)"]:::proven
   n37["R4 · Related persons and arm's length"]:::proven
-  n38["R2 · Cost of the substituted property"]:::proven
-  n39["N1 · Inputs decided by other provisions"]:::notFormalized
-  n40["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n41["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n38["R5 · A personal-use debt that goes bad"]:::proven
+  n39["R2 · Cost of the substituted property"]:::proven
+  n40["N1 · Inputs decided by other provisions"]:::notFormalized
+  n41["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n42["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -107,18 +108,19 @@ graph TD
   n33 --> n34
   n35 --> n36
   n1 --> n36
-  n11 --> n38
-  n1 --> n39
-  n5 --> n39
-  n6 --> n39
-  n8 --> n39
-  n35 --> n39
-  n38 --> n39
-  n36 --> n39
-  n28 --> n40
-  n30 --> n41
-  n32 --> n41
-  n37 --> n41
+  n11 --> n39
+  n1 --> n40
+  n5 --> n40
+  n6 --> n40
+  n8 --> n40
+  n35 --> n40
+  n39 --> n40
+  n36 --> n40
+  n28 --> n41
+  n30 --> n42
+  n32 --> n42
+  n37 --> n42
+  n38 --> n42
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -173,10 +175,11 @@ graph TD
   n35["R1"]:::proven
   n36["R3"]:::proven
   n37["R4"]:::proven
-  n38["R2"]:::proven
-  n39["N1"]:::notFormalized
-  n40["N2"]:::notFormalized
-  n41["N4"]:::notFormalized
+  n38["R5"]:::proven
+  n39["R2"]:::proven
+  n40["N1"]:::notFormalized
+  n41["N2"]:::notFormalized
+  n42["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -285,18 +288,19 @@ graph TD
   n27 -.-> n34
   n1 --> n36
   n35 -.-> n36
-  n11 -.-> n38
-  n1 -.-> n39
-  n5 -.-> n39
-  n6 -.-> n39
-  n8 -.-> n39
-  n35 -.-> n39
-  n38 -.-> n39
-  n36 -.-> n39
-  n28 -.-> n40
-  n30 -.-> n41
-  n32 -.-> n41
-  n37 -.-> n41
+  n11 -.-> n39
+  n1 -.-> n40
+  n5 -.-> n40
+  n6 -.-> n40
+  n8 -.-> n40
+  n35 -.-> n40
+  n39 -.-> n40
+  n36 -.-> n40
+  n28 -.-> n41
+  n30 -.-> n42
+  n32 -.-> n42
+  n37 -.-> n42
+  n38 -.-> n42
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -620,6 +624,14 @@ Related persons (251(2), (3), with 251(6) for blood relationship, marriage, comm
 
 **Lean:** [`Canteen.ITA.RelatedPersons.rule`](../../Canteen/ITA/S251/RelatedPersons.lean#L205), [`Canteen.ITA.RelatedPersons.armsLengthRule`](../../Canteen/ITA/S251/RelatedPersons.lean#L252), [`Canteen.ITA.RelatedPersons.armsLengthAnswer`](../../Canteen/ITA/S251/RelatedPersons.lean#L265), [`Canteen.ITA.RelatedPersons.not_armsLength_of_related`](../../Canteen/ITA/S251/RelatedPersons.lean#L260), [`Canteen.ITA.RelatedPersons.related_symm`](../../Canteen/ITA/S251/RelatedPersons.lean#L213)
 
+### R5. A personal-use debt that goes bad
+
+**Status:** proven · **Citation:** ITA 50(2)
+
+A debt that is personal-use property, owing by an arm's length person and established to be bad, is deemed disposed of for its cost less the gain on the sale that gave rise to it; so the loss never exceeds that gain. Subparagraph 40(2)(g)(iii) excludes such a debt.
+
+**Lean:** [`Canteen.ITA.BadDebtPersonalUse.rule`](../../Canteen/ITA/S50/BadDebtPersonalUse.lean#L45), [`Canteen.ITA.BadDebtPersonalUse.deemedProceeds`](../../Canteen/ITA/S50/BadDebtPersonalUse.lean#L58), [`Canteen.ITA.BadDebtPersonalUse.loss_eq_min`](../../Canteen/ITA/S50/BadDebtPersonalUse.lean#L67), [`Canteen.ITA.BadDebtPersonalUse.loss_le_gain`](../../Canteen/ITA/S50/BadDebtPersonalUse.lean#L75)
+
 ### R2. Cost of the substituted property
 
 **Status:** proven · **Citation:** ITA 53(1)(f) · **Uses:** Pa+
@@ -646,7 +658,7 @@ Where only part of a loss is a superficial loss (for example, fewer shares acqui
 
 ### N4. Inputs for subparagraphs (ii) to (iv)
 
-**Status:** not formalized · **Citation:** ITA 40(2)(g) · **Uses:** G2, G3, R4
+**Status:** not formalized · **Citation:** ITA 40(2)(g) · **Uses:** G2, G3, R4, R5
 
-Debts referred to in subsection 50(2), arm's length dealing between unrelated persons (a question of fact under 251(1)(c)), and the ordinary meaning of personal-use property beyond the three categories its definition includes are taken as facts or judgment calls.
+Whether subsection 50(2) applies to a debt (computed by R5 where its facts are given), arm's length dealing between unrelated persons (a question of fact under 251(1)(c)), and the ordinary meaning of personal-use property beyond the three categories its definition includes are taken as facts or judgment calls.
 

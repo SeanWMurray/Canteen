@@ -17,7 +17,7 @@ The full design is in [`docs/design.md`](docs/design.md).
 | 4. First real provision | Encoded; awaiting review | Section 54 "superficial loss" with all its exceptions, and subparagraph 40(2)(g)(i); see [`docs/review/superficial-loss.md`](docs/review/superficial-loss.md) |
 | 5. Blueprint | Done | Memos whose statements link to Lean, with dependency graphs coloured by proven/unproven status; see [`docs/blueprint/`](docs/blueprint/README.md) |
 | 6. Ergonomics | Done | The `statute` command: rules written in the statute's own shape, sound with nothing to prove |
-| Beyond the roadmap | Done | All of paragraph 40(2)(g), 53(1)(f), 251.1(1)(a) to (h), and 251(1) to (6) encoded; four transactions; diagrams drawn from the Lean; memos checked against what their proofs use |
+| Beyond the roadmap | Done | All of paragraph 40(2)(g), 50(2), 53(1)(f), 251.1(1)(a) to (h), and 251(1) to (6) encoded; four transactions; diagrams drawn from the Lean; memos checked against what their proofs use |
 
 ## Building
 
@@ -76,6 +76,7 @@ Canteen/
     S251_1/Affiliation.lean    paragraph 251.1(1)(a): spouses are affiliated (two persons, statute form)
     S251_1/AffiliatedPersons.lean   section 251.1(1)(a) to (h) for a whole world of persons, with diagrams
     S251/RelatedPersons.lean   section 251: related persons, blood relationship, and arm's length
+    S50/BadDebtPersonalUse.lean   subsection 50(2): a personal-use debt that goes bad
     S54/Timeline.lean          a timeline chart of the superficial loss period
   Lemmas/                  Layer 2: reusable truths about provisions
   Transactions/            Layer 3: concrete transactions, each step a theorem

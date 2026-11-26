@@ -7,6 +7,7 @@ import Canteen.ITA.S53.CostAddition
 import Canteen.ITA.S251_1.Affiliation
 import Canteen.ITA.S251_1.AffiliatedPersons
 import Canteen.ITA.S251.RelatedPersons
+import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.Paragraph40_2_g
 
 /-!
@@ -194,6 +195,12 @@ def blueprint : Blueprint where
             "251.1(4)(d)(iv)."
           lean := [``RelatedPersons.rule, ``RelatedPersons.armsLengthRule, ``RelatedPersons.armsLengthAnswer,
             ``RelatedPersons.not_armsLength_of_related, ``RelatedPersons.related_symm] },
+        { id := "R5", kind := .law, title := "A personal-use debt that goes bad", citation := "ITA 50(2)"
+          statement := "A debt that is personal-use property, owing by an arm's length person and established to be bad, is " ++
+            "deemed disposed of for its cost less the gain on the sale that gave rise to it; so the loss never exceeds that " ++
+            "gain. Subparagraph 40(2)(g)(iii) excludes such a debt."
+          lean := [``BadDebtPersonalUse.rule, ``BadDebtPersonalUse.deemedProceeds, ``BadDebtPersonalUse.loss_eq_min,
+            ``BadDebtPersonalUse.loss_le_gain] },
         { id := "R2", kind := .law, title := "Cost of the substituted property", citation := "ITA 53(1)(f)"
           statement := "The superficial loss, less any amount described in subparagraph 53(1)(f)(ii), is added to the cost " ++
             "of the substituted property in computing its adjusted cost base."
@@ -212,9 +219,10 @@ def blueprint : Blueprint where
             "made nil is not computed. The Act gives no formula."
           uses := ["G1"] },
         { id := "N4", kind := .law, title := "Inputs for subparagraphs (ii) to (iv)", citation := "ITA 40(2)(g)"
-          statement := "Debts referred to in subsection 50(2), arm's length dealing between unrelated persons (a question of fact " ++
+          statement := "Whether subsection 50(2) applies to a debt (computed by R5 where its facts are given), arm's length " ++
+            "dealing between unrelated persons (a question of fact " ++
             "under 251(1)(c)), and the ordinary meaning of " ++
             "personal-use property beyond the three categories its definition includes are taken as facts or judgment calls."
-          uses := ["G2", "G3", "R4"] } ] } ]
+          uses := ["G2", "G3", "R4", "R5"] } ] } ]
 
 end Canteen.Blueprints.SuperficialLoss

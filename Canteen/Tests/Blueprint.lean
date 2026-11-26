@@ -106,6 +106,7 @@ G5: proven
 R1: proven
 R3: proven
 R4: proven
+R5: proven
 R2: proven
 N1: not formalized
 N2: not formalized

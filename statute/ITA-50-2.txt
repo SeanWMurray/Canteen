@@ -1,0 +1,12 @@
+Income Tax Act, R.S.C. 1985, c. 1 (5th Supp.), subsection 50(2)
+
+Source: Justice Canada consolidated Acts (XML), https://github.com/justicecanada/laws-lois-xml, file eng/acts/I-3.3.xml
+Current to: 2026-10-29. Last amended: 2026-06-18.
+Extracted verbatim; whitespace normalized; paragraph labels kept; continued text marked [continued].
+
+(2) Where at the end of a taxation year a debt that is a personal-use property of a taxpayer is owing to the taxpayer by a person with whom the taxpayer deals at arm’s length and is established by the taxpayer to have become a bad debt in the year,
+  (a) the taxpayer shall be deemed to have disposed of it at the end of the year for proceeds equal to the amount, if any, by which
+    (i) its adjusted cost base to the taxpayer immediately before the end of the year
+    [continued] exceeds
+    (ii) the amount of the taxpayer’s gain, if any, from the disposition of the personal-use property the proceeds of disposition of which included the debt; and
+  (b) the taxpayer shall be deemed to have reacquired the debt immediately after the end of the year at a cost equal to the amount of the proceeds determined under paragraph 50(2)(a).

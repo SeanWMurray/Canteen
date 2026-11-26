@@ -64,6 +64,8 @@ It cannot prove that the definitions match the Act. That is what this review is 
 | 251(3) two corporations related to the same corporation | `RelatedPersons.candidates` (3) | ✓ |
 | 251(4) "related group", "unrelated group" | `relatedGroup` | ✓ |
 | 251(1)(a)–(c) arm's length | `armsLength`, `armsLengthAnswer` | related; personal trust; question of fact |
+| 50(2) a personal-use debt owing by an arm's length person, established to be bad in the year | `BadDebtPersonalUse.rule` | each condition |
+| 50(2)(a) deemed proceeds: the amount, if any, by which (i) the debt's adjusted cost base exceeds (ii) the gain on the related disposition; (b) reacquisition at that amount | `deemedProceeds`, `reacquisitionCost`, `loss_eq_min` | gain larger, smaller, nil |
 
 ## Interpretation choices to confirm
 
@@ -102,6 +104,7 @@ It cannot prove that the definitions match the Act. That is what this review is 
 30. **251(6)(c)** is read as: one adopted, legally or in fact, as the child of the other, or as the child of a person who is the other's ancestor or descendant (the words "otherwise than as a brother or sister" exclude siblings).
 31. **251(1)(b)** (personal trusts) is a fact, not computed: the 248(25) reference is not encoded.
 32. **Not encoded:** 251(3.1) and (3.2) (amalgamations), and the 125(7) purposes of 251(5).
+33. **50(2):** "established by the taxpayer to have become a bad debt in the year" is a fact or a judgment call, and so is arm's length (which 251 can supply). "The amount, if any, by which (i) exceeds (ii)" is (i) minus (ii), or nil. The resulting loss is proven to be the lesser of the debt's cost and the gain.
 19. **"To the extent that" for (ii) to (iv)** is read as the whole loss: the loss is entirely from the disposition of the debt, personal-use property, or property transferred. `Paragraph40_2_g.deniedLoss` treats the whole loss as nil when any subparagraph applies, as `LossDenial.deniedLoss` does for (i).
 
 ## Reviewer checklist
