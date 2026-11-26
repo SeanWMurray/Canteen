@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 80 statements:** 61 proven, 16 encoded, 3 not formalized.
+**Status of the 81 statements:** 62 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -79,17 +79,18 @@ graph TD
   n66["R32 · Winding up a subsidiary, and the bump"]:::proven
   n67["R33 · Amalgamations"]:::proven
   n68["R34 · Convertible property"]:::proven
-  n69["R35 · An individual's year, to taxable income"]:::proven
-  n70["R36 · The election for Canadian securities"]:::proven
-  n71["R37 · Bad debts and worthless shares"]:::proven
-  n72["R38 · Disposing of part of a property"]:::proven
-  n73["R39 · Corporate attribution"]:::proven
-  n74["R40 · Tax on split income"]:::proven
-  n75["R11 · The principal residence exemption"]:::proven
-  n76["R2 · Cost of the substituted property"]:::proven
-  n77["N1 · Inputs decided by other provisions"]:::notFormalized
-  n78["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n79["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n69["R36 · The election for Canadian securities"]:::proven
+  n70["R37 · Bad debts and worthless shares"]:::proven
+  n71["R38 · Disposing of part of a property"]:::proven
+  n72["R39 · Corporate attribution"]:::proven
+  n73["R40 · Tax on split income"]:::proven
+  n74["R41 · The federal rates"]:::proven
+  n75["R35 · An individual's year, to taxable income and tax"]:::proven
+  n76["R11 · The principal residence exemption"]:::proven
+  n77["R2 · Cost of the substituted property"]:::proven
+  n78["N1 · Inputs decided by other provisions"]:::notFormalized
+  n79["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n80["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -199,33 +200,35 @@ graph TD
   n44 --> n68
   n51 --> n68
   n44 --> n69
-  n45 --> n69
-  n53 --> n69
-  n55 --> n69
-  n56 --> n69
-  n58 --> n69
   n44 --> n70
+  n12 --> n70
   n44 --> n71
-  n12 --> n71
-  n44 --> n72
-  n55 --> n73
+  n55 --> n72
+  n56 --> n72
   n56 --> n73
-  n56 --> n74
   n44 --> n75
-  n50 --> n75
-  n11 --> n76
-  n1 --> n77
-  n5 --> n77
-  n6 --> n77
-  n8 --> n77
-  n37 --> n77
-  n76 --> n77
-  n38 --> n77
-  n30 --> n78
-  n32 --> n79
-  n34 --> n79
-  n39 --> n79
-  n42 --> n79
+  n45 --> n75
+  n53 --> n75
+  n55 --> n75
+  n56 --> n75
+  n58 --> n75
+  n73 --> n75
+  n74 --> n75
+  n44 --> n76
+  n50 --> n76
+  n11 --> n77
+  n1 --> n78
+  n5 --> n78
+  n6 --> n78
+  n8 --> n78
+  n37 --> n78
+  n77 --> n78
+  n38 --> n78
+  n30 --> n79
+  n32 --> n80
+  n34 --> n80
+  n39 --> n80
+  n42 --> n80
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -311,17 +314,18 @@ graph TD
   n66["R32"]:::proven
   n67["R33"]:::proven
   n68["R34"]:::proven
-  n69["R35"]:::proven
-  n70["R36"]:::proven
-  n71["R37"]:::proven
-  n72["R38"]:::proven
-  n73["R39"]:::proven
-  n74["R40"]:::proven
-  n75["R11"]:::proven
-  n76["R2"]:::proven
-  n77["N1"]:::notFormalized
-  n78["N2"]:::notFormalized
-  n79["N4"]:::notFormalized
+  n69["R36"]:::proven
+  n70["R37"]:::proven
+  n71["R38"]:::proven
+  n72["R39"]:::proven
+  n73["R40"]:::proven
+  n74["R41"]:::proven
+  n75["R35"]:::proven
+  n76["R11"]:::proven
+  n77["R2"]:::proven
+  n78["N1"]:::notFormalized
+  n79["N2"]:::notFormalized
+  n80["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -503,41 +507,43 @@ graph TD
   n51 -.-> n67
   n44 -.-> n68
   n51 -.-> n68
-  n55 --> n69
-  n58 --> n69
-  n56 --> n69
-  n45 --> n69
-  n44 --> n69
-  n53 --> n69
+  n44 -.-> n69
+  n7 --> n70
+  n6 --> n70
+  n12 --> n70
+  n0 --> n70
+  n3 --> n70
+  n4 --> n70
+  n5 --> n70
+  n8 --> n70
   n44 -.-> n70
-  n7 --> n71
-  n6 --> n71
-  n12 --> n71
-  n0 --> n71
-  n3 --> n71
-  n4 --> n71
-  n5 --> n71
-  n8 --> n71
   n44 -.-> n71
-  n44 -.-> n72
+  n56 --> n72
+  n55 -.-> n72
   n56 --> n73
-  n55 -.-> n73
-  n56 --> n74
-  n44 -.-> n75
-  n50 -.-> n75
-  n11 -.-> n76
-  n1 -.-> n77
-  n5 -.-> n77
-  n6 -.-> n77
-  n8 -.-> n77
-  n37 -.-> n77
-  n76 -.-> n77
-  n38 -.-> n77
-  n30 -.-> n78
-  n32 -.-> n79
-  n34 -.-> n79
-  n39 -.-> n79
-  n42 -.-> n79
+  n55 --> n75
+  n58 --> n75
+  n73 --> n75
+  n56 --> n75
+  n45 --> n75
+  n44 --> n75
+  n53 --> n75
+  n74 --> n75
+  n44 -.-> n76
+  n50 -.-> n76
+  n11 -.-> n77
+  n1 -.-> n78
+  n5 -.-> n78
+  n6 -.-> n78
+  n8 -.-> n78
+  n37 -.-> n78
+  n77 -.-> n78
+  n38 -.-> n78
+  n30 -.-> n79
+  n32 -.-> n80
+  n34 -.-> n80
+  n39 -.-> n80
+  n42 -.-> n80
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -1109,14 +1115,6 @@ Shares or convertible debt of a corporation exchanged for its shares, with nothi
 
 **Lean:** [`Canteen.ITA.ConvertibleProperty.disposition`](../../Canteen/ITA/S51/ConvertibleProperty.lean#L55), [`Canteen.ITA.ConvertibleProperty.costTotal`](../../Canteen/ITA/S51/ConvertibleProperty.lean#L64), [`Canteen.ITA.ConvertibleProperty.no_disposition`](../../Canteen/ITA/S51/ConvertibleProperty.lean#L75), [`Canteen.ITA.ConvertibleProperty.not_with_rollover`](../../Canteen/ITA/S51/ConvertibleProperty.lean#L82)
 
-### R35. An individual's year, to taxable income
-
-**Status:** proven · **Citation:** ITA 2(2); 3; 111(1)(b); 110.6(2.1) · **Uses:** R8, R9, R19, R21, R22, R24
-
-Income from sources (employment and business, dividends with the gross-up, recapture, attributed income), net taxable capital gains, less terminal and other losses; then taxable income, after the net capital loss deduction and the capital gains deduction (which the former reduces). Proven: taxable income never exceeds income, and the capital gains deduction never exceeds the net taxable capital gains.
-
-**Lean:** [`Canteen.ITA.IndividualYear.incomeFacts`](../../Canteen/ITA/S3/IndividualYear.lean#L71), [`Canteen.ITA.IndividualYear.taxableIncome`](../../Canteen/ITA/S3/IndividualYear.lean#L93), [`Canteen.ITA.IndividualYear.capitalGainsDeduction`](../../Canteen/ITA/S3/IndividualYear.lean#L83), [`Canteen.ITA.IndividualYear.taxable_le_income`](../../Canteen/ITA/S3/IndividualYear.lean#L115), [`Canteen.ITA.IndividualYear.capital_gains_deduction_le`](../../Canteen/ITA/S3/IndividualYear.lean#L120)
-
 ### R36. The election for Canadian securities
 
 **Status:** proven · **Citation:** ITA 39(4)–(6) · **Uses:** R8
@@ -1156,6 +1154,22 @@ An individual who transfers or lends property to a corporation, with a main purp
 A specified individual's private-company dividends and related-business income, other than excluded amounts (by age: inherited property, exempt gains, no related business or an excluded business, a reasonable return, excluded shares), are split income: deducted from income and taxed at the highest rate, less dividend credits. Proven: excluded shares exclude an adult's dividends; a minor has no age-based exclusion.
 
 **Lean:** [`Canteen.ITA.SplitIncome.splitIncome`](../../Canteen/ITA/S120_4/SplitIncome.lean#L119), [`Canteen.ITA.SplitIncome.excluded`](../../Canteen/ITA/S120_4/SplitIncome.lean#L108), [`Canteen.ITA.SplitIncome.tax`](../../Canteen/ITA/S120_4/SplitIncome.lean#L123), [`Canteen.ITA.SplitIncome.minimumTax`](../../Canteen/ITA/S120_4/SplitIncome.lean#L136), [`Canteen.ITA.SplitIncome.excluded_shares`](../../Canteen/ITA/S120_4/SplitIncome.lean#L165), [`Canteen.ITA.SplitIncome.minor_no_reasonable_return`](../../Canteen/ITA/S120_4/SplitIncome.lean#L169)
+
+### R41. The federal rates
+
+**Status:** proven · **Citation:** ITA 117(2)
+
+An individual's tax is 14% to $57,375, 20.5% to $114,750, 26% to $177,882, 29% to $253,414, and 33% above (2025 amounts, indexed after). Proven: more income never means less tax.
+
+**Lean:** [`Canteen.ITA.Rates.tax`](../../Canteen/ITA/S117/Rates.lean#L43), [`Canteen.ITA.Rates.tax_mono`](../../Canteen/ITA/S117/Rates.lean#L71)
+
+### R35. An individual's year, to taxable income and tax
+
+**Status:** proven · **Citation:** ITA 2(2); 3; 111(1)(b); 110.6; 117(2) · **Uses:** R8, R9, R19, R21, R22, R24, R40, R41
+
+Income from sources (employment and business, dividends with the gross-up, recapture, attributed income), net taxable capital gains, less terminal and other losses; then taxable income, after the net capital loss deduction and the capital gains deduction (which the former reduces). Proven: taxable income never exceeds income, and the capital gains deduction never exceeds the net taxable capital gains.
+
+**Lean:** [`Canteen.ITA.IndividualYear.incomeFacts`](../../Canteen/ITA/S3/IndividualYear.lean#L84), [`Canteen.ITA.IndividualYear.taxableIncome`](../../Canteen/ITA/S3/IndividualYear.lean#L106), [`Canteen.ITA.IndividualYear.capitalGainsDeduction`](../../Canteen/ITA/S3/IndividualYear.lean#L96), [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L110), [`Canteen.ITA.IndividualYear.taxable_le_income`](../../Canteen/ITA/S3/IndividualYear.lean#L137), [`Canteen.ITA.IndividualYear.capital_gains_deduction_le`](../../Canteen/ITA/S3/IndividualYear.lean#L142)
 
 ### R11. The principal residence exemption
 

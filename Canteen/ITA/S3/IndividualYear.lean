@@ -4,6 +4,8 @@ import Canteen.ITA.S110_6.CapitalGainsDeduction
 import Canteen.ITA.S82.Dividends
 import Canteen.ITA.S13.Depreciable
 import Canteen.ITA.S74.IncomeAttribution
+import Canteen.ITA.S117.Rates
+import Canteen.ITA.S120_4.SplitIncome
 
 /-!
 # An individual's year: income from the encoded sources, and taxable income
@@ -22,7 +24,9 @@ This puts the encoded provisions together for one individual and one taxation ye
   deductions (given).
 
 Recapture is treated as income from the business, and a terminal loss as a business loss, of the
-year. The dividend tax credit (121) is reported but tax itself (117, 118) is not computed. Amounts
+year. Split income (120.4) is deducted from income (20(1)(ww)) and taxed at the highest rate. Federal
+tax is 117(2) on taxable income plus the split income tax, less the dividend tax credit (121) and
+other non-refundable credits (given; section 118 is not encoded). Amounts
 are in cents, except section 3 and taxable income, in half-cents.
 -/
 
@@ -59,6 +63,12 @@ structure Facts where
   netCapitalLossClaims : List NetCapitalLoss.Claim := []
   deduction110_6 : Option DeductionHistory := none
   otherDivisionC : Cents := 0
+  /-- Tax on split income: the individual's split income facts (its dividends are also in `dividends`). -/
+  split : Option SplitIncome.Facts := none
+  /-- The 117(2) bracket amounts for the year (2025 by default). -/
+  brackets : Rates.Brackets := {}
+  /-- Non-refundable credits other than the dividend tax credit (118 and the rest), given. -/
+  otherCredits : Cents := 0
   deriving Inhabited
 
 def dividendFacts (f : Facts) : Dividends.Facts := { taxationYear := f.taxationYear, dividends := f.dividends }
@@ -68,9 +78,12 @@ def terminalLosses (f : Facts) : Cents := (f.depreciableClasses.map (·.terminal
 def attributedIncome (f : Facts) : Cents := (f.attributions.map IncomeAttribution.attributedIncome).sum
 def attributedLoss (f : Facts) : Cents := (f.attributions.map IncomeAttribution.attributedLoss).sum
 
+/-- Split income (120.4), deducted in computing income (20(1)(ww)). -/
+def splitIncome (f : Facts) : Cents := (f.split.map SplitIncome.splitIncome).getD 0
+
 /-- Section 3, from the components. -/
 def incomeFacts (f : Facts) : Income.Facts :=
-  { incomeFromSources := f.employmentAndBusiness + Dividends.inclusion (dividendFacts f) + recapture f + attributedIncome f,
+  { incomeFromSources := (f.employmentAndBusiness + Dividends.inclusion (dividendFacts f) + recapture f + attributedIncome f) - splitIncome f,
     capital := f.capital, subdivisionE := f.subdivisionE,
     sourceLosses := f.businessLosses + terminalLosses f + attributedLoss f }
 
@@ -94,6 +107,12 @@ def capitalGainsDeduction (f : Facts) : HalfCents :=
 def taxableIncome (f : Facts) : HalfCents :=
   income f - netCapitalLossDeduction f - capitalGainsDeduction f - 2 * f.otherDivisionC
 
+/-- Tax under 117(2) on taxable income, plus tax on split income (120.4(2)), less the dividend tax
+credit and other credits. -/
+def federalTax (f : Facts) : Cents :=
+  (Rates.tax (taxableIncome f / 2) f.brackets + (f.split.map SplitIncome.tax).getD 0) -
+    (Dividends.credit (dividendFacts f) + f.otherCredits)
+
 def explain (f : Facts) : Finding :=
   let h := formatHalfCents
   let c := formatCents
@@ -108,7 +127,10 @@ def explain (f : Facts) : Finding :=
     ⟨s!"Less the net capital loss deduction {h (netCapitalLossDeduction f)}, the capital gains deduction " ++
       s!"{h (capitalGainsDeduction f)}, and other deductions {c f.otherDivisionC}: taxable income {h (taxableIncome f)}.",
       "ITA 2(2); 111(1)(b); 110.6(2), (2.1)"⟩,
-    ⟨s!"The dividend tax credit, against tax, is {c (Dividends.credit (dividendFacts f))}.", "ITA 121"⟩], []⟩
+    ⟨s!"Tax under 117(2) on taxable income, {c (Rates.tax (taxableIncome f / 2) f.brackets)}" ++
+      (if splitIncome f > 0 then s!", plus tax on split income of {c ((f.split.map SplitIncome.tax).getD 0)}" else "") ++
+      s!", less the dividend tax credit of {c (Dividends.credit (dividendFacts f))} and other credits of {c f.otherCredits}: " ++
+      s!"{c (federalTax f)}.", "ITA 117(2); 120.4(2); 121"⟩], []⟩
 
 /-! ## Truths about the year -/
 

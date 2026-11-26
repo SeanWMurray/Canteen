@@ -42,6 +42,7 @@ import Canteen.ITA.S50.BadDebtOrShare
 import Canteen.ITA.S43.PartialDisposition
 import Canteen.ITA.S74.CorporateAttribution
 import Canteen.ITA.S120_4.SplitIncome
+import Canteen.ITA.S117.Rates
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -454,14 +455,6 @@ def blueprint : Blueprint where
             "portion is taxed and any loss is nil. Not where 85 or 86 applies. Proven: a plain conversion is no disposition."
           lean := [``ConvertibleProperty.disposition, ``ConvertibleProperty.costTotal, ``ConvertibleProperty.no_disposition,
             ``ConvertibleProperty.not_with_rollover], uses := ["R8", "R17"] },
-        { id := "R35", kind := .law, title := "An individual's year, to taxable income", citation := "ITA 2(2); 3; 111(1)(b); 110.6(2.1)"
-          statement := "Income from sources (employment and business, dividends with the gross-up, recapture, attributed " ++
-            "income), net taxable capital gains, less terminal and other losses; then taxable income, after the net capital " ++
-            "loss deduction and the capital gains deduction (which the former reduces). Proven: taxable income never exceeds " ++
-            "income, and the capital gains deduction never exceeds the net taxable capital gains."
-          lean := [``IndividualYear.incomeFacts, ``IndividualYear.taxableIncome, ``IndividualYear.capitalGainsDeduction,
-            ``IndividualYear.taxable_le_income, ``IndividualYear.capital_gains_deduction_le],
-          uses := ["R8", "R9", "R19", "R21", "R22", "R24"] },
         { id := "R36", kind := .law, title := "The election for Canadian securities", citation := "ITA 39(4)–(6)"
           statement := "A taxpayer who elects has every Canadian security (shares of resident corporations, mutual fund trust " ++
             "units, and debt of residents) treated as capital property in the election year and after, unless a trader or " ++
@@ -495,6 +488,19 @@ def blueprint : Blueprint where
             "credits. Proven: excluded shares exclude an adult's dividends; a minor has no age-based exclusion."
           lean := [``SplitIncome.splitIncome, ``SplitIncome.excluded, ``SplitIncome.tax, ``SplitIncome.minimumTax,
             ``SplitIncome.excluded_shares, ``SplitIncome.minor_no_reasonable_return], uses := ["R22"] },
+        { id := "R41", kind := .law, title := "The federal rates", citation := "ITA 117(2)"
+          statement := "An individual's tax is 14% to $57,375, 20.5% to $114,750, 26% to $177,882, 29% to $253,414, and 33% " ++
+            "above (2025 amounts, indexed after). Proven: more income never means less tax."
+          lean := [``Rates.tax, ``Rates.tax_mono] },
+        { id := "R35", kind := .law, title := "An individual's year, to taxable income and tax", citation := "ITA 2(2); 3; 111(1)(b); 110.6; 117(2)"
+          statement := "Income from sources (employment and business, dividends with the gross-up, recapture, attributed " ++
+            "income), net taxable capital gains, less terminal and other losses; then taxable income, after the net capital " ++
+            "loss deduction and the capital gains deduction (which the former reduces). Proven: taxable income never exceeds " ++
+            "income, and the capital gains deduction never exceeds the net taxable capital gains."
+          lean := [``IndividualYear.incomeFacts, ``IndividualYear.taxableIncome, ``IndividualYear.capitalGainsDeduction,
+            ``IndividualYear.federalTax,
+            ``IndividualYear.taxable_le_income, ``IndividualYear.capital_gains_deduction_le],
+          uses := ["R8", "R9", "R19", "R21", "R22", "R24", "R40", "R41"] },
         { id := "R11", kind := .law, title := "The principal residence exemption", citation := "ITA 40(2)(b); 54 \"principal residence\""
           statement := "A home is the principal residence for a year if owned, ordinarily inhabited by the family (or covered by " ++
             "a 45(2) or (3) election, for at most four years: (d)), designated, and not blocked by another family-unit " ++

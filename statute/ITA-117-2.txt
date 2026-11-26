@@ -1,0 +1,14 @@
+Income Tax Act, R.S.C. 1985, c. 1 (5th Supp.), subsection 117(2)
+
+Source: Justice Canada consolidated Acts (XML), https://github.com/justicecanada/laws-lois-xml, file eng/acts/I-3.3.xml
+Current to: 2026-10-29. Last amended: 2026-06-18.
+Extracted verbatim; whitespace normalized; paragraph labels kept.
+
+117
+  [Rates for taxation years after 2024]
+  (2) The tax payable under this Part by an individual on the individual’s taxable income or taxable income earned in Canada, as the case may be (in this Subdivision referred to as the “amount taxable”) for a taxation year is
+    (a) 14% of the amount taxable, if the amount taxable is equal to or less than the amount determined for the taxation year in respect of $57,375;
+    (b) if the amount taxable is greater than $57,375, but is equal to or less than $114,750, the maximum amount determinable in respect of the taxation year under paragraph (a), plus 20.5% of the amount by which the amount taxable exceeds $57,375 for the year;
+    (c) if the amount taxable is greater than $114,750, but is equal to or less than $177,882, the maximum amount determinable in respect of the taxation year under paragraph (b), plus 26% of the amount by which the amount taxable exceeds $114,750 for the year;
+    (d) if the amount taxable is greater than $177,882, but is equal to or less than $253,414, the maximum amount determinable in respect of the taxation year under paragraph (c), plus 29% of the amount by which the amount taxable exceeds $177,882 for the year; and
+    (e) if the amount taxable is greater than $253,414, the maximum amount determinable in respect of the taxation year under paragraph (d), plus 33% of the amount by which the amount taxable exceeds $253,414 for the year.

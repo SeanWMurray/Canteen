@@ -52,6 +52,20 @@ example : taxableIncome { year with deduction110_6 := none } = 2 * 32050000 := b
    "3. Losses: business $0.00, terminal $0.00, attributed $0.00. [ITA 3(d); 20(16); 74.1]",
    "4. Income for the year: $330,500.00. [ITA 3]",
    "5. Less the net capital loss deduction $10,000.00, the capital gains deduction $190,000.00, and other deductions $0.00: taxable income $130,500.00. [ITA 2(2); 111(1)(b); 110.6(2), (2.1)]",
-   "6. The dividend tax credit, against tax, is $1,038.46. [ITA 121]"]
+   "6. Tax under 117(2) on taxable income, $23,889.37, less the dividend tax credit of $1,038.46 and other credits of $0.00: $22,850.91. [ITA 117(2); 120.4(2); 121]"]
+
+/-! ## Federal tax -/
+
+-- On taxable income of $130,500: 14% of $57,375, 20.5% of $57,375, 26% of $15,750: $23,889.37.
+example : Rates.tax 13050000 = 2388937 := by decide
+example : federalTax year = 2285091 := by decide
+
+-- A child's $10,000 Opco dividend, all split income: deducted from income, taxed at 33% less the credit.
+def childYear : Facts :=
+  { taxationYear := 2025, dividends := [{ description := "Opco dividend", amount := 1000000 }],
+    split := some { taxationYear := 2025, age := 15, amounts := [{ description := "Opco dividend", source := .privateDividend { description := "Opco dividend", amount := 1000000 } }] } }
+example : income childYear = 0 ∧ federalTax childYear = 275654 := by decide
+-- Without 120.4, the same dividend at the lowest rate would bear almost no tax.
+example : federalTax { childYear with split := none } = 57154 := by decide
 
 end Canteen.Tests.IndividualYear

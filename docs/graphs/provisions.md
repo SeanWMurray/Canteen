@@ -49,13 +49,14 @@ flowchart BT
   v40["88(1) winding-up and the bump"]:::prov
   v41["87(1), (2)(e), (4) amalgamations"]:::prov
   v42["51 convertible property"]:::prov
-  v43["2(2), 3 an individual's year, to taxable income"]:::prov
-  v44["39(4) to (6) the Canadian securities election"]:::prov
-  v45["50(1) bad debts and worthless shares"]:::prov
-  v46["43(1) part of a property"]:::prov
-  v47["74.4(2) corporate attribution"]:::prov
-  v48["120.4 tax on split income"]:::prov
-  v49["50(2) bad personal-use debts"]:::prov
+  v43["117(2) the federal rates"]:::prov
+  v44["120.4 tax on split income"]:::prov
+  v45["2(2), 3 an individual's year, to taxable income"]:::prov
+  v46["39(4) to (6) the Canadian securities election"]:::prov
+  v47["50(1) bad debts and worthless shares"]:::prov
+  v48["43(1) part of a property"]:::prov
+  v49["74.4(2) corporate attribution"]:::prov
+  v50["50(2) bad personal-use debts"]:::prov
   v0 --> v1
   v0 --> v2
   v0 --> v3
@@ -104,15 +105,16 @@ flowchart BT
   v17 --> v40
   v25 --> v41
   v25 --> v42
-  v19 --> v43
-  v27 --> v43
-  v30 --> v43
-  v32 --> v43
-  v29 --> v43
-  v17 --> v44
-  v17 --> v45
+  v30 --> v44
+  v19 --> v45
+  v27 --> v45
+  v32 --> v45
+  v29 --> v45
+  v43 --> v45
+  v44 --> v45
   v17 --> v46
-  v30 --> v47
-  v30 --> v48
+  v17 --> v47
+  v17 --> v48
+  v30 --> v49
   classDef prov fill:#bbdefb,stroke:#1565c0,color:#0d47a1
 ```
