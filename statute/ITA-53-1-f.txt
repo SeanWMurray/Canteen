@@ -1,4 +1,4 @@
-Income Tax Act, R.S.C. 1985, c. 1 (5th Supp.), paragraph 53(1)(f) (not yet encoded; kept for the next provision)
+Income Tax Act, R.S.C. 1985, c. 1 (5th Supp.), paragraph 53(1)(f) (encoded in Canteen/ITA/S53/CostAddition.lean)
 
 Source: Justice Canada consolidated Acts (XML), https://github.com/justicecanada/laws-lois-xml, file eng/acts/I-3.3.xml
 Current to: 2026-10-29. Last amended: 2026-06-18.

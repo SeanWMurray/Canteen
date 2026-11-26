@@ -3,6 +3,8 @@ import Canteen.ITA.S54.SuperficialLoss
 import Canteen.ITA.S40.LossDenial
 import Canteen.Lemmas.SuperficialLoss
 import Canteen.ITA.S40.LossDenialStatute
+import Canteen.ITA.S53.CostAddition
+import Canteen.ITA.S251_1.Affiliation
 
 /-!
 # Blueprint: section 54 "superficial loss" and subparagraph 40(2)(g)(i)
@@ -18,7 +20,7 @@ open Canteen.Blueprint Canteen.ITA Canteen.ITA.SuperficialLoss
 def cite (p : String) : String := s!"ITA 54 \"superficial loss\" {p}"
 
 def blueprint : Blueprint where
-  title := "Section 54 \"superficial loss\" and subparagraph 40(2)(g)(i)"
+  title := "Section 54 \"superficial loss\", subparagraph 40(2)(g)(i), and related provisions"
   summary := [
     "Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to " ++
       "2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. " ++
@@ -36,7 +38,7 @@ def blueprint : Blueprint where
           statement := "“(a) during the period that begins 30 days before and ends 30 days after the disposition, the taxpayer or a " ++
             "person affiliated with the taxpayer acquires a property (in this definition referred to as the “substituted property”) " ++
             "that is, or is identical to, the particular property, and”"
-          lean := [``inPeriod, ``Acquirer.isTaxpayerOrAffiliated, ``isOrIsIdentical, ``paraA] },
+          lean := [``inPeriod, ``Acquirer.isTaxpayerOrAffiliated, ``Acquirer] },
         { id := "Pb", kind := .law, title := "(b) held at the end of the period", citation := cite "(b)"
           statement := "“(b) at the end of that period, the taxpayer or a person affiliated with the taxpayer owns or had a right to " ++
             "acquire the substituted property,”"
@@ -63,16 +65,20 @@ def blueprint : Blueprint where
           statement := "“and, for the purpose of this definition, (i) a right to acquire a property (other than a right, as security " ++
             "only, derived from a mortgage, hypothec, agreement for sale or similar obligation) is deemed to be a property that is " ++
             "identical to the property, and”"
-          lean := [``isOrIsIdentical, ``Identity] },
+          lean := [``Identity] },
         { id := "Pj", kind := .law, title := "(j) SIFT wind-up shares before 2013", citation := cite "(j)"
           statement := "“(j) a share of the capital stock of a SIFT wind-up corporation in respect of a SIFT wind-up entity is, if the " ++
             "share was acquired before 2013, deemed to be a property that is identical to equity in the SIFT wind-up entity.”"
-          lean := [``isOrIsIdentical, ``acquiredBefore2013] },
+          lean := [``acquiredBefore2013] },
+        { id := "Pa+", kind := .law, title := "(a) with the deeming rules", citation := cite "(a), (i), (j)"
+          statement := "Whether an acquired property “is, or is identical to, the particular property”, with paragraphs (i) " ++
+            "and (j) applied, and paragraph (a) as a whole."
+          lean := [``isOrIsIdentical, ``paraA], uses := ["Pa", "Pi", "Pj"] },
         { id := "D", kind := .law, title := "The definition as a whole", citation := cite ""
           statement := "A loss is a superficial loss if there is a loss, some acquired property meets both (a) and (b), and none of " ++
             "(c) to (h) applies."
           lean := [``superficialLoss, ``qualifies, ``excepted]
-          uses := ["P0", "Pa", "Pb", "Pc", "Pd", "Pe", "Pf", "Pg", "Ph", "Pi", "Pj"] },
+          uses := ["P0", "Pa", "Pb", "Pc", "Pd", "Pe", "Pf", "Pg", "Ph", "Pi", "Pj", "Pa+"] },
         { id := "E", kind := .law, title := "The English explanation agrees", citation := cite ""
           statement := "For every set of facts, the English explanation reaches the same conclusion as the definition. It gives " ++
             "factual reasons before reasons that rest on a judgment call."
@@ -101,23 +107,23 @@ def blueprint : Blueprint where
           statement := "If nothing was acquired, there is no superficial loss.", lean := [``not_of_no_acquisitions], uses := ["D"] },
         { id := "L7", kind := .law, title := "Outside the period never matters",
           statement := "An acquisition outside the 61-day period never affects the result.",
-          lean := [``outside_period_irrelevant], uses := ["Pa", "D"] },
+          lean := [``outside_period_irrelevant], uses := ["Pa+", "D"] },
         { id := "L8", kind := .law, title := "Not held at the end never matters",
           statement := "An acquisition not held at the end of the period never affects the result, so its identity judgment call " ++
             "makes no difference."
           lean := [``not_held_irrelevant], uses := ["Pb", "D"] },
         { id := "L9", kind := .law, title := "Unaffiliated buyers never matter",
           statement := "An acquisition by a person not affiliated with the taxpayer never affects the result.",
-          lean := [``not_affiliated_irrelevant], uses := ["Pa", "D"] },
+          lean := [``not_affiliated_irrelevant], uses := ["Pa+", "D"] },
         { id := "L10", kind := .law, title := "More acquisitions only add",
           statement := "Adding acquisitions can make a loss superficial, never the reverse.",
           lean := [``mono_acquisitions], uses := ["D"] },
         { id := "L11", kind := .law, title := "Rights to acquire",
           statement := "A right to acquire the particular property, other than a security-only right, counts as identical to it.",
-          lean := [``right_to_acquire_identical], uses := ["Pi"] },
+          lean := [``right_to_acquire_identical], uses := ["Pa+"] },
         { id := "L12", kind := .law, title := "SIFT shares from 2013",
           statement := "Paragraph (j) does not apply to a SIFT wind-up share acquired in 2013 or later.",
-          lean := [``sift_share_after_2012], uses := ["Pj"] } ] },
+          lean := [``sift_share_after_2012], uses := ["Pa+"] } ] },
     { heading := "Subparagraph 40(2)(g)(i)"
       nodes := [
         { id := "G0", kind := .law, title := "Opening words: the foreign affiliate carve-out", citation := "ITA 40(2)(g)"
@@ -133,20 +139,28 @@ def blueprint : Blueprint where
           statement := "Subparagraph 40(2)(g)(i) written with the `statute` command, with the statute-form definition as " ++
             "subparagraph (i) and the carve-out as the exception. Proven to be the same rule as `LossDenial.rule`."
           lean := [``LossDenial.lossDenialStatute, ``LossDenial.lossDenialStatute_eq], uses := ["G1", "S"] } ] },
+    { heading := "Related provisions"
+      nodes := [
+        { id := "R1", kind := .law, title := "Spouses are affiliated", citation := "ITA 251.1(1)(a)"
+          statement := "“an individual and a spouse or common-law partner of the individual” are affiliated persons. Used " ++
+            "to decide who is \"a person affiliated with the taxpayer\" in paragraphs (a) and (b)."
+          lean := [``Affiliation.paragraphA, ``Affiliation.affiliated, ``Affiliation.spouses_affiliated] },
+        { id := "R2", kind := .law, title := "Cost of the substituted property", citation := "ITA 53(1)(f)"
+          statement := "The superficial loss, less any amount described in subparagraph 53(1)(f)(ii), is added to the cost " ++
+            "of the substituted property in computing its adjusted cost base."
+          lean := [``CostAddition.rule, ``CostAddition.addition, ``CostAddition.cost_le_adjustedCostBase],
+          uses := ["Pa+"] } ] },
     { heading := "Not yet formalized"
       text := ["These statements are part of the analysis but have no Lean behind them yet. Anything resting on them says so."]
       nodes := [
         { id := "N1", kind := .law, title := "Inputs decided by other provisions",
-          statement := "Affiliation (section 251.1), a loss restriction event (section 251.2), and whether paragraph 40(2)(e.1) or " ++
-            "subsection 40(3.4) or 69(5) applies are taken as facts."
-          uses := ["Pa", "Pe", "Pf", "Ph"] },
+          statement := "Affiliation other than under paragraph 251.1(1)(a) (paragraphs 251.1(1)(b) to (g)), a loss " ++
+            "restriction event (section 251.2), and whether paragraph 40(2)(e.1) or subsection 40(3.4) or 69(5) applies " ++
+            "are taken as facts. So is the amount in subparagraph 53(1)(f)(ii) (subsections 112(3) to (3.2))."
+          uses := ["Pa", "Pe", "Pf", "Ph", "R1", "R2"] },
         { id := "N2", kind := .law, title := "How much is \"to the extent that\"", citation := "ITA 40(2)(g)(i)"
           statement := "Where only part of a loss is a superficial loss (for example, fewer shares acquired than sold), the amount " ++
             "made nil is not computed. The Act gives no formula."
-          uses := ["G1"] },
-        { id := "N3", kind := .law, title := "Cost of the substituted property", citation := "ITA 53(1)(f)"
-          statement := "The superficial loss, less any amount described in subparagraph 53(1)(f)(ii), is added to the adjusted cost " ++
-            "base of the substituted property (text in `statute/ITA-53-1-f.txt`)."
           uses := ["G1"] },
         { id := "N4", kind := .law, title := "Subparagraphs 40(2)(g)(ii) to (iv)", citation := "ITA 40(2)(g)"
           statement := "Debts, personal-use property and dispositions to listed plans are not encoded.", uses := ["G0"] } ] } ]

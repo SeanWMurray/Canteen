@@ -15,7 +15,7 @@ statute ruleX (f : XFacts) named "Rule X" cites "s.X"
 ```
 
 This defines `ruleX : Rule XFacts` with `Rule.statute`, so it is sound with nothing to
-prove. Each clause is one of:
+prove, and `ruleX.outline : Outline`, its shape, from which `Graphs.flowchart` draws it. Each clause is one of:
 
 * `| (a) test => "sentence if met" else "sentence if not met"`: a condition on the facts;
 * `| (b) judgment "J-B" test => …`: a condition that rests on judgment call `J-B`;
@@ -84,11 +84,42 @@ def clauseTerm (cite : TSyntax `str) (fv : Ident) (ty : Term) (c : TSyntax `stat
     mk (← label) ⟨a 2⟩ ⟨a 4⟩ ⟨a 6⟩ (← `(fun _ => []))
   | k => Macro.throwErrorAt c s!"unrecognized statute clause ({k})"
 
+/-- One clause, as a `ClauseOutline` term, for drawing the rule. -/
+def clauseOutline (cite : TSyntax `str) (c : TSyntax `statuteClause) : MacroM Term := do
+  let c := disambiguate c
+  let a (i : Nat) := c.raw.getArg i
+  let lbl := Syntax.mkStrLit (← labelText ⟨a 1⟩)
+  match c.raw.getKind with
+  | ``clauseRule =>
+    let r : Term := ⟨a 3⟩
+    `({ label := $lbl, citation := ($r).citation, text := ($r).name ++ " applies",
+        kind := .rule ($r).name : Canteen.ClauseOutline })
+  | ``clauseJudgment =>
+    let j : TSyntax `str := ⟨a 3⟩
+    let m : TSyntax `str := ⟨a 6⟩
+    `({ label := $lbl, citation := Canteen.Rule.subCitation $cite $lbl, text := $m,
+        kind := .judgment $j : Canteen.ClauseOutline })
+  | ``clauseJudgments =>
+    let m : TSyntax `str := ⟨a 6⟩
+    `({ label := $lbl, citation := Canteen.Rule.subCitation $cite $lbl, text := $m,
+        kind := .judgment "judgment calls computed from the facts" : Canteen.ClauseOutline })
+  | ``clausePlain =>
+    let m : TSyntax `str := ⟨a 4⟩
+    `({ label := $lbl, citation := Canteen.Rule.subCitation $cite $lbl, text := $m,
+        kind := .fact : Canteen.ClauseOutline })
+  | k => Macro.throwErrorAt c s!"unrecognized statute clause ({k})"
+
 macro_rules
   | `($[$doc:docComment]? statute $name:ident ($fv:ident : $ty:term) named $n:str cites $c:str
         applies where $conds:statuteClause* $[except where $excs:statuteClause*]?) => do
     let cs ← conds.mapM (clauseTerm c fv ty)
     let es ← (excs.getD #[]).mapM (clauseTerm c fv ty)
-    `($[$doc:docComment]? def $name : Canteen.Rule $ty := Canteen.Rule.statute $n $c [$cs,*] [$es,*])
+    let co ← conds.mapM (clauseOutline c)
+    let eo ← (excs.getD #[]).mapM (clauseOutline c)
+    let outlineName := mkIdentFrom name (name.getId ++ `outline)
+    `($[$doc:docComment]? def $name : Canteen.Rule $ty := Canteen.Rule.statute $n $c [$cs,*] [$es,*]
+      /-- The shape of the rule, for drawing it as a flowchart. -/
+      def $outlineName : Canteen.Outline :=
+        { name := $n, citation := $c, conditions := [$co,*], exceptions := [$eo,*] })
 
 end Canteen.StatuteSyntax

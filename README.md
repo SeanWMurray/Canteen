@@ -17,6 +17,7 @@ The full design is in [`docs/design.md`](docs/design.md).
 | 4. First real provision | Encoded; awaiting review | Section 54 "superficial loss" with all its exceptions, and subparagraph 40(2)(g)(i); see [`docs/review/superficial-loss.md`](docs/review/superficial-loss.md) |
 | 5. Blueprint | Done | Memos whose statements link to Lean, with dependency graphs coloured by proven/unproven status; see [`docs/blueprint/`](docs/blueprint/README.md) |
 | 6. Ergonomics | Done | The `statute` command: rules written in the statute's own shape, sound with nothing to prove |
+| Beyond the roadmap | Done | 53(1)(f) and 251.1(1)(a) encoded; a second transaction; diagrams drawn from the Lean; memos checked against what their proofs use |
 
 ## Building
 
@@ -26,11 +27,11 @@ Install [elan](https://github.com/leanprover/elan) (the Lean version manager), t
 lake build --wfail            # build everything, run all tests and the axiom audit
 scripts/check-imports.sh      # every module is imported, so built and audited
 scripts/check-should-fail.sh  # broken rules and hidden gaps are rejected
-scripts/blueprint.sh --check  # the blueprint documents match the Lean sources
+scripts/blueprint.sh --check  # the blueprint and graph documents match the Lean sources
 ```
 
 CI (`.github/workflows/build.yml`) runs all four on every push and pull request.
-After changing a blueprint or anything it links to, run `scripts/blueprint.sh` and commit `docs/blueprint/`.
+After changing a blueprint, a diagram, or anything they show, run `scripts/blueprint.sh` and commit `docs/blueprint/` and `docs/graphs/`.
 
 ## Layout
 
@@ -54,7 +55,9 @@ Canteen/
     Series.lean              TxStep, runSeries, traceSeries, invariant lemmas
     SeriesReport.lean        rules applied after every step; the series as one argument
     Audit.lean               the #audit_axioms command
-    Blueprint.lean           memos linked to Lean: status, dependency graph, Markdown
+    Blueprint.lean           memos linked to Lean: status, dependency graphs, hidden-dependency check
+    Graphs.lean              flowcharts, decision trees and series diagrams, drawn from the Lean
+    LeanGraph.lean           the architecture diagram, from the compiled modules
   Examples/                placeholders, not real provisions
     RuleX.lean               Rule X from design §4.4, with its lemmas
     RuleZ.lean               Rule Z = Rule X and Rule Y, built with Rule.and
@@ -64,14 +67,20 @@ Canteen/
     S54/SuperficialLossStatute.lean   the same, in statute form (proven equal)
     S40/LossDenial.lean        subparagraph 40(2)(g)(i)
     S40/LossDenialStatute.lean        the same, in statute form (proven equal)
+    S53/CostAddition.lean      paragraph 53(1)(f): the loss is added to the substituted property's cost
+    S251_1/Affiliation.lean    paragraph 251.1(1)(a): spouses are affiliated
+    S54/Timeline.lean          a timeline chart of the superficial loss period
   Lemmas/                  Layer 2: reusable truths about provisions
   Transactions/            Layer 3: concrete transactions, each step a theorem
     SpouseRepurchase.lean    shares sold at a loss and bought by the spouse
+    SiblingAndLateRepurchase.lean   a sibling buys, and the taxpayer buys back on day 31
   Blueprints/              memo-style documents linked to the Lean above
+  Graphs/                  the diagram pages
   Tests/                   known-answer, sanity, non-vacuity and read-back tests
 statute/                   verbatim statute text for each encoded provision, with its currency date
 docs/review/               review notes: statute-to-Lean mapping, interpretation choices, read-back
 docs/blueprint/            blueprints rendered to Markdown (generated; do not edit)
+docs/graphs/               diagrams rendered to Markdown (generated; do not edit)
 tests/should-fail/         files that must fail to compile
 scripts/                   CI checks
 docs/design.md             the design
@@ -162,8 +171,19 @@ A blueprint (`Canteen/Blueprints/`) is a memo whose statements each name the Lea
 - **Links can't go stale.** Declarations are written as ``` ``Name ``` literals, so a renamed or deleted theorem is a build error.
 - **Gaps are refused.** A statement backed by `sorry` is *unproven*, and the blueprint is not published.
 - **Every assumption is visible.** Each statement lists the facts, judgment calls and unformalized statements it rests on.
+- **Memos can't understate their dependencies.** Lean reads the proofs to find which statements each one really uses; a memo that leaves one out is refused. Each memo shows this second graph alongside its own.
 
-The memo for the spouse-repurchase transaction is [`docs/blueprint/spouse-repurchase.md`](docs/blueprint/spouse-repurchase.md).
+Memos: [the spouse repurchase](docs/blueprint/spouse-repurchase.md) (the loss is denied and moves to the spouse's cost) and [the sibling and day-31 repurchase](docs/blueprint/sibling-and-late-repurchase.md) (the loss stands, resting on no judgment call).
+
+## Graphs
+
+Every diagram is drawn from the Lean definitions, so it always shows the rules as encoded ([`docs/graphs/`](docs/graphs/README.md)):
+
+- [Flowcharts](docs/graphs/flowcharts.md) of each statute-form rule, from the outline the `statute` command records.
+- [Decision trees](docs/graphs/decision-trees.md) over the judgment calls, with the conclusion and risk on each branch.
+- [Timelines](docs/graphs/timelines.md) of the superficial loss period: the disposition, the 61 days, and every acquisition.
+- [A transaction series](docs/graphs/series.md), state by state.
+- [The architecture](docs/graphs/architecture.md), read from the compiled modules.
 
 ## Validation (design §6)
 
@@ -176,7 +196,7 @@ The memo for the spouse-repurchase transaction is [`docs/blueprint/spouse-repurc
 | Read-back | Every Rule X branch rendered and checked in `Tests/RuleX.lean` |
 | Broken rules caught | `brokenExplain_unsound`, plus `tests/should-fail/` (including a false claim that a judgment call doesn't matter, and a statute-form rule missing a clause) |
 | Continuous build | `.github/workflows/build.yml` |
-| Memos match the proofs | `docs/blueprint/` is regenerated and compared in CI; stale links and gaps are rejected (`tests/should-fail/`) |
+| Memos match the proofs | `docs/blueprint/` and `docs/graphs/` are regenerated and compared in CI; stale links, gaps and hidden dependencies are rejected (`tests/should-fail/`) |
 
 ## What Lean does and does not guarantee
 

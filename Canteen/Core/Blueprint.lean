@@ -72,6 +72,8 @@ structure Blueprint where
   sections : List Section
   /-- Arguments rendered by Lean (title, text), shown at the end. -/
   appendix : List (String × String) := []
+  /-- Further diagrams (title, Mermaid source), shown after the dependency graph. -/
+  diagrams : List (String × String) := []
   deriving Inhabited
 
 /-! ## Structure (pure, checkable with `#guard`) -/
@@ -174,13 +176,76 @@ def statuses (bp : Blueprint) : CoreM (List (String × Status)) :=
 def statusTable (bp : Blueprint) : CoreM String := do
   return "\n".intercalate ((← statuses bp).map fun (id, s) => s!"{id}: {s.label}")
 
-/-- Refuse a blueprint with structural problems or any unproven node. -/
+/-! ## What the proofs really use -/
+
+/-- Types, their constructors and recursors: mentioning a type is not relying on a
+statement, so they are neither dependencies nor followed. -/
+def isType (env : Environment) (n : Name) : Bool :=
+  match env.find? n with
+  | some (.inductInfo _) | some (.ctorInfo _) | some (.recInfo _) => true
+  | _ => false
+
+/-- The declarations in `targets` that `n`'s type or value uses, directly or through other
+declarations of this package (those under `pkg`). -/
+partial def leanDeps (pkg : Name) (targets : NameSet) (n : Name) : CoreM NameSet := do
+  let env ← getEnv
+  let rec visit (todo : List Name) (seen : NameSet) (found : NameSet) : NameSet :=
+    match todo with
+    | [] => found
+    | m :: rest =>
+      if seen.contains m then visit rest seen found
+      else
+        let seen := seen.insert m
+        if isType env m then visit rest seen found
+        else if targets.contains m && m != n then visit rest seen (found.insert m)
+        else if m != n && !Audit.inScope env pkg m then visit rest seen found
+        else
+          match env.find? m with
+          | some ci => visit (ci.getUsedConstantsAsSet.toList ++ rest) seen found
+          | none => visit rest seen found
+  return visit [n] {} {}
+
+/-- For each node, the other nodes whose Lean its Lean uses. -/
+def leanEdges (bp : Blueprint) (pkg : Name := `Canteen) : CoreM (List (String × List String)) := do
+  let owners : List (Name × String) := bp.nodes.flatMap fun nd => nd.lean.map (·, nd.id)
+  bp.nodes.mapM fun nd => do
+    let targets := owners.foldl (fun s (d, o) => if o == nd.id || nd.lean.contains d then s else s.insert d) ({} : NameSet)
+    let mut used : List String := []
+    for d in nd.lean do
+      let deps ← leanDeps pkg targets d
+      for t in deps.toList do
+        for (d', o) in owners do
+          if d' == t && o != nd.id && !used.contains o then used := used ++ [o]
+    return (nd.id, used)
+
+/-- Dependencies the proofs have but the memo does not state: node `N`'s Lean uses a
+declaration of node `M`, yet `N` does not rest on `M` (or on any other node with that
+declaration). A memo may not understate what its conclusions depend on. -/
+def hiddenDependencies (bp : Blueprint) (pkg : Name := `Canteen) : CoreM (List (String × Name)) := do
+  let owners : List (Name × String) := bp.nodes.flatMap fun nd => nd.lean.map (·, nd.id)
+  let mut out := []
+  for nd in bp.nodes do
+    let targets := owners.foldl (fun s (d, o) => if o == nd.id || nd.lean.contains d then s else s.insert d) ({} : NameSet)
+    let rests := bp.restsOn nd.id
+    for d in nd.lean do
+      for t in (← leanDeps pkg targets d).toList do
+        let ownersOfT := owners.filterMap fun (d', o) => if d' == t then some o else none
+        unless ownersOfT.any rests.contains do
+          out := out ++ [(nd.id, t)]
+  return out
+
+/-- Refuse a blueprint with structural problems, any unproven node, or a dependency its
+proofs have that it does not state. -/
 def check (bp : Blueprint) : CoreM Unit := do
   unless bp.problems.isEmpty do
     throwError "blueprint '{bp.title}' has problems: {bp.problems}"
   let bad := (← statuses bp).filter (·.2 == .unproven)
   unless bad.isEmpty do
     throwError "blueprint '{bp.title}' has unproven statements: {bad.map (·.1)}"
+  let hidden ← hiddenDependencies bp
+  unless hidden.isEmpty do
+    let lines := hidden.map fun (id, t) => s!"{id} uses {t}"
+    throwError "blueprint '{bp.title}' has hidden dependencies: {lines}"
 
 /-! ## Rendering to Markdown -/
 
@@ -230,6 +295,30 @@ def render (bp : Blueprint) (root : String := "../../") : CoreM String := do
   out := out ++ "```\n\n"
   out := out ++ "Green: proven in Lean. Blue: encoded (definitions). Grey: facts. Orange: judgment calls. " ++
     "Dashed red: not yet formalized. An arrow points from a statement to the statements that use it.\n\n"
+  -- What the proofs use
+  let edges ← leanEdges bp
+  out := out ++ "### What the Lean proofs use\n\n" ++
+    "The same statements, with the dependencies Lean finds in the proofs themselves (solid) and those stated " ++
+    "only in the memo's reasoning (dotted). Every dependency a proof has is also stated in the memo: " ++
+    "`Blueprint.check` refuses a memo that hides one.\n\n```mermaid\ngraph TD\n"
+  for (n, i) in idx do
+    out := out ++ s!"  n{i}[\"{n.id}\"]:::{(statusOf n.id).cls}\n"
+  for n in bp.nodes do
+    let viaLean := ((edges.find? (·.1 == n.id)).map (·.2)).getD []
+    for u in viaLean do
+      out := out ++ s!"  {mid u} --> {mid n.id}\n"
+    for u in n.uses do
+      unless viaLean.contains u do
+        out := out ++ s!"  {mid u} -.-> {mid n.id}\n"
+  out := out ++ "  classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20\n"
+  out := out ++ "  classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1\n"
+  out := out ++ "  classDef fact fill:#eeeeee,stroke:#616161,color:#212121\n"
+  out := out ++ "  classDef judgment fill:#ffe0b2,stroke:#ef6c00,color:#e65100\n"
+  out := out ++ "  classDef notFormalized fill:#ffffff,stroke:#c62828,color:#b71c1c,stroke-dasharray:5 5\n"
+  out := out ++ "```\n\n"
+  -- Further diagrams
+  for (t, src) in bp.diagrams do
+    out := out ++ s!"### {t}\n\n```mermaid\n{src}\n```\n\n"
   -- Sections
   for sec in bp.sections do
     out := out ++ s!"## {sec.heading}\n\n"

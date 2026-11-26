@@ -1,12 +1,14 @@
-# Review: section 54 "superficial loss" and subparagraph 40(2)(g)(i)
+# Review: section 54 "superficial loss", subparagraph 40(2)(g)(i), paragraph 53(1)(f) and paragraph 251.1(1)(a)
 
 **Status:** encoded and tested; **awaiting review against the statute** (roadmap Phase 4).
 
 Lean proves that each explanation agrees with its rule, and that the conclusions follow from the definitions.
 It cannot prove that the definitions match the Act. That is what this review is for.
 
-- Statute text (verbatim, current to 2026-10-29): [`statute/ITA-54-superficial-loss.txt`](../../statute/ITA-54-superficial-loss.txt), [`statute/ITA-40-2-g.txt`](../../statute/ITA-40-2-g.txt)
-- Encoding: [`Canteen/ITA/S54/SuperficialLoss.lean`](../../Canteen/ITA/S54/SuperficialLoss.lean), [`Canteen/ITA/S40/LossDenial.lean`](../../Canteen/ITA/S40/LossDenial.lean)
+- Statute text (verbatim, current to 2026-10-29): [`statute/ITA-54-superficial-loss.txt`](../../statute/ITA-54-superficial-loss.txt), [`statute/ITA-40-2-g.txt`](../../statute/ITA-40-2-g.txt), [`statute/ITA-53-1-f.txt`](../../statute/ITA-53-1-f.txt), [`statute/ITA-251-1-1-a.txt`](../../statute/ITA-251-1-1-a.txt)
+- Encoding: [`Canteen/ITA/S54/SuperficialLoss.lean`](../../Canteen/ITA/S54/SuperficialLoss.lean), [`Canteen/ITA/S40/LossDenial.lean`](../../Canteen/ITA/S40/LossDenial.lean), [`Canteen/ITA/S53/CostAddition.lean`](../../Canteen/ITA/S53/CostAddition.lean), [`Canteen/ITA/S251_1/Affiliation.lean`](../../Canteen/ITA/S251_1/Affiliation.lean)
+- Statute forms, each proven equal to the encoding: [`SuperficialLossStatute.lean`](../../Canteen/ITA/S54/SuperficialLossStatute.lean), [`LossDenialStatute.lean`](../../Canteen/ITA/S40/LossDenialStatute.lean)
+- Diagrams: [flowcharts](../graphs/flowcharts.md) and [timelines](../graphs/timelines.md) of the rules as encoded
 - Lemmas: [`Canteen/Lemmas/SuperficialLoss.lean`](../../Canteen/Lemmas/SuperficialLoss.lean)
 - Tests: [`Canteen/Tests/SuperficialLoss.lean`](../../Canteen/Tests/SuperficialLoss.lean)
 
@@ -29,6 +31,9 @@ It cannot prove that the definitions match the Act. That is what this review is 
 | (j) SIFT wind-up share acquired before 2013 deemed identical to equity in the entity | `isOrIsIdentical`, `.siftWindUpShare` | acquired 2012-12-31; 2013-01-01 |
 | 40(2)(g) opening words: the foreign affiliate surplus carve-out | `LossDenial.notCarvedOut` | carve-out on and off |
 | 40(2)(g)(i) "to the extent that it is (i) a superficial loss … is nil" | `LossDenial.rule`, `deniedLoss` | ✓ |
+| 53(1)(f) substituted property "of the taxpayer" | `CostAddition.Facts.substitutedProperty` | substituted or not |
+| 53(1)(f) "the amount, if any, by which (i) … exceeds (ii) …" | `CostAddition.addition` (truncated difference), `adjustedCostBase` | (ii) nil, smaller, equal, larger |
+| 251.1(1)(a) "an individual and a spouse or common-law partner of the individual" | `Affiliation.paragraphA`, `affiliated`, `acquirer` | spouses, siblings, not an individual, another paragraph |
 
 ## Interpretation choices to confirm
 
@@ -39,13 +44,16 @@ It cannot prove that the definitions match the Act. That is what this review is 
 5. **Paragraph (j)** is encoded as the substituted property being a share of a SIFT wind-up corporation in respect of the entity whose equity is the particular property. "Acquired before 2013" means before 2013-01-01.
 6. **Paragraph (b)** ("owns or had a right to acquire") is a single fact per acquisition. It isn't derived from later dispositions.
 7. **Inputs from provisions not yet encoded** are taken as facts:
-   - affiliation (s. 251.1);
+   - affiliation under paragraphs 251.1(1)(b) to (g), and who is a spouse or common-law partner;
    - loss restriction event (s. 251.2);
    - whether 40(2)(e.1), 40(3.4) or 69(5) applies;
    - the 40(2)(g) foreign affiliate carve-out.
 8. **Any one qualifying acquisition is enough.** When several qualify, the explanation cites one that rests on facts before one that rests on judgment.
 9. **"To the extent that" is not quantified.** The rule decides whether the loss is a superficial loss. `deniedLoss` treats the whole loss as denied. Partial cases (for example, fewer shares bought back than sold) are left for a later phase. The Act gives no formula for them.
-10. **Not encoded:** 40(2)(g)(ii) to (iv), and the 53(1)(f) addition to the cost of the substituted property. The 53(1)(f) text is saved in `statute/ITA-53-1-f.txt` for the next provision.
+10. **Not encoded:** 40(2)(g)(ii) to (iv).
+11. **53(1)(f), amount (i):** "the amount of the loss that was, because of the acquisition by the taxpayer of the property, a superficial loss" is an input. In the spouse transaction it is the whole denied loss, which assumes the spouse's shares are the only substituted property.
+12. **53(1)(f), amount (ii):** the amount that would be deducted under 112(3) to (3.2) is an input (nil in the examples). "The amount, if any, by which (i) exceeds (ii)" is read as (i) minus (ii), or nil.
+13. **251.1(1)(a)** is read as requiring the first person to be an individual and the second to be that individual's spouse or common-law partner. It is symmetric in practice, but the encoding takes the facts in that order.
 
 ## Reviewer checklist
 

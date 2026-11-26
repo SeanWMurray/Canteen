@@ -146,3 +146,35 @@ theorem statute_explain_factual (name citation : String) (conds excs : List (Rul
     · exact h2 r hr (by simp [ht, hfa])
 
 end Canteen.Rule
+
+namespace Canteen
+
+/-- What a clause of a statute-form rule rests on. -/
+inductive ClauseKind where
+  /-- A fact. -/
+  | fact
+  /-- A judgment call (its id, or a note that the ids are computed from the facts). -/
+  | judgment (ids : String)
+  /-- Another rule, by name. -/
+  | rule (name : String)
+  deriving Repr, DecidableEq, Inhabited
+
+/-- One clause of a statute-form rule, for drawing it. -/
+structure ClauseOutline where
+  label : String
+  citation : String
+  /-- The sentence when the clause is met (for a rule clause, "… applies"). -/
+  text : String
+  kind : ClauseKind
+  deriving Repr, Inhabited
+
+/-- The shape of a statute-form rule: its conditions and exceptions, in order. The
+`statute` command defines one alongside each rule, as `<rule>.outline`. -/
+structure Outline where
+  name : String
+  citation : String
+  conditions : List ClauseOutline
+  exceptions : List ClauseOutline
+  deriving Repr, Inhabited
+
+end Canteen

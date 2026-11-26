@@ -41,14 +41,18 @@ def chain : Blueprint where
 
 /-! ## Status, computed from Lean -/
 
-/-- info: F1: fact
+/-- info: L0: proven
+L1: proven
+L2: encoded
+L3: encoded
+F1: fact
 F2: fact
 F3: fact
 F4: fact
 F5: fact
+F6: fact
 J-ID: judgment call
-L1: proven
-L2: encoded
+A0: proven
 A1: proven
 A2: proven
 A3: proven
@@ -57,7 +61,8 @@ A5: proven
 A6: proven
 A7: proven
 A8: proven
-C1: not formalized
+C1: proven
+C2: proven
 K: proven -/
 #guard_msgs in
 #eval show CoreM Unit from do
@@ -74,6 +79,7 @@ Pg: encoded
 Ph: encoded
 Pi: encoded
 Pj: encoded
+Pa+: encoded
 D: encoded
 E: proven
 S: proven
@@ -92,15 +98,41 @@ L12: proven
 G0: encoded
 G1: encoded
 GS: proven
+R1: proven
+R2: proven
 N1: not formalized
 N2: not formalized
-N3: not formalized
 N4: not formalized -/
 #guard_msgs in
 #eval show CoreM Unit from do
   IO.println (← statusTable Canteen.Blueprints.SuperficialLoss.blueprint)
 
--- Both blueprints pass `check`: well formed, and nothing unproven.
+/-- info: L0: proven
+L1: proven
+L2: encoded
+F1: fact
+F2: fact
+F3: fact
+F4: fact
+F5: fact
+J-SIB: judgment call
+J-LATE: judgment call
+A1: proven
+A2: proven
+A3: proven
+A4: proven
+A5: proven
+A6: proven
+K: proven -/
+#guard_msgs in
+#eval show CoreM Unit from do
+  IO.println (← statusTable Canteen.Blueprints.SiblingAndLateRepurchase.memo)
+
+-- The sibling memo's conclusion rests on no judgment call.
+#guard (Canteen.Blueprints.SiblingAndLateRepurchase.memo.restsOn "K").all
+  fun id => !["J-SIB", "J-LATE"].contains id
+
+-- Every blueprint passes `check`: well formed, and nothing unproven.
 #eval show CoreM Unit from do
   for (_, bp) in Canteen.Blueprints.all do check bp
 
