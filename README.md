@@ -95,6 +95,7 @@ Canteen/
     S88/WindingUp.lean         88(1): winding up a subsidiary into its parent, and the bump
     S87/Amalgamation.lean      87(1), (2)(e), (4): amalgamations, and the shareholder rollover
     S51/ConvertibleProperty.lean   51(1), (2), (4): converting shares or debt into shares
+    S3/IndividualYear.lean     2(2), 3: an individual's year, from every encoded source to taxable income
     S44/ReplacementProperty.lean   44(1): replacement property, deferring a gain
     S47/IdenticalProperties.lean   47(1): identical properties, and the average cost
     S186/Connected.lean        186(2), (4): connected corporations

@@ -36,6 +36,7 @@ import Canteen.ITA.S84.ReturnOfCapital
 import Canteen.ITA.S88.WindingUp
 import Canteen.ITA.S87.Amalgamation
 import Canteen.ITA.S51.ConvertibleProperty
+import Canteen.ITA.S3.IndividualYear
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -447,6 +448,14 @@ def blueprint : Blueprint where
             "portion is taxed and any loss is nil. Not where 85 or 86 applies. Proven: a plain conversion is no disposition."
           lean := [``ConvertibleProperty.disposition, ``ConvertibleProperty.costTotal, ``ConvertibleProperty.no_disposition,
             ``ConvertibleProperty.not_with_rollover], uses := ["R8", "R17"] },
+        { id := "R35", kind := .law, title := "An individual's year, to taxable income", citation := "ITA 2(2); 3; 111(1)(b); 110.6(2.1)"
+          statement := "Income from sources (employment and business, dividends with the gross-up, recapture, attributed " ++
+            "income), net taxable capital gains, less terminal and other losses; then taxable income, after the net capital " ++
+            "loss deduction and the capital gains deduction (which the former reduces). Proven: taxable income never exceeds " ++
+            "income, and the capital gains deduction never exceeds the net taxable capital gains."
+          lean := [``IndividualYear.incomeFacts, ``IndividualYear.taxableIncome, ``IndividualYear.capitalGainsDeduction,
+            ``IndividualYear.taxable_le_income, ``IndividualYear.capital_gains_deduction_le],
+          uses := ["R8", "R9", "R19", "R21", "R22", "R24"] },
         { id := "R11", kind := .law, title := "The principal residence exemption", citation := "ITA 40(2)(b); 54 \"principal residence\""
           statement := "A home is the principal residence for a year if owned, ordinarily inhabited by the family (or covered by " ++
             "a 45(2) or (3) election, for at most four years: (d)), designated, and not blocked by another family-unit " ++

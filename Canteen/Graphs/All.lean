@@ -161,7 +161,8 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S84.ReturnOfCapital, "84(4), (4.1), 40(3) returns of capital"),
    (`Canteen.ITA.S88.WindingUp, "88(1) winding-up and the bump"),
    (`Canteen.ITA.S87.Amalgamation, "87(1), (2)(e), (4) amalgamations"),
-   (`Canteen.ITA.S51.ConvertibleProperty, "51 convertible property")]
+   (`Canteen.ITA.S51.ConvertibleProperty, "51 convertible property"),
+   (`Canteen.ITA.S3.IndividualYear, "2(2), 3 an individual's year, to taxable income")]
 
 /-! ## The dashboard -/
 
@@ -225,7 +226,7 @@ def transactionTimeline : String :=
 parentheses in citations are not read as node shapes. -/
 def actMindmap : String := Id.run do
   let tree : List (Nat × String) := [
-    (2, "s. 3"), (3, "income for the year: (a) to (f)"),
+    (2, "ss. 2, 3"), (3, "income for the year: (a) to (f)"), (3, "2(2): taxable income"),
     (2, "s. 13"), (3, "13(21): undepreciated capital cost"), (3, "13(1): recapture"),
     (2, "s. 20"), (3, "20(16): terminal loss"),
     (2, "ss. 38 to 41"), (3, "38: inclusion rates"), (3, "39(1): capital gains and losses"),

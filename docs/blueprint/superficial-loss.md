@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 74 statements:** 55 proven, 16 encoded, 3 not formalized.
+**Status of the 75 statements:** 56 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -79,11 +79,12 @@ graph TD
   n66["R32 · Winding up a subsidiary, and the bump"]:::proven
   n67["R33 · Amalgamations"]:::proven
   n68["R34 · Convertible property"]:::proven
-  n69["R11 · The principal residence exemption"]:::proven
-  n70["R2 · Cost of the substituted property"]:::proven
-  n71["N1 · Inputs decided by other provisions"]:::notFormalized
-  n72["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n73["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n69["R35 · An individual's year, to taxable income"]:::proven
+  n70["R11 · The principal residence exemption"]:::proven
+  n71["R2 · Cost of the substituted property"]:::proven
+  n72["N1 · Inputs decided by other provisions"]:::notFormalized
+  n73["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n74["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -193,20 +194,26 @@ graph TD
   n44 --> n68
   n51 --> n68
   n44 --> n69
-  n50 --> n69
-  n11 --> n70
-  n1 --> n71
-  n5 --> n71
-  n6 --> n71
-  n8 --> n71
-  n37 --> n71
-  n70 --> n71
-  n38 --> n71
-  n30 --> n72
-  n32 --> n73
-  n34 --> n73
-  n39 --> n73
-  n42 --> n73
+  n45 --> n69
+  n53 --> n69
+  n55 --> n69
+  n56 --> n69
+  n58 --> n69
+  n44 --> n70
+  n50 --> n70
+  n11 --> n71
+  n1 --> n72
+  n5 --> n72
+  n6 --> n72
+  n8 --> n72
+  n37 --> n72
+  n71 --> n72
+  n38 --> n72
+  n30 --> n73
+  n32 --> n74
+  n34 --> n74
+  n39 --> n74
+  n42 --> n74
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -292,11 +299,12 @@ graph TD
   n66["R32"]:::proven
   n67["R33"]:::proven
   n68["R34"]:::proven
-  n69["R11"]:::proven
-  n70["R2"]:::proven
-  n71["N1"]:::notFormalized
-  n72["N2"]:::notFormalized
-  n73["N4"]:::notFormalized
+  n69["R35"]:::proven
+  n70["R11"]:::proven
+  n71["R2"]:::proven
+  n72["N1"]:::notFormalized
+  n73["N2"]:::notFormalized
+  n74["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -478,21 +486,27 @@ graph TD
   n51 -.-> n67
   n44 -.-> n68
   n51 -.-> n68
-  n44 -.-> n69
-  n50 -.-> n69
-  n11 -.-> n70
-  n1 -.-> n71
-  n5 -.-> n71
-  n6 -.-> n71
-  n8 -.-> n71
-  n37 -.-> n71
-  n70 -.-> n71
-  n38 -.-> n71
-  n30 -.-> n72
-  n32 -.-> n73
-  n34 -.-> n73
-  n39 -.-> n73
-  n42 -.-> n73
+  n55 --> n69
+  n58 --> n69
+  n56 --> n69
+  n45 --> n69
+  n44 --> n69
+  n53 --> n69
+  n44 -.-> n70
+  n50 -.-> n70
+  n11 -.-> n71
+  n1 -.-> n72
+  n5 -.-> n72
+  n6 -.-> n72
+  n8 -.-> n72
+  n37 -.-> n72
+  n71 -.-> n72
+  n38 -.-> n72
+  n30 -.-> n73
+  n32 -.-> n74
+  n34 -.-> n74
+  n39 -.-> n74
+  n42 -.-> n74
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -1063,6 +1077,14 @@ In an amalgamation of taxable Canadian corporations, the new corporation takes t
 Shares or convertible debt of a corporation exchanged for its shares, with nothing else received, are not disposed of; the new shares take over the cost. If a benefit is conferred on a related person, the gift portion is taxed and any loss is nil. Not where 85 or 86 applies. Proven: a plain conversion is no disposition.
 
 **Lean:** [`Canteen.ITA.ConvertibleProperty.disposition`](../../Canteen/ITA/S51/ConvertibleProperty.lean#L55), [`Canteen.ITA.ConvertibleProperty.costTotal`](../../Canteen/ITA/S51/ConvertibleProperty.lean#L64), [`Canteen.ITA.ConvertibleProperty.no_disposition`](../../Canteen/ITA/S51/ConvertibleProperty.lean#L75), [`Canteen.ITA.ConvertibleProperty.not_with_rollover`](../../Canteen/ITA/S51/ConvertibleProperty.lean#L82)
+
+### R35. An individual's year, to taxable income
+
+**Status:** proven · **Citation:** ITA 2(2); 3; 111(1)(b); 110.6(2.1) · **Uses:** R8, R9, R19, R21, R22, R24
+
+Income from sources (employment and business, dividends with the gross-up, recapture, attributed income), net taxable capital gains, less terminal and other losses; then taxable income, after the net capital loss deduction and the capital gains deduction (which the former reduces). Proven: taxable income never exceeds income, and the capital gains deduction never exceeds the net taxable capital gains.
+
+**Lean:** [`Canteen.ITA.IndividualYear.incomeFacts`](../../Canteen/ITA/S3/IndividualYear.lean#L69), [`Canteen.ITA.IndividualYear.taxableIncome`](../../Canteen/ITA/S3/IndividualYear.lean#L90), [`Canteen.ITA.IndividualYear.capitalGainsDeduction`](../../Canteen/ITA/S3/IndividualYear.lean#L81), [`Canteen.ITA.IndividualYear.taxable_le_income`](../../Canteen/ITA/S3/IndividualYear.lean#L112), [`Canteen.ITA.IndividualYear.capital_gains_deduction_le`](../../Canteen/ITA/S3/IndividualYear.lean#L117)
 
 ### R11. The principal residence exemption
 
