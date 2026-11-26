@@ -7,6 +7,10 @@ import Canteen.ITA.S54.SuperficialLoss
 *Income Tax Act*, subsections 40(3.3), (3.4) and (3.5), as consolidated to 2026-10-29
 (verbatim in `statute/ITA-40-3.3-3.5.txt`).
 
+40(3.5)(c) and (d) deem the share owned, after a merger, an 88(1) winding-up or a redemption, by
+the new corporation, the parent or the issuer while it is affiliated with the transferor; (c)(iii)
+(foreign affiliates) is not encoded.
+
 When a corporation, trust or partnership (the **transferor**) disposes of a capital property
 and, in the period from 30 days before to 30 days after, it or an affiliated person acquires the
 same or an identical property and owns it at the end of the period (40(3.3)), the loss is nil
@@ -81,6 +85,27 @@ structure ReleaseEvents where
   windingUp : Option Date := none
   deriving Repr, DecidableEq, Inhabited
 
+/-- What happened to a share after the disposition, for 40(3.5)(c) and (d). -/
+inductive DeemedOwnerKind where
+  /-- (c)(i): the corporation whose share it is was merged or combined with others (otherwise than
+  in a transaction to which (b) applies); the new corporation is deemed to own the share. -/
+  | merger
+  /-- (c)(ii): the corporation was wound up under 88(1); the parent is deemed to own the share. -/
+  | windingUp88_1
+  /-- (d): the share was redeemed, acquired or cancelled by the corporation (otherwise than where
+  (b) or (c) applies); the corporation is deemed to own the share. -/
+  | redemption
+  deriving Repr, DecidableEq, Inhabited
+
+/-- 40(3.5)(c), (d): the share is deemed owned by the new corporation, the parent, or the
+corporation, while it is affiliated with the transferor. -/
+structure DeemedOwner where
+  kind : DeemedOwnerKind
+  date : Date
+  /-- The date the deemed owner ceases to be affiliated with the transferor, if it does. -/
+  affiliationEnds : Option Date := none
+  deriving Repr, DecidableEq, Inhabited
+
 /-- The facts 40(3.3) and (3.4) need. -/
 structure Facts where
   transferor : TransferorKind
@@ -95,6 +120,9 @@ structure Facts where
   surplusExcludedProperty : Bool := false
   acquisitions : List Acquisition
   release : ReleaseEvents := {}
+  /-- 40(3.5)(c), (d): the share was later merged away, wound up into a parent under 88(1), or
+  redeemed, acquired or cancelled by its issuer. -/
+  deemedOwner : Option DeemedOwner := none
   deriving Repr, DecidableEq
 
 /-! ## Subsection 40(3.3) -/
@@ -155,12 +183,20 @@ private def earliest : List Date → Option Date
     | none => some d
     | some e => some (if e.before d then e else d)
 
+/-- (3.4)(b)(i), with 40(3.5)(c) and (d): where the share is deemed owned by the new corporation,
+the parent or the issuer while it is affiliated with the transferor, the 30-day period without an
+owner begins only when that affiliation ends; otherwise, as given. -/
+def thirtyDaysWithout (f : Facts) : Option Date :=
+  match f.deemedOwner with
+  | some d => d.affiliationEnds
+  | none => f.release.thirtyDaysWithout
+
 /-- (3.4)(b): the first of the times in (i) to (v), if any has occurred. The loss is deemed to
 be a loss of the transferor immediately before then. -/
 def releaseDate (f : Facts) : Option Date :=
   let r := f.release
   let afterDisposition (o : Option Date) := o.filter (f.disposition.date.toDays ≤ ·.toDays)
-  earliest ([r.thirtyDaysWithout, r.deemedDisposition, r.lossRestrictionEvent, r.section50,
+  earliest ([thirtyDaysWithout f, r.deemedDisposition, r.lossRestrictionEvent, r.section50,
     if f.transferor == .corporation then r.windingUp else none].filterMap afterDisposition)
 
 /-- Which of (i) to (v) the release date is. -/
@@ -169,7 +205,7 @@ def releaseReason (f : Facts) : String :=
   match releaseDate f with
   | none => "none of the times in 40(3.4)(b)(i) to (v) has occurred"
   | some d =>
-    if r.thirtyDaysWithout == some d then "a 30-day period begins throughout which neither the transferor nor a person affiliated with it owns the substituted property (40(3.4)(b)(i))"
+    if thirtyDaysWithout f == some d then "a 30-day period begins throughout which neither the transferor nor a person affiliated with it owns the substituted property (40(3.4)(b)(i))"
     else if r.deemedDisposition == some d then "the property would be deemed disposed of by section 128.1 or subsection 149(10) (40(3.4)(b)(ii))"
     else if r.lossRestrictionEvent == some d then "the transferor is subject to a loss restriction event (40(3.4)(b)(iii))"
     else if r.section50 == some d then "the transferor or an affiliated person is deemed by section 50 to have disposed of the property (40(3.4)(b)(iv))"
@@ -250,6 +286,13 @@ theorem releaseDate_after (f : Facts) (d : Date) (h : releaseDate f = some d) :
       subst ho
       simpa using hy
     · simp at ho
+
+/-- **40(3.5)(c), (d).** While the share is deemed owned by a new corporation, a parent or its
+issuer that stays affiliated with the transferor, (3.4)(b)(i) never releases the loss, whatever
+happened to the share itself. -/
+theorem deemed_owner_no_release (f : Facts) (d : DeemedOwner) (hd : f.deemedOwner = some d)
+    (h : d.affiliationEnds = none) : thirtyDaysWithout f = none := by
+  simp [thirtyDaysWithout, hd, h]
 
 /-! ## Paragraph (h) of the superficial loss definition -/
 

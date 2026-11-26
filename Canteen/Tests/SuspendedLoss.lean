@@ -61,6 +61,23 @@ example : releaseDate { base with release := { windingUp := some ⟨2026, 1, 10�
 -- A time before the disposition is not "after the disposition".
 example : releaseDate { base with release := { section50 := some ⟨2025, 1, 1⟩ } } = none := by decide
 
+/-! ## 40(3.5)(c), (d): deemed ownership after a merger, a winding-up or a redemption -/
+
+-- The share is redeemed on 2026-02-01: on its own, a 30-day period without an owner would begin.
+def redeemed : Facts := { base with release := { thirtyDaysWithout := some ⟨2026, 2, 1⟩ } }
+example : releaseDate redeemed = some ⟨2026, 2, 1⟩ := by decide
+def owner (k : DeemedOwnerKind) (ends : Option Date := none) : DeemedOwner := { kind := k, date := ⟨2026, 2, 1⟩, affiliationEnds := ends }
+-- (d): the issuer is deemed to own it while affiliated with the transferor, so no release.
+example : releaseDate { redeemed with deemedOwner := some (owner .redemption) } = none := by decide
+-- Until the issuer ceases to be affiliated with the transferor.
+example : releaseDate { redeemed with deemedOwner := some (owner .redemption (some ⟨2027, 5, 1⟩)) } = some ⟨2027, 5, 1⟩ := by decide
+-- (c)(i), (ii): likewise for the corporation formed on a merger, or the parent on an 88(1) winding-up.
+example : releaseDate { redeemed with deemedOwner := some (owner .merger) } = none := by decide
+example : releaseDate { redeemed with deemedOwner := some (owner .windingUp88_1 (some ⟨2026, 9, 1⟩)) } = some ⟨2026, 9, 1⟩ := by decide
+-- The other times in (3.4)(b) still release it.
+def lre : ReleaseEvents := { lossRestrictionEvent := some ⟨2026, 6, 1⟩ }
+example : releaseDate { redeemed with deemedOwner := some (owner .redemption), release := lre } = some ⟨2026, 6, 1⟩ := by decide
+
 #guard (rule.explain { base with release := { thirtyDaysWithout := some ⟨2026, 3, 1⟩ } }).steps.getLast?.map (·.claim) ==
   some ("The $500.00 loss is deemed to be a loss of the transferor from a disposition of the property immediately before " ++
     "2026-03-01, when a 30-day period begins throughout which neither the transferor nor a person affiliated with it owns " ++

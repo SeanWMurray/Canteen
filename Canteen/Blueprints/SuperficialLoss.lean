@@ -244,8 +244,9 @@ def blueprint : Blueprint where
         { id := "R6", kind := .law, title := "Suspended losses of corporations, trusts and partnerships", citation := "ITA 40(3.3)–(3.5)"
           statement := "The counterpart of the superficial loss rule for corporations, trusts and partnerships: the loss is " ++
             "nil but suspended until the first of the times in 40(3.4)(b). Paragraph (h) of the superficial loss definition " ++
-            "defers to it, and it uses that definition's period and exceptions (c) to (g)."
-          lean := [``SuspendedLoss.applies, ``SuspendedLoss.rule, ``SuspendedLoss.releaseDate,
+            "defers to it, and it uses that definition's period and exceptions (c) to (g). After a merger, an 88(1) " ++
+            "winding-up or a redemption, 40(3.5)(c) and (d) deem the share still owned while the new owner is affiliated."
+          lean := [``SuspendedLoss.applies, ``SuspendedLoss.rule, ``SuspendedLoss.releaseDate, ``SuspendedLoss.deemed_owner_no_release,
             ``SuspendedLoss.not_superficial_of_applies, ``SuspendedLoss.not_individual, ``SuspendedLoss.not_of_excepted,
             ``SuspendedLoss.not_of_all_fail, ``SuspendedLoss.safe_harbour],
           uses := ["Pc", "Pd", "Pe", "Pf", "Pg", "Ph", "D", "R3"] },

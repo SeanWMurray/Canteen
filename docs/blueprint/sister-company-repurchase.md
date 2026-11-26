@@ -196,7 +196,7 @@ Two corporations are affiliated if each is controlled by a person and those pers
 
 When a corporation disposes of capital property and, within 30 days before or after, it or an affiliated person acquires identical property and owns it at the end of that period, the loss is nil, and deemed to arise immediately before the first of the times in 40(3.4)(b).
 
-**Lean:** [`Canteen.ITA.SuspendedLoss.applies`](../../Canteen/ITA/S40/SuspendedLoss.lean#L123), [`Canteen.ITA.SuspendedLoss.rule`](../../Canteen/ITA/S40/SuspendedLoss.lean#L195), [`Canteen.ITA.SuspendedLoss.releaseDate`](../../Canteen/ITA/S40/SuspendedLoss.lean#L158), [`Canteen.ITA.SuspendedLoss.releaseDate_after`](../../Canteen/ITA/S40/SuspendedLoss.lean#L236)
+**Lean:** [`Canteen.ITA.SuspendedLoss.applies`](../../Canteen/ITA/S40/SuspendedLoss.lean#L151), [`Canteen.ITA.SuspendedLoss.rule`](../../Canteen/ITA/S40/SuspendedLoss.lean#L231), [`Canteen.ITA.SuspendedLoss.releaseDate`](../../Canteen/ITA/S40/SuspendedLoss.lean#L194), [`Canteen.ITA.SuspendedLoss.releaseDate_after`](../../Canteen/ITA/S40/SuspendedLoss.lean#L272)
 
 ### L2. Superficial loss, paragraph (h)
 
@@ -204,7 +204,7 @@ When a corporation disposes of capital property and, within 30 days before or af
 
 A disposition to which subsection 40(3.4) applies is not a superficial loss.
 
-**Lean:** [`Canteen.ITA.SuspendedLoss.not_superficial_of_applies`](../../Canteen/ITA/S40/SuspendedLoss.lean#L261)
+**Lean:** [`Canteen.ITA.SuspendedLoss.not_superficial_of_applies`](../../Canteen/ITA/S40/SuspendedLoss.lean#L304)
 
 ## Facts
 
