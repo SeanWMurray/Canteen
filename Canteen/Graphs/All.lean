@@ -39,6 +39,7 @@ import Canteen.ITA.S74.CorporateAttribution
 import Canteen.Transactions.SisterCompanyRepurchase
 import Canteen.Transactions.Crystallization
 import Canteen.Transactions.SaleThroughHoldco
+import Canteen.Transactions.EstateFreeze
 
 /-!
 # Every graph page, and what is on it
@@ -182,6 +183,7 @@ def allJudgmentCalls : List (String × JudgmentCall) :=
   (Transactions.HoldcoRepurchase.friendCalls.map ("Holdco what-if", ·)) ++
   (Transactions.Crystallization.calls.map ("crystallization", ·)) ++
   (Transactions.SaleThroughHoldco.calls.map ("sale through Holdco", ·)) ++
+  (Transactions.EstateFreeze.calls.map ("estate freeze", ·)) ++
   (debtCalls.map ("debt example", ·)) ++ (ruleXCalls.map ("Rule X", ·))
 
 private def riskPos : Risk → Nat
@@ -227,7 +229,8 @@ def transactionTimeline : String :=
     ev Transactions.Crystallization.newcoPurchase.date "Crystallization, Holdco shares sold to Newco",
     ev ⟨2025, 9, 1⟩ "Sale through Holdco, Opco's dividends",
     ev ⟨2025, 9, 15⟩ "Sale through Holdco, the sale",
-    ev ⟨2026, 4, 1⟩ "Post-mortem pipeline, the estate sells to Newco"]
+    ev ⟨2026, 4, 1⟩ "Post-mortem pipeline, the estate sells to Newco",
+    ev ⟨2025, 1, 15⟩ "Estate freeze, the exchange"]
 
 /-- The Act as encoded, section by section. Each node is a Mermaid "markdown string", so the
 parentheses in citations are not read as node shapes. -/

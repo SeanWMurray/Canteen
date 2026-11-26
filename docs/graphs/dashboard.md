@@ -9,12 +9,12 @@ An overview of the project, drawn from the Lean.
 Every statement in every blueprint, by the status Lean computes for it.
 
 ```mermaid
-pie showData title All 214 statements in the memos and blueprints, by status
-    "encoded" : 36
-    "proven" : 135
+pie showData title All 224 statements in the memos and blueprints, by status
+    "encoded" : 38
+    "proven" : 140
     "not formalized" : 3
-    "fact" : 33
-    "judgment call" : 7
+    "fact" : 35
+    "judgment call" : 8
 ```
 
 ## Judgment calls by risk
@@ -38,6 +38,7 @@ quadrantChart
     J-DEFACTO in Holdco what-if: [0.54, 0.50]
     J-SBC in crystallization: [0.19, 0.89]
     J-55 in sale through Holdco: [0.23, 0.89]
+    J-SBC in estate freeze: [0.15, 0.93]
     J-PURPOSE in debt example: [0.58, 0.50]
     J-ARM in debt example: [0.50, 0.15]
     J-B in Rule X: [0.54, 0.15]
@@ -66,6 +67,7 @@ timeline
     2025-09-01 : Sale through Holdco, Opco's dividends
     2025-09-15 : Sale through Holdco, the sale
     2026-04-01 : Post-mortem pipeline, the estate sells to Newco
+    2025-01-15 : Estate freeze, the exchange
 ```
 
 ## The Act, as encoded

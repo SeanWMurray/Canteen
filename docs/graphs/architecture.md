@@ -92,19 +92,21 @@ flowchart BT
     m80["Transactions.Crystallization"]
     m81["Transactions.SaleThroughHoldco"]
     m82["Transactions.PostMortemPipeline"]
-    m83["Transactions.SisterCompanyRepurchase"]
+    m83["Transactions.EstateFreeze"]
+    m84["Transactions.SisterCompanyRepurchase"]
   end
   subgraph Blueprints["Blueprints"]
-    m84["Blueprints.SuperficialLoss"]
-    m85["Blueprints.SpouseRepurchase"]
-    m86["Blueprints.SiblingAndLateRepurchase"]
-    m87["Blueprints.TfsaContribution"]
-    m88["Blueprints.HoldcoRepurchase"]
-    m89["Blueprints.Crystallization"]
-    m90["Blueprints.SaleThroughHoldco"]
-    m91["Blueprints.PostMortemPipeline"]
-    m92["Blueprints.SisterCompanyRepurchase"]
-    m93["Blueprints.All"]
+    m85["Blueprints.SuperficialLoss"]
+    m86["Blueprints.SpouseRepurchase"]
+    m87["Blueprints.SiblingAndLateRepurchase"]
+    m88["Blueprints.TfsaContribution"]
+    m89["Blueprints.HoldcoRepurchase"]
+    m90["Blueprints.Crystallization"]
+    m91["Blueprints.SaleThroughHoldco"]
+    m92["Blueprints.PostMortemPipeline"]
+    m93["Blueprints.EstateFreeze"]
+    m94["Blueprints.SisterCompanyRepurchase"]
+    m95["Blueprints.All"]
   end
   subgraph Examples["Examples"]
     m19["Examples.RuleX"]
@@ -113,10 +115,10 @@ flowchart BT
     m22["Examples.RuleXStatute"]
   end
   subgraph Graphs["Graphs"]
-    m94["Graphs.All"]
+    m96["Graphs.All"]
   end
   subgraph Root["Root"]
-    m95["Canteen"]
+    m97["Canteen"]
   end
   m0 --> m3
   m3 --> m4
@@ -260,97 +262,101 @@ flowchart BT
   m46 --> m82
   m50 --> m82
   m54 --> m82
-  m37 --> m83
-  m29 --> m83
-  m16 --> m84
-  m74 --> m84
-  m26 --> m84
-  m27 --> m84
-  m28 --> m84
-  m31 --> m84
-  m45 --> m84
-  m46 --> m84
-  m48 --> m84
-  m50 --> m84
-  m52 --> m84
-  m57 --> m84
-  m58 --> m84
-  m59 --> m84
-  m60 --> m84
-  m61 --> m84
-  m62 --> m84
-  m63 --> m84
-  m64 --> m84
-  m65 --> m84
-  m66 --> m84
-  m67 --> m84
-  m68 --> m84
-  m69 --> m84
-  m70 --> m84
-  m71 --> m84
-  m72 --> m84
-  m75 --> m84
+  m59 --> m83
+  m71 --> m83
+  m37 --> m84
+  m29 --> m84
   m16 --> m85
-  m76 --> m85
-  m25 --> m85
-  m73 --> m85
-  m42 --> m85
+  m74 --> m85
+  m26 --> m85
+  m27 --> m85
+  m28 --> m85
+  m31 --> m85
+  m45 --> m85
+  m46 --> m85
+  m48 --> m85
+  m50 --> m85
+  m52 --> m85
+  m57 --> m85
+  m58 --> m85
+  m59 --> m85
+  m60 --> m85
+  m61 --> m85
+  m62 --> m85
+  m63 --> m85
+  m64 --> m85
+  m65 --> m85
+  m66 --> m85
+  m67 --> m85
+  m68 --> m85
+  m69 --> m85
+  m70 --> m85
+  m71 --> m85
+  m72 --> m85
+  m75 --> m85
   m16 --> m86
-  m17 --> m86
-  m77 --> m86
+  m76 --> m86
+  m25 --> m86
   m73 --> m86
+  m42 --> m86
   m16 --> m87
   m17 --> m87
-  m78 --> m87
+  m77 --> m87
   m73 --> m87
   m16 --> m88
-  m79 --> m88
+  m17 --> m88
+  m78 --> m88
   m73 --> m88
   m16 --> m89
-  m80 --> m89
+  m79 --> m89
+  m73 --> m89
   m16 --> m90
-  m81 --> m90
+  m80 --> m90
   m16 --> m91
-  m82 --> m91
+  m81 --> m91
   m16 --> m92
-  m83 --> m92
-  m84 --> m93
-  m85 --> m93
-  m86 --> m93
-  m87 --> m93
-  m88 --> m93
-  m92 --> m93
-  m89 --> m93
-  m90 --> m93
-  m91 --> m93
-  m22 --> m94
-  m21 --> m94
-  m73 --> m94
-  m26 --> m94
-  m76 --> m94
-  m77 --> m94
-  m78 --> m94
-  m79 --> m94
-  m31 --> m94
-  m72 --> m94
-  m45 --> m94
-  m46 --> m94
-  m48 --> m94
-  m52 --> m94
-  m53 --> m94
-  m59 --> m94
-  m60 --> m94
-  m62 --> m94
-  m64 --> m94
-  m65 --> m94
-  m68 --> m94
-  m69 --> m94
-  m71 --> m94
-  m83 --> m94
-  m80 --> m94
-  m81 --> m94
-  m18 --> m95
-  m20 --> m95
-  m93 --> m95
+  m82 --> m92
+  m16 --> m93
+  m83 --> m93
+  m16 --> m94
+  m84 --> m94
+  m85 --> m95
+  m86 --> m95
+  m87 --> m95
+  m88 --> m95
+  m89 --> m95
   m94 --> m95
+  m90 --> m95
+  m91 --> m95
+  m92 --> m95
+  m93 --> m95
+  m22 --> m96
+  m21 --> m96
+  m73 --> m96
+  m26 --> m96
+  m76 --> m96
+  m77 --> m96
+  m78 --> m96
+  m79 --> m96
+  m31 --> m96
+  m72 --> m96
+  m45 --> m96
+  m46 --> m96
+  m48 --> m96
+  m52 --> m96
+  m53 --> m96
+  m60 --> m96
+  m62 --> m96
+  m64 --> m96
+  m65 --> m96
+  m68 --> m96
+  m69 --> m96
+  m84 --> m96
+  m80 --> m96
+  m81 --> m96
+  m83 --> m96
+  m18 --> m97
+  m20 --> m97
+  m95 --> m97
+  m96 --> m97
 ```
