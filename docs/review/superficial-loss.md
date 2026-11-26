@@ -78,6 +78,9 @@ It cannot prove that the definitions match the Act. That is what this review is 
 | 38(a), (a.1)(i), (b), (c) one half; nil for listed securities given to a qualified donee | `taxableCapitalGain`, `allowableCapitalLoss`, `allowableBusinessInvestmentLoss` | half cents; gift |
 | 41(1)–(3) listed personal property: pooled; losses of other years claimed; the year's loss | `Year.lppExcess`, `lppNetGain`, `lppTaxableNetGain`, `lppLoss` | pooled; cannot offset other gains; claims capped |
 | 3(a)–(f) income for the year | `Income.income`, `report` | other income; ABIL; capital losses not against other income |
+| 111(8) "net capital loss": A − B + C − D | `NetCapitalLoss.netCapitalLoss`, `ExpiredBIL` | gains and losses; ABIL excluded; C with and without a loss restriction event; D |
+| 111(1)(b) losses "for taxation years preceding and the three taxation years immediately following the year" | `Claim.allowedFor` | prior year; three years later; four years later; same year |
+| 111(1.1)(a) the lesser of 3(b) and Σ A × B / C | `Claim.adjusted`, `deduction` | capped at 3(b); a ¾ year |
 | 50(2) a personal-use debt owing by an arm's length person, established to be bad in the year | `BadDebtPersonalUse.rule` | each condition |
 | 50(2)(a) deemed proceeds: the amount, if any, by which (i) the debt's adjusted cost base exceeds (ii) the gain on the related disposition; (b) reacquisition at that amount | `deemedProceeds`, `reacquisitionCost`, `loss_eq_min` | gain larger, smaller, nil |
 
@@ -127,6 +130,7 @@ It cannot prove that the definitions match the Act. That is what this review is 
 38. **Capital gains (38 to 41).** Taxable amounts are kept in half-cents, so ½ of an odd number of cents is exact (shown as, for example, $254.995). Whether a gain or loss is on capital account (39(1)(a), (b): "would not … be included in computing the taxpayer's income") is a fact or a judgment call. 39(1)(c) (business investment loss) is a fact with its reductions given; "small business corporation" and 39(9), (10) are not encoded. 38(a.2) and (a.3) are not encoded. The 40(1)(a)(iii) reserve is the amount claimed, capped at the lesser of a reasonable reserve and ⅕ of the gain times (4 − preceding years), with the product rounded down to the cent; 40(1.1) (ten-year reserves) is not encoded.
 39. **Section 41.** "Gains" and "losses" are 40(1) gains and losses. Listed-personal-property losses of other years are a single amount claimed; the ordering rules in 41(2)(b)(i), (ii) are for the taxpayer to respect. 39(1)(a)(i.1) property is excluded from the pool's gains, as an excluded kind.
 40. **Section 3.** Income from sources, Subdivision E deductions and losses from sources are given amounts. Unused allowable capital losses are reported, but the net capital loss carryover (111(1)(b), 111(8)) is not encoded.
+41. **Net capital losses (111).** Each loss year's section 38 fraction is given (½ unless stated) rather than taken from a table of past rates, since the Act's current text states only ½. A × B / C is rounded down to the half-cent where it is not exact. The C term of 111(8) takes its three amounts as given. 111(1.1)(b) (pre-1986 losses) and (c) are not encoded. Taxable income (2(2)) is income less the net capital loss deduction and any other Division C deductions, given.
 
 ## Reviewer checklist
 

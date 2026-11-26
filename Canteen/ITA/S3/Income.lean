@@ -95,8 +95,8 @@ def report (f : Facts) : Argument :=
       s!"losses of {h y.allowableBusinessInvestmentLosses}: {h (paraD f)}.", "ITA 3(d)"⟩,
     ⟨s!"So the taxpayer's income for the year is {h (income f)}.", "ITA 3(e), (f)"⟩] ++
     (if y.unusedAllowableCapitalLosses > 0 then
-      [⟨s!"Allowable capital losses of {h y.unusedAllowableCapitalLosses} could not be used this year (they may be a net " ++
-        "capital loss under 111(1)(b), not encoded).", "ITA 3(b)"⟩] else [])
+      [⟨s!"Allowable capital losses of {h y.unusedAllowableCapitalLosses} could not be used this year: they are part of " ++
+        "the year's net capital loss, deductible against taxable capital gains of other years.", "ITA 3(b); 111(8), (1)(b)"⟩] else [])
   let js := y.dispositions.foldl (fun ids d => mergeIds ids d.capitalAccount.judgments) []
   ⟨steps, js⟩
 

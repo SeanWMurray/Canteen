@@ -18,3 +18,4 @@ The verbatim statute text for each is in `statute/`. Review notes are in `docs/r
 - `S251/Amalgamation.lean`: 251.1(2), 251(3.1) and (3.2)
 - `S38/CapitalGains.lean`: 40(1), 39(1), 38 and 41
 - `S3/Income.lean`: section 3
+- `S111/NetCapitalLoss.lean`: net capital losses, 111(8), (1)(b), (1.1)

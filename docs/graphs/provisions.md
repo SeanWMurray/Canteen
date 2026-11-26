@@ -22,7 +22,8 @@ flowchart BT
   v13["40(3.3) to (3.5) suspended losses"]:::prov
   v14["38 to 41 capital gains and losses"]:::prov
   v15["3 income for the year"]:::prov
-  v16["50(2) bad personal-use debts"]:::prov
+  v16["111 net capital losses, taxable income"]:::prov
+  v17["50(2) bad personal-use debts"]:::prov
   v0 --> v1
   v0 --> v2
   v0 --> v3
@@ -42,5 +43,6 @@ flowchart BT
   v12 --> v14
   v13 --> v14
   v14 --> v15
+  v15 --> v16
   classDef prov fill:#bbdefb,stroke:#1565c0,color:#0d47a1
 ```

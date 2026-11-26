@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 48 statements:** 29 proven, 16 encoded, 3 not formalized.
+**Status of the 49 statements:** 30 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -54,10 +54,11 @@ graph TD
   n41["R5 · A personal-use debt that goes bad"]:::proven
   n42["R6 · Suspended losses of corporations, trusts and partnerships"]:::proven
   n43["R8 · The tax result: capital gains and income"]:::proven
-  n44["R2 · Cost of the substituted property"]:::proven
-  n45["N1 · Inputs decided by other provisions"]:::notFormalized
-  n46["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n47["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n44["R9 · Net capital losses and taxable income"]:::proven
+  n45["R2 · Cost of the substituted property"]:::proven
+  n46["N1 · Inputs decided by other provisions"]:::notFormalized
+  n47["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n48["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -129,19 +130,20 @@ graph TD
   n38 --> n42
   n36 --> n43
   n42 --> n43
-  n11 --> n44
-  n1 --> n45
-  n5 --> n45
-  n6 --> n45
-  n8 --> n45
-  n37 --> n45
-  n44 --> n45
-  n38 --> n45
-  n30 --> n46
-  n32 --> n47
-  n34 --> n47
-  n39 --> n47
-  n41 --> n47
+  n43 --> n44
+  n11 --> n45
+  n1 --> n46
+  n5 --> n46
+  n6 --> n46
+  n8 --> n46
+  n37 --> n46
+  n45 --> n46
+  n38 --> n46
+  n30 --> n47
+  n32 --> n48
+  n34 --> n48
+  n39 --> n48
+  n41 --> n48
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -202,10 +204,11 @@ graph TD
   n41["R5"]:::proven
   n42["R6"]:::proven
   n43["R8"]:::proven
-  n44["R2"]:::proven
-  n45["N1"]:::notFormalized
-  n46["N2"]:::notFormalized
-  n47["N4"]:::notFormalized
+  n44["R9"]:::proven
+  n45["R2"]:::proven
+  n46["N1"]:::notFormalized
+  n47["N2"]:::notFormalized
+  n48["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -337,19 +340,20 @@ graph TD
   n36 --> n43
   n0 --> n43
   n42 --> n43
-  n11 -.-> n44
-  n1 -.-> n45
-  n5 -.-> n45
-  n6 -.-> n45
-  n8 -.-> n45
-  n37 -.-> n45
-  n44 -.-> n45
-  n38 -.-> n45
-  n30 -.-> n46
-  n32 -.-> n47
-  n34 -.-> n47
-  n39 -.-> n47
-  n41 -.-> n47
+  n43 --> n44
+  n11 -.-> n45
+  n1 -.-> n46
+  n5 -.-> n46
+  n6 -.-> n46
+  n8 -.-> n46
+  n37 -.-> n46
+  n45 -.-> n46
+  n38 -.-> n46
+  n30 -.-> n47
+  n32 -.-> n48
+  n34 -.-> n48
+  n39 -.-> n48
+  n41 -.-> n48
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -720,6 +724,14 @@ The counterpart of the superficial loss rule for corporations, trusts and partne
 A loss made nil by 40(2)(g) or 40(3.4) is no capital loss (39(1)(b)), so no allowable capital loss (38(b)) reduces the year's taxable capital gains in 3(b). Capital losses reduce only capital gains; an allowable business investment loss reduces any income (3(d)). Amounts are exact, in half-cents.
 
 **Lean:** [`Canteen.ITA.CapitalGains.ofParagraph40_2_g`](../../Canteen/ITA/S38/CapitalGains.lean#L183), [`Canteen.ITA.CapitalGains.ofSuspendedLoss`](../../Canteen/ITA/S38/CapitalGains.lean#L189), [`Canteen.ITA.CapitalGains.capitalLoss_of_lossNil`](../../Canteen/ITA/S38/CapitalGains.lean#L197), [`Canteen.ITA.Income.income`](../../Canteen/ITA/S3/Income.lean#L52), [`Canteen.ITA.Income.capital_losses_only_offset_gains`](../../Canteen/ITA/S3/Income.lean#L105), [`Canteen.ITA.Income.abil_reduces_income`](../../Canteen/ITA/S3/Income.lean#L114)
+
+### R9. Net capital losses and taxable income
+
+**Status:** proven · **Citation:** ITA 111(8), (1)(b), (1.1); 2(2) · **Uses:** R8
+
+Allowable capital losses that 3(b) cannot use are a net capital loss (111(8)), deductible against taxable capital gains of preceding years and the three following years (111(1)(b)), adjusted for the loss year's inclusion rate (111(1.1)(a)). A loss denied as superficial never becomes one.
+
+**Lean:** [`Canteen.ITA.NetCapitalLoss.netCapitalLoss`](../../Canteen/ITA/S111/NetCapitalLoss.lean#L41), [`Canteen.ITA.NetCapitalLoss.deduction`](../../Canteen/ITA/S111/NetCapitalLoss.lean#L64), [`Canteen.ITA.NetCapitalLoss.taxableIncome`](../../Canteen/ITA/S111/NetCapitalLoss.lean#L81), [`Canteen.ITA.NetCapitalLoss.deduction_le_para3b`](../../Canteen/ITA/S111/NetCapitalLoss.lean#L105), [`Canteen.ITA.NetCapitalLoss.not_allowed_far_future`](../../Canteen/ITA/S111/NetCapitalLoss.lean#L118)
 
 ### R2. Cost of the substituted property
 

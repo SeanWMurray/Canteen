@@ -171,8 +171,8 @@ property, less allowable capital losses in excess of allowable business investme
 def paragraph3b (y : Year) : HalfCents :=
   (y.taxableCapitalGains + y.lppTaxableNetGain) - (y.allowableCapitalLosses - y.allowableBusinessInvestmentLosses)
 
-/-- Net capital loss for the year, in half-cents, available under 111(1)(b) (not encoded): the
-allowable capital losses (less ABILs) that 3(b) could not use. -/
+/-- The allowable capital losses (less ABILs) that 3(b) could not use: A − B in the definition
+of "net capital loss" (111(8); see `NetCapitalLoss`). -/
 def unusedAllowableCapitalLosses (y : Year) : HalfCents :=
   (y.allowableCapitalLosses - y.allowableBusinessInvestmentLosses) - (y.taxableCapitalGains + y.lppTaxableNetGain)
 

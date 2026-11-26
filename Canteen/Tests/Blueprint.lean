@@ -112,6 +112,7 @@ R7: proven
 R5: proven
 R6: proven
 R8: proven
+R9: proven
 R2: proven
 N1: not formalized
 N2: not formalized

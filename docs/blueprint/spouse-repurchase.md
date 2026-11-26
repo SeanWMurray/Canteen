@@ -552,7 +552,7 @@ Relies on no judgment calls.
 4. Paragraph 3(c), less Subdivision E deductions of $0.00: $60,000.00. [ITA 3(c)]
 5. Paragraph 3(d), less losses from sources of $0.00 and allowable business investment losses of $0.00: $60,000.00. [ITA 3(d)]
 6. So the taxpayer's income for the year is $60,000.00. [ITA 3(e), (f)]
-7. Allowable capital losses of $254.995 could not be used this year (they may be a net capital loss under 111(1)(b), not encoded). [ITA 3(b)]
+7. Allowable capital losses of $254.995 could not be used this year: they are part of the year's net capital loss, deductible against taxable capital gains of other years. [ITA 3(b); 111(8), (1)(b)]
 Relies on no judgment calls.
 ```
 
