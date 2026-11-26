@@ -135,11 +135,22 @@ end Disposition
 
 /-! ## The year's totals -/
 
-/-- The dispositions of a taxation year, and the listed-personal-property losses of other years
-the taxpayer claims under 41(2)(b). -/
+/-- Amounts from another person's dispositions deemed to be the taxpayer's (for example, by the
+attribution rule in 74.2(1)): taxable capital gains and allowable capital losses (in half-cents),
+and gains and losses from listed personal property (in cents). -/
+structure Attribution where
+  taxableCapitalGains : HalfCents := 0
+  allowableCapitalLosses : HalfCents := 0
+  lppGains : Cents := 0
+  lppLosses : Cents := 0
+  deriving Repr, DecidableEq, Inhabited
+
+/-- The dispositions of a taxation year, the listed-personal-property losses of other years the
+taxpayer claims under 41(2)(b), and any amounts attributed to the taxpayer. -/
 structure Year where
   dispositions : List Disposition
   lppLossesClaimed : Cents := 0
+  attribution : Attribution := {}
   deriving Repr, Inhabited
 
 namespace Year
@@ -150,17 +161,20 @@ def nonListed (y : Year) : List Disposition := y.dispositions.filter (!·.isList
 def listed (y : Year) : List Disposition := y.dispositions.filter (·.isListed)
 
 /-- 3(b)(i)(A): taxable capital gains from property other than listed personal property. -/
-def taxableCapitalGains (y : Year) : HalfCents := sumBy y.nonListed (·.taxableCapitalGain)
+def taxableCapitalGains (y : Year) : HalfCents :=
+  sumBy y.nonListed (·.taxableCapitalGain) + y.attribution.taxableCapitalGains
 
 /-- 3(b)(ii): allowable capital losses from property other than listed personal property. -/
-def allowableCapitalLosses (y : Year) : HalfCents := sumBy y.nonListed (·.allowableCapitalLoss)
+def allowableCapitalLosses (y : Year) : HalfCents :=
+  sumBy y.nonListed (·.allowableCapitalLoss) + y.attribution.allowableCapitalLosses
 
 /-- 38(c): allowable business investment losses. -/
 def allowableBusinessInvestmentLosses (y : Year) : HalfCents :=
   sumBy y.dispositions (·.allowableBusinessInvestmentLoss)
 
 /-- 41(2)(a): listed-personal-property gains less losses, if positive. -/
-def lppExcess (y : Year) : Cents := sumBy y.listed (·.gain) - sumBy y.listed (·.loss)
+def lppExcess (y : Year) : Cents :=
+  (sumBy y.listed (·.gain) + y.attribution.lppGains) - (sumBy y.listed (·.loss) + y.attribution.lppLosses)
 
 /-- 41(2): the net gain, after the listed-personal-property losses of other years claimed
 (at most the amount in 41(2)(a)). -/
@@ -170,7 +184,8 @@ def lppNetGain (y : Year) : Cents := y.lppExcess - min y.lppLossesClaimed y.lppE
 def lppTaxableNetGain (y : Year) : HalfCents := y.lppNetGain
 
 /-- 41(3): the year's listed-personal-property loss, to carry to other years. -/
-def lppLoss (y : Year) : Cents := sumBy y.listed (·.loss) - sumBy y.listed (·.gain)
+def lppLoss (y : Year) : Cents :=
+  (sumBy y.listed (·.loss) + y.attribution.lppLosses) - (sumBy y.listed (·.gain) + y.attribution.lppGains)
 
 /-- Paragraph 3(b): taxable capital gains and the taxable net gain from listed personal
 property, less allowable capital losses in excess of allowable business investment losses. -/

@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 54 statements:** 35 proven, 16 encoded, 3 not formalized.
+**Status of the 55 statements:** 36 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -59,11 +59,12 @@ graph TD
   n46["R12 · Transfers not at arm's length, and gifts"]:::proven
   n47["R13 · The spousal rollover"]:::proven
   n48["R14 · Death"]:::proven
-  n49["R11 · The principal residence exemption"]:::proven
-  n50["R2 · Cost of the substituted property"]:::proven
-  n51["N1 · Inputs decided by other provisions"]:::notFormalized
-  n52["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n53["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n49["R15 · Attribution of capital gains to the transferor"]:::proven
+  n50["R11 · The principal residence exemption"]:::proven
+  n51["R2 · Cost of the substituted property"]:::proven
+  n52["N1 · Inputs decided by other provisions"]:::notFormalized
+  n53["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n54["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -146,19 +147,21 @@ graph TD
   n44 --> n48
   n3 --> n48
   n44 --> n49
-  n11 --> n50
-  n1 --> n51
-  n5 --> n51
-  n6 --> n51
-  n8 --> n51
-  n37 --> n51
-  n50 --> n51
-  n38 --> n51
-  n30 --> n52
-  n32 --> n53
-  n34 --> n53
-  n39 --> n53
-  n42 --> n53
+  n47 --> n49
+  n44 --> n50
+  n11 --> n51
+  n1 --> n52
+  n5 --> n52
+  n6 --> n52
+  n8 --> n52
+  n37 --> n52
+  n51 --> n52
+  n38 --> n52
+  n30 --> n53
+  n32 --> n54
+  n34 --> n54
+  n39 --> n54
+  n42 --> n54
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -224,11 +227,12 @@ graph TD
   n46["R12"]:::proven
   n47["R13"]:::proven
   n48["R14"]:::proven
-  n49["R11"]:::proven
-  n50["R2"]:::proven
-  n51["N1"]:::notFormalized
-  n52["N2"]:::notFormalized
-  n53["N4"]:::notFormalized
+  n49["R15"]:::proven
+  n50["R11"]:::proven
+  n51["R2"]:::proven
+  n52["N1"]:::notFormalized
+  n53["N2"]:::notFormalized
+  n54["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -377,19 +381,21 @@ graph TD
   n44 -.-> n48
   n3 -.-> n48
   n44 -.-> n49
-  n11 -.-> n50
-  n1 -.-> n51
-  n5 -.-> n51
-  n6 -.-> n51
-  n8 -.-> n51
-  n37 -.-> n51
-  n50 -.-> n51
-  n38 -.-> n51
-  n30 -.-> n52
-  n32 -.-> n53
-  n34 -.-> n53
-  n39 -.-> n53
-  n42 -.-> n53
+  n47 -.-> n49
+  n44 -.-> n50
+  n11 -.-> n51
+  n1 -.-> n52
+  n5 -.-> n52
+  n6 -.-> n52
+  n8 -.-> n52
+  n37 -.-> n52
+  n51 -.-> n52
+  n38 -.-> n52
+  n30 -.-> n53
+  n32 -.-> n54
+  n34 -.-> n54
+  n39 -.-> n54
+  n42 -.-> n54
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -767,7 +773,7 @@ The counterpart of the superficial loss rule for corporations, trusts and partne
 
 A loss made nil by 40(2)(g) or 40(3.4) is no capital loss (39(1)(b)), so no allowable capital loss (38(b)) reduces the year's taxable capital gains in 3(b). Capital losses reduce only capital gains; an allowable business investment loss reduces any income (3(d)). Amounts are exact, in half-cents.
 
-**Lean:** [`Canteen.ITA.CapitalGains.ofParagraph40_2_g`](../../Canteen/ITA/S38/CapitalGains.lean#L189), [`Canteen.ITA.CapitalGains.ofSuspendedLoss`](../../Canteen/ITA/S38/CapitalGains.lean#L195), [`Canteen.ITA.CapitalGains.capitalLoss_of_lossNil`](../../Canteen/ITA/S38/CapitalGains.lean#L219), [`Canteen.ITA.Income.income`](../../Canteen/ITA/S3/Income.lean#L52), [`Canteen.ITA.Income.capital_losses_only_offset_gains`](../../Canteen/ITA/S3/Income.lean#L105), [`Canteen.ITA.Income.abil_reduces_income`](../../Canteen/ITA/S3/Income.lean#L114)
+**Lean:** [`Canteen.ITA.CapitalGains.ofParagraph40_2_g`](../../Canteen/ITA/S38/CapitalGains.lean#L204), [`Canteen.ITA.CapitalGains.ofSuspendedLoss`](../../Canteen/ITA/S38/CapitalGains.lean#L210), [`Canteen.ITA.CapitalGains.capitalLoss_of_lossNil`](../../Canteen/ITA/S38/CapitalGains.lean#L234), [`Canteen.ITA.Income.income`](../../Canteen/ITA/S3/Income.lean#L52), [`Canteen.ITA.Income.capital_losses_only_offset_gains`](../../Canteen/ITA/S3/Income.lean#L105), [`Canteen.ITA.Income.abil_reduces_income`](../../Canteen/ITA/S3/Income.lean#L114)
 
 ### R9. Net capital losses and taxable income
 
@@ -801,13 +807,21 @@ On death, each capital property is deemed disposed of at fair market value (70(5
 
 **Lean:** [`Canteen.ITA.Death.rollover`](../../Canteen/ITA/S70/Death.lean#L71), [`Canteen.ITA.Death.proceeds`](../../Canteen/ITA/S70/Death.lean#L88), [`Canteen.ITA.Death.terminalDispositions`](../../Canteen/ITA/S70/Death.lean#L100), [`Canteen.ITA.Death.rollover_no_gain`](../../Canteen/ITA/S70/Death.lean#L138), [`Canteen.ITA.Death.to_child_at_fair_market_value`](../../Canteen/ITA/S70/Death.lean#L132), [`Canteen.ITA.Death.slDisposition`](../../Canteen/ITA/S70/Death.lean#L104)
 
+### R15. Attribution of capital gains to the transferor
+
+**Status:** proven · **Citation:** ITA 74.2(1); 74.5(1), (3) · **Uses:** R8, R13
+
+After property is lent or transferred to a spouse or common-law partner, the net taxable capital gains (or allowable capital losses) on the spouse's dispositions of it in the attribution period are the transferor's, and not the spouse's; unless the transfer was for fair market value with the 74.5(1) conditions, or the two are separated and jointly elect.
+
+**Lean:** [`Canteen.ITA.Attribution.toIndividual`](../../Canteen/ITA/S74/Attribution.lean#L81), [`Canteen.ITA.Attribution.recipientYear`](../../Canteen/ITA/S74/Attribution.lean#L93), [`Canteen.ITA.Attribution.fairMarketValueException`](../../Canteen/ITA/S74/Attribution.lean#L54), [`Canteen.ITA.Attribution.net_one_way`](../../Canteen/ITA/S74/Attribution.lean#L104), [`Canteen.ITA.Attribution.nothing_on_fair_market_value`](../../Canteen/ITA/S74/Attribution.lean#L109)
+
 ### R11. The principal residence exemption
 
 **Status:** proven · **Citation:** ITA 40(2)(b); 54 "principal residence" · **Uses:** R8
 
 A home is the principal residence for a year if owned, ordinarily inhabited by the family (or covered by a 45(2) or (3) election), designated, and not blocked by another family-unit designation; the gain is A − A × B / C − D, so with the "plus one" a home designated for all but one of its years is fully exempt (proven).
 
-**Lean:** [`Canteen.ITA.PrincipalResidence.principalResidence`](../../Canteen/ITA/S40/PrincipalResidence.lean#L100), [`Canteen.ITA.PrincipalResidence.gain`](../../Canteen/ITA/S40/PrincipalResidence.lean#L135), [`Canteen.ITA.PrincipalResidence.exempt_of_b_ge_c`](../../Canteen/ITA/S40/PrincipalResidence.lean#L169), [`Canteen.ITA.PrincipalResidence.exempt_le`](../../Canteen/ITA/S40/PrincipalResidence.lean#L163), [`Canteen.ITA.CapitalGains.ofPrincipalResidence`](../../Canteen/ITA/S38/CapitalGains.lean#L213)
+**Lean:** [`Canteen.ITA.PrincipalResidence.principalResidence`](../../Canteen/ITA/S40/PrincipalResidence.lean#L100), [`Canteen.ITA.PrincipalResidence.gain`](../../Canteen/ITA/S40/PrincipalResidence.lean#L135), [`Canteen.ITA.PrincipalResidence.exempt_of_b_ge_c`](../../Canteen/ITA/S40/PrincipalResidence.lean#L169), [`Canteen.ITA.PrincipalResidence.exempt_le`](../../Canteen/ITA/S40/PrincipalResidence.lean#L163), [`Canteen.ITA.CapitalGains.ofPrincipalResidence`](../../Canteen/ITA/S38/CapitalGains.lean#L228)
 
 ### R2. Cost of the substituted property
 

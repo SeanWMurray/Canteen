@@ -72,10 +72,10 @@ def lines : List String := (((rule.explain fiveYears).render).splitOn "\n").drop
 
 -- Sold for $610,000 after buying for $500,000: designated 2015 to 2019, a $50,000 gain remains,
 -- a $25,000 taxable capital gain.
-example : Income.paraB { capital := ⟨[CapitalGains.ofPrincipalResidence fiveYears 61000000 50000000], 0⟩ } = 2 * 2500000 := by
+example : Income.paraB { capital := ⟨[CapitalGains.ofPrincipalResidence fiveYears 61000000 50000000], 0, {}⟩ } = 2 * 2500000 := by
   decide
 -- Fully designated: nothing.
-example : Income.paraB { capital := ⟨[CapitalGains.ofPrincipalResidence (house (yearsWith fun _ => true)) 61000000 50000000], 0⟩ } = 0 := by
+example : Income.paraB { capital := ⟨[CapitalGains.ofPrincipalResidence (house (yearsWith fun _ => true)) 61000000 50000000], 0, {}⟩ } = 0 := by
   decide
 
 end Canteen.Tests.PrincipalResidence

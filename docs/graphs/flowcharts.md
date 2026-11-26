@@ -359,6 +359,31 @@ flowchart TD
   classDef start fill:#ffffff,stroke:#212121,color:#212121
 ```
 
+## Subsection 74.5(1): the fair market value exception to attribution
+
+```mermaid
+flowchart TD
+  S(["subsection 74.5(1) · ITA 74.5(1)"]):::start
+  C0["<b>(a)</b> The fair market value of the transferred<br/>property did not exceed the fair market<br/>value of the consideration<br/>[ITA 74.5(1)(a)]"]:::fact
+  C1["<b>(b)</b> Any indebtedness taken as consideration bore<br/>interest at least at the lesser of the<br/>prescribed and an arm's length rate, paid<br/>within 30 days after each year-end<br/>[ITA 74.5(1)(b)]"]:::fact
+  C2["<b>(c)</b> The transferor elected not to have<br/>subsection 73(1) apply (or the transfer was<br/>not to a spouse or common-law partner)<br/>[ITA 74.5(1)(c)]"]:::fact
+  Y(["subsection 74.5(1) applies"]):::yes
+  N(["subsection 74.5(1) does not apply"]):::no
+  S --> C0
+  C0 -->|met| C1
+  C0 -->|not met| N
+  C1 -->|met| C2
+  C1 -->|not met| N
+  C2 -->|met| Y
+  C2 -->|not met| N
+  classDef fact fill:#eeeeee,stroke:#616161,color:#212121
+  classDef judgment fill:#ffe0b2,stroke:#ef6c00,color:#e65100
+  classDef rule fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+  classDef yes fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
+  classDef no fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+  classDef start fill:#ffffff,stroke:#212121,color:#212121
+```
+
 ## Subparagraph 40(2)(g)(iv): transfers to registered plans
 
 ```mermaid

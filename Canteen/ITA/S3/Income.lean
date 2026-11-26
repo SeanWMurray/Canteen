@@ -36,7 +36,7 @@ structure Facts where
   /-- 3(a): income from each office, employment, business, property and other source. -/
   incomeFromSources : Cents := 0
   /-- 3(b): the dispositions. -/
-  capital : Year := ⟨[], 0⟩
+  capital : Year := ⟨[], 0, {}⟩
   /-- 3(c): deductions permitted by Subdivision E. -/
   subdivisionE : Cents := 0
   /-- 3(d): losses from an office, employment, business or property. -/
@@ -105,9 +105,9 @@ def report (f : Facts) : Argument :=
 /-- Paragraph 3(b) never makes income negative: capital losses reduce only capital gains. With
 no business investment losses, income is at least what it would be with no dispositions. -/
 theorem capital_losses_only_offset_gains (f : Facts) (h : f.capital.allowableBusinessInvestmentLosses = 0) :
-    income { f with capital := ⟨[], 0⟩ } ≤ income f := by
-  have hb : Year.paragraph3b ⟨[], 0⟩ = 0 := rfl
-  have habil : Year.allowableBusinessInvestmentLosses ⟨[], 0⟩ = 0 := rfl
+    income { f with capital := ⟨[], 0, {}⟩ } ≤ income f := by
+  have hb : Year.paragraph3b ⟨[], 0, {}⟩ = 0 := rfl
+  have habil : Year.allowableBusinessInvestmentLosses ⟨[], 0, {}⟩ = 0 := rfl
   simp only [income, paraD, paraC, paraB, paraA, hb, habil, h]
   exact Nat.sub_le_sub_right (Nat.sub_le_sub_right (Nat.add_le_add_left (Nat.zero_le _) _) _) _
 

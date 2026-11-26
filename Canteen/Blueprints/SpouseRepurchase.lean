@@ -128,8 +128,8 @@ def memo : Blueprint where
     ("Paragraph 53(1)(f), for the spouse's shares", CostAddition.rule.explainText spouseCostFacts),
     ("Section 54, on both answers to J-ID", SuperficialLoss.rule.renderBranches calls facts),
     ("Section 3 for the taxpayer's year (with $60,000.00 of employment income), on the position taken",
-      (Income.report { incomeFromSources := 6000000, capital := ⟨[CapitalGains.ofParagraph40_2_g { sl := facts position }], 0⟩ }).render []),
+      (Income.report { incomeFromSources := 6000000, capital := ⟨[CapitalGains.ofParagraph40_2_g { sl := facts position }], 0, {}⟩ }).render []),
     ("Section 3 for the taxpayer's year, if the shares were not identical",
-      (Income.report { incomeFromSources := 6000000, capital := ⟨[CapitalGains.ofParagraph40_2_g { sl := facts alternative }], 0⟩ }).render [])]
+      (Income.report { incomeFromSources := 6000000, capital := ⟨[CapitalGains.ofParagraph40_2_g { sl := facts alternative }], 0, {}⟩ }).render [])]
 
 end Canteen.Blueprints.SpouseRepurchase

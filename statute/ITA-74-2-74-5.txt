@@ -1,0 +1,38 @@
+Income Tax Act, R.S.C. 1985, c. 1 (5th Supp.), subsection 74.2(1) and subsections 74.5(1) and (3)
+
+Source: Justice Canada consolidated Acts (XML), https://github.com/justicecanada/laws-lois-xml, file eng/acts/I-3.3.xml
+Current to: 2026-10-29. Last amended: 2026-06-18.
+Extracted verbatim; whitespace normalized; paragraph labels kept.
+
+74.2
+(1) Where an individual has lent or transferred property (in this section referred to as “lent or transferred property”), either directly or indirectly, by means of a trust or by any other means whatever, to or for the benefit of a person (in this subsection referred to as the “recipient”) who is the individual’s spouse or common-law partner or who has since become the individual’s spouse or common-law partner, the following rules apply for the purposes of computing the income of the individual and the recipient for a taxation year:
+  (a) the amount, if any, by which
+    (i) the total of the recipient’s taxable capital gains for the year from dispositions of property (other than listed personal property) that is lent or transferred property or property substituted therefor occurring in the period (in this subsection referred to as the “attribution period”) throughout which the individual is resident in Canada and the recipient is the individual’s spouse or common-law partner
+    [continued] exceeds
+    (ii) the total of the recipient’s allowable capital losses for the year from dispositions occurring in the attribution period of property (other than listed personal property) that is lent or transferred property or property substituted therefor
+    [continued] shall be deemed to be a taxable capital gain of the individual for the year from the disposition of property other than listed personal property;
+  (b) the amount, if any, by which the total determined under subparagraph 74.2(1)(a)(ii) exceeds the total determined under subparagraph 74.2(1)(a)(i) shall be deemed to be an allowable capital loss of the individual for the year from the disposition of property other than listed personal property;
+  (c) the amount, if any, by which
+    (i) the amount that the total of the recipient’s gains for the year from dispositions occurring in the attribution period of listed personal property that is lent or transferred property or property substituted therefor would be if the recipient had at no time owned listed personal property other than listed personal property that was lent or transferred property or property substituted therefor
+    [continued] exceeds
+    (ii) the amount that the total of the recipient’s losses for the year from dispositions of listed personal property that is lent or transferred property or property substituted therefor would be if the recipient had at no time owned listed personal property other than listed personal property that was lent or transferred property or property substituted therefor,
+    [continued] shall be deemed to be a gain of the individual for the year from the disposition of listed personal property;
+  (d) the amount, if any, by which the total determined under subparagraph 74.2(1)(c)(ii) exceeds the total determined under subparagraph 74.2(1)(c)(i) shall be deemed to be a loss of the individual for the year from the disposition of listed personal property; and
+  (e) any taxable capital gain or allowable capital loss or any gain or loss taken into account in computing an amount described in paragraph 74.2(1)(a), 74.2(1)(b), 74.2(1)(c) or 74.2(1)(d) shall, except for the purposes of those paragraphs and to the extent that the amount so described is deemed by virtue of this subsection to be a taxable capital gain or an allowable capital loss or a gain or loss of the individual, be deemed not to be a taxable capital gain or an allowable capital loss or a gain or loss, as the case may be, of the recipient.
+
+74.5
+(1) Notwithstanding any other provision of this Act, subsections 74.1(1) and (2) and section 74.2 do not apply to any income, gain or loss derived in a particular taxation year from transferred property or from property substituted therefor if
+  (a) at the time of the transfer the fair market value of the transferred property did not exceed the fair market value of the property received by the transferor as consideration for the transferred property;
+  (b) where the consideration received by the transferor included indebtedness,
+    (i) interest was charged on the indebtedness at a rate equal to or greater than the lesser of
+      (A) the prescribed rate that was in effect at the time the indebtedness was incurred, and
+      (B) the rate that would, having regard to all the circumstances, have been agreed on, at the time the indebtedness was incurred, between parties dealing with each other at arm’s length,
+    (ii) the amount of interest that was payable in respect of the particular year in respect of the indebtedness was paid not later than 30 days after the end of the particular year, and
+    (iii) the amount of interest that was payable in respect of each taxation year preceding the particular year in respect of the indebtedness was paid not later than 30 days after the end of each such taxation year; and
+  (c) where the property was transferred to or for the benefit of the transferor’s spouse or common-law partner, the transferor elected in the transferor’s return of income under this Part for the taxation year in which the property was transferred not to have the provisions of subsection 73(1) apply.
+
+74.5
+(3) Notwithstanding subsection 74.1(1) and section 74.2, where an individual has lent or transferred property, either directly or indirectly, by means of a trust or by any other means whatever, to or for the benefit of a person who is the individual’s spouse or common-law partner or who has since become the individual’s spouse or common-law partner,
+  (a) subsection 74.1(1) does not apply with respect to any income or loss from the property, or property substituted therefor, that relates to the period throughout which the individual is living separate and apart from that person by reason of a breakdown of their marriage or common-law partnership; and
+  (b) section 74.2 does not apply to a disposition of the property, or property substituted therefor, occurring at any time while the individual is living separate and apart from that person because of a breakdown of their marriage or common-law partnership, if an election completed jointly with that person not to have that section apply is filed with the individual’s return of income under this Part for the taxation year that includes that time or for any preceding taxation year.
+

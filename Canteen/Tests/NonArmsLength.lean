@@ -44,10 +44,10 @@ example : sellerProceeds { toFay 0 with noChangeInBeneficialOwnership := true } 
 -- The asymmetry, in the year's income: Ann's adjusted cost base was $50,000. Selling to Kid for
 -- $100,000, she is taxed on a $250,000 gain; when Kid later sells for $300,000, Kid is taxed on
 -- $200,000 more. $450,000 of gain is taxed, on $250,000 of growth.
-example : Income.paraB { capital := ⟨[sellerDisposition (toKid 10000000) 5000000], 0⟩ } = 2 * 12500000 := by decide +kernel
+example : Income.paraB { capital := ⟨[sellerDisposition (toKid 10000000) 5000000], 0, {}⟩ } = 2 * 12500000 := by decide +kernel
 def kidsLaterSale : CapitalGains.Disposition :=
   { description := "Kid's later sale", proceeds := 30000000, adjustedCostBase := buyerCost (toKid 10000000) }
-example : Income.paraB { capital := ⟨[kidsLaterSale], 0⟩ } = 2 * 10000000 := by decide +kernel
+example : Income.paraB { capital := ⟨[kidsLaterSale], 0, {}⟩ } = 2 * 10000000 := by decide +kernel
 
 -- The explanation relies on the arm's length judgment call only where it matters.
 #guard (sellerAtFairMarketValue.explain (toFay 10000000)).reliesOn == ["J-ARM"]

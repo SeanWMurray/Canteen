@@ -38,7 +38,7 @@ example : (disposition (q loser)).loss = 0 := by decide
 -- on the loser brings a $25,000 allowable capital loss against it.
 def terminal (electOut : Bool) : Income.Facts :=
   { incomeFromSources := 4000000,
-    capital := ⟨terminalDispositions true [shares, cottage, { loser with electedOut := electOut }], 0⟩ }
+    capital := ⟨terminalDispositions true [shares, cottage, { loser with electedOut := electOut }], 0, {}⟩ }
 example : Income.paraB (terminal false) = 2 * 25000000 := by decide
 example : Income.paraB (terminal true) = 2 * 22500000 := by decide
 example : Income.income (terminal true) = 2 * (4000000 + 22500000) := by decide

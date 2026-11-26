@@ -29,7 +29,8 @@ flowchart BT
   v20["69(1) not at arm's length, and gifts"]:::prov
   v21["73(1), (1.01) the spousal rollover"]:::prov
   v22["70(5), (6) death"]:::prov
-  v23["50(2) bad personal-use debts"]:::prov
+  v23["74.2(1), 74.5 attribution of capital gains"]:::prov
+  v24["50(2) bad personal-use debts"]:::prov
   v0 --> v1
   v0 --> v2
   v0 --> v3
@@ -58,5 +59,6 @@ flowchart BT
   v17 --> v20
   v20 --> v21
   v17 --> v22
+  v17 --> v23
   classDef prov fill:#bbdefb,stroke:#1565c0,color:#0d47a1
 ```
