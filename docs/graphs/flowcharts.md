@@ -692,6 +692,37 @@ flowchart TD
   classDef start fill:#ffffff,stroke:#212121,color:#212121
 ```
 
+## Subsection 87(1): amalgamation
+
+```mermaid
+flowchart TD
+  S(["subsection 87(1) · ITA 87(1)"]):::start
+  C0["<b>predecessors</b> Each merging corporation was a taxable<br/>Canadian corporation immediately before the<br/>merger<br/>[ITA 87(1) predecessors]"]:::fact
+  C1["<b>(a)</b> All of the predecessors' property (other<br/>than intercompany receivables and shares)<br/>becomes the new corporation's<br/>[ITA 87(1)(a)]"]:::fact
+  C2["<b>(b)</b> All of their liabilities (other than<br/>intercompany payables) become the new<br/>corporation's<br/>[ITA 87(1)(b)]"]:::fact
+  C3["<b>(c)</b> All of their shareholders (other than<br/>predecessors) receive shares of the new<br/>corporation<br/>[ITA 87(1)(c)]"]:::fact
+  C4["<b>not a purchase or winding-up</b> The property is not acquired by a purchase<br/>or on a winding-up<br/>[ITA 87(1) not a purchase or winding-up]"]:::fact
+  Y(["subsection 87(1) applies"]):::yes
+  N(["subsection 87(1) does not apply"]):::no
+  S --> C0
+  C0 -->|met| C1
+  C0 -->|not met| N
+  C1 -->|met| C2
+  C1 -->|not met| N
+  C2 -->|met| C3
+  C2 -->|not met| N
+  C3 -->|met| C4
+  C3 -->|not met| N
+  C4 -->|met| Y
+  C4 -->|not met| N
+  classDef fact fill:#eeeeee,stroke:#616161,color:#212121
+  classDef judgment fill:#ffe0b2,stroke:#ef6c00,color:#e65100
+  classDef rule fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+  classDef yes fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
+  classDef no fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+  classDef start fill:#ffffff,stroke:#212121,color:#212121
+```
+
 ## Subparagraph 40(2)(g)(iv): transfers to registered plans
 
 ```mermaid

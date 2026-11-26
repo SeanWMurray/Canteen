@@ -59,6 +59,7 @@ import Canteen.ITA.S47.IdenticalProperties
 import Canteen.ITA.S186.Connected
 import Canteen.ITA.S84.ReturnOfCapital
 import Canteen.ITA.S88.WindingUp
+import Canteen.ITA.S87.Amalgamation
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.ITA.S40.ShareToAffiliate
@@ -142,3 +143,4 @@ import Canteen.Tests.IdenticalProperties
 import Canteen.Tests.Connected
 import Canteen.Tests.ReturnOfCapital
 import Canteen.Tests.WindingUp
+import Canteen.Tests.Amalgamation87

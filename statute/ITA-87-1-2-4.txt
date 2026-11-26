@@ -1,0 +1,37 @@
+Income Tax Act, R.S.C. 1985, c. 1 (5th Supp.), subsection 87(1), paragraphs 87(2)(a) and (e), and subsection 87(4)
+
+Source: Justice Canada consolidated Acts (XML), https://github.com/justicecanada/laws-lois-xml, file eng/acts/I-3.3.xml
+Current to: 2026-10-29. Last amended: 2026-06-18.
+Extracted verbatim; whitespace normalized; paragraph labels kept.
+
+87
+  (1) In this section, an amalgamation means a merger of two or more corporations each of which was, immediately before the merger, a taxable Canadian corporation (each of which corporations is referred to in this section as a “predecessor corporation”) to form one corporate entity (in this section referred to as the “new corporation”) in such a manner that
+    (a) all of the property (except amounts receivable from any predecessor corporation or shares of the capital stock of any predecessor corporation) of the predecessor corporations immediately before the merger becomes property of the new corporation by virtue of the merger,
+    (b) all of the liabilities (except amounts payable to any predecessor corporation) of the predecessor corporations immediately before the merger become liabilities of the new corporation by virtue of the merger, and
+    (c) all of the shareholders (except any predecessor corporation), who owned shares of the capital stock of any predecessor corporation immediately before the merger, receive shares of the capital stock of the new corporation because of the merger,
+    [continued] otherwise than as a result of the acquisition of property of one corporation by another corporation, pursuant to the purchase of that property by the other corporation or as a result of the distribution of that property to the other corporation on the winding-up of the corporation.
+
+  (2) [opening words omitted]
+    (a) for the purposes of this Act, the corporate entity formed as a result of the amalgamation shall be deemed to be a new corporation the first taxation year of which shall be deemed to have commenced at the time of the amalgamation, and a taxation year of a predecessor corporation that would otherwise have ended after the amalgamation shall be deemed to have ended immediately before the amalgamation;
+    (e) subject to paragraph 87(2)(e.4) and subsection 142.6(5), where a capital property (other than depreciable property or an interest in a partnership) has been acquired by the new corporation from a predecessor corporation, the cost of the property to the new corporation shall be deemed to be the amount that was the adjusted cost base of the property to the predecessor corporation immediately before the amalgamation;
+
+  [Shares of predecessor corporation]
+  (4) Where there has been an amalgamation of two or more corporations after May 6, 1974, each shareholder (except any predecessor corporation) who, immediately before the amalgamation, owned shares of the capital stock of a predecessor corporation (in this subsection referred to as the “old shares”) that were capital property to the shareholder and who received no consideration for the disposition of those shares on the amalgamation, other than shares of the capital stock of the new corporation (in this subsection referred to as the “new shares”), shall be deemed
+    (a) to have disposed of the old shares for proceeds equal to the total of the adjusted cost bases to the shareholder of those shares immediately before the amalgamation, and
+    (b) to have acquired the new shares of any particular class of the capital stock of the new corporation at a cost to the shareholder equal to that proportion of the proceeds described in paragraph 87(4)(a) that
+      (i) the fair market value, immediately after the amalgamation, of all new shares of that particular class so acquired by the shareholder,
+      [continued] is of
+      (ii) the fair market value, immediately after the amalgamation, of all new shares so acquired by the shareholder,
+    [continued] except that, where the fair market value of the old shares immediately before the amalgamation exceeds the fair market value of the new shares immediately after the amalgamation and it is reasonable to regard any portion of the excess (in this subsection referred to as the “gift portion”) as a benefit that the shareholder desired to have conferred on a person related to the shareholder, the following rules apply:
+    (c) the shareholder shall be deemed to have disposed of the old shares for proceeds of disposition equal to the lesser of
+      (i) the total of the adjusted cost bases to the shareholder, immediately before the amalgamation, of the old shares and the gift portion, and
+      (ii) the fair market value of the old shares immediately before the amalgamation,
+    (d) the shareholder’s capital loss from the disposition of the old shares shall be deemed to be nil, and
+    (e) the cost to the shareholder of any new shares of any class of the capital stock of the new corporation acquired by the shareholder on the amalgamation shall be deemed to be that proportion of the lesser of
+      (i) the total of the adjusted cost bases to the shareholder, immediately before the amalgamation, of the old shares, and
+      (ii) the total of the fair market value, immediately after the amalgamation, of all new shares so acquired by the shareholder and the amount that, but for paragraph 87(4)(d), would have been the shareholder’s capital loss from the disposition of the old shares
+      [continued] that
+      (iii) the fair market value, immediately after the amalgamation, of the new shares of that class so acquired by the shareholder
+      [continued] is of
+      (iv) the fair market value, immediately after the amalgamation, of all new shares so acquired by the shareholder,
+    [continued] and where the old shares were taxable Canadian property of the shareholder, the new shares are deemed to be, at any time that is within 60 months after the amalgamation, taxable Canadian property of the shareholder.

@@ -32,6 +32,7 @@ import Canteen.ITA.S86.ShareExchange
 import Canteen.ITA.S44.ReplacementProperty
 import Canteen.ITA.S186.Connected
 import Canteen.ITA.S88.WindingUp
+import Canteen.ITA.S87.Amalgamation
 import Canteen.Transactions.SisterCompanyRepurchase
 import Canteen.Transactions.Crystallization
 import Canteen.Transactions.SaleThroughHoldco
@@ -158,7 +159,8 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S47.IdenticalProperties, "47(1) identical properties"),
    (`Canteen.ITA.S186.Connected, "186(2), (4) connected corporations"),
    (`Canteen.ITA.S84.ReturnOfCapital, "84(4), (4.1), 40(3) returns of capital"),
-   (`Canteen.ITA.S88.WindingUp, "88(1) winding-up and the bump")]
+   (`Canteen.ITA.S88.WindingUp, "88(1) winding-up and the bump"),
+   (`Canteen.ITA.S87.Amalgamation, "87(1), (2)(e), (4) amalgamations")]
 
 /-! ## The dashboard -/
 
@@ -249,6 +251,7 @@ def actMindmap : String := Id.run do
     (2, "s. 84.1"), (3, "84.1(1): paid-up capital, and the deemed dividend"), (3, "84.1(2): hard cost, arm's length"),
     (2, "s. 85"), (3, "85(1): the elected amount, and the cost of the consideration"), (3, "85(2.1): paid-up capital"),
     (2, "s. 86"), (3, "86(1): share exchange in a reorganization"), (3, "86(2): benefit to a related person"),
+    (2, "s. 87"), (3, "87(1): amalgamation"), (3, "87(2)(e): cost of capital property"), (3, "87(4): shareholders"),
     (2, "s. 88"), (3, "88(1): winding up a subsidiary"), (3, "88(1)(c), (d): the bump"),
     (2, "s. 89"), (3, "89(1): capital dividend account"),
     (2, "s. 110.6"), (3, "qualified small business corporation share"), (3, "annual and cumulative gains limits"),
@@ -300,6 +303,7 @@ def pages : List Page := [
       ("Subsection 44(1): replacement property", flowchart ReplacementProperty.applies.outline),
       ("Subsection 186(4): connected corporations", flowchart Connected.connected.outline),
       ("Subsection 88(1): winding up a subsidiary", flowchart WindingUp.applies.outline),
+      ("Subsection 87(1): amalgamation", flowchart Amalgamation87.amalgamation.outline),
       ("Subparagraph 40(2)(g)(iv): transfers to registered plans", flowchart Paragraph40_2_g.planTransferLoss.outline),
       ("Clause 40(2)(g)(iv)(A)", flowchart Paragraph40_2_g.planTransferA.outline),
       ("Clause 40(2)(g)(iv)(B)", flowchart Paragraph40_2_g.planTransferB.outline),

@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 72 statements:** 53 proven, 16 encoded, 3 not formalized.
+**Status of the 73 statements:** 54 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -77,11 +77,12 @@ graph TD
   n64["R30 · Connected corporations"]:::proven
   n65["R31 · Returns of capital, and negative adjusted cost base"]:::proven
   n66["R32 · Winding up a subsidiary, and the bump"]:::proven
-  n67["R11 · The principal residence exemption"]:::proven
-  n68["R2 · Cost of the substituted property"]:::proven
-  n69["N1 · Inputs decided by other provisions"]:::notFormalized
-  n70["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n71["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n67["R33 · Amalgamations"]:::proven
+  n68["R11 · The principal residence exemption"]:::proven
+  n69["R2 · Cost of the substituted property"]:::proven
+  n70["N1 · Inputs decided by other provisions"]:::notFormalized
+  n71["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n72["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -187,20 +188,22 @@ graph TD
   n44 --> n65
   n44 --> n66
   n44 --> n67
-  n50 --> n67
-  n11 --> n68
-  n1 --> n69
-  n5 --> n69
-  n6 --> n69
-  n8 --> n69
-  n37 --> n69
-  n68 --> n69
-  n38 --> n69
-  n30 --> n70
-  n32 --> n71
-  n34 --> n71
-  n39 --> n71
-  n42 --> n71
+  n51 --> n67
+  n44 --> n68
+  n50 --> n68
+  n11 --> n69
+  n1 --> n70
+  n5 --> n70
+  n6 --> n70
+  n8 --> n70
+  n37 --> n70
+  n69 --> n70
+  n38 --> n70
+  n30 --> n71
+  n32 --> n72
+  n34 --> n72
+  n39 --> n72
+  n42 --> n72
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -284,11 +287,12 @@ graph TD
   n64["R30"]:::proven
   n65["R31"]:::proven
   n66["R32"]:::proven
-  n67["R11"]:::proven
-  n68["R2"]:::proven
-  n69["N1"]:::notFormalized
-  n70["N2"]:::notFormalized
-  n71["N4"]:::notFormalized
+  n67["R33"]:::proven
+  n68["R11"]:::proven
+  n69["R2"]:::proven
+  n70["N1"]:::notFormalized
+  n71["N2"]:::notFormalized
+  n72["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -467,20 +471,22 @@ graph TD
   n44 -.-> n65
   n44 -.-> n66
   n44 -.-> n67
-  n50 -.-> n67
-  n11 -.-> n68
-  n1 -.-> n69
-  n5 -.-> n69
-  n6 -.-> n69
-  n8 -.-> n69
-  n37 -.-> n69
-  n68 -.-> n69
-  n38 -.-> n69
-  n30 -.-> n70
-  n32 -.-> n71
-  n34 -.-> n71
-  n39 -.-> n71
-  n42 -.-> n71
+  n51 -.-> n67
+  n44 -.-> n68
+  n50 -.-> n68
+  n11 -.-> n69
+  n1 -.-> n70
+  n5 -.-> n70
+  n6 -.-> n70
+  n8 -.-> n70
+  n37 -.-> n70
+  n69 -.-> n70
+  n38 -.-> n70
+  n30 -.-> n71
+  n32 -.-> n72
+  n34 -.-> n72
+  n39 -.-> n72
+  n42 -.-> n72
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -1035,6 +1041,14 @@ A reduction of paid-up capital paid out by a private corporation is a dividend o
 When a 90%-owned taxable Canadian subsidiary is wound up into its parent, its property passes at cost amount; the parent's shares are disposed of for at least their cost; and the excess of that cost over the subsidiary's net tax cost (and dividends received) may be added to the cost of eligible capital property, each up to its value when control was acquired. Proven: no gain to the subsidiary, no loss on the shares, and the bump never exceeds the room.
 
 **Lean:** [`Canteen.ITA.WindingUp.applies`](../../Canteen/ITA/S88/WindingUp.lean#L83), [`Canteen.ITA.WindingUp.shareProceeds`](../../Canteen/ITA/S88/WindingUp.lean#L99), [`Canteen.ITA.WindingUp.bumpOf`](../../Canteen/ITA/S88/WindingUp.lean#L113), [`Canteen.ITA.WindingUp.bump_le_room`](../../Canteen/ITA/S88/WindingUp.lean#L162), [`Canteen.ITA.WindingUp.no_share_loss`](../../Canteen/ITA/S88/WindingUp.lean#L171), [`Canteen.ITA.WindingUp.no_subsidiary_gain`](../../Canteen/ITA/S88/WindingUp.lean#L176)
+
+### R33. Amalgamations
+
+**Status:** proven · **Citation:** ITA 87(1), (2)(a), (e), (4) · **Uses:** R8, R17
+
+In an amalgamation of taxable Canadian corporations, the new corporation takes the predecessors' capital property at their adjusted cost base (87(2)(e)); a shareholder receiving only new shares disposes of the old shares at their cost and takes the new shares at that cost, unless a benefit is conferred on a related person (87(4)). Proven: the shareholder rolls over with no gain or loss, and a gift portion never makes a loss.
+
+**Lean:** [`Canteen.ITA.Amalgamation87.amalgamation`](../../Canteen/ITA/S87/Amalgamation.lean#L52), [`Canteen.ITA.Amalgamation87.newCorporationCost`](../../Canteen/ITA/S87/Amalgamation.lean#L71), [`Canteen.ITA.Amalgamation87.Shareholder.proceeds`](../../Canteen/ITA/S87/Amalgamation.lean#L96), [`Canteen.ITA.Amalgamation87.shareholder_rollover`](../../Canteen/ITA/S87/Amalgamation.lean#L118), [`Canteen.ITA.Amalgamation87.no_loss_on_gift`](../../Canteen/ITA/S87/Amalgamation.lean#L126)
 
 ### R11. The principal residence exemption
 

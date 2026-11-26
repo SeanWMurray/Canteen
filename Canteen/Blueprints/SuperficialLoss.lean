@@ -34,6 +34,7 @@ import Canteen.ITA.S47.IdenticalProperties
 import Canteen.ITA.S186.Connected
 import Canteen.ITA.S84.ReturnOfCapital
 import Canteen.ITA.S88.WindingUp
+import Canteen.ITA.S87.Amalgamation
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -432,6 +433,13 @@ def blueprint : Blueprint where
             "never exceeds the room."
           lean := [``WindingUp.applies, ``WindingUp.shareProceeds, ``WindingUp.bumpOf, ``WindingUp.bump_le_room,
             ``WindingUp.no_share_loss, ``WindingUp.no_subsidiary_gain], uses := ["R8"] },
+        { id := "R33", kind := .law, title := "Amalgamations", citation := "ITA 87(1), (2)(a), (e), (4)"
+          statement := "In an amalgamation of taxable Canadian corporations, the new corporation takes the predecessors' " ++
+            "capital property at their adjusted cost base (87(2)(e)); a shareholder receiving only new shares disposes of the " ++
+            "old shares at their cost and takes the new shares at that cost, unless a benefit is conferred on a related " ++
+            "person (87(4)). Proven: the shareholder rolls over with no gain or loss, and a gift portion never makes a loss."
+          lean := [``Amalgamation87.amalgamation, ``Amalgamation87.newCorporationCost, ``Amalgamation87.Shareholder.proceeds,
+            ``Amalgamation87.shareholder_rollover, ``Amalgamation87.no_loss_on_gift], uses := ["R8", "R17"] },
         { id := "R11", kind := .law, title := "The principal residence exemption", citation := "ITA 40(2)(b); 54 \"principal residence\""
           statement := "A home is the principal residence for a year if owned, ordinarily inhabited by the family (or covered by " ++
             "a 45(2) or (3) election, for at most four years: (d)), designated, and not blocked by another family-unit " ++

@@ -47,7 +47,8 @@ flowchart BT
   v38["186(2), (4) connected corporations"]:::prov
   v39["84(4), (4.1), 40(3) returns of capital"]:::prov
   v40["88(1) winding-up and the bump"]:::prov
-  v41["50(2) bad personal-use debts"]:::prov
+  v41["87(1), (2)(e), (4) amalgamations"]:::prov
+  v42["50(2) bad personal-use debts"]:::prov
   v0 --> v1
   v0 --> v2
   v0 --> v3
@@ -94,5 +95,6 @@ flowchart BT
   v6 --> v38
   v17 --> v39
   v17 --> v40
+  v25 --> v41
   classDef prov fill:#bbdefb,stroke:#1565c0,color:#0d47a1
 ```
