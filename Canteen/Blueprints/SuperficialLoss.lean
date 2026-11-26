@@ -20,6 +20,7 @@ import Canteen.ITA.S74.Attribution
 import Canteen.ITA.S45.ChangeInUse
 import Canteen.ITA.S85.TransferToCorporation
 import Canteen.ITA.S84_1.SurplusStripping
+import Canteen.ITA.S110_6.CapitalGainsDeduction
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -312,6 +313,16 @@ def blueprint : Blueprint where
           lean := [``SurplusStripping.applies, ``SurplusStripping.dividend, ``SurplusStripping.proceeds,
             ``SurplusStripping.boot_over_e_is_dividend, ``SurplusStripping.no_dividend_within_e,
             ``SurplusStripping.ofTransfer], uses := ["R8", "R17"] },
+        { id := "R19", kind := .law, title := "The capital gains deduction", citation := "ITA 110.6(1), (2.1)"
+          statement := "A resident individual who disposes of qualified small business corporation shares (a small business " ++
+            "corporation share, held only by related persons for 24 months, in a CCPC with more than half its assets' value " ++
+            "in active business assets) may deduct the least of what is left of the lifetime limit, the cumulative gains " ++
+            "limit, the annual gains limit, and the 3(b) amount from those shares. Proven: never past the lifetime limit or " ++
+            "the annual gains limit, and a cumulative net investment loss never helps."
+          lean := [``CapitalGainsDeduction.qualifiedShare, ``CapitalGainsDeduction.deduction,
+            ``CapitalGainsDeduction.annualGainsLimit, ``CapitalGainsDeduction.cumulativeGainsLimit,
+            ``CapitalGainsDeduction.lifetime_limit, ``CapitalGainsDeduction.deduction_le_annual,
+            ``CapitalGainsDeduction.cnil_never_helps], uses := ["R8"] },
         { id := "R11", kind := .law, title := "The principal residence exemption", citation := "ITA 40(2)(b); 54 \"principal residence\""
           statement := "A home is the principal residence for a year if owned, ordinarily inhabited by the family (or covered by " ++
             "a 45(2) or (3) election, for at most four years: (d)), designated, and not blocked by another family-unit " ++

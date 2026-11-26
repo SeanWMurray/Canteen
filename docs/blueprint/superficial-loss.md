@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 58 statements:** 39 proven, 16 encoded, 3 not formalized.
+**Status of the 59 statements:** 40 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -63,11 +63,12 @@ graph TD
   n50["R16 · Change in use"]:::proven
   n51["R17 · Transfer of property to a corporation"]:::proven
   n52["R18 · Shares sold to a non-arm's length corporation"]:::proven
-  n53["R11 · The principal residence exemption"]:::proven
-  n54["R2 · Cost of the substituted property"]:::proven
-  n55["N1 · Inputs decided by other provisions"]:::notFormalized
-  n56["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n57["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n53["R19 · The capital gains deduction"]:::proven
+  n54["R11 · The principal residence exemption"]:::proven
+  n55["R2 · Cost of the substituted property"]:::proven
+  n56["N1 · Inputs decided by other provisions"]:::notFormalized
+  n57["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n58["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -157,20 +158,21 @@ graph TD
   n44 --> n52
   n51 --> n52
   n44 --> n53
-  n50 --> n53
-  n11 --> n54
-  n1 --> n55
-  n5 --> n55
-  n6 --> n55
-  n8 --> n55
-  n37 --> n55
-  n54 --> n55
-  n38 --> n55
-  n30 --> n56
-  n32 --> n57
-  n34 --> n57
-  n39 --> n57
-  n42 --> n57
+  n44 --> n54
+  n50 --> n54
+  n11 --> n55
+  n1 --> n56
+  n5 --> n56
+  n6 --> n56
+  n8 --> n56
+  n37 --> n56
+  n55 --> n56
+  n38 --> n56
+  n30 --> n57
+  n32 --> n58
+  n34 --> n58
+  n39 --> n58
+  n42 --> n58
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -240,11 +242,12 @@ graph TD
   n50["R16"]:::proven
   n51["R17"]:::proven
   n52["R18"]:::proven
-  n53["R11"]:::proven
-  n54["R2"]:::proven
-  n55["N1"]:::notFormalized
-  n56["N2"]:::notFormalized
-  n57["N4"]:::notFormalized
+  n53["R19"]:::proven
+  n54["R11"]:::proven
+  n55["R2"]:::proven
+  n56["N1"]:::notFormalized
+  n57["N2"]:::notFormalized
+  n58["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -407,20 +410,21 @@ graph TD
   n51 --> n52
   n44 -.-> n52
   n44 -.-> n53
-  n50 -.-> n53
-  n11 -.-> n54
-  n1 -.-> n55
-  n5 -.-> n55
-  n6 -.-> n55
-  n8 -.-> n55
-  n37 -.-> n55
-  n54 -.-> n55
-  n38 -.-> n55
-  n30 -.-> n56
-  n32 -.-> n57
-  n34 -.-> n57
-  n39 -.-> n57
-  n42 -.-> n57
+  n44 -.-> n54
+  n50 -.-> n54
+  n11 -.-> n55
+  n1 -.-> n56
+  n5 -.-> n56
+  n6 -.-> n56
+  n8 -.-> n56
+  n37 -.-> n56
+  n55 -.-> n56
+  n38 -.-> n56
+  n30 -.-> n57
+  n32 -.-> n58
+  n34 -.-> n58
+  n39 -.-> n58
+  n42 -.-> n58
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -863,6 +867,14 @@ Eligible property transferred to a taxable Canadian corporation for consideratio
 An individual resident in Canada who disposes of shares to a corporation not at arm's length, connected with the subject corporation after, has the new shares' paid-up capital ground down, and is deemed to receive a dividend for what comes out above the greater of the shares' paid-up capital and their hard adjusted cost base; the dividend is not proceeds. Proven: boot above that amount is a dividend, dollar for dollar.
 
 **Lean:** [`Canteen.ITA.SurplusStripping.applies`](../../Canteen/ITA/S84_1/SurplusStripping.lean#L102), [`Canteen.ITA.SurplusStripping.dividend`](../../Canteen/ITA/S84_1/SurplusStripping.lean#L142), [`Canteen.ITA.SurplusStripping.proceeds`](../../Canteen/ITA/S84_1/SurplusStripping.lean#L145), [`Canteen.ITA.SurplusStripping.boot_over_e_is_dividend`](../../Canteen/ITA/S84_1/SurplusStripping.lean#L199), [`Canteen.ITA.SurplusStripping.no_dividend_within_e`](../../Canteen/ITA/S84_1/SurplusStripping.lean#L187), [`Canteen.ITA.SurplusStripping.ofTransfer`](../../Canteen/ITA/S84_1/SurplusStripping.lean#L153)
+
+### R19. The capital gains deduction
+
+**Status:** proven · **Citation:** ITA 110.6(1), (2.1) · **Uses:** R8
+
+A resident individual who disposes of qualified small business corporation shares (a small business corporation share, held only by related persons for 24 months, in a CCPC with more than half its assets' value in active business assets) may deduct the least of what is left of the lifetime limit, the cumulative gains limit, the annual gains limit, and the 3(b) amount from those shares. Proven: never past the lifetime limit or the annual gains limit, and a cumulative net investment loss never helps.
+
+**Lean:** [`Canteen.ITA.CapitalGainsDeduction.qualifiedShare`](../../Canteen/ITA/S110_6/CapitalGainsDeduction.lean#L84), [`Canteen.ITA.CapitalGainsDeduction.deduction`](../../Canteen/ITA/S110_6/CapitalGainsDeduction.lean#L153), [`Canteen.ITA.CapitalGainsDeduction.annualGainsLimit`](../../Canteen/ITA/S110_6/CapitalGainsDeduction.lean#L142), [`Canteen.ITA.CapitalGainsDeduction.cumulativeGainsLimit`](../../Canteen/ITA/S110_6/CapitalGainsDeduction.lean#L144), [`Canteen.ITA.CapitalGainsDeduction.lifetime_limit`](../../Canteen/ITA/S110_6/CapitalGainsDeduction.lean#L193), [`Canteen.ITA.CapitalGainsDeduction.deduction_le_annual`](../../Canteen/ITA/S110_6/CapitalGainsDeduction.lean#L202), [`Canteen.ITA.CapitalGainsDeduction.cnil_never_helps`](../../Canteen/ITA/S110_6/CapitalGainsDeduction.lean#L213)
 
 ### R11. The principal residence exemption
 

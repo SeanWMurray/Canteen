@@ -468,6 +468,34 @@ flowchart TD
   classDef start fill:#ffffff,stroke:#212121,color:#212121
 ```
 
+## Section 110.6 "qualified small business corporation share"
+
+```mermaid
+flowchart TD
+  S(["the definition #quot;qualified small business corporation share#quot; · ITA 110.6(1) #quot;qualified small business corporation share#quot;"]):::start
+  C0["<b>(a)</b> At the determination time it is a share of a<br/>small business corporation owned by the<br/>individual, the individual's spouse or<br/>common-law partner, or a related partnership<br/><i>judgment call: judgment calls computed from the facts</i><br/>[ITA 110.6(1) #quot;qualified small business corporation share#quot; (a)]"]:::judgment
+  C1["<b>(b)</b> Throughout the 24 months before, no one but<br/>the individual or a related person or<br/>partnership owned it<br/>[ITA 110.6(1) #quot;qualified small business corporation share#quot; (b)]"]:::fact
+  C2["<b>(c)</b> Throughout the part of the 24 months it was<br/>so owned, the corporation was a<br/>Canadian-controlled private corporation more<br/>than 50% of whose assets' value was in<br/>active business assets or qualifying<br/>connected shares and debt<br/>[ITA 110.6(1) #quot;qualified small business corporation share#quot; (c)]"]:::fact
+  C3["<b>(e)</b> Any share it was substituted for met<br/>paragraphs (b) and (c) up to the<br/>substitution<br/>[ITA 110.6(1) #quot;qualified small business corporation share#quot; (e)]"]:::fact
+  Y(["the definition #quot;qualified small business corporation share#quot; applies"]):::yes
+  N(["the definition #quot;qualified small business corporation share#quot; does not apply"]):::no
+  S --> C0
+  C0 -->|met| C1
+  C0 -->|not met| N
+  C1 -->|met| C2
+  C1 -->|not met| N
+  C2 -->|met| C3
+  C2 -->|not met| N
+  C3 -->|met| Y
+  C3 -->|not met| N
+  classDef fact fill:#eeeeee,stroke:#616161,color:#212121
+  classDef judgment fill:#ffe0b2,stroke:#ef6c00,color:#e65100
+  classDef rule fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+  classDef yes fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
+  classDef no fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+  classDef start fill:#ffffff,stroke:#212121,color:#212121
+```
+
 ## Subparagraph 40(2)(g)(iv): transfers to registered plans
 
 ```mermaid

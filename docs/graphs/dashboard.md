@@ -9,9 +9,9 @@ An overview of the project, drawn from the Lean.
 Every statement in every blueprint, by the status Lean computes for it.
 
 ```mermaid
-pie showData title All 147 statements in the memos and blueprints, by status
+pie showData title All 148 statements in the memos and blueprints, by status
     "encoded" : 25
-    "proven" : 90
+    "proven" : 91
     "not formalized" : 3
     "fact" : 24
     "judgment call" : 5
@@ -112,18 +112,22 @@ mindmap
     n43["`s. 85`"]
       n44["`85(1): the elected amount, and the cost of the consideration`"]
       n45["`85(2.1): paid-up capital`"]
-    n46["`s. 111`"]
-      n47["`111(8): net capital loss`"]
-      n48["`111(1)(b), (1.1): deduction`"]
-    n49["`s. 248`"]
-      n50["`248(1): majority-interest partner`"]
-    n51["`s. 251`"]
-      n52["`251(1): arm's length`"]
-      n53["`251(2), (3): related persons`"]
-      n54["`251(3.1), (3.2): amalgamations`"]
-      n55["`251(6): blood, marriage, adoption`"]
-    n56["`s. 251.1`"]
-      n57["`251.1(1)(a) to (h): affiliated persons`"]
-      n58["`251.1(2): amalgamations`"]
-      n59["`251.1(3), (4): definitions and rules`"]
+    n46["`s. 110.6`"]
+      n47["`qualified small business corporation share`"]
+      n48["`annual and cumulative gains limits`"]
+      n49["`110.6(2.1): the deduction`"]
+    n50["`s. 111`"]
+      n51["`111(8): net capital loss`"]
+      n52["`111(1)(b), (1.1): deduction`"]
+    n53["`s. 248`"]
+      n54["`248(1): majority-interest partner`"]
+    n55["`s. 251`"]
+      n56["`251(1): arm's length`"]
+      n57["`251(2), (3): related persons`"]
+      n58["`251(3.1), (3.2): amalgamations`"]
+      n59["`251(6): blood, marriage, adoption`"]
+    n60["`s. 251.1`"]
+      n61["`251.1(1)(a) to (h): affiliated persons`"]
+      n62["`251.1(2): amalgamations`"]
+      n63["`251.1(3), (4): definitions and rules`"]
 ```
