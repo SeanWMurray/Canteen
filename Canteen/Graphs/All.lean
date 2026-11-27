@@ -56,6 +56,7 @@ import Canteen.ITA.S44_1.SmallBusinessRollover
 import Canteen.ITA.S46.PersonalUse
 import Canteen.ITA.S7.StockOptions
 import Canteen.ITA.S110_1.CorporateDonations
+import Canteen.ITA.S3.CorporateYear
 import Canteen.Transactions.DebtSwap
 import Canteen.ITA.S87.Amalgamation
 import Canteen.ITA.S39.CanadianSecurities
@@ -225,7 +226,8 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S44_1.SmallBusinessRollover, "44.1 the small business investment rollover"),
    (`Canteen.ITA.S46.PersonalUse, "46 personal-use property, the $1,000 rule"),
    (`Canteen.ITA.S7.StockOptions, "7, 110(1)(d), (d.1) employee stock options"),
-   (`Canteen.ITA.S110_1.CorporateDonations, "110.1(1)(a) a corporation's charitable gifts")]
+   (`Canteen.ITA.S110_1.CorporateDonations, "110.1(1)(a) a corporation's charitable gifts"),
+   (`Canteen.ITA.S3.CorporateYear, "2(2), 3, 129(4) a corporation's year, to taxable income and tax")]
 
 /-! ## The dashboard -/
 
@@ -292,7 +294,7 @@ def transactionTimeline : String :=
 parentheses in citations are not read as node shapes. -/
 def actMindmap : String := Id.run do
   let tree : List (Nat × String) := [
-    (2, "ss. 2, 3"), (3, "income for the year: (a) to (f)"), (3, "2(2): taxable income"),
+    (2, "ss. 2, 3"), (3, "income for the year: (a) to (f)"), (3, "2(2): taxable income"), (3, "a corporation's year"),
     (2, "s. 6"), (3, "6(1)(e), 6(2): automobile standby charge"),
     (2, "s. 7"), (3, "7(1)(a): the option benefit"), (3, "7(1.1): CCPC deferral"),
     (2, "s. 13"), (3, "13(21): undepreciated capital cost"), (3, "13(1): recapture"),

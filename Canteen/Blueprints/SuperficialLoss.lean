@@ -71,6 +71,7 @@ import Canteen.ITA.S44_1.SmallBusinessRollover
 import Canteen.ITA.S46.PersonalUse
 import Canteen.ITA.S7.StockOptions
 import Canteen.ITA.S110_1.CorporateDonations
+import Canteen.ITA.S3.CorporateYear
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -716,6 +717,18 @@ def blueprint : Blueprint where
             "never more than income, no more than 75% of it without gains on gifts, and deducted plus carried is what was available."
           lean := [``CorporateDonations.limit, ``CorporateDonations.deduction, ``CorporateDonations.carriedForward,
             ``CorporateDonations.deduction_le_income, ``CorporateDonations.three_quarters, ``CorporateDonations.deducted_plus_carried] },
+        { id := "R70", kind := .law, title := "A corporation's year, to taxable income and tax", citation := "ITA 2(2); 3; 110.1; 111(1); 112(1); 129(4)"
+          statement := "A corporation's income from active business, personal services business, property and dividends " ++
+            "received, with its net taxable capital gains (a 55(2) dividend as a gain); taxable income after gifts, the " ++
+            "112(1) deduction and losses; aggregate investment income, leaving out the deducted dividends; then Part I, " ++
+            "Part IV and Part III.1 tax, the dividend refund, the pool and the capital dividend account. Proven: taxable " ++
+            "income never exceeds income, 112(1) never deducts more than income includes, and a deductible dividend 55(2) " ++
+            "does not reach is not investment income."
+          lean := [``CorporateYear.income, ``CorporateYear.taxableIncome, ``CorporateYear.aggregateInvestmentIncome,
+            ``CorporateYear.ratesFacts, ``CorporateYear.refundableFacts, ``CorporateYear.gripFacts, ``CorporateYear.cdaFacts,
+            ``CorporateYear.netTax, ``CorporateYear.taxableIncome_le_income, ``CorporateYear.dividendDeduction_le,
+            ``CorporateYear.deductible_dividend_not_investment_income],
+          uses := ["R8", "R9", "R23", "R26", "R44", "R45", "R47", "R69"] },
         { id := "R35", kind := .law, title := "An individual's year, to taxable income and tax", citation := "ITA 2(2); 3; 111(1)(b); 110.6; 117(2)"
           statement := "Income from sources (employment and business, dividends with the gross-up, recapture, attributed " ++
             "income), net taxable capital gains, less terminal and other losses; then taxable income, after the net capital " ++

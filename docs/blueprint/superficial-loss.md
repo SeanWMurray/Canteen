@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 109 statements:** 90 proven, 16 encoded, 3 not formalized.
+**Status of the 110 statements:** 91 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -112,13 +112,14 @@ graph TD
   n99["R67 · Personal-use property: the $1,000 rule"]:::proven
   n100["R68 · Employee stock options"]:::proven
   n101["R69 · A corporation's charitable gifts"]:::proven
-  n102["R35 · An individual's year, to taxable income and tax"]:::proven
-  n103["R48 · The minimum tax"]:::proven
-  n104["R11 · The principal residence exemption"]:::proven
-  n105["R2 · Cost of the substituted property"]:::proven
-  n106["N1 · Inputs decided by other provisions"]:::notFormalized
-  n107["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n108["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n102["R70 · A corporation's year, to taxable income and tax"]:::proven
+  n103["R35 · An individual's year, to taxable income and tax"]:::proven
+  n104["R48 · The minimum tax"]:::proven
+  n105["R11 · The principal residence exemption"]:::proven
+  n106["R2 · Cost of the substituted property"]:::proven
+  n107["N1 · Inputs decided by other provisions"]:::notFormalized
+  n108["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n109["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -240,45 +241,53 @@ graph TD
   n77 --> n80
   n44 --> n102
   n45 --> n102
-  n53 --> n102
-  n55 --> n102
-  n56 --> n102
-  n58 --> n102
-  n73 --> n102
-  n74 --> n102
-  n75 --> n102
-  n76 --> n102
-  n81 --> n102
-  n82 --> n102
-  n83 --> n102
-  n84 --> n102
-  n85 --> n102
-  n87 --> n102
-  n88 --> n102
-  n89 --> n102
-  n90 --> n102
-  n91 --> n102
-  n92 --> n102
-  n93 --> n102
-  n94 --> n102
-  n97 --> n102
-  n100 --> n102
-  n102 --> n103
-  n44 --> n104
-  n50 --> n104
-  n11 --> n105
-  n1 --> n106
-  n5 --> n106
-  n6 --> n106
-  n8 --> n106
-  n37 --> n106
-  n105 --> n106
-  n38 --> n106
-  n30 --> n107
-  n32 --> n108
-  n34 --> n108
-  n39 --> n108
-  n42 --> n108
+  n57 --> n102
+  n60 --> n102
+  n77 --> n102
+  n78 --> n102
+  n80 --> n102
+  n101 --> n102
+  n44 --> n103
+  n45 --> n103
+  n53 --> n103
+  n55 --> n103
+  n56 --> n103
+  n58 --> n103
+  n73 --> n103
+  n74 --> n103
+  n75 --> n103
+  n76 --> n103
+  n81 --> n103
+  n82 --> n103
+  n83 --> n103
+  n84 --> n103
+  n85 --> n103
+  n87 --> n103
+  n88 --> n103
+  n89 --> n103
+  n90 --> n103
+  n91 --> n103
+  n92 --> n103
+  n93 --> n103
+  n94 --> n103
+  n97 --> n103
+  n100 --> n103
+  n103 --> n104
+  n44 --> n105
+  n50 --> n105
+  n11 --> n106
+  n1 --> n107
+  n5 --> n107
+  n6 --> n107
+  n8 --> n107
+  n37 --> n107
+  n106 --> n107
+  n38 --> n107
+  n30 --> n108
+  n32 --> n109
+  n34 --> n109
+  n39 --> n109
+  n42 --> n109
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -397,13 +406,14 @@ graph TD
   n99["R67"]:::proven
   n100["R68"]:::proven
   n101["R69"]:::proven
-  n102["R35"]:::proven
-  n103["R48"]:::proven
-  n104["R11"]:::proven
-  n105["R2"]:::proven
-  n106["N1"]:::notFormalized
-  n107["N2"]:::notFormalized
-  n108["N4"]:::notFormalized
+  n102["R70"]:::proven
+  n103["R35"]:::proven
+  n104["R48"]:::proven
+  n105["R11"]:::proven
+  n106["R2"]:::proven
+  n107["N1"]:::notFormalized
+  n108["N2"]:::notFormalized
+  n109["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -603,56 +613,64 @@ graph TD
   n74 -.-> n76
   n77 --> n78
   n77 --> n80
-  n93 --> n102
-  n55 --> n102
-  n94 --> n102
-  n81 --> n102
-  n91 --> n102
-  n84 --> n102
-  n58 --> n102
-  n97 --> n102
   n44 --> n102
-  n87 --> n102
-  n73 --> n102
-  n56 --> n102
-  n100 --> n102
-  n92 --> n102
-  n85 --> n102
+  n57 --> n102
   n45 --> n102
-  n53 --> n102
-  n89 --> n102
-  n90 --> n102
-  n82 --> n102
-  n74 --> n102
-  n83 --> n102
-  n76 --> n102
-  n75 --> n102
-  n88 -.-> n102
+  n101 --> n102
+  n78 --> n102
+  n77 --> n102
+  n80 --> n102
+  n60 -.-> n102
+  n93 --> n103
   n55 --> n103
-  n102 --> n103
+  n94 --> n103
   n81 --> n103
   n91 --> n103
   n84 --> n103
   n58 --> n103
-  n45 --> n103
+  n97 --> n103
+  n44 --> n103
   n87 --> n103
   n73 --> n103
+  n56 --> n103
   n100 --> n103
-  n44 -.-> n104
-  n50 -.-> n104
-  n11 -.-> n105
-  n1 -.-> n106
-  n5 -.-> n106
-  n6 -.-> n106
-  n8 -.-> n106
-  n37 -.-> n106
-  n105 -.-> n106
-  n38 -.-> n106
-  n30 -.-> n107
-  n32 -.-> n108
-  n34 -.-> n108
-  n39 -.-> n108
-  n42 -.-> n108
+  n92 --> n103
+  n85 --> n103
+  n45 --> n103
+  n53 --> n103
+  n89 --> n103
+  n90 --> n103
+  n82 --> n103
+  n74 --> n103
+  n83 --> n103
+  n76 --> n103
+  n75 --> n103
+  n88 -.-> n103
+  n55 --> n104
+  n103 --> n104
+  n81 --> n104
+  n91 --> n104
+  n84 --> n104
+  n58 --> n104
+  n45 --> n104
+  n87 --> n104
+  n73 --> n104
+  n100 --> n104
+  n44 -.-> n105
+  n50 -.-> n105
+  n11 -.-> n106
+  n1 -.-> n107
+  n5 -.-> n107
+  n6 -.-> n107
+  n8 -.-> n107
+  n37 -.-> n107
+  n106 -.-> n107
+  n38 -.-> n107
+  n30 -.-> n108
+  n32 -.-> n109
+  n34 -.-> n109
+  n39 -.-> n109
+  n42 -.-> n109
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -1487,6 +1505,14 @@ Securities acquired under an employee option are a benefit of their value less w
 A corporation deducts its gifts of the year and the five before, up to the lesser of its income and 75% of it plus 25% of the gains on gifts (and recapture on gifted property); the rest carries forward. Proven: never more than income, no more than 75% of it without gains on gifts, and deducted plus carried is what was available.
 
 **Lean:** [`Canteen.ITA.CorporateDonations.limit`](../../Canteen/ITA/S110_1/CorporateDonations.lean#L47), [`Canteen.ITA.CorporateDonations.deduction`](../../Canteen/ITA/S110_1/CorporateDonations.lean#L51), [`Canteen.ITA.CorporateDonations.carriedForward`](../../Canteen/ITA/S110_1/CorporateDonations.lean#L54), [`Canteen.ITA.CorporateDonations.deduction_le_income`](../../Canteen/ITA/S110_1/CorporateDonations.lean#L66), [`Canteen.ITA.CorporateDonations.three_quarters`](../../Canteen/ITA/S110_1/CorporateDonations.lean#L70), [`Canteen.ITA.CorporateDonations.deducted_plus_carried`](../../Canteen/ITA/S110_1/CorporateDonations.lean#L78)
+
+### R70. A corporation's year, to taxable income and tax
+
+**Status:** proven · **Citation:** ITA 2(2); 3; 110.1; 111(1); 112(1); 129(4) · **Uses:** R8, R9, R23, R26, R44, R45, R47, R69
+
+A corporation's income from active business, personal services business, property and dividends received, with its net taxable capital gains (a 55(2) dividend as a gain); taxable income after gifts, the 112(1) deduction and losses; aggregate investment income, leaving out the deducted dividends; then Part I, Part IV and Part III.1 tax, the dividend refund, the pool and the capital dividend account. Proven: taxable income never exceeds income, 112(1) never deducts more than income includes, and a deductible dividend 55(2) does not reach is not investment income.
+
+**Lean:** [`Canteen.ITA.CorporateYear.income`](../../Canteen/ITA/S3/CorporateYear.lean#L146), [`Canteen.ITA.CorporateYear.taxableIncome`](../../Canteen/ITA/S3/CorporateYear.lean#L160), [`Canteen.ITA.CorporateYear.aggregateInvestmentIncome`](../../Canteen/ITA/S3/CorporateYear.lean#L168), [`Canteen.ITA.CorporateYear.ratesFacts`](../../Canteen/ITA/S3/CorporateYear.lean#L172), [`Canteen.ITA.CorporateYear.refundableFacts`](../../Canteen/ITA/S3/CorporateYear.lean#L180), [`Canteen.ITA.CorporateYear.gripFacts`](../../Canteen/ITA/S3/CorporateYear.lean#L187), [`Canteen.ITA.CorporateYear.cdaFacts`](../../Canteen/ITA/S3/CorporateYear.lean#L193), [`Canteen.ITA.CorporateYear.netTax`](../../Canteen/ITA/S3/CorporateYear.lean#L204), [`Canteen.ITA.CorporateYear.taxableIncome_le_income`](../../Canteen/ITA/S3/CorporateYear.lean#L243), [`Canteen.ITA.CorporateYear.dividendDeduction_le`](../../Canteen/ITA/S3/CorporateYear.lean#L257), [`Canteen.ITA.CorporateYear.deductible_dividend_not_investment_income`](../../Canteen/ITA/S3/CorporateYear.lean#L261)
 
 ### R35. An individual's year, to taxable income and tax
 

@@ -170,6 +170,7 @@ R66: proven
 R67: proven
 R68: proven
 R69: proven
+R70: proven
 R35: proven
 R48: proven
 R11: proven

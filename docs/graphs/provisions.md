@@ -84,7 +84,8 @@ flowchart BT
   v75["44.1 the small business investment rollover"]:::prov
   v76["46 personal-use property, the $1,000 rule"]:::prov
   v77["110.1(1)(a) a corporation's charitable gifts"]:::prov
-  v78["50(2) bad personal-use debts"]:::prov
+  v78["2(2), 3, 129(4) a corporation's year, to taxable income and tax"]:::prov
+  v79["50(2) bad personal-use debts"]:::prov
   v0 --> v1
   v0 --> v2
   v0 --> v3
@@ -171,5 +172,11 @@ flowchart BT
   v17 --> v74
   v30 --> v74
   v17 --> v76
+  v19 --> v78
+  v31 --> v78
+  v77 --> v78
+  v68 --> v78
+  v70 --> v78
+  v34 --> v78
   classDef prov fill:#bbdefb,stroke:#1565c0,color:#0d47a1
 ```

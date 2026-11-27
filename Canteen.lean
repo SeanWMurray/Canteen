@@ -98,6 +98,7 @@ import Canteen.ITA.S44_1.SmallBusinessRollover
 import Canteen.ITA.S46.PersonalUse
 import Canteen.ITA.S7.StockOptions
 import Canteen.ITA.S110_1.CorporateDonations
+import Canteen.ITA.S3.CorporateYear
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.ITA.S40.ShareToAffiliate
@@ -239,3 +240,4 @@ import Canteen.Tests.SmallBusinessRollover
 import Canteen.Tests.PersonalUse
 import Canteen.Tests.StockOptions
 import Canteen.Tests.CorporateDonations
+import Canteen.Tests.CorporateYear
