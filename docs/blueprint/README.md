@@ -19,5 +19,6 @@ Memo-style documents whose statements link to the Lean that proves or encodes th
 - [Memo: how much of a dividend to designate eligible](eligible-designation.md): 11 statements, 7 proven, 0 not yet formalized
 - [Memo: the minimum tax on crystallizing the capital gains exemption](crystallization-minimum-tax.md): 9 statements, 6 proven, 0 not yet formalized
 - [Memo: a debt swap, making mortgage interest deductible](debt-swap.md): 17 statements, 11 proven, 0 not yet formalized
+- [Memo: attendant care, as a medical expense or with the disability credit](attendant-care.md): 8 statements, 4 proven, 0 not yet formalized
 
 More diagrams: [`docs/graphs/`](../graphs/README.md).

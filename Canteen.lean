@@ -108,6 +108,7 @@ import Canteen.Transactions.InvestmentIncomeIntegration
 import Canteen.Transactions.EligibleDesignation
 import Canteen.Transactions.CrystallizationMinimumTax
 import Canteen.Transactions.DebtSwap
+import Canteen.Transactions.AttendantCare
 import Canteen.Transactions.SisterCompanyRepurchase
 
 -- Blueprints: memos linked to Lean
@@ -125,6 +126,7 @@ import Canteen.Blueprints.InvestmentIncomeIntegration
 import Canteen.Blueprints.EligibleDesignation
 import Canteen.Blueprints.CrystallizationMinimumTax
 import Canteen.Blueprints.DebtSwap
+import Canteen.Blueprints.AttendantCare
 import Canteen.Blueprints.SisterCompanyRepurchase
 import Canteen.Blueprints.All
 
