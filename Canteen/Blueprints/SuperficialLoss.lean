@@ -59,6 +59,7 @@ import Canteen.ITA.S84.PaidUpCapitalIncrease
 import Canteen.ITA.S118_7.EmploymentCredits
 import Canteen.ITA.S117_1.YearAmounts
 import Canteen.ITA.S118_01.SmallCredits
+import Canteen.ITA.S118_5.Tuition
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -621,15 +622,23 @@ def blueprint : Blueprint where
             "adoption amount never exceeds the limit, and the volunteer amount never exceeds $6,000."
           lean := [``SmallCredits.adoptionAmount, ``SmallCredits.accessibilityAmount, ``SmallCredits.homeBuyerAmount,
             ``SmallCredits.volunteerAmount, ``SmallCredits.adoption_le, ``SmallCredits.volunteer_le] },
+        { id := "R58", kind := .law, title := "The tuition credit, its carryforward and its transfer",
+          citation := "ITA 118.5(1)(a); 118.61; 118.81; 118.9"
+          statement := "14% of qualifying tuition fees; unused credits carried forward and used first in later years; up " ++
+            "to $700 (14% of $5,000) of the year's credit not needed against the student's own tax transferred, as " ++
+            "designated, to a parent or grandparent. Proven: the transfer never exceeds $700, and what is carried in plus " ++
+            "the year's credit always equals what is used, transferred and carried out."
+          lean := [``Tuition.credit, ``Tuition.carryforwardUsed, ``Tuition.transferred, ``Tuition.unused,
+            ``Tuition.transferred_le, ``Tuition.conservation] },
         { id := "R35", kind := .law, title := "An individual's year, to taxable income and tax", citation := "ITA 2(2); 3; 111(1)(b); 110.6; 117(2)"
           statement := "Income from sources (employment and business, dividends with the gross-up, recapture, attributed " ++
             "income), net taxable capital gains, less terminal and other losses; then taxable income, after the net capital " ++
             "loss deduction and the capital gains deduction (which the former reduces). Proven: taxable income never exceeds " ++
             "income, and the capital gains deduction never exceeds the net taxable capital gains."
           lean := [``IndividualYear.incomeFacts, ``IndividualYear.taxableIncome, ``IndividualYear.capitalGainsDeduction,
-            ``IndividualYear.federalTax, ``IndividualYear.personalCredit, ``IndividualYear.donationCredit, ``IndividualYear.interestDeduction, ``IndividualYear.medicalCredit, ``IndividualYear.disabilityCredit, ``IndividualYear.ageAndPensionCredits, ``IndividualYear.oasRecovery, ``IndividualYear.employmentCredits, ``IndividualYear.amounts, ``IndividualYear.smallCredits,
+            ``IndividualYear.federalTax, ``IndividualYear.personalCredit, ``IndividualYear.donationCredit, ``IndividualYear.interestDeduction, ``IndividualYear.medicalCredit, ``IndividualYear.disabilityCredit, ``IndividualYear.ageAndPensionCredits, ``IndividualYear.oasRecovery, ``IndividualYear.employmentCredits, ``IndividualYear.amounts, ``IndividualYear.smallCredits, ``IndividualYear.tuitionCredits,
             ``IndividualYear.taxable_le_income, ``IndividualYear.capital_gains_deduction_le],
-          uses := ["R8", "R9", "R19", "R21", "R22", "R24", "R40", "R41", "R42", "R43", "R49", "R50", "R51", "R52", "R53", "R55", "R56", "R57"] },
+          uses := ["R8", "R9", "R19", "R21", "R22", "R24", "R40", "R41", "R42", "R43", "R49", "R50", "R51", "R52", "R53", "R55", "R56", "R57", "R58"] },
         { id := "R48", kind := .law, title := "The minimum tax", citation := "ITA 127.5; 127.51; 127.52(1); 127.531; 120.2"
           statement := "An individual pays at least 20.5% of adjusted taxable income over the 117(2)(d) threshold, less half " ++
             "the personal credits and 4/5 of the donation credit; adjusted taxable income counts capital gains in full (3/10 " ++

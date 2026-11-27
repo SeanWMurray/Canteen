@@ -52,7 +52,7 @@ example : taxableIncome { year with deduction110_6 := none } = 2 * 32050000 := b
    "3. Losses: business $0.00, terminal $0.00, attributed $0.00; interest deducted $0.00. [ITA 3(d); 20(16); 74.1; 20(1)(c)]",
    "4. Income for the year: $330,500.00. [ITA 3]",
    "5. Less the net capital loss deduction $10,000.00, the capital gains deduction $190,000.00, and other deductions $0.00: taxable income $130,500.00. [ITA 2(2); 111(1)(b); 110.6(2), (2.1)]",
-   "6. Tax under 117(2) on taxable income, $23,889.37, less the dividend tax credit of $1,038.46, the personal credit of $0.00, the age and pension credits of $0.00, the employment, CPP and EI credits of $0.00, the adoption, accessibility, home buyers' and volunteer credits of $0.00, the donation credit of $0.00, the medical expense credit of $0.00, the disability credit of $0.00 and other credits of $0.00: $22,850.91. [ITA 117(2); 120.4(2); 121; 118 to 118.07; 118.1; 118.2; 118.3; 118.7]"]
+   "6. Tax under 117(2) on taxable income, $23,889.37, less the dividend tax credit of $1,038.46, the personal credit of $0.00, the age and pension credits of $0.00, the employment, CPP and EI credits of $0.00, the adoption, accessibility, home buyers' and volunteer credits of $0.00, the tuition credits of $0.00, the donation credit of $0.00, the medical expense credit of $0.00, the disability credit of $0.00 and other credits of $0.00: $22,850.91. [ITA 117(2); 120.4(2); 121; 118 to 118.07; 118.1; 118.2; 118.3; 118.5; 118.61; 118.7; 118.9]"]
 
 /-! ## Federal tax -/
 

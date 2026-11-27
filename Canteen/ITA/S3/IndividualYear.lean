@@ -16,6 +16,7 @@ import Canteen.ITA.S180_2.OasRecovery
 import Canteen.ITA.S118_7.EmploymentCredits
 import Canteen.ITA.S117_1.YearAmounts
 import Canteen.ITA.S118_01.SmallCredits
+import Canteen.ITA.S118_5.Tuition
 
 /-!
 # An individual's year: income from the encoded sources, and taxable income
@@ -121,6 +122,13 @@ structure Facts where
   /-- 118.01 to 118.07: adoption, home accessibility, home buyers' and volunteer credits (the adoption limit
   is the year's). -/
   smallCredits : SmallCredits.Facts := {}
+  /-- 118.5(1)(a): qualifying tuition fees paid for the year; 118.61: unused tuition credits carried in
+  (as credits); 118.81(b): the amount designated for transfer; 118.9: credits transferred to the
+  individual by a child or grandchild (see `tuitionTransferFrom`). -/
+  tuitionFees : Cents := 0
+  tuitionCarried : Cents := 0
+  tuitionDesignated : Cents := 0
+  tuitionTransferredIn : Cents := 0
   /-- Other non-refundable credits, given. -/
   otherCredits : Cents := 0
   deriving Inhabited
@@ -247,7 +255,7 @@ def smallCredits (f : Facts) : Cents := SmallCredits.credit { f.smallCredits wit
 
 /-- 118.3(2)(d): tax before Division E deductions other than 118 to 118.07 and 118.7. -/
 def taxBeforeCredits (f : Facts) : Cents :=
-  (Rates.tax (taxableIncome f / 2) (amounts f).brackets + (f.split.map SplitIncome.tax).getD 0) - (personalCredit f + employmentCredits f + smallCredits f)
+  (Rates.tax (taxableIncome f / 2) (amounts f).brackets + (f.split.map SplitIncome.tax).getD 0) - (personalCredit f + ageAndPensionCredits f + employmentCredits f + smallCredits f)
 
 /-- 118.3(2): what a supporter may deduct for this person's unused disability credit. -/
 def disabilityTransferFrom (s : Disability.Supporter) (dependant : Facts) : Cents :=
@@ -255,12 +263,28 @@ def disabilityTransferFrom (s : Disability.Supporter) (dependant : Facts) : Cent
   | none => 0
   | some d => Disability.transfer s (disabilityFacts dependant d) (taxBeforeCredits dependant)
 
+/-- Tax after the credits in 118 to 118.07, 118.3 and 118.7: what 118.61(2) and 118.81 measure against. -/
+def taxBeforeTuition (f : Facts) : Cents :=
+  taxBeforeCredits f - (disabilityCredit f + f.disabilityTransferred)
+
+def tuitionCredit (f : Facts) : Cents := Tuition.credit f.tuitionFees
+def tuitionCarryUsed (f : Facts) : Cents := Tuition.carryforwardUsed f.tuitionCarried (taxBeforeTuition f)
+def tuitionCurrentUsed (f : Facts) : Cents := Tuition.currentUsed (tuitionCredit f) (taxBeforeTuition f) (tuitionCarryUsed f)
+
+/-- 118.81, 118.9: what a parent or grandparent designated by this student may deduct. -/
+def tuitionTransferFrom (student : Facts) : Cents :=
+  Tuition.transferred (tuitionCredit student) (taxBeforeTuition student) (tuitionCarryUsed student) student.tuitionDesignated
+
+/-- 118.61(1): the unused credits at the end of the year, to carry forward. -/
+def tuitionUnused (f : Facts) : Cents := Tuition.unused f.tuitionCarried (tuitionCredit f) (taxBeforeTuition f) f.tuitionDesignated
+
+/-- 118.5, 118.61, 118.9: the tuition credits used in the year. -/
+def tuitionCredits (f : Facts) : Cents := tuitionCarryUsed f + tuitionCurrentUsed f + f.tuitionTransferredIn
+
 /-- Tax under 117(2) on taxable income, plus tax on split income (120.4(2)), less the dividend tax
 credit, the personal credit, the donation credit, the medical expense credit and other credits. -/
 def federalTax (f : Facts) : Cents :=
-  (Rates.tax (taxableIncome f / 2) (amounts f).brackets + (f.split.map SplitIncome.tax).getD 0) -
-    (Dividends.credit (dividendFacts f) + personalCredit f + ageAndPensionCredits f + employmentCredits f + smallCredits f + donationCredit f + medicalCredit f + disabilityCredit f + f.disabilityTransferred +
-      f.otherCredits)
+  taxBeforeTuition f - (tuitionCredits f + Dividends.credit (dividendFacts f) + donationCredit f + medicalCredit f + f.otherCredits)
 
 def explain (f : Facts) : Finding :=
   let h := formatHalfCents
@@ -284,9 +308,10 @@ def explain (f : Facts) : Finding :=
       s!", less the dividend tax credit of {c (Dividends.credit (dividendFacts f))}, the personal credit of {c (personalCredit f)}, " ++
       s!"the age and pension credits of {c (ageAndPensionCredits f)}, the employment, CPP and EI credits of " ++
       s!"{c (employmentCredits f)}, the adoption, accessibility, home buyers' and volunteer credits of {c (smallCredits f)}, " ++
+      s!"the tuition credits of {c (tuitionCredits f)}, " ++
       s!"the donation credit of {c (donationCredit f)}, the medical expense credit of {c (medicalCredit f)}, " ++
       s!"the disability credit of {c (disabilityCredit f + f.disabilityTransferred)} and other credits of {c f.otherCredits}: {c (federalTax f)}.",
-      "ITA 117(2); 120.4(2); 121; 118 to 118.07; 118.1; 118.2; 118.3; 118.7"⟩], (f.disability.map (·.impairment.judgments)).getD []⟩
+      "ITA 117(2); 120.4(2); 121; 118 to 118.07; 118.1; 118.2; 118.3; 118.5; 118.61; 118.7; 118.9"⟩], (f.disability.map (·.impairment.judgments)).getD []⟩
 
 /-! ## Truths about the year -/
 

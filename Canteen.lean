@@ -86,6 +86,7 @@ import Canteen.ITA.S117_1.Cpi
 import Canteen.ITA.S117_1.Indexation
 import Canteen.ITA.S117_1.YearAmounts
 import Canteen.ITA.S118_01.SmallCredits
+import Canteen.ITA.S118_5.Tuition
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.ITA.S40.ShareToAffiliate
@@ -213,3 +214,4 @@ import Canteen.Tests.OasRecovery
 import Canteen.Tests.PaidUpCapitalIncrease
 import Canteen.Tests.EmploymentCredits
 import Canteen.Tests.SmallCredits
+import Canteen.Tests.Tuition
