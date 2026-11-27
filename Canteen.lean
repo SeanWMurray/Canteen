@@ -98,6 +98,7 @@ import Canteen.Transactions.SaleThroughHoldco
 import Canteen.Transactions.PostMortemPipeline
 import Canteen.Transactions.EstateFreeze
 import Canteen.Transactions.DonatingShares
+import Canteen.Transactions.InvestmentIncomeIntegration
 import Canteen.Transactions.SisterCompanyRepurchase
 
 -- Blueprints: memos linked to Lean
@@ -111,6 +112,7 @@ import Canteen.Blueprints.SaleThroughHoldco
 import Canteen.Blueprints.PostMortemPipeline
 import Canteen.Blueprints.EstateFreeze
 import Canteen.Blueprints.DonatingShares
+import Canteen.Blueprints.InvestmentIncomeIntegration
 import Canteen.Blueprints.SisterCompanyRepurchase
 import Canteen.Blueprints.All
 
