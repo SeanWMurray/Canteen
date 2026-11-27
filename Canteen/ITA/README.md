@@ -63,6 +63,7 @@ The verbatim statute text for each is in `statute/`. Review notes are in `docs/r
 - `S118_2/MedicalExpenses.lean`: subsection 118.2(1)
 - `S118_3/Disability.lean`: subsections 118.3(1) and (2)
 - `S56/Support.lean`: paragraphs 56(1)(b) and 60(b), and the 56.1(4) definitions
+- `S63/ChildCare.lean`: subsections 63(1), (2), and four 63(3) definitions
 - `S60_03/PensionSplitting.lean`: subsections 118(2), (3), (7) and (8), section 60.03, paragraphs 60(c) and 56(1)(a.2)
 - `S84/PaidUpCapitalIncrease.lean`: subsection 84(1) and paragraph 53(1)(b)
 - `S117_1/Indexation.lean`, `S117_1/YearAmounts.lean`, `S117_1/Cpi.lean` (generated): section 117.1

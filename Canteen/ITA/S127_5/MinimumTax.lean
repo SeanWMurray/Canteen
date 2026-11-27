@@ -53,7 +53,7 @@ def income (f : Facts) : HalfCents :=
         IndividualYear.pensionTotal f + f.splitIn + IndividualYear.supportIncluded f) - IndividualYear.splitIncome f) +
       paragraph3b f.capital -
       2 * (f.subdivisionE + IndividualYear.splitOutAllowed f + IndividualYear.enhancedCpp f + IndividualYear.supportDeducted f +
-        IndividualYear.oasRecovery f)) -
+        IndividualYear.childCareDeduction f + IndividualYear.oasRecovery f)) -
     ((2 * (f.businessLosses + IndividualYear.terminalLosses f + IndividualYear.attributedLoss f +
       IndividualYear.interestDeduction f) - InterestDeductibility.propertyPart f.borrowings) +
       f.capital.allowableBusinessInvestmentLosses)

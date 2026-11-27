@@ -61,6 +61,7 @@ import Canteen.ITA.S117_1.YearAmounts
 import Canteen.ITA.S118_01.SmallCredits
 import Canteen.ITA.S118_5.Tuition
 import Canteen.ITA.S56.Support
+import Canteen.ITA.S63.ChildCare
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -637,15 +638,22 @@ def blueprint : Blueprint where
             "included by the recipient, less child support payable since the commencement day and amounts deducted before. " ++
             "Proven: nothing until child support payable is paid, and never more than what was paid."
           lean := [``Support.supportAmount, ``Support.amount, ``Support.child_support_first, ``Support.amount_le] },
+        { id := "R60", kind := .law, title := "Child care expenses", citation := "ITA 63(1), (2), (3)"
+          statement := "Child care expenses paid for eligible children are deducted, up to $8,000 for each child under 7, " ++
+            "$5,000 for older children and $11,000 for a child eligible for the disability credit, and up to two-thirds of " ++
+            "earned income; the higher-income supporting person deducts only 1/40 of those amounts a week while the other is " ++
+            "a student, incapacitated, in prison or separated. Proven: never more than paid or two-thirds of earned income, " ++
+            "and nothing for the higher-income spouse while the other is at home."
+          lean := [``ChildCare.Child.annual, ``ChildCare.deduction, ``ChildCare.deduction_le, ``ChildCare.higher_income_nil] },
         { id := "R35", kind := .law, title := "An individual's year, to taxable income and tax", citation := "ITA 2(2); 3; 111(1)(b); 110.6; 117(2)"
           statement := "Income from sources (employment and business, dividends with the gross-up, recapture, attributed " ++
             "income), net taxable capital gains, less terminal and other losses; then taxable income, after the net capital " ++
             "loss deduction and the capital gains deduction (which the former reduces). Proven: taxable income never exceeds " ++
             "income, and the capital gains deduction never exceeds the net taxable capital gains."
           lean := [``IndividualYear.incomeFacts, ``IndividualYear.taxableIncome, ``IndividualYear.capitalGainsDeduction,
-            ``IndividualYear.federalTax, ``IndividualYear.personalCredit, ``IndividualYear.donationCredit, ``IndividualYear.interestDeduction, ``IndividualYear.medicalCredit, ``IndividualYear.disabilityCredit, ``IndividualYear.ageAndPensionCredits, ``IndividualYear.oasRecovery, ``IndividualYear.employmentCredits, ``IndividualYear.amounts, ``IndividualYear.smallCredits, ``IndividualYear.tuitionCredits, ``IndividualYear.supportDeducted,
+            ``IndividualYear.federalTax, ``IndividualYear.personalCredit, ``IndividualYear.donationCredit, ``IndividualYear.interestDeduction, ``IndividualYear.medicalCredit, ``IndividualYear.disabilityCredit, ``IndividualYear.ageAndPensionCredits, ``IndividualYear.oasRecovery, ``IndividualYear.employmentCredits, ``IndividualYear.amounts, ``IndividualYear.smallCredits, ``IndividualYear.tuitionCredits, ``IndividualYear.supportDeducted, ``IndividualYear.childCareDeduction,
             ``IndividualYear.taxable_le_income, ``IndividualYear.capital_gains_deduction_le],
-          uses := ["R8", "R9", "R19", "R21", "R22", "R24", "R40", "R41", "R42", "R43", "R49", "R50", "R51", "R52", "R53", "R55", "R56", "R57", "R58", "R59"] },
+          uses := ["R8", "R9", "R19", "R21", "R22", "R24", "R40", "R41", "R42", "R43", "R49", "R50", "R51", "R52", "R53", "R55", "R56", "R57", "R58", "R59", "R60"] },
         { id := "R48", kind := .law, title := "The minimum tax", citation := "ITA 127.5; 127.51; 127.52(1); 127.531; 120.2"
           statement := "An individual pays at least 20.5% of adjusted taxable income over the 117(2)(d) threshold, less half " ++
             "the personal credits and 4/5 of the donation credit; adjusted taxable income counts capital gains in full (3/10 " ++

@@ -18,6 +18,7 @@ import Canteen.ITA.S117_1.YearAmounts
 import Canteen.ITA.S118_01.SmallCredits
 import Canteen.ITA.S118_5.Tuition
 import Canteen.ITA.S56.Support
+import Canteen.ITA.S63.ChildCare
 
 /-!
 # An individual's year: income from the encoded sources, and taxable income
@@ -84,6 +85,10 @@ structure Facts where
   /-- 60(b): support paid, one entry per recipient; 56(1)(b): support received, one per payer. -/
   supportPaid : List Support.Facts := []
   supportReceived : List Support.Facts := []
+  /-- 63: child care expenses claimed (earned income is the year's employment and business income); the
+  supporting person's income, if any, for 63(2). -/
+  childCare : Option ChildCare.Facts := none
+  supportingPersonIncome : Option Cents := none
   /-- Borrowings whose interest may be deductible under 20(1)(c). -/
   borrowings : List InterestDeductibility.Borrowing := []
   netCapitalLossClaims : List NetCapitalLoss.Claim := []
@@ -182,12 +187,26 @@ def supportDeducted (f : Facts) : Cents := (f.supportPaid.map Support.amount).su
 /-- Split income (120.4), deducted in computing income (20(1)(ww)). -/
 def splitIncome (f : Facts) : Cents := (f.split.map SplitIncome.splitIncome).getD 0
 
-/-- Section 3, from the components, before the 60(w) deduction. -/
-def incomeFactsBase (f : Facts) : Income.Facts :=
+/-- Section 3, from the components, before the 63 and 60(w) deductions. -/
+def incomeFactsCore (f : Facts) : Income.Facts :=
   { incomeFromSources := (f.employmentAndBusiness + Dividends.inclusion (dividendFacts f) + recapture f + attributedIncome f +
         pensionTotal f + f.splitIn + supportIncluded f) - splitIncome f,
     capital := f.capital, subdivisionE := f.subdivisionE + splitOutAllowed f + enhancedCpp f + supportDeducted f,
     sourceLosses := f.businessLosses + terminalLosses f + attributedLoss f + interestDeduction f }
+
+/-- 63: the child care facts, with the year's earned income and, where the supporting person's income is
+given, 63(2) decided on incomes before section 63 (and 60(w)). -/
+def childCareFacts (f : Facts) (c : ChildCare.Facts) : ChildCare.Facts :=
+  { c with earnedIncome := f.employmentAndBusiness,
+           higherIncome := match f.supportingPersonIncome with
+             | some i => decide (i < Income.income (incomeFactsCore f) / 2)
+             | none => c.higherIncome }
+
+def childCareDeduction (f : Facts) : Cents := (f.childCare.map fun c => ChildCare.deduction (childCareFacts f c)).getD 0
+
+/-- Section 3, with the 63 deduction in 3(c), before the 60(w) deduction. -/
+def incomeFactsBase (f : Facts) : Income.Facts :=
+  { incomeFactsCore f with subdivisionE := (incomeFactsCore f).subdivisionE + childCareDeduction f }
 
 /-- Old Age Security benefits included in income. -/
 def oasReceived (f : Facts) : Cents := ((f.pensions.filter (·.kind == .oldAgeSecurity)).map (·.amount)).sum

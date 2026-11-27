@@ -46,6 +46,7 @@ import Canteen.ITA.S117_1.YearAmounts
 import Canteen.ITA.S118_01.SmallCredits
 import Canteen.ITA.S118_5.Tuition
 import Canteen.ITA.S56.Support
+import Canteen.ITA.S63.ChildCare
 import Canteen.Transactions.DebtSwap
 import Canteen.ITA.S87.Amalgamation
 import Canteen.ITA.S39.CanadianSecurities
@@ -205,7 +206,8 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S117_1.YearAmounts, "117.1 indexation, and each year's amounts"),
    (`Canteen.ITA.S118_01.SmallCredits, "118.01 to 118.07 adoption, accessibility, home buyers', volunteers"),
    (`Canteen.ITA.S118_5.Tuition, "118.5, 118.61, 118.81, 118.9 tuition"),
-   (`Canteen.ITA.S56.Support, "56(1)(b), 56.1(4), 60(b) support")]
+   (`Canteen.ITA.S56.Support, "56(1)(b), 56.1(4), 60(b) support"),
+   (`Canteen.ITA.S63.ChildCare, "63 child care expenses")]
 
 /-! ## The dashboard -/
 
@@ -312,6 +314,7 @@ def actMindmap : String := Id.run do
     (2, "s. 111"), (3, "111(8): net capital loss"), (3, "111(1)(b), (1.1): deduction"),
     (2, "s. 112"), (3, "112(1): intercorporate dividend deduction"),
     (2, "ss. 56, 56.1, 60"), (3, "56.1(4): support amount, child support"), (3, "56(1)(b), 60(b): included and deducted"),
+    (2, "s. 63"), (3, "63(1): child care expenses"), (3, "63(2): the higher-income spouse"),
     (2, "s. 60.03"), (3, "60.03(1): split-pension amount"), (3, "60(c), 56(1)(a.2): deducted and included"),
     (2, "s. 117"), (3, "117(2): the federal rates"),
     (2, "s. 117.1"), (3, "117.1(1), (4): indexing by the CPI"), (3, "117.1(3): rounding"),
