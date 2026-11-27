@@ -127,4 +127,16 @@ example : associated (viaEntity 15 [⟨15, 0, 50⟩, ⟨15, 4, 50⟩]) = false :
 -- as is Eve.
 example : associated (viaEntity 16 [⟨16, 0, 100⟩, ⟨16, 4, 100⟩]) = true := by decide +kernel
 
+-- 256(1.4)(b): Ann controls Aco and owns 20% of Bco; Bob owns 80%. Ann can have 30% of Bob's shares
+-- redeemed: as if they were, she would own 20/70, over 25%.
+def redeemable (rs : List RedemptionRight) : Facts :=
+  { world := withEntities, holdings := [common 10 0 100, common 11 0 20, common 11 1 80], redemptionRights := rs, first := 10, second := 11 }
+example : associated (redeemable []) = false := by decide +kernel
+example : paraC (redeemable [⟨11, 0, "common", 1, 30, false⟩]) = true := by decide +kernel
+example : associated (redeemable [⟨11, 0, "common", 1, 30, true⟩]) = false := by decide +kernel
+
+-- 256(2.1): corporations kept separate mainly to multiply the small business deduction.
+example : associated { q [] with separateExistence := .judged "J-2.1" true } = true := by decide
+example : (explain { q [] with separateExistence := .judged "J-2.1" true }).reliesOn = ["J-2.1"] := by decide
+
 end Canteen.Tests.Associated

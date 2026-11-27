@@ -740,15 +740,15 @@ def blueprint : Blueprint where
           lean := [``BusinessLimit.shared, ``BusinessLimit.prorated, ``BusinessLimit.capitalReduction, ``BusinessLimit.investmentReduction,
             ``BusinessLimit.limit, ``BusinessLimit.shared_le, ``BusinessLimit.limit_le, ``BusinessLimit.investment_grind_full,
             ``BusinessLimit.capital_grind_full, ``BusinessLimit.no_grind] },
-        { id := "R73", kind := .law, title := "Associated corporations", citation := "ITA 256(1), (1.1), (1.2), (1.3), (1.4)(a), (1.5), (2), (5.1)"
+        { id := "R73", kind := .law, title := "Associated corporations", citation := "ITA 256(1), (1.1), (1.2), (1.3), (1.4), (1.5), (2), (2.1), (5.1)"
           statement := "Two corporations are associated if one controls the other, the same person or group controls both " ++
             "(a group including any group of shareholders of both whose members control them), or they are controlled by " ++
             "related persons or related groups one of whom owns at least 25% of a class (not a specified class) of the " ++
             "other or of each, counting shares held through corporations, partnerships and trusts, rights to acquire " ++
-            "shares, and a minor child's shares. De facto " ++
+            "shares (and to have others' redeemed), and a minor child's shares; or if kept separate mainly to reduce tax. De facto " ++
             "control counts. Two corporations each associated with a third are associated (for " ++
             "section 125, only through a CCPC that has not elected; an electing third has no business limit). Proven: a corporation that controls another is associated with it, " ++
-            "two corporations with the same controller are associated, and uncontrolled corporations are not."
+            "two corporations with the same controller are associated, and uncontrolled corporations are not (but for 256(2.1))."
           lean := [``Associated.paraA, ``Associated.paraB, ``Associated.paraC, ``Associated.paraD, ``Associated.paraE,
             ``Associated.associated, ``Associated.associatedWithAny, ``Associated.controls_other, ``Associated.same_controller,
             ``Associated.uncontrolled, ``Associated.shareOf, ``Associated.classBp, ``Associated.ownedBp, ``Associated.minorsOf, ``Associated.Group.associatedWith, ``Associated.Group.electedNil,

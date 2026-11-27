@@ -35,6 +35,10 @@ to himself as shareholder of the other.
 
 **256(5.1)** "Controlled, directly or indirectly in any manner whatever" includes de facto control.
 
+**256(1.4)(b)** A right to cause the corporation to redeem other shareholders' shares: as if they were
+redeemed. **256(2.1)** Corporations are deemed associated where one of the main reasons for their separate
+existence is to reduce tax.
+
 **256(2)** (a) Two corporations not otherwise associated are deemed associated if each is associated
 (or deemed by this subsection associated) with the same third corporation; (b) for section 125, not if
 the third corporation is not a CCPC, or is a CCPC that elects, in which case its business limit is nil.
@@ -49,7 +53,8 @@ by a corporation, partnership or trust are deemed owned by its shareholders, mem
 in the proportions of 256(1.2)(d) to (f), through any number of levels; a right to acquire shares makes
 its holder their owner, and new shares issued and outstanding (256(1.4)(a)); and a parent is deemed to
 own the shares of a child under 18 unless the child manages the corporation independently (256(1.3)).
-Not encoded: 256(1.4)(b) (rights to have others' shares redeemed) and 256(2.1) (the anti-avoidance rule). For 256(2), the corporations to consider are listed; a chain of thirds of any
+A right to have another shareholder's shares redeemed puts its holder in the position as if they
+were (256(1.4)(b)): they leave the class. 256(2.1) is a judgment call on the pair. For 256(2), the corporations to consider are listed; a chain of thirds of any
 length is followed, and for section 125 every third on the chain must be a CCPC that has not elected.
 -/
 
@@ -97,10 +102,26 @@ structure Right where
   onlyOnDeathOrDisability : Bool := false
   deriving Repr, DecidableEq, Inhabited
 
+/-- 256(1.4)(b): a right to cause the corporation to redeem, acquire or cancel shares of a class owned by
+another shareholder, as a percentage of the class's issued shares. -/
+structure RedemptionRight where
+  corporation : Nat
+  holder : Nat
+  shareClass : String
+  /-- Whose shares. -/
+  of : Nat
+  percent : Nat
+  onlyOnDeathOrDisability : Bool := false
+  deriving Repr, DecidableEq, Inhabited
+
 structure Facts where
   world : World
   holdings : List Holding := []
   rights : List Right := []
+  redemptionRights : List RedemptionRight := []
+  /-- 256(2.1): one of the main reasons for the corporations' separate existence is to reduce tax (or increase
+  refundable investment tax credits). A judgment call. -/
+  separateExistence : Answer := .fact false
   /-- For the look-through of 256(1.2)(d): the shareholders of each holding corporation, by value. -/
   equity : List Equity := []
   minors : List Minor := []
@@ -138,9 +159,10 @@ def rightsIn (f : Facts) (c : Nat) (cls : String) : List Right :=
 /-- `h`'s shares of a class, owned or deemed owned by a right, in basis points of the class as enlarged by
 the new shares the rights are deemed to issue. -/
 def classBp (f : Facts) (c : Nat) (cls : String) (h : Nat) : Nat :=
-  let base := 100 + (((rightsIn f c cls).filter (·.newShares)).map (·.percent)).sum
+  let redeemed := f.redemptionRights.filter fun r => r.corporation == c && r.shareClass == cls && !r.onlyOnDeathOrDisability
+  let base := 100 + (((rightsIn f c cls).filter (·.newShares)).map (·.percent)).sum - (redeemed.map (·.percent)).sum
   let held := ((f.holdings.filter fun g => g.corporation == c && g.shareClass == cls && g.holder == h).map (·.percent)).sum +
-    (((rightsIn f c cls).filter (·.holder == h)).map (·.percent)).sum
+    (((rightsIn f c cls).filter (·.holder == h)).map (·.percent)).sum - ((redeemed.filter (·.of == h)).map (·.percent)).sum
   10000 * held / base
 
 /-- The holders of a class, directly or by a right. -/
@@ -213,8 +235,8 @@ def paraE (f : Facts) : Bool :=
           !both.isEmpty && owns25 f f.first both && owns25 f f.second both
     | _, _ => false
 
-/-- 256(1): the two corporations are associated. -/
-def associated (f : Facts) : Bool := paraA f || paraB f || paraC f || paraD f || paraE f
+/-- 256(1), with 256(2.1): the two corporations are associated. -/
+def associated (f : Facts) : Bool := paraA f || paraB f || paraC f || paraD f || paraE f || f.separateExistence.value
 
 /-! ## Through a third corporation (256(2)) -/
 
@@ -263,8 +285,8 @@ def associatedWithAny (w : World) (holdings : List Holding) (c : Nat) (others : 
   others.any fun o => o != c && associated { world := w, holdings, first := c, second := o }
 
 def judgments (f : Facts) : List String :=
-  mergeIds (mergeIds (controlJudgments f.world f.first) (controlJudgments f.world f.second))
-    (f.minors.foldl (fun ids m => mergeIds ids m.independent.judgments) [])
+  mergeIds (mergeIds (mergeIds (controlJudgments f.world f.first) (controlJudgments f.world f.second))
+    (f.minors.foldl (fun ids m => mergeIds ids m.independent.judgments) [])) f.separateExistence.judgments
 
 def explain (f : Facts) : Finding :=
   let n := f.world.name
@@ -275,7 +297,8 @@ def explain (f : Facts) : Finding :=
     (paraB f, s!"{a} and {b} are controlled by the same person or group of persons.", "ITA 256(1)(b); 256(1.2)(b)(i)"),
     (paraC f, s!"{a} and {b} are each controlled by a person, the two are related, and one of them owns at least 25% of a class of the shares of each.", "ITA 256(1)(c)"),
     (paraD f, s!"One is controlled by a person related to each member of a group controlling the other, who owns at least 25% of a class of the other's shares.", "ITA 256(1)(d)"),
-    (paraE f, s!"Each is controlled by a related group, every member of one related to all of the other, and members of both own at least 25% of a class of each.", "ITA 256(1)(e)")]
+    (paraE f, s!"Each is controlled by a related group, every member of one related to all of the other, and members of both own at least 25% of a class of each.", "ITA 256(1)(e)"),
+    (f.separateExistence.value, s!"One of the main reasons for the separate existence of {a} and {b} is to reduce tax.", "ITA 256(2.1)")]
   let met := which.filter (·.1)
   ⟨associated f,
     (if met.isEmpty then [⟨s!"None of paragraphs 256(1)(a) to (e) applies to {a} and {b}: they are not associated.", "ITA 256(1)"⟩]
@@ -308,9 +331,9 @@ theorem same_controller (f : Facts) (k₁ k₂ : Control) (h₁ : k₁ ∈ f.wor
     exact List.any_eq_true.mpr ⟨_, m₁, List.any_eq_true.mpr ⟨_, m₂, by simp [same_self]⟩⟩
   simp [associated, hb]
 
-/-- Without any controller, no association. -/
-theorem uncontrolled (f : Facts) (h : controllers f.world f.first = []) (h' : controllers f.world f.second = []) :
-    associated f = false := by
-  simp [associated, paraA, paraB, paraC, paraD, paraDFrom, paraE, h, h']
+/-- Without any controller, and without 256(2.1), no association. -/
+theorem uncontrolled (f : Facts) (h : controllers f.world f.first = []) (h' : controllers f.world f.second = [])
+    (hs : f.separateExistence.value = false) : associated f = false := by
+  simp [associated, paraA, paraB, paraC, paraD, paraDFrom, paraE, h, h', hs]
 
 end Canteen.ITA.Associated
