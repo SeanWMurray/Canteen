@@ -49,7 +49,7 @@ def dividends (f : Facts) : Cents :=
 
 /-- Income for the year, on the 127.52(1) assumptions, in half-cents. -/
 def income (f : Facts) : HalfCents :=
-  (2 * ((f.employmentAndBusiness + dividends f + IndividualYear.recapture f + IndividualYear.attributedIncome f +
+  (2 * ((f.employmentAndBusiness + IndividualYear.standbyBenefits f + dividends f + IndividualYear.recapture f + IndividualYear.attributedIncome f +
         IndividualYear.pensionTotal f + f.splitIn + IndividualYear.supportIncluded f) - IndividualYear.splitIncome f) +
       paragraph3b f.capital -
       2 * (f.subdivisionE + IndividualYear.otherSubdivisionE f + IndividualYear.childCareDeduction f + IndividualYear.oasRecovery f)) -

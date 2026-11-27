@@ -63,6 +63,7 @@ import Canteen.ITA.S118_5.Tuition
 import Canteen.ITA.S56.Support
 import Canteen.ITA.S63.ChildCare
 import Canteen.ITA.S62.MovingExpenses
+import Canteen.ITA.S6.StandbyCharge
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -653,15 +654,21 @@ def blueprint : Blueprint where
             "income or the expenses, and what is deducted plus what is carried is what was paid."
           lean := [``MovingExpenses.eligible, ``MovingExpenses.deduction, ``MovingExpenses.unused, ``MovingExpenses.deduction_le,
             ``MovingExpenses.deducted_plus_unused] },
+        { id := "R62", kind := .law, title := "The automobile standby charge", citation := "ITA 6(1)(e); 6(2)"
+          statement := "An employee includes 2% a month of the cost of an employer's car (or 2/3 of the lease cost, less " ++
+            "insurance), reduced in proportion to personal kilometres under 1,667 a month where the car must be used and is " ++
+            "used primarily for work, less what the employee pays for its use. Proven: an owned car available all year " ++
+            "gives 24% of its cost."
+          lean := [``StandbyCharge.months, ``StandbyCharge.charge, ``StandbyCharge.benefit, ``StandbyCharge.full_year] },
         { id := "R35", kind := .law, title := "An individual's year, to taxable income and tax", citation := "ITA 2(2); 3; 111(1)(b); 110.6; 117(2)"
           statement := "Income from sources (employment and business, dividends with the gross-up, recapture, attributed " ++
             "income), net taxable capital gains, less terminal and other losses; then taxable income, after the net capital " ++
             "loss deduction and the capital gains deduction (which the former reduces). Proven: taxable income never exceeds " ++
             "income, and the capital gains deduction never exceeds the net taxable capital gains."
           lean := [``IndividualYear.incomeFacts, ``IndividualYear.taxableIncome, ``IndividualYear.capitalGainsDeduction,
-            ``IndividualYear.federalTax, ``IndividualYear.personalCredit, ``IndividualYear.donationCredit, ``IndividualYear.interestDeduction, ``IndividualYear.medicalCredit, ``IndividualYear.disabilityCredit, ``IndividualYear.ageAndPensionCredits, ``IndividualYear.oasRecovery, ``IndividualYear.employmentCredits, ``IndividualYear.amounts, ``IndividualYear.smallCredits, ``IndividualYear.tuitionCredits, ``IndividualYear.supportDeducted, ``IndividualYear.childCareDeduction, ``IndividualYear.movingDeduction,
+            ``IndividualYear.federalTax, ``IndividualYear.personalCredit, ``IndividualYear.donationCredit, ``IndividualYear.interestDeduction, ``IndividualYear.medicalCredit, ``IndividualYear.disabilityCredit, ``IndividualYear.ageAndPensionCredits, ``IndividualYear.oasRecovery, ``IndividualYear.employmentCredits, ``IndividualYear.amounts, ``IndividualYear.smallCredits, ``IndividualYear.tuitionCredits, ``IndividualYear.supportDeducted, ``IndividualYear.childCareDeduction, ``IndividualYear.movingDeduction, ``IndividualYear.standbyBenefits,
             ``IndividualYear.taxable_le_income, ``IndividualYear.capital_gains_deduction_le],
-          uses := ["R8", "R9", "R19", "R21", "R22", "R24", "R40", "R41", "R42", "R43", "R49", "R50", "R51", "R52", "R53", "R55", "R56", "R57", "R58", "R59", "R60", "R61"] },
+          uses := ["R8", "R9", "R19", "R21", "R22", "R24", "R40", "R41", "R42", "R43", "R49", "R50", "R51", "R52", "R53", "R55", "R56", "R57", "R58", "R59", "R60", "R61", "R62"] },
         { id := "R48", kind := .law, title := "The minimum tax", citation := "ITA 127.5; 127.51; 127.52(1); 127.531; 120.2"
           statement := "An individual pays at least 20.5% of adjusted taxable income over the 117(2)(d) threshold, less half " ++
             "the personal credits and 4/5 of the donation credit; adjusted taxable income counts capital gains in full (3/10 " ++

@@ -20,6 +20,7 @@ import Canteen.ITA.S118_5.Tuition
 import Canteen.ITA.S56.Support
 import Canteen.ITA.S63.ChildCare
 import Canteen.ITA.S62.MovingExpenses
+import Canteen.ITA.S6.StandbyCharge
 
 /-!
 # An individual's year: income from the encoded sources, and taxable income
@@ -73,8 +74,10 @@ structure DeductionHistory where
 
 structure Facts where
   taxationYear : Nat
-  /-- Employment and business income, other than recapture. -/
+  /-- Employment and business income, other than recapture and the benefits computed below. -/
   employmentAndBusiness : Cents := 0
+  /-- 6(1)(e): automobiles the employer made available. -/
+  standby : List StandbyCharge.Facts := []
   dividends : List Dividends.Dividend := []
   depreciableClasses : List Depreciable.ClassFacts := []
   /-- Property transferred or lent by the individual, whose income 74.1 attributes back. -/
@@ -187,6 +190,9 @@ def employmentCredits (f : Facts) : Cents := ((employmentFacts f).map Employment
 def supportIncluded (f : Facts) : Cents := (f.supportReceived.map Support.amount).sum
 def supportDeducted (f : Facts) : Cents := (f.supportPaid.map Support.amount).sum
 
+/-- 6(1)(e): standby charges included in employment income. -/
+def standbyBenefits (f : Facts) : Cents := (f.standby.map StandbyCharge.benefit).sum
+
 /-- 62(1). -/
 def movingDeduction (f : Facts) : Cents := (f.moving.map MovingExpenses.deduction).getD 0
 
@@ -198,7 +204,7 @@ def splitIncome (f : Facts) : Cents := (f.split.map SplitIncome.splitIncome).get
 
 /-- Section 3, from the components, before the 63 and 60(w) deductions. -/
 def incomeFactsCore (f : Facts) : Income.Facts :=
-  { incomeFromSources := (f.employmentAndBusiness + Dividends.inclusion (dividendFacts f) + recapture f + attributedIncome f +
+  { incomeFromSources := (f.employmentAndBusiness + standbyBenefits f + Dividends.inclusion (dividendFacts f) + recapture f + attributedIncome f +
         pensionTotal f + f.splitIn + supportIncluded f) - splitIncome f,
     capital := f.capital, subdivisionE := f.subdivisionE + otherSubdivisionE f,
     sourceLosses := f.businessLosses + terminalLosses f + attributedLoss f + interestDeduction f }
@@ -206,7 +212,7 @@ def incomeFactsCore (f : Facts) : Income.Facts :=
 /-- 63: the child care facts, with the year's earned income and, where the supporting person's income is
 given, 63(2) decided on incomes before section 63 (and 60(w)). -/
 def childCareFacts (f : Facts) (c : ChildCare.Facts) : ChildCare.Facts :=
-  { c with earnedIncome := f.employmentAndBusiness,
+  { c with earnedIncome := f.employmentAndBusiness + standbyBenefits f,
            higherIncome := match f.supportingPersonIncome with
              | some i => decide (i < Income.income (incomeFactsCore f) / 2)
              | none => c.higherIncome }

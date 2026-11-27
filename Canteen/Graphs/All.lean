@@ -48,6 +48,7 @@ import Canteen.ITA.S118_5.Tuition
 import Canteen.ITA.S56.Support
 import Canteen.ITA.S63.ChildCare
 import Canteen.ITA.S62.MovingExpenses
+import Canteen.ITA.S6.StandbyCharge
 import Canteen.Transactions.DebtSwap
 import Canteen.ITA.S87.Amalgamation
 import Canteen.ITA.S39.CanadianSecurities
@@ -209,7 +210,8 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S118_5.Tuition, "118.5, 118.61, 118.81, 118.9 tuition"),
    (`Canteen.ITA.S56.Support, "56(1)(b), 56.1(4), 60(b) support"),
    (`Canteen.ITA.S63.ChildCare, "63 child care expenses"),
-   (`Canteen.ITA.S62.MovingExpenses, "62(1), 248(1) moving expenses")]
+   (`Canteen.ITA.S62.MovingExpenses, "62(1), 248(1) moving expenses"),
+   (`Canteen.ITA.S6.StandbyCharge, "6(1)(e), 6(2) the standby charge")]
 
 /-! ## The dashboard -/
 
@@ -277,6 +279,7 @@ parentheses in citations are not read as node shapes. -/
 def actMindmap : String := Id.run do
   let tree : List (Nat × String) := [
     (2, "ss. 2, 3"), (3, "income for the year: (a) to (f)"), (3, "2(2): taxable income"),
+    (2, "s. 6"), (3, "6(1)(e), 6(2): automobile standby charge"),
     (2, "s. 13"), (3, "13(21): undepreciated capital cost"), (3, "13(1): recapture"),
     (2, "s. 15"), (3, "15(2), (2.6): shareholder loans"),
     (2, "s. 20"), (3, "20(16): terminal loss"), (3, "20(1)(j): loan repaid"), (3, "20(1)(c): interest"), (3, "20(3): refinancing"),

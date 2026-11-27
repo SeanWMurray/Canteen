@@ -101,6 +101,7 @@ Canteen/
     S118_2/MedicalExpenses.lean   118.2(1): the medical expense credit
     S118_3/Disability.lean     118.3(1), (2): the disability tax credit, and its transfer
     S56/Support.lean           56(1)(b), 56.1(4), 60(b): support payments, child support first
+    S6/StandbyCharge.lean      6(1)(e), 6(2): the automobile standby charge
     S62/MovingExpenses.lean    62(1), 248(1): moving expenses for an eligible relocation
     S63/ChildCare.lean         63: child care expenses
     S60_03/PensionSplitting.lean   118(2), (3), 60.03: the age and pension credits, and pension splitting
