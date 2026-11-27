@@ -84,6 +84,7 @@ import Canteen.ITA.S18.PrepaidExpenses
 import Canteen.ITA.S18.ThinCapitalization
 import Canteen.ITA.S212.Withholding
 import Canteen.ITA.S216.RentalElection
+import Canteen.ITA.S116.Purchaser
 import Canteen.ITA.S3.CorporateYear
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
@@ -840,6 +841,13 @@ def blueprint : Blueprint where
           lean := [``RentalElection.partXIII, ``RentalElection.credits, ``RentalElection.basicTax, ``RentalElection.surtax,
             ``RentalElection.electedTax, ``RentalElection.saving, ``RentalElection.no_net_income],
           uses := ["R41", "R56"] },
+        { id := "R84", kind := .law, title := "Buying from a non-resident", citation := "ITA 116(5), (5.01), (5.3)"
+          statement := "A purchaser of taxable Canadian property from a non-resident must remit 25% of the cost over any " ++
+            "certificate limit (50% for depreciable, resource and similar property), unless it had no reason after " ++
+            "reasonable inquiry to think the vendor non-resident, the property is treaty-protected with notice given, or a " ++
+            "116(4) certificate was issued. Proven: never more than half the cost, and nothing when the certificate covers it."
+          lean := [``Purchaser.Purchase.rate, ``Purchaser.Purchase.excepted, ``Purchaser.Purchase.liability,
+            ``Purchaser.Purchase.liability_le, ``Purchaser.Purchase.full_certificate] },
         { id := "R70", kind := .law, title := "A corporation's year, to taxable income and tax", citation := "ITA 2(2); 3; 110.1; 111(1), (8); 112(1); 125(7); 129(4)"
           statement := "A corporation's income from active business, personal services business, property and dividends " ++
             "received, with its net taxable capital gains (a 55(2) dividend as a gain); taxable income after gifts, the " ++

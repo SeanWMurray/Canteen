@@ -69,6 +69,7 @@ import Canteen.ITA.S18.PrepaidExpenses
 import Canteen.ITA.S18.ThinCapitalization
 import Canteen.ITA.S212.Withholding
 import Canteen.ITA.S216.RentalElection
+import Canteen.ITA.S116.Purchaser
 import Canteen.ITA.S3.CorporateYear
 import Canteen.Transactions.DebtSwap
 import Canteen.ITA.S87.Amalgamation
@@ -253,6 +254,7 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S18.ThinCapitalization, "18(4), 214(16) thin capitalization and the deemed dividend"),
    (`Canteen.ITA.S212.Withholding, "212(1)(a), (b), (2) Part XIII on management fees, interest and dividends"),
    (`Canteen.ITA.S216.RentalElection, "212(1)(d), 216(1), 120(1) a non-resident's rent and the election"),
+   (`Canteen.ITA.S116.Purchaser, "116(5), (5.3) buying from a non-resident"),
    (`Canteen.ITA.S3.CorporateYear, "2(2), 3, 129(4) a corporation's year, to taxable income and tax")]
 
 /-! ## The dashboard -/
@@ -374,6 +376,7 @@ def actMindmap : String := Id.run do
     (2, "s. 60.03"), (3, "60.03(1): split-pension amount"), (3, "60(c), 56(1)(a.2): deducted and included"),
     (2, "s. 212"), (3, "212(1)(a), (4): management fees"), (3, "212(1)(b): non-arm's length and participating interest"), (3, "212(2): dividends"), (3, "214(16): thin cap interest as a dividend"), (3, "212(1)(d), 216(1): rent, and the election to file"), (3, "120(1): the 48% for income not earned in a province"),
     (2, "s. 256"), (3, "256(1): associated corporations, (a) to (e)"), (3, "256(1.2)(b)(i): a member's control is the group's"), (3, "256(5.1): de facto control"), (3, "256(2): through a third corporation"),
+    (2, "s. 116"), (3, "116(5): 25% without a certificate"), (3, "116(5.3): 50% for depreciable and similar property"),
     (2, "s. 117"), (3, "117(2): the federal rates"),
     (2, "s. 117.1"), (3, "117.1(1), (4): indexing by the CPI"), (3, "117.1(3): rounding"),
     (2, "s. 118"), (3, "118(1.1): basic personal amount"), (3, "118(1)(a): spouse amount"), (3, "118(1)(b): eligible dependant"), (3, "118(1)(b.1), (d), (e): caregiver amounts"), (3, "118(2): age credit"), (3, "118(10): Canada employment credit"), (3, "118(3), (7): pension credit"),

@@ -97,8 +97,9 @@ flowchart BT
   v88["18(4), 214(16) thin capitalization and the deemed dividend"]:::prov
   v89["212(1)(a), (b), (2) Part XIII on management fees, interest and dividends"]:::prov
   v90["212(1)(d), 216(1), 120(1) a non-resident's rent and the election"]:::prov
-  v91["2(2), 3, 129(4) a corporation's year, to taxable income and tax"]:::prov
-  v92["50(2) bad personal-use debts"]:::prov
+  v91["116(5), (5.3) buying from a non-resident"]:::prov
+  v92["2(2), 3, 129(4) a corporation's year, to taxable income and tax"]:::prov
+  v93["50(2) bad personal-use debts"]:::prov
   v0 --> v1
   v0 --> v2
   v0 --> v3
@@ -188,13 +189,13 @@ flowchart BT
   v17 --> v77
   v6 --> v80
   v54 --> v90
-  v19 --> v91
-  v20 --> v91
-  v32 --> v91
-  v78 --> v91
-  v69 --> v91
-  v79 --> v91
-  v71 --> v91
-  v35 --> v91
+  v19 --> v92
+  v20 --> v92
+  v32 --> v92
+  v78 --> v92
+  v69 --> v92
+  v79 --> v92
+  v71 --> v92
+  v35 --> v92
   classDef prov fill:#bbdefb,stroke:#1565c0,color:#0d47a1
 ```

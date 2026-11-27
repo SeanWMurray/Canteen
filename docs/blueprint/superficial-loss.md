@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 123 statements:** 104 proven, 16 encoded, 3 not formalized.
+**Status of the 124 statements:** 105 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -125,14 +125,15 @@ graph TD
   n112["R81 · Thin capitalization"]:::proven
   n113["R82 · Part XIII tax on management fees, interest and dividends"]:::proven
   n114["R83 · A non-resident's rent: Part XIII or the 216 election"]:::proven
-  n115["R70 · A corporation's year, to taxable income and tax"]:::proven
-  n116["R35 · An individual's year, to taxable income and tax"]:::proven
-  n117["R48 · The minimum tax"]:::proven
-  n118["R11 · The principal residence exemption"]:::proven
-  n119["R2 · Cost of the substituted property"]:::proven
-  n120["N1 · Inputs decided by other provisions"]:::notFormalized
-  n121["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n122["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n115["R84 · Buying from a non-resident"]:::proven
+  n116["R70 · A corporation's year, to taxable income and tax"]:::proven
+  n117["R35 · An individual's year, to taxable income and tax"]:::proven
+  n118["R48 · The minimum tax"]:::proven
+  n119["R11 · The principal residence exemption"]:::proven
+  n120["R2 · Cost of the substituted property"]:::proven
+  n121["N1 · Inputs decided by other provisions"]:::notFormalized
+  n122["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n123["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -255,57 +256,57 @@ graph TD
   n39 --> n104
   n74 --> n114
   n88 --> n114
-  n44 --> n115
-  n45 --> n115
-  n57 --> n115
-  n60 --> n115
-  n77 --> n115
-  n78 --> n115
-  n80 --> n115
-  n101 --> n115
-  n102 --> n115
-  n103 --> n115
   n44 --> n116
   n45 --> n116
-  n53 --> n116
-  n55 --> n116
-  n56 --> n116
-  n58 --> n116
-  n73 --> n116
-  n74 --> n116
-  n75 --> n116
-  n76 --> n116
-  n81 --> n116
-  n82 --> n116
-  n83 --> n116
-  n84 --> n116
-  n85 --> n116
-  n87 --> n116
-  n88 --> n116
-  n89 --> n116
-  n90 --> n116
-  n91 --> n116
-  n92 --> n116
-  n93 --> n116
-  n94 --> n116
-  n97 --> n116
-  n100 --> n116
-  n116 --> n117
-  n44 --> n118
-  n50 --> n118
-  n11 --> n119
-  n1 --> n120
-  n5 --> n120
-  n6 --> n120
-  n8 --> n120
-  n37 --> n120
-  n119 --> n120
-  n38 --> n120
-  n30 --> n121
-  n32 --> n122
-  n34 --> n122
-  n39 --> n122
-  n42 --> n122
+  n57 --> n116
+  n60 --> n116
+  n77 --> n116
+  n78 --> n116
+  n80 --> n116
+  n101 --> n116
+  n102 --> n116
+  n103 --> n116
+  n44 --> n117
+  n45 --> n117
+  n53 --> n117
+  n55 --> n117
+  n56 --> n117
+  n58 --> n117
+  n73 --> n117
+  n74 --> n117
+  n75 --> n117
+  n76 --> n117
+  n81 --> n117
+  n82 --> n117
+  n83 --> n117
+  n84 --> n117
+  n85 --> n117
+  n87 --> n117
+  n88 --> n117
+  n89 --> n117
+  n90 --> n117
+  n91 --> n117
+  n92 --> n117
+  n93 --> n117
+  n94 --> n117
+  n97 --> n117
+  n100 --> n117
+  n117 --> n118
+  n44 --> n119
+  n50 --> n119
+  n11 --> n120
+  n1 --> n121
+  n5 --> n121
+  n6 --> n121
+  n8 --> n121
+  n37 --> n121
+  n120 --> n121
+  n38 --> n121
+  n30 --> n122
+  n32 --> n123
+  n34 --> n123
+  n39 --> n123
+  n42 --> n123
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -437,14 +438,15 @@ graph TD
   n112["R81"]:::proven
   n113["R82"]:::proven
   n114["R83"]:::proven
-  n115["R70"]:::proven
-  n116["R35"]:::proven
-  n117["R48"]:::proven
-  n118["R11"]:::proven
-  n119["R2"]:::proven
-  n120["N1"]:::notFormalized
-  n121["N2"]:::notFormalized
-  n122["N4"]:::notFormalized
+  n115["R84"]:::proven
+  n116["R70"]:::proven
+  n117["R35"]:::proven
+  n118["R48"]:::proven
+  n119["R11"]:::proven
+  n120["R2"]:::proven
+  n121["N1"]:::notFormalized
+  n122["N2"]:::notFormalized
+  n123["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -647,66 +649,66 @@ graph TD
   n39 -.-> n104
   n74 --> n114
   n88 -.-> n114
-  n44 --> n115
-  n57 --> n115
-  n45 --> n115
-  n101 --> n115
-  n102 --> n115
-  n103 --> n115
-  n78 --> n115
-  n77 --> n115
-  n80 --> n115
-  n60 -.-> n115
-  n93 --> n116
-  n55 --> n116
-  n94 --> n116
-  n81 --> n116
-  n91 --> n116
-  n84 --> n116
-  n58 --> n116
-  n97 --> n116
   n44 --> n116
-  n87 --> n116
-  n73 --> n116
-  n56 --> n116
-  n100 --> n116
-  n92 --> n116
-  n85 --> n116
+  n57 --> n116
   n45 --> n116
-  n53 --> n116
-  n89 --> n116
-  n90 --> n116
-  n82 --> n116
-  n74 --> n116
-  n83 --> n116
-  n76 --> n116
-  n75 --> n116
-  n88 -.-> n116
+  n101 --> n116
+  n102 --> n116
+  n103 --> n116
+  n78 --> n116
+  n77 --> n116
+  n80 --> n116
+  n60 -.-> n116
+  n93 --> n117
   n55 --> n117
-  n116 --> n117
+  n94 --> n117
   n81 --> n117
   n91 --> n117
   n84 --> n117
   n58 --> n117
-  n45 --> n117
+  n97 --> n117
+  n44 --> n117
   n87 --> n117
   n73 --> n117
+  n56 --> n117
   n100 --> n117
-  n44 -.-> n118
-  n50 -.-> n118
-  n11 -.-> n119
-  n1 -.-> n120
-  n5 -.-> n120
-  n6 -.-> n120
-  n8 -.-> n120
-  n37 -.-> n120
-  n119 -.-> n120
-  n38 -.-> n120
-  n30 -.-> n121
-  n32 -.-> n122
-  n34 -.-> n122
-  n39 -.-> n122
-  n42 -.-> n122
+  n92 --> n117
+  n85 --> n117
+  n45 --> n117
+  n53 --> n117
+  n89 --> n117
+  n90 --> n117
+  n82 --> n117
+  n74 --> n117
+  n83 --> n117
+  n76 --> n117
+  n75 --> n117
+  n88 -.-> n117
+  n55 --> n118
+  n117 --> n118
+  n81 --> n118
+  n91 --> n118
+  n84 --> n118
+  n58 --> n118
+  n45 --> n118
+  n87 --> n118
+  n73 --> n118
+  n100 --> n118
+  n44 -.-> n119
+  n50 -.-> n119
+  n11 -.-> n120
+  n1 -.-> n121
+  n5 -.-> n121
+  n6 -.-> n121
+  n8 -.-> n121
+  n37 -.-> n121
+  n120 -.-> n121
+  n38 -.-> n121
+  n30 -.-> n122
+  n32 -.-> n123
+  n34 -.-> n123
+  n39 -.-> n123
+  n42 -.-> n123
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -1645,6 +1647,14 @@ A non-resident pays 25% (or a lower treaty rate) on dividends from a Canadian co
 A non-resident individual's rent from Canadian real property bears 25% of the gross under Part XIII, or, on electing, Part I tax on the net income at the year's rates, plus 48% for income not earned in a province, without personal credits unless substantially all income is earned in Canada. Proven: no net income, no tax on electing.
 
 **Lean:** [`Canteen.ITA.RentalElection.partXIII`](../../Canteen/ITA/S216/RentalElection.lean#L39), [`Canteen.ITA.RentalElection.credits`](../../Canteen/ITA/S216/RentalElection.lean#L42), [`Canteen.ITA.RentalElection.basicTax`](../../Canteen/ITA/S216/RentalElection.lean#L45), [`Canteen.ITA.RentalElection.surtax`](../../Canteen/ITA/S216/RentalElection.lean#L48), [`Canteen.ITA.RentalElection.electedTax`](../../Canteen/ITA/S216/RentalElection.lean#L51), [`Canteen.ITA.RentalElection.saving`](../../Canteen/ITA/S216/RentalElection.lean#L54), [`Canteen.ITA.RentalElection.no_net_income`](../../Canteen/ITA/S216/RentalElection.lean#L68)
+
+### R84. Buying from a non-resident
+
+**Status:** proven · **Citation:** ITA 116(5), (5.01), (5.3)
+
+A purchaser of taxable Canadian property from a non-resident must remit 25% of the cost over any certificate limit (50% for depreciable, resource and similar property), unless it had no reason after reasonable inquiry to think the vendor non-resident, the property is treaty-protected with notice given, or a 116(4) certificate was issued. Proven: never more than half the cost, and nothing when the certificate covers it.
+
+**Lean:** [`Canteen.ITA.Purchaser.Purchase.rate`](../../Canteen/ITA/S116/Purchaser.lean#L57), [`Canteen.ITA.Purchaser.Purchase.excepted`](../../Canteen/ITA/S116/Purchaser.lean#L59), [`Canteen.ITA.Purchaser.Purchase.liability`](../../Canteen/ITA/S116/Purchaser.lean#L62), [`Canteen.ITA.Purchaser.Purchase.liability_le`](../../Canteen/ITA/S116/Purchaser.lean#L80), [`Canteen.ITA.Purchaser.Purchase.full_certificate`](../../Canteen/ITA/S116/Purchaser.lean#L87)
 
 ### R70. A corporation's year, to taxable income and tax
 
