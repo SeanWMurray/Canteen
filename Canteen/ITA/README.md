@@ -61,4 +61,4 @@ The verbatim statute text for each is in `statute/`. Review notes are in `docs/r
 - `S127_5/MinimumTax.lean`: sections 127.5, 127.51 and 127.531, and paragraphs 127.52(1)(d), (d.1), (f), (h), (i) and (j)(ii); subsections 120.2(1) and (3)
 - `S20/InterestDeductibility.lean`: subparagraph 20(1)(c)(i) and subsection 20(3)
 - `S118_2/MedicalExpenses.lean`: subsection 118.2(1)
-- `S118_3/Disability.lean`: subsection 118.3(1)
+- `S118_3/Disability.lean`: subsections 118.3(1) and (2)

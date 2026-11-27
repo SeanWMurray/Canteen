@@ -17,9 +17,18 @@ A × (B + C): A the appropriate percentage (14%), B $6,000 (indexed), and C for 
 the end of the year, $3,500 (indexed) less the care and supervision expenses claimed over $2,050
 (indexed).
 
+**118.3(2)** An individual who claimed (or could have claimed, were the person an adult with no income)
+the 118(1)(b) eligible dependant amount, or the 118(1)(d) amount for a parent, grandparent, child,
+grandchild, sibling, aunt, uncle, nephew or niece, for a person resident in Canada who is entitled to the
+118.3(1) deduction (and whose spouse claims no 118 or 118.8 amount for them), with no attendant or
+nursing home care for the person's impairment claimed under 118.2 other than under (b.1), may deduct the
+amount by which the person's 118.3(1) deduction exceeds the person's tax payable before deductions under
+Division E, other than under 118 to 118.07 and 118.7.
+
 The amounts default to their 2025 indexed values: $10,138, $5,914 and $3,464. Whether the impairment
 meets (a) and (a.1) is usually a judgment call; the certificate, by the right practitioner for the
-impairment, is a fact. Not encoded: 118.3(2) (the transfer to a supporting person) and (3). Rounded
+impairment, is a fact. Amounts are credits (the deduction from tax), not the underlying amounts. Not
+encoded: 118.3(3) (sharing between supporting persons). Rounded
 down to the cent.
 -/
 
@@ -81,6 +90,21 @@ def explain (f : Facts) : Finding :=
       [⟨s!"The amount is {formatCents f.amounts.base}" ++ (if f.minor then s!" plus a supplement of {formatCents (supplement f)}" else "") ++
         s!"; the credit is 14% of it: {formatCents (credit f)}.", "ITA 118.3(1)"⟩] else []), e.reliesOn⟩
 
+/-- 118.3(2): the supporting individual's side. -/
+structure Supporter where
+  /-- (a)(i), (ii): claimed or could have claimed the 118(1)(b) or (d) amount for the person. -/
+  supports : Bool := true
+  /-- The person is resident in Canada at any time in the year. -/
+  resident : Bool := true
+  /-- The person's spouse or common-law partner claims a 118 or 118.8 amount for them. -/
+  spouseClaims : Bool := false
+  deriving Repr, DecidableEq, Inhabited
+
+/-- 118.3(2): what the supporter may deduct, given the person's facts and their tax before the
+deduction ((d): tax at the rates, less credits under 118 to 118.07 and 118.7). -/
+def transfer (s : Supporter) (f : Facts) (taxBefore : Cents) : Cents :=
+  if s.supports && s.resident && !s.spouseClaims && !f.attendantCareClaimed then credit f - taxBefore else 0
+
 /-! ## Truths about the credit -/
 
 /-- The supplement never exceeds its indexed amount, and is nil for an adult. -/
@@ -92,5 +116,15 @@ theorem supplement_le (f : Facts) : supplement f ≤ f.amounts.supplement := by
 /-- Claiming attendant care as a medical expense rules the credit out. -/
 theorem not_with_attendant_care (f : Facts) (h : f.attendantCareClaimed = true) : credit f = 0 := by
   simp [credit, amount, eligible, h]
+
+/-- Between them, the person and the supporter never deduct more than the credit: what the person can
+use against their own tax, plus the transfer. -/
+private theorem min_add_sub (c t : Nat) : min c t + (c - t) ≤ c := by omega
+
+theorem transfer_le (s : Supporter) (f : Facts) (taxBefore : Cents) :
+    min (credit f) taxBefore + transfer s f taxBefore ≤ credit f := by
+  unfold transfer; split
+  · exact min_add_sub _ _
+  · exact Nat.min_le_left _ _
 
 end Canteen.ITA.Disability

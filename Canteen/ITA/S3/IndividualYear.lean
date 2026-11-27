@@ -88,6 +88,8 @@ structure Facts where
   medicalExpenses : List MedicalExpenses.Expense := []
   /-- 118.3(1): the individual's disability facts, if the credit is claimed. -/
   disability : Option Disability.Facts := none
+  /-- 118.3(2): disability credits transferred from dependants (see `disabilityTransferFrom`). -/
+  disabilityTransferred : Cents := 0
   /-- Other non-refundable credits, given. -/
   otherCredits : Cents := 0
   deriving Inhabited
@@ -152,11 +154,22 @@ def medicalCredit (f : Facts) : Cents := MedicalExpenses.credit { income := inco
 /-- 118.3(1): the disability credit. -/
 def disabilityCredit (f : Facts) : Cents := (f.disability.map Disability.credit).getD 0
 
+/-- 118.3(2)(d): tax before Division E deductions other than 118 to 118.07 (and 118.7, not encoded). -/
+def taxBeforeCredits (f : Facts) : Cents :=
+  (Rates.tax (taxableIncome f / 2) f.brackets + (f.split.map SplitIncome.tax).getD 0) - personalCredit f
+
+/-- 118.3(2): what a supporter may deduct for this person's unused disability credit. -/
+def disabilityTransferFrom (s : Disability.Supporter) (dependant : Facts) : Cents :=
+  match dependant.disability with
+  | none => 0
+  | some d => Disability.transfer s d (taxBeforeCredits dependant)
+
 /-- Tax under 117(2) on taxable income, plus tax on split income (120.4(2)), less the dividend tax
 credit, the personal credit, the donation credit, the medical expense credit and other credits. -/
 def federalTax (f : Facts) : Cents :=
   (Rates.tax (taxableIncome f / 2) f.brackets + (f.split.map SplitIncome.tax).getD 0) -
-    (Dividends.credit (dividendFacts f) + personalCredit f + donationCredit f + medicalCredit f + disabilityCredit f + f.otherCredits)
+    (Dividends.credit (dividendFacts f) + personalCredit f + donationCredit f + medicalCredit f + disabilityCredit f + f.disabilityTransferred +
+      f.otherCredits)
 
 def explain (f : Facts) : Finding :=
   let h := formatHalfCents
@@ -176,7 +189,7 @@ def explain (f : Facts) : Finding :=
       (if splitIncome f > 0 then s!", plus tax on split income of {c ((f.split.map SplitIncome.tax).getD 0)}" else "") ++
       s!", less the dividend tax credit of {c (Dividends.credit (dividendFacts f))}, the personal credit of {c (personalCredit f)}, " ++
       s!"the donation credit of {c (donationCredit f)}, the medical expense credit of {c (medicalCredit f)}, " ++
-      s!"the disability credit of {c (disabilityCredit f)} and other credits of {c f.otherCredits}: {c (federalTax f)}.",
+      s!"the disability credit of {c (disabilityCredit f + f.disabilityTransferred)} and other credits of {c f.otherCredits}: {c (federalTax f)}.",
       "ITA 117(2); 120.4(2); 121; 118; 118.1; 118.2; 118.3"⟩], (f.disability.map (·.impairment.judgments)).getD []⟩
 
 /-! ## Truths about the year -/

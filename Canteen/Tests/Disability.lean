@@ -39,4 +39,32 @@ example : MinimumTax.basicCredit year - MinimumTax.basicCredit { year with disab
 -- A judged impairment carries into the year's explanation.
 example : (IndividualYear.explain { year with disability := some judged }).reliesOn = ["J-DTC"] := by decide
 
+
+/-! ## The transfer (118.3(2)) -/
+
+namespace Transfer
+
+/-- An adult child with the credit and $8,000 of income: no tax to use it against. -/
+def child (earnings : Cents) : IndividualYear.Facts :=
+  { taxationYear := 2025, employmentAndBusiness := earnings, personalAmounts := some {}, disability := some adult }
+
+example : IndividualYear.taxBeforeCredits (child 800000) = 0 ∧ IndividualYear.disabilityTransferFrom {} (child 800000) = 141932 := by decide
+-- With $20,000: $2,800 of tax less the $2,100 personal credit leaves $700; $719.32 transfers.
+example : IndividualYear.taxBeforeCredits (child 2000000) = 70000 ∧ IndividualYear.disabilityTransferFrom {} (child 2000000) = 71932 := by decide
+-- Not a supporter, a non-resident, a spouse claiming, or attendant care claimed: nothing.
+example : IndividualYear.disabilityTransferFrom { supports := false } (child 800000) = 0 ∧
+    IndividualYear.disabilityTransferFrom { resident := false } (child 800000) = 0 ∧
+    IndividualYear.disabilityTransferFrom { spouseClaims := true } (child 800000) = 0 ∧
+    IndividualYear.disabilityTransferFrom {} { child 800000 with disability := some { adult with attendantCareClaimed := true } } = 0 := by decide
+-- No credit, nothing to transfer.
+example : IndividualYear.disabilityTransferFrom {} { child 800000 with disability := none } = 0 := by decide
+
+/-- The parent, with the transfer. -/
+def parent : IndividualYear.Facts :=
+  { taxationYear := 2025, employmentAndBusiness := 12000000, personalAmounts := some {},
+    disabilityTransferred := IndividualYear.disabilityTransferFrom {} (child 800000) }
+example : IndividualYear.federalTax { parent with disabilityTransferred := 0 } - IndividualYear.federalTax parent = 141932 := by decide
+
+end Transfer
+
 end Canteen.Tests.Disability

@@ -189,7 +189,7 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S127_5.MinimumTax, "127.5 to 127.531, 120.2 the minimum tax"),
    (`Canteen.ITA.S20.InterestDeductibility, "20(1)(c), 20(3) interest on borrowed money"),
    (`Canteen.ITA.S118_2.MedicalExpenses, "118.2(1) the medical expense credit"),
-   (`Canteen.ITA.S118_3.Disability, "118.3(1) the disability credit")]
+   (`Canteen.ITA.S118_3.Disability, "118.3(1), (2) the disability credit")]
 
 /-! ## The dashboard -/
 
@@ -298,7 +298,7 @@ def actMindmap : String := Id.run do
     (2, "s. 117"), (3, "117(2): the federal rates"),
     (2, "s. 118"), (3, "118(1.1): basic personal amount"), (3, "118(1)(a): spouse amount"),
     (2, "s. 118.2"), (3, "118.2(1): the medical expense credit"),
-    (2, "s. 118.3"), (3, "118.3(1): the disability credit"),
+    (2, "s. 118.3"), (3, "118.3(1): the disability credit"), (3, "118.3(2): transfer to a supporting person"),
     (2, "s. 118.1"), (3, "118.1(1): total gifts"), (3, "118.1(3): the credit"),
     (2, "s. 120.4"), (3, "120.4(1): split income, excluded amounts"), (3, "120.4(2), (3): the tax"),
     (2, "s. 121"), (3, "121: the dividend tax credit"),

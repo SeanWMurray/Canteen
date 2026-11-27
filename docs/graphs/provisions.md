@@ -55,7 +55,7 @@ flowchart BT
   v46["120.4 tax on split income"]:::prov
   v47["20(1)(c), 20(3) interest on borrowed money"]:::prov
   v48["118.2(1) the medical expense credit"]:::prov
-  v49["118.3(1) the disability credit"]:::prov
+  v49["118.3(1), (2) the disability credit"]:::prov
   v50["2(2), 3 an individual's year, to taxable income"]:::prov
   v51["39(4) to (6) the Canadian securities election"]:::prov
   v52["50(1) bad debts and worthless shares"]:::prov

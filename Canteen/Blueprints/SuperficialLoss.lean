@@ -557,13 +557,14 @@ def blueprint : Blueprint where
             "receipted expenses, paid in a 12-month period ending in the year, not claimed elsewhere. Proven: nothing below " ++
             "the floor."
           lean := [``MedicalExpenses.amount, ``MedicalExpenses.credit, ``MedicalExpenses.reduction_le, ``MedicalExpenses.below_floor] },
-        { id := "R51", kind := .law, title := "The disability tax credit", citation := "ITA 118.3(1)"
+        { id := "R51", kind := .law, title := "The disability tax credit", citation := "ITA 118.3(1), (2)"
           statement := "14% of $10,138 (2025), plus for a minor $5,914 less care expenses over $3,464, for a severe and " ++
             "prolonged impairment markedly restricting a basic activity of daily living, certified and filed, where no " ++
-            "attendant or nursing home care for the individual is claimed as a medical expense. Proven: the supplement never " ++
-            "exceeds its amount, and claiming attendant care rules the credit out."
+            "attendant or nursing home care for the individual is claimed as a medical expense; what the person cannot use " ++
+            "transfers to a supporting relative. Proven: the supplement never exceeds its amount, claiming attendant care " ++
+            "rules the credit out, and the person and supporter never use more than the credit between them."
           lean := [``Disability.eligible, ``Disability.amount, ``Disability.credit, ``Disability.supplement_le,
-            ``Disability.not_with_attendant_care] },
+            ``Disability.not_with_attendant_care, ``Disability.transfer, ``Disability.transfer_le] },
         { id := "R35", kind := .law, title := "An individual's year, to taxable income and tax", citation := "ITA 2(2); 3; 111(1)(b); 110.6; 117(2)"
           statement := "Income from sources (employment and business, dividends with the gross-up, recapture, attributed " ++
             "income), net taxable capital gains, less terminal and other losses; then taxable income, after the net capital " ++
