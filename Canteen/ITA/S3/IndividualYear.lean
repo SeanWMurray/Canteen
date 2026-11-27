@@ -13,6 +13,7 @@ import Canteen.ITA.S118_2.MedicalExpenses
 import Canteen.ITA.S118_3.Disability
 import Canteen.ITA.S60_03.PensionSplitting
 import Canteen.ITA.S180_2.OasRecovery
+import Canteen.ITA.S118_7.EmploymentCredits
 
 /-!
 # An individual's year: income from the encoded sources, and taxable income
@@ -104,6 +105,8 @@ structure Facts where
   pension income to the pensioner (60.03(2)(b)(ii)). -/
   splitIn : Cents := 0
   splitInQualified : Bool := true
+  /-- 118(10), 118.7, 60(e.1): employment income (part of `employmentAndBusiness`), and the CPP and EI amounts. -/
+  employment : Option EmploymentCredits.Facts := none
   /-- 180.2(2): the indexed threshold (2025: $93,454). -/
   oasThreshold : Cents := 9345400
   /-- 118.3(1): the individual's disability facts, if the credit is claimed. -/
@@ -129,6 +132,12 @@ def splitOutAllowed (f : Facts) : Cents := min f.splitOut (PensionSplitting.spli
 
 def pensionTotal (f : Facts) : Cents := (f.pensions.map (·.amount)).sum
 
+/-- 60(e.1): enhanced CPP contributions, deducted in 3(c). -/
+def enhancedCpp (f : Facts) : Cents := (f.employment.map EmploymentCredits.enhancedDeduction).getD 0
+
+/-- 118(10) and 118.7: the employment, CPP and EI credits. -/
+def employmentCredits (f : Facts) : Cents := (f.employment.map EmploymentCredits.credits).getD 0
+
 /-- Split income (120.4), deducted in computing income (20(1)(ww)). -/
 def splitIncome (f : Facts) : Cents := (f.split.map SplitIncome.splitIncome).getD 0
 
@@ -136,7 +145,7 @@ def splitIncome (f : Facts) : Cents := (f.split.map SplitIncome.splitIncome).get
 def incomeFactsBase (f : Facts) : Income.Facts :=
   { incomeFromSources := (f.employmentAndBusiness + Dividends.inclusion (dividendFacts f) + recapture f + attributedIncome f +
         pensionTotal f + f.splitIn) - splitIncome f,
-    capital := f.capital, subdivisionE := f.subdivisionE + splitOutAllowed f,
+    capital := f.capital, subdivisionE := f.subdivisionE + splitOutAllowed f + enhancedCpp f,
     sourceLosses := f.businessLosses + terminalLosses f + attributedLoss f + interestDeduction f }
 
 /-- Old Age Security benefits included in income. -/
@@ -204,9 +213,9 @@ def ageAndPensionCredits (f : Facts) : Cents :=
 /-- 118.3(1): the disability credit. -/
 def disabilityCredit (f : Facts) : Cents := (f.disability.map Disability.credit).getD 0
 
-/-- 118.3(2)(d): tax before Division E deductions other than 118 to 118.07 (and 118.7, not encoded). -/
+/-- 118.3(2)(d): tax before Division E deductions other than 118 to 118.07 and 118.7. -/
 def taxBeforeCredits (f : Facts) : Cents :=
-  (Rates.tax (taxableIncome f / 2) f.brackets + (f.split.map SplitIncome.tax).getD 0) - personalCredit f
+  (Rates.tax (taxableIncome f / 2) f.brackets + (f.split.map SplitIncome.tax).getD 0) - (personalCredit f + employmentCredits f)
 
 /-- 118.3(2): what a supporter may deduct for this person's unused disability credit. -/
 def disabilityTransferFrom (s : Disability.Supporter) (dependant : Facts) : Cents :=
@@ -218,7 +227,7 @@ def disabilityTransferFrom (s : Disability.Supporter) (dependant : Facts) : Cent
 credit, the personal credit, the donation credit, the medical expense credit and other credits. -/
 def federalTax (f : Facts) : Cents :=
   (Rates.tax (taxableIncome f / 2) f.brackets + (f.split.map SplitIncome.tax).getD 0) -
-    (Dividends.credit (dividendFacts f) + personalCredit f + ageAndPensionCredits f + donationCredit f + medicalCredit f + disabilityCredit f + f.disabilityTransferred +
+    (Dividends.credit (dividendFacts f) + personalCredit f + ageAndPensionCredits f + employmentCredits f + donationCredit f + medicalCredit f + disabilityCredit f + f.disabilityTransferred +
       f.otherCredits)
 
 def explain (f : Facts) : Finding :=
@@ -238,10 +247,11 @@ def explain (f : Facts) : Finding :=
     ⟨s!"Tax under 117(2) on taxable income, {c (Rates.tax (taxableIncome f / 2) f.brackets)}" ++
       (if splitIncome f > 0 then s!", plus tax on split income of {c ((f.split.map SplitIncome.tax).getD 0)}" else "") ++
       s!", less the dividend tax credit of {c (Dividends.credit (dividendFacts f))}, the personal credit of {c (personalCredit f)}, " ++
-      s!"the age and pension credits of {c (ageAndPensionCredits f)}, " ++
+      s!"the age and pension credits of {c (ageAndPensionCredits f)}, the employment, CPP and EI credits of " ++
+      s!"{c (employmentCredits f)}, " ++
       s!"the donation credit of {c (donationCredit f)}, the medical expense credit of {c (medicalCredit f)}, " ++
       s!"the disability credit of {c (disabilityCredit f + f.disabilityTransferred)} and other credits of {c f.otherCredits}: {c (federalTax f)}.",
-      "ITA 117(2); 120.4(2); 121; 118; 118.1; 118.2; 118.3"⟩], (f.disability.map (·.impairment.judgments)).getD []⟩
+      "ITA 117(2); 120.4(2); 121; 118; 118.1; 118.2; 118.3; 118.7"⟩], (f.disability.map (·.impairment.judgments)).getD []⟩
 
 /-! ## Truths about the year -/
 

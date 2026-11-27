@@ -81,6 +81,7 @@ import Canteen.ITA.S118_3.Disability
 import Canteen.ITA.S60_03.PensionSplitting
 import Canteen.ITA.S180_2.OasRecovery
 import Canteen.ITA.S84.PaidUpCapitalIncrease
+import Canteen.ITA.S118_7.EmploymentCredits
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.ITA.S40.ShareToAffiliate
@@ -113,6 +114,7 @@ import Canteen.Transactions.CrystallizationMinimumTax
 import Canteen.Transactions.DebtSwap
 import Canteen.Transactions.AttendantCare
 import Canteen.Transactions.PensionSplit
+import Canteen.Transactions.SalaryOrDividend
 import Canteen.Transactions.SisterCompanyRepurchase
 
 -- Blueprints: memos linked to Lean
@@ -132,6 +134,7 @@ import Canteen.Blueprints.CrystallizationMinimumTax
 import Canteen.Blueprints.DebtSwap
 import Canteen.Blueprints.AttendantCare
 import Canteen.Blueprints.PensionSplit
+import Canteen.Blueprints.SalaryOrDividend
 import Canteen.Blueprints.SisterCompanyRepurchase
 import Canteen.Blueprints.All
 
@@ -204,3 +207,4 @@ import Canteen.Tests.Disability
 import Canteen.Tests.PensionSplitting
 import Canteen.Tests.OasRecovery
 import Canteen.Tests.PaidUpCapitalIncrease
+import Canteen.Tests.EmploymentCredits

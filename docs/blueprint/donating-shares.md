@@ -130,7 +130,7 @@ The taxable capital gain on a gift of a listed security to a qualified donee is 
 
 Income, taxable income, tax at the 117(2) rates, less the personal and donation credits.
 
-**Lean:** [`Canteen.ITA.IndividualYear.income`](../../Canteen/ITA/S3/IndividualYear.lean#L155), [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L217), [`Canteen.ITA.IndividualYear.personalCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L180), [`Canteen.ITA.IndividualYear.donationCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L188)
+**Lean:** [`Canteen.ITA.IndividualYear.income`](../../Canteen/ITA/S3/IndividualYear.lean#L164), [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L226), [`Canteen.ITA.IndividualYear.personalCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L189), [`Canteen.ITA.IndividualYear.donationCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L197)
 
 ## Facts
 
@@ -244,7 +244,7 @@ Shares worth $1,000,000 that cost $200,000: in kind, no regular tax but $17,963.
 3. Losses: business $0.00, terminal $0.00, attributed $0.00; interest deducted $0.00. [ITA 3(d); 20(16); 74.1; 20(1)(c)]
 4. Income for the year: $200,000.00. [ITA 3]
 5. Less the net capital loss deduction $0.00, the capital gains deduction $0.00, and other deductions $0.00: taxable income $200,000.00. [ITA 2(2); 111(1)(b); 110.6(2), (2.1)]
-6. Tax under 117(2) on taxable income, $42,622.91, less the dividend tax credit of $0.00, the personal credit of $1,989.22, the age and pension credits of $0.00, the donation credit of $14,470.00, the medical expense credit of $0.00, the disability credit of $0.00 and other credits of $0.00: $26,163.69. [ITA 117(2); 120.4(2); 121; 118; 118.1; 118.2; 118.3]
+6. Tax under 117(2) on taxable income, $42,622.91, less the dividend tax credit of $0.00, the personal credit of $1,989.22, the age and pension credits of $0.00, the employment, CPP and EI credits of $0.00, the donation credit of $14,470.00, the medical expense credit of $0.00, the disability credit of $0.00 and other credits of $0.00: $26,163.69. [ITA 117(2); 120.4(2); 121; 118; 118.1; 118.2; 118.3; 118.7]
 Relies on no judgment calls.
 ```
 
@@ -256,7 +256,7 @@ Relies on no judgment calls.
 3. Losses: business $0.00, terminal $0.00, attributed $0.00; interest deducted $0.00. [ITA 3(d); 20(16); 74.1; 20(1)(c)]
 4. Income for the year: $220,000.00. [ITA 3]
 5. Less the net capital loss deduction $0.00, the capital gains deduction $0.00, and other deductions $0.00: taxable income $220,000.00. [ITA 2(2); 111(1)(b); 110.6(2), (2.1)]
-6. Tax under 117(2) on taxable income, $48,422.91, less the dividend tax credit of $0.00, the personal credit of $1,889.06, the age and pension credits of $0.00, the donation credit of $14,470.00, the medical expense credit of $0.00, the disability credit of $0.00 and other credits of $0.00: $32,063.85. [ITA 117(2); 120.4(2); 121; 118; 118.1; 118.2; 118.3]
+6. Tax under 117(2) on taxable income, $48,422.91, less the dividend tax credit of $0.00, the personal credit of $1,889.06, the age and pension credits of $0.00, the employment, CPP and EI credits of $0.00, the donation credit of $14,470.00, the medical expense credit of $0.00, the disability credit of $0.00 and other credits of $0.00: $32,063.85. [ITA 117(2); 120.4(2); 121; 118; 118.1; 118.2; 118.3; 118.7]
 Relies on no judgment calls.
 ```
 

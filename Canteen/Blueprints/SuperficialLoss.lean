@@ -56,6 +56,7 @@ import Canteen.ITA.S118_3.Disability
 import Canteen.ITA.S60_03.PensionSplitting
 import Canteen.ITA.S180_2.OasRecovery
 import Canteen.ITA.S84.PaidUpCapitalIncrease
+import Canteen.ITA.S118_7.EmploymentCredits
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -591,15 +592,21 @@ def blueprint : Blueprint where
             "for in full, and a sole holder's cost rises by the whole dividend."
           lean := [``PaidUpCapitalIncrease.dividendPaid, ``PaidUpCapitalIncrease.dividend, ``PaidUpCapitalIncrease.costAddition,
             ``PaidUpCapitalIncrease.dividendPaid_le, ``PaidUpCapitalIncrease.paid_for, ``PaidUpCapitalIncrease.sole_holder] },
+        { id := "R55", kind := .law, title := "The employment, CPP and EI credits", citation := "ITA 118(10); 118.7; 60(e.1)"
+          statement := "14% of the lesser of $1,471 (2025) and employment income; 14% of EI premiums and base CPP " ++
+            "contributions, each up to its maximum; the enhanced CPP contributions deducted from income. Proven: the " ++
+            "employment credit is at most 14% of the indexed amount, and nil without employment income."
+          lean := [``EmploymentCredits.employmentCredit, ``EmploymentCredits.contributionCredit, ``EmploymentCredits.enhancedDeduction,
+            ``EmploymentCredits.employmentCredit_le, ``EmploymentCredits.no_employment] },
         { id := "R35", kind := .law, title := "An individual's year, to taxable income and tax", citation := "ITA 2(2); 3; 111(1)(b); 110.6; 117(2)"
           statement := "Income from sources (employment and business, dividends with the gross-up, recapture, attributed " ++
             "income), net taxable capital gains, less terminal and other losses; then taxable income, after the net capital " ++
             "loss deduction and the capital gains deduction (which the former reduces). Proven: taxable income never exceeds " ++
             "income, and the capital gains deduction never exceeds the net taxable capital gains."
           lean := [``IndividualYear.incomeFacts, ``IndividualYear.taxableIncome, ``IndividualYear.capitalGainsDeduction,
-            ``IndividualYear.federalTax, ``IndividualYear.personalCredit, ``IndividualYear.donationCredit, ``IndividualYear.interestDeduction, ``IndividualYear.medicalCredit, ``IndividualYear.disabilityCredit, ``IndividualYear.ageAndPensionCredits, ``IndividualYear.oasRecovery,
+            ``IndividualYear.federalTax, ``IndividualYear.personalCredit, ``IndividualYear.donationCredit, ``IndividualYear.interestDeduction, ``IndividualYear.medicalCredit, ``IndividualYear.disabilityCredit, ``IndividualYear.ageAndPensionCredits, ``IndividualYear.oasRecovery, ``IndividualYear.employmentCredits,
             ``IndividualYear.taxable_le_income, ``IndividualYear.capital_gains_deduction_le],
-          uses := ["R8", "R9", "R19", "R21", "R22", "R24", "R40", "R41", "R42", "R43", "R49", "R50", "R51", "R52", "R53"] },
+          uses := ["R8", "R9", "R19", "R21", "R22", "R24", "R40", "R41", "R42", "R43", "R49", "R50", "R51", "R52", "R53", "R55"] },
         { id := "R48", kind := .law, title := "The minimum tax", citation := "ITA 127.5; 127.51; 127.52(1); 127.531; 120.2"
           statement := "An individual pays at least 20.5% of adjusted taxable income over the 117(2)(d) threshold, less half " ++
             "the personal credits and 4/5 of the donation credit; adjusted taxable income counts capital gains in full (3/10 " ++
