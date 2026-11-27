@@ -67,6 +67,7 @@ import Canteen.ITA.S6.StandbyCharge
 import Canteen.ITA.S112.StopLoss
 import Canteen.ITA.S84.WindingUpDividend
 import Canteen.ITA.S15.ShareholderBenefit
+import Canteen.ITA.S44_1.SmallBusinessRollover
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -685,6 +686,13 @@ def blueprint : Blueprint where
             "for in full, and a dividend is never also a 15(1) benefit."
           lean := [``ShareholderBenefit.applies, ``ShareholderBenefit.inclusion, ``ShareholderBenefit.paid_in_full,
             ``ShareholderBenefit.not_dividend] },
+        { id := "R66", kind := .law, title := "The small business investment rollover", citation := "ITA 44.1(1), (2)"
+          statement := "An individual's gain on eligible small business corporation shares, of an active business corporation " ++
+            "throughout and held 185 days, is deferred in the proportion of the proceeds reinvested in replacement shares " ++
+            "in the year or the next, whose cost is reduced by the deferral. Proven: never more than the gain, and all of it " ++
+            "when all the proceeds are reinvested."
+          lean := [``SmallBusinessRollover.qualifying, ``SmallBusinessRollover.permittedDeferral, ``SmallBusinessRollover.acbReduction,
+            ``SmallBusinessRollover.deferral_le, ``SmallBusinessRollover.full_reinvestment] },
         { id := "R35", kind := .law, title := "An individual's year, to taxable income and tax", citation := "ITA 2(2); 3; 111(1)(b); 110.6; 117(2)"
           statement := "Income from sources (employment and business, dividends with the gross-up, recapture, attributed " ++
             "income), net taxable capital gains, less terminal and other losses; then taxable income, after the net capital " ++

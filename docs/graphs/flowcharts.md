@@ -982,6 +982,34 @@ flowchart TD
   classDef start fill:#ffffff,stroke:#212121,color:#212121
 ```
 
+## Subsection 44.1(1): "qualifying disposition"
+
+```mermaid
+flowchart TD
+  S(["#quot;qualifying disposition#quot; (44.1(1)) · ITA 44.1(1)"]):::start
+  C0["<b>individual</b> The individual is not a trust<br/>[ITA 44.1(1) individual]"]:::fact
+  C1["<b>(a)</b> Each share was an eligible small business<br/>corporation share of the individual<br/>[ITA 44.1(1)(a)]"]:::fact
+  C2["<b>(b)</b> Throughout the individual's ownership, it<br/>was a share of an active business<br/>corporation<br/><i>judgment call: judgment calls computed from the facts</i><br/>[ITA 44.1(1)(b)]"]:::judgment
+  C3["<b>(c)</b> The individual owned it throughout the 185<br/>days before the disposition<br/>[ITA 44.1(1)(c)]"]:::fact
+  Y(["#quot;qualifying disposition#quot; (44.1(1)) applies"]):::yes
+  N(["#quot;qualifying disposition#quot; (44.1(1)) does not apply"]):::no
+  S --> C0
+  C0 -->|met| C1
+  C0 -->|not met| N
+  C1 -->|met| C2
+  C1 -->|not met| N
+  C2 -->|met| C3
+  C2 -->|not met| N
+  C3 -->|met| Y
+  C3 -->|not met| N
+  classDef fact fill:#eeeeee,stroke:#616161,color:#212121
+  classDef judgment fill:#ffe0b2,stroke:#ef6c00,color:#e65100
+  classDef rule fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+  classDef yes fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
+  classDef no fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+  classDef start fill:#ffffff,stroke:#212121,color:#212121
+```
+
 ## Subparagraph 40(2)(g)(iv): transfers to registered plans
 
 ```mermaid

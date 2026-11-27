@@ -80,7 +80,8 @@ flowchart BT
   v71["84(1), 53(1)(b) an increase in paid-up capital"]:::prov
   v72["112(3), (3.01), (6.1) the stop-loss on shares"]:::prov
   v73["84(2) a distribution on winding-up"]:::prov
-  v74["50(2) bad personal-use debts"]:::prov
+  v74["44.1 the small business investment rollover"]:::prov
+  v75["50(2) bad personal-use debts"]:::prov
   v0 --> v1
   v0 --> v2
   v0 --> v3

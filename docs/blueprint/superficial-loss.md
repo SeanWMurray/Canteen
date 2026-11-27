@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 105 statements:** 86 proven, 16 encoded, 3 not formalized.
+**Status of the 106 statements:** 87 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -108,13 +108,14 @@ graph TD
   n95["R63 · The stop-loss on shares"]:::proven
   n96["R64 · A distribution on winding-up"]:::proven
   n97["R65 · Shareholder benefits"]:::proven
-  n98["R35 · An individual's year, to taxable income and tax"]:::proven
-  n99["R48 · The minimum tax"]:::proven
-  n100["R11 · The principal residence exemption"]:::proven
-  n101["R2 · Cost of the substituted property"]:::proven
-  n102["N1 · Inputs decided by other provisions"]:::notFormalized
-  n103["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n104["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n98["R66 · The small business investment rollover"]:::proven
+  n99["R35 · An individual's year, to taxable income and tax"]:::proven
+  n100["R48 · The minimum tax"]:::proven
+  n101["R11 · The principal residence exemption"]:::proven
+  n102["R2 · Cost of the substituted property"]:::proven
+  n103["N1 · Inputs decided by other provisions"]:::notFormalized
+  n104["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n105["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -234,46 +235,46 @@ graph TD
   n74 --> n76
   n77 --> n78
   n77 --> n80
-  n44 --> n98
-  n45 --> n98
-  n53 --> n98
-  n55 --> n98
-  n56 --> n98
-  n58 --> n98
-  n73 --> n98
-  n74 --> n98
-  n75 --> n98
-  n76 --> n98
-  n81 --> n98
-  n82 --> n98
-  n83 --> n98
-  n84 --> n98
-  n85 --> n98
-  n87 --> n98
-  n88 --> n98
-  n89 --> n98
-  n90 --> n98
-  n91 --> n98
-  n92 --> n98
-  n93 --> n98
-  n94 --> n98
-  n97 --> n98
-  n98 --> n99
-  n44 --> n100
-  n50 --> n100
-  n11 --> n101
-  n1 --> n102
-  n5 --> n102
-  n6 --> n102
-  n8 --> n102
-  n37 --> n102
-  n101 --> n102
-  n38 --> n102
-  n30 --> n103
-  n32 --> n104
-  n34 --> n104
-  n39 --> n104
-  n42 --> n104
+  n44 --> n99
+  n45 --> n99
+  n53 --> n99
+  n55 --> n99
+  n56 --> n99
+  n58 --> n99
+  n73 --> n99
+  n74 --> n99
+  n75 --> n99
+  n76 --> n99
+  n81 --> n99
+  n82 --> n99
+  n83 --> n99
+  n84 --> n99
+  n85 --> n99
+  n87 --> n99
+  n88 --> n99
+  n89 --> n99
+  n90 --> n99
+  n91 --> n99
+  n92 --> n99
+  n93 --> n99
+  n94 --> n99
+  n97 --> n99
+  n99 --> n100
+  n44 --> n101
+  n50 --> n101
+  n11 --> n102
+  n1 --> n103
+  n5 --> n103
+  n6 --> n103
+  n8 --> n103
+  n37 --> n103
+  n102 --> n103
+  n38 --> n103
+  n30 --> n104
+  n32 --> n105
+  n34 --> n105
+  n39 --> n105
+  n42 --> n105
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -388,13 +389,14 @@ graph TD
   n95["R63"]:::proven
   n96["R64"]:::proven
   n97["R65"]:::proven
-  n98["R35"]:::proven
-  n99["R48"]:::proven
-  n100["R11"]:::proven
-  n101["R2"]:::proven
-  n102["N1"]:::notFormalized
-  n103["N2"]:::notFormalized
-  n104["N4"]:::notFormalized
+  n98["R66"]:::proven
+  n99["R35"]:::proven
+  n100["R48"]:::proven
+  n101["R11"]:::proven
+  n102["R2"]:::proven
+  n103["N1"]:::notFormalized
+  n104["N2"]:::notFormalized
+  n105["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -594,54 +596,54 @@ graph TD
   n74 -.-> n76
   n77 --> n78
   n77 --> n80
-  n93 --> n98
-  n55 --> n98
-  n94 --> n98
-  n81 --> n98
-  n91 --> n98
-  n84 --> n98
-  n58 --> n98
-  n97 --> n98
-  n44 --> n98
-  n87 --> n98
-  n73 --> n98
-  n56 --> n98
-  n92 --> n98
-  n85 --> n98
-  n45 --> n98
-  n53 --> n98
-  n89 --> n98
-  n90 --> n98
-  n82 --> n98
-  n74 --> n98
-  n83 --> n98
-  n76 --> n98
-  n75 --> n98
-  n88 -.-> n98
+  n93 --> n99
   n55 --> n99
-  n98 --> n99
+  n94 --> n99
   n81 --> n99
   n91 --> n99
   n84 --> n99
   n58 --> n99
-  n45 --> n99
+  n97 --> n99
+  n44 --> n99
   n87 --> n99
   n73 --> n99
-  n44 -.-> n100
-  n50 -.-> n100
-  n11 -.-> n101
-  n1 -.-> n102
-  n5 -.-> n102
-  n6 -.-> n102
-  n8 -.-> n102
-  n37 -.-> n102
-  n101 -.-> n102
-  n38 -.-> n102
-  n30 -.-> n103
-  n32 -.-> n104
-  n34 -.-> n104
-  n39 -.-> n104
-  n42 -.-> n104
+  n56 --> n99
+  n92 --> n99
+  n85 --> n99
+  n45 --> n99
+  n53 --> n99
+  n89 --> n99
+  n90 --> n99
+  n82 --> n99
+  n74 --> n99
+  n83 --> n99
+  n76 --> n99
+  n75 --> n99
+  n88 -.-> n99
+  n55 --> n100
+  n99 --> n100
+  n81 --> n100
+  n91 --> n100
+  n84 --> n100
+  n58 --> n100
+  n45 --> n100
+  n87 --> n100
+  n73 --> n100
+  n44 -.-> n101
+  n50 -.-> n101
+  n11 -.-> n102
+  n1 -.-> n103
+  n5 -.-> n103
+  n6 -.-> n103
+  n8 -.-> n103
+  n37 -.-> n103
+  n102 -.-> n103
+  n38 -.-> n103
+  n30 -.-> n104
+  n32 -.-> n105
+  n34 -.-> n105
+  n39 -.-> n105
+  n42 -.-> n105
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -1444,6 +1446,14 @@ Funds or property a Canadian corporation distributes to shareholders on the wind
 The value of a benefit a corporation confers on a shareholder as shareholder, less what was paid for it and any part section 84 deems a dividend, is income, unless conferred by a return of capital, a redemption, a winding-up, a dividend, a rights offering to all common shareholders and the like. Proven: nothing when paid for in full, and a dividend is never also a 15(1) benefit.
 
 **Lean:** [`Canteen.ITA.ShareholderBenefit.applies`](../../Canteen/ITA/S15/ShareholderBenefit.lean#L72), [`Canteen.ITA.ShareholderBenefit.inclusion`](../../Canteen/ITA/S15/ShareholderBenefit.lean#L86), [`Canteen.ITA.ShareholderBenefit.paid_in_full`](../../Canteen/ITA/S15/ShareholderBenefit.lean#L99), [`Canteen.ITA.ShareholderBenefit.not_dividend`](../../Canteen/ITA/S15/ShareholderBenefit.lean#L105)
+
+### R66. The small business investment rollover
+
+**Status:** proven · **Citation:** ITA 44.1(1), (2)
+
+An individual's gain on eligible small business corporation shares, of an active business corporation throughout and held 185 days, is deferred in the proportion of the proceeds reinvested in replacement shares in the year or the next, whose cost is reduced by the deferral. Proven: never more than the gain, and all of it when all the proceeds are reinvested.
+
+**Lean:** [`Canteen.ITA.SmallBusinessRollover.qualifying`](../../Canteen/ITA/S44_1/SmallBusinessRollover.lean#L60), [`Canteen.ITA.SmallBusinessRollover.permittedDeferral`](../../Canteen/ITA/S44_1/SmallBusinessRollover.lean#L82), [`Canteen.ITA.SmallBusinessRollover.acbReduction`](../../Canteen/ITA/S44_1/SmallBusinessRollover.lean#L89), [`Canteen.ITA.SmallBusinessRollover.deferral_le`](../../Canteen/ITA/S44_1/SmallBusinessRollover.lean#L104), [`Canteen.ITA.SmallBusinessRollover.full_reinvestment`](../../Canteen/ITA/S44_1/SmallBusinessRollover.lean#L112)
 
 ### R35. An individual's year, to taxable income and tax
 
