@@ -32,12 +32,11 @@ example : reduction corporation sale.loss = 6000000 ∧ (apply corporation sale)
 -- Only the deducted part of a taxable dividend counts.
 example : reduction { corporation with dividends := [{ amount := 5000000, kind := .taxable 2000000 }] } sale.loss = 2000000 := by decide
 -- A redemption dividend from a public company is not qualified (112(6.1)): it counts even for a small holding held 365 days.
-example : reduction { individual := false, held365 := true,
-    dividends := [{ amount := 5000000, kind := .taxable 5000000, onRedemption := true, smallHolding := true }] } sale.loss = 5000000 := by decide
+def publicRedemption : Dividend := { amount := 5000000, kind := .taxable 5000000, onRedemption := true, smallHolding := true }
+example : reduction { individual := false, held365 := true, dividends := [publicRedemption] } sale.loss = 5000000 := by decide
 -- Between private corporations, it is qualified, and excluded.
-example : reduction { individual := false, held365 := true,
-    dividends := [{ amount := 5000000, kind := .taxable 5000000, onRedemption := true, privateToPrivate := true, smallHolding := true }] }
-    sale.loss = 0 := by decide
+example : reduction { individual := false, held365 := true, dividends := [{ publicRedemption with privateToPrivate := true }] } sale.loss = 0 := by
+  decide
 -- A gain is untouched.
 example : (apply corporation { sale with proceeds := 12000000 }).gain = 2000000 := by decide
 
