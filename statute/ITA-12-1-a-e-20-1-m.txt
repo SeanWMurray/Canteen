@@ -1,0 +1,11 @@
+Income Tax Act, R.S.C. 1985, c. 1 (5th Supp.), paragraphs 12(1)(a) and (e) and 20(1)(m)
+
+Source: Justice Canada consolidated Acts (XML), https://github.com/justicecanada/laws-lois-xml, file eng/acts/I-3.3.xml
+Current to: 2026-10-29. Last amended: 2026-06-18.
+Extracted verbatim; whitespace normalized; each provision on one line.
+
+12(1)(a) any amount received by the taxpayer in the year in the course of a business(i)that is on account of services not rendered or goods not delivered before the end of the year or that, for any other reason, may be regarded as not having been earned in the year or a previous year, or(ii)under an arrangement or understanding that it is repayable in whole or in part on the return or resale to the taxpayer of articles in or by means of which goods were delivered to a customer;
+
+12(1)(e) any amount(i)deducted under paragraph 20(1)(m) (including any amount substituted by virtue of subsection 20(6) for any amount deducted under that paragraph), paragraph 20(1)(m.1) or subsection 20(7), or(ii)deducted under paragraph 20(1)(n),in computing the taxpayer’s income from a business for the immediately preceding year;
+
+20(1)(m) subject to subsection 20(6), where amounts described in paragraph 12(1)(a) have been included in computing the taxpayer’s income from a business for the year or a previous year, a reasonable amount as a reserve in respect of(i)goods that it is reasonably anticipated will have to be delivered after the end of the year,(ii)services that it is reasonably anticipated will have to be rendered after the end of the year,(iii)periods for which rent or other amounts for the possession or use of land or of chattels or movables have been paid in advance, or(iv)repayments under arrangements or understandings of the class described in subparagraph 12(1)(a)(ii) that it is reasonably anticipated will have to be made after the end of the year on the return or resale to the taxpayer of articles other than bottles;

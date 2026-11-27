@@ -143,6 +143,7 @@ Canteen/
     S20/FinancingExpenses.lean   20(1)(e), (e.1): financing expenses, over five years
     S18/WorkSpace.lean         18(12), 8(13): work space in the home, and its carryforward
     S20/DoubtfulDebts.lean     20(1)(l), (p), 12(1)(d), (i): doubtful debt reserves, bad debts, recoveries
+    S20/AdvancePayments.lean   12(1)(a), (e), 20(1)(m): amounts received in advance, and the reserve
     S3/CorporateYear.lean      2(2), 3, 129(4): a corporation's year, to taxable income, investment income and tax
     S110_6/CapitalGainsDeduction.lean   110.6: qualified small business corporation shares, the gains limits, the deduction
     S251_2/LossRestrictionEvent.lean   251.2(2)(a), 256(7)(a): acquisitions of control, and when they are not

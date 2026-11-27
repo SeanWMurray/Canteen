@@ -78,6 +78,7 @@ import Canteen.ITA.S67_1.MealsEntertainment
 import Canteen.ITA.S20.FinancingExpenses
 import Canteen.ITA.S18.WorkSpace
 import Canteen.ITA.S20.DoubtfulDebts
+import Canteen.ITA.S20.AdvancePayments
 import Canteen.ITA.S3.CorporateYear
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
@@ -789,6 +790,12 @@ def blueprint : Blueprint where
           lean := [``DoubtfulDebts.reserve, ``DoubtfulDebts.badDebts, ``DoubtfulDebts.inclusions, ``DoubtfulDebts.net,
             ``DoubtfulDebts.Receivable.reserve_le, ``DoubtfulDebts.Receivable.not_both, ``DoubtfulDebts.Receivable.not_included,
             ``DoubtfulDebts.reverses] },
+        { id := "R78", kind := .law, title := "Amounts received in advance", citation := "ITA 12(1)(a), (e)(i); 20(1)(m)"
+          statement := "Amounts received for goods or services not yet delivered are income when received, less a " ++
+            "reasonable reserve for what remains after the year, which comes back into income the next year. Proven: the " ++
+            "reserve never exceeds the advances, and over the two years an advance is income exactly once."
+          lean := [``AdvancePayments.included, ``AdvancePayments.reserve, ``AdvancePayments.net, ``AdvancePayments.Advance.reserve_le,
+            ``AdvancePayments.reserve_le, ``AdvancePayments.two_years] },
         { id := "R70", kind := .law, title := "A corporation's year, to taxable income and tax", citation := "ITA 2(2); 3; 110.1; 111(1), (8); 112(1); 125(7); 129(4)"
           statement := "A corporation's income from active business, personal services business, property and dividends " ++
             "received, with its net taxable capital gains (a 55(2) dividend as a gain); taxable income after gifts, the " ++

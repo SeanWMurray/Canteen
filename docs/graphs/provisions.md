@@ -91,8 +91,9 @@ flowchart BT
   v82["20(1)(e), (e.1) financing expenses"]:::prov
   v83["18(12), 8(13) work space in the home"]:::prov
   v84["12(1)(d), (i), 20(1)(l), (p) doubtful and bad debts"]:::prov
-  v85["2(2), 3, 129(4) a corporation's year, to taxable income and tax"]:::prov
-  v86["50(2) bad personal-use debts"]:::prov
+  v85["12(1)(a), (e), 20(1)(m) amounts received in advance"]:::prov
+  v86["2(2), 3, 129(4) a corporation's year, to taxable income and tax"]:::prov
+  v87["50(2) bad personal-use debts"]:::prov
   v0 --> v1
   v0 --> v2
   v0 --> v3
@@ -181,13 +182,13 @@ flowchart BT
   v31 --> v75
   v17 --> v77
   v6 --> v80
-  v19 --> v85
-  v20 --> v85
-  v32 --> v85
-  v78 --> v85
-  v69 --> v85
-  v79 --> v85
-  v71 --> v85
-  v35 --> v85
+  v19 --> v86
+  v20 --> v86
+  v32 --> v86
+  v78 --> v86
+  v69 --> v86
+  v79 --> v86
+  v71 --> v86
+  v35 --> v86
   classDef prov fill:#bbdefb,stroke:#1565c0,color:#0d47a1
 ```

@@ -105,6 +105,7 @@ import Canteen.ITA.S67_1.MealsEntertainment
 import Canteen.ITA.S20.FinancingExpenses
 import Canteen.ITA.S18.WorkSpace
 import Canteen.ITA.S20.DoubtfulDebts
+import Canteen.ITA.S20.AdvancePayments
 import Canteen.ITA.S3.CorporateYear
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
@@ -255,3 +256,4 @@ import Canteen.Tests.MealsEntertainment
 import Canteen.Tests.FinancingExpenses
 import Canteen.Tests.WorkSpace
 import Canteen.Tests.DoubtfulDebts
+import Canteen.Tests.AdvancePayments
