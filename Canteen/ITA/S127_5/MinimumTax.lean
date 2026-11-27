@@ -12,7 +12,8 @@ import Canteen.ITA.S3.IndividualYear
 * **127.52(1)** adjusted taxable income: taxable income computed as if (d) capital gains and losses
   (and listed personal property gains) were included at 1/1, (d.1) gains on gifts of listed
   securities at 3/10, (f) dividends were not grossed up, (h)(ii) 7/5 of the capital gains deduction
-  were deductible, and (i)(ii) net capital losses were deductible only as computed at the ordinary rate.
+  were deductible, (i)(ii) net capital losses were deductible only as computed at the ordinary rate,
+  and (j)(ii) only ½ of interest under 20(1)(c) on money borrowed to earn income from property.
 * **127.531** the basic minimum tax credit: ½ of the 118(1) credits (and the others in (a)), and 4/5
   of the donation credit.
 * **120.2(3)** the additional tax for a year: the minimum amount over the Division E tax; **120.2(1)**
@@ -20,8 +21,8 @@ import Canteen.ITA.S3.IndividualYear
   to the amount by which that year's Division E tax exceeds its minimum amount.
 
 Not encoded: the rental, film, tax shelter, partnership and resource adjustments ((b) to (c.3), (e),
-(e.1)), (g), the other parts of (h), (j) (half of carrying charges and other deductions: Subdivision E
-deductions and other Division C deductions are taken in full), the special foreign tax credit (127.54),
+(e.1)), (g), the other parts of (h), the rest of (j) (Subdivision E deductions and other Division C
+deductions are taken in full), the special foreign tax credit (127.54),
 127.55, foreign tax credits in 120.2 (section 126 is not encoded), and the interaction with split income (120.4(3));
 the minimum amount is computed for a year without split income. Allowable business investment losses
 stay at ½ (38(c) is not read as 1/1). Amounts are rounded down to the cent.
@@ -50,7 +51,8 @@ def dividends (f : Facts) : Cents :=
 def income (f : Facts) : HalfCents :=
   (2 * ((f.employmentAndBusiness + dividends f + IndividualYear.recapture f + IndividualYear.attributedIncome f) -
       IndividualYear.splitIncome f) + paragraph3b f.capital - 2 * f.subdivisionE) -
-    (2 * (f.businessLosses + IndividualYear.terminalLosses f + IndividualYear.attributedLoss f) +
+    ((2 * (f.businessLosses + IndividualYear.terminalLosses f + IndividualYear.attributedLoss f +
+      IndividualYear.interestDeduction f) - InterestDeductibility.propertyPart f.borrowings) +
       f.capital.allowableBusinessInvestmentLosses)
 
 /-- 127.52(1): adjusted taxable income, in half-cents: (h)(ii) 7/5 of the capital gains deduction,

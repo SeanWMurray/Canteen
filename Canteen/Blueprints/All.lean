@@ -12,6 +12,7 @@ import Canteen.Blueprints.DonatingShares
 import Canteen.Blueprints.InvestmentIncomeIntegration
 import Canteen.Blueprints.EligibleDesignation
 import Canteen.Blueprints.CrystallizationMinimumTax
+import Canteen.Blueprints.DebtSwap
 
 /-!
 # Every blueprint, and the file each is rendered to
@@ -35,6 +36,7 @@ def all : List (String × Blueprint.Blueprint) :=
    ("donating-shares", DonatingShares.memo),
    ("investment-income-integration", InvestmentIncomeIntegration.memo),
    ("eligible-designation", EligibleDesignation.memo),
-   ("crystallization-minimum-tax", CrystallizationMinimumTax.memo)]
+   ("crystallization-minimum-tax", CrystallizationMinimumTax.memo),
+   ("debt-swap", DebtSwap.memo)]
 
 end Canteen.Blueprints

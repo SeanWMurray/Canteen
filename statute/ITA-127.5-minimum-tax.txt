@@ -1,4 +1,4 @@
-Income Tax Act, R.S.C. 1985, c. 1 (5th Supp.), sections 127.5 and 127.51, paragraphs 127.52(1)(d), (d.1), (f), (h) and (i), and section 127.531; subsections 120.2(1) and (3)
+Income Tax Act, R.S.C. 1985, c. 1 (5th Supp.), sections 127.5 and 127.51, paragraphs 127.52(1)(d), (d.1), (f), (h) and (i) (for (j)(ii), see ITA-20-1-c-20-3.txt), and section 127.531; subsections 120.2(1) and (3)
 
 Source: Justice Canada consolidated Acts (XML), https://github.com/justicecanada/laws-lois-xml, file eng/acts/I-3.3.xml
 Current to: 2026-10-29. Last amended: 2026-06-18.

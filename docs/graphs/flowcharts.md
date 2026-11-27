@@ -829,6 +829,34 @@ flowchart TD
   classDef start fill:#ffffff,stroke:#212121,color:#212121
 ```
 
+## Subparagraph 20(1)(c)(i): interest on borrowed money
+
+```mermaid
+flowchart TD
+  S(["subparagraph 20(1)(c)(i) · ITA 20(1)(c)(i); 20(3)"]):::start
+  C0["<b>legal obligation</b> The interest is paid or payable under a<br/>legal obligation to pay interest<br/>[ITA 20(1)(c)(i); 20(3) legal obligation]"]:::fact
+  C1["<b>use</b> The borrowed money was used (or, under<br/>20(3), the borrowing it repaid was used) in<br/>a business or to acquire property<br/>[ITA 20(1)(c)(i); 20(3) use]"]:::fact
+  C2["<b>income purpose</b> It was used for the purpose of earning<br/>income from the business or property<br/><i>judgment call: judgment calls computed from the facts</i><br/>[ITA 20(1)(c)(i); 20(3) income purpose]"]:::judgment
+  E0["<b>exempt income, life insurance</b> The property acquired is property the income<br/>from which would be exempt, or a life<br/>insurance policy<br/>[ITA 20(1)(c)(i); 20(3) exempt income, life insurance]"]:::fact
+  Y(["subparagraph 20(1)(c)(i) applies"]):::yes
+  N(["subparagraph 20(1)(c)(i) does not apply"]):::no
+  S --> C0
+  C0 -->|met| C1
+  C0 -->|not met| N
+  C1 -->|met| C2
+  C1 -->|not met| N
+  C2 -->|met| E0
+  C2 -->|not met| N
+  E0 -->|does not apply| Y
+  E0 -->|applies| N
+  classDef fact fill:#eeeeee,stroke:#616161,color:#212121
+  classDef judgment fill:#ffe0b2,stroke:#ef6c00,color:#e65100
+  classDef rule fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+  classDef yes fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
+  classDef no fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+  classDef start fill:#ffffff,stroke:#212121,color:#212121
+```
+
 ## Subparagraph 40(2)(g)(iv): transfers to registered plans
 
 ```mermaid

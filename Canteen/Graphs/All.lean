@@ -35,6 +35,8 @@ import Canteen.ITA.S88.WindingUp
 import Canteen.ITA.S15.ShareholderLoans
 import Canteen.ITA.S89.GeneralRateIncomePool
 import Canteen.ITA.S127_5.MinimumTax
+import Canteen.ITA.S20.InterestDeductibility
+import Canteen.Transactions.DebtSwap
 import Canteen.ITA.S87.Amalgamation
 import Canteen.ITA.S39.CanadianSecurities
 import Canteen.ITA.S50.BadDebtOrShare
@@ -182,7 +184,8 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S129.RefundableTax, "123.3, 129, 186 refundable taxes"),
    (`Canteen.ITA.S15.ShareholderLoans, "15(2), 80.4 shareholder loans"),
    (`Canteen.ITA.S89.GeneralRateIncomePool, "89(1), 185.1 the general rate income pool"),
-   (`Canteen.ITA.S127_5.MinimumTax, "127.5 to 127.531, 120.2 the minimum tax")]
+   (`Canteen.ITA.S127_5.MinimumTax, "127.5 to 127.531, 120.2 the minimum tax"),
+   (`Canteen.ITA.S20.InterestDeductibility, "20(1)(c), 20(3) interest on borrowed money")]
 
 /-! ## The dashboard -/
 
@@ -196,6 +199,7 @@ def allJudgmentCalls : List (String × JudgmentCall) :=
   (Transactions.Crystallization.calls.map ("crystallization", ·)) ++
   (Transactions.SaleThroughHoldco.calls.map ("sale through Holdco", ·)) ++
   (Transactions.EstateFreeze.calls.map ("estate freeze", ·)) ++
+  (Transactions.DebtSwap.calls.map ("debt swap", ·)) ++
   (debtCalls.map ("debt example", ·)) ++ (ruleXCalls.map ("Rule X", ·))
 
 private def riskPos : Risk → Nat
@@ -251,7 +255,7 @@ def actMindmap : String := Id.run do
     (2, "ss. 2, 3"), (3, "income for the year: (a) to (f)"), (3, "2(2): taxable income"),
     (2, "s. 13"), (3, "13(21): undepreciated capital cost"), (3, "13(1): recapture"),
     (2, "s. 15"), (3, "15(2), (2.6): shareholder loans"),
-    (2, "s. 20"), (3, "20(16): terminal loss"), (3, "20(1)(j): loan repaid"),
+    (2, "s. 20"), (3, "20(16): terminal loss"), (3, "20(1)(j): loan repaid"), (3, "20(1)(c): interest"), (3, "20(3): refinancing"),
     (2, "ss. 38 to 41"), (3, "38: inclusion rates"), (3, "39(1): capital gains and losses"), (3, "39(4): the Canadian securities election"),
     (3, "40(1): gains and losses, reserves"), (3, "41: listed personal property"),
     (2, "s. 40"), (3, "40(2)(b): the principal residence exemption"), (3, "40(2)(g): losses that are nil"),
@@ -345,6 +349,7 @@ def pages : List Page := [
       ("Subsection 50(1): bad debts and worthless shares", flowchart BadDebtOrShare.applies.outline),
       ("Subsection 74.4(2): corporate attribution", flowchart CorporateAttribution.applies.outline),
       ("Subsection 15(2): shareholder loans", flowchart ShareholderLoans.included.outline),
+      ("Subparagraph 20(1)(c)(i): interest on borrowed money", flowchart InterestDeductibility.deductible.outline),
       ("Subparagraph 40(2)(g)(iv): transfers to registered plans", flowchart Paragraph40_2_g.planTransferLoss.outline),
       ("Clause 40(2)(g)(iv)(A)", flowchart Paragraph40_2_g.planTransferA.outline),
       ("Clause 40(2)(g)(iv)(B)", flowchart Paragraph40_2_g.planTransferB.outline),

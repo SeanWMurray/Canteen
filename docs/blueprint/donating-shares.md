@@ -130,7 +130,7 @@ The taxable capital gain on a gift of a listed security to a qualified donee is 
 
 Income, taxable income, tax at the 117(2) rates, less the personal and donation credits.
 
-**Lean:** [`Canteen.ITA.IndividualYear.income`](../../Canteen/ITA/S3/IndividualYear.lean#L102), [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L137), [`Canteen.ITA.IndividualYear.personalCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L126), [`Canteen.ITA.IndividualYear.donationCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L134)
+**Lean:** [`Canteen.ITA.IndividualYear.income`](../../Canteen/ITA/S3/IndividualYear.lean#L108), [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L143), [`Canteen.ITA.IndividualYear.personalCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L132), [`Canteen.ITA.IndividualYear.donationCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L140)
 
 ## Facts
 
@@ -214,7 +214,7 @@ The difference in federal tax is $5,900.16, all from the gain that selling first
 
 At least 20.5% of adjusted taxable income over $177,882, less half the personal credit and 4/5 of the donation credit; for it, capital gains count in full and gains on gifts of listed securities at 3/10.
 
-**Lean:** [`Canteen.ITA.MinimumTax.adjustedTaxableIncome`](../../Canteen/ITA/S127_5/MinimumTax.lean#L56), [`Canteen.ITA.MinimumTax.minimumAmount`](../../Canteen/ITA/S127_5/MinimumTax.lean#L66), [`Canteen.ITA.MinimumTax.taxPayable`](../../Canteen/ITA/S127_5/MinimumTax.lean#L70)
+**Lean:** [`Canteen.ITA.MinimumTax.adjustedTaxableIncome`](../../Canteen/ITA/S127_5/MinimumTax.lean#L58), [`Canteen.ITA.MinimumTax.minimumAmount`](../../Canteen/ITA/S127_5/MinimumTax.lean#L68), [`Canteen.ITA.MinimumTax.taxPayable`](../../Canteen/ITA/S127_5/MinimumTax.lean#L72)
 
 ### A6. No minimum tax on this gift
 
@@ -241,7 +241,7 @@ Shares worth $1,000,000 that cost $200,000: in kind, no regular tax but $17,963.
 ```
 1. Employment and business income $200,000.00; dividends included $0.00 (with the gross-up); recapture $0.00; income attributed $0.00. [ITA 3(a); 82(1); 13(1); 74.1]
 2. Taxable capital gains, net: $0.00. [ITA 3(b)]
-3. Losses: business $0.00, terminal $0.00, attributed $0.00. [ITA 3(d); 20(16); 74.1]
+3. Losses: business $0.00, terminal $0.00, attributed $0.00; interest deducted $0.00. [ITA 3(d); 20(16); 74.1; 20(1)(c)]
 4. Income for the year: $200,000.00. [ITA 3]
 5. Less the net capital loss deduction $0.00, the capital gains deduction $0.00, and other deductions $0.00: taxable income $200,000.00. [ITA 2(2); 111(1)(b); 110.6(2), (2.1)]
 6. Tax under 117(2) on taxable income, $42,622.91, less the dividend tax credit of $0.00, the personal credit of $1,989.22, the donation credit of $14,470.00 and other credits of $0.00: $26,163.69. [ITA 117(2); 120.4(2); 121; 118; 118.1]
@@ -253,7 +253,7 @@ Relies on no judgment calls.
 ```
 1. Employment and business income $200,000.00; dividends included $0.00 (with the gross-up); recapture $0.00; income attributed $0.00. [ITA 3(a); 82(1); 13(1); 74.1]
 2. Taxable capital gains, net: $20,000.00. [ITA 3(b)]
-3. Losses: business $0.00, terminal $0.00, attributed $0.00. [ITA 3(d); 20(16); 74.1]
+3. Losses: business $0.00, terminal $0.00, attributed $0.00; interest deducted $0.00. [ITA 3(d); 20(16); 74.1; 20(1)(c)]
 4. Income for the year: $220,000.00. [ITA 3]
 5. Less the net capital loss deduction $0.00, the capital gains deduction $0.00, and other deductions $0.00: taxable income $220,000.00. [ITA 2(2); 111(1)(b); 110.6(2), (2.1)]
 6. Tax under 117(2) on taxable income, $48,422.91, less the dividend tax credit of $0.00, the personal credit of $1,889.06, the donation credit of $14,470.00 and other credits of $0.00: $32,063.85. [ITA 117(2); 120.4(2); 121; 118; 118.1]

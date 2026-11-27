@@ -15,3 +15,4 @@ Concrete fact patterns, with each step of the analysis proven as a theorem.
 - `InvestmentIncomeIntegration.lean`: interest earned personally or through a holding company, federal tax on each route
 - `EligibleDesignation.lean`: how much of a dividend to designate eligible, against the general rate income pool and Part III.1 tax
 - `CrystallizationMinimumTax.lean`: the minimum tax on a gain fully sheltered by the capital gains deduction
+- `DebtSwap.lean`: selling a portfolio to repay a mortgage and borrowing to buy it back, under 20(1)(c)

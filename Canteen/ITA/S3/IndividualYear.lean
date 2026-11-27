@@ -8,6 +8,7 @@ import Canteen.ITA.S117.Rates
 import Canteen.ITA.S118.PersonalCredits
 import Canteen.ITA.S118_1.Donations
 import Canteen.ITA.S120_4.SplitIncome
+import Canteen.ITA.S20.InterestDeductibility
 
 /-!
 # An individual's year: income from the encoded sources, and taxable income
@@ -19,8 +20,8 @@ This puts the encoded provisions together for one individual and one taxation ye
   individual (74.1);
 * **3(b)** the capital gains computation (sections 38 to 41, with 74.2 attribution);
 * **3(c)** Subdivision E deductions (given);
-* **3(d)** losses from sources: business losses (given), terminal losses (20(16)) and losses
-  attributed to the individual (74.1);
+* **3(d)** losses from sources: business losses (given), terminal losses (20(16)), losses
+  attributed to the individual (74.1), and interest deductible under 20(1)(c);
 * **taxable income (2(2))**: income less the net capital loss deduction (111(1)(b)), the capital
   gains deduction (110.6(2.1)), computed after it as 110.6 requires, and other Division C
   deductions (given).
@@ -63,6 +64,8 @@ structure Facts where
   subdivisionE : Cents := 0
   /-- Business losses, other than terminal losses. -/
   businessLosses : Cents := 0
+  /-- Borrowings whose interest may be deductible under 20(1)(c). -/
+  borrowings : List InterestDeductibility.Borrowing := []
   netCapitalLossClaims : List NetCapitalLoss.Claim := []
   deduction110_6 : Option DeductionHistory := none
   otherDivisionC : Cents := 0
@@ -90,6 +93,9 @@ def terminalLosses (f : Facts) : Cents := (f.depreciableClasses.map (·.terminal
 def attributedIncome (f : Facts) : Cents := (f.attributions.map IncomeAttribution.attributedIncome).sum
 def attributedLoss (f : Facts) : Cents := (f.attributions.map IncomeAttribution.attributedLoss).sum
 
+/-- 20(1)(c): interest deducted, in computing income from the business or property. -/
+def interestDeduction (f : Facts) : Cents := InterestDeductibility.total f.borrowings
+
 /-- Split income (120.4), deducted in computing income (20(1)(ww)). -/
 def splitIncome (f : Facts) : Cents := (f.split.map SplitIncome.splitIncome).getD 0
 
@@ -97,7 +103,7 @@ def splitIncome (f : Facts) : Cents := (f.split.map SplitIncome.splitIncome).get
 def incomeFacts (f : Facts) : Income.Facts :=
   { incomeFromSources := (f.employmentAndBusiness + Dividends.inclusion (dividendFacts f) + recapture f + attributedIncome f) - splitIncome f,
     capital := f.capital, subdivisionE := f.subdivisionE,
-    sourceLosses := f.businessLosses + terminalLosses f + attributedLoss f }
+    sourceLosses := f.businessLosses + terminalLosses f + attributedLoss f + interestDeduction f }
 
 def income (f : Facts) : HalfCents := Income.income (incomeFacts f)
 
@@ -148,8 +154,8 @@ def explain (f : Facts) : Finding :=
       s!"(with the gross-up); recapture {c (recapture f)}; income attributed {c (attributedIncome f)}.",
       "ITA 3(a); 82(1); 13(1); 74.1"⟩,
     ⟨s!"Taxable capital gains, net: {h f.capital.paragraph3b}.", "ITA 3(b)"⟩,
-    ⟨s!"Losses: business {c f.businessLosses}, terminal {c (terminalLosses f)}, attributed {c (attributedLoss f)}.",
-      "ITA 3(d); 20(16); 74.1"⟩,
+    ⟨s!"Losses: business {c f.businessLosses}, terminal {c (terminalLosses f)}, attributed {c (attributedLoss f)}; " ++
+      s!"interest deducted {c (interestDeduction f)}.", "ITA 3(d); 20(16); 74.1; 20(1)(c)"⟩,
     ⟨s!"Income for the year: {h (income f)}.", "ITA 3"⟩,
     ⟨s!"Less the net capital loss deduction {h (netCapitalLossDeduction f)}, the capital gains deduction " ++
       s!"{h (capitalGainsDeduction f)}, and other deductions {c f.otherDivisionC}: taxable income {h (taxableIncome f)}.",
