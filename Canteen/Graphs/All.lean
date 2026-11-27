@@ -58,6 +58,7 @@ import Canteen.ITA.S7.StockOptions
 import Canteen.ITA.S110_1.CorporateDonations
 import Canteen.ITA.S111.NonCapitalLoss
 import Canteen.ITA.S125.BusinessLimit
+import Canteen.ITA.S256.Associated
 import Canteen.ITA.S3.CorporateYear
 import Canteen.Transactions.DebtSwap
 import Canteen.ITA.S87.Amalgamation
@@ -231,6 +232,7 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S110_1.CorporateDonations, "110.1(1)(a) a corporation's charitable gifts"),
    (`Canteen.ITA.S111.NonCapitalLoss, "111(1)(a), (3), (8) non-capital losses"),
    (`Canteen.ITA.S125.BusinessLimit, "125(2), (3), (5)(b), (5.1) the business limit, shared and ground"),
+   (`Canteen.ITA.S256.Associated, "256(1) associated corporations"),
    (`Canteen.ITA.S3.CorporateYear, "2(2), 3, 129(4) a corporation's year, to taxable income and tax")]
 
 /-! ## The dashboard -/
@@ -348,6 +350,7 @@ def actMindmap : String := Id.run do
     (2, "s. 62"), (3, "62(1): moving expenses"), (3, "248(1): eligible relocation, the 40 km test"),
     (2, "s. 63"), (3, "63(1): child care expenses"), (3, "63(2): the higher-income spouse"),
     (2, "s. 60.03"), (3, "60.03(1): split-pension amount"), (3, "60(c), 56(1)(a.2): deducted and included"),
+    (2, "s. 256"), (3, "256(1): associated corporations, (a) to (e)"), (3, "256(1.2)(b)(i): a member's control is the group's"), (3, "256(5.1): de facto control"),
     (2, "s. 117"), (3, "117(2): the federal rates"),
     (2, "s. 117.1"), (3, "117.1(1), (4): indexing by the CPI"), (3, "117.1(3): rounding"),
     (2, "s. 118"), (3, "118(1.1): basic personal amount"), (3, "118(1)(a): spouse amount"), (3, "118(1)(b): eligible dependant"), (3, "118(1)(b.1), (d), (e): caregiver amounts"), (3, "118(2): age credit"), (3, "118(10): Canada employment credit"), (3, "118(3), (7): pension credit"),

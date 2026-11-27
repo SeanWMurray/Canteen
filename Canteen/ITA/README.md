@@ -69,6 +69,7 @@ The verbatim statute text for each is in `statute/`. Review notes are in `docs/r
 - `S110_1/CorporateDonations.lean`: paragraph 110.1(1)(a)
 - `S111/NonCapitalLoss.lean`: paragraph 111(1)(a), subsection 111(3), and the 111(8) definition "non-capital loss"
 - `S125/BusinessLimit.lean`: subsections 125(2), (3) and (5.1), paragraph 125(5)(b), and the 125(7) definition "adjusted aggregate investment income" (computed in `CorporateYear`)
+- `S256/Associated.lean`: subsections 256(1), (1.1), (1.5) and (5.1), and paragraphs 256(1.2)(a) to (c)
 - `S3/CorporateYear.lean`: a corporation's year, from its sources to taxable income and tax (2(2), 3), and the 129(4) definitions "aggregate investment income", "eligible portion" and "income or loss"
 - `S112/StopLoss.lean`: subsections 112(3), (3.01) and (6.1)
 - `S7/StockOptions.lean`: paragraph 7(1)(a), subsection 7(1.1), and paragraphs 110(1)(d) and (d.1)

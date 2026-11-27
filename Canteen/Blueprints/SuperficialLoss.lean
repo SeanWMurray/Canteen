@@ -73,6 +73,7 @@ import Canteen.ITA.S7.StockOptions
 import Canteen.ITA.S110_1.CorporateDonations
 import Canteen.ITA.S111.NonCapitalLoss
 import Canteen.ITA.S125.BusinessLimit
+import Canteen.ITA.S256.Associated
 import Canteen.ITA.S3.CorporateYear
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
@@ -739,6 +740,16 @@ def blueprint : Blueprint where
           lean := [``BusinessLimit.shared, ``BusinessLimit.prorated, ``BusinessLimit.capitalReduction, ``BusinessLimit.investmentReduction,
             ``BusinessLimit.limit, ``BusinessLimit.shared_le, ``BusinessLimit.limit_le, ``BusinessLimit.investment_grind_full,
             ``BusinessLimit.capital_grind_full, ``BusinessLimit.no_grind] },
+        { id := "R73", kind := .law, title := "Associated corporations", citation := "ITA 256(1), (1.1), (1.2)(a) to (c), (1.5), (5.1)"
+          statement := "Two corporations are associated if one controls the other, the same person or group controls both " ++
+            "(a group including any group of shareholders of both whose members control them), or they are controlled by " ++
+            "related persons or related groups one of whom owns at least 25% of a class (not a specified class) of the " ++
+            "other or of each. De facto control counts. Proven: a corporation that controls another is associated with it, " ++
+            "two corporations with the same controller are associated, and uncontrolled corporations are not."
+          lean := [``Associated.paraA, ``Associated.paraB, ``Associated.paraC, ``Associated.paraD, ``Associated.paraE,
+            ``Associated.associated, ``Associated.associatedWithAny, ``Associated.controls_other, ``Associated.same_controller,
+            ``Associated.uncontrolled],
+          uses := ["R4"] },
         { id := "R70", kind := .law, title := "A corporation's year, to taxable income and tax", citation := "ITA 2(2); 3; 110.1; 111(1), (8); 112(1); 125(7); 129(4)"
           statement := "A corporation's income from active business, personal services business, property and dividends " ++
             "received, with its net taxable capital gains (a 55(2) dividend as a gain); taxable income after gifts, the " ++

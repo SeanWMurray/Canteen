@@ -86,8 +86,9 @@ flowchart BT
   v77["46 personal-use property, the $1,000 rule"]:::prov
   v78["110.1(1)(a) a corporation's charitable gifts"]:::prov
   v79["125(2), (3), (5)(b), (5.1) the business limit, shared and ground"]:::prov
-  v80["2(2), 3, 129(4) a corporation's year, to taxable income and tax"]:::prov
-  v81["50(2) bad personal-use debts"]:::prov
+  v80["256(1) associated corporations"]:::prov
+  v81["2(2), 3, 129(4) a corporation's year, to taxable income and tax"]:::prov
+  v82["50(2) bad personal-use debts"]:::prov
   v0 --> v1
   v0 --> v2
   v0 --> v3
@@ -175,13 +176,14 @@ flowchart BT
   v17 --> v75
   v31 --> v75
   v17 --> v77
-  v19 --> v80
-  v20 --> v80
-  v32 --> v80
-  v78 --> v80
-  v69 --> v80
-  v79 --> v80
-  v71 --> v80
-  v35 --> v80
+  v6 --> v80
+  v19 --> v81
+  v20 --> v81
+  v32 --> v81
+  v78 --> v81
+  v69 --> v81
+  v79 --> v81
+  v71 --> v81
+  v35 --> v81
   classDef prov fill:#bbdefb,stroke:#1565c0,color:#0d47a1
 ```

@@ -100,6 +100,7 @@ import Canteen.ITA.S46.PersonalUse
 import Canteen.ITA.S7.StockOptions
 import Canteen.ITA.S110_1.CorporateDonations
 import Canteen.ITA.S125.BusinessLimit
+import Canteen.ITA.S256.Associated
 import Canteen.ITA.S3.CorporateYear
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
@@ -245,3 +246,4 @@ import Canteen.Tests.CorporateDonations
 import Canteen.Tests.CorporateYear
 import Canteen.Tests.NonCapitalLoss
 import Canteen.Tests.BusinessLimit
+import Canteen.Tests.Associated

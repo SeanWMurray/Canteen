@@ -172,6 +172,7 @@ R68: proven
 R69: proven
 R71: proven
 R72: proven
+R73: proven
 R70: proven
 R35: proven
 R48: proven
