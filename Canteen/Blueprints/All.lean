@@ -10,6 +10,7 @@ import Canteen.Blueprints.PostMortemPipeline
 import Canteen.Blueprints.EstateFreeze
 import Canteen.Blueprints.DonatingShares
 import Canteen.Blueprints.InvestmentIncomeIntegration
+import Canteen.Blueprints.EligibleDesignation
 
 /-!
 # Every blueprint, and the file each is rendered to
@@ -31,6 +32,7 @@ def all : List (String × Blueprint.Blueprint) :=
    ("post-mortem-pipeline", PostMortemPipeline.memo),
    ("estate-freeze", EstateFreeze.memo),
    ("donating-shares", DonatingShares.memo),
-   ("investment-income-integration", InvestmentIncomeIntegration.memo)]
+   ("investment-income-integration", InvestmentIncomeIntegration.memo),
+   ("eligible-designation", EligibleDesignation.memo)]
 
 end Canteen.Blueprints

@@ -103,22 +103,24 @@ flowchart BT
     m91["Transactions.EstateFreeze"]
     m92["Transactions.DonatingShares"]
     m93["Transactions.InvestmentIncomeIntegration"]
-    m94["Transactions.SisterCompanyRepurchase"]
+    m94["Transactions.EligibleDesignation"]
+    m95["Transactions.SisterCompanyRepurchase"]
   end
   subgraph Blueprints["Blueprints"]
-    m95["Blueprints.SuperficialLoss"]
-    m96["Blueprints.SpouseRepurchase"]
-    m97["Blueprints.SiblingAndLateRepurchase"]
-    m98["Blueprints.TfsaContribution"]
-    m99["Blueprints.HoldcoRepurchase"]
-    m100["Blueprints.Crystallization"]
-    m101["Blueprints.SaleThroughHoldco"]
-    m102["Blueprints.PostMortemPipeline"]
-    m103["Blueprints.EstateFreeze"]
-    m104["Blueprints.DonatingShares"]
-    m105["Blueprints.InvestmentIncomeIntegration"]
-    m106["Blueprints.SisterCompanyRepurchase"]
-    m107["Blueprints.All"]
+    m96["Blueprints.SuperficialLoss"]
+    m97["Blueprints.SpouseRepurchase"]
+    m98["Blueprints.SiblingAndLateRepurchase"]
+    m99["Blueprints.TfsaContribution"]
+    m100["Blueprints.HoldcoRepurchase"]
+    m101["Blueprints.Crystallization"]
+    m102["Blueprints.SaleThroughHoldco"]
+    m103["Blueprints.PostMortemPipeline"]
+    m104["Blueprints.EstateFreeze"]
+    m105["Blueprints.DonatingShares"]
+    m106["Blueprints.InvestmentIncomeIntegration"]
+    m107["Blueprints.EligibleDesignation"]
+    m108["Blueprints.SisterCompanyRepurchase"]
+    m109["Blueprints.All"]
   end
   subgraph Examples["Examples"]
     m19["Examples.RuleX"]
@@ -127,10 +129,10 @@ flowchart BT
     m22["Examples.RuleXStatute"]
   end
   subgraph Graphs["Graphs"]
-    m108["Graphs.All"]
+    m110["Graphs.All"]
   end
   subgraph Root["Root"]
-    m109["Canteen"]
+    m111["Canteen"]
   end
   m0 --> m3
   m3 --> m4
@@ -296,110 +298,115 @@ flowchart BT
   m71 --> m92
   m71 --> m93
   m77 --> m93
-  m37 --> m94
-  m29 --> m94
-  m16 --> m95
-  m82 --> m95
-  m26 --> m95
-  m27 --> m95
-  m28 --> m95
-  m31 --> m95
-  m45 --> m95
-  m46 --> m95
-  m48 --> m95
-  m50 --> m95
-  m52 --> m95
-  m57 --> m95
-  m58 --> m95
-  m59 --> m95
-  m60 --> m95
-  m61 --> m95
-  m62 --> m95
-  m63 --> m95
-  m64 --> m95
-  m65 --> m95
-  m66 --> m95
-  m71 --> m95
-  m72 --> m95
-  m73 --> m95
-  m74 --> m95
-  m75 --> m95
-  m77 --> m95
-  m78 --> m95
-  m79 --> m95
-  m80 --> m95
-  m83 --> m95
+  m71 --> m94
+  m79 --> m94
+  m37 --> m95
+  m29 --> m95
   m16 --> m96
-  m84 --> m96
-  m25 --> m96
-  m81 --> m96
-  m42 --> m96
+  m82 --> m96
+  m26 --> m96
+  m27 --> m96
+  m28 --> m96
+  m31 --> m96
+  m45 --> m96
+  m46 --> m96
+  m48 --> m96
+  m50 --> m96
+  m52 --> m96
+  m57 --> m96
+  m58 --> m96
+  m59 --> m96
+  m60 --> m96
+  m61 --> m96
+  m62 --> m96
+  m63 --> m96
+  m64 --> m96
+  m65 --> m96
+  m66 --> m96
+  m71 --> m96
+  m72 --> m96
+  m73 --> m96
+  m74 --> m96
+  m75 --> m96
+  m77 --> m96
+  m78 --> m96
+  m79 --> m96
+  m80 --> m96
+  m83 --> m96
   m16 --> m97
-  m17 --> m97
-  m85 --> m97
+  m84 --> m97
+  m25 --> m97
   m81 --> m97
+  m42 --> m97
   m16 --> m98
   m17 --> m98
-  m86 --> m98
+  m85 --> m98
   m81 --> m98
   m16 --> m99
-  m87 --> m99
+  m17 --> m99
+  m86 --> m99
   m81 --> m99
   m16 --> m100
-  m88 --> m100
+  m87 --> m100
+  m81 --> m100
   m16 --> m101
-  m89 --> m101
+  m88 --> m101
   m16 --> m102
-  m90 --> m102
+  m89 --> m102
   m16 --> m103
-  m91 --> m103
+  m90 --> m103
   m16 --> m104
-  m92 --> m104
+  m91 --> m104
   m16 --> m105
-  m93 --> m105
+  m92 --> m105
   m16 --> m106
-  m94 --> m106
-  m95 --> m107
-  m96 --> m107
-  m97 --> m107
-  m98 --> m107
-  m99 --> m107
-  m106 --> m107
-  m100 --> m107
-  m101 --> m107
-  m102 --> m107
-  m103 --> m107
-  m104 --> m107
-  m105 --> m107
-  m22 --> m108
-  m21 --> m108
-  m81 --> m108
-  m26 --> m108
-  m84 --> m108
-  m85 --> m108
-  m86 --> m108
-  m87 --> m108
-  m31 --> m108
-  m80 --> m108
-  m45 --> m108
-  m46 --> m108
-  m48 --> m108
-  m52 --> m108
-  m53 --> m108
-  m60 --> m108
-  m62 --> m108
-  m64 --> m108
-  m78 --> m108
-  m79 --> m108
-  m65 --> m108
-  m72 --> m108
-  m73 --> m108
-  m94 --> m108
-  m88 --> m108
-  m89 --> m108
-  m91 --> m108
-  m18 --> m109
-  m20 --> m109
-  m107 --> m109
+  m93 --> m106
+  m16 --> m107
+  m94 --> m107
+  m16 --> m108
+  m95 --> m108
+  m96 --> m109
+  m97 --> m109
+  m98 --> m109
+  m99 --> m109
+  m100 --> m109
   m108 --> m109
+  m101 --> m109
+  m102 --> m109
+  m103 --> m109
+  m104 --> m109
+  m105 --> m109
+  m106 --> m109
+  m107 --> m109
+  m22 --> m110
+  m21 --> m110
+  m81 --> m110
+  m26 --> m110
+  m84 --> m110
+  m85 --> m110
+  m86 --> m110
+  m87 --> m110
+  m31 --> m110
+  m80 --> m110
+  m45 --> m110
+  m46 --> m110
+  m48 --> m110
+  m52 --> m110
+  m53 --> m110
+  m60 --> m110
+  m62 --> m110
+  m64 --> m110
+  m78 --> m110
+  m79 --> m110
+  m65 --> m110
+  m72 --> m110
+  m73 --> m110
+  m95 --> m110
+  m88 --> m110
+  m89 --> m110
+  m91 --> m110
+  m18 --> m111
+  m20 --> m111
+  m109 --> m111
+  m110 --> m111
 ```

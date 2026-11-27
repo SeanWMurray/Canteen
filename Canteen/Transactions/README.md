@@ -13,3 +13,4 @@ Concrete fact patterns, with each step of the analysis proven as a theorem.
 - `EstateFreeze.lean`: a freeze under 86 in favour of minor children, and corporate attribution under 74.4(2)
 - `DonatingShares.lean`: donating shares in kind or selling them first, with federal tax computed for the year
 - `InvestmentIncomeIntegration.lean`: interest earned personally or through a holding company, federal tax on each route
+- `EligibleDesignation.lean`: how much of a dividend to designate eligible, against the general rate income pool and Part III.1 tax
