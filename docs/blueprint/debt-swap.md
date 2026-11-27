@@ -4,11 +4,11 @@
 
 **Issue.** An individual with a $150,000 salary has a $200,000 mortgage at 5% and a $200,000 share portfolio that cost $150,000. If they sell the portfolio, pay off the mortgage and borrow to buy the portfolio back, is the interest deductible, and is it worth it?
 
-**Conclusion.** Yes, on the position that the new loan is used to earn income from the shares (J-INC): its $10,000 of interest is deductible, where the mortgage's was not (A1, A2). The sale realizes a $50,000 gain, so 2025 costs $3,900 more (A3); from 2026 the swap saves $2,600 a year (A4), and is ahead by the end of 2027 (K). The minimum tax does not apply (A5). Refinancing the loan later keeps the interest deductible (W2); if part of it buys a car, only the part that buys shares counts (W3). Provincial tax is not computed.
+**Conclusion.** Yes, on the position that the new loan is used to earn income from the shares (J-INC): its $10,000 of interest is deductible, where the mortgage's was not (A1, A2). The sale realizes a $50,000 gain, so 2025 costs $3,900 more (A3); from 2026 the swap saves $2,600 a year (A4), and is ahead by the end of 2027 (K). The minimum tax does not apply (A5). Refinancing the loan later keeps the interest deductible (W2); if part of it buys a car, only the part that buys shares counts (W3). Had the portfolio stood at a loss, buying it back at once would make the loss superficial, added to the new cost (W4). Provincial tax is not computed.
 
 This is a constructed example, not advice.
 
-**Status of the 14 statements:** 10 proven, 2 encoded, 1 fact, 1 judgment call.
+**Status of the 17 statements:** 11 proven, 3 encoded, 1 fact, 2 judgment call.
 
 ## Dependency graph
 
@@ -28,6 +28,9 @@ graph TD
   n11["W1 · No income purpose"]:::proven
   n12["W2 · Refinancing"]:::proven
   n13["W3 · Part of the loan buys a car"]:::proven
+  n14["L4 · Superficial losses"]:::encoded
+  n15["J-ID · The shares bought back are identical"]:::judgment
+  n16["W4 · A portfolio at a loss"]:::proven
   n0 --> n1
   n1 --> n2
   n3 --> n5
@@ -55,6 +58,8 @@ graph TD
   n4 --> n13
   n0 --> n13
   n1 --> n13
+  n15 --> n16
+  n14 --> n16
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -85,6 +90,9 @@ graph TD
   n11["W1"]:::proven
   n12["W2"]:::proven
   n13["W3"]:::proven
+  n14["L4"]:::encoded
+  n15["J-ID"]:::judgment
+  n16["W4"]:::proven
   n0 --> n1
   n0 --> n2
   n1 --> n2
@@ -119,6 +127,8 @@ graph TD
   n3 --> n13
   n4 --> n13
   n0 -.-> n13
+  n14 --> n16
+  n15 --> n16
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -188,7 +198,7 @@ For the minimum tax, only half the interest on money borrowed to earn property i
 
 A $150,000 salary; a $200,000 home mortgage at 5%; a $200,000 portfolio costing $150,000 that pays $6,000 of eligible dividends; sold, the mortgage repaid, $200,000 borrowed at 5% and the portfolio bought back.
 
-**Lean:** [`Canteen.Transactions.DebtSwap.dividends`](../../Canteen/Transactions/DebtSwap.lean#L29), [`Canteen.Transactions.DebtSwap.mortgage`](../../Canteen/Transactions/DebtSwap.lean#L31), [`Canteen.Transactions.DebtSwap.loan`](../../Canteen/Transactions/DebtSwap.lean#L34), [`Canteen.Transactions.DebtSwap.sale`](../../Canteen/Transactions/DebtSwap.lean#L38), [`Canteen.Transactions.DebtSwap.year`](../../Canteen/Transactions/DebtSwap.lean#L40)
+**Lean:** [`Canteen.Transactions.DebtSwap.dividends`](../../Canteen/Transactions/DebtSwap.lean#L34), [`Canteen.Transactions.DebtSwap.mortgage`](../../Canteen/Transactions/DebtSwap.lean#L36), [`Canteen.Transactions.DebtSwap.loan`](../../Canteen/Transactions/DebtSwap.lean#L39), [`Canteen.Transactions.DebtSwap.sale`](../../Canteen/Transactions/DebtSwap.lean#L43), [`Canteen.Transactions.DebtSwap.year`](../../Canteen/Transactions/DebtSwap.lean#L45)
 
 ### J-INC. The loan is used to earn income
 
@@ -196,7 +206,7 @@ A $150,000 salary; a $200,000 home mortgage at 5%; a $200,000 portfolio costing 
 
 The borrowed money is used directly to buy dividend-paying shares, with a reasonable expectation of income. Risk: low.
 
-**Lean:** [`Canteen.Transactions.DebtSwap.calls`](../../Canteen/Transactions/DebtSwap.lean#L23), [`Canteen.Transactions.DebtSwap.position`](../../Canteen/Transactions/DebtSwap.lean#L27)
+**Lean:** [`Canteen.Transactions.DebtSwap.calls`](../../Canteen/Transactions/DebtSwap.lean#L28), [`Canteen.Transactions.DebtSwap.position`](../../Canteen/Transactions/DebtSwap.lean#L32)
 
 ## Analysis
 
@@ -206,7 +216,7 @@ The borrowed money is used directly to buy dividend-paying shares, with a reason
 
 The mortgage money bought a home.
 
-**Lean:** [`Canteen.Transactions.DebtSwap.mortgage_not_deductible`](../../Canteen/Transactions/DebtSwap.lean#L46)
+**Lean:** [`Canteen.Transactions.DebtSwap.mortgage_not_deductible`](../../Canteen/Transactions/DebtSwap.lean#L51)
 
 **Rests on:** facts F1.
 
@@ -216,7 +226,7 @@ The mortgage money bought a home.
 
 Its money bought the shares, for the purpose of earning dividends.
 
-**Lean:** [`Canteen.Transactions.DebtSwap.loan_deductible`](../../Canteen/Transactions/DebtSwap.lean#L49), [`Canteen.Transactions.DebtSwap.relies_on_purpose`](../../Canteen/Transactions/DebtSwap.lean#L52)
+**Lean:** [`Canteen.Transactions.DebtSwap.loan_deductible`](../../Canteen/Transactions/DebtSwap.lean#L54), [`Canteen.Transactions.DebtSwap.relies_on_purpose`](../../Canteen/Transactions/DebtSwap.lean#L57)
 
 **Rests on:** judgment calls J-INC; facts F1.
 
@@ -226,7 +236,7 @@ Its money bought the shares, for the purpose of earning dividends.
 
 The $25,000 taxable gain costs $6,500; the deduction saves $2,600.
 
-**Lean:** [`Canteen.Transactions.DebtSwap.without_swap`](../../Canteen/Transactions/DebtSwap.lean#L55), [`Canteen.Transactions.DebtSwap.swap_year`](../../Canteen/Transactions/DebtSwap.lean#L58)
+**Lean:** [`Canteen.Transactions.DebtSwap.without_swap`](../../Canteen/Transactions/DebtSwap.lean#L60), [`Canteen.Transactions.DebtSwap.swap_year`](../../Canteen/Transactions/DebtSwap.lean#L63)
 
 **Rests on:** judgment calls J-INC; facts F1.
 
@@ -236,7 +246,7 @@ The $25,000 taxable gain costs $6,500; the deduction saves $2,600.
 
 The $10,000 deduction at the 26% rate.
 
-**Lean:** [`Canteen.Transactions.DebtSwap.yearly_saving`](../../Canteen/Transactions/DebtSwap.lean#L63)
+**Lean:** [`Canteen.Transactions.DebtSwap.yearly_saving`](../../Canteen/Transactions/DebtSwap.lean#L68)
 
 **Rests on:** judgment calls J-INC; facts F1.
 
@@ -246,7 +256,7 @@ The $10,000 deduction at the 26% rate.
 
 Adjusted taxable income is $151,000, below the $177,882 exemption.
 
-**Lean:** [`Canteen.Transactions.DebtSwap.no_minimum_tax`](../../Canteen/Transactions/DebtSwap.lean#L70)
+**Lean:** [`Canteen.Transactions.DebtSwap.no_minimum_tax`](../../Canteen/Transactions/DebtSwap.lean#L75)
 
 **Rests on:** judgment calls J-INC; facts F1.
 
@@ -258,7 +268,7 @@ Adjusted taxable income is $151,000, below the $177,882 exemption.
 
 −$3,900 in 2025, then $2,600 a year: $1,300 ahead after three years, and $2,600 a year after that.
 
-**Lean:** [`Canteen.Transactions.DebtSwap.payback`](../../Canteen/Transactions/DebtSwap.lean#L67)
+**Lean:** [`Canteen.Transactions.DebtSwap.payback`](../../Canteen/Transactions/DebtSwap.lean#L72)
 
 **Rests on:** judgment calls J-INC; facts F1.
 
@@ -270,7 +280,7 @@ Adjusted taxable income is $151,000, below the $177,882 exemption.
 
 If the loan was not used to earn income, nothing is deductible, and the swap only costs the tax on the gain.
 
-**Lean:** [`Canteen.Transactions.DebtSwap.if_no_purpose`](../../Canteen/Transactions/DebtSwap.lean#L77)
+**Lean:** [`Canteen.Transactions.DebtSwap.if_no_purpose`](../../Canteen/Transactions/DebtSwap.lean#L82)
 
 **Rests on:** judgment calls J-INC; facts F1.
 
@@ -280,7 +290,7 @@ If the loan was not used to earn income, nothing is deductible, and the swap onl
 
 A new loan that repays the investment loan is taken to be used as that loan was: still deductible.
 
-**Lean:** [`Canteen.Transactions.DebtSwap.refinanced`](../../Canteen/Transactions/DebtSwap.lean#L80)
+**Lean:** [`Canteen.Transactions.DebtSwap.refinanced`](../../Canteen/Transactions/DebtSwap.lean#L85)
 
 **Rests on:** judgment calls J-INC; facts F1.
 
@@ -290,9 +300,35 @@ A new loan that repays the investment loan is taken to be used as that loan was:
 
 With only $150,000 traced to the shares, 75% of the interest is deductible: $1,950 a year saved.
 
-**Lean:** [`Canteen.Transactions.DebtSwap.partly_traced`](../../Canteen/Transactions/DebtSwap.lean#L84)
+**Lean:** [`Canteen.Transactions.DebtSwap.partly_traced`](../../Canteen/Transactions/DebtSwap.lean#L89)
 
 **Rests on:** judgment calls J-INC; facts F1.
+
+### L4. Superficial losses
+
+**Status:** encoded · **Citation:** ITA 54 "superficial loss"; 40(2)(g)(i); 53(1)(f)
+
+A loss is nil where the taxpayer acquires identical property within 30 days and holds it at the end; the loss is added to the cost of that property.
+
+**Lean:** [`Canteen.ITA.LossDenial.rule`](../../Canteen/ITA/S40/LossDenial.lean#L78), [`Canteen.ITA.LossDenial.deniedLoss`](../../Canteen/ITA/S40/LossDenial.lean#L93), [`Canteen.ITA.CostAddition.adjustedCostBase`](../../Canteen/ITA/S53/CostAddition.lean#L53)
+
+### J-ID. The shares bought back are identical
+
+**Status:** judgment call
+
+The same shares of the same companies, bought back the same day. Risk: low.
+
+**Lean:** [`Canteen.Transactions.DebtSwap.lossCalls`](../../Canteen/Transactions/DebtSwap.lean#L97), [`Canteen.Transactions.DebtSwap.lossPosition`](../../Canteen/Transactions/DebtSwap.lean#L113)
+
+### W4. A portfolio at a loss
+
+**Status:** proven · **Citation:** ITA 40(2)(g)(i); 53(1)(f) · **Uses:** J-ID, L4
+
+A $250,000 portfolio sold for $200,000 and bought back the same day: the $50,000 loss is superficial, and the new shares cost $250,000 again. The swap neither uses nor loses the loss.
+
+**Lean:** [`Canteen.Transactions.DebtSwap.lossSale`](../../Canteen/Transactions/DebtSwap.lean#L101), [`Canteen.Transactions.DebtSwap.buyBack`](../../Canteen/Transactions/DebtSwap.lean#L105), [`Canteen.Transactions.DebtSwap.lossFacts`](../../Canteen/Transactions/DebtSwap.lean#L110), [`Canteen.Transactions.DebtSwap.buyBackCost`](../../Canteen/Transactions/DebtSwap.lean#L115), [`Canteen.Transactions.DebtSwap.loss_superficial`](../../Canteen/Transactions/DebtSwap.lean#L120)
+
+**Rests on:** judgment calls J-ID.
 
 ## Appendix: the argument as Lean renders it
 

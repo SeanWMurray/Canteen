@@ -9,12 +9,12 @@ An overview of the project, drawn from the Lean.
 Every statement in every blueprint, by the status Lean computes for it.
 
 ```mermaid
-pie showData title All 288 statements in the memos and blueprints, by status
-    "encoded" : 50
-    "proven" : 186
+pie showData title All 291 statements in the memos and blueprints, by status
+    "encoded" : 51
+    "proven" : 187
     "not formalized" : 3
     "fact" : 40
-    "judgment call" : 9
+    "judgment call" : 10
 ```
 
 ## Judgment calls by risk
@@ -40,6 +40,7 @@ quadrantChart
     J-55 in sale through Holdco: [0.23, 0.89]
     J-SBC in estate freeze: [0.15, 0.93]
     J-INC in debt swap: [0.19, 0.93]
+    J-ID in debt swap what-if: [0.23, 0.93]
     J-PURPOSE in debt example: [0.58, 0.50]
     J-ARM in debt example: [0.50, 0.15]
     J-B in Rule X: [0.54, 0.15]

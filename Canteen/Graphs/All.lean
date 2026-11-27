@@ -199,7 +199,7 @@ def allJudgmentCalls : List (String × JudgmentCall) :=
   (Transactions.Crystallization.calls.map ("crystallization", ·)) ++
   (Transactions.SaleThroughHoldco.calls.map ("sale through Holdco", ·)) ++
   (Transactions.EstateFreeze.calls.map ("estate freeze", ·)) ++
-  (Transactions.DebtSwap.calls.map ("debt swap", ·)) ++
+  (Transactions.DebtSwap.calls.map ("debt swap", ·)) ++ (Transactions.DebtSwap.lossCalls.map ("debt swap what-if", ·)) ++
   (debtCalls.map ("debt example", ·)) ++ (ruleXCalls.map ("Rule X", ·))
 
 private def riskPos : Risk → Nat

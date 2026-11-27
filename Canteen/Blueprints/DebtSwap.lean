@@ -20,7 +20,8 @@ def memo : Blueprint where
       "of interest is deductible, where the mortgage's was not (A1, A2). The sale realizes a $50,000 gain, so 2025 costs " ++
       "$3,900 more (A3); from 2026 the swap saves $2,600 a year (A4), and is ahead by the end of 2027 (K). The minimum tax " ++
       "does not apply (A5). Refinancing the loan later keeps the interest deductible (W2); if part of it buys a car, only " ++
-      "the part that buys shares counts (W3). Provincial tax is not computed.",
+      "the part that buys shares counts (W3). Had the portfolio stood at a loss, buying it back at once would make the " ++
+      "loss superficial, added to the new cost (W4). Provincial tax is not computed.",
     "This is a constructed example, not advice."]
   sections := [
     { heading := "The law"
@@ -79,7 +80,18 @@ def memo : Blueprint where
           lean := [``refinanced], uses := ["A2", "L1"] },
         { id := "W3", kind := .step, title := "Part of the loan buys a car", citation := "ITA 20(1)(c)(i)"
           statement := "With only $150,000 traced to the shares, 75% of the interest is deductible: $1,950 a year saved."
-          lean := [``partly_traced], uses := ["F1", "J-INC", "L1", "L2"] } ] } ]
+          lean := [``partly_traced], uses := ["F1", "J-INC", "L1", "L2"] },
+        { id := "L4", kind := .law, title := "Superficial losses", citation := "ITA 54 \"superficial loss\"; 40(2)(g)(i); 53(1)(f)"
+          statement := "A loss is nil where the taxpayer acquires identical property within 30 days and holds it at the end; " ++
+            "the loss is added to the cost of that property."
+          lean := [``LossDenial.rule, ``LossDenial.deniedLoss, ``CostAddition.adjustedCostBase] },
+        { id := "J-ID", kind := .judgment, title := "The shares bought back are identical"
+          statement := "The same shares of the same companies, bought back the same day. Risk: low."
+          lean := [``lossCalls, ``lossPosition] },
+        { id := "W4", kind := .step, title := "A portfolio at a loss", citation := "ITA 40(2)(g)(i); 53(1)(f)"
+          statement := "A $250,000 portfolio sold for $200,000 and bought back the same day: the $50,000 loss is superficial, " ++
+            "and the new shares cost $250,000 again. The swap neither uses nor loses the loss."
+          lean := [``lossSale, ``buyBack, ``lossFacts, ``buyBackCost, ``loss_superficial], uses := ["J-ID", "L4"] } ] } ]
   diagrams := [("Flowchart: subparagraph 20(1)(c)(i)", Graphs.flowchart InterestDeductibility.deductible.outline)]
   appendix := [
     ("The investment loan", (InterestDeductibility.explain (loan position)).renderWithJudgments position),

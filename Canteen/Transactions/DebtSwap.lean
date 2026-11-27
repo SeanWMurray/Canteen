@@ -1,4 +1,6 @@
 import Canteen.ITA.S127_5.MinimumTax
+import Canteen.ITA.S40.LossDenial
+import Canteen.ITA.S53.CostAddition
 
 /-!
 # Layer 3: a debt swap, making mortgage interest deductible
@@ -12,6 +14,9 @@ A constructed example under 20(1)(c), 20(3), 3, 38, 117(2), 118(1), 121 and 127.
   portfolio back. The borrowed money is used directly to buy the shares (Singleton).
 * Judgment call `J-INC`: is the borrowed money used for the purpose of earning income from the shares
   (Ludco: a reasonable expectation of dividends)?
+
+What if the portfolio stood at a loss? Bought back at once, the shares would be identical property
+(judgment call `J-ID`), and the loss superficial.
 
 The 2026 year uses the 2025 bracket and personal amounts. Provincial tax is not computed.
 -/
@@ -86,5 +91,36 @@ $1,950 a year saved. -/
 theorem partly_traced :
     IndividualYear.federalTax (year 2026 [mortgage]) -
       IndividualYear.federalTax (year 2026 [{ loan position with traced := some 15000000 }]) = 195000 := by decide
+
+/-! ## What if: the portfolio stood at a loss -/
+
+def lossCalls : List JudgmentCall :=
+  [{ id := "J-ID", question := "Are the shares bought back with the loan identical to the shares sold?",
+     riskIfYes := .low, riskIfNo := .high }]
+
+/-- The portfolio cost $250,000 and is sold for $200,000 on 2 January 2025. -/
+def lossSale : SuperficialLoss.Disposition :=
+  { description := "the portfolio", date := ⟨2025, 1, 2⟩, proceeds := 20000000, adjustedCostBase := 25000000, outlaysAndExpenses := 0 }
+
+/-- The same day, the taxpayer buys it back with the loan, and still holds it 30 days later. -/
+def buyBack (identical : Bool) : SuperficialLoss.Acquisition :=
+  { description := "the portfolio", date := ⟨2025, 1, 2⟩, acquirer := .taxpayer, identity := .identical "J-ID" identical,
+    heldAtEndOfPeriod := true }
+
+def lossFacts (branch : List Judgment) : LossDenial.Facts :=
+  ⟨⟨lossSale, [buyBack (answerOf branch "J-ID")]⟩, false⟩
+
+def lossPosition : List Judgment := [(lossCalls.head!).assume true]
+
+def buyBackCost : CostAddition.Facts :=
+  { owner := "the taxpayer", property := "the portfolio", cost := 20000000,
+    substitutedProperty := SuperficialLoss.paraA lossSale (buyBack true) && SuperficialLoss.paraB (buyBack true),
+    superficialLoss := LossDenial.deniedLoss (lossFacts lossPosition) }
+
+/-- The $50,000 loss is superficial and nil (40(2)(g)(i)); it is added to the cost of the shares bought
+back, which is $250,000 again (53(1)(f)). The swap neither uses nor loses it. -/
+theorem loss_superficial :
+    LossDenial.rule.holds (lossFacts lossPosition) = true ∧ LossDenial.deniedLoss (lossFacts lossPosition) = 5000000 ∧
+    CostAddition.adjustedCostBase buyBackCost = 25000000 := by decide
 
 end Canteen.Transactions.DebtSwap
