@@ -308,7 +308,7 @@ def actMindmap : String := Id.run do
     (2, "s. 60.03"), (3, "60.03(1): split-pension amount"), (3, "60(c), 56(1)(a.2): deducted and included"),
     (2, "s. 117"), (3, "117(2): the federal rates"),
     (2, "s. 117.1"), (3, "117.1(1), (4): indexing by the CPI"), (3, "117.1(3): rounding"),
-    (2, "s. 118"), (3, "118(1.1): basic personal amount"), (3, "118(1)(a): spouse amount"), (3, "118(1)(b): eligible dependant"), (3, "118(2): age credit"), (3, "118(10): Canada employment credit"), (3, "118(3), (7): pension credit"),
+    (2, "s. 118"), (3, "118(1.1): basic personal amount"), (3, "118(1)(a): spouse amount"), (3, "118(1)(b): eligible dependant"), (3, "118(1)(b.1), (d), (e): caregiver amounts"), (3, "118(2): age credit"), (3, "118(10): Canada employment credit"), (3, "118(3), (7): pension credit"),
     (2, "s. 118.2"), (3, "118.2(1): the medical expense credit"),
     (2, "s. 118.3"), (3, "118.3(1): the disability credit"), (3, "118.3(2): transfer to a supporting person"),
     (2, "s. 118.1"), (3, "118.1(1): total gifts"), (3, "118.1(3): the credit"),

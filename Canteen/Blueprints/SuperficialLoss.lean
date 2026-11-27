@@ -507,14 +507,19 @@ def blueprint : Blueprint where
           statement := "An individual's tax is 14% to $57,375, 20.5% to $114,750, 26% to $177,882, 29% to $253,414, and 33% " ++
             "above (2025 amounts, indexed after). Proven: more income never means less tax."
           lean := [``Rates.tax, ``Rates.tax_mono] },
-        { id := "R42", kind := .law, title := "The basic personal, spouse and eligible dependant amounts", citation := "ITA 118(1)(a), (b), (c), (1.1)"
+        { id := "R42", kind := .law, title := "The basic personal, spouse, eligible dependant and caregiver amounts",
+          citation := "ITA 118(1)(a), (b), (b.1), (c), (d), (e), (1.1)"
           statement := "An individual deducts 14% of the basic personal amount ($12,298 plus an enhancement up to $15,000, " ++
             "phased out between the 117(2)(d) and (e) thresholds), plus, if supporting a spouse, the basic personal amount " ++
             "less the spouse's income, or else, for a single individual supporting a related, wholly dependent person at " ++
-            "home, the same less that person's income. Proven: the basic personal amount is always between the base and " ++
-            "the enhanced amount, and the dependant amount never more than twice it plus the infirmity amount."
+            "home, the same less that person's income; plus the infirmity amount for each infirm child, and the caregiver " ++
+            "amount for each infirm adult dependant (less income over a threshold, with a top-up where the spouse or " ++
+            "dependant is one). Proven: the basic personal amount is always between the base and the enhanced amount, " ++
+            "the dependant amount never more than twice it plus the infirmity amount, and the caregiver amount never more " ++
+            "than its maximum."
           lean := [``PersonalCredits.basicPersonalAmount, ``PersonalCredits.eligibleDependant, ``PersonalCredits.credit,
-            ``PersonalCredits.bpa_between, ``PersonalCredits.full_below, ``PersonalCredits.dependant_le], uses := ["R41"] },
+            ``PersonalCredits.bpa_between, ``PersonalCredits.full_below, ``PersonalCredits.dependant_le,
+            ``PersonalCredits.caregiverAmounts, ``PersonalCredits.caregiver_le], uses := ["R41"] },
         { id := "R43", kind := .law, title := "The charitable donation credit", citation := "ITA 118.1(1), (3)"
           statement := "Gifts to qualified donees (of the year and five before) count up to 75% of income plus 25% of the gains " ++
             "on gifted property (all of income in the year of death); the credit is 14% of the first $200, 33% of gifts matched " ++

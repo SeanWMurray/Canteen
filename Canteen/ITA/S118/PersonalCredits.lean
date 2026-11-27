@@ -25,8 +25,10 @@ less I).
 
 The dollar amounts are indexed under 117.1(1) (and the 2020 to 2022 values of F are in the text); the
 indexed amounts for the year are given, defaulting to the text's. The enhancement is rounded down to
-the cent. 118(4)(a), (b) (one claim, one claimant) are left to the facts. Not encoded: 118(1)(b.1), (d),
-(e) and the rest of 118.
+the cent. 118(4)(a), (b) (one claim, one claimant) are left to the facts. (b.1)'s
+conditions (living with both parents, or (b) claimable) are one fact per child: the count given. (d)'s
+dependants are given apart from the (a) or (b) person, for whom (e) applies (118(4)(c)). Not encoded:
+the rest of 118.
 -/
 
 namespace Canteen.ITA.PersonalCredits
@@ -36,8 +38,11 @@ structure Amounts where
   base : Cents := 1229800
   /-- 118(1.1) F (indexed). -/
   enhanced : Cents := 1500000
-  /-- 118(1)(a) C: the infirm spouse amount (indexed). -/
+  /-- 118(1)(a) C, (b) D, (b.1): the infirmity amount (indexed). -/
   infirm : Cents := 215000
+  /-- 118(1)(d): the Canada caregiver amount, and the income threshold (indexed). -/
+  caregiver : Cents := 688300
+  caregiverThreshold : Cents := 1616300
   deriving Repr, DecidableEq, Inhabited
 
 /-- 118(1)(b): the person the individual supports, and the individual's circumstances. -/
@@ -57,6 +62,8 @@ structure Dependant where
   minorInfirmOrParent : Bool := true
   /-- D: dependent because of mental or physical infirmity ($2,150 more). -/
   infirm : Bool := false
+  /-- 18 or over at the end of the year (for (d) and (e)). -/
+  adult : Bool := false
   income : Cents := 0
   deriving Repr, DecidableEq, Inhabited
 
@@ -91,6 +98,12 @@ structure Facts where
   spouseInfirm : Bool := false
   /-- 118(1)(b): a person the individual supports, if no (a) claim is made. -/
   dependant : Option Dependant := none
+  /-- 118(1)(b.1): the individual's infirm children under 18 who qualify (living with both parents, or
+  for whom (b) is or could be claimed). -/
+  infirmChildren : Nat := 0
+  /-- 118(1)(d): the incomes of other persons dependent on the individual because of infirmity, 18 or
+  over (not the spouse or eligible dependant, for whom (e) applies; 118(4)(c)). -/
+  caregiverDependants : List Cents := []
   amounts : Amounts := {}
   brackets : Rates.Brackets := {}
   deriving Repr, DecidableEq, Inhabited
@@ -110,7 +123,7 @@ def basicPersonalAmount (f : Facts) : Cents := f.amounts.base + enhancementAllow
 def dependantClaim (f : Facts) : Bool := !f.supportsSpouse && f.dependant.any eligibleDependant.holds
 
 /-- 118(1) B: (a) for a supporting spouse, (b) for an eligible dependant, or (c) the basic personal amount. -/
-def amountB (f : Facts) : Cents :=
+def amountCore (f : Facts) : Cents :=
   if f.supportsSpouse then
     basicPersonalAmount f + ((if f.spouseInfirm then f.amounts.infirm else 0) + basicPersonalAmount f - f.spouseIncome)
   else match f.dependant with
@@ -118,6 +131,26 @@ def amountB (f : Facts) : Cents :=
         basicPersonalAmount f + ((if d.infirm then f.amounts.infirm else 0) + basicPersonalAmount f - d.income)
       else basicPersonalAmount f
     | none => basicPersonalAmount f
+
+/-- 118(1)(d): $6,883 (indexed) less the dependant's income over $16,163 (indexed). -/
+def caregiverAmount (f : Facts) (income : Cents) : Cents := f.amounts.caregiver - (income - f.amounts.caregiverThreshold)
+
+/-- 118(1)(e): where the person in (a) or (b) is also an infirm adult dependant, what (d) would give
+over what (a) or (b) gives. -/
+def topUp (f : Facts) : Cents :=
+  if f.supportsSpouse then
+    (if f.spouseInfirm then caregiverAmount f f.spouseIncome - (amountCore f - basicPersonalAmount f) else 0)
+  else match f.dependant with
+    | some d => if eligibleDependant.holds d && d.infirm && d.adult then
+        caregiverAmount f d.income - (amountCore f - basicPersonalAmount f) else 0
+    | none => 0
+
+/-- (b.1), (d) and (e). -/
+def caregiverAmounts (f : Facts) : Cents :=
+  f.infirmChildren * f.amounts.infirm + (f.caregiverDependants.map (caregiverAmount f)).sum + topUp f
+
+/-- 118(1) B: the total. -/
+def amountB (f : Facts) : Cents := amountCore f + caregiverAmounts f
 
 /-- 118(1): the credit, A × B, at the lowest rate (14%). -/
 def credit (f : Facts) : Cents := amountB f * 1400 / 10000
@@ -130,8 +163,11 @@ def explain (f : Facts) : Finding :=
     (if f.supportsSpouse then
       [⟨s!"A spouse or common-law partner with income of {c f.spouseIncome} adds {c (amountB f - basicPersonalAmount f)}.", "ITA 118(1)(a)"⟩]
     else if dependantClaim f then
-      [⟨s!"An eligible dependant adds {c (amountB f - basicPersonalAmount f)}.", "ITA 118(1)(b)"⟩]
+      [⟨s!"An eligible dependant adds {c (amountCore f - basicPersonalAmount f)}.", "ITA 118(1)(b)"⟩]
     else []) ++
+    (if caregiverAmounts f > 0 then
+      [⟨s!"Infirm children and dependants (and any top-up for an infirm spouse or dependant) add {c (caregiverAmounts f)}.",
+        "ITA 118(1)(b.1), (d), (e)"⟩] else []) ++
     [⟨s!"The credit is 14% of {c (amountB f)}: {c (credit f)}.", "ITA 118(1); 248(1) \"appropriate percentage\""⟩], []⟩
 
 /-! ## Truths about the credits -/
@@ -159,13 +195,17 @@ theorem full_below (f : Facts) (h : f.income ≤ f.brackets.third) (hj : f.brack
 
 /-- 118(1)(b) never gives more than twice the basic personal amount plus the infirmity amount. -/
 theorem dependant_le (f : Facts) (d : Dependant) (h : f.supportsSpouse = false) (hd : f.dependant = some d) :
-    amountB f ≤ basicPersonalAmount f + (f.amounts.infirm + basicPersonalAmount f) := by
-  simp only [amountB, h, hd, Bool.false_eq_true, ite_false]
+    amountCore f ≤ basicPersonalAmount f + (f.amounts.infirm + basicPersonalAmount f) := by
+  simp only [amountCore, h, hd, Bool.false_eq_true, ite_false]
   split
   · refine Nat.add_le_add_left (Nat.le_trans (Nat.sub_le _ _) (Nat.add_le_add_right ?_ _)) _
     split
     · exact Nat.le_refl _
     · exact Nat.zero_le _
   · exact Nat.le_add_right _ _
+
+/-- The (d) amount never exceeds the caregiver amount, and is nil once the dependant's income passes the
+threshold by the full amount. -/
+theorem caregiver_le (f : Facts) (i : Cents) : caregiverAmount f i ≤ f.amounts.caregiver := Nat.sub_le _ _
 
 end Canteen.ITA.PersonalCredits

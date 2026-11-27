@@ -24,6 +24,9 @@ structure YearAmounts where
   bpaEnhanced : Cents
   /-- 118(1) B (a) C and (b) D: the infirmity amount. -/
   infirm : Cents
+  /-- 118(1) B (d): the Canada caregiver amount, and the dependant's income threshold. -/
+  caregiver : Cents
+  caregiverThreshold : Cents
   /-- 118(2). -/
   age : Cents
   ageThreshold : Cents
@@ -50,6 +53,7 @@ def computed (year : Nat) : Option YearAmounts := do
     brackets := { first := ← Indexation.bracket1.cents year, second := ← Indexation.bracket2.cents year, third := ← Indexation.bracket3.cents year,
                   fourth := ← Indexation.bracket4.cents year },
     bpaBase := ← Indexation.bpaBase.cents year, bpaEnhanced := ← Indexation.bpaEnhanced.cents year, infirm := ← Indexation.infirm.cents year,
+    caregiver := ← Indexation.caregiver.cents year, caregiverThreshold := ← Indexation.caregiverThreshold.cents year,
     age := ← Indexation.ageAmount.cents year, ageThreshold := ← Indexation.ageThreshold.cents year,
     employmentAmount := ← Indexation.employmentAmount.cents year, medicalThreshold := ← Indexation.medicalThreshold.cents year,
     disability := ← Indexation.disability.cents year, disabilitySupplement := ← Indexation.disabilitySupplement.cents year,
@@ -58,13 +62,13 @@ def computed (year : Nat) : Option YearAmounts := do
 
 /-- The years computed so far. -/
 def table : List (Nat × YearAmounts) := [
-  (2025, { brackets := ⟨5737500, 11475000, 17788200, 25341400⟩, bpaBase := 1453800, bpaEnhanced := 1612900, infirm := 268700,
+  (2025, { brackets := ⟨5737500, 11475000, 17788200, 25341400⟩, bpaBase := 1453800, bpaEnhanced := 1612900, infirm := 268700, caregiver := 860100, caregiverThreshold := 2019700,
            age := 902800, ageThreshold := 4552200, employmentAmount := 147100, medicalThreshold := 283400, disability := 1013800,
            disabilitySupplement := 591400, disabilityCare := 346400, oasThreshold := 9345400, capitalGainsLimit := 62500000 }),
-  (2026, { brackets := ⟨5852300, 11704500, 18144000, 25848200⟩, bpaBase := 1482900, bpaEnhanced := 1645200, infirm := 274000,
+  (2026, { brackets := ⟨5852300, 11704500, 18144000, 25848200⟩, bpaBase := 1482900, bpaEnhanced := 1645200, infirm := 274000, caregiver := 877300, caregiverThreshold := 2060100,
            age := 920800, ageThreshold := 4643200, employmentAmount := 150100, medicalThreshold := 289000, disability := 1034100,
            disabilitySupplement := 603200, disabilityCare := 353300, oasThreshold := 9532300, capitalGainsLimit := 63750000 }),
-  (2027, { brackets := ⟨6004400, 12008800, 18615700, 26520300⟩, bpaBase := 1521400, bpaEnhanced := 1687900, infirm := 281200,
+  (2027, { brackets := ⟨6004400, 12008800, 18615700, 26520300⟩, bpaBase := 1521400, bpaEnhanced := 1687900, infirm := 281200, caregiver := 900100, caregiverThreshold := 2113600,
            age := 944800, ageThreshold := 4763900, employmentAmount := 154000, medicalThreshold := 296600, disability := 1061000,
            disabilitySupplement := 618900, disabilityCare := 362500, oasThreshold := 9780200, capitalGainsLimit := 65407500 })]
 

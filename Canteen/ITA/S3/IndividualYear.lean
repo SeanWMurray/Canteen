@@ -92,6 +92,9 @@ structure Facts where
   spouseInfirm : Bool := false
   /-- 118(1)(b): an eligible dependant, if no spouse amount is claimed. -/
   eligibleDependant : Option PersonalCredits.Dependant := none
+  /-- 118(1)(b.1), (d): infirm children under 18, and the incomes of infirm adult dependants. -/
+  infirmChildren : Nat := 0
+  caregiverDependants : List Cents := []
   /-- 118.1: total charitable gifts (with those carried forward), and the gains on gifts (B to D). -/
   charitableGifts : Cents := 0
   giftGains : Cents := 0
@@ -202,8 +205,9 @@ def taxableIncome (f : Facts) : HalfCents :=
 /-- 118(1): the basic personal (and spouse) credit, on the individual's income for the year. -/
 def personalFacts (f : Facts) : PersonalCredits.Facts :=
   { income := income f / 2, supportsSpouse := f.supportsSpouse, spouseIncome := f.spouseIncome, spouseInfirm := f.spouseInfirm,
-    dependant := f.eligibleDependant,
-    amounts := { base := (amounts f).bpaBase, enhanced := (amounts f).bpaEnhanced, infirm := (amounts f).infirm },
+    dependant := f.eligibleDependant, infirmChildren := f.infirmChildren, caregiverDependants := f.caregiverDependants,
+    amounts := { base := (amounts f).bpaBase, enhanced := (amounts f).bpaEnhanced, infirm := (amounts f).infirm,
+                 caregiver := (amounts f).caregiver, caregiverThreshold := (amounts f).caregiverThreshold },
     brackets := (amounts f).brackets }
 
 def personalCredit (f : Facts) : Cents := if f.claimsPersonal then PersonalCredits.credit (personalFacts f) else 0

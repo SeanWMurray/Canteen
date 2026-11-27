@@ -110,7 +110,7 @@ graph TD
 
 Tax at the 117(2) rates on income (non-eligible dividends grossed up by 15%), less the personal, employment and dividend tax credits.
 
-**Lean:** [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L247), [`Canteen.ITA.IndividualYear.employmentCredits`](../../Canteen/ITA/S3/IndividualYear.lean#L156), [`Canteen.ITA.IndividualYear.enhancedCpp`](../../Canteen/ITA/S3/IndividualYear.lean#L153)
+**Lean:** [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L251), [`Canteen.ITA.IndividualYear.employmentCredits`](../../Canteen/ITA/S3/IndividualYear.lean#L159), [`Canteen.ITA.IndividualYear.enhancedCpp`](../../Canteen/ITA/S3/IndividualYear.lean#L156)
 
 ## Facts
 

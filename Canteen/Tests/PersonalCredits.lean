@@ -58,3 +58,35 @@ def parent : IndividualYear.Facts :=
 example : IndividualYear.federalTax { parent with eligibleDependant := none } - IndividualYear.federalTax parent = 225806 := by decide
 
 end Canteen.Tests.PersonalCredits.EligibleDependant
+
+/-! ## The caregiver amounts (118(1)(b.1), (d), (e)) -/
+
+namespace Canteen.Tests.PersonalCredits.Caregiver
+
+open Canteen Canteen.ITA Canteen.ITA.PersonalCredits
+
+-- Module defaults are the text's unindexed amounts: $2,150, $6,883 and $16,163; income $50,000 ($15,000 BPA).
+-- (b.1): $2,150 for each infirm child under 18.
+example : amountB { income := 5000000, infirmChildren := 2 } = 1500000 + 430000 := by decide
+-- (d): an infirm parent with $10,000 of income: the full $6,883; with $20,000, $3,046 ($3,837 over $16,163).
+example : caregiverAmounts { income := 5000000, caregiverDependants := [1000000] } = 688300 := by decide
+example : caregiverAmounts { income := 5000000, caregiverDependants := [2000000] } = 304600 := by decide
+-- Two such dependants, each counted.
+example : caregiverAmounts { income := 5000000, caregiverDependants := [1000000, 2000000] } = 992900 := by decide
+-- (e): an infirm spouse with $14,000 of income: (a) gives $2,150 + $15,000 − $14,000 = $3,150; (d) would give
+-- $6,883, so $3,733 more.
+example : topUp { income := 5000000, supportsSpouse := true, spouseInfirm := true, spouseIncome := 1400000 } = 373300 := by decide
+-- An infirm spouse with no income: (a) already gives more than (d), so no top-up.
+example : topUp { income := 5000000, supportsSpouse := true, spouseInfirm := true } = 0 := by decide
+-- An infirm adult eligible dependant with $12,000: (b) gives $5,150, (d) $6,883: $1,733 more. Not for a minor.
+example : topUp { income := 5000000, dependant := some { infirm := true, adult := true, income := 1200000 } } = 173300 := by decide
+example : topUp { income := 5000000, dependant := some { infirm := true, adult := false, income := 1200000 } } = 0 := by decide
+
+-- In the individual's year, at 2025 amounts ($8,601 and $20,197): $1,204.14 less tax for an infirm parent.
+def carer : IndividualYear.Facts := { taxationYear := 2025, employmentAndBusiness := 8000000, claimsPersonal := true, caregiverDependants := [1000000] }
+example : IndividualYear.federalTax { carer with caregiverDependants := [] } - IndividualYear.federalTax carer = 120414 := by decide
+-- And 2026's: $8,773.
+example : IndividualYear.federalTax { carer with taxationYear := 2026, caregiverDependants := [] } -
+    IndividualYear.federalTax { carer with taxationYear := 2026 } = 122822 := by decide
+
+end Canteen.Tests.PersonalCredits.Caregiver
