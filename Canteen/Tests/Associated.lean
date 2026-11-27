@@ -105,4 +105,26 @@ example : associated (minorFacts [⟨2, .fact true⟩]) = false := by decide +ke
 -- Usually a judgment call, which is then on the record.
 example : (explain (minorFacts [⟨2, .judged "J-MINOR" false⟩])).reliesOn = ["J-MINOR"] := by decide +kernel
 
+-- 256(1.4)(a): Ann controls Aco; Bob owns Bco. Ann holds an option on new Bco shares.
+def withEntities : World :=
+  { withHoldco with persons := withHoldco.persons ++ [⟨15, "the partnership", .partnership⟩, ⟨16, "the family trust", .trust⟩] }
+def option (r : Right) : Facts := { world := withEntities, holdings := [common 10 0 100, common 11 1 100], rights := [r], first := 10, second := 11 }
+-- New shares equal to 40% of those issued: 40/140, over 25%.
+example : paraC (option ⟨11, 0, "common", 40, true, false⟩) = true := by decide +kernel
+-- 30% of new shares: 30/130, under 25%.
+example : associated (option ⟨11, 0, "common", 30, true, false⟩) = false := by decide +kernel
+-- An option on 30% of Bob's existing shares: 30%.
+example : associated (option ⟨11, 0, "common", 30, false, false⟩) = true := by decide +kernel
+-- Exercisable only on Bob's death: it does not count.
+example : associated (option ⟨11, 0, "common", 40, true, true⟩) = false := by decide +kernel
+
+-- 256(1.2)(e): a partnership owns 30% of Bco; Ann's share of its income is 100%, then 50%.
+def viaEntity (holder : Nat) (equity : List Equity) : Facts :=
+  { world := withEntities, holdings := [common 10 0 100, common 11 1 70, common 11 holder 30], equity, first := 10, second := 11 }
+example : associated (viaEntity 15 [⟨15, 0, 100⟩]) = true := by decide +kernel
+example : associated (viaEntity 15 [⟨15, 0, 50⟩, ⟨15, 4, 50⟩]) = false := by decide +kernel
+-- 256(1.2)(f)(ii): a discretionary trust owns 30%; Ann is a discretionary beneficiary, deemed to own all of it,
+-- as is Eve.
+example : associated (viaEntity 16 [⟨16, 0, 100⟩, ⟨16, 4, 100⟩]) = true := by decide +kernel
+
 end Canteen.Tests.Associated

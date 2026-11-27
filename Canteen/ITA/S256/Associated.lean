@@ -5,8 +5,13 @@ import Canteen.ITA.S251.RelatedPersons
 
 *Income Tax Act*, as consolidated to 2026-10-29 (verbatim in `statute/ITA-256-1-2-5.1-associated.txt`):
 
-**256(1.2)(d)** Shares owned (or deemed owned) by a holding corporation are deemed owned by each of its
-shareholders in proportion to the value of the shareholder's shares of it. **256(1.3)** Shares owned by a
+**256(1.2)(d) to (f)** Shares owned (or deemed owned) by a holding corporation are deemed owned by each of
+its shareholders in proportion to the value of the shareholder's shares of it; by a partnership, by its
+members in proportion to their income shares; by a trust, by each discretionary beneficiary in full,
+other beneficiaries by value, and the 75(2) contributor. **256(1.4)(a)** A person (or a partnership in
+which the person has an interest) with a right to acquire shares, or to control their votes, is deemed
+to own them, and they are deemed issued and outstanding, unless the right is exercisable only on a
+death, bankruptcy or permanent disability. **256(1.3)** Shares owned by a
 child under 18 are deemed owned by the parent, in determining association with a corporation the parent
 (or a group including the parent) controls, unless the child manages the business without significant
 influence from the parent.
@@ -40,10 +45,11 @@ computed by `RelatedPersons` on the same world, with a person related to himself
 two controllers are the same if they have the same members; by 256(1.2)(b)(i), they also count as the
 same group when every member of either owns shares of both corporations. Shareholdings are given by
 class, with whether the class is a specified class (256(1.1), a fact). For the 25% tests, shares owned
-by a corporation are deemed owned by its shareholders in proportion to the value of their shares
-(256(1.2)(d), through any number of holding corporations), and a parent is deemed to own the shares of
-a child under 18 unless the child manages the corporation independently (256(1.3)). Not encoded:
-256(1.2)(e) and (f) (partnerships and trusts), 256(1.4) (rights) and 256(2.1) (the anti-avoidance rule). For 256(2), the corporations to consider are listed; a chain of thirds of any
+by a corporation, partnership or trust are deemed owned by its shareholders, members or beneficiaries
+in the proportions of 256(1.2)(d) to (f), through any number of levels; a right to acquire shares makes
+its holder their owner, and new shares issued and outstanding (256(1.4)(a)); and a parent is deemed to
+own the shares of a child under 18 unless the child manages the corporation independently (256(1.3)).
+Not encoded: 256(1.4)(b) (rights to have others' shares redeemed) and 256(2.1) (the anti-avoidance rule). For 256(2), the corporations to consider are listed; a chain of thirds of any
 length is followed, and for section 125 every third on the chain must be a CCPC that has not elected.
 -/
 
@@ -62,7 +68,10 @@ structure Holding where
   specified : Bool := false
   deriving Repr, DecidableEq, Inhabited
 
-/-- 256(1.2)(d): a shareholder's interest in a corporation, as a percentage of the fair market value of all its issued shares. -/
+/-- 256(1.2)(d) to (f): an interest in a holding entity, as a percentage: for a corporation, of the fair market
+value of all its issued shares (d); for a partnership, the member's share of its income or loss (e); for
+a trust, 100 for a beneficiary whose share depends on a discretion (f)(ii), otherwise the value of the
+beneficial interest over that of all of them (f)(iii), and 100 for the person in 75(2) (f)(iv). -/
 structure Equity where
   corporation : Nat
   holder : Nat
@@ -76,9 +85,22 @@ structure Minor where
   independent : Answer := .fact false
   deriving Repr, DecidableEq, Inhabited
 
+/-- 256(1.4)(a): a right to acquire shares of a class (or to control their votes), as a percentage of the
+class's issued shares, whether the shares would be newly issued, and whether it is exercisable only on a
+death, bankruptcy or permanent disability. -/
+structure Right where
+  corporation : Nat
+  holder : Nat
+  shareClass : String
+  percent : Nat
+  newShares : Bool := true
+  onlyOnDeathOrDisability : Bool := false
+  deriving Repr, DecidableEq, Inhabited
+
 structure Facts where
   world : World
   holdings : List Holding := []
+  rights : List Right := []
   /-- For the look-through of 256(1.2)(d): the shareholders of each holding corporation, by value. -/
   equity : List Equity := []
   minors : List Minor := []
@@ -101,20 +123,36 @@ def sameMembers (a b : List Nat) : Bool := a.all (b.contains ·) && b.all (a.con
 
 def shareholder (f : Facts) (c p : Nat) : Bool := f.holdings.any fun h => h.corporation == c && h.holder == p
 
-/-- 256(1.2)(d): `p`'s share of corporation `h`, in basis points of its value: directly, and through
-corporations that are its shareholders (to the given depth). -/
+/-- 256(1.2)(d) to (f): `p`'s share of the holding entity `h`, in basis points: directly, and through
+corporations, partnerships and trusts that hold interests in it (to the given depth). -/
 def shareOf (f : Facts) (p : Nat) : Nat → Nat → Nat
   | 0, h => 100 * ((f.equity.filter fun e => e.corporation == h && e.holder == p).map (·.percent)).sum
   | k + 1, h => 100 * ((f.equity.filter fun e => e.corporation == h && e.holder == p).map (·.percent)).sum +
-      ((f.equity.filter fun e => e.corporation == h && e.holder != p && f.world.isKind .corporation e.holder).map
+      ((f.equity.filter fun e => e.corporation == h && e.holder != p && !f.world.isKind .individual e.holder).map
         fun e => e.percent * shareOf f p k e.holder / 100).sum
 
-/-- The shares of a class of `c` that `p` owns or is deemed by 256(1.2)(d) to own, in basis points of the class. -/
+/-- 256(1.4)(a): the rights that count (not those exercisable only on a death, bankruptcy or disability). -/
+def rightsIn (f : Facts) (c : Nat) (cls : String) : List Right :=
+  f.rights.filter fun r => r.corporation == c && r.shareClass == cls && !r.onlyOnDeathOrDisability
+
+/-- `h`'s shares of a class, owned or deemed owned by a right, in basis points of the class as enlarged by
+the new shares the rights are deemed to issue. -/
+def classBp (f : Facts) (c : Nat) (cls : String) (h : Nat) : Nat :=
+  let base := 100 + (((rightsIn f c cls).filter (·.newShares)).map (·.percent)).sum
+  let held := ((f.holdings.filter fun g => g.corporation == c && g.shareClass == cls && g.holder == h).map (·.percent)).sum +
+    (((rightsIn f c cls).filter (·.holder == h)).map (·.percent)).sum
+  10000 * held / base
+
+/-- The holders of a class, directly or by a right. -/
+def holdersOf (f : Facts) (c : Nat) (cls : String) : List Nat :=
+  ((f.holdings.filter fun g => g.corporation == c && g.shareClass == cls).map (·.holder) ++ (rightsIn f c cls).map (·.holder)).eraseDups
+
+/-- The shares of a class of `c` that `p` owns or is deemed to own (256(1.2)(d) to (f), 256(1.4)(a)), in
+basis points of the class. -/
 def ownedBp (f : Facts) (c : Nat) (cls : String) (p : Nat) : Nat :=
-  let ofClass := f.holdings.filter fun g => g.corporation == c && g.shareClass == cls
-  100 * ((ofClass.filter (·.holder == p)).map (·.percent)).sum +
-    ((ofClass.filter fun g => g.holder != p && f.world.isKind .corporation g.holder).map
-      fun g => g.percent * shareOf f p f.equity.length g.holder / 100).sum
+  classBp f c cls p +
+    (((holdersOf f c cls).filter fun h => h != p && !f.world.isKind .individual h).map
+      fun h => classBp f c cls h * shareOf f p f.equity.length h / 10000).sum
 
 /-- 256(1.3): the children under 18 of a parent, whose shares the parent is deemed to own when the other
 corporation is controlled by the parent or by a group of which the parent is a member. -/
