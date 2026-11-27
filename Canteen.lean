@@ -74,6 +74,7 @@ import Canteen.ITA.S123.CorporateRates
 import Canteen.ITA.S129.RefundableTax
 import Canteen.ITA.S15.ShareholderLoans
 import Canteen.ITA.S89.GeneralRateIncomePool
+import Canteen.ITA.S127_5.MinimumTax
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.ITA.S40.ShareToAffiliate
@@ -102,6 +103,7 @@ import Canteen.Transactions.EstateFreeze
 import Canteen.Transactions.DonatingShares
 import Canteen.Transactions.InvestmentIncomeIntegration
 import Canteen.Transactions.EligibleDesignation
+import Canteen.Transactions.CrystallizationMinimumTax
 import Canteen.Transactions.SisterCompanyRepurchase
 
 -- Blueprints: memos linked to Lean
@@ -117,6 +119,7 @@ import Canteen.Blueprints.EstateFreeze
 import Canteen.Blueprints.DonatingShares
 import Canteen.Blueprints.InvestmentIncomeIntegration
 import Canteen.Blueprints.EligibleDesignation
+import Canteen.Blueprints.CrystallizationMinimumTax
 import Canteen.Blueprints.SisterCompanyRepurchase
 import Canteen.Blueprints.All
 
@@ -182,3 +185,4 @@ import Canteen.Tests.CorporateRates
 import Canteen.Tests.RefundableTax
 import Canteen.Tests.ShareholderLoans
 import Canteen.Tests.GeneralRateIncomePool
+import Canteen.Tests.MinimumTax

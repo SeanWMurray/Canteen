@@ -9,11 +9,11 @@ An overview of the project, drawn from the Lean.
 Every statement in every blueprint, by the status Lean computes for it.
 
 ```mermaid
-pie showData title All 260 statements in the memos and blueprints, by status
-    "encoded" : 45
-    "proven" : 166
+pie showData title All 268 statements in the memos and blueprints, by status
+    "encoded" : 47
+    "proven" : 171
     "not formalized" : 3
-    "fact" : 38
+    "fact" : 39
     "judgment call" : 8
 ```
 
@@ -191,33 +191,37 @@ mindmap
       n113["`120.4(2), (3): the tax`"]
     n114["`s. 121`"]
       n115["`121: the dividend tax credit`"]
-    n116["`ss. 123 to 125`"]
-      n117["`123(1), 124(1): 38%, the abatement`"]
-      n118["`123.4(2): general rate reduction`"]
-      n119["`125(1): small business deduction`"]
-    n120["`ss. 123.3, 129`"]
-      n121["`123.3: refundable tax on investment income`"]
-      n122["`129(1), (4): the dividend refund`"]
-    n123["`s. 185.1`"]
-      n124["`185.1(1): Part III.1 tax on excessive designations`"]
-      n125["`185.1(2), (3): the election`"]
-    n126["`s. 186`"]
-      n127["`186(1): Part IV tax`"]
-      n128["`186(4): connected corporations`"]
-      n129["`186(2): control with non-arm's length persons`"]
-    n130["`s. 248`"]
-      n131["`248(1): majority-interest partner`"]
-    n132["`s. 251`"]
-      n133["`251(1): arm's length`"]
-      n134["`251(2), (3): related persons`"]
-      n135["`251(3.1), (3.2): amalgamations`"]
-      n136["`251(6): blood, marriage, adoption`"]
-    n137["`s. 251.1`"]
-      n138["`251.1(1)(a) to (h): affiliated persons`"]
-      n139["`251.1(2): amalgamations`"]
-      n140["`251.1(3), (4): definitions and rules`"]
-    n141["`s. 251.2`"]
-      n142["`251.2(2)(a): loss restriction event`"]
-    n143["`s. 256`"]
-      n144["`256(7)(a): control not acquired`"]
+    n116["`ss. 127.5 to 127.531`"]
+      n117["`127.51: the minimum amount`"]
+      n118["`127.52(1): adjusted taxable income`"]
+      n119["`127.531: the basic minimum tax credit`"]
+    n120["`ss. 123 to 125`"]
+      n121["`123(1), 124(1): 38%, the abatement`"]
+      n122["`123.4(2): general rate reduction`"]
+      n123["`125(1): small business deduction`"]
+    n124["`ss. 123.3, 129`"]
+      n125["`123.3: refundable tax on investment income`"]
+      n126["`129(1), (4): the dividend refund`"]
+    n127["`s. 185.1`"]
+      n128["`185.1(1): Part III.1 tax on excessive designations`"]
+      n129["`185.1(2), (3): the election`"]
+    n130["`s. 186`"]
+      n131["`186(1): Part IV tax`"]
+      n132["`186(4): connected corporations`"]
+      n133["`186(2): control with non-arm's length persons`"]
+    n134["`s. 248`"]
+      n135["`248(1): majority-interest partner`"]
+    n136["`s. 251`"]
+      n137["`251(1): arm's length`"]
+      n138["`251(2), (3): related persons`"]
+      n139["`251(3.1), (3.2): amalgamations`"]
+      n140["`251(6): blood, marriage, adoption`"]
+    n141["`s. 251.1`"]
+      n142["`251.1(1)(a) to (h): affiliated persons`"]
+      n143["`251.1(2): amalgamations`"]
+      n144["`251.1(3), (4): definitions and rules`"]
+    n145["`s. 251.2`"]
+      n146["`251.2(2)(a): loss restriction event`"]
+    n147["`s. 256`"]
+      n148["`256(7)(a): control not acquired`"]
 ```

@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 87 statements:** 68 proven, 16 encoded, 3 not formalized.
+**Status of the 88 statements:** 69 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -92,11 +92,12 @@ graph TD
   n79["R46 · Shareholder loans"]:::proven
   n80["R47 · The general rate income pool"]:::proven
   n81["R35 · An individual's year, to taxable income and tax"]:::proven
-  n82["R11 · The principal residence exemption"]:::proven
-  n83["R2 · Cost of the substituted property"]:::proven
-  n84["N1 · Inputs decided by other provisions"]:::notFormalized
-  n85["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n86["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n82["R48 · The minimum tax"]:::proven
+  n83["R11 · The principal residence exemption"]:::proven
+  n84["R2 · Cost of the substituted property"]:::proven
+  n85["N1 · Inputs decided by other provisions"]:::notFormalized
+  n86["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n87["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -226,21 +227,22 @@ graph TD
   n74 --> n81
   n75 --> n81
   n76 --> n81
-  n44 --> n82
-  n50 --> n82
-  n11 --> n83
-  n1 --> n84
-  n5 --> n84
-  n6 --> n84
-  n8 --> n84
-  n37 --> n84
-  n83 --> n84
-  n38 --> n84
-  n30 --> n85
-  n32 --> n86
-  n34 --> n86
-  n39 --> n86
-  n42 --> n86
+  n81 --> n82
+  n44 --> n83
+  n50 --> n83
+  n11 --> n84
+  n1 --> n85
+  n5 --> n85
+  n6 --> n85
+  n8 --> n85
+  n37 --> n85
+  n84 --> n85
+  n38 --> n85
+  n30 --> n86
+  n32 --> n87
+  n34 --> n87
+  n39 --> n87
+  n42 --> n87
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -339,11 +341,12 @@ graph TD
   n79["R46"]:::proven
   n80["R47"]:::proven
   n81["R35"]:::proven
-  n82["R11"]:::proven
-  n83["R2"]:::proven
-  n84["N1"]:::notFormalized
-  n85["N2"]:::notFormalized
-  n86["N4"]:::notFormalized
+  n82["R48"]:::proven
+  n83["R11"]:::proven
+  n84["R2"]:::proven
+  n85["N1"]:::notFormalized
+  n86["N2"]:::notFormalized
+  n87["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -553,21 +556,26 @@ graph TD
   n74 --> n81
   n76 --> n81
   n75 --> n81
-  n44 -.-> n82
-  n50 -.-> n82
-  n11 -.-> n83
-  n1 -.-> n84
-  n5 -.-> n84
-  n6 -.-> n84
-  n8 -.-> n84
-  n37 -.-> n84
-  n83 -.-> n84
-  n38 -.-> n84
-  n30 -.-> n85
-  n32 -.-> n86
-  n34 -.-> n86
-  n39 -.-> n86
-  n42 -.-> n86
+  n55 --> n82
+  n81 --> n82
+  n58 --> n82
+  n45 --> n82
+  n73 --> n82
+  n44 -.-> n83
+  n50 -.-> n83
+  n11 -.-> n84
+  n1 -.-> n85
+  n5 -.-> n85
+  n6 -.-> n85
+  n8 -.-> n85
+  n37 -.-> n85
+  n84 -.-> n85
+  n38 -.-> n85
+  n30 -.-> n86
+  n32 -.-> n87
+  n34 -.-> n87
+  n39 -.-> n87
+  n42 -.-> n87
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -1242,6 +1250,14 @@ A CCPC's pool grows by 72% of its income taxed at the general rate (taxable inco
 Income from sources (employment and business, dividends with the gross-up, recapture, attributed income), net taxable capital gains, less terminal and other losses; then taxable income, after the net capital loss deduction and the capital gains deduction (which the former reduces). Proven: taxable income never exceeds income, and the capital gains deduction never exceeds the net taxable capital gains.
 
 **Lean:** [`Canteen.ITA.IndividualYear.incomeFacts`](../../Canteen/ITA/S3/IndividualYear.lean#L96), [`Canteen.ITA.IndividualYear.taxableIncome`](../../Canteen/ITA/S3/IndividualYear.lean#L118), [`Canteen.ITA.IndividualYear.capitalGainsDeduction`](../../Canteen/ITA/S3/IndividualYear.lean#L108), [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L137), [`Canteen.ITA.IndividualYear.personalCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L126), [`Canteen.ITA.IndividualYear.donationCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L134), [`Canteen.ITA.IndividualYear.taxable_le_income`](../../Canteen/ITA/S3/IndividualYear.lean#L165), [`Canteen.ITA.IndividualYear.capital_gains_deduction_le`](../../Canteen/ITA/S3/IndividualYear.lean#L170)
+
+### R48. The minimum tax
+
+**Status:** proven · **Citation:** ITA 127.5; 127.51; 127.52(1); 127.531 · **Uses:** R35
+
+An individual pays at least 20.5% of adjusted taxable income over the 117(2)(d) threshold, less half the personal credits and 4/5 of the donation credit; adjusted taxable income counts capital gains in full (3/10 on gifts of listed securities), drops the dividend gross-up and allows 7/5 of the capital gains deduction. Proven: it never lowers tax, and does not apply within the exemption.
+
+**Lean:** [`Canteen.ITA.MinimumTax.adjustedTaxableIncome`](../../Canteen/ITA/S127_5/MinimumTax.lean#L53), [`Canteen.ITA.MinimumTax.minimumAmount`](../../Canteen/ITA/S127_5/MinimumTax.lean#L63), [`Canteen.ITA.MinimumTax.taxPayable`](../../Canteen/ITA/S127_5/MinimumTax.lean#L67), [`Canteen.ITA.MinimumTax.regular_le`](../../Canteen/ITA/S127_5/MinimumTax.lean#L86), [`Canteen.ITA.MinimumTax.within_exemption`](../../Canteen/ITA/S127_5/MinimumTax.lean#L89), [`Canteen.ITA.MinimumTax.split`](../../Canteen/ITA/S127_5/MinimumTax.lean#L99)
 
 ### R11. The principal residence exemption
 

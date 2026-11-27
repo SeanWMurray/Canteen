@@ -150,6 +150,7 @@ R45: proven
 R46: proven
 R47: proven
 R35: proven
+R48: proven
 R11: proven
 R2: proven
 N1: not formalized

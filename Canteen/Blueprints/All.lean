@@ -11,6 +11,7 @@ import Canteen.Blueprints.EstateFreeze
 import Canteen.Blueprints.DonatingShares
 import Canteen.Blueprints.InvestmentIncomeIntegration
 import Canteen.Blueprints.EligibleDesignation
+import Canteen.Blueprints.CrystallizationMinimumTax
 
 /-!
 # Every blueprint, and the file each is rendered to
@@ -33,6 +34,7 @@ def all : List (String × Blueprint.Blueprint) :=
    ("estate-freeze", EstateFreeze.memo),
    ("donating-shares", DonatingShares.memo),
    ("investment-income-integration", InvestmentIncomeIntegration.memo),
-   ("eligible-designation", EligibleDesignation.memo)]
+   ("eligible-designation", EligibleDesignation.memo),
+   ("crystallization-minimum-tax", CrystallizationMinimumTax.memo)]
 
 end Canteen.Blueprints
