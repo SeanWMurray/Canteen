@@ -91,6 +91,7 @@ import Canteen.ITA.S56.Support
 import Canteen.ITA.S63.ChildCare
 import Canteen.ITA.S62.MovingExpenses
 import Canteen.ITA.S6.StandbyCharge
+import Canteen.ITA.S112.StopLoss
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.ITA.S40.ShareToAffiliate
@@ -225,3 +226,4 @@ import Canteen.Tests.Support
 import Canteen.Tests.ChildCare
 import Canteen.Tests.MovingExpenses
 import Canteen.Tests.StandbyCharge
+import Canteen.Tests.StopLoss

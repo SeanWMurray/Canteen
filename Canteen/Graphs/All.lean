@@ -49,6 +49,7 @@ import Canteen.ITA.S56.Support
 import Canteen.ITA.S63.ChildCare
 import Canteen.ITA.S62.MovingExpenses
 import Canteen.ITA.S6.StandbyCharge
+import Canteen.ITA.S112.StopLoss
 import Canteen.Transactions.DebtSwap
 import Canteen.ITA.S87.Amalgamation
 import Canteen.ITA.S39.CanadianSecurities
@@ -211,7 +212,8 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S56.Support, "56(1)(b), 56.1(4), 60(b) support"),
    (`Canteen.ITA.S63.ChildCare, "63 child care expenses"),
    (`Canteen.ITA.S62.MovingExpenses, "62(1), 248(1) moving expenses"),
-   (`Canteen.ITA.S6.StandbyCharge, "6(1)(e), 6(2) the standby charge")]
+   (`Canteen.ITA.S6.StandbyCharge, "6(1)(e), 6(2) the standby charge"),
+   (`Canteen.ITA.S112.StopLoss, "112(3), (3.01), (6.1) the stop-loss on shares")]
 
 /-! ## The dashboard -/
 
@@ -317,7 +319,7 @@ def actMindmap : String := Id.run do
     (2, "s. 110.6"), (3, "qualified small business corporation share"), (3, "annual and cumulative gains limits"),
     (3, "110.6(2.1): the deduction"),
     (2, "s. 111"), (3, "111(8): net capital loss"), (3, "111(1)(b), (1.1): deduction"),
-    (2, "s. 112"), (3, "112(1): intercorporate dividend deduction"),
+    (2, "s. 112"), (3, "112(1): intercorporate dividend deduction"), (3, "112(3), (3.01): the stop-loss on shares"),
     (2, "ss. 56, 56.1, 60"), (3, "56.1(4): support amount, child support"), (3, "56(1)(b), 60(b): included and deducted"),
     (2, "s. 62"), (3, "62(1): moving expenses"), (3, "248(1): eligible relocation, the 40 km test"),
     (2, "s. 63"), (3, "63(1): child care expenses"), (3, "63(2): the higher-income spouse"),

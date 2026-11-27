@@ -64,6 +64,7 @@ import Canteen.ITA.S56.Support
 import Canteen.ITA.S63.ChildCare
 import Canteen.ITA.S62.MovingExpenses
 import Canteen.ITA.S6.StandbyCharge
+import Canteen.ITA.S112.StopLoss
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -660,6 +661,14 @@ def blueprint : Blueprint where
             "used primarily for work, less what the employee pays for its use. Proven: an owned car available all year " ++
             "gives 24% of its cost."
           lean := [``StandbyCharge.months, ``StandbyCharge.charge, ``StandbyCharge.benefit, ``StandbyCharge.full_year] },
+        { id := "R63", kind := .law, title := "The stop-loss on shares", citation := "ITA 112(3), (3.01), (6.1)"
+          statement := "A loss on a share is reduced: for an individual, by the capital dividends received on it, but only " ++
+            "down to the loss less the taxable dividends; for a corporation, by the taxable dividends it deducted under " ++
+            "section 112, the capital dividends and the life insurance capital dividends; except qualified dividends on a " ++
+            "holding of 5% or less owned 365 days. Proven: never more than the loss, and an individual with no capital " ++
+            "dividends keeps it all."
+          lean := [``StopLoss.qualified, ``StopLoss.reduction, ``StopLoss.apply, ``StopLoss.reduction_le,
+            ``StopLoss.individual_taxable_only] },
         { id := "R35", kind := .law, title := "An individual's year, to taxable income and tax", citation := "ITA 2(2); 3; 111(1)(b); 110.6; 117(2)"
           statement := "Income from sources (employment and business, dividends with the gross-up, recapture, attributed " ++
             "income), net taxable capital gains, less terminal and other losses; then taxable income, after the net capital " ++

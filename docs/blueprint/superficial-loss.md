@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 102 statements:** 83 proven, 16 encoded, 3 not formalized.
+**Status of the 103 statements:** 84 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -105,13 +105,14 @@ graph TD
   n92["R60 · Child care expenses"]:::proven
   n93["R61 · Moving expenses"]:::proven
   n94["R62 · The automobile standby charge"]:::proven
-  n95["R35 · An individual's year, to taxable income and tax"]:::proven
-  n96["R48 · The minimum tax"]:::proven
-  n97["R11 · The principal residence exemption"]:::proven
-  n98["R2 · Cost of the substituted property"]:::proven
-  n99["N1 · Inputs decided by other provisions"]:::notFormalized
-  n100["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n101["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n95["R63 · The stop-loss on shares"]:::proven
+  n96["R35 · An individual's year, to taxable income and tax"]:::proven
+  n97["R48 · The minimum tax"]:::proven
+  n98["R11 · The principal residence exemption"]:::proven
+  n99["R2 · Cost of the substituted property"]:::proven
+  n100["N1 · Inputs decided by other provisions"]:::notFormalized
+  n101["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n102["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -231,45 +232,45 @@ graph TD
   n74 --> n76
   n77 --> n78
   n77 --> n80
-  n44 --> n95
-  n45 --> n95
-  n53 --> n95
-  n55 --> n95
-  n56 --> n95
-  n58 --> n95
-  n73 --> n95
-  n74 --> n95
-  n75 --> n95
-  n76 --> n95
-  n81 --> n95
-  n82 --> n95
-  n83 --> n95
-  n84 --> n95
-  n85 --> n95
-  n87 --> n95
-  n88 --> n95
-  n89 --> n95
-  n90 --> n95
-  n91 --> n95
-  n92 --> n95
-  n93 --> n95
-  n94 --> n95
-  n95 --> n96
-  n44 --> n97
-  n50 --> n97
-  n11 --> n98
-  n1 --> n99
-  n5 --> n99
-  n6 --> n99
-  n8 --> n99
-  n37 --> n99
-  n98 --> n99
-  n38 --> n99
-  n30 --> n100
-  n32 --> n101
-  n34 --> n101
-  n39 --> n101
-  n42 --> n101
+  n44 --> n96
+  n45 --> n96
+  n53 --> n96
+  n55 --> n96
+  n56 --> n96
+  n58 --> n96
+  n73 --> n96
+  n74 --> n96
+  n75 --> n96
+  n76 --> n96
+  n81 --> n96
+  n82 --> n96
+  n83 --> n96
+  n84 --> n96
+  n85 --> n96
+  n87 --> n96
+  n88 --> n96
+  n89 --> n96
+  n90 --> n96
+  n91 --> n96
+  n92 --> n96
+  n93 --> n96
+  n94 --> n96
+  n96 --> n97
+  n44 --> n98
+  n50 --> n98
+  n11 --> n99
+  n1 --> n100
+  n5 --> n100
+  n6 --> n100
+  n8 --> n100
+  n37 --> n100
+  n99 --> n100
+  n38 --> n100
+  n30 --> n101
+  n32 --> n102
+  n34 --> n102
+  n39 --> n102
+  n42 --> n102
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -381,13 +382,14 @@ graph TD
   n92["R60"]:::proven
   n93["R61"]:::proven
   n94["R62"]:::proven
-  n95["R35"]:::proven
-  n96["R48"]:::proven
-  n97["R11"]:::proven
-  n98["R2"]:::proven
-  n99["N1"]:::notFormalized
-  n100["N2"]:::notFormalized
-  n101["N4"]:::notFormalized
+  n95["R63"]:::proven
+  n96["R35"]:::proven
+  n97["R48"]:::proven
+  n98["R11"]:::proven
+  n99["R2"]:::proven
+  n100["N1"]:::notFormalized
+  n101["N2"]:::notFormalized
+  n102["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -587,53 +589,53 @@ graph TD
   n74 -.-> n76
   n77 --> n78
   n77 --> n80
-  n93 --> n95
-  n55 --> n95
-  n94 --> n95
-  n81 --> n95
-  n91 --> n95
-  n84 --> n95
-  n58 --> n95
-  n44 --> n95
-  n87 --> n95
-  n73 --> n95
-  n56 --> n95
-  n92 --> n95
-  n85 --> n95
-  n45 --> n95
-  n53 --> n95
-  n89 --> n95
-  n90 --> n95
-  n82 --> n95
-  n74 --> n95
-  n83 --> n95
-  n76 --> n95
-  n75 --> n95
-  n88 -.-> n95
+  n93 --> n96
   n55 --> n96
+  n94 --> n96
   n81 --> n96
-  n95 --> n96
   n91 --> n96
   n84 --> n96
   n58 --> n96
-  n45 --> n96
+  n44 --> n96
   n87 --> n96
   n73 --> n96
-  n44 -.-> n97
-  n50 -.-> n97
-  n11 -.-> n98
-  n1 -.-> n99
-  n5 -.-> n99
-  n6 -.-> n99
-  n8 -.-> n99
-  n37 -.-> n99
-  n98 -.-> n99
-  n38 -.-> n99
-  n30 -.-> n100
-  n32 -.-> n101
-  n34 -.-> n101
-  n39 -.-> n101
-  n42 -.-> n101
+  n56 --> n96
+  n92 --> n96
+  n85 --> n96
+  n45 --> n96
+  n53 --> n96
+  n89 --> n96
+  n90 --> n96
+  n82 --> n96
+  n74 --> n96
+  n83 --> n96
+  n76 --> n96
+  n75 --> n96
+  n88 -.-> n96
+  n55 --> n97
+  n81 --> n97
+  n96 --> n97
+  n91 --> n97
+  n84 --> n97
+  n58 --> n97
+  n45 --> n97
+  n87 --> n97
+  n73 --> n97
+  n44 -.-> n98
+  n50 -.-> n98
+  n11 -.-> n99
+  n1 -.-> n100
+  n5 -.-> n100
+  n6 -.-> n100
+  n8 -.-> n100
+  n37 -.-> n100
+  n99 -.-> n100
+  n38 -.-> n100
+  n30 -.-> n101
+  n32 -.-> n102
+  n34 -.-> n102
+  n39 -.-> n102
+  n42 -.-> n102
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -1412,6 +1414,14 @@ Moving expenses for a relocation to work (or study full time) in Canada that bri
 An employee includes 2% a month of the cost of an employer's car (or 2/3 of the lease cost, less insurance), reduced in proportion to personal kilometres under 1,667 a month where the car must be used and is used primarily for work, less what the employee pays for its use. Proven: an owned car available all year gives 24% of its cost.
 
 **Lean:** [`Canteen.ITA.StandbyCharge.months`](../../Canteen/ITA/S6/StandbyCharge.lean#L41), [`Canteen.ITA.StandbyCharge.charge`](../../Canteen/ITA/S6/StandbyCharge.lean#L55), [`Canteen.ITA.StandbyCharge.benefit`](../../Canteen/ITA/S6/StandbyCharge.lean#L63), [`Canteen.ITA.StandbyCharge.full_year`](../../Canteen/ITA/S6/StandbyCharge.lean#L79)
+
+### R63. The stop-loss on shares
+
+**Status:** proven · **Citation:** ITA 112(3), (3.01), (6.1)
+
+A loss on a share is reduced: for an individual, by the capital dividends received on it, but only down to the loss less the taxable dividends; for a corporation, by the taxable dividends it deducted under section 112, the capital dividends and the life insurance capital dividends; except qualified dividends on a holding of 5% or less owned 365 days. Proven: never more than the loss, and an individual with no capital dividends keeps it all.
+
+**Lean:** [`Canteen.ITA.StopLoss.qualified`](../../Canteen/ITA/S112/StopLoss.lean#L55), [`Canteen.ITA.StopLoss.reduction`](../../Canteen/ITA/S112/StopLoss.lean#L74), [`Canteen.ITA.StopLoss.apply`](../../Canteen/ITA/S112/StopLoss.lean#L79), [`Canteen.ITA.StopLoss.reduction_le`](../../Canteen/ITA/S112/StopLoss.lean#L85), [`Canteen.ITA.StopLoss.individual_taxable_only`](../../Canteen/ITA/S112/StopLoss.lean#L96)
 
 ### R35. An individual's year, to taxable income and tax
 
