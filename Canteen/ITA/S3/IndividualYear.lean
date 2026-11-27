@@ -11,6 +11,7 @@ import Canteen.ITA.S120_4.SplitIncome
 import Canteen.ITA.S20.InterestDeductibility
 import Canteen.ITA.S118_2.MedicalExpenses
 import Canteen.ITA.S118_3.Disability
+import Canteen.ITA.S60_03.PensionSplitting
 
 /-!
 # An individual's year: income from the encoded sources, and taxable income
@@ -32,7 +33,10 @@ Recapture is treated as income from the business, and a terminal loss as a busin
 year. Split income (120.4) is deducted from income (20(1)(ww)) and taxed at the highest rate. Federal
 tax is 117(2) on taxable income plus the split income tax, less the dividend tax credit (121) and
 the basic personal and spouse credit (118(1)), the donation credit (118.1), the medical expense
-credit (118.2), the disability credit (118.3), and other non-refundable credits (given). Amounts
+credit (118.2), the disability credit (118.3), the age and pension credits (118(2), (3)), and other
+non-refundable credits (given). Pension income is included in income from sources, and a
+split-pension amount is deducted by the pensioner (60(c), in 3(c)) and included by the transferee
+(56(1)(a.2)). Amounts
 are in cents, except section 3 and taxable income, in half-cents.
 -/
 
@@ -86,6 +90,17 @@ structure Facts where
   deathYear : Bool := false
   /-- 118.2: medical expenses. -/
   medicalExpenses : List MedicalExpenses.Expense := []
+  /-- 65 or over at the end of the year (118(2), (7)). -/
+  age65 : Bool := false
+  /-- Pension and similar payments received (118(7), (8)), included in income. -/
+  pensions : List PensionSplitting.Payment := []
+  ageAmounts : PensionSplitting.AgeAmounts := {}
+  /-- 60.03, 60(c): the split-pension amount elected as pensioner (capped at the 60.03(1) limit). -/
+  splitOut : Cents := 0
+  /-- 56(1)(a.2): the split-pension amount received as transferee, and whether it was qualified
+  pension income to the pensioner (60.03(2)(b)(ii)). -/
+  splitIn : Cents := 0
+  splitInQualified : Bool := true
   /-- 118.3(1): the individual's disability facts, if the credit is claimed. -/
   disability : Option Disability.Facts := none
   /-- 118.3(2): disability credits transferred from dependants (see `disabilityTransferFrom`). -/
@@ -104,13 +119,19 @@ def attributedLoss (f : Facts) : Cents := (f.attributions.map IncomeAttribution.
 /-- 20(1)(c): interest deducted, in computing income from the business or property. -/
 def interestDeduction (f : Facts) : Cents := InterestDeductibility.total f.borrowings
 
+/-- 60.03(1), 60(c): the split-pension amount deducted, at most the limit. -/
+def splitOutAllowed (f : Facts) : Cents := min f.splitOut (PensionSplitting.splitLimit f.age65 f.pensions)
+
+def pensionTotal (f : Facts) : Cents := (f.pensions.map (·.amount)).sum
+
 /-- Split income (120.4), deducted in computing income (20(1)(ww)). -/
 def splitIncome (f : Facts) : Cents := (f.split.map SplitIncome.splitIncome).getD 0
 
 /-- Section 3, from the components. -/
 def incomeFacts (f : Facts) : Income.Facts :=
-  { incomeFromSources := (f.employmentAndBusiness + Dividends.inclusion (dividendFacts f) + recapture f + attributedIncome f) - splitIncome f,
-    capital := f.capital, subdivisionE := f.subdivisionE,
+  { incomeFromSources := (f.employmentAndBusiness + Dividends.inclusion (dividendFacts f) + recapture f + attributedIncome f +
+        pensionTotal f + f.splitIn) - splitIncome f,
+    capital := f.capital, subdivisionE := f.subdivisionE + splitOutAllowed f,
     sourceLosses := f.businessLosses + terminalLosses f + attributedLoss f + interestDeduction f }
 
 def income (f : Facts) : HalfCents := Income.income (incomeFacts f)
@@ -151,6 +172,16 @@ def donationCredit (f : Facts) : Cents := Donations.credit (donationFacts f)
 /-- 118.2(1): the medical expense credit, on the individual's income for the year. -/
 def medicalCredit (f : Facts) : Cents := MedicalExpenses.credit { income := income f / 2, expenses := f.medicalExpenses }
 
+/-- 118(3), with 60.03(2): eligible pension income, less the split-pension amount given, plus the
+amount received to the extent it is eligible for the transferee. -/
+def eligiblePension (f : Facts) : Cents :=
+  (PensionSplitting.eligiblePensionIncome f.age65 f.pensions - splitOutAllowed f) +
+    (if f.age65 || f.splitInQualified then f.splitIn else 0)
+
+/-- 118(2) and 118(3): the age and pension credits. -/
+def ageAndPensionCredits (f : Facts) : Cents :=
+  PensionSplitting.ageCredit f.ageAmounts f.age65 (income f / 2) + PensionSplitting.pensionCredit (eligiblePension f)
+
 /-- 118.3(1): the disability credit. -/
 def disabilityCredit (f : Facts) : Cents := (f.disability.map Disability.credit).getD 0
 
@@ -168,7 +199,7 @@ def disabilityTransferFrom (s : Disability.Supporter) (dependant : Facts) : Cent
 credit, the personal credit, the donation credit, the medical expense credit and other credits. -/
 def federalTax (f : Facts) : Cents :=
   (Rates.tax (taxableIncome f / 2) f.brackets + (f.split.map SplitIncome.tax).getD 0) -
-    (Dividends.credit (dividendFacts f) + personalCredit f + donationCredit f + medicalCredit f + disabilityCredit f + f.disabilityTransferred +
+    (Dividends.credit (dividendFacts f) + personalCredit f + ageAndPensionCredits f + donationCredit f + medicalCredit f + disabilityCredit f + f.disabilityTransferred +
       f.otherCredits)
 
 def explain (f : Facts) : Finding :=
@@ -188,6 +219,7 @@ def explain (f : Facts) : Finding :=
     ⟨s!"Tax under 117(2) on taxable income, {c (Rates.tax (taxableIncome f / 2) f.brackets)}" ++
       (if splitIncome f > 0 then s!", plus tax on split income of {c ((f.split.map SplitIncome.tax).getD 0)}" else "") ++
       s!", less the dividend tax credit of {c (Dividends.credit (dividendFacts f))}, the personal credit of {c (personalCredit f)}, " ++
+      s!"the age and pension credits of {c (ageAndPensionCredits f)}, " ++
       s!"the donation credit of {c (donationCredit f)}, the medical expense credit of {c (medicalCredit f)}, " ++
       s!"the disability credit of {c (disabilityCredit f + f.disabilityTransferred)} and other credits of {c f.otherCredits}: {c (federalTax f)}.",
       "ITA 117(2); 120.4(2); 121; 118; 118.1; 118.2; 118.3"⟩], (f.disability.map (·.impairment.judgments)).getD []⟩

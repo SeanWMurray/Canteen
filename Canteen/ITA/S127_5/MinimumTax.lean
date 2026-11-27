@@ -14,7 +14,7 @@ import Canteen.ITA.S3.IndividualYear
   securities at 3/10, (f) dividends were not grossed up, (h)(ii) 7/5 of the capital gains deduction
   were deductible, (i)(ii) net capital losses were deductible only as computed at the ordinary rate,
   and (j)(ii) only ½ of interest under 20(1)(c) on money borrowed to earn income from property.
-* **127.531** the basic minimum tax credit: ½ of the 118(1) and 118.3(1), (2) credits (and the others in
+* **127.531** the basic minimum tax credit: ½ of the 118(1), (2), (3) and 118.3(1), (2) credits (and the others in
   (a)), ½ of the medical expense credit, and 4/5 of the donation credit.
 * **120.2(3)** the additional tax for a year: the minimum amount over the Division E tax; **120.2(1)**
   in a later year, the additional taxes of the 7 preceding years not yet deducted may be deducted, up
@@ -63,7 +63,7 @@ def adjustedTaxableIncome (f : Facts) : HalfCents :=
 
 /-- 127.531: the basic minimum tax credit. -/
 def basicCredit (f : Facts) : Cents :=
-  IndividualYear.personalCredit f / 2 + IndividualYear.medicalCredit f / 2 + (IndividualYear.disabilityCredit f + f.disabilityTransferred) / 2 + 4 * IndividualYear.donationCredit f / 5 +
+  (IndividualYear.personalCredit f + IndividualYear.ageAndPensionCredits f) / 2 + IndividualYear.medicalCredit f / 2 + (IndividualYear.disabilityCredit f + f.disabilityTransferred) / 2 + 4 * IndividualYear.donationCredit f / 5 +
     f.otherCredits / 2
 
 /-- 127.51: the minimum amount. -/

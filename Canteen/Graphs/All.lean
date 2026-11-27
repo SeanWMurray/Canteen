@@ -38,6 +38,7 @@ import Canteen.ITA.S127_5.MinimumTax
 import Canteen.ITA.S20.InterestDeductibility
 import Canteen.ITA.S118_2.MedicalExpenses
 import Canteen.ITA.S118_3.Disability
+import Canteen.ITA.S60_03.PensionSplitting
 import Canteen.Transactions.DebtSwap
 import Canteen.ITA.S87.Amalgamation
 import Canteen.ITA.S39.CanadianSecurities
@@ -189,7 +190,8 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S127_5.MinimumTax, "127.5 to 127.531, 120.2 the minimum tax"),
    (`Canteen.ITA.S20.InterestDeductibility, "20(1)(c), 20(3) interest on borrowed money"),
    (`Canteen.ITA.S118_2.MedicalExpenses, "118.2(1) the medical expense credit"),
-   (`Canteen.ITA.S118_3.Disability, "118.3(1), (2) the disability credit")]
+   (`Canteen.ITA.S118_3.Disability, "118.3(1), (2) the disability credit"),
+   (`Canteen.ITA.S60_03.PensionSplitting, "118(2), (3), 60.03 pension income and splitting")]
 
 /-! ## The dashboard -/
 
@@ -295,8 +297,9 @@ def actMindmap : String := Id.run do
     (3, "110.6(2.1): the deduction"),
     (2, "s. 111"), (3, "111(8): net capital loss"), (3, "111(1)(b), (1.1): deduction"),
     (2, "s. 112"), (3, "112(1): intercorporate dividend deduction"),
+    (2, "s. 60.03"), (3, "60.03(1): split-pension amount"), (3, "60(c), 56(1)(a.2): deducted and included"),
     (2, "s. 117"), (3, "117(2): the federal rates"),
-    (2, "s. 118"), (3, "118(1.1): basic personal amount"), (3, "118(1)(a): spouse amount"),
+    (2, "s. 118"), (3, "118(1.1): basic personal amount"), (3, "118(1)(a): spouse amount"), (3, "118(2): age credit"), (3, "118(3), (7): pension credit"),
     (2, "s. 118.2"), (3, "118.2(1): the medical expense credit"),
     (2, "s. 118.3"), (3, "118.3(1): the disability credit"), (3, "118.3(2): transfer to a supporting person"),
     (2, "s. 118.1"), (3, "118.1(1): total gifts"), (3, "118.1(3): the credit"),

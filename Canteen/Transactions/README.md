@@ -17,3 +17,4 @@ Concrete fact patterns, with each step of the analysis proven as a theorem.
 - `CrystallizationMinimumTax.lean`: the minimum tax on a gain fully sheltered by the capital gains deduction
 - `DebtSwap.lean`: selling a portfolio to repay a mortgage and borrowing to buy it back, under 20(1)(c)
 - `AttendantCare.lean`: attendant care claimed as a medical expense, or $10,000 of it with the disability credit
+- `PensionSplit.lean`: how much pension income spouses should split

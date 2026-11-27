@@ -180,7 +180,7 @@ Interest under a legal obligation on money borrowed and used for the purpose of 
 
 Income with the gain and dividends, less the interest; tax less the personal and dividend credits.
 
-**Lean:** [`Canteen.ITA.IndividualYear.interestDeduction`](../../Canteen/ITA/S3/IndividualYear.lean#L104), [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L167)
+**Lean:** [`Canteen.ITA.IndividualYear.interestDeduction`](../../Canteen/ITA/S3/IndividualYear.lean#L119), [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L198)
 
 ### L3. The minimum tax
 
@@ -362,7 +362,7 @@ Relies on no judgment calls.
 3. Losses: business $0.00, terminal $0.00, attributed $0.00; interest deducted $10,000.00. [ITA 3(d); 20(16); 74.1; 20(1)(c)]
 4. Income for the year: $148,280.00. [ITA 3]
 5. Less the net capital loss deduction $0.00, the capital gains deduction $0.00, and other deductions $0.00: taxable income $148,280.00. [ITA 2(2); 111(1)(b); 110.6(2), (2.1)]
-6. Tax under 117(2) on taxable income, $28,512.17, less the dividend tax credit of $1,243.63, the personal credit of $2,100.00, the donation credit of $0.00, the medical expense credit of $0.00, the disability credit of $0.00 and other credits of $0.00: $25,168.54. [ITA 117(2); 120.4(2); 121; 118; 118.1; 118.2; 118.3]
+6. Tax under 117(2) on taxable income, $28,512.17, less the dividend tax credit of $1,243.63, the personal credit of $2,100.00, the age and pension credits of $0.00, the donation credit of $0.00, the medical expense credit of $0.00, the disability credit of $0.00 and other credits of $0.00: $25,168.54. [ITA 117(2); 120.4(2); 121; 118; 118.1; 118.2; 118.3]
 Relies on no judgment calls.
 ```
 
