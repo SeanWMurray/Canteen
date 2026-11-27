@@ -28,7 +28,7 @@ from outside Canada and life insurance policy amounts. Computed for a corporatio
 
 Whether the corporation is associated (256), C (taxable capital employed in Canada, 181.2 to 181.4,
 chosen by the 125(5.1)(a)(i) to (iii) cases) and E (the group's adjusted aggregate investment income)
-are given. The Minister's allocation (125(4)) and 125(5)(a) (more than one year ending in a calendar
+are given. A third corporation that elects under 256(2)(b)(ii) has a nil limit. The Minister's allocation (125(4)) and 125(5)(a) (more than one year ending in a calendar
 year) are not encoded. Each formula is computed in cents with a single rounding down.
 -/
 
@@ -44,6 +44,8 @@ structure Facts where
   (10,000 is 100%). None if no agreement was filed. -/
   assigned : Option Nat := none
   totalAssigned : Nat := 10000
+  /-- 256(2)(b)(ii): the corporation elected as third corporation, so its business limit is nil. -/
+  electedThird : Bool := false
   /-- The days in the taxation year. -/
   days : Nat := 365
   /-- 125(5.1)(a): C, taxable capital employed in Canada, in cents. -/
@@ -55,7 +57,8 @@ structure Facts where
 
 /-- 125(2), (3). -/
 def shared (f : Facts) : Cents :=
-  if !f.associated then fullLimit
+  if f.electedThird then 0
+  else if !f.associated then fullLimit
   else match f.assigned with
     | none => 0
     | some p => if f.totalAssigned ≤ 10000 then fullLimit * p / 10000 else 0
@@ -88,6 +91,8 @@ def explain (f : Facts) : Finding :=
 
 theorem shared_le (f : Facts) (h : ∀ p, f.assigned = some p → p ≤ 10000) : shared f ≤ fullLimit := by
   unfold shared
+  split
+  · exact Nat.zero_le _
   split
   · exact Nat.le_refl _
   · split

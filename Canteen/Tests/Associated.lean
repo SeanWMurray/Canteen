@@ -61,4 +61,22 @@ example : (explain (q [⟨10, .person 0, .fact true, false⟩, ⟨11, .person 0,
 example : associatedWithAny parentAndChildren.world parentAndChildren.holdings 10 [10, 11] = true := by decide
 example : associatedWithAny parentAndChildren.world parentAndChildren.holdings 10 [10] = false := by decide
 
+-- 256(2): Ann controls Tco (12); her children Carl and Dee control Aco and Bco, and Ann owns 25% of
+-- each. Aco and Bco are each associated with Tco (256(1)(c)), but not with each other directly.
+def family3 : World :=
+  { persons := people ++ [⟨12, "Tco", .corporation⟩], spouses := [(0, 1)], children := [(0, 2), (0, 3), (1, 2), (1, 3)],
+    controls := [⟨12, .person 0, .fact true, false⟩, ⟨10, .person 2, .fact true, false⟩, ⟨11, .person 3, .fact true, false⟩] }
+def group3 : Group := { world := family3, holdings := [common 12 0 100, common 10 2 75, common 10 0 25, common 11 3 75, common 11 0 25], corporations := [10, 11, 12], ccpcs := [10, 11, 12] }
+example : group3.direct 10 12 = true ∧ group3.direct 11 12 = true ∧ group3.direct 10 11 = false := by decide +kernel
+-- Through Tco they are deemed associated, for the Act and for section 125.
+example : group3.associatedWith false 10 11 = true ∧ group3.associatedWith true 10 11 = true := by decide +kernel
+-- If Tco elects (256(2)(b)(ii)), not for section 125, and Tco's business limit is nil; still for the rest of the Act.
+def elected : Group := { group3 with electing := [12] }
+example : elected.associatedWith true 10 11 = false ∧ elected.associatedWith false 10 11 = true := by decide +kernel
+example : elected.electedNil 12 = true ∧ elected.electedNil 10 = false := by decide +kernel
+-- If Tco is not a CCPC, not for section 125.
+example : ({ group3 with ccpcs := [10, 11] } : Group).associatedWith true 10 11 = false := by decide +kernel
+-- A corporation is not associated with itself.
+example : group3.associatedWith false 10 10 = false := by decide +kernel
+
 end Canteen.Tests.Associated

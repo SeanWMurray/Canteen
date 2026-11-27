@@ -36,4 +36,7 @@ example : limit { taxableCapital := 2000000000, groupInvestmentIncome := 8000000
 -- The grind applies to the shared limit: 60% of $500,000, less 5 × $10,000 × 60%.
 example : limit { associated := true, assigned := some 6000, groupInvestmentIncome := 6000000 } = 27000000 := by decide
 
+-- 256(2)(b)(ii): the electing third corporation has no business limit; the two others keep theirs.
+example : limit { electedThird := true } = 0 := by decide
+
 end Canteen.Tests.BusinessLimit

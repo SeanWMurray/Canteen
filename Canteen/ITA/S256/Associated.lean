@@ -1,9 +1,9 @@
 import Canteen.ITA.S251.RelatedPersons
 
 /-!
-# Associated corporations (256(1))
+# Associated corporations (256(1), (2))
 
-*Income Tax Act*, as consolidated to 2026-10-29 (verbatim in `statute/ITA-256-1-1.1-1.2-1.5-5.1-associated.txt`):
+*Income Tax Act*, as consolidated to 2026-10-29 (verbatim in `statute/ITA-256-1-2-5.1-associated.txt`):
 
 **256(1)** One corporation is associated with another in a taxation year if, at any time in the year,
 (a) one controlled the other; (b) both were controlled by the same person or group of persons; (c)
@@ -24,14 +24,19 @@ to himself as shareholder of the other.
 
 **256(5.1)** "Controlled, directly or indirectly in any manner whatever" includes de facto control.
 
+**256(2)** (a) Two corporations not otherwise associated are deemed associated if each is associated
+(or deemed by this subsection associated) with the same third corporation; (b) for section 125, not if
+the third corporation is not a CCPC, or is a CCPC that elects, in which case its business limit is nil.
+
 "Controlled" is read from the world's controls, de facto control included (256(5.1)), as facts or
 judgment calls; 256(1.2)(c) is the caller's to apply when stating them. "Related" is section 251 as
 computed by `RelatedPersons` on the same world, with a person related to himself (256(1.5)). For (b),
 two controllers are the same if they have the same members; by 256(1.2)(b)(i), they also count as the
 same group when every member of either owns shares of both corporations. Shareholdings are given by
 class, with whether the class is a specified class (256(1.1), a fact). Not encoded: the look-through
-rules of 256(1.2)(d) to (f), 256(1.3) (a child's shares), 256(1.4) (rights), 256(2) (association
-through a third corporation) and 256(2.1) (the anti-avoidance rule).
+rules of 256(1.2)(d) to (f), 256(1.3) (a child's shares), 256(1.4) (rights) and 256(2.1) (the
+anti-avoidance rule). For 256(2), the corporations to consider are listed; a chain of thirds of any
+length is followed, and for section 125 every third on the chain must be a CCPC that has not elected.
 -/
 
 namespace Canteen.ITA.Associated
@@ -121,6 +126,48 @@ def paraE (f : Facts) : Bool :=
 
 /-- 256(1): the two corporations are associated. -/
 def associated (f : Facts) : Bool := paraA f || paraB f || paraC f || paraD f || paraE f
+
+/-! ## Through a third corporation (256(2)) -/
+
+/-- The corporations to consider together. -/
+structure Group where
+  world : World
+  holdings : List Holding := []
+  corporations : List Nat
+  /-- Canadian-controlled private corporations among them. -/
+  ccpcs : List Nat := []
+  /-- 256(2)(b)(ii): CCPCs electing not to link the others, for section 125. -/
+  electing : List Nat := []
+  deriving Inhabited
+
+/-- 256(1) between two of them. -/
+def Group.direct (g : Group) (a b : Nat) : Bool := a != b && associated { world := g.world, holdings := g.holdings, first := a, second := b }
+
+/-- A third corporation through which 256(2) links: for section 125, a CCPC that has not elected. -/
+def Group.linksThrough (g : Group) (for125 : Bool) (t : Nat) : Bool :=
+  !for125 || (g.ccpcs.contains t && !g.electing.contains t)
+
+/-- One round: add the corporations associated with a reached corporation that may serve as a third. -/
+def Group.expand (g : Group) (for125 : Bool) (start : Nat) (reached : List Nat) : List Nat :=
+  reached ++ g.corporations.filter fun n => !reached.contains n && n != start &&
+    reached.any fun v => (v == start || g.linksThrough for125 v) && g.direct v n
+
+def Group.reachFrom (g : Group) (for125 : Bool) (start : Nat) : Nat → List Nat → List Nat
+  | 0, r => r
+  | k + 1, r => g.reachFrom for125 start k (g.expand for125 start r)
+
+/-- Associated under 256(1), or deemed by 256(2) (for section 125 if `for125`). -/
+def Group.associatedWith (g : Group) (for125 : Bool) (a b : Nat) : Bool :=
+  a != b && (g.direct a b || (g.reachFrom for125 a g.corporations.length [a]).contains b)
+
+/-- 256(2)(b)(ii): an electing third corporation's business limit is nil. -/
+def Group.electedNil (g : Group) (c : Nat) : Bool := g.electing.contains c && g.ccpcs.contains c
+
+/-- Associated directly is associated in the group. -/
+theorem Group.direct_associated (g : Group) (for125 : Bool) (a b : Nat) (h : g.direct a b = true) :
+    g.associatedWith for125 a b = true := by
+  have hab : (a != b) = true := by unfold Group.direct at h; simp_all
+  simp [Group.associatedWith, h, hab]
 
 /-- For 125(2): associated with any of the other corporations. -/
 def associatedWithAny (w : World) (holdings : List Holding) (c : Nat) (others : List Nat) : Bool :=

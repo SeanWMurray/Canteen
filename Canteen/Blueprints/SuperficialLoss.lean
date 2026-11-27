@@ -733,22 +733,24 @@ def blueprint : Blueprint where
             ``NonCapitalLoss.expired, ``NonCapitalLoss.no_losses] },
         { id := "R72", kind := .law, title := "The business limit", citation := "ITA 125(2), (3), (5)(b), (5.1)"
           statement := "The business limit is $500,000, shared by agreement among associated CCPCs (nil without one, or " ++
-            "if the shares exceed 100%), prorated for a year under 51 weeks, and reduced by the greater of the grind for " ++
+            "if the shares exceed 100%, or for a third corporation electing under 256(2)), prorated for a year under 51 weeks, and reduced by the greater of the grind for " ++
             "taxable capital over $10 million and 5 times the group's adjusted aggregate investment income over $50,000. " ++
             "Proven: never more than the shared limit, nil from $150,000 of investment income or $50 million of capital, and " ++
             "no reduction below both thresholds."
           lean := [``BusinessLimit.shared, ``BusinessLimit.prorated, ``BusinessLimit.capitalReduction, ``BusinessLimit.investmentReduction,
             ``BusinessLimit.limit, ``BusinessLimit.shared_le, ``BusinessLimit.limit_le, ``BusinessLimit.investment_grind_full,
             ``BusinessLimit.capital_grind_full, ``BusinessLimit.no_grind] },
-        { id := "R73", kind := .law, title := "Associated corporations", citation := "ITA 256(1), (1.1), (1.2)(a) to (c), (1.5), (5.1)"
+        { id := "R73", kind := .law, title := "Associated corporations", citation := "ITA 256(1), (1.1), (1.2)(a) to (c), (1.5), (2), (5.1)"
           statement := "Two corporations are associated if one controls the other, the same person or group controls both " ++
             "(a group including any group of shareholders of both whose members control them), or they are controlled by " ++
             "related persons or related groups one of whom owns at least 25% of a class (not a specified class) of the " ++
-            "other or of each. De facto control counts. Proven: a corporation that controls another is associated with it, " ++
+            "other or of each. De facto control counts. Two corporations each associated with a third are associated (for " ++
+            "section 125, only through a CCPC that has not elected; an electing third has no business limit). Proven: a corporation that controls another is associated with it, " ++
             "two corporations with the same controller are associated, and uncontrolled corporations are not."
           lean := [``Associated.paraA, ``Associated.paraB, ``Associated.paraC, ``Associated.paraD, ``Associated.paraE,
             ``Associated.associated, ``Associated.associatedWithAny, ``Associated.controls_other, ``Associated.same_controller,
-            ``Associated.uncontrolled],
+            ``Associated.uncontrolled, ``Associated.Group.associatedWith, ``Associated.Group.electedNil,
+            ``Associated.Group.direct_associated],
           uses := ["R4"] },
         { id := "R70", kind := .law, title := "A corporation's year, to taxable income and tax", citation := "ITA 2(2); 3; 110.1; 111(1), (8); 112(1); 125(7); 129(4)"
           statement := "A corporation's income from active business, personal services business, property and dividends " ++
