@@ -54,3 +54,4 @@ The verbatim statute text for each is in `statute/`. Review notes are in `docs/r
 - `S117/Rates.lean`: subsection 117(2)
 - `S118/PersonalCredits.lean`: subsections 118(1)(a), (c) and (1.1)
 - `S118_1/Donations.lean`: section 118.1, the definitions and subsection (3)
+- `S123/CorporateRates.lean`: subsections 123(1), 124(1), 123.4(2) and 125(1)

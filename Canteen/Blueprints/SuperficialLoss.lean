@@ -45,6 +45,7 @@ import Canteen.ITA.S120_4.SplitIncome
 import Canteen.ITA.S117.Rates
 import Canteen.ITA.S118.PersonalCredits
 import Canteen.ITA.S118_1.Donations
+import Canteen.ITA.S123.CorporateRates
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -506,6 +507,12 @@ def blueprint : Blueprint where
             "by income in the top bracket, and 29% of the rest. Proven: total gifts never exceed income."
           lean := [``Donations.totalGifts, ``Donations.credit, ``Donations.totalGifts_le_income, ``Donations.death_year],
           uses := ["R41"] },
+        { id := "R44", kind := .law, title := "Corporate rates", citation := "ITA 123(1); 124(1); 123.4(2); 125(1)"
+          statement := "A corporation pays 38%, less the 10% provincial abatement, less 13% of its full rate taxable income, less " ++
+            "(for a CCPC) 19% of the least of its active business income, taxable income and business limit. Proven: a CCPC's " ++
+            "active business income within the limit is taxed at 9%, and a corporation that is not a CCPC pays 15%."
+          lean := [``CorporateRates.tax, ``CorporateRates.smallBusinessAmount, ``CorporateRates.fullRateTaxableIncome,
+            ``CorporateRates.small_business_rate, ``CorporateRates.general_rate] },
         { id := "R35", kind := .law, title := "An individual's year, to taxable income and tax", citation := "ITA 2(2); 3; 111(1)(b); 110.6; 117(2)"
           statement := "Income from sources (employment and business, dividends with the gross-up, recapture, attributed " ++
             "income), net taxable capital gains, less terminal and other losses; then taxable income, after the net capital " ++

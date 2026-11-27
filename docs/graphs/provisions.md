@@ -58,7 +58,8 @@ flowchart BT
   v49["50(1) bad debts and worthless shares"]:::prov
   v50["43(1) part of a property"]:::prov
   v51["74.4(2) corporate attribution"]:::prov
-  v52["50(2) bad personal-use debts"]:::prov
+  v52["123 to 125 corporate rates"]:::prov
+  v53["50(2) bad personal-use debts"]:::prov
   v0 --> v1
   v0 --> v2
   v0 --> v3

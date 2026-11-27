@@ -1,0 +1,45 @@
+Income Tax Act, R.S.C. 1985, c. 1 (5th Supp.), subsection 123(1), subsection 124(1), subsection 123.4(1) definitions "full rate taxable income" and "general rate reduction percentage", subsection 123.4(2), and subsections 125(1), (1.1) and (2)
+
+Source: Justice Canada consolidated Acts (XML), https://github.com/justicecanada/laws-lois-xml, file eng/acts/I-3.3.xml
+Current to: 2026-10-29. Last amended: 2026-06-18.
+Extracted verbatim; whitespace normalized; paragraph labels kept.
+
+123
+  (1) The tax payable under this Part for a taxation year by a corporation on its taxable income or taxable income earned in Canada, as the case may be, (in this section referred to as its “amount taxable”) for the year is, except where otherwise provided,
+    (a) 38% of its amount taxable for the year.
+
+124
+  (1) There may be deducted from the tax otherwise payable by a corporation under this Part for a taxation year an amount equal to 10% of the corporation’s taxable income earned in the year in a province.
+124
+
+123.4(1) full rate taxable income of a corporation for a taxation year is(a)if the corporation is not a corporation described in paragraph (b) or (c) for the year, the amount by which that portion of the corporation’s taxable income for the year (or, for greater certainty, if the corporation is non-resident, that portion of its taxable income earned in Canada for the year) that is subject to tax under subsection 123(1) exceeds the total of(i)if an amount is deducted under subsection 125.1(1) from the corporation’s tax otherwise payable under this Part for the year, the amount obtained by dividing the amount so deducted by the corporation’s general rate reduction percentage for the taxation year,(ii)if an amount is deducted under subsection 125.1(2) from the corporation’s tax otherwise payable under this Part for the year, the amount determined, in respect of the deduction, by the formula in that subsection,(iii)the corporation’s income for the year from a personal services business, and(iv)if the corporation is a credit union throughout the year and the corporation deducted an amount for the year under subsection 125(1) (because of the application of subsections 137(3) and (4)), the amount, if any, that is the product of the amount, if any, determined for B in subsection 137(3) multiplied by the amount determined for C in subsection 137(3) in respect of the corporation for the year;(b)if the corporation is a Canadian-controlled private corporation throughout the year or a substantive CCPC at any time in the year, the amount by which that portion of the corporation’s taxable income for the year that is subject to tax under subsection 123(1) exceeds the total of(i)the amounts that would, if paragraph (a) applied to the corporation, be determined under subparagraphs (a)(i) to (iv) in respect of the corporation for the year,(ii)the least of the amounts, if any, determined under paragraphs 125(1)(a) to (c) in respect of the corporation for the year, and(iii)except for a corporation that is, throughout the year, a cooperative corporation (within the meaning assigned by subsection 136(2)) or a credit union, the corporation’s aggregate investment income for the year, within the meaning assigned by subsection 129(4); and(iv)[Repealed, 2003, c. 15, s. 78(2)](c)if the corporation is throughout the year an investment corporation, a mortgage investment corporation or a mutual fund corporation, nil. (revenu imposable au taux complet)
+
+123.4(1) general rate reduction percentage of a corporation for a taxation year is the total of(a)that proportion of 7% that the number of days in the taxation year that are before 2008 is of the number of days in the taxation year,(b)that proportion of 8.5% that the number of days in the taxation year that are in 2008 is of the number of days in the taxation year,(c)that proportion of 9% that the number of days in the taxation year that are in 2009 is of the number of days in the taxation year,(d)that proportion of 10% that the number of days in the taxation year that are in 2010 is of the number of days in the taxation year,(e)that proportion of 11.5% that the number of days in the taxation year that are in 2011 is of the number of days in the taxation year, and(f)that proportion of 13% that the number of days in the taxation year that are after 2011 is of the number of days in the taxation year. (pourcentage de réduction du taux général)
+
+123.4(2) eral deduction from tax(2)There may be deducted from a corporation’s tax otherwise payable under this Part for a taxation year the product obtained by multiplying the corporation’s general rate reduction percentage for the year by the corporation’s full rate taxable income for the year.
+
+125
+  (1) There may be deducted from the tax otherwise payable under this Part for a taxation year by a corporation that was, throughout the taxation year, a Canadian-controlled private corporation, an amount equal to the corporation’s small business deduction rate for the taxation year multiplied by the least of
+    (a) the amount, if any, by which the total of
+      (i) the total of all amounts each of which is the amount of income of the corporation for the year from an active business carried on in Canada, other than an amount that is
+        (A) described in paragraph (a) of the description of A in the definition specified partnership income in subsection (7) for the year,
+        (B) described in subparagraph (a)(i) of the definition specified corporate income in subsection (7) for the year, or
+        (C) paid or payable to the corporation by another corporation with which it is associated, that is deemed by subsection 129(6) to be income for the year from an active business carried on by the corporation in circumstances where the associated corporation is not a Canadian-controlled private corporation or is a Canadian-controlled private corporation that has made an election under subsection 256(2) in respect of its taxation year in which the amount was paid or payable,
+      (ii) the specified partnership income of the corporation for the year, and
+      (ii.1) the specified corporate income of the corporation for the year
+      [continued] exceeds the total of
+      (iii) the total of all amounts each of which is a loss of the corporation for the year from an active business carried on in Canada (other than a loss of the corporation for the year from a business carried on by it as a member of a partnership), and
+      (iv) the specified partnership loss of the corporation for the year,
+    (b) the amount, if any, by which the corporation’s taxable income for the year exceeds the total of
+      (i) 100/28 of the total of the amounts that would be deductible under subsection 126(1) from the tax for the year otherwise payable under this Part by it if those amounts were determined without reference to sections 123.3 and 123.4,
+      (ii) the amount determined by multiplying the total of the amounts that would be deductible under subsection 126(2) from the tax for the year otherwise payable under this Part by it, if those amounts were determined without reference to section 123.4, by the relevant factor for the year, and
+      (iii) the amount, if any, of the corporation’s taxable income for the year that is not, because of an Act of Parliament, subject to tax under this Part, and
+    (c) the corporation’s business limit for the year.
+  [Small business deduction rate]
+  (1.1) For the purpose of subsection (1), a corporation’s small business deduction rate for a taxation year is the total of
+    (a) that proportion of 17.5% that the number of days in the taxation year that are before 2018 is of the number of days in the taxation year,
+    (b) that proportion of 18% that the number of days in the taxation year that are in 2018 is of the number of days in the taxation year, and
+    (c) that proportion of 19% that the number of days in the taxation year that are after 2018 is of the number of days in the taxation year.
+    (d) and (e) [Repealed, 2016, c. 7, s. 34]
+  [Business limit]
+  (2) For the purpose of this section, a corporation’s business limit for a taxation year is $500,000 unless the corporation is associated in the taxation year with one or more other Canadian-controlled private corporations, in which case, except as otherwise provided in this section, its business limit is nil.

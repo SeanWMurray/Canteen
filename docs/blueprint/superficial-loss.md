@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 83 statements:** 64 proven, 16 encoded, 3 not formalized.
+**Status of the 84 statements:** 65 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -87,12 +87,13 @@ graph TD
   n74["R41 · The federal rates"]:::proven
   n75["R42 · The basic personal and spouse amounts"]:::proven
   n76["R43 · The charitable donation credit"]:::proven
-  n77["R35 · An individual's year, to taxable income and tax"]:::proven
-  n78["R11 · The principal residence exemption"]:::proven
-  n79["R2 · Cost of the substituted property"]:::proven
-  n80["N1 · Inputs decided by other provisions"]:::notFormalized
-  n81["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n82["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n77["R44 · Corporate rates"]:::proven
+  n78["R35 · An individual's year, to taxable income and tax"]:::proven
+  n79["R11 · The principal residence exemption"]:::proven
+  n80["R2 · Cost of the substituted property"]:::proven
+  n81["N1 · Inputs decided by other provisions"]:::notFormalized
+  n82["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n83["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -210,31 +211,31 @@ graph TD
   n56 --> n73
   n74 --> n75
   n74 --> n76
-  n44 --> n77
-  n45 --> n77
-  n53 --> n77
-  n55 --> n77
-  n56 --> n77
-  n58 --> n77
-  n73 --> n77
-  n74 --> n77
-  n75 --> n77
-  n76 --> n77
   n44 --> n78
-  n50 --> n78
-  n11 --> n79
-  n1 --> n80
-  n5 --> n80
-  n6 --> n80
-  n8 --> n80
-  n37 --> n80
-  n79 --> n80
-  n38 --> n80
-  n30 --> n81
-  n32 --> n82
-  n34 --> n82
-  n39 --> n82
-  n42 --> n82
+  n45 --> n78
+  n53 --> n78
+  n55 --> n78
+  n56 --> n78
+  n58 --> n78
+  n73 --> n78
+  n74 --> n78
+  n75 --> n78
+  n76 --> n78
+  n44 --> n79
+  n50 --> n79
+  n11 --> n80
+  n1 --> n81
+  n5 --> n81
+  n6 --> n81
+  n8 --> n81
+  n37 --> n81
+  n80 --> n81
+  n38 --> n81
+  n30 --> n82
+  n32 --> n83
+  n34 --> n83
+  n39 --> n83
+  n42 --> n83
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -328,12 +329,13 @@ graph TD
   n74["R41"]:::proven
   n75["R42"]:::proven
   n76["R43"]:::proven
-  n77["R35"]:::proven
-  n78["R11"]:::proven
-  n79["R2"]:::proven
-  n80["N1"]:::notFormalized
-  n81["N2"]:::notFormalized
-  n82["N4"]:::notFormalized
+  n77["R44"]:::proven
+  n78["R35"]:::proven
+  n79["R11"]:::proven
+  n80["R2"]:::proven
+  n81["N1"]:::notFormalized
+  n82["N2"]:::notFormalized
+  n83["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -531,31 +533,31 @@ graph TD
   n56 --> n73
   n74 -.-> n75
   n74 -.-> n76
-  n55 --> n77
-  n58 --> n77
-  n73 --> n77
-  n56 --> n77
-  n45 --> n77
-  n44 --> n77
-  n53 --> n77
-  n74 --> n77
-  n76 --> n77
-  n75 --> n77
-  n44 -.-> n78
-  n50 -.-> n78
-  n11 -.-> n79
-  n1 -.-> n80
-  n5 -.-> n80
-  n6 -.-> n80
-  n8 -.-> n80
-  n37 -.-> n80
-  n79 -.-> n80
-  n38 -.-> n80
-  n30 -.-> n81
-  n32 -.-> n82
-  n34 -.-> n82
-  n39 -.-> n82
-  n42 -.-> n82
+  n55 --> n78
+  n58 --> n78
+  n73 --> n78
+  n56 --> n78
+  n45 --> n78
+  n44 --> n78
+  n53 --> n78
+  n74 --> n78
+  n76 --> n78
+  n75 --> n78
+  n44 -.-> n79
+  n50 -.-> n79
+  n11 -.-> n80
+  n1 -.-> n81
+  n5 -.-> n81
+  n6 -.-> n81
+  n8 -.-> n81
+  n37 -.-> n81
+  n80 -.-> n81
+  n38 -.-> n81
+  n30 -.-> n82
+  n32 -.-> n83
+  n34 -.-> n83
+  n39 -.-> n83
+  n42 -.-> n83
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -1190,6 +1192,14 @@ An individual deducts 14% of the basic personal amount ($12,298 plus an enhancem
 Gifts to qualified donees (of the year and five before) count up to 75% of income plus 25% of the gains on gifted property (all of income in the year of death); the credit is 14% of the first $200, 33% of gifts matched by income in the top bracket, and 29% of the rest. Proven: total gifts never exceed income.
 
 **Lean:** [`Canteen.ITA.Donations.totalGifts`](../../Canteen/ITA/S118_1/Donations.lean#L41), [`Canteen.ITA.Donations.credit`](../../Canteen/ITA/S118_1/Donations.lean#L49), [`Canteen.ITA.Donations.totalGifts_le_income`](../../Canteen/ITA/S118_1/Donations.lean#L67), [`Canteen.ITA.Donations.death_year`](../../Canteen/ITA/S118_1/Donations.lean#L73)
+
+### R44. Corporate rates
+
+**Status:** proven · **Citation:** ITA 123(1); 124(1); 123.4(2); 125(1)
+
+A corporation pays 38%, less the 10% provincial abatement, less 13% of its full rate taxable income, less (for a CCPC) 19% of the least of its active business income, taxable income and business limit. Proven: a CCPC's active business income within the limit is taxed at 9%, and a corporation that is not a CCPC pays 15%.
+
+**Lean:** [`Canteen.ITA.CorporateRates.tax`](../../Canteen/ITA/S123/CorporateRates.lean#L52), [`Canteen.ITA.CorporateRates.smallBusinessAmount`](../../Canteen/ITA/S123/CorporateRates.lean#L44), [`Canteen.ITA.CorporateRates.fullRateTaxableIncome`](../../Canteen/ITA/S123/CorporateRates.lean#L48), [`Canteen.ITA.CorporateRates.small_business_rate`](../../Canteen/ITA/S123/CorporateRates.lean#L73), [`Canteen.ITA.CorporateRates.general_rate`](../../Canteen/ITA/S123/CorporateRates.lean#L85)
 
 ### R35. An individual's year, to taxable income and tax
 
