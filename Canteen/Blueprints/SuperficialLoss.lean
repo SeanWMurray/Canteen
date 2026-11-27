@@ -66,6 +66,7 @@ import Canteen.ITA.S62.MovingExpenses
 import Canteen.ITA.S6.StandbyCharge
 import Canteen.ITA.S112.StopLoss
 import Canteen.ITA.S84.WindingUpDividend
+import Canteen.ITA.S15.ShareholderBenefit
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -677,15 +678,22 @@ def blueprint : Blueprint where
             "are the paid-up capital returned."
           lean := [``WindingUpDividend.applies, ``WindingUpDividend.dividendPaid, ``WindingUpDividend.proceeds,
             ``WindingUpDividend.dividendPaid_le, ``WindingUpDividend.sole_proceeds] },
+        { id := "R65", kind := .law, title := "Shareholder benefits", citation := "ITA 15(1)"
+          statement := "The value of a benefit a corporation confers on a shareholder as shareholder, less what was paid for " ++
+            "it and any part section 84 deems a dividend, is income, unless conferred by a return of capital, a redemption, " ++
+            "a winding-up, a dividend, a rights offering to all common shareholders and the like. Proven: nothing when paid " ++
+            "for in full, and a dividend is never also a 15(1) benefit."
+          lean := [``ShareholderBenefit.applies, ``ShareholderBenefit.inclusion, ``ShareholderBenefit.paid_in_full,
+            ``ShareholderBenefit.not_dividend] },
         { id := "R35", kind := .law, title := "An individual's year, to taxable income and tax", citation := "ITA 2(2); 3; 111(1)(b); 110.6; 117(2)"
           statement := "Income from sources (employment and business, dividends with the gross-up, recapture, attributed " ++
             "income), net taxable capital gains, less terminal and other losses; then taxable income, after the net capital " ++
             "loss deduction and the capital gains deduction (which the former reduces). Proven: taxable income never exceeds " ++
             "income, and the capital gains deduction never exceeds the net taxable capital gains."
           lean := [``IndividualYear.incomeFacts, ``IndividualYear.taxableIncome, ``IndividualYear.capitalGainsDeduction,
-            ``IndividualYear.federalTax, ``IndividualYear.personalCredit, ``IndividualYear.donationCredit, ``IndividualYear.interestDeduction, ``IndividualYear.medicalCredit, ``IndividualYear.disabilityCredit, ``IndividualYear.ageAndPensionCredits, ``IndividualYear.oasRecovery, ``IndividualYear.employmentCredits, ``IndividualYear.amounts, ``IndividualYear.smallCredits, ``IndividualYear.tuitionCredits, ``IndividualYear.supportDeducted, ``IndividualYear.childCareDeduction, ``IndividualYear.movingDeduction, ``IndividualYear.standbyBenefits,
+            ``IndividualYear.federalTax, ``IndividualYear.personalCredit, ``IndividualYear.donationCredit, ``IndividualYear.interestDeduction, ``IndividualYear.medicalCredit, ``IndividualYear.disabilityCredit, ``IndividualYear.ageAndPensionCredits, ``IndividualYear.oasRecovery, ``IndividualYear.employmentCredits, ``IndividualYear.amounts, ``IndividualYear.smallCredits, ``IndividualYear.tuitionCredits, ``IndividualYear.supportDeducted, ``IndividualYear.childCareDeduction, ``IndividualYear.movingDeduction, ``IndividualYear.standbyBenefits, ``IndividualYear.shareholderBenefitIncome,
             ``IndividualYear.taxable_le_income, ``IndividualYear.capital_gains_deduction_le],
-          uses := ["R8", "R9", "R19", "R21", "R22", "R24", "R40", "R41", "R42", "R43", "R49", "R50", "R51", "R52", "R53", "R55", "R56", "R57", "R58", "R59", "R60", "R61", "R62"] },
+          uses := ["R8", "R9", "R19", "R21", "R22", "R24", "R40", "R41", "R42", "R43", "R49", "R50", "R51", "R52", "R53", "R55", "R56", "R57", "R58", "R59", "R60", "R61", "R62", "R65"] },
         { id := "R48", kind := .law, title := "The minimum tax", citation := "ITA 127.5; 127.51; 127.52(1); 127.531; 120.2"
           statement := "An individual pays at least 20.5% of adjusted taxable income over the 117(2)(d) threshold, less half " ++
             "the personal credits and 4/5 of the donation credit; adjusted taxable income counts capital gains in full (3/10 " ++

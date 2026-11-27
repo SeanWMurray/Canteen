@@ -94,6 +94,7 @@ Canteen/
     S118_1/Donations.lean      118.1: the charitable donation credit
     S123/CorporateRates.lean   123 to 125: corporate rates and the small business deduction
     S129/RefundableTax.lean    123.3, 129, 186(1): refundable taxes and the dividend refund
+    S15/ShareholderBenefit.lean   15(1): benefits conferred on a shareholder
     S15/ShareholderLoans.lean  15(2), (2.6), 80.4, 20(1)(j): shareholder loans
     S89/GeneralRateIncomePool.lean   89(1), 185.1: the general rate income pool, excessive eligible dividends, the election
     S127_5/MinimumTax.lean     127.5 to 127.531, 120.2: the minimum tax, and recovering it

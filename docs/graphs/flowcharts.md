@@ -957,6 +957,31 @@ flowchart TD
   classDef start fill:#ffffff,stroke:#212121,color:#212121
 ```
 
+## Subsection 15(1): shareholder benefits
+
+```mermaid
+flowchart TD
+  S(["subsection 15(1) · ITA 15(1)"]):::start
+  C0["<b>shareholder</b> The person is a shareholder of the<br/>corporation (or a partner of one, or a<br/>contemplated shareholder)<br/>[ITA 15(1) shareholder]"]:::fact
+  C1["<b>as shareholder</b> The benefit was conferred on the person in<br/>their capacity as shareholder<br/><i>judgment call: judgment calls computed from the facts</i><br/>[ITA 15(1) as shareholder]"]:::judgment
+  E0["<b>(a) to (d)</b> It was conferred in one of the ways excepted<br/>(a return of capital, a redemption, a<br/>winding-up, a dividend, a rights offering<br/>and the like)<br/>[ITA 15(1)(a) to (d)]"]:::fact
+  Y(["subsection 15(1) applies"]):::yes
+  N(["subsection 15(1) does not apply"]):::no
+  S --> C0
+  C0 -->|met| C1
+  C0 -->|not met| N
+  C1 -->|met| E0
+  C1 -->|not met| N
+  E0 -->|does not apply| Y
+  E0 -->|applies| N
+  classDef fact fill:#eeeeee,stroke:#616161,color:#212121
+  classDef judgment fill:#ffe0b2,stroke:#ef6c00,color:#e65100
+  classDef rule fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+  classDef yes fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
+  classDef no fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+  classDef start fill:#ffffff,stroke:#212121,color:#212121
+```
+
 ## Subparagraph 40(2)(g)(iv): transfers to registered plans
 
 ```mermaid

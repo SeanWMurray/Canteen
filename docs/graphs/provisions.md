@@ -66,20 +66,21 @@ flowchart BT
   v57["63 child care expenses"]:::prov
   v58["62(1), 248(1) moving expenses"]:::prov
   v59["6(1)(e), 6(2) the standby charge"]:::prov
-  v60["2(2), 3 an individual's year, to taxable income"]:::prov
-  v61["39(4) to (6) the Canadian securities election"]:::prov
-  v62["50(1) bad debts and worthless shares"]:::prov
-  v63["43(1) part of a property"]:::prov
-  v64["74.4(2) corporate attribution"]:::prov
-  v65["123 to 125 corporate rates"]:::prov
-  v66["123.3, 129, 186 refundable taxes"]:::prov
-  v67["15(2), 80.4 shareholder loans"]:::prov
-  v68["89(1), 185.1 the general rate income pool"]:::prov
-  v69["127.5 to 127.531, 120.2 the minimum tax"]:::prov
-  v70["84(1), 53(1)(b) an increase in paid-up capital"]:::prov
-  v71["112(3), (3.01), (6.1) the stop-loss on shares"]:::prov
-  v72["84(2) a distribution on winding-up"]:::prov
-  v73["50(2) bad personal-use debts"]:::prov
+  v60["15(1) shareholder benefits"]:::prov
+  v61["2(2), 3 an individual's year, to taxable income"]:::prov
+  v62["39(4) to (6) the Canadian securities election"]:::prov
+  v63["50(1) bad debts and worthless shares"]:::prov
+  v64["43(1) part of a property"]:::prov
+  v65["74.4(2) corporate attribution"]:::prov
+  v66["123 to 125 corporate rates"]:::prov
+  v67["123.3, 129, 186 refundable taxes"]:::prov
+  v68["15(2), 80.4 shareholder loans"]:::prov
+  v69["89(1), 185.1 the general rate income pool"]:::prov
+  v70["127.5 to 127.531, 120.2 the minimum tax"]:::prov
+  v71["84(1), 53(1)(b) an increase in paid-up capital"]:::prov
+  v72["112(3), (3.01), (6.1) the stop-loss on shares"]:::prov
+  v73["84(2) a distribution on winding-up"]:::prov
+  v74["50(2) bad personal-use debts"]:::prov
   v0 --> v1
   v0 --> v2
   v0 --> v3
@@ -132,36 +133,37 @@ flowchart BT
   v43 --> v45
   v30 --> v46
   v43 --> v53
-  v19 --> v60
-  v27 --> v60
-  v32 --> v60
-  v29 --> v60
-  v44 --> v60
-  v45 --> v60
-  v46 --> v60
-  v47 --> v60
-  v48 --> v60
-  v49 --> v60
-  v50 --> v60
-  v51 --> v60
-  v52 --> v60
-  v53 --> v60
-  v54 --> v60
-  v55 --> v60
-  v56 --> v60
-  v57 --> v60
-  v58 --> v60
-  v59 --> v60
-  v17 --> v61
+  v19 --> v61
+  v27 --> v61
+  v32 --> v61
+  v29 --> v61
+  v44 --> v61
+  v45 --> v61
+  v46 --> v61
+  v47 --> v61
+  v48 --> v61
+  v49 --> v61
+  v50 --> v61
+  v51 --> v61
+  v52 --> v61
+  v53 --> v61
+  v54 --> v61
+  v55 --> v61
+  v56 --> v61
+  v57 --> v61
+  v58 --> v61
+  v59 --> v61
+  v60 --> v61
   v17 --> v62
   v17 --> v63
-  v30 --> v64
-  v65 --> v66
-  v65 --> v68
-  v60 --> v69
-  v30 --> v70
-  v17 --> v71
+  v17 --> v64
+  v30 --> v65
+  v66 --> v67
+  v66 --> v69
+  v61 --> v70
+  v30 --> v71
   v17 --> v72
-  v30 --> v72
+  v17 --> v73
+  v30 --> v73
   classDef prov fill:#bbdefb,stroke:#1565c0,color:#0d47a1
 ```

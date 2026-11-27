@@ -21,6 +21,7 @@ import Canteen.ITA.S56.Support
 import Canteen.ITA.S63.ChildCare
 import Canteen.ITA.S62.MovingExpenses
 import Canteen.ITA.S6.StandbyCharge
+import Canteen.ITA.S15.ShareholderBenefit
 
 /-!
 # An individual's year: income from the encoded sources, and taxable income
@@ -76,6 +77,8 @@ structure Facts where
   taxationYear : Nat
   /-- Employment and business income, other than recapture and the benefits computed below. -/
   employmentAndBusiness : Cents := 0
+  /-- 15(1): benefits conferred by corporations on the individual as shareholder. -/
+  shareholderBenefits : List ShareholderBenefit.Facts := []
   /-- 6(1)(e): automobiles the employer made available. -/
   standby : List StandbyCharge.Facts := []
   dividends : List Dividends.Dividend := []
@@ -193,6 +196,14 @@ def supportDeducted (f : Facts) : Cents := (f.supportPaid.map Support.amount).su
 /-- 6(1)(e): standby charges included in employment income. -/
 def standbyBenefits (f : Facts) : Cents := (f.standby.map StandbyCharge.benefit).sum
 
+/-- 15(1). -/
+def shareholderBenefitIncome (f : Facts) : Cents := (f.shareholderBenefits.map ShareholderBenefit.inclusion).sum
+
+/-- The sources of income computed here other than employment and business income, dividends, recapture
+and attribution: standby charges, pensions, split pension received, support, shareholder benefits. -/
+def otherSources (f : Facts) : Cents :=
+  standbyBenefits f + pensionTotal f + f.splitIn + supportIncluded f + shareholderBenefitIncome f
+
 /-- 62(1). -/
 def movingDeduction (f : Facts) : Cents := (f.moving.map MovingExpenses.deduction).getD 0
 
@@ -204,8 +215,8 @@ def splitIncome (f : Facts) : Cents := (f.split.map SplitIncome.splitIncome).get
 
 /-- Section 3, from the components, before the 63 and 60(w) deductions. -/
 def incomeFactsCore (f : Facts) : Income.Facts :=
-  { incomeFromSources := (f.employmentAndBusiness + standbyBenefits f + Dividends.inclusion (dividendFacts f) + recapture f + attributedIncome f +
-        pensionTotal f + f.splitIn + supportIncluded f) - splitIncome f,
+  { incomeFromSources := (f.employmentAndBusiness + Dividends.inclusion (dividendFacts f) + recapture f + attributedIncome f +
+        otherSources f) - splitIncome f,
     capital := f.capital, subdivisionE := f.subdivisionE + otherSubdivisionE f,
     sourceLosses := f.businessLosses + terminalLosses f + attributedLoss f + interestDeduction f }
 

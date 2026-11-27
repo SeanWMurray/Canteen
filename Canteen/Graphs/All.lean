@@ -51,6 +51,7 @@ import Canteen.ITA.S62.MovingExpenses
 import Canteen.ITA.S6.StandbyCharge
 import Canteen.ITA.S112.StopLoss
 import Canteen.ITA.S84.WindingUpDividend
+import Canteen.ITA.S15.ShareholderBenefit
 import Canteen.Transactions.DebtSwap
 import Canteen.ITA.S87.Amalgamation
 import Canteen.ITA.S39.CanadianSecurities
@@ -215,7 +216,8 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S62.MovingExpenses, "62(1), 248(1) moving expenses"),
    (`Canteen.ITA.S6.StandbyCharge, "6(1)(e), 6(2) the standby charge"),
    (`Canteen.ITA.S112.StopLoss, "112(3), (3.01), (6.1) the stop-loss on shares"),
-   (`Canteen.ITA.S84.WindingUpDividend, "84(2) a distribution on winding-up")]
+   (`Canteen.ITA.S84.WindingUpDividend, "84(2) a distribution on winding-up"),
+   (`Canteen.ITA.S15.ShareholderBenefit, "15(1) shareholder benefits")]
 
 /-! ## The dashboard -/
 
@@ -285,7 +287,7 @@ def actMindmap : String := Id.run do
     (2, "ss. 2, 3"), (3, "income for the year: (a) to (f)"), (3, "2(2): taxable income"),
     (2, "s. 6"), (3, "6(1)(e), 6(2): automobile standby charge"),
     (2, "s. 13"), (3, "13(21): undepreciated capital cost"), (3, "13(1): recapture"),
-    (2, "s. 15"), (3, "15(2), (2.6): shareholder loans"),
+    (2, "s. 15"), (3, "15(1): shareholder benefits"), (3, "15(2), (2.6): shareholder loans"),
     (2, "s. 20"), (3, "20(16): terminal loss"), (3, "20(1)(j): loan repaid"), (3, "20(1)(c): interest"), (3, "20(3): refinancing"),
     (2, "ss. 38 to 41"), (3, "38: inclusion rates"), (3, "39(1): capital gains and losses"), (3, "39(4): the Canadian securities election"),
     (3, "40(1): gains and losses, reserves"), (3, "41: listed personal property"),
@@ -396,6 +398,7 @@ def pages : List Page := [
       ("Subsection 56.1(4): \"support amount\"", flowchart Support.supportAmount.outline),
       ("Subsection 248(1): \"eligible relocation\"", flowchart MovingExpenses.eligible.outline),
       ("Subsection 84(2): distributions on winding-up", flowchart WindingUpDividend.applies.outline),
+      ("Subsection 15(1): shareholder benefits", flowchart ShareholderBenefit.applies.outline),
       ("Subparagraph 40(2)(g)(iv): transfers to registered plans", flowchart Paragraph40_2_g.planTransferLoss.outline),
       ("Clause 40(2)(g)(iv)(A)", flowchart Paragraph40_2_g.planTransferA.outline),
       ("Clause 40(2)(g)(iv)(B)", flowchart Paragraph40_2_g.planTransferB.outline),
