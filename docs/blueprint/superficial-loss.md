@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 122 statements:** 103 proven, 16 encoded, 3 not formalized.
+**Status of the 123 statements:** 104 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -124,14 +124,15 @@ graph TD
   n111["R80 · Prepaid expenses"]:::proven
   n112["R81 · Thin capitalization"]:::proven
   n113["R82 · Part XIII tax on management fees, interest and dividends"]:::proven
-  n114["R70 · A corporation's year, to taxable income and tax"]:::proven
-  n115["R35 · An individual's year, to taxable income and tax"]:::proven
-  n116["R48 · The minimum tax"]:::proven
-  n117["R11 · The principal residence exemption"]:::proven
-  n118["R2 · Cost of the substituted property"]:::proven
-  n119["N1 · Inputs decided by other provisions"]:::notFormalized
-  n120["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n121["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n114["R83 · A non-resident's rent: Part XIII or the 216 election"]:::proven
+  n115["R70 · A corporation's year, to taxable income and tax"]:::proven
+  n116["R35 · An individual's year, to taxable income and tax"]:::proven
+  n117["R48 · The minimum tax"]:::proven
+  n118["R11 · The principal residence exemption"]:::proven
+  n119["R2 · Cost of the substituted property"]:::proven
+  n120["N1 · Inputs decided by other provisions"]:::notFormalized
+  n121["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n122["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -252,57 +253,59 @@ graph TD
   n77 --> n78
   n77 --> n80
   n39 --> n104
-  n44 --> n114
-  n45 --> n114
-  n57 --> n114
-  n60 --> n114
-  n77 --> n114
-  n78 --> n114
-  n80 --> n114
-  n101 --> n114
-  n102 --> n114
-  n103 --> n114
+  n74 --> n114
+  n88 --> n114
   n44 --> n115
   n45 --> n115
-  n53 --> n115
-  n55 --> n115
-  n56 --> n115
-  n58 --> n115
-  n73 --> n115
-  n74 --> n115
-  n75 --> n115
-  n76 --> n115
-  n81 --> n115
-  n82 --> n115
-  n83 --> n115
-  n84 --> n115
-  n85 --> n115
-  n87 --> n115
-  n88 --> n115
-  n89 --> n115
-  n90 --> n115
-  n91 --> n115
-  n92 --> n115
-  n93 --> n115
-  n94 --> n115
-  n97 --> n115
-  n100 --> n115
-  n115 --> n116
-  n44 --> n117
-  n50 --> n117
-  n11 --> n118
-  n1 --> n119
-  n5 --> n119
-  n6 --> n119
-  n8 --> n119
-  n37 --> n119
-  n118 --> n119
-  n38 --> n119
-  n30 --> n120
-  n32 --> n121
-  n34 --> n121
-  n39 --> n121
-  n42 --> n121
+  n57 --> n115
+  n60 --> n115
+  n77 --> n115
+  n78 --> n115
+  n80 --> n115
+  n101 --> n115
+  n102 --> n115
+  n103 --> n115
+  n44 --> n116
+  n45 --> n116
+  n53 --> n116
+  n55 --> n116
+  n56 --> n116
+  n58 --> n116
+  n73 --> n116
+  n74 --> n116
+  n75 --> n116
+  n76 --> n116
+  n81 --> n116
+  n82 --> n116
+  n83 --> n116
+  n84 --> n116
+  n85 --> n116
+  n87 --> n116
+  n88 --> n116
+  n89 --> n116
+  n90 --> n116
+  n91 --> n116
+  n92 --> n116
+  n93 --> n116
+  n94 --> n116
+  n97 --> n116
+  n100 --> n116
+  n116 --> n117
+  n44 --> n118
+  n50 --> n118
+  n11 --> n119
+  n1 --> n120
+  n5 --> n120
+  n6 --> n120
+  n8 --> n120
+  n37 --> n120
+  n119 --> n120
+  n38 --> n120
+  n30 --> n121
+  n32 --> n122
+  n34 --> n122
+  n39 --> n122
+  n42 --> n122
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -433,14 +436,15 @@ graph TD
   n111["R80"]:::proven
   n112["R81"]:::proven
   n113["R82"]:::proven
-  n114["R70"]:::proven
-  n115["R35"]:::proven
-  n116["R48"]:::proven
-  n117["R11"]:::proven
-  n118["R2"]:::proven
-  n119["N1"]:::notFormalized
-  n120["N2"]:::notFormalized
-  n121["N4"]:::notFormalized
+  n114["R83"]:::proven
+  n115["R70"]:::proven
+  n116["R35"]:::proven
+  n117["R48"]:::proven
+  n118["R11"]:::proven
+  n119["R2"]:::proven
+  n120["N1"]:::notFormalized
+  n121["N2"]:::notFormalized
+  n122["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -641,66 +645,68 @@ graph TD
   n77 --> n78
   n77 --> n80
   n39 -.-> n104
-  n44 --> n114
-  n57 --> n114
-  n45 --> n114
-  n101 --> n114
-  n102 --> n114
-  n103 --> n114
-  n78 --> n114
-  n77 --> n114
-  n80 --> n114
-  n60 -.-> n114
-  n93 --> n115
-  n55 --> n115
-  n94 --> n115
-  n81 --> n115
-  n91 --> n115
-  n84 --> n115
-  n58 --> n115
-  n97 --> n115
+  n74 --> n114
+  n88 -.-> n114
   n44 --> n115
-  n87 --> n115
-  n73 --> n115
-  n56 --> n115
-  n100 --> n115
-  n92 --> n115
-  n85 --> n115
+  n57 --> n115
   n45 --> n115
-  n53 --> n115
-  n89 --> n115
-  n90 --> n115
-  n82 --> n115
-  n74 --> n115
-  n83 --> n115
-  n76 --> n115
-  n75 --> n115
-  n88 -.-> n115
+  n101 --> n115
+  n102 --> n115
+  n103 --> n115
+  n78 --> n115
+  n77 --> n115
+  n80 --> n115
+  n60 -.-> n115
+  n93 --> n116
   n55 --> n116
-  n115 --> n116
+  n94 --> n116
   n81 --> n116
   n91 --> n116
   n84 --> n116
   n58 --> n116
-  n45 --> n116
+  n97 --> n116
+  n44 --> n116
   n87 --> n116
   n73 --> n116
+  n56 --> n116
   n100 --> n116
-  n44 -.-> n117
-  n50 -.-> n117
-  n11 -.-> n118
-  n1 -.-> n119
-  n5 -.-> n119
-  n6 -.-> n119
-  n8 -.-> n119
-  n37 -.-> n119
-  n118 -.-> n119
-  n38 -.-> n119
-  n30 -.-> n120
-  n32 -.-> n121
-  n34 -.-> n121
-  n39 -.-> n121
-  n42 -.-> n121
+  n92 --> n116
+  n85 --> n116
+  n45 --> n116
+  n53 --> n116
+  n89 --> n116
+  n90 --> n116
+  n82 --> n116
+  n74 --> n116
+  n83 --> n116
+  n76 --> n116
+  n75 --> n116
+  n88 -.-> n116
+  n55 --> n117
+  n116 --> n117
+  n81 --> n117
+  n91 --> n117
+  n84 --> n117
+  n58 --> n117
+  n45 --> n117
+  n87 --> n117
+  n73 --> n117
+  n100 --> n117
+  n44 -.-> n118
+  n50 -.-> n118
+  n11 -.-> n119
+  n1 -.-> n120
+  n5 -.-> n120
+  n6 -.-> n120
+  n8 -.-> n120
+  n37 -.-> n120
+  n119 -.-> n120
+  n38 -.-> n120
+  n30 -.-> n121
+  n32 -.-> n122
+  n34 -.-> n122
+  n39 -.-> n122
+  n42 -.-> n122
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -1631,6 +1637,14 @@ A Canadian corporation cannot deduct the part of its interest on debts to specif
 A non-resident pays 25% (or a lower treaty rate) on dividends from a Canadian corporation, and on interest that is paid to a non-arm's length person and not fully exempt, or is participating debt interest, and on management fees other than reasonable amounts for arm's length services in the ordinary course of the non-resident's business or reimbursing specific expenses. Proven: never more than 25%, arm's length interest that is not participating bears none, and neither does a reasonable ordinary-course fee.
 
 **Lean:** [`Canteen.ITA.Withholding.Payment.taxable`](../../Canteen/ITA/S212/Withholding.lean#L61), [`Canteen.ITA.Withholding.Payment.rate`](../../Canteen/ITA/S212/Withholding.lean#L68), [`Canteen.ITA.Withholding.Payment.tax`](../../Canteen/ITA/S212/Withholding.lean#L80), [`Canteen.ITA.Withholding.tax`](../../Canteen/ITA/S212/Withholding.lean#L82), [`Canteen.ITA.Withholding.Payment.excluded`](../../Canteen/ITA/S212/Withholding.lean#L70), [`Canteen.ITA.Withholding.Payment.base`](../../Canteen/ITA/S212/Withholding.lean#L74), [`Canteen.ITA.Withholding.Payment.base_le`](../../Canteen/ITA/S212/Withholding.lean#L101), [`Canteen.ITA.Withholding.Payment.tax_le`](../../Canteen/ITA/S212/Withholding.lean#L108), [`Canteen.ITA.Withholding.arms_length_interest`](../../Canteen/ITA/S212/Withholding.lean#L111), [`Canteen.ITA.Withholding.ordinary_course_fee`](../../Canteen/ITA/S212/Withholding.lean#L116)
+
+### R83. A non-resident's rent: Part XIII or the 216 election
+
+**Status:** proven · **Citation:** ITA 212(1)(d); 216(1); 120(1); 118.94 · **Uses:** R41, R56
+
+A non-resident individual's rent from Canadian real property bears 25% of the gross under Part XIII, or, on electing, Part I tax on the net income at the year's rates, plus 48% for income not earned in a province, without personal credits unless substantially all income is earned in Canada. Proven: no net income, no tax on electing.
+
+**Lean:** [`Canteen.ITA.RentalElection.partXIII`](../../Canteen/ITA/S216/RentalElection.lean#L39), [`Canteen.ITA.RentalElection.credits`](../../Canteen/ITA/S216/RentalElection.lean#L42), [`Canteen.ITA.RentalElection.basicTax`](../../Canteen/ITA/S216/RentalElection.lean#L45), [`Canteen.ITA.RentalElection.surtax`](../../Canteen/ITA/S216/RentalElection.lean#L48), [`Canteen.ITA.RentalElection.electedTax`](../../Canteen/ITA/S216/RentalElection.lean#L51), [`Canteen.ITA.RentalElection.saving`](../../Canteen/ITA/S216/RentalElection.lean#L54), [`Canteen.ITA.RentalElection.no_net_income`](../../Canteen/ITA/S216/RentalElection.lean#L68)
 
 ### R70. A corporation's year, to taxable income and tax
 

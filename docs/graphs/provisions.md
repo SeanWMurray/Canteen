@@ -96,8 +96,9 @@ flowchart BT
   v87["18(9) prepaid expenses"]:::prov
   v88["18(4), 214(16) thin capitalization and the deemed dividend"]:::prov
   v89["212(1)(a), (b), (2) Part XIII on management fees, interest and dividends"]:::prov
-  v90["2(2), 3, 129(4) a corporation's year, to taxable income and tax"]:::prov
-  v91["50(2) bad personal-use debts"]:::prov
+  v90["212(1)(d), 216(1), 120(1) a non-resident's rent and the election"]:::prov
+  v91["2(2), 3, 129(4) a corporation's year, to taxable income and tax"]:::prov
+  v92["50(2) bad personal-use debts"]:::prov
   v0 --> v1
   v0 --> v2
   v0 --> v3
@@ -186,13 +187,14 @@ flowchart BT
   v31 --> v75
   v17 --> v77
   v6 --> v80
-  v19 --> v90
-  v20 --> v90
-  v32 --> v90
-  v78 --> v90
-  v69 --> v90
-  v79 --> v90
-  v71 --> v90
-  v35 --> v90
+  v54 --> v90
+  v19 --> v91
+  v20 --> v91
+  v32 --> v91
+  v78 --> v91
+  v69 --> v91
+  v79 --> v91
+  v71 --> v91
+  v35 --> v91
   classDef prov fill:#bbdefb,stroke:#1565c0,color:#0d47a1
 ```

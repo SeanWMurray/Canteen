@@ -83,6 +83,7 @@ import Canteen.ITA.S20.InstalmentSales
 import Canteen.ITA.S18.PrepaidExpenses
 import Canteen.ITA.S18.ThinCapitalization
 import Canteen.ITA.S212.Withholding
+import Canteen.ITA.S216.RentalElection
 import Canteen.ITA.S3.CorporateYear
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
@@ -831,6 +832,14 @@ def blueprint : Blueprint where
           lean := [``Withholding.Payment.taxable, ``Withholding.Payment.rate, ``Withholding.Payment.tax, ``Withholding.tax,
             ``Withholding.Payment.excluded, ``Withholding.Payment.base,
             ``Withholding.Payment.base_le, ``Withholding.Payment.tax_le, ``Withholding.arms_length_interest, ``Withholding.ordinary_course_fee] },
+        { id := "R83", kind := .law, title := "A non-resident's rent: Part XIII or the 216 election", citation := "ITA 212(1)(d); 216(1); 120(1); 118.94"
+          statement := "A non-resident individual's rent from Canadian real property bears 25% of the gross under Part XIII, " ++
+            "or, on electing, Part I tax on the net income at the year's rates, plus 48% for income not earned in a " ++
+            "province, without personal credits unless substantially all income is earned in Canada. Proven: no net " ++
+            "income, no tax on electing."
+          lean := [``RentalElection.partXIII, ``RentalElection.credits, ``RentalElection.basicTax, ``RentalElection.surtax,
+            ``RentalElection.electedTax, ``RentalElection.saving, ``RentalElection.no_net_income],
+          uses := ["R41", "R56"] },
         { id := "R70", kind := .law, title := "A corporation's year, to taxable income and tax", citation := "ITA 2(2); 3; 110.1; 111(1), (8); 112(1); 125(7); 129(4)"
           statement := "A corporation's income from active business, personal services business, property and dividends " ++
             "received, with its net taxable capital gains (a 55(2) dividend as a gain); taxable income after gifts, the " ++
