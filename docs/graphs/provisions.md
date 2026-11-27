@@ -68,7 +68,8 @@ flowchart BT
   v59["15(2), 80.4 shareholder loans"]:::prov
   v60["89(1), 185.1 the general rate income pool"]:::prov
   v61["127.5 to 127.531, 120.2 the minimum tax"]:::prov
-  v62["50(2) bad personal-use debts"]:::prov
+  v62["84(1), 53(1)(b) an increase in paid-up capital"]:::prov
+  v63["50(2) bad personal-use debts"]:::prov
   v0 --> v1
   v0 --> v2
   v0 --> v3
@@ -139,5 +140,6 @@ flowchart BT
   v57 --> v58
   v57 --> v60
   v52 --> v61
+  v30 --> v62
   classDef prov fill:#bbdefb,stroke:#1565c0,color:#0d47a1
 ```

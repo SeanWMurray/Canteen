@@ -55,6 +55,7 @@ import Canteen.ITA.S118_2.MedicalExpenses
 import Canteen.ITA.S118_3.Disability
 import Canteen.ITA.S60_03.PensionSplitting
 import Canteen.ITA.S180_2.OasRecovery
+import Canteen.ITA.S84.PaidUpCapitalIncrease
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -583,6 +584,13 @@ def blueprint : Blueprint where
             "the Old Age Security received, and deducted in computing income. Proven: never more than the benefits, and " ++
             "nothing at or below the threshold."
           lean := [``OasRecovery.tax, ``OasRecovery.tax_le_oas, ``OasRecovery.below_threshold] },
+        { id := "R54", kind := .law, title := "An increase in paid-up capital", citation := "ITA 84(1); 53(1)(b)"
+          statement := "A corporation resident in Canada that increases the paid-up capital of a class, other than by a stock " ++
+            "dividend or for net assets, a reduction of other classes or qualifying surplus, is deemed to pay a dividend of " ++
+            "the rest, shared by the holders, who add it to their cost. Proven: never more than the increase, nil when paid " ++
+            "for in full, and a sole holder's cost rises by the whole dividend."
+          lean := [``PaidUpCapitalIncrease.dividendPaid, ``PaidUpCapitalIncrease.dividend, ``PaidUpCapitalIncrease.costAddition,
+            ``PaidUpCapitalIncrease.dividendPaid_le, ``PaidUpCapitalIncrease.paid_for, ``PaidUpCapitalIncrease.sole_holder] },
         { id := "R35", kind := .law, title := "An individual's year, to taxable income and tax", citation := "ITA 2(2); 3; 111(1)(b); 110.6; 117(2)"
           statement := "Income from sources (employment and business, dividends with the gross-up, recapture, attributed " ++
             "income), net taxable capital gains, less terminal and other losses; then taxable income, after the net capital " ++

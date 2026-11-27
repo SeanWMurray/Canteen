@@ -40,6 +40,7 @@ import Canteen.ITA.S118_2.MedicalExpenses
 import Canteen.ITA.S118_3.Disability
 import Canteen.ITA.S60_03.PensionSplitting
 import Canteen.ITA.S180_2.OasRecovery
+import Canteen.ITA.S84.PaidUpCapitalIncrease
 import Canteen.Transactions.DebtSwap
 import Canteen.ITA.S87.Amalgamation
 import Canteen.ITA.S39.CanadianSecurities
@@ -193,7 +194,8 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S118_2.MedicalExpenses, "118.2(1) the medical expense credit"),
    (`Canteen.ITA.S118_3.Disability, "118.3(1), (2) the disability credit"),
    (`Canteen.ITA.S60_03.PensionSplitting, "118(2), (3), 60.03 pension income and splitting"),
-   (`Canteen.ITA.S180_2.OasRecovery, "180.2, 60(w) the OAS recovery tax")]
+   (`Canteen.ITA.S180_2.OasRecovery, "180.2, 60(w) the OAS recovery tax"),
+   (`Canteen.ITA.S84.PaidUpCapitalIncrease, "84(1), 53(1)(b) an increase in paid-up capital")]
 
 /-! ## The dashboard -/
 
@@ -288,7 +290,7 @@ def actMindmap : String := Id.run do
     (2, "s. 80.4"), (3, "80.4(2): deemed interest on shareholder loans"),
     (2, "s. 82"), (3, "82(1): taxable dividends and the gross-up"),
     (2, "s. 83"), (3, "83(2): capital dividends"),
-    (2, "s. 84"), (3, "84(3): redemptions, the deemed dividend"), (3, "84(4), (4.1): returns of capital"),
+    (2, "s. 84"), (3, "84(1): paid-up capital increased"), (3, "84(3): redemptions, the deemed dividend"), (3, "84(4), (4.1): returns of capital"),
     (2, "s. 84.1"), (3, "84.1(1): paid-up capital, and the deemed dividend"), (3, "84.1(2): hard cost, arm's length"),
     (2, "s. 85"), (3, "85(1): the elected amount, and the cost of the consideration"), (3, "85(2.1): paid-up capital"),
     (2, "s. 86"), (3, "86(1): share exchange in a reorganization"), (3, "86(2): benefit to a related person"),

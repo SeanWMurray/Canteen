@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 93 statements:** 74 proven, 16 encoded, 3 not formalized.
+**Status of the 94 statements:** 75 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -96,13 +96,14 @@ graph TD
   n83["R51 · The disability tax credit"]:::proven
   n84["R52 · Pension income, the age and pension credits, and pension splitting"]:::proven
   n85["R53 · The OAS recovery tax"]:::proven
-  n86["R35 · An individual's year, to taxable income and tax"]:::proven
-  n87["R48 · The minimum tax"]:::proven
-  n88["R11 · The principal residence exemption"]:::proven
-  n89["R2 · Cost of the substituted property"]:::proven
-  n90["N1 · Inputs decided by other provisions"]:::notFormalized
-  n91["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n92["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n86["R54 · An increase in paid-up capital"]:::proven
+  n87["R35 · An individual's year, to taxable income and tax"]:::proven
+  n88["R48 · The minimum tax"]:::proven
+  n89["R11 · The principal residence exemption"]:::proven
+  n90["R2 · Cost of the substituted property"]:::proven
+  n91["N1 · Inputs decided by other provisions"]:::notFormalized
+  n92["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n93["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -222,37 +223,37 @@ graph TD
   n74 --> n76
   n77 --> n78
   n77 --> n80
-  n44 --> n86
-  n45 --> n86
-  n53 --> n86
-  n55 --> n86
-  n56 --> n86
-  n58 --> n86
-  n73 --> n86
-  n74 --> n86
-  n75 --> n86
-  n76 --> n86
-  n81 --> n86
-  n82 --> n86
-  n83 --> n86
-  n84 --> n86
-  n85 --> n86
-  n86 --> n87
-  n44 --> n88
-  n50 --> n88
-  n11 --> n89
-  n1 --> n90
-  n5 --> n90
-  n6 --> n90
-  n8 --> n90
-  n37 --> n90
-  n89 --> n90
-  n38 --> n90
-  n30 --> n91
-  n32 --> n92
-  n34 --> n92
-  n39 --> n92
-  n42 --> n92
+  n44 --> n87
+  n45 --> n87
+  n53 --> n87
+  n55 --> n87
+  n56 --> n87
+  n58 --> n87
+  n73 --> n87
+  n74 --> n87
+  n75 --> n87
+  n76 --> n87
+  n81 --> n87
+  n82 --> n87
+  n83 --> n87
+  n84 --> n87
+  n85 --> n87
+  n87 --> n88
+  n44 --> n89
+  n50 --> n89
+  n11 --> n90
+  n1 --> n91
+  n5 --> n91
+  n6 --> n91
+  n8 --> n91
+  n37 --> n91
+  n90 --> n91
+  n38 --> n91
+  n30 --> n92
+  n32 --> n93
+  n34 --> n93
+  n39 --> n93
+  n42 --> n93
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -355,13 +356,14 @@ graph TD
   n83["R51"]:::proven
   n84["R52"]:::proven
   n85["R53"]:::proven
-  n86["R35"]:::proven
-  n87["R48"]:::proven
-  n88["R11"]:::proven
-  n89["R2"]:::proven
-  n90["N1"]:::notFormalized
-  n91["N2"]:::notFormalized
-  n92["N4"]:::notFormalized
+  n86["R54"]:::proven
+  n87["R35"]:::proven
+  n88["R48"]:::proven
+  n89["R11"]:::proven
+  n90["R2"]:::proven
+  n91["N1"]:::notFormalized
+  n92["N2"]:::notFormalized
+  n93["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -561,43 +563,43 @@ graph TD
   n74 -.-> n76
   n77 --> n78
   n77 --> n80
-  n55 --> n86
-  n81 --> n86
-  n84 --> n86
-  n58 --> n86
-  n44 --> n86
-  n73 --> n86
-  n56 --> n86
-  n85 --> n86
-  n45 --> n86
-  n53 --> n86
-  n82 --> n86
-  n74 --> n86
-  n83 --> n86
-  n76 --> n86
-  n75 --> n86
   n55 --> n87
   n81 --> n87
-  n86 --> n87
   n84 --> n87
   n58 --> n87
-  n45 --> n87
+  n44 --> n87
   n73 --> n87
-  n44 -.-> n88
-  n50 -.-> n88
-  n11 -.-> n89
-  n1 -.-> n90
-  n5 -.-> n90
-  n6 -.-> n90
-  n8 -.-> n90
-  n37 -.-> n90
-  n89 -.-> n90
-  n38 -.-> n90
-  n30 -.-> n91
-  n32 -.-> n92
-  n34 -.-> n92
-  n39 -.-> n92
-  n42 -.-> n92
+  n56 --> n87
+  n85 --> n87
+  n45 --> n87
+  n53 --> n87
+  n82 --> n87
+  n74 --> n87
+  n83 --> n87
+  n76 --> n87
+  n75 --> n87
+  n55 --> n88
+  n81 --> n88
+  n87 --> n88
+  n84 --> n88
+  n58 --> n88
+  n45 --> n88
+  n73 --> n88
+  n44 -.-> n89
+  n50 -.-> n89
+  n11 -.-> n90
+  n1 -.-> n91
+  n5 -.-> n91
+  n6 -.-> n91
+  n8 -.-> n91
+  n37 -.-> n91
+  n90 -.-> n91
+  n38 -.-> n91
+  n30 -.-> n92
+  n32 -.-> n93
+  n34 -.-> n93
+  n39 -.-> n93
+  n42 -.-> n93
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -1304,6 +1306,14 @@ Eligible pension income (pension income at 65, qualified pension income before; 
 Part I.2 tax of 15% of adjusted income (income before the 60(w) deduction) over $93,454 (2025), up to the Old Age Security received, and deducted in computing income. Proven: never more than the benefits, and nothing at or below the threshold.
 
 **Lean:** [`Canteen.ITA.OasRecovery.tax`](../../Canteen/ITA/S180_2/OasRecovery.lean#L21), [`Canteen.ITA.OasRecovery.tax_le_oas`](../../Canteen/ITA/S180_2/OasRecovery.lean#L25), [`Canteen.ITA.OasRecovery.below_threshold`](../../Canteen/ITA/S180_2/OasRecovery.lean#L28)
+
+### R54. An increase in paid-up capital
+
+**Status:** proven · **Citation:** ITA 84(1); 53(1)(b)
+
+A corporation resident in Canada that increases the paid-up capital of a class, other than by a stock dividend or for net assets, a reduction of other classes or qualifying surplus, is deemed to pay a dividend of the rest, shared by the holders, who add it to their cost. Proven: never more than the increase, nil when paid for in full, and a sole holder's cost rises by the whole dividend.
+
+**Lean:** [`Canteen.ITA.PaidUpCapitalIncrease.dividendPaid`](../../Canteen/ITA/S84/PaidUpCapitalIncrease.lean#L44), [`Canteen.ITA.PaidUpCapitalIncrease.dividend`](../../Canteen/ITA/S84/PaidUpCapitalIncrease.lean#L50), [`Canteen.ITA.PaidUpCapitalIncrease.costAddition`](../../Canteen/ITA/S84/PaidUpCapitalIncrease.lean#L54), [`Canteen.ITA.PaidUpCapitalIncrease.dividendPaid_le`](../../Canteen/ITA/S84/PaidUpCapitalIncrease.lean#L75), [`Canteen.ITA.PaidUpCapitalIncrease.paid_for`](../../Canteen/ITA/S84/PaidUpCapitalIncrease.lean#L81), [`Canteen.ITA.PaidUpCapitalIncrease.sole_holder`](../../Canteen/ITA/S84/PaidUpCapitalIncrease.lean#L87)
 
 ### R35. An individual's year, to taxable income and tax
 
