@@ -68,6 +68,7 @@ import Canteen.ITA.S112.StopLoss
 import Canteen.ITA.S84.WindingUpDividend
 import Canteen.ITA.S15.ShareholderBenefit
 import Canteen.ITA.S44_1.SmallBusinessRollover
+import Canteen.ITA.S46.PersonalUse
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -693,6 +694,13 @@ def blueprint : Blueprint where
             "when all the proceeds are reinvested."
           lean := [``SmallBusinessRollover.qualifying, ``SmallBusinessRollover.permittedDeferral, ``SmallBusinessRollover.acbReduction,
             ``SmallBusinessRollover.deferral_le, ``SmallBusinessRollover.full_reinvestment] },
+        { id := "R67", kind := .law, title := "Personal-use property: the $1,000 rule", citation := "ITA 46(1), (2), (3), (5)"
+          statement := "On a disposition of personal-use property, its cost and the proceeds are each at least $1,000 (a part " ++
+            "takes its share of the $1,000), and properties ordinarily sold as a set, sold piecemeal to one buyer or group, " ++
+            "are one property; not for excluded property given to a charity. Proven: no gain or loss below the floor, and " ++
+            "the floor never lowers the cost or the proceeds."
+          lean := [``PersonalUse.apply, ``PersonalUse.applyPart, ``PersonalUse.set, ``PersonalUse.applyPiece,
+            ``PersonalUse.below_floor, ``PersonalUse.never_lower] },
         { id := "R35", kind := .law, title := "An individual's year, to taxable income and tax", citation := "ITA 2(2); 3; 111(1)(b); 110.6; 117(2)"
           statement := "Income from sources (employment and business, dividends with the gross-up, recapture, attributed " ++
             "income), net taxable capital gains, less terminal and other losses; then taxable income, after the net capital " ++

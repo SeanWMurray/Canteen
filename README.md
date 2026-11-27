@@ -130,6 +130,7 @@ Canteen/
     S47/IdenticalProperties.lean   47(1): identical properties, and the average cost
     S186/Connected.lean        186(2), (4): connected corporations
     S44_1/SmallBusinessRollover.lean   44.1: the small business investment rollover
+    S46/PersonalUse.lean       46: personal-use property, the $1,000 rule
     S45/ChangeInUse.lean       45(1) to (4): change in use, and the 45(2) and (3) elections
     S85/TransferToCorporation.lean   85(1), (2.1): the section 85 rollover, and paid-up capital
     S84_1/SurplusStripping.lean   84.1: shares sold to a non-arm's length corporation; the deemed dividend

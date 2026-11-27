@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 106 statements:** 87 proven, 16 encoded, 3 not formalized.
+**Status of the 107 statements:** 88 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -109,13 +109,14 @@ graph TD
   n96["R64 · A distribution on winding-up"]:::proven
   n97["R65 · Shareholder benefits"]:::proven
   n98["R66 · The small business investment rollover"]:::proven
-  n99["R35 · An individual's year, to taxable income and tax"]:::proven
-  n100["R48 · The minimum tax"]:::proven
-  n101["R11 · The principal residence exemption"]:::proven
-  n102["R2 · Cost of the substituted property"]:::proven
-  n103["N1 · Inputs decided by other provisions"]:::notFormalized
-  n104["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n105["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n99["R67 · Personal-use property: the $1,000 rule"]:::proven
+  n100["R35 · An individual's year, to taxable income and tax"]:::proven
+  n101["R48 · The minimum tax"]:::proven
+  n102["R11 · The principal residence exemption"]:::proven
+  n103["R2 · Cost of the substituted property"]:::proven
+  n104["N1 · Inputs decided by other provisions"]:::notFormalized
+  n105["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n106["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -235,46 +236,46 @@ graph TD
   n74 --> n76
   n77 --> n78
   n77 --> n80
-  n44 --> n99
-  n45 --> n99
-  n53 --> n99
-  n55 --> n99
-  n56 --> n99
-  n58 --> n99
-  n73 --> n99
-  n74 --> n99
-  n75 --> n99
-  n76 --> n99
-  n81 --> n99
-  n82 --> n99
-  n83 --> n99
-  n84 --> n99
-  n85 --> n99
-  n87 --> n99
-  n88 --> n99
-  n89 --> n99
-  n90 --> n99
-  n91 --> n99
-  n92 --> n99
-  n93 --> n99
-  n94 --> n99
-  n97 --> n99
-  n99 --> n100
-  n44 --> n101
-  n50 --> n101
-  n11 --> n102
-  n1 --> n103
-  n5 --> n103
-  n6 --> n103
-  n8 --> n103
-  n37 --> n103
-  n102 --> n103
-  n38 --> n103
-  n30 --> n104
-  n32 --> n105
-  n34 --> n105
-  n39 --> n105
-  n42 --> n105
+  n44 --> n100
+  n45 --> n100
+  n53 --> n100
+  n55 --> n100
+  n56 --> n100
+  n58 --> n100
+  n73 --> n100
+  n74 --> n100
+  n75 --> n100
+  n76 --> n100
+  n81 --> n100
+  n82 --> n100
+  n83 --> n100
+  n84 --> n100
+  n85 --> n100
+  n87 --> n100
+  n88 --> n100
+  n89 --> n100
+  n90 --> n100
+  n91 --> n100
+  n92 --> n100
+  n93 --> n100
+  n94 --> n100
+  n97 --> n100
+  n100 --> n101
+  n44 --> n102
+  n50 --> n102
+  n11 --> n103
+  n1 --> n104
+  n5 --> n104
+  n6 --> n104
+  n8 --> n104
+  n37 --> n104
+  n103 --> n104
+  n38 --> n104
+  n30 --> n105
+  n32 --> n106
+  n34 --> n106
+  n39 --> n106
+  n42 --> n106
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -390,13 +391,14 @@ graph TD
   n96["R64"]:::proven
   n97["R65"]:::proven
   n98["R66"]:::proven
-  n99["R35"]:::proven
-  n100["R48"]:::proven
-  n101["R11"]:::proven
-  n102["R2"]:::proven
-  n103["N1"]:::notFormalized
-  n104["N2"]:::notFormalized
-  n105["N4"]:::notFormalized
+  n99["R67"]:::proven
+  n100["R35"]:::proven
+  n101["R48"]:::proven
+  n102["R11"]:::proven
+  n103["R2"]:::proven
+  n104["N1"]:::notFormalized
+  n105["N2"]:::notFormalized
+  n106["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -596,54 +598,54 @@ graph TD
   n74 -.-> n76
   n77 --> n78
   n77 --> n80
-  n93 --> n99
-  n55 --> n99
-  n94 --> n99
-  n81 --> n99
-  n91 --> n99
-  n84 --> n99
-  n58 --> n99
-  n97 --> n99
-  n44 --> n99
-  n87 --> n99
-  n73 --> n99
-  n56 --> n99
-  n92 --> n99
-  n85 --> n99
-  n45 --> n99
-  n53 --> n99
-  n89 --> n99
-  n90 --> n99
-  n82 --> n99
-  n74 --> n99
-  n83 --> n99
-  n76 --> n99
-  n75 --> n99
-  n88 -.-> n99
+  n93 --> n100
   n55 --> n100
-  n99 --> n100
+  n94 --> n100
   n81 --> n100
   n91 --> n100
   n84 --> n100
   n58 --> n100
-  n45 --> n100
+  n97 --> n100
+  n44 --> n100
   n87 --> n100
   n73 --> n100
-  n44 -.-> n101
-  n50 -.-> n101
-  n11 -.-> n102
-  n1 -.-> n103
-  n5 -.-> n103
-  n6 -.-> n103
-  n8 -.-> n103
-  n37 -.-> n103
-  n102 -.-> n103
-  n38 -.-> n103
-  n30 -.-> n104
-  n32 -.-> n105
-  n34 -.-> n105
-  n39 -.-> n105
-  n42 -.-> n105
+  n56 --> n100
+  n92 --> n100
+  n85 --> n100
+  n45 --> n100
+  n53 --> n100
+  n89 --> n100
+  n90 --> n100
+  n82 --> n100
+  n74 --> n100
+  n83 --> n100
+  n76 --> n100
+  n75 --> n100
+  n88 -.-> n100
+  n55 --> n101
+  n100 --> n101
+  n81 --> n101
+  n91 --> n101
+  n84 --> n101
+  n58 --> n101
+  n45 --> n101
+  n87 --> n101
+  n73 --> n101
+  n44 -.-> n102
+  n50 -.-> n102
+  n11 -.-> n103
+  n1 -.-> n104
+  n5 -.-> n104
+  n6 -.-> n104
+  n8 -.-> n104
+  n37 -.-> n104
+  n103 -.-> n104
+  n38 -.-> n104
+  n30 -.-> n105
+  n32 -.-> n106
+  n34 -.-> n106
+  n39 -.-> n106
+  n42 -.-> n106
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -1454,6 +1456,14 @@ The value of a benefit a corporation confers on a shareholder as shareholder, le
 An individual's gain on eligible small business corporation shares, of an active business corporation throughout and held 185 days, is deferred in the proportion of the proceeds reinvested in replacement shares in the year or the next, whose cost is reduced by the deferral. Proven: never more than the gain, and all of it when all the proceeds are reinvested.
 
 **Lean:** [`Canteen.ITA.SmallBusinessRollover.qualifying`](../../Canteen/ITA/S44_1/SmallBusinessRollover.lean#L60), [`Canteen.ITA.SmallBusinessRollover.permittedDeferral`](../../Canteen/ITA/S44_1/SmallBusinessRollover.lean#L82), [`Canteen.ITA.SmallBusinessRollover.acbReduction`](../../Canteen/ITA/S44_1/SmallBusinessRollover.lean#L89), [`Canteen.ITA.SmallBusinessRollover.deferral_le`](../../Canteen/ITA/S44_1/SmallBusinessRollover.lean#L104), [`Canteen.ITA.SmallBusinessRollover.full_reinvestment`](../../Canteen/ITA/S44_1/SmallBusinessRollover.lean#L112)
+
+### R67. Personal-use property: the $1,000 rule
+
+**Status:** proven · **Citation:** ITA 46(1), (2), (3), (5)
+
+On a disposition of personal-use property, its cost and the proceeds are each at least $1,000 (a part takes its share of the $1,000), and properties ordinarily sold as a set, sold piecemeal to one buyer or group, are one property; not for excluded property given to a charity. Proven: no gain or loss below the floor, and the floor never lowers the cost or the proceeds.
+
+**Lean:** [`Canteen.ITA.PersonalUse.apply`](../../Canteen/ITA/S46/PersonalUse.lean#L27), [`Canteen.ITA.PersonalUse.applyPart`](../../Canteen/ITA/S46/PersonalUse.lean#L34), [`Canteen.ITA.PersonalUse.set`](../../Canteen/ITA/S46/PersonalUse.lean#L49), [`Canteen.ITA.PersonalUse.applyPiece`](../../Canteen/ITA/S46/PersonalUse.lean#L62), [`Canteen.ITA.PersonalUse.below_floor`](../../Canteen/ITA/S46/PersonalUse.lean#L68), [`Canteen.ITA.PersonalUse.never_lower`](../../Canteen/ITA/S46/PersonalUse.lean#L73)
 
 ### R35. An individual's year, to taxable income and tax
 

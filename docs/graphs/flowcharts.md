@@ -1010,6 +1010,31 @@ flowchart TD
   classDef start fill:#ffffff,stroke:#212121,color:#212121
 ```
 
+## Subsection 46(3): sets of personal-use property
+
+```mermaid
+flowchart TD
+  S(["subsection 46(3) · ITA 46(3)"]):::start
+  C0["<b>a set</b> The properties would ordinarily be disposed<br/>of in one disposition as a set<br/><i>judgment call: judgment calls computed from the facts</i><br/>[ITA 46(3) a set]"]:::judgment
+  C1["<b>(a)</b> They were disposed of in more than one<br/>disposition, all to one person or a group<br/>not dealing at arm's length<br/>[ITA 46(3)(a)]"]:::fact
+  C2["<b>(b)</b> They were worth more than $1,000 in total<br/>before the first disposition<br/>[ITA 46(3)(b)]"]:::fact
+  Y(["subsection 46(3) applies"]):::yes
+  N(["subsection 46(3) does not apply"]):::no
+  S --> C0
+  C0 -->|met| C1
+  C0 -->|not met| N
+  C1 -->|met| C2
+  C1 -->|not met| N
+  C2 -->|met| Y
+  C2 -->|not met| N
+  classDef fact fill:#eeeeee,stroke:#616161,color:#212121
+  classDef judgment fill:#ffe0b2,stroke:#ef6c00,color:#e65100
+  classDef rule fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+  classDef yes fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
+  classDef no fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+  classDef start fill:#ffffff,stroke:#212121,color:#212121
+```
+
 ## Subparagraph 40(2)(g)(iv): transfers to registered plans
 
 ```mermaid

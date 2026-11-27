@@ -81,7 +81,8 @@ flowchart BT
   v72["112(3), (3.01), (6.1) the stop-loss on shares"]:::prov
   v73["84(2) a distribution on winding-up"]:::prov
   v74["44.1 the small business investment rollover"]:::prov
-  v75["50(2) bad personal-use debts"]:::prov
+  v75["46 personal-use property, the $1,000 rule"]:::prov
+  v76["50(2) bad personal-use debts"]:::prov
   v0 --> v1
   v0 --> v2
   v0 --> v3
@@ -166,5 +167,6 @@ flowchart BT
   v17 --> v72
   v17 --> v73
   v30 --> v73
+  v17 --> v75
   classDef prov fill:#bbdefb,stroke:#1565c0,color:#0d47a1
 ```

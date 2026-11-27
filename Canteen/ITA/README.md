@@ -65,6 +65,7 @@ The verbatim statute text for each is in `statute/`. Review notes are in `docs/r
 - `S118_3/Disability.lean`: subsections 118.3(1) and (2)
 - `S56/Support.lean`: paragraphs 56(1)(b) and 60(b), and the 56.1(4) definitions
 - `S44_1/SmallBusinessRollover.lean`: six 44.1(1) definitions and subsection 44.1(2)
+- `S46/PersonalUse.lean`: subsections 46(1), (2), (3) and (5)
 - `S112/StopLoss.lean`: subsections 112(3), (3.01) and (6.1)
 - `S6/StandbyCharge.lean`: paragraph 6(1)(e) and subsection 6(2)
 - `S62/MovingExpenses.lean`: subsection 62(1), and the 248(1) definition "eligible relocation"
