@@ -9,9 +9,9 @@ An overview of the project, drawn from the Lean.
 Every statement in every blueprint, by the status Lean computes for it.
 
 ```mermaid
-pie showData title All 238 statements in the memos and blueprints, by status
+pie showData title All 239 statements in the memos and blueprints, by status
     "encoded" : 40
-    "proven" : 151
+    "proven" : 152
     "not formalized" : 3
     "fact" : 36
     "judgment call" : 8
@@ -189,22 +189,26 @@ mindmap
       n111["`123(1), 124(1): 38%, the abatement`"]
       n112["`123.4(2): general rate reduction`"]
       n113["`125(1): small business deduction`"]
-    n114["`s. 186`"]
-      n115["`186(4): connected corporations`"]
-      n116["`186(2): control with non-arm's length persons`"]
-    n117["`s. 248`"]
-      n118["`248(1): majority-interest partner`"]
-    n119["`s. 251`"]
-      n120["`251(1): arm's length`"]
-      n121["`251(2), (3): related persons`"]
-      n122["`251(3.1), (3.2): amalgamations`"]
-      n123["`251(6): blood, marriage, adoption`"]
-    n124["`s. 251.1`"]
-      n125["`251.1(1)(a) to (h): affiliated persons`"]
-      n126["`251.1(2): amalgamations`"]
-      n127["`251.1(3), (4): definitions and rules`"]
-    n128["`s. 251.2`"]
-      n129["`251.2(2)(a): loss restriction event`"]
-    n130["`s. 256`"]
-      n131["`256(7)(a): control not acquired`"]
+    n114["`ss. 123.3, 129`"]
+      n115["`123.3: refundable tax on investment income`"]
+      n116["`129(1), (4): the dividend refund`"]
+    n117["`s. 186`"]
+      n118["`186(1): Part IV tax`"]
+      n119["`186(4): connected corporations`"]
+      n120["`186(2): control with non-arm's length persons`"]
+    n121["`s. 248`"]
+      n122["`248(1): majority-interest partner`"]
+    n123["`s. 251`"]
+      n124["`251(1): arm's length`"]
+      n125["`251(2), (3): related persons`"]
+      n126["`251(3.1), (3.2): amalgamations`"]
+      n127["`251(6): blood, marriage, adoption`"]
+    n128["`s. 251.1`"]
+      n129["`251.1(1)(a) to (h): affiliated persons`"]
+      n130["`251.1(2): amalgamations`"]
+      n131["`251.1(3), (4): definitions and rules`"]
+    n132["`s. 251.2`"]
+      n133["`251.2(2)(a): loss restriction event`"]
+    n134["`s. 256`"]
+      n135["`256(7)(a): control not acquired`"]
 ```

@@ -46,6 +46,7 @@ import Canteen.ITA.S117.Rates
 import Canteen.ITA.S118.PersonalCredits
 import Canteen.ITA.S118_1.Donations
 import Canteen.ITA.S123.CorporateRates
+import Canteen.ITA.S129.RefundableTax
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -513,6 +514,13 @@ def blueprint : Blueprint where
             "active business income within the limit is taxed at 9%, and a corporation that is not a CCPC pays 15%."
           lean := [``CorporateRates.tax, ``CorporateRates.smallBusinessAmount, ``CorporateRates.fullRateTaxableIncome,
             ``CorporateRates.small_business_rate, ``CorporateRates.general_rate] },
+        { id := "R45", kind := .law, title := "Refundable taxes and the dividend refund", citation := "ITA 123.3; 129(1), (4); 186(1)"
+          statement := "A CCPC pays an extra 10⅔% on investment income and Part IV tax of 38⅓% on portfolio dividends; 30⅔% of " ++
+            "the investment income and the Part IV tax go into two refundable accounts, refunded at 38⅓% of dividends paid " ++
+            "(eligible dividends only from the eligible account). Proven: the refund never exceeds the accounts, and a " ++
+            "portfolio dividend paid straight out gets all its Part IV tax back."
+          lean := [``RefundableTax.additionalTax, ``RefundableTax.partIV, ``RefundableTax.nonEligibleAccount,
+            ``RefundableTax.dividendRefund, ``RefundableTax.refund_le_accounts, ``RefundableTax.flow_through], uses := ["R44"] },
         { id := "R35", kind := .law, title := "An individual's year, to taxable income and tax", citation := "ITA 2(2); 3; 111(1)(b); 110.6; 117(2)"
           statement := "Income from sources (employment and business, dividends with the gross-up, recapture, attributed " ++
             "income), net taxable capital gains, less terminal and other losses; then taxable income, after the net capital " ++
