@@ -85,7 +85,7 @@ graph TD
   n72["R39 · Corporate attribution"]:::proven
   n73["R40 · Tax on split income"]:::proven
   n74["R41 · The federal rates"]:::proven
-  n75["R42 · The basic personal and spouse amounts"]:::proven
+  n75["R42 · The basic personal, spouse and eligible dependant amounts"]:::proven
   n76["R43 · The charitable donation credit"]:::proven
   n77["R44 · Corporate rates"]:::proven
   n78["R45 · Refundable taxes and the dividend refund"]:::proven
@@ -1217,13 +1217,13 @@ An individual's tax is 14% to $57,375, 20.5% to $114,750, 26% to $177,882, 29% t
 
 **Lean:** [`Canteen.ITA.Rates.tax`](../../Canteen/ITA/S117/Rates.lean#L43), [`Canteen.ITA.Rates.tax_mono`](../../Canteen/ITA/S117/Rates.lean#L71)
 
-### R42. The basic personal and spouse amounts
+### R42. The basic personal, spouse and eligible dependant amounts
 
-**Status:** proven · **Citation:** ITA 118(1)(a), (c), (1.1) · **Uses:** R41
+**Status:** proven · **Citation:** ITA 118(1)(a), (b), (c), (1.1) · **Uses:** R41
 
-An individual deducts 14% of the basic personal amount ($12,298 plus an enhancement up to $15,000, phased out between the 117(2)(d) and (e) thresholds), plus, if supporting a spouse, the basic personal amount less the spouse's income. Proven: the amount is always between the base and the enhanced amount.
+An individual deducts 14% of the basic personal amount ($12,298 plus an enhancement up to $15,000, phased out between the 117(2)(d) and (e) thresholds), plus, if supporting a spouse, the basic personal amount less the spouse's income, or else, for a single individual supporting a related, wholly dependent person at home, the same less that person's income. Proven: the basic personal amount is always between the base and the enhanced amount, and the dependant amount never more than twice it plus the infirmity amount.
 
-**Lean:** [`Canteen.ITA.PersonalCredits.basicPersonalAmount`](../../Canteen/ITA/S118/PersonalCredits.lean#L54), [`Canteen.ITA.PersonalCredits.credit`](../../Canteen/ITA/S118/PersonalCredits.lean#L63), [`Canteen.ITA.PersonalCredits.bpa_between`](../../Canteen/ITA/S118/PersonalCredits.lean#L86), [`Canteen.ITA.PersonalCredits.full_below`](../../Canteen/ITA/S118/PersonalCredits.lean#L91)
+**Lean:** [`Canteen.ITA.PersonalCredits.basicPersonalAmount`](../../Canteen/ITA/S118/PersonalCredits.lean#L106), [`Canteen.ITA.PersonalCredits.eligibleDependant`](../../Canteen/ITA/S118/PersonalCredits.lean#L63), [`Canteen.ITA.PersonalCredits.credit`](../../Canteen/ITA/S118/PersonalCredits.lean#L122), [`Canteen.ITA.PersonalCredits.bpa_between`](../../Canteen/ITA/S118/PersonalCredits.lean#L147), [`Canteen.ITA.PersonalCredits.full_below`](../../Canteen/ITA/S118/PersonalCredits.lean#L152), [`Canteen.ITA.PersonalCredits.dependant_le`](../../Canteen/ITA/S118/PersonalCredits.lean#L160)
 
 ### R43. The charitable donation credit
 
@@ -1311,7 +1311,7 @@ Part I.2 tax of 15% of adjusted income (income before the 60(w) deduction) over 
 
 Income from sources (employment and business, dividends with the gross-up, recapture, attributed income), net taxable capital gains, less terminal and other losses; then taxable income, after the net capital loss deduction and the capital gains deduction (which the former reduces). Proven: taxable income never exceeds income, and the capital gains deduction never exceeds the net taxable capital gains.
 
-**Lean:** [`Canteen.ITA.IndividualYear.incomeFacts`](../../Canteen/ITA/S3/IndividualYear.lean#L149), [`Canteen.ITA.IndividualYear.taxableIncome`](../../Canteen/ITA/S3/IndividualYear.lean#L169), [`Canteen.ITA.IndividualYear.capitalGainsDeduction`](../../Canteen/ITA/S3/IndividualYear.lean#L159), [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L214), [`Canteen.ITA.IndividualYear.personalCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L177), [`Canteen.ITA.IndividualYear.donationCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L185), [`Canteen.ITA.IndividualYear.interestDeduction`](../../Canteen/ITA/S3/IndividualYear.lean#L122), [`Canteen.ITA.IndividualYear.medicalCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L188), [`Canteen.ITA.IndividualYear.disabilityCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L201), [`Canteen.ITA.IndividualYear.ageAndPensionCredits`](../../Canteen/ITA/S3/IndividualYear.lean#L197), [`Canteen.ITA.IndividualYear.oasRecovery`](../../Canteen/ITA/S3/IndividualYear.lean#L146), [`Canteen.ITA.IndividualYear.taxable_le_income`](../../Canteen/ITA/S3/IndividualYear.lean#L245), [`Canteen.ITA.IndividualYear.capital_gains_deduction_le`](../../Canteen/ITA/S3/IndividualYear.lean#L250)
+**Lean:** [`Canteen.ITA.IndividualYear.incomeFacts`](../../Canteen/ITA/S3/IndividualYear.lean#L151), [`Canteen.ITA.IndividualYear.taxableIncome`](../../Canteen/ITA/S3/IndividualYear.lean#L171), [`Canteen.ITA.IndividualYear.capitalGainsDeduction`](../../Canteen/ITA/S3/IndividualYear.lean#L161), [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L217), [`Canteen.ITA.IndividualYear.personalCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L180), [`Canteen.ITA.IndividualYear.donationCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L188), [`Canteen.ITA.IndividualYear.interestDeduction`](../../Canteen/ITA/S3/IndividualYear.lean#L124), [`Canteen.ITA.IndividualYear.medicalCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L191), [`Canteen.ITA.IndividualYear.disabilityCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L204), [`Canteen.ITA.IndividualYear.ageAndPensionCredits`](../../Canteen/ITA/S3/IndividualYear.lean#L200), [`Canteen.ITA.IndividualYear.oasRecovery`](../../Canteen/ITA/S3/IndividualYear.lean#L148), [`Canteen.ITA.IndividualYear.taxable_le_income`](../../Canteen/ITA/S3/IndividualYear.lean#L248), [`Canteen.ITA.IndividualYear.capital_gains_deduction_le`](../../Canteen/ITA/S3/IndividualYear.lean#L253)
 
 ### R48. The minimum tax
 

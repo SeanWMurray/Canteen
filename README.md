@@ -88,7 +88,7 @@ Canteen/
     S74/CorporateAttribution.lean   74.4(2): corporate attribution, at the prescribed rate
     S120_4/SplitIncome.lean    120.4: tax on split income, by age, at the highest rate
     S117/Rates.lean            117(2): the federal rates for individuals
-    S118/PersonalCredits.lean   118(1), (1.1): the basic personal and spouse amounts
+    S118/PersonalCredits.lean   118(1), (1.1): the basic personal, spouse and eligible dependant amounts
     S118_1/Donations.lean      118.1: the charitable donation credit
     S123/CorporateRates.lean   123 to 125: corporate rates and the small business deduction
     S129/RefundableTax.lean    123.3, 129, 186(1): refundable taxes and the dividend refund
