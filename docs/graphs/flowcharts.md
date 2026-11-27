@@ -910,6 +910,31 @@ flowchart TD
   classDef start fill:#ffffff,stroke:#212121,color:#212121
 ```
 
+## Subsection 248(1): "eligible relocation"
+
+```mermaid
+flowchart TD
+  S(["#quot;eligible relocation#quot; (248(1)) · ITA 248(1) #quot;eligible relocation#quot;"]):::start
+  C0["<b>(b)</b> The taxpayer ordinarily resided at the old<br/>residence before the move and at the new<br/>residence after<br/>[ITA 248(1) #quot;eligible relocation#quot; (b)]"]:::fact
+  C1["<b>(a), (c)</b> The new work location and both residences<br/>are in Canada<br/>[ITA 248(1) #quot;eligible relocation#quot; (a), (c)]"]:::fact
+  C2["<b>(d)</b> The old residence is at least 40 km farther<br/>from the new work location than the new<br/>residence is<br/>[ITA 248(1) #quot;eligible relocation#quot; (d)]"]:::fact
+  Y(["#quot;eligible relocation#quot; (248(1)) applies"]):::yes
+  N(["#quot;eligible relocation#quot; (248(1)) does not apply"]):::no
+  S --> C0
+  C0 -->|met| C1
+  C0 -->|not met| N
+  C1 -->|met| C2
+  C1 -->|not met| N
+  C2 -->|met| Y
+  C2 -->|not met| N
+  classDef fact fill:#eeeeee,stroke:#616161,color:#212121
+  classDef judgment fill:#ffe0b2,stroke:#ef6c00,color:#e65100
+  classDef rule fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+  classDef yes fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
+  classDef no fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+  classDef start fill:#ffffff,stroke:#212121,color:#212121
+```
+
 ## Subparagraph 40(2)(g)(iv): transfers to registered plans
 
 ```mermaid

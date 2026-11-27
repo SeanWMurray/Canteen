@@ -19,6 +19,7 @@ import Canteen.ITA.S118_01.SmallCredits
 import Canteen.ITA.S118_5.Tuition
 import Canteen.ITA.S56.Support
 import Canteen.ITA.S63.ChildCare
+import Canteen.ITA.S62.MovingExpenses
 
 /-!
 # An individual's year: income from the encoded sources, and taxable income
@@ -89,6 +90,8 @@ structure Facts where
   supporting person's income, if any, for 63(2). -/
   childCare : Option ChildCare.Facts := none
   supportingPersonIncome : Option Cents := none
+  /-- 62(1): moving expenses for an eligible relocation. -/
+  moving : Option MovingExpenses.Facts := none
   /-- Borrowings whose interest may be deductible under 20(1)(c). -/
   borrowings : List InterestDeductibility.Borrowing := []
   netCapitalLossClaims : List NetCapitalLoss.Claim := []
@@ -184,6 +187,12 @@ def employmentCredits (f : Facts) : Cents := ((employmentFacts f).map Employment
 def supportIncluded (f : Facts) : Cents := (f.supportReceived.map Support.amount).sum
 def supportDeducted (f : Facts) : Cents := (f.supportPaid.map Support.amount).sum
 
+/-- 62(1). -/
+def movingDeduction (f : Facts) : Cents := (f.moving.map MovingExpenses.deduction).getD 0
+
+/-- The Subdivision E deductions computed here, other than 63 and 60(w): 60(c), 60(e.1), 60(b), 62. -/
+def otherSubdivisionE (f : Facts) : Cents := splitOutAllowed f + enhancedCpp f + supportDeducted f + movingDeduction f
+
 /-- Split income (120.4), deducted in computing income (20(1)(ww)). -/
 def splitIncome (f : Facts) : Cents := (f.split.map SplitIncome.splitIncome).getD 0
 
@@ -191,7 +200,7 @@ def splitIncome (f : Facts) : Cents := (f.split.map SplitIncome.splitIncome).get
 def incomeFactsCore (f : Facts) : Income.Facts :=
   { incomeFromSources := (f.employmentAndBusiness + Dividends.inclusion (dividendFacts f) + recapture f + attributedIncome f +
         pensionTotal f + f.splitIn + supportIncluded f) - splitIncome f,
-    capital := f.capital, subdivisionE := f.subdivisionE + splitOutAllowed f + enhancedCpp f + supportDeducted f,
+    capital := f.capital, subdivisionE := f.subdivisionE + otherSubdivisionE f,
     sourceLosses := f.businessLosses + terminalLosses f + attributedLoss f + interestDeduction f }
 
 /-- 63: the child care facts, with the year's earned income and, where the supporting person's income is

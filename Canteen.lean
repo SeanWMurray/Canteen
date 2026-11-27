@@ -89,6 +89,7 @@ import Canteen.ITA.S118_01.SmallCredits
 import Canteen.ITA.S118_5.Tuition
 import Canteen.ITA.S56.Support
 import Canteen.ITA.S63.ChildCare
+import Canteen.ITA.S62.MovingExpenses
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.ITA.S40.ShareToAffiliate
@@ -221,3 +222,4 @@ import Canteen.Tests.SmallCredits
 import Canteen.Tests.Tuition
 import Canteen.Tests.Support
 import Canteen.Tests.ChildCare
+import Canteen.Tests.MovingExpenses

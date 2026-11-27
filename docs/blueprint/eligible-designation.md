@@ -133,7 +133,7 @@ graph TD
 
 Eligible dividends are grossed up by 38% and carry a credit of 6/11 of the gross-up; other dividends 15% and 9/13.
 
-**Lean:** [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L311)
+**Lean:** [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L320)
 
 ## Facts
 
