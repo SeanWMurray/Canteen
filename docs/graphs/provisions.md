@@ -83,7 +83,8 @@ flowchart BT
   v74["84(2) a distribution on winding-up"]:::prov
   v75["44.1 the small business investment rollover"]:::prov
   v76["46 personal-use property, the $1,000 rule"]:::prov
-  v77["50(2) bad personal-use debts"]:::prov
+  v77["110.1(1)(a) a corporation's charitable gifts"]:::prov
+  v78["50(2) bad personal-use debts"]:::prov
   v0 --> v1
   v0 --> v2
   v0 --> v3

@@ -70,6 +70,7 @@ import Canteen.ITA.S15.ShareholderBenefit
 import Canteen.ITA.S44_1.SmallBusinessRollover
 import Canteen.ITA.S46.PersonalUse
 import Canteen.ITA.S7.StockOptions
+import Canteen.ITA.S110_1.CorporateDonations
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -709,6 +710,12 @@ def blueprint : Blueprint where
             "the benefit is added to the share's cost. Proven: never more than half deducted, and the share costs its value."
           lean := [``StockOptions.benefit, ``StockOptions.inclusionYear, ``StockOptions.deduction, ``StockOptions.adjustedCostBase,
             ``StockOptions.deduction_le, ``StockOptions.cost_is_value] },
+        { id := "R69", kind := .law, title := "A corporation's charitable gifts", citation := "ITA 110.1(1)(a)"
+          statement := "A corporation deducts its gifts of the year and the five before, up to the lesser of its income and " ++
+            "75% of it plus 25% of the gains on gifts (and recapture on gifted property); the rest carries forward. Proven: " ++
+            "never more than income, no more than 75% of it without gains on gifts, and deducted plus carried is what was available."
+          lean := [``CorporateDonations.limit, ``CorporateDonations.deduction, ``CorporateDonations.carriedForward,
+            ``CorporateDonations.deduction_le_income, ``CorporateDonations.three_quarters, ``CorporateDonations.deducted_plus_carried] },
         { id := "R35", kind := .law, title := "An individual's year, to taxable income and tax", citation := "ITA 2(2); 3; 111(1)(b); 110.6; 117(2)"
           statement := "Income from sources (employment and business, dividends with the gross-up, recapture, attributed " ++
             "income), net taxable capital gains, less terminal and other losses; then taxable income, after the net capital " ++

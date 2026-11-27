@@ -135,6 +135,7 @@ Canteen/
     S45/ChangeInUse.lean       45(1) to (4): change in use, and the 45(2) and (3) elections
     S85/TransferToCorporation.lean   85(1), (2.1): the section 85 rollover, and paid-up capital
     S84_1/SurplusStripping.lean   84.1: shares sold to a non-arm's length corporation; the deemed dividend
+    S110_1/CorporateDonations.lean   110.1(1)(a): a corporation's charitable gifts
     S110_6/CapitalGainsDeduction.lean   110.6: qualified small business corporation shares, the gains limits, the deduction
     S251_2/LossRestrictionEvent.lean   251.2(2)(a), 256(7)(a): acquisitions of control, and when they are not
     S50/BadDebtOrShare.lean    50(1): bad debts, and shares of bankrupt or insolvent corporations

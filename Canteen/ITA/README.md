@@ -66,6 +66,7 @@ The verbatim statute text for each is in `statute/`. Review notes are in `docs/r
 - `S56/Support.lean`: paragraphs 56(1)(b) and 60(b), and the 56.1(4) definitions
 - `S44_1/SmallBusinessRollover.lean`: six 44.1(1) definitions and subsection 44.1(2)
 - `S46/PersonalUse.lean`: subsections 46(1), (2), (3) and (5)
+- `S110_1/CorporateDonations.lean`: paragraph 110.1(1)(a)
 - `S112/StopLoss.lean`: subsections 112(3), (3.01) and (6.1)
 - `S7/StockOptions.lean`: paragraph 7(1)(a), subsection 7(1.1), and paragraphs 110(1)(d) and (d.1)
 - `S6/StandbyCharge.lean`: paragraph 6(1)(e) and subsection 6(2)
