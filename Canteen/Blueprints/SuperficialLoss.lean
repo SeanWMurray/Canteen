@@ -79,6 +79,7 @@ import Canteen.ITA.S20.FinancingExpenses
 import Canteen.ITA.S18.WorkSpace
 import Canteen.ITA.S20.DoubtfulDebts
 import Canteen.ITA.S20.AdvancePayments
+import Canteen.ITA.S20.InstalmentSales
 import Canteen.ITA.S3.CorporateYear
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
@@ -796,6 +797,13 @@ def blueprint : Blueprint where
             "reserve never exceeds the advances, and over the two years an advance is income exactly once."
           lean := [``AdvancePayments.included, ``AdvancePayments.reserve, ``AdvancePayments.net, ``AdvancePayments.Advance.reserve_le,
             ``AdvancePayments.reserve_le, ``AdvancePayments.two_years] },
+        { id := "R79", kind := .law, title := "The reserve for unpaid amounts on property sold", citation := "ITA 20(1)(n); 20(8); 12(1)(e)(ii)"
+          statement := "When property sold in the course of a business is paid for over two years or more, a reasonable " ++
+            "reserve for the profit in the unpaid part is deducted, and added back the next year; never for a sale more " ++
+            "than 36 months before the year end, to a related corporation or partnership, or by an exempt or non-resident " ++
+            "taxpayer. Proven: never more than the profit, and none after 36 months."
+          lean := [``InstalmentSales.Sale.longTerm, ``InstalmentSales.Sale.tooOld, ``InstalmentSales.Sale.reserve, ``InstalmentSales.reserve,
+            ``InstalmentSales.net, ``InstalmentSales.Sale.reserve_le_profit, ``InstalmentSales.Sale.none_after_three_years] },
         { id := "R70", kind := .law, title := "A corporation's year, to taxable income and tax", citation := "ITA 2(2); 3; 110.1; 111(1), (8); 112(1); 125(7); 129(4)"
           statement := "A corporation's income from active business, personal services business, property and dividends " ++
             "received, with its net taxable capital gains (a 55(2) dividend as a gain); taxable income after gifts, the " ++

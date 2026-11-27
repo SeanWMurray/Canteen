@@ -1,0 +1,9 @@
+Income Tax Act, R.S.C. 1985, c. 1 (5th Supp.), paragraph 20(1)(n) and subsection 20(8)
+
+Source: Justice Canada consolidated Acts (XML), https://github.com/justicecanada/laws-lois-xml, file eng/acts/I-3.3.xml
+Current to: 2026-10-29. Last amended: 2026-06-18.
+Extracted verbatim; whitespace normalized; each provision on one line.
+
+20(1)(n) if an amount included in computing the taxpayer’s income from the business for the year or for a preceding taxation year in respect of property sold in the course of the business is payable to the taxpayer after the end of the year and, except where the property is real or immovable property, all or part of the amount was, at the time of the sale, not due until at least two years after that time, a reasonable amount as a reserve in respect of any part of the amount that can reasonably be regarded as a portion of the profit from the sale;
+
+20(8) Paragraph 20(1)(n) does not apply to allow a deduction in computing the income of a taxpayer for a taxation year from a business in respect of a property sold in the course of the business if(a)the taxpayer, at the end of the year or at any time in the immediately following taxation year,(i)was exempt from tax under any provision of this Part, or(ii)was not resident in Canada and did not carry on the business in Canada;(b)the sale occurred more than 36 months before the end of the year;(c)the purchaser of the property sold was a corporation that, immediately after the sale,(i)was controlled, directly or indirectly, in any manner whatever, by the taxpayer,(ii)was controlled, directly or indirectly, in any manner whatever, by a person or group of persons that controlled the taxpayer, directly or indirectly, in any manner whatever, or(iii)controlled the taxpayer, directly or indirectly, in any manner whatever; or(d)the purchaser of the property sold was a partnership in which the taxpayer was, immediately after the sale, a majority-interest partner.

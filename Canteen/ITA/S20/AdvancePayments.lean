@@ -17,7 +17,7 @@ for periods, and (iv) container deposits to be repaid (other than for bottles), 
 **12(1)(e)(i)** Last year's 20(1)(m) reserve is included this year.
 
 The reasonable reserve for each advance is given and capped at the advance. 20(6) (reserves for
-transportation tickets and the like), 20(1)(m.1) and (n), 20(7) and 20(8) are not encoded.
+transportation tickets and the like), 20(1)(m.1) and 20(7) are not encoded; 20(1)(n) is in `InstalmentSales`.
 -/
 
 namespace Canteen.ITA.AdvancePayments

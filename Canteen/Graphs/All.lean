@@ -64,6 +64,7 @@ import Canteen.ITA.S20.FinancingExpenses
 import Canteen.ITA.S18.WorkSpace
 import Canteen.ITA.S20.DoubtfulDebts
 import Canteen.ITA.S20.AdvancePayments
+import Canteen.ITA.S20.InstalmentSales
 import Canteen.ITA.S3.CorporateYear
 import Canteen.Transactions.DebtSwap
 import Canteen.ITA.S87.Amalgamation
@@ -243,6 +244,7 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S18.WorkSpace, "18(12), 8(13) work space in the home"),
    (`Canteen.ITA.S20.DoubtfulDebts, "12(1)(d), (i), 20(1)(l), (p) doubtful and bad debts"),
    (`Canteen.ITA.S20.AdvancePayments, "12(1)(a), (e), 20(1)(m) amounts received in advance"),
+   (`Canteen.ITA.S20.InstalmentSales, "20(1)(n), 20(8) the reserve for unpaid amounts on property sold"),
    (`Canteen.ITA.S3.CorporateYear, "2(2), 3, 129(4) a corporation's year, to taxable income and tax")]
 
 /-! ## The dashboard -/
@@ -316,7 +318,7 @@ def actMindmap : String := Id.run do
     (2, "s. 13"), (3, "13(21): undepreciated capital cost"), (3, "13(1): recapture"),
     (2, "s. 15"), (3, "15(1): shareholder benefits"), (3, "15(2), (2.6): shareholder loans"),
     (2, "ss. 8, 18"), (3, "18(12), 8(13): work space in the home"),
-    (2, "s. 20"), (3, "20(16): terminal loss"), (3, "20(1)(j): loan repaid"), (3, "20(1)(c): interest"), (3, "20(1)(e), (e.1): financing expenses"), (3, "20(1)(l), (p), 12(1)(d), (i): doubtful and bad debts"), (3, "12(1)(a), 20(1)(m): amounts received in advance"), (3, "20(3): refinancing"),
+    (2, "s. 20"), (3, "20(16): terminal loss"), (3, "20(1)(j): loan repaid"), (3, "20(1)(c): interest"), (3, "20(1)(e), (e.1): financing expenses"), (3, "20(1)(l), (p), 12(1)(d), (i): doubtful and bad debts"), (3, "12(1)(a), 20(1)(m): amounts received in advance"), (3, "20(1)(n), 20(8): unpaid amounts on property sold"), (3, "20(3): refinancing"),
     (2, "ss. 38 to 41"), (3, "38: inclusion rates"), (3, "39(1): capital gains and losses"), (3, "39(4): the Canadian securities election"),
     (3, "40(1): gains and losses, reserves"), (3, "41: listed personal property"),
     (2, "s. 40"), (3, "40(2)(b): the principal residence exemption"), (3, "40(2)(g): losses that are nil"),
