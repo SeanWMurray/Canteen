@@ -81,6 +81,7 @@ import Canteen.ITA.S20.DoubtfulDebts
 import Canteen.ITA.S20.AdvancePayments
 import Canteen.ITA.S20.InstalmentSales
 import Canteen.ITA.S18.PrepaidExpenses
+import Canteen.ITA.S18.ThinCapitalization
 import Canteen.ITA.S3.CorporateYear
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
@@ -811,6 +812,13 @@ def blueprint : Blueprint where
             "trust excepted). Proven: no year's share exceeds the amount, and a period within the year is deducted in full."
           lean := [``PrepaidExpenses.Outlay.share, ``PrepaidExpenses.Outlay.upTo, ``PrepaidExpenses.Outlay.deduction,
             ``PrepaidExpenses.deduction, ``PrepaidExpenses.Outlay.share_le, ``PrepaidExpenses.Outlay.within] },
+        { id := "R81", kind := .law, title := "Thin capitalization", citation := "ITA 18(4); 18(5) \"equity amount\""
+          statement := "A Canadian corporation cannot deduct the part of its interest on debts to specified non-residents " ++
+            "that corresponds to the average debt over 1.5 times its equity (retained earnings at the start of the year, " ++
+            "and the average contributed surplus and paid-up capital from specified non-resident shareholders). Proven: " ++
+            "never more than the interest, and nothing within the 1.5 to 1 ratio."
+          lean := [``ThinCapitalization.averageDebt, ``ThinCapitalization.equityAmount, ``ThinCapitalization.excessDebt,
+            ``ThinCapitalization.denied, ``ThinCapitalization.denied_le, ``ThinCapitalization.within_ratio] },
         { id := "R70", kind := .law, title := "A corporation's year, to taxable income and tax", citation := "ITA 2(2); 3; 110.1; 111(1), (8); 112(1); 125(7); 129(4)"
           statement := "A corporation's income from active business, personal services business, property and dividends " ++
             "received, with its net taxable capital gains (a 55(2) dividend as a gain); taxable income after gifts, the " ++
