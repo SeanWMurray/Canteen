@@ -85,6 +85,7 @@ import Canteen.ITA.S18.ThinCapitalization
 import Canteen.ITA.S212.Withholding
 import Canteen.ITA.S216.RentalElection
 import Canteen.ITA.S116.Purchaser
+import Canteen.ITA.S248.TaxableCanadianProperty
 import Canteen.ITA.S3.CorporateYear
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
@@ -848,6 +849,15 @@ def blueprint : Blueprint where
             "116(4) certificate was issued. Proven: never more than half the cost, and nothing when the certificate covers it."
           lean := [``Purchaser.Purchase.rate, ``Purchaser.Purchase.excepted, ``Purchaser.Purchase.liability,
             ``Purchaser.Purchase.liability_le, ``Purchaser.Purchase.full_certificate] },
+        { id := "R85", kind := .law, title := "Taxable Canadian property", citation := "ITA 248(1) \"taxable Canadian property\" (a) to (f)"
+          statement := "Canadian real property and Canadian business property are taxable Canadian property; so is an " ++
+            "unlisted share or a partnership or trust interest that drew more than half its value from Canadian real, " ++
+            "resource or timber property at any time in the last 60 months, and a listed share if at the same time the " ++
+            "taxpayer's non-arm's length group also held 25% of the class; and options on any of them. Proven: an unlisted " ++
+            "share at 50% or less throughout is not, a listed share held under 25% throughout is not, and an option follows " ++
+            "what it is over."
+          lean := [``TaxableCanadianProperty.Property.isTCP, ``TaxableCanadianProperty.unlisted_below_half,
+            ``TaxableCanadianProperty.listed_small_holding, ``TaxableCanadianProperty.option_iff] },
         { id := "R70", kind := .law, title := "A corporation's year, to taxable income and tax", citation := "ITA 2(2); 3; 110.1; 111(1), (8); 112(1); 125(7); 129(4)"
           statement := "A corporation's income from active business, personal services business, property and dividends " ++
             "received, with its net taxable capital gains (a 55(2) dividend as a gain); taxable income after gifts, the " ++

@@ -112,6 +112,7 @@ import Canteen.ITA.S18.ThinCapitalization
 import Canteen.ITA.S212.Withholding
 import Canteen.ITA.S216.RentalElection
 import Canteen.ITA.S116.Purchaser
+import Canteen.ITA.S248.TaxableCanadianProperty
 import Canteen.ITA.S3.CorporateYear
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
@@ -269,3 +270,4 @@ import Canteen.Tests.ThinCapitalization
 import Canteen.Tests.Withholding
 import Canteen.Tests.RentalElection
 import Canteen.Tests.Purchaser
+import Canteen.Tests.TaxableCanadianProperty

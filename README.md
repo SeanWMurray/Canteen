@@ -150,6 +150,7 @@ Canteen/
     S212/Withholding.lean      212(1)(a), (b), (2): Part XIII tax on management fees, interest and dividends to non-residents
     S216/RentalElection.lean   212(1)(d), 216(1), 120(1), 118.94: a non-resident's rent, Part XIII or the 216 election
     S116/Purchaser.lean        116(5), (5.01), (5.3): the purchaser's liability on buying from a non-resident
+    S248/TaxableCanadianProperty.lean   248(1) "taxable Canadian property", with the 60-month look-back
     S3/CorporateYear.lean      2(2), 3, 129(4): a corporation's year, to taxable income, investment income and tax
     S110_6/CapitalGainsDeduction.lean   110.6: qualified small business corporation shares, the gains limits, the deduction
     S251_2/LossRestrictionEvent.lean   251.2(2)(a), 256(7)(a): acquisitions of control, and when they are not

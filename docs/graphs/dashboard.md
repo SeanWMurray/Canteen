@@ -9,9 +9,9 @@ An overview of the project, drawn from the Lean.
 Every statement in every blueprint, by the status Lean computes for it.
 
 ```mermaid
-pie showData title All 364 statements in the memos and blueprints, by status
+pie showData title All 365 statements in the memos and blueprints, by status
     "encoded" : 62
-    "proven" : 245
+    "proven" : 246
     "not formalized" : 3
     "fact" : 44
     "judgment call" : 10
@@ -306,17 +306,19 @@ mindmap
       n226["`186(2): control with non-arm's length persons`"]
     n227["`s. 248`"]
       n228["`248(1): majority-interest partner`"]
-    n229["`s. 251`"]
-      n230["`251(1): arm's length`"]
-      n231["`251(2), (3): related persons`"]
-      n232["`251(3.1), (3.2): amalgamations`"]
-      n233["`251(6): blood, marriage, adoption`"]
-    n234["`s. 251.1`"]
-      n235["`251.1(1)(a) to (h): affiliated persons`"]
-      n236["`251.1(2): amalgamations`"]
-      n237["`251.1(3), (4): definitions and rules`"]
-    n238["`s. 251.2`"]
-      n239["`251.2(2)(a): loss restriction event`"]
-    n240["`s. 256`"]
-      n241["`256(7)(a): control not acquired`"]
+    n229["`s. 248`"]
+      n230["`taxable Canadian property: the 60-month look-back`"]
+    n231["`s. 251`"]
+      n232["`251(1): arm's length`"]
+      n233["`251(2), (3): related persons`"]
+      n234["`251(3.1), (3.2): amalgamations`"]
+      n235["`251(6): blood, marriage, adoption`"]
+    n236["`s. 251.1`"]
+      n237["`251.1(1)(a) to (h): affiliated persons`"]
+      n238["`251.1(2): amalgamations`"]
+      n239["`251.1(3), (4): definitions and rules`"]
+    n240["`s. 251.2`"]
+      n241["`251.2(2)(a): loss restriction event`"]
+    n242["`s. 256`"]
+      n243["`256(7)(a): control not acquired`"]
 ```

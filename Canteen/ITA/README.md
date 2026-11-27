@@ -81,6 +81,7 @@ The verbatim statute text for each is in `statute/`. Review notes are in `docs/r
 - `S212/Withholding.lean`: the opening words of 212(1), paragraphs 212(1)(a) and (b), subsections 212(2) and (4), and two 212(3) definitions
 - `S216/RentalElection.lean`: subsections 216(1) and 120(1), paragraph 212(1)(d), and section 118.94
 - `S116/Purchaser.lean`: subsections 116(5), (5.01) and (5.3)
+- `S248/TaxableCanadianProperty.lean`: the 248(1) definition "taxable Canadian property", paragraphs (a) to (f)
 - `S3/CorporateYear.lean`: a corporation's year, from its sources to taxable income and tax (2(2), 3), and the 129(4) definitions "aggregate investment income", "eligible portion" and "income or loss"
 - `S112/StopLoss.lean`: subsections 112(3), (3.01) and (6.1)
 - `S7/StockOptions.lean`: paragraph 7(1)(a), subsection 7(1.1), and paragraphs 110(1)(d) and (d.1)
