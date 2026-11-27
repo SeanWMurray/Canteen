@@ -73,6 +73,7 @@ The verbatim statute text for each is in `statute/`. Review notes are in `docs/r
 - `S67_1/MealsEntertainment.lean`: section 67.1
 - `S20/FinancingExpenses.lean`: paragraphs 20(1)(e) and (e.1)
 - `S18/WorkSpace.lean`: subsections 18(12) and 8(13)
+- `S20/DoubtfulDebts.lean`: subparagraphs 20(1)(l)(i) and (p)(i), and paragraphs 12(1)(d) and (i)
 - `S3/CorporateYear.lean`: a corporation's year, from its sources to taxable income and tax (2(2), 3), and the 129(4) definitions "aggregate investment income", "eligible portion" and "income or loss"
 - `S112/StopLoss.lean`: subsections 112(3), (3.01) and (6.1)
 - `S7/StockOptions.lean`: paragraph 7(1)(a), subsection 7(1.1), and paragraphs 110(1)(d) and (d.1)

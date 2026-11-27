@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 116 statements:** 97 proven, 16 encoded, 3 not formalized.
+**Status of the 117 statements:** 98 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -118,14 +118,15 @@ graph TD
   n105["R74 · Meals and entertainment"]:::proven
   n106["R75 · Financing expenses"]:::proven
   n107["R76 · Work space in the home"]:::proven
-  n108["R70 · A corporation's year, to taxable income and tax"]:::proven
-  n109["R35 · An individual's year, to taxable income and tax"]:::proven
-  n110["R48 · The minimum tax"]:::proven
-  n111["R11 · The principal residence exemption"]:::proven
-  n112["R2 · Cost of the substituted property"]:::proven
-  n113["N1 · Inputs decided by other provisions"]:::notFormalized
-  n114["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n115["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n108["R77 · Doubtful and bad debts"]:::proven
+  n109["R70 · A corporation's year, to taxable income and tax"]:::proven
+  n110["R35 · An individual's year, to taxable income and tax"]:::proven
+  n111["R48 · The minimum tax"]:::proven
+  n112["R11 · The principal residence exemption"]:::proven
+  n113["R2 · Cost of the substituted property"]:::proven
+  n114["N1 · Inputs decided by other provisions"]:::notFormalized
+  n115["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n116["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -246,57 +247,57 @@ graph TD
   n77 --> n78
   n77 --> n80
   n39 --> n104
-  n44 --> n108
-  n45 --> n108
-  n57 --> n108
-  n60 --> n108
-  n77 --> n108
-  n78 --> n108
-  n80 --> n108
-  n101 --> n108
-  n102 --> n108
-  n103 --> n108
   n44 --> n109
   n45 --> n109
-  n53 --> n109
-  n55 --> n109
-  n56 --> n109
-  n58 --> n109
-  n73 --> n109
-  n74 --> n109
-  n75 --> n109
-  n76 --> n109
-  n81 --> n109
-  n82 --> n109
-  n83 --> n109
-  n84 --> n109
-  n85 --> n109
-  n87 --> n109
-  n88 --> n109
-  n89 --> n109
-  n90 --> n109
-  n91 --> n109
-  n92 --> n109
-  n93 --> n109
-  n94 --> n109
-  n97 --> n109
-  n100 --> n109
-  n109 --> n110
-  n44 --> n111
-  n50 --> n111
-  n11 --> n112
-  n1 --> n113
-  n5 --> n113
-  n6 --> n113
-  n8 --> n113
-  n37 --> n113
-  n112 --> n113
-  n38 --> n113
-  n30 --> n114
-  n32 --> n115
-  n34 --> n115
-  n39 --> n115
-  n42 --> n115
+  n57 --> n109
+  n60 --> n109
+  n77 --> n109
+  n78 --> n109
+  n80 --> n109
+  n101 --> n109
+  n102 --> n109
+  n103 --> n109
+  n44 --> n110
+  n45 --> n110
+  n53 --> n110
+  n55 --> n110
+  n56 --> n110
+  n58 --> n110
+  n73 --> n110
+  n74 --> n110
+  n75 --> n110
+  n76 --> n110
+  n81 --> n110
+  n82 --> n110
+  n83 --> n110
+  n84 --> n110
+  n85 --> n110
+  n87 --> n110
+  n88 --> n110
+  n89 --> n110
+  n90 --> n110
+  n91 --> n110
+  n92 --> n110
+  n93 --> n110
+  n94 --> n110
+  n97 --> n110
+  n100 --> n110
+  n110 --> n111
+  n44 --> n112
+  n50 --> n112
+  n11 --> n113
+  n1 --> n114
+  n5 --> n114
+  n6 --> n114
+  n8 --> n114
+  n37 --> n114
+  n113 --> n114
+  n38 --> n114
+  n30 --> n115
+  n32 --> n116
+  n34 --> n116
+  n39 --> n116
+  n42 --> n116
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -421,14 +422,15 @@ graph TD
   n105["R74"]:::proven
   n106["R75"]:::proven
   n107["R76"]:::proven
-  n108["R70"]:::proven
-  n109["R35"]:::proven
-  n110["R48"]:::proven
-  n111["R11"]:::proven
-  n112["R2"]:::proven
-  n113["N1"]:::notFormalized
-  n114["N2"]:::notFormalized
-  n115["N4"]:::notFormalized
+  n108["R77"]:::proven
+  n109["R70"]:::proven
+  n110["R35"]:::proven
+  n111["R48"]:::proven
+  n112["R11"]:::proven
+  n113["R2"]:::proven
+  n114["N1"]:::notFormalized
+  n115["N2"]:::notFormalized
+  n116["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -629,66 +631,66 @@ graph TD
   n77 --> n78
   n77 --> n80
   n39 -.-> n104
-  n44 --> n108
-  n57 --> n108
-  n45 --> n108
-  n101 --> n108
-  n102 --> n108
-  n103 --> n108
-  n78 --> n108
-  n77 --> n108
-  n80 --> n108
-  n60 -.-> n108
-  n93 --> n109
-  n55 --> n109
-  n94 --> n109
-  n81 --> n109
-  n91 --> n109
-  n84 --> n109
-  n58 --> n109
-  n97 --> n109
   n44 --> n109
-  n87 --> n109
-  n73 --> n109
-  n56 --> n109
-  n100 --> n109
-  n92 --> n109
-  n85 --> n109
+  n57 --> n109
   n45 --> n109
-  n53 --> n109
-  n89 --> n109
-  n90 --> n109
-  n82 --> n109
-  n74 --> n109
-  n83 --> n109
-  n76 --> n109
-  n75 --> n109
-  n88 -.-> n109
+  n101 --> n109
+  n102 --> n109
+  n103 --> n109
+  n78 --> n109
+  n77 --> n109
+  n80 --> n109
+  n60 -.-> n109
+  n93 --> n110
   n55 --> n110
-  n109 --> n110
+  n94 --> n110
   n81 --> n110
   n91 --> n110
   n84 --> n110
   n58 --> n110
-  n45 --> n110
+  n97 --> n110
+  n44 --> n110
   n87 --> n110
   n73 --> n110
+  n56 --> n110
   n100 --> n110
-  n44 -.-> n111
-  n50 -.-> n111
-  n11 -.-> n112
-  n1 -.-> n113
-  n5 -.-> n113
-  n6 -.-> n113
-  n8 -.-> n113
-  n37 -.-> n113
-  n112 -.-> n113
-  n38 -.-> n113
-  n30 -.-> n114
-  n32 -.-> n115
-  n34 -.-> n115
-  n39 -.-> n115
-  n42 -.-> n115
+  n92 --> n110
+  n85 --> n110
+  n45 --> n110
+  n53 --> n110
+  n89 --> n110
+  n90 --> n110
+  n82 --> n110
+  n74 --> n110
+  n83 --> n110
+  n76 --> n110
+  n75 --> n110
+  n88 -.-> n110
+  n55 --> n111
+  n110 --> n111
+  n81 --> n111
+  n91 --> n111
+  n84 --> n111
+  n58 --> n111
+  n45 --> n111
+  n87 --> n111
+  n73 --> n111
+  n100 --> n111
+  n44 -.-> n112
+  n50 -.-> n112
+  n11 -.-> n113
+  n1 -.-> n114
+  n5 -.-> n114
+  n6 -.-> n114
+  n8 -.-> n114
+  n37 -.-> n114
+  n113 -.-> n114
+  n38 -.-> n114
+  n30 -.-> n115
+  n32 -.-> n116
+  n34 -.-> n116
+  n39 -.-> n116
+  n42 -.-> n116
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -1571,6 +1573,14 @@ The costs of issuing shares or of borrowing for a business or property are deduc
 A home work space is deductible only if it is the principal place of business (or where an employee principally works), or used exclusively and regularly for meeting clients; then at most the income from the business or employment, the rest carried forward. Proven: it never creates a loss, nothing is lost while the space qualifies, and an unqualified space gives nothing.
 
 **Lean:** [`Canteen.ITA.WorkSpace.eligible`](../../Canteen/ITA/S18/WorkSpace.lean#L48), [`Canteen.ITA.WorkSpace.deduction`](../../Canteen/ITA/S18/WorkSpace.lean#L52), [`Canteen.ITA.WorkSpace.carriedForward`](../../Canteen/ITA/S18/WorkSpace.lean#L54), [`Canteen.ITA.WorkSpace.deduction_le_income`](../../Canteen/ITA/S18/WorkSpace.lean#L77), [`Canteen.ITA.WorkSpace.nothing_lost`](../../Canteen/ITA/S18/WorkSpace.lean#L83), [`Canteen.ITA.WorkSpace.not_eligible`](../../Canteen/ITA/S18/WorkSpace.lean#L88)
+
+### R77. Doubtful and bad debts
+
+**Status:** proven · **Citation:** ITA 12(1)(d), (i); 20(1)(l)(i), (p)(i)
+
+A business deducts a reasonable reserve for doubtful debts it has included in income, and adds it back the next year; debts established to be bad are deducted, and amounts later recovered on them included. Proven: a reserve never exceeds the debt, no debt is both reserved and written off, a debt never included in income gives neither, and the reserve reverses the next year.
+
+**Lean:** [`Canteen.ITA.DoubtfulDebts.reserve`](../../Canteen/ITA/S20/DoubtfulDebts.lean#L52), [`Canteen.ITA.DoubtfulDebts.badDebts`](../../Canteen/ITA/S20/DoubtfulDebts.lean#L53), [`Canteen.ITA.DoubtfulDebts.inclusions`](../../Canteen/ITA/S20/DoubtfulDebts.lean#L55), [`Canteen.ITA.DoubtfulDebts.net`](../../Canteen/ITA/S20/DoubtfulDebts.lean#L57), [`Canteen.ITA.DoubtfulDebts.Receivable.reserve_le`](../../Canteen/ITA/S20/DoubtfulDebts.lean#L77), [`Canteen.ITA.DoubtfulDebts.Receivable.not_both`](../../Canteen/ITA/S20/DoubtfulDebts.lean#L82), [`Canteen.ITA.DoubtfulDebts.Receivable.not_included`](../../Canteen/ITA/S20/DoubtfulDebts.lean#L87), [`Canteen.ITA.DoubtfulDebts.reverses`](../../Canteen/ITA/S20/DoubtfulDebts.lean#L91)
 
 ### R70. A corporation's year, to taxable income and tax
 

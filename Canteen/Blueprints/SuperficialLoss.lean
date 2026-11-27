@@ -77,6 +77,7 @@ import Canteen.ITA.S256.Associated
 import Canteen.ITA.S67_1.MealsEntertainment
 import Canteen.ITA.S20.FinancingExpenses
 import Canteen.ITA.S18.WorkSpace
+import Canteen.ITA.S20.DoubtfulDebts
 import Canteen.ITA.S3.CorporateYear
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
@@ -780,6 +781,14 @@ def blueprint : Blueprint where
             "space qualifies, and an unqualified space gives nothing."
           lean := [``WorkSpace.eligible, ``WorkSpace.deduction, ``WorkSpace.carriedForward, ``WorkSpace.deduction_le_income,
             ``WorkSpace.nothing_lost, ``WorkSpace.not_eligible] },
+        { id := "R77", kind := .law, title := "Doubtful and bad debts", citation := "ITA 12(1)(d), (i); 20(1)(l)(i), (p)(i)"
+          statement := "A business deducts a reasonable reserve for doubtful debts it has included in income, and adds it " ++
+            "back the next year; debts established to be bad are deducted, and amounts later recovered on them included. " ++
+            "Proven: a reserve never exceeds the debt, no debt is both reserved and written off, a debt never included in " ++
+            "income gives neither, and the reserve reverses the next year."
+          lean := [``DoubtfulDebts.reserve, ``DoubtfulDebts.badDebts, ``DoubtfulDebts.inclusions, ``DoubtfulDebts.net,
+            ``DoubtfulDebts.Receivable.reserve_le, ``DoubtfulDebts.Receivable.not_both, ``DoubtfulDebts.Receivable.not_included,
+            ``DoubtfulDebts.reverses] },
         { id := "R70", kind := .law, title := "A corporation's year, to taxable income and tax", citation := "ITA 2(2); 3; 110.1; 111(1), (8); 112(1); 125(7); 129(4)"
           statement := "A corporation's income from active business, personal services business, property and dividends " ++
             "received, with its net taxable capital gains (a 55(2) dividend as a gain); taxable income after gifts, the " ++
