@@ -50,4 +50,21 @@ example : IndividualYear.donationCredit bigGift = 6708344 ∧ IndividualYear.fed
 example : paragraph3b ⟨[{ description := "gain", proceeds := 1000000, adjustedCostBase := 0 },
     { description := "loss", proceeds := 0, adjustedCostBase := 400000 }], 0, {}⟩ = 2 * 600000 := by decide
 
+/-! ## Recovering it (120.2) -/
+
+def later (salary : Cents) (year : Nat := 2026) : IndividualYear.Facts :=
+  { taxationYear := year, employmentAndBusiness := salary, personalAmounts := some {} }
+def prior : List Carryforward := [⟨2025, 3954833⟩]
+
+-- The crystallization year's $39,548.33 is additional tax.
+example : additional crystallized = 3954833 := by decide
+-- With $250,000 of salary in 2026, regular tax exceeds the minimum amount by $41,469.31: all of it is recovered.
+example : recovery (later 25000000) prior = 3954833 ∧ taxAfterRecovery (later 25000000) prior = 1583577 := by decide
+-- With $200,000, only $37,094.11: tax payable falls to the minimum amount, $3,539.58.
+example : recovery (later 20000000) prior = 3709411 ∧ taxAfterRecovery (later 20000000) prior = 353958 := by decide
+-- Seven years later it is still available; eight years later it is not.
+example : recovery (later 25000000 2032) prior = 3954833 ∧ recovery (later 25000000 2033) prior = 0 := by decide
+-- Not in the same year, or from a later year.
+example : available (later 25000000 2025) prior = 0 ∧ available (later 25000000 2024) prior = 0 := by decide
+
 end Canteen.Tests.MinimumTax

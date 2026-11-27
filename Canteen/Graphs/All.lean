@@ -182,7 +182,7 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S129.RefundableTax, "123.3, 129, 186 refundable taxes"),
    (`Canteen.ITA.S15.ShareholderLoans, "15(2), 80.4 shareholder loans"),
    (`Canteen.ITA.S89.GeneralRateIncomePool, "89(1), 185.1 the general rate income pool"),
-   (`Canteen.ITA.S127_5.MinimumTax, "127.5 to 127.531 the minimum tax")]
+   (`Canteen.ITA.S127_5.MinimumTax, "127.5 to 127.531, 120.2 the minimum tax")]
 
 /-! ## The dashboard -/
 
@@ -292,7 +292,7 @@ def actMindmap : String := Id.run do
     (2, "s. 118.1"), (3, "118.1(1): total gifts"), (3, "118.1(3): the credit"),
     (2, "s. 120.4"), (3, "120.4(1): split income, excluded amounts"), (3, "120.4(2), (3): the tax"),
     (2, "s. 121"), (3, "121: the dividend tax credit"),
-    (2, "ss. 127.5 to 127.531"), (3, "127.51: the minimum amount"), (3, "127.52(1): adjusted taxable income"), (3, "127.531: the basic minimum tax credit"),
+    (2, "ss. 127.5 to 127.531"), (3, "127.51: the minimum amount"), (3, "127.52(1): adjusted taxable income"), (3, "127.531: the basic minimum tax credit"), (3, "120.2: recovering minimum tax"),
     (2, "ss. 123 to 125"), (3, "123(1), 124(1): 38%, the abatement"), (3, "123.4(2): general rate reduction"), (3, "125(1): small business deduction"),
     (2, "ss. 123.3, 129"), (3, "123.3: refundable tax on investment income"), (3, "129(1), (4): the dividend refund"),
     (2, "s. 185.1"), (3, "185.1(1): Part III.1 tax on excessive designations"), (3, "185.1(2), (3): the election"),

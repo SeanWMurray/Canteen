@@ -62,7 +62,7 @@ flowchart BT
   v53["123.3, 129, 186 refundable taxes"]:::prov
   v54["15(2), 80.4 shareholder loans"]:::prov
   v55["89(1), 185.1 the general rate income pool"]:::prov
-  v56["127.5 to 127.531 the minimum tax"]:::prov
+  v56["127.5 to 127.531, 120.2 the minimum tax"]:::prov
   v57["50(2) bad personal-use debts"]:::prov
   v0 --> v1
   v0 --> v2

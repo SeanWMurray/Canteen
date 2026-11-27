@@ -550,13 +550,15 @@ def blueprint : Blueprint where
             ``IndividualYear.federalTax, ``IndividualYear.personalCredit, ``IndividualYear.donationCredit,
             ``IndividualYear.taxable_le_income, ``IndividualYear.capital_gains_deduction_le],
           uses := ["R8", "R9", "R19", "R21", "R22", "R24", "R40", "R41", "R42", "R43"] },
-        { id := "R48", kind := .law, title := "The minimum tax", citation := "ITA 127.5; 127.51; 127.52(1); 127.531"
+        { id := "R48", kind := .law, title := "The minimum tax", citation := "ITA 127.5; 127.51; 127.52(1); 127.531; 120.2"
           statement := "An individual pays at least 20.5% of adjusted taxable income over the 117(2)(d) threshold, less half " ++
             "the personal credits and 4/5 of the donation credit; adjusted taxable income counts capital gains in full (3/10 " ++
             "on gifts of listed securities), drops the dividend gross-up and allows 7/5 of the capital gains deduction. " ++
-            "Proven: it never lowers tax, and does not apply within the exemption."
+            "Minimum tax paid is recovered over the next seven years (120.2). Proven: it never lowers tax, does not apply " ++
+            "within the exemption, and recovery never takes tax below the minimum amount."
           lean := [``MinimumTax.adjustedTaxableIncome, ``MinimumTax.minimumAmount, ``MinimumTax.taxPayable,
-            ``MinimumTax.regular_le, ``MinimumTax.within_exemption, ``MinimumTax.split], uses := ["R35"] },
+            ``MinimumTax.recovery, ``MinimumTax.regular_le, ``MinimumTax.within_exemption, ``MinimumTax.split,
+            ``MinimumTax.recovery_floor], uses := ["R35"] },
         { id := "R11", kind := .law, title := "The principal residence exemption", citation := "ITA 40(2)(b); 54 \"principal residence\""
           statement := "A home is the principal residence for a year if owned, ordinarily inhabited by the family (or covered by " ++
             "a 45(2) or (3) election, for at most four years: (d)), designated, and not blocked by another family-unit " ++

@@ -15,11 +15,14 @@ import Canteen.ITA.S3.IndividualYear
   were deductible, and (i)(ii) net capital losses were deductible only as computed at the ordinary rate.
 * **127.531** the basic minimum tax credit: ½ of the 118(1) credits (and the others in (a)), and 4/5
   of the donation credit.
+* **120.2(3)** the additional tax for a year: the minimum amount over the Division E tax; **120.2(1)**
+  in a later year, the additional taxes of the 7 preceding years not yet deducted may be deducted, up
+  to the amount by which that year's Division E tax exceeds its minimum amount.
 
 Not encoded: the rental, film, tax shelter, partnership and resource adjustments ((b) to (c.3), (e),
 (e.1)), (g), the other parts of (h), (j) (half of carrying charges and other deductions: Subdivision E
 deductions and other Division C deductions are taken in full), the special foreign tax credit (127.54),
-127.55, the carryforward of minimum tax paid (120.2), and the interaction with split income (120.4(3));
+127.55, foreign tax credits in 120.2 (section 126 is not encoded), and the interaction with split income (120.4(3));
 the minimum amount is computed for a year without split income. Allowable business investment losses
 stay at ½ (38(c) is not read as 1/1). Amounts are rounded down to the cent.
 -/
@@ -67,8 +70,25 @@ def minimumAmount (f : Facts) : Cents :=
 /-- 127.5: tax payable is the greater of the Division E amount and the minimum amount. -/
 def taxPayable (f : Facts) : Cents := max (IndividualYear.federalTax f) (minimumAmount f)
 
-/-- The minimum tax paid over the Division E amount (what 120.2 would carry forward). -/
+/-- 120.2(3): the additional tax for the year, the minimum tax paid over the Division E amount. -/
 def additional (f : Facts) : Cents := minimumAmount f - IndividualYear.federalTax f
+
+/-- An earlier year's additional tax, not yet deducted. -/
+structure Carryforward where
+  year : Nat
+  amount : Cents
+  deriving Repr, DecidableEq, Inhabited
+
+/-- 120.2(1)(a): the additional taxes of the 7 preceding years, not yet deducted. -/
+def available (f : Facts) (prior : List Carryforward) : Cents :=
+  ((prior.filter fun c => c.year < f.taxationYear && f.taxationYear ≤ c.year + 7).map (·.amount)).sum
+
+/-- 120.2(1): the deduction, the lesser of (a) and (b), claimed in full. -/
+def recovery (f : Facts) (prior : List Carryforward) : Cents :=
+  min (available f prior) (IndividualYear.federalTax f - minimumAmount f)
+
+/-- Tax payable after the minimum tax and the 120.2(1) deduction. -/
+def taxAfterRecovery (f : Facts) (prior : List Carryforward) : Cents := taxPayable f - recovery f prior
 
 def explain (f : Facts) : Finding :=
   let h := formatHalfCents
@@ -99,5 +119,19 @@ private theorem max_eq_add_sub (a b : Nat) : max a b = a + (b - a) := by omega
 /-- Tax payable is the Division E amount plus the additional minimum tax. -/
 theorem split (f : Facts) : taxPayable f = IndividualYear.federalTax f + additional f :=
   max_eq_add_sub _ _
+
+private theorem floor (a m r : Nat) (h : r ≤ a - m) : m ≤ max a m - r := by omega
+
+/-- Recovering earlier minimum tax never takes tax payable below the year's minimum amount. -/
+theorem recovery_floor (f : Facts) (prior : List Carryforward) : minimumAmount f ≤ taxAfterRecovery f prior :=
+  floor _ _ _ (Nat.min_le_right _ _)
+
+/-- Nothing is recovered in a year the minimum tax applies. -/
+theorem no_recovery_when_applies (f : Facts) (prior : List Carryforward) (h : 0 < additional f) :
+    recovery f prior = 0 := by
+  unfold additional at h
+  unfold recovery
+  rw [Nat.sub_eq_zero_of_le (Nat.le_of_lt (Nat.lt_of_sub_pos h))]
+  exact Nat.min_zero _
 
 end Canteen.ITA.MinimumTax

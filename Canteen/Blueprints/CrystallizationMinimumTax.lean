@@ -16,8 +16,8 @@ def memo : Blueprint where
       "corporation shares and shelters all of it with the capital gains deduction. Is any federal tax payable?",
     "**Conclusion.** No regular tax (A1), but $39,548.33 of minimum tax (K): for the minimum tax the gain counts in full " ++
       "and only 7/5 of the deduction comes off, leaving $375,000 of adjusted taxable income (A2). A gain of $600,000 stays " ++
-      "within the exemption; $620,000 does not (W1). The 120.2 carryforward, which lets the minimum tax be recovered " ++
-      "against regular tax in the next seven years, is not computed, nor is provincial tax.",
+      "within the exemption; $620,000 does not (W1). The minimum tax is not lost: with a $250,000 salary in 2026, all of " ++
+      "it is recovered against that year's regular tax (W2). Provincial tax is not computed.",
     "This is a constructed example, not advice."]
   sections := [
     { heading := "The law"
@@ -56,7 +56,16 @@ def memo : Blueprint where
         { id := "W1", kind := .step, title := "A smaller gain", citation := "ITA 127.51"
           statement := "A $600,000 gain gives $180,000 of adjusted taxable income, within what the exemption and credit cover: " ++
             "no tax. A $620,000 gain gives $803.33."
-          lean := [``smaller_gain, ``slightly_larger], uses := ["F1", "L2"] } ] } ]
+          lean := [``smaller_gain, ``slightly_larger], uses := ["F1", "L2"] },
+        { id := "L3", kind := .law, title := "Recovering minimum tax", citation := "ITA 120.2(1), (3)"
+          statement := "Minimum tax over regular tax is carried forward seven years, and deducted from a later year's tax to " ++
+            "the extent that year's regular tax exceeds its minimum amount. Proven: never below the minimum amount."
+          lean := [``MinimumTax.additional, ``MinimumTax.recovery, ``MinimumTax.taxAfterRecovery, ``MinimumTax.recovery_floor],
+          uses := ["L2"] },
+        { id := "W2", kind := .step, title := "Recovered in 2026", citation := "ITA 120.2(1)"
+          statement := "With a $250,000 salary, 2026 regular tax of $55,384.10 is $41,469.31 over the minimum amount, so all " ++
+            "$39,548.33 is deducted. With $200,000, $37,094.11 is, and $2,454.22 waits."
+          lean := [``nextYear, ``carried, ``carried_forward, ``recovered, ``partly_recovered], uses := ["K", "L1", "L3"] } ] } ]
   diagrams := []
   appendix := [
     ("The minimum tax, on $1,250,000", (MinimumTax.explain (year 125000000)).renderWithJudgments []),

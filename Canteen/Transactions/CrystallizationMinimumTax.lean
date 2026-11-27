@@ -9,7 +9,10 @@ A constructed example under 3, 38, 110.6, 117(2), 118(1) and 127.5 to 127.531, f
   shares (cost $100) and claims the capital gains deduction for all of it.
 * How large a gain can be sheltered without minimum tax?
 
-The 120.2 carryforward of minimum tax paid, and provincial tax, are not computed.
+* The minimum tax paid can be recovered in the next seven years (120.2). The individual earns a salary
+  in 2026.
+
+Provincial tax is not computed.
 -/
 
 namespace Canteen.Transactions.CrystallizationMinimumTax
@@ -44,5 +47,27 @@ theorem smaller_gain :
 
 /-- $620,000 does not: 20.5% of $8,118, less the $860.86 credit, is $803.33. -/
 theorem slightly_larger : MinimumTax.taxPayable (year 62000000) = 80333 := by decide
+
+/-! ## Recovering it in 2026 -/
+
+/-- 2026, with a salary (the 2025 bracket and personal amounts are used). -/
+def nextYear (salary : Cents) : IndividualYear.Facts :=
+  { taxationYear := 2026, employmentAndBusiness := salary, personalAmounts := some {} }
+
+def carried : List MinimumTax.Carryforward := [⟨2025, MinimumTax.additional (year 125000000)⟩]
+
+/-- The 2025 minimum tax is all additional tax, carried forward. -/
+theorem carried_forward : MinimumTax.additional (year 125000000) = 3954833 := by decide
+
+/-- With a $250,000 salary, 2026 regular tax of $55,384.10 is $41,469.31 over the minimum amount: the whole
+$39,548.33 comes back, and 2026 tax is $15,835.77. -/
+theorem recovered :
+    IndividualYear.federalTax (nextYear 25000000) = 5538410 ∧ MinimumTax.recovery (nextYear 25000000) carried = 3954833 ∧
+    MinimumTax.taxAfterRecovery (nextYear 25000000) carried = 1583577 := by decide
+
+/-- With $200,000, $37,094.11 comes back, and $2,454.22 waits for a later year. -/
+theorem partly_recovered :
+    MinimumTax.recovery (nextYear 20000000) carried = 3709411 ∧
+    MinimumTax.additional (year 125000000) - MinimumTax.recovery (nextYear 20000000) carried = 245422 := by decide
 
 end Canteen.Transactions.CrystallizationMinimumTax

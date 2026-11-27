@@ -1253,11 +1253,11 @@ Income from sources (employment and business, dividends with the gross-up, recap
 
 ### R48. The minimum tax
 
-**Status:** proven · **Citation:** ITA 127.5; 127.51; 127.52(1); 127.531 · **Uses:** R35
+**Status:** proven · **Citation:** ITA 127.5; 127.51; 127.52(1); 127.531; 120.2 · **Uses:** R35
 
-An individual pays at least 20.5% of adjusted taxable income over the 117(2)(d) threshold, less half the personal credits and 4/5 of the donation credit; adjusted taxable income counts capital gains in full (3/10 on gifts of listed securities), drops the dividend gross-up and allows 7/5 of the capital gains deduction. Proven: it never lowers tax, and does not apply within the exemption.
+An individual pays at least 20.5% of adjusted taxable income over the 117(2)(d) threshold, less half the personal credits and 4/5 of the donation credit; adjusted taxable income counts capital gains in full (3/10 on gifts of listed securities), drops the dividend gross-up and allows 7/5 of the capital gains deduction. Minimum tax paid is recovered over the next seven years (120.2). Proven: it never lowers tax, does not apply within the exemption, and recovery never takes tax below the minimum amount.
 
-**Lean:** [`Canteen.ITA.MinimumTax.adjustedTaxableIncome`](../../Canteen/ITA/S127_5/MinimumTax.lean#L53), [`Canteen.ITA.MinimumTax.minimumAmount`](../../Canteen/ITA/S127_5/MinimumTax.lean#L63), [`Canteen.ITA.MinimumTax.taxPayable`](../../Canteen/ITA/S127_5/MinimumTax.lean#L67), [`Canteen.ITA.MinimumTax.regular_le`](../../Canteen/ITA/S127_5/MinimumTax.lean#L86), [`Canteen.ITA.MinimumTax.within_exemption`](../../Canteen/ITA/S127_5/MinimumTax.lean#L89), [`Canteen.ITA.MinimumTax.split`](../../Canteen/ITA/S127_5/MinimumTax.lean#L99)
+**Lean:** [`Canteen.ITA.MinimumTax.adjustedTaxableIncome`](../../Canteen/ITA/S127_5/MinimumTax.lean#L56), [`Canteen.ITA.MinimumTax.minimumAmount`](../../Canteen/ITA/S127_5/MinimumTax.lean#L66), [`Canteen.ITA.MinimumTax.taxPayable`](../../Canteen/ITA/S127_5/MinimumTax.lean#L70), [`Canteen.ITA.MinimumTax.recovery`](../../Canteen/ITA/S127_5/MinimumTax.lean#L86), [`Canteen.ITA.MinimumTax.regular_le`](../../Canteen/ITA/S127_5/MinimumTax.lean#L106), [`Canteen.ITA.MinimumTax.within_exemption`](../../Canteen/ITA/S127_5/MinimumTax.lean#L109), [`Canteen.ITA.MinimumTax.split`](../../Canteen/ITA/S127_5/MinimumTax.lean#L119), [`Canteen.ITA.MinimumTax.recovery_floor`](../../Canteen/ITA/S127_5/MinimumTax.lean#L125)
 
 ### R11. The principal residence exemption
 
