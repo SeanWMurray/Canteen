@@ -95,7 +95,7 @@ graph TD
 
 Half the gain is a taxable capital gain, which the capital gains deduction shelters; tax at the 117(2) rates, less the personal credit.
 
-**Lean:** [`Canteen.ITA.IndividualYear.taxableIncome`](../../Canteen/ITA/S3/IndividualYear.lean#L213), [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L284)
+**Lean:** [`Canteen.ITA.IndividualYear.taxableIncome`](../../Canteen/ITA/S3/IndividualYear.lean#L221), [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L292)
 
 ### L2. The minimum tax
 
@@ -103,7 +103,7 @@ Half the gain is a taxable capital gain, which the capital gains deduction shelt
 
 Tax payable is at least 20.5% of adjusted taxable income over $177,882, less the basic minimum tax credit (half the personal credit). Adjusted taxable income counts capital gains in full and allows 7/5 of the capital gains deduction.
 
-**Lean:** [`Canteen.ITA.MinimumTax.adjustedTaxableIncome`](../../Canteen/ITA/S127_5/MinimumTax.lean#L59), [`Canteen.ITA.MinimumTax.minimumAmount`](../../Canteen/ITA/S127_5/MinimumTax.lean#L71), [`Canteen.ITA.MinimumTax.taxPayable`](../../Canteen/ITA/S127_5/MinimumTax.lean#L75)
+**Lean:** [`Canteen.ITA.MinimumTax.adjustedTaxableIncome`](../../Canteen/ITA/S127_5/MinimumTax.lean#L61), [`Canteen.ITA.MinimumTax.minimumAmount`](../../Canteen/ITA/S127_5/MinimumTax.lean#L73), [`Canteen.ITA.MinimumTax.taxPayable`](../../Canteen/ITA/S127_5/MinimumTax.lean#L77)
 
 ## Facts
 
@@ -167,7 +167,7 @@ A $600,000 gain gives $180,000 of adjusted taxable income, within what the exemp
 
 Minimum tax over regular tax is carried forward seven years, and deducted from a later year's tax to the extent that year's regular tax exceeds its minimum amount. Proven: never below the minimum amount.
 
-**Lean:** [`Canteen.ITA.MinimumTax.additional`](../../Canteen/ITA/S127_5/MinimumTax.lean#L78), [`Canteen.ITA.MinimumTax.recovery`](../../Canteen/ITA/S127_5/MinimumTax.lean#L91), [`Canteen.ITA.MinimumTax.taxAfterRecovery`](../../Canteen/ITA/S127_5/MinimumTax.lean#L95), [`Canteen.ITA.MinimumTax.recovery_floor`](../../Canteen/ITA/S127_5/MinimumTax.lean#L130)
+**Lean:** [`Canteen.ITA.MinimumTax.additional`](../../Canteen/ITA/S127_5/MinimumTax.lean#L80), [`Canteen.ITA.MinimumTax.recovery`](../../Canteen/ITA/S127_5/MinimumTax.lean#L93), [`Canteen.ITA.MinimumTax.taxAfterRecovery`](../../Canteen/ITA/S127_5/MinimumTax.lean#L97), [`Canteen.ITA.MinimumTax.recovery_floor`](../../Canteen/ITA/S127_5/MinimumTax.lean#L132)
 
 ### W2. Recovered in 2026
 

@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 98 statements:** 79 proven, 16 encoded, 3 not formalized.
+**Status of the 99 statements:** 80 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -101,13 +101,14 @@ graph TD
   n88["R56 · Indexing the dollar amounts"]:::proven
   n89["R57 · The adoption, home accessibility, home buyers' and volunteer credits"]:::proven
   n90["R58 · The tuition credit, its carryforward and its transfer"]:::proven
-  n91["R35 · An individual's year, to taxable income and tax"]:::proven
-  n92["R48 · The minimum tax"]:::proven
-  n93["R11 · The principal residence exemption"]:::proven
-  n94["R2 · Cost of the substituted property"]:::proven
-  n95["N1 · Inputs decided by other provisions"]:::notFormalized
-  n96["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n97["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n91["R59 · Support payments"]:::proven
+  n92["R35 · An individual's year, to taxable income and tax"]:::proven
+  n93["R48 · The minimum tax"]:::proven
+  n94["R11 · The principal residence exemption"]:::proven
+  n95["R2 · Cost of the substituted property"]:::proven
+  n96["N1 · Inputs decided by other provisions"]:::notFormalized
+  n97["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n98["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -227,41 +228,42 @@ graph TD
   n74 --> n76
   n77 --> n78
   n77 --> n80
-  n44 --> n91
-  n45 --> n91
-  n53 --> n91
-  n55 --> n91
-  n56 --> n91
-  n58 --> n91
-  n73 --> n91
-  n74 --> n91
-  n75 --> n91
-  n76 --> n91
-  n81 --> n91
-  n82 --> n91
-  n83 --> n91
-  n84 --> n91
-  n85 --> n91
-  n87 --> n91
-  n88 --> n91
-  n89 --> n91
-  n90 --> n91
+  n44 --> n92
+  n45 --> n92
+  n53 --> n92
+  n55 --> n92
+  n56 --> n92
+  n58 --> n92
+  n73 --> n92
+  n74 --> n92
+  n75 --> n92
+  n76 --> n92
+  n81 --> n92
+  n82 --> n92
+  n83 --> n92
+  n84 --> n92
+  n85 --> n92
+  n87 --> n92
+  n88 --> n92
+  n89 --> n92
+  n90 --> n92
   n91 --> n92
-  n44 --> n93
-  n50 --> n93
-  n11 --> n94
-  n1 --> n95
-  n5 --> n95
-  n6 --> n95
-  n8 --> n95
-  n37 --> n95
-  n94 --> n95
-  n38 --> n95
-  n30 --> n96
-  n32 --> n97
-  n34 --> n97
-  n39 --> n97
-  n42 --> n97
+  n92 --> n93
+  n44 --> n94
+  n50 --> n94
+  n11 --> n95
+  n1 --> n96
+  n5 --> n96
+  n6 --> n96
+  n8 --> n96
+  n37 --> n96
+  n95 --> n96
+  n38 --> n96
+  n30 --> n97
+  n32 --> n98
+  n34 --> n98
+  n39 --> n98
+  n42 --> n98
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -369,13 +371,14 @@ graph TD
   n88["R56"]:::proven
   n89["R57"]:::proven
   n90["R58"]:::proven
-  n91["R35"]:::proven
-  n92["R48"]:::proven
-  n93["R11"]:::proven
-  n94["R2"]:::proven
-  n95["N1"]:::notFormalized
-  n96["N2"]:::notFormalized
-  n97["N4"]:::notFormalized
+  n91["R59"]:::proven
+  n92["R35"]:::proven
+  n93["R48"]:::proven
+  n94["R11"]:::proven
+  n95["R2"]:::proven
+  n96["N1"]:::notFormalized
+  n97["N2"]:::notFormalized
+  n98["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -575,48 +578,50 @@ graph TD
   n74 -.-> n76
   n77 --> n78
   n77 --> n80
-  n55 --> n91
-  n81 --> n91
-  n84 --> n91
-  n58 --> n91
-  n44 --> n91
-  n87 --> n91
-  n73 --> n91
-  n56 --> n91
-  n85 --> n91
-  n45 --> n91
-  n53 --> n91
-  n89 --> n91
-  n90 --> n91
-  n82 --> n91
-  n74 --> n91
-  n83 --> n91
-  n76 --> n91
-  n75 --> n91
-  n88 -.-> n91
   n55 --> n92
   n81 --> n92
   n91 --> n92
   n84 --> n92
   n58 --> n92
-  n45 --> n92
+  n44 --> n92
   n87 --> n92
   n73 --> n92
-  n44 -.-> n93
-  n50 -.-> n93
-  n11 -.-> n94
-  n1 -.-> n95
-  n5 -.-> n95
-  n6 -.-> n95
-  n8 -.-> n95
-  n37 -.-> n95
-  n94 -.-> n95
-  n38 -.-> n95
-  n30 -.-> n96
-  n32 -.-> n97
-  n34 -.-> n97
-  n39 -.-> n97
-  n42 -.-> n97
+  n56 --> n92
+  n85 --> n92
+  n45 --> n92
+  n53 --> n92
+  n89 --> n92
+  n90 --> n92
+  n82 --> n92
+  n74 --> n92
+  n83 --> n92
+  n76 --> n92
+  n75 --> n92
+  n88 -.-> n92
+  n55 --> n93
+  n81 --> n93
+  n92 --> n93
+  n91 --> n93
+  n84 --> n93
+  n58 --> n93
+  n45 --> n93
+  n87 --> n93
+  n73 --> n93
+  n44 -.-> n94
+  n50 -.-> n94
+  n11 -.-> n95
+  n1 -.-> n96
+  n5 -.-> n96
+  n6 -.-> n96
+  n8 -.-> n96
+  n37 -.-> n96
+  n95 -.-> n96
+  n38 -.-> n96
+  n30 -.-> n97
+  n32 -.-> n98
+  n34 -.-> n98
+  n39 -.-> n98
+  n42 -.-> n98
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -1364,13 +1369,21 @@ Each specified amount is last year's (unrounded) amount increased by the change 
 
 **Lean:** [`Canteen.ITA.Tuition.credit`](../../Canteen/ITA/S118_5/Tuition.lean#L27), [`Canteen.ITA.Tuition.carryforwardUsed`](../../Canteen/ITA/S118_5/Tuition.lean#L30), [`Canteen.ITA.Tuition.transferred`](../../Canteen/ITA/S118_5/Tuition.lean#L36), [`Canteen.ITA.Tuition.unused`](../../Canteen/ITA/S118_5/Tuition.lean#L41), [`Canteen.ITA.Tuition.transferred_le`](../../Canteen/ITA/S118_5/Tuition.lean#L50), [`Canteen.ITA.Tuition.conservation`](../../Canteen/ITA/S118_5/Tuition.lean#L58)
 
+### R59. Support payments
+
+**Status:** proven · **Citation:** ITA 56(1)(b); 56.1(4); 60(b)
+
+A periodic allowance for maintenance, at the recipient's discretion, to a spouse living apart under an order or written agreement (or by a legal parent under a provincial order) is deducted by the payer and included by the recipient, less child support payable since the commencement day and amounts deducted before. Proven: nothing until child support payable is paid, and never more than what was paid.
+
+**Lean:** [`Canteen.ITA.Support.supportAmount`](../../Canteen/ITA/S56/Support.lean#L51), [`Canteen.ITA.Support.amount`](../../Canteen/ITA/S56/Support.lean#L64), [`Canteen.ITA.Support.child_support_first`](../../Canteen/ITA/S56/Support.lean#L79), [`Canteen.ITA.Support.amount_le`](../../Canteen/ITA/S56/Support.lean#L85)
+
 ### R35. An individual's year, to taxable income and tax
 
-**Status:** proven · **Citation:** ITA 2(2); 3; 111(1)(b); 110.6; 117(2) · **Uses:** R8, R9, R19, R21, R22, R24, R40, R41, R42, R43, R49, R50, R51, R52, R53, R55, R56, R57, R58
+**Status:** proven · **Citation:** ITA 2(2); 3; 111(1)(b); 110.6; 117(2) · **Uses:** R8, R9, R19, R21, R22, R24, R40, R41, R42, R43, R49, R50, R51, R52, R53, R55, R56, R57, R58, R59
 
 Income from sources (employment and business, dividends with the gross-up, recapture, attributed income), net taxable capital gains, less terminal and other losses; then taxable income, after the net capital loss deduction and the capital gains deduction (which the former reduces). Proven: taxable income never exceeds income, and the capital gains deduction never exceeds the net taxable capital gains.
 
-**Lean:** [`Canteen.ITA.IndividualYear.incomeFacts`](../../Canteen/ITA/S3/IndividualYear.lean#L193), [`Canteen.ITA.IndividualYear.taxableIncome`](../../Canteen/ITA/S3/IndividualYear.lean#L213), [`Canteen.ITA.IndividualYear.capitalGainsDeduction`](../../Canteen/ITA/S3/IndividualYear.lean#L203), [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L284), [`Canteen.ITA.IndividualYear.personalCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L225), [`Canteen.ITA.IndividualYear.donationCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L230), [`Canteen.ITA.IndividualYear.interestDeduction`](../../Canteen/ITA/S3/IndividualYear.lean#L160), [`Canteen.ITA.IndividualYear.medicalCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L233), [`Canteen.ITA.IndividualYear.disabilityCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L250), [`Canteen.ITA.IndividualYear.ageAndPensionCredits`](../../Canteen/ITA/S3/IndividualYear.lean#L242), [`Canteen.ITA.IndividualYear.oasRecovery`](../../Canteen/ITA/S3/IndividualYear.lean#L190), [`Canteen.ITA.IndividualYear.employmentCredits`](../../Canteen/ITA/S3/IndividualYear.lean#L171), [`Canteen.ITA.IndividualYear.amounts`](../../Canteen/ITA/S3/IndividualYear.lean#L136), [`Canteen.ITA.IndividualYear.smallCredits`](../../Canteen/ITA/S3/IndividualYear.lean#L253), [`Canteen.ITA.IndividualYear.tuitionCredits`](../../Canteen/ITA/S3/IndividualYear.lean#L281), [`Canteen.ITA.IndividualYear.taxable_le_income`](../../Canteen/ITA/S3/IndividualYear.lean#L318), [`Canteen.ITA.IndividualYear.capital_gains_deduction_le`](../../Canteen/ITA/S3/IndividualYear.lean#L323)
+**Lean:** [`Canteen.ITA.IndividualYear.incomeFacts`](../../Canteen/ITA/S3/IndividualYear.lean#L201), [`Canteen.ITA.IndividualYear.taxableIncome`](../../Canteen/ITA/S3/IndividualYear.lean#L221), [`Canteen.ITA.IndividualYear.capitalGainsDeduction`](../../Canteen/ITA/S3/IndividualYear.lean#L211), [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L292), [`Canteen.ITA.IndividualYear.personalCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L233), [`Canteen.ITA.IndividualYear.donationCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L238), [`Canteen.ITA.IndividualYear.interestDeduction`](../../Canteen/ITA/S3/IndividualYear.lean#L164), [`Canteen.ITA.IndividualYear.medicalCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L241), [`Canteen.ITA.IndividualYear.disabilityCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L258), [`Canteen.ITA.IndividualYear.ageAndPensionCredits`](../../Canteen/ITA/S3/IndividualYear.lean#L250), [`Canteen.ITA.IndividualYear.oasRecovery`](../../Canteen/ITA/S3/IndividualYear.lean#L198), [`Canteen.ITA.IndividualYear.employmentCredits`](../../Canteen/ITA/S3/IndividualYear.lean#L175), [`Canteen.ITA.IndividualYear.amounts`](../../Canteen/ITA/S3/IndividualYear.lean#L140), [`Canteen.ITA.IndividualYear.smallCredits`](../../Canteen/ITA/S3/IndividualYear.lean#L261), [`Canteen.ITA.IndividualYear.tuitionCredits`](../../Canteen/ITA/S3/IndividualYear.lean#L289), [`Canteen.ITA.IndividualYear.supportDeducted`](../../Canteen/ITA/S3/IndividualYear.lean#L180), [`Canteen.ITA.IndividualYear.taxable_le_income`](../../Canteen/ITA/S3/IndividualYear.lean#L331), [`Canteen.ITA.IndividualYear.capital_gains_deduction_le`](../../Canteen/ITA/S3/IndividualYear.lean#L336)
 
 ### R48. The minimum tax
 
@@ -1378,7 +1391,7 @@ Income from sources (employment and business, dividends with the gross-up, recap
 
 An individual pays at least 20.5% of adjusted taxable income over the 117(2)(d) threshold, less half the personal credits and 4/5 of the donation credit; adjusted taxable income counts capital gains in full (3/10 on gifts of listed securities), drops the dividend gross-up and allows 7/5 of the capital gains deduction. Minimum tax paid is recovered over the next seven years (120.2). Proven: it never lowers tax, does not apply within the exemption, and recovery never takes tax below the minimum amount.
 
-**Lean:** [`Canteen.ITA.MinimumTax.adjustedTaxableIncome`](../../Canteen/ITA/S127_5/MinimumTax.lean#L59), [`Canteen.ITA.MinimumTax.minimumAmount`](../../Canteen/ITA/S127_5/MinimumTax.lean#L71), [`Canteen.ITA.MinimumTax.taxPayable`](../../Canteen/ITA/S127_5/MinimumTax.lean#L75), [`Canteen.ITA.MinimumTax.recovery`](../../Canteen/ITA/S127_5/MinimumTax.lean#L91), [`Canteen.ITA.MinimumTax.regular_le`](../../Canteen/ITA/S127_5/MinimumTax.lean#L111), [`Canteen.ITA.MinimumTax.within_exemption`](../../Canteen/ITA/S127_5/MinimumTax.lean#L114), [`Canteen.ITA.MinimumTax.split`](../../Canteen/ITA/S127_5/MinimumTax.lean#L124), [`Canteen.ITA.MinimumTax.recovery_floor`](../../Canteen/ITA/S127_5/MinimumTax.lean#L130)
+**Lean:** [`Canteen.ITA.MinimumTax.adjustedTaxableIncome`](../../Canteen/ITA/S127_5/MinimumTax.lean#L61), [`Canteen.ITA.MinimumTax.minimumAmount`](../../Canteen/ITA/S127_5/MinimumTax.lean#L73), [`Canteen.ITA.MinimumTax.taxPayable`](../../Canteen/ITA/S127_5/MinimumTax.lean#L77), [`Canteen.ITA.MinimumTax.recovery`](../../Canteen/ITA/S127_5/MinimumTax.lean#L93), [`Canteen.ITA.MinimumTax.regular_le`](../../Canteen/ITA/S127_5/MinimumTax.lean#L113), [`Canteen.ITA.MinimumTax.within_exemption`](../../Canteen/ITA/S127_5/MinimumTax.lean#L116), [`Canteen.ITA.MinimumTax.split`](../../Canteen/ITA/S127_5/MinimumTax.lean#L126), [`Canteen.ITA.MinimumTax.recovery_floor`](../../Canteen/ITA/S127_5/MinimumTax.lean#L132)
 
 ### R11. The principal residence exemption
 

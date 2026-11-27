@@ -62,18 +62,19 @@ flowchart BT
   v53["117.1 indexation, and each year's amounts"]:::prov
   v54["118.01 to 118.07 adoption, accessibility, home buyers', volunteers"]:::prov
   v55["118.5, 118.61, 118.81, 118.9 tuition"]:::prov
-  v56["2(2), 3 an individual's year, to taxable income"]:::prov
-  v57["39(4) to (6) the Canadian securities election"]:::prov
-  v58["50(1) bad debts and worthless shares"]:::prov
-  v59["43(1) part of a property"]:::prov
-  v60["74.4(2) corporate attribution"]:::prov
-  v61["123 to 125 corporate rates"]:::prov
-  v62["123.3, 129, 186 refundable taxes"]:::prov
-  v63["15(2), 80.4 shareholder loans"]:::prov
-  v64["89(1), 185.1 the general rate income pool"]:::prov
-  v65["127.5 to 127.531, 120.2 the minimum tax"]:::prov
-  v66["84(1), 53(1)(b) an increase in paid-up capital"]:::prov
-  v67["50(2) bad personal-use debts"]:::prov
+  v56["56(1)(b), 56.1(4), 60(b) support"]:::prov
+  v57["2(2), 3 an individual's year, to taxable income"]:::prov
+  v58["39(4) to (6) the Canadian securities election"]:::prov
+  v59["50(1) bad debts and worthless shares"]:::prov
+  v60["43(1) part of a property"]:::prov
+  v61["74.4(2) corporate attribution"]:::prov
+  v62["123 to 125 corporate rates"]:::prov
+  v63["123.3, 129, 186 refundable taxes"]:::prov
+  v64["15(2), 80.4 shareholder loans"]:::prov
+  v65["89(1), 185.1 the general rate income pool"]:::prov
+  v66["127.5 to 127.531, 120.2 the minimum tax"]:::prov
+  v67["84(1), 53(1)(b) an increase in paid-up capital"]:::prov
+  v68["50(2) bad personal-use debts"]:::prov
   v0 --> v1
   v0 --> v2
   v0 --> v3
@@ -126,29 +127,30 @@ flowchart BT
   v43 --> v45
   v30 --> v46
   v43 --> v53
-  v19 --> v56
-  v27 --> v56
-  v32 --> v56
-  v29 --> v56
-  v44 --> v56
-  v45 --> v56
-  v46 --> v56
-  v47 --> v56
-  v48 --> v56
-  v49 --> v56
-  v50 --> v56
-  v51 --> v56
-  v52 --> v56
-  v53 --> v56
-  v54 --> v56
-  v55 --> v56
-  v17 --> v57
+  v19 --> v57
+  v27 --> v57
+  v32 --> v57
+  v29 --> v57
+  v44 --> v57
+  v45 --> v57
+  v46 --> v57
+  v47 --> v57
+  v48 --> v57
+  v49 --> v57
+  v50 --> v57
+  v51 --> v57
+  v52 --> v57
+  v53 --> v57
+  v54 --> v57
+  v55 --> v57
+  v56 --> v57
   v17 --> v58
   v17 --> v59
-  v30 --> v60
-  v61 --> v62
-  v61 --> v64
-  v56 --> v65
-  v30 --> v66
+  v17 --> v60
+  v30 --> v61
+  v62 --> v63
+  v62 --> v65
+  v57 --> v66
+  v30 --> v67
   classDef prov fill:#bbdefb,stroke:#1565c0,color:#0d47a1
 ```

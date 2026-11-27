@@ -87,6 +87,7 @@ import Canteen.ITA.S117_1.Indexation
 import Canteen.ITA.S117_1.YearAmounts
 import Canteen.ITA.S118_01.SmallCredits
 import Canteen.ITA.S118_5.Tuition
+import Canteen.ITA.S56.Support
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.ITA.S40.ShareToAffiliate
@@ -120,6 +121,7 @@ import Canteen.Transactions.DebtSwap
 import Canteen.Transactions.AttendantCare
 import Canteen.Transactions.PensionSplit
 import Canteen.Transactions.SalaryOrDividend
+import Canteen.Transactions.SupportArrears
 import Canteen.Transactions.SisterCompanyRepurchase
 
 -- Blueprints: memos linked to Lean
@@ -140,6 +142,7 @@ import Canteen.Blueprints.DebtSwap
 import Canteen.Blueprints.AttendantCare
 import Canteen.Blueprints.PensionSplit
 import Canteen.Blueprints.SalaryOrDividend
+import Canteen.Blueprints.SupportArrears
 import Canteen.Blueprints.SisterCompanyRepurchase
 import Canteen.Blueprints.All
 
@@ -215,3 +218,4 @@ import Canteen.Tests.PaidUpCapitalIncrease
 import Canteen.Tests.EmploymentCredits
 import Canteen.Tests.SmallCredits
 import Canteen.Tests.Tuition
+import Canteen.Tests.Support

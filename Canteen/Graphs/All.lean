@@ -45,6 +45,7 @@ import Canteen.ITA.S118_7.EmploymentCredits
 import Canteen.ITA.S117_1.YearAmounts
 import Canteen.ITA.S118_01.SmallCredits
 import Canteen.ITA.S118_5.Tuition
+import Canteen.ITA.S56.Support
 import Canteen.Transactions.DebtSwap
 import Canteen.ITA.S87.Amalgamation
 import Canteen.ITA.S39.CanadianSecurities
@@ -203,7 +204,8 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S118_7.EmploymentCredits, "118(10), 118.7, 60(e.1) employment, CPP and EI"),
    (`Canteen.ITA.S117_1.YearAmounts, "117.1 indexation, and each year's amounts"),
    (`Canteen.ITA.S118_01.SmallCredits, "118.01 to 118.07 adoption, accessibility, home buyers', volunteers"),
-   (`Canteen.ITA.S118_5.Tuition, "118.5, 118.61, 118.81, 118.9 tuition")]
+   (`Canteen.ITA.S118_5.Tuition, "118.5, 118.61, 118.81, 118.9 tuition"),
+   (`Canteen.ITA.S56.Support, "56(1)(b), 56.1(4), 60(b) support")]
 
 /-! ## The dashboard -/
 
@@ -309,6 +311,7 @@ def actMindmap : String := Id.run do
     (3, "110.6(2.1): the deduction"),
     (2, "s. 111"), (3, "111(8): net capital loss"), (3, "111(1)(b), (1.1): deduction"),
     (2, "s. 112"), (3, "112(1): intercorporate dividend deduction"),
+    (2, "ss. 56, 56.1, 60"), (3, "56.1(4): support amount, child support"), (3, "56(1)(b), 60(b): included and deducted"),
     (2, "s. 60.03"), (3, "60.03(1): split-pension amount"), (3, "60(c), 56(1)(a.2): deducted and included"),
     (2, "s. 117"), (3, "117(2): the federal rates"),
     (2, "s. 117.1"), (3, "117.1(1), (4): indexing by the CPI"), (3, "117.1(3): rounding"),
@@ -377,6 +380,7 @@ def pages : List Page := [
       ("Subsection 15(2): shareholder loans", flowchart ShareholderLoans.included.outline),
       ("Subparagraph 20(1)(c)(i): interest on borrowed money", flowchart InterestDeductibility.deductible.outline),
       ("Subsection 118.3(1): the disability credit", flowchart Disability.eligible.outline),
+      ("Subsection 56.1(4): \"support amount\"", flowchart Support.supportAmount.outline),
       ("Subparagraph 40(2)(g)(iv): transfers to registered plans", flowchart Paragraph40_2_g.planTransferLoss.outline),
       ("Clause 40(2)(g)(iv)(A)", flowchart Paragraph40_2_g.planTransferA.outline),
       ("Clause 40(2)(g)(iv)(B)", flowchart Paragraph40_2_g.planTransferB.outline),

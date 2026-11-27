@@ -17,6 +17,7 @@ import Canteen.ITA.S118_7.EmploymentCredits
 import Canteen.ITA.S117_1.YearAmounts
 import Canteen.ITA.S118_01.SmallCredits
 import Canteen.ITA.S118_5.Tuition
+import Canteen.ITA.S56.Support
 
 /-!
 # An individual's year: income from the encoded sources, and taxable income
@@ -80,6 +81,9 @@ structure Facts where
   subdivisionE : Cents := 0
   /-- Business losses, other than terminal losses. -/
   businessLosses : Cents := 0
+  /-- 60(b): support paid, one entry per recipient; 56(1)(b): support received, one per payer. -/
+  supportPaid : List Support.Facts := []
+  supportReceived : List Support.Facts := []
   /-- Borrowings whose interest may be deductible under 20(1)(c). -/
   borrowings : List InterestDeductibility.Borrowing := []
   netCapitalLossClaims : List NetCapitalLoss.Claim := []
@@ -171,14 +175,18 @@ def enhancedCpp (f : Facts) : Cents := ((employmentFacts f).map EmploymentCredit
 /-- 118(10) and 118.7: the employment, CPP and EI credits. -/
 def employmentCredits (f : Facts) : Cents := ((employmentFacts f).map EmploymentCredits.credits).getD 0
 
+/-- 56(1)(b), 60(b). -/
+def supportIncluded (f : Facts) : Cents := (f.supportReceived.map Support.amount).sum
+def supportDeducted (f : Facts) : Cents := (f.supportPaid.map Support.amount).sum
+
 /-- Split income (120.4), deducted in computing income (20(1)(ww)). -/
 def splitIncome (f : Facts) : Cents := (f.split.map SplitIncome.splitIncome).getD 0
 
 /-- Section 3, from the components, before the 60(w) deduction. -/
 def incomeFactsBase (f : Facts) : Income.Facts :=
   { incomeFromSources := (f.employmentAndBusiness + Dividends.inclusion (dividendFacts f) + recapture f + attributedIncome f +
-        pensionTotal f + f.splitIn) - splitIncome f,
-    capital := f.capital, subdivisionE := f.subdivisionE + splitOutAllowed f + enhancedCpp f,
+        pensionTotal f + f.splitIn + supportIncluded f) - splitIncome f,
+    capital := f.capital, subdivisionE := f.subdivisionE + splitOutAllowed f + enhancedCpp f + supportDeducted f,
     sourceLosses := f.businessLosses + terminalLosses f + attributedLoss f + interestDeduction f }
 
 /-- Old Age Security benefits included in income. -/
@@ -296,7 +304,10 @@ def explain (f : Facts) : Finding :=
     ⟨s!"Employment and business income {c f.employmentAndBusiness}; dividends included {c (Dividends.inclusion (dividendFacts f))} " ++
       s!"(with the gross-up); recapture {c (recapture f)}; income attributed {c (attributedIncome f)}.",
       "ITA 3(a); 82(1); 13(1); 74.1"⟩,
-    ⟨s!"Taxable capital gains, net: {h f.capital.paragraph3b}.", "ITA 3(b)"⟩,
+    ⟨s!"Taxable capital gains, net: {h f.capital.paragraph3b}.", "ITA 3(b)"⟩] ++
+    (if supportIncluded f + supportDeducted f > 0 then
+      [⟨s!"Support received and included: {c (supportIncluded f)}; support paid and deducted: {c (supportDeducted f)}.",
+        "ITA 56(1)(b); 60(b)"⟩] else []) ++ [
     ⟨s!"Losses: business {c f.businessLosses}, terminal {c (terminalLosses f)}, attributed {c (attributedLoss f)}; " ++
       s!"interest deducted {c (interestDeduction f)}.", "ITA 3(d); 20(16); 74.1; 20(1)(c)"⟩,
     ⟨s!"Income for the year: {h (income f)}.", "ITA 3"⟩,
@@ -311,7 +322,9 @@ def explain (f : Facts) : Finding :=
       s!"the tuition credits of {c (tuitionCredits f)}, " ++
       s!"the donation credit of {c (donationCredit f)}, the medical expense credit of {c (medicalCredit f)}, " ++
       s!"the disability credit of {c (disabilityCredit f + f.disabilityTransferred)} and other credits of {c f.otherCredits}: {c (federalTax f)}.",
-      "ITA 117(2); 120.4(2); 121; 118 to 118.07; 118.1; 118.2; 118.3; 118.5; 118.61; 118.7; 118.9"⟩], (f.disability.map (·.impairment.judgments)).getD []⟩
+      "ITA 117(2); 120.4(2); 121; 118 to 118.07; 118.1; 118.2; 118.3; 118.5; 118.61; 118.7; 118.9"⟩],
+    ((f.disability.map (·.impairment.judgments)).getD [] ++
+      ((f.supportPaid ++ f.supportReceived).map fun s => s.periodicAllowance.judgments ++ s.recipientDiscretion.judgments).flatten).eraseDups⟩
 
 /-! ## Truths about the year -/
 

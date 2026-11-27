@@ -19,3 +19,4 @@ Concrete fact patterns, with each step of the analysis proven as a theorem.
 - `AttendantCare.lean`: attendant care claimed as a medical expense, or $10,000 of it with the disability credit
 - `PensionSplit.lean`: how much pension income spouses should split
 - `SalaryOrDividend.lean`: paying the owner-manager a salary or dividends, with CPP
+- `SupportArrears.lean`: support paid short and caught up, with child support first

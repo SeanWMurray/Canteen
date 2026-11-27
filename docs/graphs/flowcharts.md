@@ -885,6 +885,31 @@ flowchart TD
   classDef start fill:#ffffff,stroke:#212121,color:#212121
 ```
 
+## Subsection 56.1(4): "support amount"
+
+```mermaid
+flowchart TD
+  S(["#quot;support amount#quot; (56.1(4)) · ITA 56.1(4)"]):::start
+  C0["<b>periodic allowance</b> The amounts are payable as an allowance on a<br/>periodic basis for the maintenance of the<br/>recipient or the recipient's children<br/><i>judgment call: judgment calls computed from the facts</i><br/>[ITA 56.1(4) periodic allowance]"]:::judgment
+  C1["<b>discretion</b> The recipient has discretion as to their use<br/><i>judgment call: judgment calls computed from the facts</i><br/>[ITA 56.1(4) discretion]"]:::judgment
+  C2["<b>(a) or (b)</b> They are payable to a former spouse living<br/>apart, under an order or written agreement,<br/>or by a legal parent under a provincial<br/>order<br/>[ITA 56.1(4)(a) or (b)]"]:::fact
+  Y(["#quot;support amount#quot; (56.1(4)) applies"]):::yes
+  N(["#quot;support amount#quot; (56.1(4)) does not apply"]):::no
+  S --> C0
+  C0 -->|met| C1
+  C0 -->|not met| N
+  C1 -->|met| C2
+  C1 -->|not met| N
+  C2 -->|met| Y
+  C2 -->|not met| N
+  classDef fact fill:#eeeeee,stroke:#616161,color:#212121
+  classDef judgment fill:#ffe0b2,stroke:#ef6c00,color:#e65100
+  classDef rule fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+  classDef yes fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
+  classDef no fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+  classDef start fill:#ffffff,stroke:#212121,color:#212121
+```
+
 ## Subparagraph 40(2)(g)(iv): transfers to registered plans
 
 ```mermaid
