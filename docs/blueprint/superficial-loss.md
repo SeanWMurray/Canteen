@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 111 statements:** 92 proven, 16 encoded, 3 not formalized.
+**Status of the 112 statements:** 93 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -113,14 +113,15 @@ graph TD
   n100["R68 · Employee stock options"]:::proven
   n101["R69 · A corporation's charitable gifts"]:::proven
   n102["R71 · Non-capital losses"]:::proven
-  n103["R70 · A corporation's year, to taxable income and tax"]:::proven
-  n104["R35 · An individual's year, to taxable income and tax"]:::proven
-  n105["R48 · The minimum tax"]:::proven
-  n106["R11 · The principal residence exemption"]:::proven
-  n107["R2 · Cost of the substituted property"]:::proven
-  n108["N1 · Inputs decided by other provisions"]:::notFormalized
-  n109["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n110["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n103["R72 · The business limit"]:::proven
+  n104["R70 · A corporation's year, to taxable income and tax"]:::proven
+  n105["R35 · An individual's year, to taxable income and tax"]:::proven
+  n106["R48 · The minimum tax"]:::proven
+  n107["R11 · The principal residence exemption"]:::proven
+  n108["R2 · Cost of the substituted property"]:::proven
+  n109["N1 · Inputs decided by other provisions"]:::notFormalized
+  n110["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n111["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -240,56 +241,57 @@ graph TD
   n74 --> n76
   n77 --> n78
   n77 --> n80
-  n44 --> n103
-  n45 --> n103
-  n57 --> n103
-  n60 --> n103
-  n77 --> n103
-  n78 --> n103
-  n80 --> n103
-  n101 --> n103
-  n102 --> n103
   n44 --> n104
   n45 --> n104
-  n53 --> n104
-  n55 --> n104
-  n56 --> n104
-  n58 --> n104
-  n73 --> n104
-  n74 --> n104
-  n75 --> n104
-  n76 --> n104
-  n81 --> n104
-  n82 --> n104
-  n83 --> n104
-  n84 --> n104
-  n85 --> n104
-  n87 --> n104
-  n88 --> n104
-  n89 --> n104
-  n90 --> n104
-  n91 --> n104
-  n92 --> n104
-  n93 --> n104
-  n94 --> n104
-  n97 --> n104
-  n100 --> n104
-  n104 --> n105
-  n44 --> n106
-  n50 --> n106
-  n11 --> n107
-  n1 --> n108
-  n5 --> n108
-  n6 --> n108
-  n8 --> n108
-  n37 --> n108
-  n107 --> n108
-  n38 --> n108
-  n30 --> n109
-  n32 --> n110
-  n34 --> n110
-  n39 --> n110
-  n42 --> n110
+  n57 --> n104
+  n60 --> n104
+  n77 --> n104
+  n78 --> n104
+  n80 --> n104
+  n101 --> n104
+  n102 --> n104
+  n103 --> n104
+  n44 --> n105
+  n45 --> n105
+  n53 --> n105
+  n55 --> n105
+  n56 --> n105
+  n58 --> n105
+  n73 --> n105
+  n74 --> n105
+  n75 --> n105
+  n76 --> n105
+  n81 --> n105
+  n82 --> n105
+  n83 --> n105
+  n84 --> n105
+  n85 --> n105
+  n87 --> n105
+  n88 --> n105
+  n89 --> n105
+  n90 --> n105
+  n91 --> n105
+  n92 --> n105
+  n93 --> n105
+  n94 --> n105
+  n97 --> n105
+  n100 --> n105
+  n105 --> n106
+  n44 --> n107
+  n50 --> n107
+  n11 --> n108
+  n1 --> n109
+  n5 --> n109
+  n6 --> n109
+  n8 --> n109
+  n37 --> n109
+  n108 --> n109
+  n38 --> n109
+  n30 --> n110
+  n32 --> n111
+  n34 --> n111
+  n39 --> n111
+  n42 --> n111
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -409,14 +411,15 @@ graph TD
   n100["R68"]:::proven
   n101["R69"]:::proven
   n102["R71"]:::proven
-  n103["R70"]:::proven
-  n104["R35"]:::proven
-  n105["R48"]:::proven
-  n106["R11"]:::proven
-  n107["R2"]:::proven
-  n108["N1"]:::notFormalized
-  n109["N2"]:::notFormalized
-  n110["N4"]:::notFormalized
+  n103["R72"]:::proven
+  n104["R70"]:::proven
+  n105["R35"]:::proven
+  n106["R48"]:::proven
+  n107["R11"]:::proven
+  n108["R2"]:::proven
+  n109["N1"]:::notFormalized
+  n110["N2"]:::notFormalized
+  n111["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -616,65 +619,66 @@ graph TD
   n74 -.-> n76
   n77 --> n78
   n77 --> n80
-  n44 --> n103
-  n57 --> n103
-  n45 --> n103
-  n101 --> n103
-  n102 --> n103
-  n78 --> n103
-  n77 --> n103
-  n80 --> n103
-  n60 -.-> n103
-  n93 --> n104
-  n55 --> n104
-  n94 --> n104
-  n81 --> n104
-  n91 --> n104
-  n84 --> n104
-  n58 --> n104
-  n97 --> n104
   n44 --> n104
-  n87 --> n104
-  n73 --> n104
-  n56 --> n104
-  n100 --> n104
-  n92 --> n104
-  n85 --> n104
+  n57 --> n104
   n45 --> n104
-  n53 --> n104
-  n89 --> n104
-  n90 --> n104
-  n82 --> n104
-  n74 --> n104
-  n83 --> n104
-  n76 --> n104
-  n75 --> n104
-  n88 -.-> n104
+  n101 --> n104
+  n102 --> n104
+  n103 --> n104
+  n78 --> n104
+  n77 --> n104
+  n80 --> n104
+  n60 -.-> n104
+  n93 --> n105
   n55 --> n105
-  n104 --> n105
+  n94 --> n105
   n81 --> n105
   n91 --> n105
   n84 --> n105
   n58 --> n105
-  n45 --> n105
+  n97 --> n105
+  n44 --> n105
   n87 --> n105
   n73 --> n105
+  n56 --> n105
   n100 --> n105
-  n44 -.-> n106
-  n50 -.-> n106
-  n11 -.-> n107
-  n1 -.-> n108
-  n5 -.-> n108
-  n6 -.-> n108
-  n8 -.-> n108
-  n37 -.-> n108
-  n107 -.-> n108
-  n38 -.-> n108
-  n30 -.-> n109
-  n32 -.-> n110
-  n34 -.-> n110
-  n39 -.-> n110
-  n42 -.-> n110
+  n92 --> n105
+  n85 --> n105
+  n45 --> n105
+  n53 --> n105
+  n89 --> n105
+  n90 --> n105
+  n82 --> n105
+  n74 --> n105
+  n83 --> n105
+  n76 --> n105
+  n75 --> n105
+  n88 -.-> n105
+  n55 --> n106
+  n105 --> n106
+  n81 --> n106
+  n91 --> n106
+  n84 --> n106
+  n58 --> n106
+  n45 --> n106
+  n87 --> n106
+  n73 --> n106
+  n100 --> n106
+  n44 -.-> n107
+  n50 -.-> n107
+  n11 -.-> n108
+  n1 -.-> n109
+  n5 -.-> n109
+  n6 -.-> n109
+  n8 -.-> n109
+  n37 -.-> n109
+  n108 -.-> n109
+  n38 -.-> n109
+  n30 -.-> n110
+  n32 -.-> n111
+  n34 -.-> n111
+  n39 -.-> n111
+  n42 -.-> n111
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -1518,13 +1522,21 @@ A year's non-capital loss is its losses from business and property, the 112(1) a
 
 **Lean:** [`Canteen.ITA.NonCapitalLoss.amount`](../../Canteen/ITA/S111/NonCapitalLoss.lean#L56), [`Canteen.ITA.NonCapitalLoss.amountAt`](../../Canteen/ITA/S111/NonCapitalLoss.lean#L53), [`Canteen.ITA.NonCapitalLoss.queue`](../../Canteen/ITA/S111/NonCapitalLoss.lean#L78), [`Canteen.ITA.NonCapitalLoss.deduction`](../../Canteen/ITA/S111/NonCapitalLoss.lean#L88), [`Canteen.ITA.NonCapitalLoss.remaining`](../../Canteen/ITA/S111/NonCapitalLoss.lean#L91), [`Canteen.ITA.NonCapitalLoss.deduction_eq`](../../Canteen/ITA/S111/NonCapitalLoss.lean#L114), [`Canteen.ITA.NonCapitalLoss.deduction_le_claim`](../../Canteen/ITA/S111/NonCapitalLoss.lean#L117), [`Canteen.ITA.NonCapitalLoss.deduction_le_available`](../../Canteen/ITA/S111/NonCapitalLoss.lean#L121), [`Canteen.ITA.NonCapitalLoss.earlier_first`](../../Canteen/ITA/S111/NonCapitalLoss.lean#L130), [`Canteen.ITA.NonCapitalLoss.not_same_year`](../../Canteen/ITA/S111/NonCapitalLoss.lean#L139), [`Canteen.ITA.NonCapitalLoss.expired`](../../Canteen/ITA/S111/NonCapitalLoss.lean#L143), [`Canteen.ITA.NonCapitalLoss.no_losses`](../../Canteen/ITA/S111/NonCapitalLoss.lean#L149)
 
+### R72. The business limit
+
+**Status:** proven · **Citation:** ITA 125(2), (3), (5)(b), (5.1)
+
+The business limit is $500,000, shared by agreement among associated CCPCs (nil without one, or if the shares exceed 100%), prorated for a year under 51 weeks, and reduced by the greater of the grind for taxable capital over $10 million and 5 times the group's adjusted aggregate investment income over $50,000. Proven: never more than the shared limit, nil from $150,000 of investment income or $50 million of capital, and no reduction below both thresholds.
+
+**Lean:** [`Canteen.ITA.BusinessLimit.shared`](../../Canteen/ITA/S125/BusinessLimit.lean#L56), [`Canteen.ITA.BusinessLimit.prorated`](../../Canteen/ITA/S125/BusinessLimit.lean#L63), [`Canteen.ITA.BusinessLimit.capitalReduction`](../../Canteen/ITA/S125/BusinessLimit.lean#L66), [`Canteen.ITA.BusinessLimit.investmentReduction`](../../Canteen/ITA/S125/BusinessLimit.lean#L69), [`Canteen.ITA.BusinessLimit.limit`](../../Canteen/ITA/S125/BusinessLimit.lean#L72), [`Canteen.ITA.BusinessLimit.shared_le`](../../Canteen/ITA/S125/BusinessLimit.lean#L89), [`Canteen.ITA.BusinessLimit.limit_le`](../../Canteen/ITA/S125/BusinessLimit.lean#L102), [`Canteen.ITA.BusinessLimit.investment_grind_full`](../../Canteen/ITA/S125/BusinessLimit.lean#L119), [`Canteen.ITA.BusinessLimit.capital_grind_full`](../../Canteen/ITA/S125/BusinessLimit.lean#L127), [`Canteen.ITA.BusinessLimit.no_grind`](../../Canteen/ITA/S125/BusinessLimit.lean#L136)
+
 ### R70. A corporation's year, to taxable income and tax
 
-**Status:** proven · **Citation:** ITA 2(2); 3; 110.1; 111(1), (8); 112(1); 129(4) · **Uses:** R8, R9, R23, R26, R44, R45, R47, R69, R71
+**Status:** proven · **Citation:** ITA 2(2); 3; 110.1; 111(1), (8); 112(1); 125(7); 129(4) · **Uses:** R8, R9, R23, R26, R44, R45, R47, R69, R71, R72
 
-A corporation's income from active business, personal services business, property and dividends received, with its net taxable capital gains (a 55(2) dividend as a gain); taxable income after gifts, the 112(1) deduction and losses (other years' non-capital losses oldest first); the year's own non-capital loss; aggregate investment income, leaving out the deducted dividends; then Part I, Part IV and Part III.1 tax, the dividend refund, the pool and the capital dividend account. Proven: taxable income never exceeds income, 112(1) never deducts more than income includes, and a deductible dividend 55(2) does not reach is not investment income, a year with a non-capital loss has no taxable income, and a loss claimed against Part IV tax plus what carries forward is the loss.
+A corporation's income from active business, personal services business, property and dividends received, with its net taxable capital gains (a 55(2) dividend as a gain); taxable income after gifts, the 112(1) deduction and losses (other years' non-capital losses oldest first); the year's own non-capital loss; aggregate investment income, leaving out the deducted dividends, and adjusted aggregate investment income for the business limit; then Part I, Part IV (less losses claimed) and Part III.1 tax, the dividend refund, the pool and the capital dividend account. Proven: taxable income never exceeds income; 112(1) never deducts more than income includes; a deductible dividend 55(2) does not reach is not investment income; a year with a non-capital loss has no taxable income; and a loss claimed against Part IV tax plus what carries forward is the loss.
 
-**Lean:** [`Canteen.ITA.CorporateYear.income`](../../Canteen/ITA/S3/CorporateYear.lean#L156), [`Canteen.ITA.CorporateYear.taxableIncome`](../../Canteen/ITA/S3/CorporateYear.lean#L178), [`Canteen.ITA.CorporateYear.aggregateInvestmentIncome`](../../Canteen/ITA/S3/CorporateYear.lean#L215), [`Canteen.ITA.CorporateYear.ratesFacts`](../../Canteen/ITA/S3/CorporateYear.lean#L219), [`Canteen.ITA.CorporateYear.refundableFacts`](../../Canteen/ITA/S3/CorporateYear.lean#L227), [`Canteen.ITA.CorporateYear.gripFacts`](../../Canteen/ITA/S3/CorporateYear.lean#L235), [`Canteen.ITA.CorporateYear.cdaFacts`](../../Canteen/ITA/S3/CorporateYear.lean#L241), [`Canteen.ITA.CorporateYear.netTax`](../../Canteen/ITA/S3/CorporateYear.lean#L252), [`Canteen.ITA.CorporateYear.taxableIncome_le_income`](../../Canteen/ITA/S3/CorporateYear.lean#L292), [`Canteen.ITA.CorporateYear.dividendDeduction_le`](../../Canteen/ITA/S3/CorporateYear.lean#L316), [`Canteen.ITA.CorporateYear.deductible_dividend_not_investment_income`](../../Canteen/ITA/S3/CorporateYear.lean#L320), [`Canteen.ITA.CorporateYear.nonCapitalLossDeduction`](../../Canteen/ITA/S3/CorporateYear.lean#L174), [`Canteen.ITA.CorporateYear.nonCapitalLoss`](../../Canteen/ITA/S3/CorporateYear.lean#L188), [`Canteen.ITA.CorporateYear.nonCapitalLossesForward`](../../Canteen/ITA/S3/CorporateYear.lean#L204), [`Canteen.ITA.CorporateYear.loss_year_no_taxable_income`](../../Canteen/ITA/S3/CorporateYear.lean#L299), [`Canteen.ITA.CorporateYear.partIVOwnClaim`](../../Canteen/ITA/S3/CorporateYear.lean#L194), [`Canteen.ITA.CorporateYear.partIVCarriedClaim`](../../Canteen/ITA/S3/CorporateYear.lean#L199), [`Canteen.ITA.CorporateYear.own_loss_conserved`](../../Canteen/ITA/S3/CorporateYear.lean#L333)
+**Lean:** [`Canteen.ITA.CorporateYear.income`](../../Canteen/ITA/S3/CorporateYear.lean#L163), [`Canteen.ITA.CorporateYear.taxableIncome`](../../Canteen/ITA/S3/CorporateYear.lean#L185), [`Canteen.ITA.CorporateYear.aggregateInvestmentIncome`](../../Canteen/ITA/S3/CorporateYear.lean#L222), [`Canteen.ITA.CorporateYear.ratesFacts`](../../Canteen/ITA/S3/CorporateYear.lean#L236), [`Canteen.ITA.CorporateYear.refundableFacts`](../../Canteen/ITA/S3/CorporateYear.lean#L244), [`Canteen.ITA.CorporateYear.gripFacts`](../../Canteen/ITA/S3/CorporateYear.lean#L252), [`Canteen.ITA.CorporateYear.cdaFacts`](../../Canteen/ITA/S3/CorporateYear.lean#L258), [`Canteen.ITA.CorporateYear.netTax`](../../Canteen/ITA/S3/CorporateYear.lean#L269), [`Canteen.ITA.CorporateYear.taxableIncome_le_income`](../../Canteen/ITA/S3/CorporateYear.lean#L309), [`Canteen.ITA.CorporateYear.dividendDeduction_le`](../../Canteen/ITA/S3/CorporateYear.lean#L333), [`Canteen.ITA.CorporateYear.deductible_dividend_not_investment_income`](../../Canteen/ITA/S3/CorporateYear.lean#L337), [`Canteen.ITA.CorporateYear.nonCapitalLossDeduction`](../../Canteen/ITA/S3/CorporateYear.lean#L181), [`Canteen.ITA.CorporateYear.nonCapitalLoss`](../../Canteen/ITA/S3/CorporateYear.lean#L195), [`Canteen.ITA.CorporateYear.nonCapitalLossesForward`](../../Canteen/ITA/S3/CorporateYear.lean#L211), [`Canteen.ITA.CorporateYear.loss_year_no_taxable_income`](../../Canteen/ITA/S3/CorporateYear.lean#L316), [`Canteen.ITA.CorporateYear.partIVOwnClaim`](../../Canteen/ITA/S3/CorporateYear.lean#L201), [`Canteen.ITA.CorporateYear.partIVCarriedClaim`](../../Canteen/ITA/S3/CorporateYear.lean#L206), [`Canteen.ITA.CorporateYear.own_loss_conserved`](../../Canteen/ITA/S3/CorporateYear.lean#L350), [`Canteen.ITA.CorporateYear.adjustedAggregateInvestmentIncome`](../../Canteen/ITA/S3/CorporateYear.lean#L226), [`Canteen.ITA.CorporateYear.businessLimit`](../../Canteen/ITA/S3/CorporateYear.lean#L233)
 
 ### R35. An individual's year, to taxable income and tax
 

@@ -57,6 +57,7 @@ import Canteen.ITA.S46.PersonalUse
 import Canteen.ITA.S7.StockOptions
 import Canteen.ITA.S110_1.CorporateDonations
 import Canteen.ITA.S111.NonCapitalLoss
+import Canteen.ITA.S125.BusinessLimit
 import Canteen.ITA.S3.CorporateYear
 import Canteen.Transactions.DebtSwap
 import Canteen.ITA.S87.Amalgamation
@@ -229,6 +230,7 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S7.StockOptions, "7, 110(1)(d), (d.1) employee stock options"),
    (`Canteen.ITA.S110_1.CorporateDonations, "110.1(1)(a) a corporation's charitable gifts"),
    (`Canteen.ITA.S111.NonCapitalLoss, "111(1)(a), (3), (8) non-capital losses"),
+   (`Canteen.ITA.S125.BusinessLimit, "125(2), (3), (5)(b), (5.1) the business limit, shared and ground"),
    (`Canteen.ITA.S3.CorporateYear, "2(2), 3, 129(4) a corporation's year, to taxable income and tax")]
 
 /-! ## The dashboard -/
@@ -335,6 +337,7 @@ def actMindmap : String := Id.run do
     (2, "s. 87"), (3, "87(1): amalgamation"), (3, "87(2)(e): cost of capital property"), (3, "87(4): shareholders"),
     (2, "s. 88"), (3, "88(1): winding up a subsidiary"), (3, "88(1)(c), (d): the bump"),
     (2, "s. 89"), (3, "89(1): capital dividend account"), (3, "89(1): general rate income pool"),
+    (2, "s. 125"), (3, "125(2), (3): the business limit, shared"), (3, "125(5.1): the capital and passive income grinds"), (3, "125(7): adjusted aggregate investment income"),
     (2, "s. 110.1"), (3, "110.1(1)(a): a corporation's gifts"),
     (2, "s. 110.6"), (3, "qualified small business corporation share"), (3, "annual and cumulative gains limits"),
     (3, "110.6(2.1): the deduction"),

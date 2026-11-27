@@ -138,3 +138,23 @@ example : partIVTax holdcoCarried = 3833333 - 766666 := by decide
 example : nonCapitalLossesForward holdcoCarried = [⟨2025, 2 * 3000000⟩] := by decide
 
 end Canteen.Tests.CorporateYear.PartIVLosses
+
+namespace Canteen.Tests.CorporateYear.Grind
+
+open Canteen Canteen.ITA Canteen.ITA.CorporateYear Canteen.Tests.CorporateYear
+
+-- Opco's adjusted aggregate investment income: the $15,000 gain, the $50,000 of interest and the $20,000
+-- portfolio dividend (deducted under 112(1), but not from a connected corporation): $85,000.
+example : adjustedAggregateInvestmentIncome opco = 2 * 8500000 := by decide
+-- Had the shares sold been an active asset (shares of a connected small business), the gain is left out.
+example : adjustedAggregateInvestmentIncome { opco with activeAssets := ["shares of Pubco"] } = 2 * 7000000 := by decide
+-- Holdco's dividend from connected Opco is left out; its 55(2) gain is not.
+example : adjustedAggregateInvestmentIncome holdco = 2 * 3000000 := by decide
+
+-- Next year Opco's business limit is ground by 5 × ($85,000 − $50,000): $325,000.
+def opcoNext : Facts := { opco with taxationYear := 2026, businessLimitFacts := some { groupInvestmentIncome := adjustedAggregateInvestmentIncome opco / 2 } }
+example : businessLimit opcoNext = 32500000 := by decide
+-- So $75,000 of its $400,000 of active business income loses the small business rate.
+example : CorporateRates.smallBusinessAmount (ratesFacts opcoNext) = 32500000 := by decide
+
+end Canteen.Tests.CorporateYear.Grind

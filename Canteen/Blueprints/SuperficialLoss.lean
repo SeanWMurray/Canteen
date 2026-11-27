@@ -72,6 +72,7 @@ import Canteen.ITA.S46.PersonalUse
 import Canteen.ITA.S7.StockOptions
 import Canteen.ITA.S110_1.CorporateDonations
 import Canteen.ITA.S111.NonCapitalLoss
+import Canteen.ITA.S125.BusinessLimit
 import Canteen.ITA.S3.CorporateYear
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
@@ -729,21 +730,32 @@ def blueprint : Blueprint where
             ``NonCapitalLoss.remaining, ``NonCapitalLoss.deduction_eq, ``NonCapitalLoss.deduction_le_claim,
             ``NonCapitalLoss.deduction_le_available, ``NonCapitalLoss.earlier_first, ``NonCapitalLoss.not_same_year,
             ``NonCapitalLoss.expired, ``NonCapitalLoss.no_losses] },
-        { id := "R70", kind := .law, title := "A corporation's year, to taxable income and tax", citation := "ITA 2(2); 3; 110.1; 111(1), (8); 112(1); 129(4)"
+        { id := "R72", kind := .law, title := "The business limit", citation := "ITA 125(2), (3), (5)(b), (5.1)"
+          statement := "The business limit is $500,000, shared by agreement among associated CCPCs (nil without one, or " ++
+            "if the shares exceed 100%), prorated for a year under 51 weeks, and reduced by the greater of the grind for " ++
+            "taxable capital over $10 million and 5 times the group's adjusted aggregate investment income over $50,000. " ++
+            "Proven: never more than the shared limit, nil from $150,000 of investment income or $50 million of capital, and " ++
+            "no reduction below both thresholds."
+          lean := [``BusinessLimit.shared, ``BusinessLimit.prorated, ``BusinessLimit.capitalReduction, ``BusinessLimit.investmentReduction,
+            ``BusinessLimit.limit, ``BusinessLimit.shared_le, ``BusinessLimit.limit_le, ``BusinessLimit.investment_grind_full,
+            ``BusinessLimit.capital_grind_full, ``BusinessLimit.no_grind] },
+        { id := "R70", kind := .law, title := "A corporation's year, to taxable income and tax", citation := "ITA 2(2); 3; 110.1; 111(1), (8); 112(1); 125(7); 129(4)"
           statement := "A corporation's income from active business, personal services business, property and dividends " ++
             "received, with its net taxable capital gains (a 55(2) dividend as a gain); taxable income after gifts, the " ++
-            "112(1) deduction and losses (other years' non-capital losses oldest first); the year's own non-capital loss; aggregate investment income, leaving out the deducted dividends; then Part I, " ++
-            "Part IV and Part III.1 tax, the dividend refund, the pool and the capital dividend account. Proven: taxable " ++
-            "income never exceeds income, 112(1) never deducts more than income includes, and a deductible dividend 55(2) " ++
-            "does not reach is not investment income, a year with a non-capital loss has no taxable income, and a loss " ++
-            "claimed against Part IV tax plus what carries forward is the loss."
+            "112(1) deduction and losses (other years' non-capital losses oldest first); the year's own non-capital loss; " ++
+            "aggregate investment income, leaving out the deducted dividends, and adjusted aggregate investment income for " ++
+            "the business limit; then Part I, Part IV (less losses claimed) and Part III.1 tax, the dividend refund, the " ++
+            "pool and the capital dividend account. Proven: taxable income never exceeds income; 112(1) never deducts more " ++
+            "than income includes; a deductible dividend 55(2) does not reach is not investment income; a year with a " ++
+            "non-capital loss has no taxable income; and a loss claimed against Part IV tax plus what carries forward is the loss."
           lean := [``CorporateYear.income, ``CorporateYear.taxableIncome, ``CorporateYear.aggregateInvestmentIncome,
             ``CorporateYear.ratesFacts, ``CorporateYear.refundableFacts, ``CorporateYear.gripFacts, ``CorporateYear.cdaFacts,
             ``CorporateYear.netTax, ``CorporateYear.taxableIncome_le_income, ``CorporateYear.dividendDeduction_le,
             ``CorporateYear.deductible_dividend_not_investment_income, ``CorporateYear.nonCapitalLossDeduction,
             ``CorporateYear.nonCapitalLoss, ``CorporateYear.nonCapitalLossesForward, ``CorporateYear.loss_year_no_taxable_income,
-            ``CorporateYear.partIVOwnClaim, ``CorporateYear.partIVCarriedClaim, ``CorporateYear.own_loss_conserved],
-          uses := ["R8", "R9", "R23", "R26", "R44", "R45", "R47", "R69", "R71"] },
+            ``CorporateYear.partIVOwnClaim, ``CorporateYear.partIVCarriedClaim, ``CorporateYear.own_loss_conserved,
+            ``CorporateYear.adjustedAggregateInvestmentIncome, ``CorporateYear.businessLimit],
+          uses := ["R8", "R9", "R23", "R26", "R44", "R45", "R47", "R69", "R71", "R72"] },
         { id := "R35", kind := .law, title := "An individual's year, to taxable income and tax", citation := "ITA 2(2); 3; 111(1)(b); 110.6; 117(2)"
           statement := "Income from sources (employment and business, dividends with the gross-up, recapture, attributed " ++
             "income), net taxable capital gains, less terminal and other losses; then taxable income, after the net capital " ++

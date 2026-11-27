@@ -4,6 +4,7 @@ import Canteen.ITA.S111.NonCapitalLoss
 import Canteen.ITA.S55.IntercorporateDividends
 import Canteen.ITA.S110_1.CorporateDonations
 import Canteen.ITA.S129.RefundableTax
+import Canteen.ITA.S125.BusinessLimit
 import Canteen.ITA.S89.GeneralRateIncomePool
 import Canteen.ITA.S89.CapitalDividendAccount
 
@@ -28,6 +29,8 @@ are computed.
   year's income), intercorporate dividends (112(1)), net capital losses (111(1)(b), limited to 3(b))
   and non-capital losses of other years (111(1)(a), oldest first, by default as much as is needed);
 * **111(8)**: the year's own non-capital loss, such as a 112(1) deduction over income creates;
+* **125(7) "adjusted aggregate investment income"**, which grinds next year's business limit
+  (125(5.1)(b)), and the business limit itself where its facts are given (`BusinessLimit`);
 * **129(4) "aggregate investment income"**: (a) taxable capital gains less allowable capital losses
   and the 111(1)(b) deduction, and (b) income from property other than the part of a dividend
   deductible in computing taxable income, less losses from property.
@@ -92,8 +95,12 @@ structure Facts where
   activeBusinessLosses : Cents := 0
   /-- Income from a personal services business (not an active business for 125(1)). -/
   personalServicesIncome : Cents := 0
-  /-- 125(1)(c): the business limit, after 125(2) to (5.1). -/
+  /-- 125(1)(c): the business limit, after 125(2) to (5.1), if given; or the facts to compute it from. -/
   businessLimit : Cents := 50000000
+  businessLimitFacts : Option BusinessLimit.Facts := none
+  /-- 125(7) "active asset": the descriptions of the year's dispositions of active assets (for
+  adjusted aggregate investment income). -/
+  activeAssets : List String := []
   /-- 129(4) "income or loss" from a source that is a property, other than taxable dividends from corporations. -/
   propertyIncome : Cents := 0
   propertyLosses : Cents := 0
@@ -216,9 +223,19 @@ def netGains (f : Facts) : HalfCents :=
 def aggregateInvestmentIncome (f : Facts) : HalfCents :=
   netGains f + 2 * (f.propertyIncome + dividendsNotDeducted f) - 2 * f.propertyLosses
 
+/-- 125(7) "adjusted aggregate investment income", in half-cents: gains and losses on active assets
+left out, no 111(1)(b) deduction, and only dividends from connected corporations excluded. -/
+def adjustedAggregateInvestmentIncome (f : Facts) : HalfCents :=
+  let y : Year := { capitalYear f with dispositions := (capitalYear f).dispositions.filter fun d => !f.activeAssets.contains d.description }
+  (y.taxableCapitalGains - y.allowableCapitalLosses) +
+    2 * (f.propertyIncome + ((f.dividends.filter (!·.connected)).map Received.included).sum) - 2 * f.propertyLosses
+
+/-- 125(1)(c): the business limit, computed (125(2) to (5.1)) or given. -/
+def businessLimit (f : Facts) : Cents := (f.businessLimitFacts.map BusinessLimit.limit).getD f.businessLimit
+
 def ratesFacts (f : Facts) : CorporateRates.Facts :=
   { taxableIncome := taxableIncome f / 2, ccpc := f.ccpc, activeBusinessIncome := netActiveBusinessIncome f,
-    businessLimit := f.businessLimit, aggregateInvestmentIncome := aggregateInvestmentIncome f / 2,
+    businessLimit := businessLimit f, aggregateInvestmentIncome := aggregateInvestmentIncome f / 2,
     personalServicesIncome := f.personalServicesIncome }
 
 def portfolio (f : Facts) (eligible : Bool) : Cents :=

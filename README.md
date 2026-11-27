@@ -137,6 +137,7 @@ Canteen/
     S84_1/SurplusStripping.lean   84.1: shares sold to a non-arm's length corporation; the deemed dividend
     S110_1/CorporateDonations.lean   110.1(1)(a): a corporation's charitable gifts
     S111/NonCapitalLoss.lean   111(1)(a), (3), (8): non-capital losses, and their deduction oldest first
+    S125/BusinessLimit.lean    125(2), (3), (5)(b), (5.1): the business limit, shared, prorated and ground
     S3/CorporateYear.lean      2(2), 3, 129(4): a corporation's year, to taxable income, investment income and tax
     S110_6/CapitalGainsDeduction.lean   110.6: qualified small business corporation shares, the gains limits, the deduction
     S251_2/LossRestrictionEvent.lean   251.2(2)(a), 256(7)(a): acquisitions of control, and when they are not
