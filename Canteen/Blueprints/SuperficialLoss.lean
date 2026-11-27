@@ -80,6 +80,7 @@ import Canteen.ITA.S18.WorkSpace
 import Canteen.ITA.S20.DoubtfulDebts
 import Canteen.ITA.S20.AdvancePayments
 import Canteen.ITA.S20.InstalmentSales
+import Canteen.ITA.S18.PrepaidExpenses
 import Canteen.ITA.S3.CorporateYear
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
@@ -804,6 +805,12 @@ def blueprint : Blueprint where
             "taxpayer. Proven: never more than the profit, and none after 36 months."
           lean := [``InstalmentSales.Sale.longTerm, ``InstalmentSales.Sale.tooOld, ``InstalmentSales.Sale.reserve, ``InstalmentSales.reserve,
             ``InstalmentSales.net, ``InstalmentSales.Sale.reserve_le_profit, ``InstalmentSales.Sale.none_after_three_years] },
+        { id := "R80", kind := .law, title := "Prepaid expenses", citation := "ITA 18(9)(a), (b)"
+          statement := "An amount paid for services, interest, taxes, rent, royalties or insurance for a period after the " ++
+            "year is deducted day by day in the years it relates to (prepaid interest of a corporation, partnership or " ++
+            "trust excepted). Proven: no year's share exceeds the amount, and a period within the year is deducted in full."
+          lean := [``PrepaidExpenses.Outlay.share, ``PrepaidExpenses.Outlay.upTo, ``PrepaidExpenses.Outlay.deduction,
+            ``PrepaidExpenses.deduction, ``PrepaidExpenses.Outlay.share_le, ``PrepaidExpenses.Outlay.within] },
         { id := "R70", kind := .law, title := "A corporation's year, to taxable income and tax", citation := "ITA 2(2); 3; 110.1; 111(1), (8); 112(1); 125(7); 129(4)"
           statement := "A corporation's income from active business, personal services business, property and dividends " ++
             "received, with its net taxable capital gains (a 55(2) dividend as a gain); taxable income after gifts, the " ++

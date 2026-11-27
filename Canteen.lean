@@ -107,6 +107,7 @@ import Canteen.ITA.S18.WorkSpace
 import Canteen.ITA.S20.DoubtfulDebts
 import Canteen.ITA.S20.AdvancePayments
 import Canteen.ITA.S20.InstalmentSales
+import Canteen.ITA.S18.PrepaidExpenses
 import Canteen.ITA.S3.CorporateYear
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
@@ -259,3 +260,4 @@ import Canteen.Tests.WorkSpace
 import Canteen.Tests.DoubtfulDebts
 import Canteen.Tests.AdvancePayments
 import Canteen.Tests.InstalmentSales
+import Canteen.Tests.PrepaidExpenses
