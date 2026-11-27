@@ -96,6 +96,7 @@ import Canteen.ITA.S84.WindingUpDividend
 import Canteen.ITA.S15.ShareholderBenefit
 import Canteen.ITA.S44_1.SmallBusinessRollover
 import Canteen.ITA.S46.PersonalUse
+import Canteen.ITA.S7.StockOptions
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.ITA.S40.ShareToAffiliate
@@ -235,3 +236,4 @@ import Canteen.Tests.WindingUpDividend
 import Canteen.Tests.ShareholderBenefit
 import Canteen.Tests.SmallBusinessRollover
 import Canteen.Tests.PersonalUse
+import Canteen.Tests.StockOptions

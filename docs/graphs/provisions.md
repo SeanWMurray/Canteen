@@ -67,22 +67,23 @@ flowchart BT
   v58["62(1), 248(1) moving expenses"]:::prov
   v59["6(1)(e), 6(2) the standby charge"]:::prov
   v60["15(1) shareholder benefits"]:::prov
-  v61["2(2), 3 an individual's year, to taxable income"]:::prov
-  v62["39(4) to (6) the Canadian securities election"]:::prov
-  v63["50(1) bad debts and worthless shares"]:::prov
-  v64["43(1) part of a property"]:::prov
-  v65["74.4(2) corporate attribution"]:::prov
-  v66["123 to 125 corporate rates"]:::prov
-  v67["123.3, 129, 186 refundable taxes"]:::prov
-  v68["15(2), 80.4 shareholder loans"]:::prov
-  v69["89(1), 185.1 the general rate income pool"]:::prov
-  v70["127.5 to 127.531, 120.2 the minimum tax"]:::prov
-  v71["84(1), 53(1)(b) an increase in paid-up capital"]:::prov
-  v72["112(3), (3.01), (6.1) the stop-loss on shares"]:::prov
-  v73["84(2) a distribution on winding-up"]:::prov
-  v74["44.1 the small business investment rollover"]:::prov
-  v75["46 personal-use property, the $1,000 rule"]:::prov
-  v76["50(2) bad personal-use debts"]:::prov
+  v61["7, 110(1)(d), (d.1) employee stock options"]:::prov
+  v62["2(2), 3 an individual's year, to taxable income"]:::prov
+  v63["39(4) to (6) the Canadian securities election"]:::prov
+  v64["50(1) bad debts and worthless shares"]:::prov
+  v65["43(1) part of a property"]:::prov
+  v66["74.4(2) corporate attribution"]:::prov
+  v67["123 to 125 corporate rates"]:::prov
+  v68["123.3, 129, 186 refundable taxes"]:::prov
+  v69["15(2), 80.4 shareholder loans"]:::prov
+  v70["89(1), 185.1 the general rate income pool"]:::prov
+  v71["127.5 to 127.531, 120.2 the minimum tax"]:::prov
+  v72["84(1), 53(1)(b) an increase in paid-up capital"]:::prov
+  v73["112(3), (3.01), (6.1) the stop-loss on shares"]:::prov
+  v74["84(2) a distribution on winding-up"]:::prov
+  v75["44.1 the small business investment rollover"]:::prov
+  v76["46 personal-use property, the $1,000 rule"]:::prov
+  v77["50(2) bad personal-use debts"]:::prov
   v0 --> v1
   v0 --> v2
   v0 --> v3
@@ -135,38 +136,39 @@ flowchart BT
   v43 --> v45
   v30 --> v46
   v43 --> v53
-  v19 --> v61
-  v27 --> v61
-  v32 --> v61
-  v29 --> v61
-  v44 --> v61
-  v45 --> v61
-  v46 --> v61
-  v47 --> v61
-  v48 --> v61
-  v49 --> v61
-  v50 --> v61
-  v51 --> v61
-  v52 --> v61
-  v53 --> v61
-  v54 --> v61
-  v55 --> v61
-  v56 --> v61
-  v57 --> v61
-  v58 --> v61
-  v59 --> v61
-  v60 --> v61
-  v17 --> v62
+  v19 --> v62
+  v27 --> v62
+  v32 --> v62
+  v29 --> v62
+  v44 --> v62
+  v45 --> v62
+  v46 --> v62
+  v47 --> v62
+  v48 --> v62
+  v49 --> v62
+  v50 --> v62
+  v51 --> v62
+  v52 --> v62
+  v53 --> v62
+  v54 --> v62
+  v55 --> v62
+  v56 --> v62
+  v57 --> v62
+  v58 --> v62
+  v59 --> v62
+  v60 --> v62
+  v61 --> v62
   v17 --> v63
   v17 --> v64
-  v30 --> v65
-  v66 --> v67
-  v66 --> v69
-  v61 --> v70
-  v30 --> v71
-  v17 --> v72
+  v17 --> v65
+  v30 --> v66
+  v67 --> v68
+  v67 --> v70
+  v62 --> v71
+  v30 --> v72
   v17 --> v73
-  v30 --> v73
-  v17 --> v75
+  v17 --> v74
+  v30 --> v74
+  v17 --> v76
   classDef prov fill:#bbdefb,stroke:#1565c0,color:#0d47a1
 ```

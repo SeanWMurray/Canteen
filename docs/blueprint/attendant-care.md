@@ -88,7 +88,7 @@ graph TD
 
 14% of medical expenses over the lesser of $2,834 and 3% of income. Full-time attendant care is a medical expense under (b); up to $10,000 of attendant care can be claimed under (b.1) instead.
 
-**Lean:** [`Canteen.ITA.MedicalExpenses.credit`](../../Canteen/ITA/S118_2/MedicalExpenses.lean#L83), [`Canteen.ITA.IndividualYear.medicalCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L286)
+**Lean:** [`Canteen.ITA.MedicalExpenses.credit`](../../Canteen/ITA/S118_2/MedicalExpenses.lean#L83), [`Canteen.ITA.IndividualYear.medicalCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L299)
 
 ### L2. The disability credit
 
@@ -96,7 +96,7 @@ graph TD
 
 14% of $10,138, unless attendant care for the individual is claimed as a medical expense other than under 118.2(2)(b.1).
 
-**Lean:** [`Canteen.ITA.Disability.eligible`](../../Canteen/ITA/S118_3/Disability.lean#L59), [`Canteen.ITA.Disability.credit`](../../Canteen/ITA/S118_3/Disability.lean#L83), [`Canteen.ITA.IndividualYear.disabilityCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L303)
+**Lean:** [`Canteen.ITA.Disability.eligible`](../../Canteen/ITA/S118_3/Disability.lean#L59), [`Canteen.ITA.Disability.credit`](../../Canteen/ITA/S118_3/Disability.lean#L83), [`Canteen.ITA.IndividualYear.disabilityCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L316)
 
 ### L3. Federal tax
 
@@ -104,7 +104,7 @@ graph TD
 
 Tax at the 117(2) rates, less the personal, medical and disability credits.
 
-**Lean:** [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L337)
+**Lean:** [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L350)
 
 ## Facts
 

@@ -142,7 +142,7 @@ The support paid since 1997, less the child support payable since the commenceme
 
 The deduction in the payer's income, the inclusion in the recipient's.
 
-**Lean:** [`Canteen.ITA.IndividualYear.supportDeducted`](../../Canteen/ITA/S3/IndividualYear.lean#L194), [`Canteen.ITA.IndividualYear.supportIncluded`](../../Canteen/ITA/S3/IndividualYear.lean#L192), [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L337)
+**Lean:** [`Canteen.ITA.IndividualYear.supportDeducted`](../../Canteen/ITA/S3/IndividualYear.lean#L198), [`Canteen.ITA.IndividualYear.supportIncluded`](../../Canteen/ITA/S3/IndividualYear.lean#L196), [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L350)
 
 ## Facts
 

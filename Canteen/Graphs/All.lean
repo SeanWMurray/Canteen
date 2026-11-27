@@ -54,6 +54,7 @@ import Canteen.ITA.S84.WindingUpDividend
 import Canteen.ITA.S15.ShareholderBenefit
 import Canteen.ITA.S44_1.SmallBusinessRollover
 import Canteen.ITA.S46.PersonalUse
+import Canteen.ITA.S7.StockOptions
 import Canteen.Transactions.DebtSwap
 import Canteen.ITA.S87.Amalgamation
 import Canteen.ITA.S39.CanadianSecurities
@@ -221,7 +222,8 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S84.WindingUpDividend, "84(2) a distribution on winding-up"),
    (`Canteen.ITA.S15.ShareholderBenefit, "15(1) shareholder benefits"),
    (`Canteen.ITA.S44_1.SmallBusinessRollover, "44.1 the small business investment rollover"),
-   (`Canteen.ITA.S46.PersonalUse, "46 personal-use property, the $1,000 rule")]
+   (`Canteen.ITA.S46.PersonalUse, "46 personal-use property, the $1,000 rule"),
+   (`Canteen.ITA.S7.StockOptions, "7, 110(1)(d), (d.1) employee stock options")]
 
 /-! ## The dashboard -/
 
@@ -290,6 +292,7 @@ def actMindmap : String := Id.run do
   let tree : List (Nat × String) := [
     (2, "ss. 2, 3"), (3, "income for the year: (a) to (f)"), (3, "2(2): taxable income"),
     (2, "s. 6"), (3, "6(1)(e), 6(2): automobile standby charge"),
+    (2, "s. 7"), (3, "7(1)(a): the option benefit"), (3, "7(1.1): CCPC deferral"),
     (2, "s. 13"), (3, "13(21): undepreciated capital cost"), (3, "13(1): recapture"),
     (2, "s. 15"), (3, "15(1): shareholder benefits"), (3, "15(2), (2.6): shareholder loans"),
     (2, "s. 20"), (3, "20(16): terminal loss"), (3, "20(1)(j): loan repaid"), (3, "20(1)(c): interest"), (3, "20(3): refinancing"),
@@ -328,6 +331,7 @@ def actMindmap : String := Id.run do
     (2, "s. 89"), (3, "89(1): capital dividend account"), (3, "89(1): general rate income pool"),
     (2, "s. 110.6"), (3, "qualified small business corporation share"), (3, "annual and cumulative gains limits"),
     (3, "110.6(2.1): the deduction"),
+    (2, "s. 110"), (3, "110(1)(d), (d.1): the option deduction"),
     (2, "s. 111"), (3, "111(8): net capital loss"), (3, "111(1)(b), (1.1): deduction"),
     (2, "s. 112"), (3, "112(1): intercorporate dividend deduction"), (3, "112(3), (3.01): the stop-loss on shares"),
     (2, "ss. 56, 56.1, 60"), (3, "56.1(4): support amount, child support"), (3, "56(1)(b), 60(b): included and deducted"),

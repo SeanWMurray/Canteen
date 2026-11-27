@@ -22,6 +22,7 @@ import Canteen.ITA.S63.ChildCare
 import Canteen.ITA.S62.MovingExpenses
 import Canteen.ITA.S6.StandbyCharge
 import Canteen.ITA.S15.ShareholderBenefit
+import Canteen.ITA.S7.StockOptions
 
 /-!
 # An individual's year: income from the encoded sources, and taxable income
@@ -79,6 +80,9 @@ structure Facts where
   employmentAndBusiness : Cents := 0
   /-- 15(1): benefits conferred by corporations on the individual as shareholder. -/
   shareholderBenefits : List ShareholderBenefit.Facts := []
+  /-- 7(1)(a), 7(1.1), 110(1)(d), (d.1): securities acquired under employee option agreements; each counts in the
+  year its benefit is received. -/
+  stockOptions : List StockOptions.Facts := []
   /-- 6(1)(e): automobiles the employer made available. -/
   standby : List StandbyCharge.Facts := []
   dividends : List Dividends.Dividend := []
@@ -196,13 +200,22 @@ def supportDeducted (f : Facts) : Cents := (f.supportPaid.map Support.amount).su
 /-- 6(1)(e): standby charges included in employment income. -/
 def standbyBenefits (f : Facts) : Cents := (f.standby.map StandbyCharge.benefit).sum
 
+/-- 7(1)(a): the option benefits received in this taxation year. -/
+def optionsThisYear (f : Facts) : List StockOptions.Facts :=
+  f.stockOptions.filter fun o => StockOptions.inclusionYear o == some f.taxationYear
+
+def stockOptionBenefits (f : Facts) : Cents := ((optionsThisYear f).map StockOptions.benefit).sum
+
+/-- 110(1)(d), (d.1): deducted in computing taxable income (not allowed for the minimum tax, 127.52(1)(h)). -/
+def stockOptionDeduction (f : Facts) : Cents := ((optionsThisYear f).map StockOptions.deduction).sum
+
 /-- 15(1). -/
 def shareholderBenefitIncome (f : Facts) : Cents := (f.shareholderBenefits.map ShareholderBenefit.inclusion).sum
 
 /-- The sources of income computed here other than employment and business income, dividends, recapture
 and attribution: standby charges, pensions, split pension received, support, shareholder benefits. -/
 def otherSources (f : Facts) : Cents :=
-  standbyBenefits f + pensionTotal f + f.splitIn + supportIncluded f + shareholderBenefitIncome f
+  standbyBenefits f + stockOptionBenefits f + pensionTotal f + f.splitIn + supportIncluded f + shareholderBenefitIncome f
 
 /-- 62(1). -/
 def movingDeduction (f : Facts) : Cents := (f.moving.map MovingExpenses.deduction).getD 0
@@ -223,7 +236,7 @@ def incomeFactsCore (f : Facts) : Income.Facts :=
 /-- 63: the child care facts, with the year's earned income and, where the supporting person's income is
 given, 63(2) decided on incomes before section 63 (and 60(w)). -/
 def childCareFacts (f : Facts) (c : ChildCare.Facts) : ChildCare.Facts :=
-  { c with earnedIncome := f.employmentAndBusiness + standbyBenefits f,
+  { c with earnedIncome := f.employmentAndBusiness + standbyBenefits f + stockOptionBenefits f,
            higherIncome := match f.supportingPersonIncome with
              | some i => decide (i < Income.income (incomeFactsCore f) / 2)
              | none => c.higherIncome }
@@ -265,7 +278,7 @@ def capitalGainsDeduction (f : Facts) : HalfCents :=
 
 /-- Taxable income (2(2)), in half-cents. -/
 def taxableIncome (f : Facts) : HalfCents :=
-  income f - netCapitalLossDeduction f - capitalGainsDeduction f - 2 * f.otherDivisionC
+  income f - netCapitalLossDeduction f - capitalGainsDeduction f - 2 * (f.otherDivisionC + stockOptionDeduction f)
 
 /-- 118(1): the basic personal (and spouse) credit, on the individual's income for the year. -/
 def personalFacts (f : Facts) : PersonalCredits.Facts :=
