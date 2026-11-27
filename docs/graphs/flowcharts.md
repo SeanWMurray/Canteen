@@ -935,6 +935,28 @@ flowchart TD
   classDef start fill:#ffffff,stroke:#212121,color:#212121
 ```
 
+## Subsection 84(2): distributions on winding-up
+
+```mermaid
+flowchart TD
+  S(["subsection 84(2) · ITA 84(2)"]):::start
+  C0["<b>resident</b> The corporation is resident in Canada<br/>[ITA 84(2) resident]"]:::fact
+  C1["<b>winding-up</b> Its funds or property were distributed or<br/>appropriated to the shareholders on the<br/>winding-up, discontinuance or reorganization<br/>of its business<br/><i>judgment call: judgment calls computed from the facts</i><br/>[ITA 84(2) winding-up]"]:::judgment
+  Y(["subsection 84(2) applies"]):::yes
+  N(["subsection 84(2) does not apply"]):::no
+  S --> C0
+  C0 -->|met| C1
+  C0 -->|not met| N
+  C1 -->|met| Y
+  C1 -->|not met| N
+  classDef fact fill:#eeeeee,stroke:#616161,color:#212121
+  classDef judgment fill:#ffe0b2,stroke:#ef6c00,color:#e65100
+  classDef rule fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+  classDef yes fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
+  classDef no fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+  classDef start fill:#ffffff,stroke:#212121,color:#212121
+```
+
 ## Subparagraph 40(2)(g)(iv): transfers to registered plans
 
 ```mermaid

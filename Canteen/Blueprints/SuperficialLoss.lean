@@ -65,6 +65,7 @@ import Canteen.ITA.S63.ChildCare
 import Canteen.ITA.S62.MovingExpenses
 import Canteen.ITA.S6.StandbyCharge
 import Canteen.ITA.S112.StopLoss
+import Canteen.ITA.S84.WindingUpDividend
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -669,6 +670,13 @@ def blueprint : Blueprint where
             "dividends keeps it all."
           lean := [``StopLoss.qualified, ``StopLoss.reduction, ``StopLoss.apply, ``StopLoss.reduction_le,
             ``StopLoss.individual_taxable_only] },
+        { id := "R64", kind := .law, title := "A distribution on winding-up", citation := "ITA 84(2); 54 \"proceeds of disposition\" (j)"
+          statement := "Funds or property a Canadian corporation distributes to shareholders on the winding-up, discontinuance " ++
+            "or reorganization of its business are a dividend to the extent they exceed the paid-up capital reduction; the " ++
+            "holders' proceeds exclude it. Proven: never more than what was distributed, and a sole shareholder's proceeds " ++
+            "are the paid-up capital returned."
+          lean := [``WindingUpDividend.applies, ``WindingUpDividend.dividendPaid, ``WindingUpDividend.proceeds,
+            ``WindingUpDividend.dividendPaid_le, ``WindingUpDividend.sole_proceeds] },
         { id := "R35", kind := .law, title := "An individual's year, to taxable income and tax", citation := "ITA 2(2); 3; 111(1)(b); 110.6; 117(2)"
           statement := "Income from sources (employment and business, dividends with the gross-up, recapture, attributed " ++
             "income), net taxable capital gains, less terminal and other losses; then taxable income, after the net capital " ++

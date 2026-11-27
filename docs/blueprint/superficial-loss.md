@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 103 statements:** 84 proven, 16 encoded, 3 not formalized.
+**Status of the 104 statements:** 85 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -106,13 +106,14 @@ graph TD
   n93["R61 · Moving expenses"]:::proven
   n94["R62 · The automobile standby charge"]:::proven
   n95["R63 · The stop-loss on shares"]:::proven
-  n96["R35 · An individual's year, to taxable income and tax"]:::proven
-  n97["R48 · The minimum tax"]:::proven
-  n98["R11 · The principal residence exemption"]:::proven
-  n99["R2 · Cost of the substituted property"]:::proven
-  n100["N1 · Inputs decided by other provisions"]:::notFormalized
-  n101["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n102["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n96["R64 · A distribution on winding-up"]:::proven
+  n97["R35 · An individual's year, to taxable income and tax"]:::proven
+  n98["R48 · The minimum tax"]:::proven
+  n99["R11 · The principal residence exemption"]:::proven
+  n100["R2 · Cost of the substituted property"]:::proven
+  n101["N1 · Inputs decided by other provisions"]:::notFormalized
+  n102["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n103["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -232,45 +233,45 @@ graph TD
   n74 --> n76
   n77 --> n78
   n77 --> n80
-  n44 --> n96
-  n45 --> n96
-  n53 --> n96
-  n55 --> n96
-  n56 --> n96
-  n58 --> n96
-  n73 --> n96
-  n74 --> n96
-  n75 --> n96
-  n76 --> n96
-  n81 --> n96
-  n82 --> n96
-  n83 --> n96
-  n84 --> n96
-  n85 --> n96
-  n87 --> n96
-  n88 --> n96
-  n89 --> n96
-  n90 --> n96
-  n91 --> n96
-  n92 --> n96
-  n93 --> n96
-  n94 --> n96
-  n96 --> n97
-  n44 --> n98
-  n50 --> n98
-  n11 --> n99
-  n1 --> n100
-  n5 --> n100
-  n6 --> n100
-  n8 --> n100
-  n37 --> n100
-  n99 --> n100
-  n38 --> n100
-  n30 --> n101
-  n32 --> n102
-  n34 --> n102
-  n39 --> n102
-  n42 --> n102
+  n44 --> n97
+  n45 --> n97
+  n53 --> n97
+  n55 --> n97
+  n56 --> n97
+  n58 --> n97
+  n73 --> n97
+  n74 --> n97
+  n75 --> n97
+  n76 --> n97
+  n81 --> n97
+  n82 --> n97
+  n83 --> n97
+  n84 --> n97
+  n85 --> n97
+  n87 --> n97
+  n88 --> n97
+  n89 --> n97
+  n90 --> n97
+  n91 --> n97
+  n92 --> n97
+  n93 --> n97
+  n94 --> n97
+  n97 --> n98
+  n44 --> n99
+  n50 --> n99
+  n11 --> n100
+  n1 --> n101
+  n5 --> n101
+  n6 --> n101
+  n8 --> n101
+  n37 --> n101
+  n100 --> n101
+  n38 --> n101
+  n30 --> n102
+  n32 --> n103
+  n34 --> n103
+  n39 --> n103
+  n42 --> n103
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -383,13 +384,14 @@ graph TD
   n93["R61"]:::proven
   n94["R62"]:::proven
   n95["R63"]:::proven
-  n96["R35"]:::proven
-  n97["R48"]:::proven
-  n98["R11"]:::proven
-  n99["R2"]:::proven
-  n100["N1"]:::notFormalized
-  n101["N2"]:::notFormalized
-  n102["N4"]:::notFormalized
+  n96["R64"]:::proven
+  n97["R35"]:::proven
+  n98["R48"]:::proven
+  n99["R11"]:::proven
+  n100["R2"]:::proven
+  n101["N1"]:::notFormalized
+  n102["N2"]:::notFormalized
+  n103["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -589,53 +591,53 @@ graph TD
   n74 -.-> n76
   n77 --> n78
   n77 --> n80
-  n93 --> n96
-  n55 --> n96
-  n94 --> n96
-  n81 --> n96
-  n91 --> n96
-  n84 --> n96
-  n58 --> n96
-  n44 --> n96
-  n87 --> n96
-  n73 --> n96
-  n56 --> n96
-  n92 --> n96
-  n85 --> n96
-  n45 --> n96
-  n53 --> n96
-  n89 --> n96
-  n90 --> n96
-  n82 --> n96
-  n74 --> n96
-  n83 --> n96
-  n76 --> n96
-  n75 --> n96
-  n88 -.-> n96
+  n93 --> n97
   n55 --> n97
+  n94 --> n97
   n81 --> n97
-  n96 --> n97
   n91 --> n97
   n84 --> n97
   n58 --> n97
-  n45 --> n97
+  n44 --> n97
   n87 --> n97
   n73 --> n97
-  n44 -.-> n98
-  n50 -.-> n98
-  n11 -.-> n99
-  n1 -.-> n100
-  n5 -.-> n100
-  n6 -.-> n100
-  n8 -.-> n100
-  n37 -.-> n100
-  n99 -.-> n100
-  n38 -.-> n100
-  n30 -.-> n101
-  n32 -.-> n102
-  n34 -.-> n102
-  n39 -.-> n102
-  n42 -.-> n102
+  n56 --> n97
+  n92 --> n97
+  n85 --> n97
+  n45 --> n97
+  n53 --> n97
+  n89 --> n97
+  n90 --> n97
+  n82 --> n97
+  n74 --> n97
+  n83 --> n97
+  n76 --> n97
+  n75 --> n97
+  n88 -.-> n97
+  n55 --> n98
+  n81 --> n98
+  n97 --> n98
+  n91 --> n98
+  n84 --> n98
+  n58 --> n98
+  n45 --> n98
+  n87 --> n98
+  n73 --> n98
+  n44 -.-> n99
+  n50 -.-> n99
+  n11 -.-> n100
+  n1 -.-> n101
+  n5 -.-> n101
+  n6 -.-> n101
+  n8 -.-> n101
+  n37 -.-> n101
+  n100 -.-> n101
+  n38 -.-> n101
+  n30 -.-> n102
+  n32 -.-> n103
+  n34 -.-> n103
+  n39 -.-> n103
+  n42 -.-> n103
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -1422,6 +1424,14 @@ An employee includes 2% a month of the cost of an employer's car (or 2/3 of the 
 A loss on a share is reduced: for an individual, by the capital dividends received on it, but only down to the loss less the taxable dividends; for a corporation, by the taxable dividends it deducted under section 112, the capital dividends and the life insurance capital dividends; except qualified dividends on a holding of 5% or less owned 365 days. Proven: never more than the loss, and an individual with no capital dividends keeps it all.
 
 **Lean:** [`Canteen.ITA.StopLoss.qualified`](../../Canteen/ITA/S112/StopLoss.lean#L55), [`Canteen.ITA.StopLoss.reduction`](../../Canteen/ITA/S112/StopLoss.lean#L74), [`Canteen.ITA.StopLoss.apply`](../../Canteen/ITA/S112/StopLoss.lean#L79), [`Canteen.ITA.StopLoss.reduction_le`](../../Canteen/ITA/S112/StopLoss.lean#L85), [`Canteen.ITA.StopLoss.individual_taxable_only`](../../Canteen/ITA/S112/StopLoss.lean#L96)
+
+### R64. A distribution on winding-up
+
+**Status:** proven · **Citation:** ITA 84(2); 54 "proceeds of disposition" (j)
+
+Funds or property a Canadian corporation distributes to shareholders on the winding-up, discontinuance or reorganization of its business are a dividend to the extent they exceed the paid-up capital reduction; the holders' proceeds exclude it. Proven: never more than what was distributed, and a sole shareholder's proceeds are the paid-up capital returned.
+
+**Lean:** [`Canteen.ITA.WindingUpDividend.applies`](../../Canteen/ITA/S84/WindingUpDividend.lean#L40), [`Canteen.ITA.WindingUpDividend.dividendPaid`](../../Canteen/ITA/S84/WindingUpDividend.lean#L50), [`Canteen.ITA.WindingUpDividend.proceeds`](../../Canteen/ITA/S84/WindingUpDividend.lean#L59), [`Canteen.ITA.WindingUpDividend.dividendPaid_le`](../../Canteen/ITA/S84/WindingUpDividend.lean#L88), [`Canteen.ITA.WindingUpDividend.sole_proceeds`](../../Canteen/ITA/S84/WindingUpDividend.lean#L81)
 
 ### R35. An individual's year, to taxable income and tax
 

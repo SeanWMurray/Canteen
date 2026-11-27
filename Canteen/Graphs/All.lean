@@ -50,6 +50,7 @@ import Canteen.ITA.S63.ChildCare
 import Canteen.ITA.S62.MovingExpenses
 import Canteen.ITA.S6.StandbyCharge
 import Canteen.ITA.S112.StopLoss
+import Canteen.ITA.S84.WindingUpDividend
 import Canteen.Transactions.DebtSwap
 import Canteen.ITA.S87.Amalgamation
 import Canteen.ITA.S39.CanadianSecurities
@@ -213,7 +214,8 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S63.ChildCare, "63 child care expenses"),
    (`Canteen.ITA.S62.MovingExpenses, "62(1), 248(1) moving expenses"),
    (`Canteen.ITA.S6.StandbyCharge, "6(1)(e), 6(2) the standby charge"),
-   (`Canteen.ITA.S112.StopLoss, "112(3), (3.01), (6.1) the stop-loss on shares")]
+   (`Canteen.ITA.S112.StopLoss, "112(3), (3.01), (6.1) the stop-loss on shares"),
+   (`Canteen.ITA.S84.WindingUpDividend, "84(2) a distribution on winding-up")]
 
 /-! ## The dashboard -/
 
@@ -309,7 +311,7 @@ def actMindmap : String := Id.run do
     (2, "s. 80.4"), (3, "80.4(2): deemed interest on shareholder loans"),
     (2, "s. 82"), (3, "82(1): taxable dividends and the gross-up"),
     (2, "s. 83"), (3, "83(2): capital dividends"),
-    (2, "s. 84"), (3, "84(1): paid-up capital increased"), (3, "84(3): redemptions, the deemed dividend"), (3, "84(4), (4.1): returns of capital"),
+    (2, "s. 84"), (3, "84(1): paid-up capital increased"), (3, "84(2): distributions on winding-up"), (3, "84(3): redemptions, the deemed dividend"), (3, "84(4), (4.1): returns of capital"),
     (2, "s. 84.1"), (3, "84.1(1): paid-up capital, and the deemed dividend"), (3, "84.1(2): hard cost, arm's length"),
     (2, "s. 85"), (3, "85(1): the elected amount, and the cost of the consideration"), (3, "85(2.1): paid-up capital"),
     (2, "s. 86"), (3, "86(1): share exchange in a reorganization"), (3, "86(2): benefit to a related person"),
@@ -393,6 +395,7 @@ def pages : List Page := [
       ("Subsection 118.3(1): the disability credit", flowchart Disability.eligible.outline),
       ("Subsection 56.1(4): \"support amount\"", flowchart Support.supportAmount.outline),
       ("Subsection 248(1): \"eligible relocation\"", flowchart MovingExpenses.eligible.outline),
+      ("Subsection 84(2): distributions on winding-up", flowchart WindingUpDividend.applies.outline),
       ("Subparagraph 40(2)(g)(iv): transfers to registered plans", flowchart Paragraph40_2_g.planTransferLoss.outline),
       ("Clause 40(2)(g)(iv)(A)", flowchart Paragraph40_2_g.planTransferA.outline),
       ("Clause 40(2)(g)(iv)(B)", flowchart Paragraph40_2_g.planTransferB.outline),

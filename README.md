@@ -115,6 +115,7 @@ Canteen/
     S13/Depreciable.lean       13(1), (21), 20(16): undepreciated capital cost, recapture, terminal loss
     S84/Redemption.lean        84(3): redemptions, the deemed dividend, and the proceeds
     S84/PaidUpCapitalIncrease.lean   84(1), 53(1)(b): an increase in paid-up capital, the deemed dividend
+    S84/WindingUpDividend.lean   84(2): a distribution on winding-up, discontinuance or reorganization
     S84/ReturnOfCapital.lean   84(4), (4.1), 53(2)(a)(ii), 40(3): returns of capital, negative cost
     S89/CapitalDividendAccount.lean   83(2), 89(1): the capital dividend account, and capital dividends
     S86/ShareExchange.lean     86(1) to (3): share exchanges in a reorganization, estate freezes

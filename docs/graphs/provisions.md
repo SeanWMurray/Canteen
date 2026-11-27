@@ -78,7 +78,8 @@ flowchart BT
   v69["127.5 to 127.531, 120.2 the minimum tax"]:::prov
   v70["84(1), 53(1)(b) an increase in paid-up capital"]:::prov
   v71["112(3), (3.01), (6.1) the stop-loss on shares"]:::prov
-  v72["50(2) bad personal-use debts"]:::prov
+  v72["84(2) a distribution on winding-up"]:::prov
+  v73["50(2) bad personal-use debts"]:::prov
   v0 --> v1
   v0 --> v2
   v0 --> v3
@@ -160,5 +161,7 @@ flowchart BT
   v60 --> v69
   v30 --> v70
   v17 --> v71
+  v17 --> v72
+  v30 --> v72
   classDef prov fill:#bbdefb,stroke:#1565c0,color:#0d47a1
 ```
