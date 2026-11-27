@@ -4,11 +4,11 @@
 
 **Issue.** An individual with a $200,000 salary wants to give a charity $50,000, and owns public-company shares worth $50,000 that cost $10,000. Should they donate the shares, or sell them and donate the cash?
 
-**Conclusion.** Donate the shares. The gain on shares given to a qualified donee is taxed at nil (A1), while selling first adds $20,000 of taxable capital gain (A2). The donation credit is $14,470 either way (A3), but the higher income also trims the basic personal amount (A4). Federal tax is $26,163.69 in kind against $32,063.85 (A5): a saving of $5,900.16 (K). Provincial tax is not computed.
+**Conclusion.** Donate the shares. The gain on shares given to a qualified donee is taxed at nil (A1), while selling first adds $20,000 of taxable capital gain (A2). The donation credit is $14,470 either way (A3), but the higher income also trims the basic personal amount (A4). Federal tax is $26,163.69 in kind against $32,063.85 (A5): a saving of $5,900.16 (K). The minimum tax does not apply (A6); for a $1,000,000 gift it would, either way, and donating in kind would still save $34,243.00 (W1). Provincial tax is not computed.
 
 This is a constructed example, not advice on a real transaction.
 
-**Status of the 9 statements:** 6 proven, 2 encoded, 1 fact.
+**Status of the 12 statements:** 8 proven, 3 encoded, 1 fact.
 
 ## Dependency graph
 
@@ -23,6 +23,9 @@ graph TD
   n6["A4 · A smaller personal credit when selling"]:::proven
   n7["A5 · Federal tax"]:::proven
   n8["K · Donating in kind saves $5,900.16"]:::proven
+  n9["L3 · The minimum tax"]:::encoded
+  n10["A6 · No minimum tax on this gift"]:::proven
+  n11["W1 · A $1,000,000 gift"]:::proven
   n0 --> n1
   n2 --> n3
   n0 --> n3
@@ -40,6 +43,12 @@ graph TD
   n5 --> n7
   n6 --> n7
   n7 --> n8
+  n1 --> n9
+  n2 --> n10
+  n9 --> n10
+  n0 --> n11
+  n1 --> n11
+  n9 --> n11
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -65,6 +74,9 @@ graph TD
   n6["A4"]:::proven
   n7["A5"]:::proven
   n8["K"]:::proven
+  n9["L3"]:::encoded
+  n10["A6"]:::proven
+  n11["W1"]:::proven
   n0 --> n1
   n2 --> n3
   n1 --> n3
@@ -87,6 +99,14 @@ graph TD
   n1 --> n8
   n2 --> n8
   n7 -.-> n8
+  n0 --> n9
+  n1 --> n9
+  n1 --> n10
+  n2 --> n10
+  n9 --> n10
+  n1 --> n11
+  n9 --> n11
+  n0 -.-> n11
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -120,7 +140,7 @@ Income, taxable income, tax at the 117(2) rates, less the personal and donation 
 
 A $200,000 salary in 2025; public-company shares costing $10,000, worth $50,000; a $50,000 gift.
 
-**Lean:** [`Canteen.Transactions.DonatingShares.shares`](../../Canteen/Transactions/DonatingShares.lean#L20), [`Canteen.Transactions.DonatingShares.year`](../../Canteen/Transactions/DonatingShares.lean#L23), [`Canteen.Transactions.DonatingShares.inKind`](../../Canteen/Transactions/DonatingShares.lean#L27), [`Canteen.Transactions.DonatingShares.cash`](../../Canteen/Transactions/DonatingShares.lean#L28)
+**Lean:** [`Canteen.Transactions.DonatingShares.shares`](../../Canteen/Transactions/DonatingShares.lean#L24), [`Canteen.Transactions.DonatingShares.year`](../../Canteen/Transactions/DonatingShares.lean#L27), [`Canteen.Transactions.DonatingShares.inKind`](../../Canteen/Transactions/DonatingShares.lean#L31), [`Canteen.Transactions.DonatingShares.cash`](../../Canteen/Transactions/DonatingShares.lean#L32)
 
 ## Analysis
 
@@ -130,7 +150,7 @@ A $200,000 salary in 2025; public-company shares costing $10,000, worth $50,000;
 
 The $40,000 gain is taxed at nil; income is the $200,000 salary.
 
-**Lean:** [`Canteen.Transactions.DonatingShares.in_kind_no_gain`](../../Canteen/Transactions/DonatingShares.lean#L32)
+**Lean:** [`Canteen.Transactions.DonatingShares.in_kind_no_gain`](../../Canteen/Transactions/DonatingShares.lean#L36)
 
 **Rests on:** facts F1.
 
@@ -140,7 +160,7 @@ The $40,000 gain is taxed at nil; income is the $200,000 salary.
 
 Half the $40,000 gain is taxable: income is $220,000.
 
-**Lean:** [`Canteen.Transactions.DonatingShares.cash_gain`](../../Canteen/Transactions/DonatingShares.lean#L36)
+**Lean:** [`Canteen.Transactions.DonatingShares.cash_gain`](../../Canteen/Transactions/DonatingShares.lean#L40)
 
 **Rests on:** facts F1.
 
@@ -150,7 +170,7 @@ Half the $40,000 gain is taxable: income is $220,000.
 
 $50,000 of gifts is within the limit either way: 14% of $200 and 29% of $49,800, $14,470.
 
-**Lean:** [`Canteen.Transactions.DonatingShares.same_donation_credit`](../../Canteen/Transactions/DonatingShares.lean#L39)
+**Lean:** [`Canteen.Transactions.DonatingShares.same_donation_credit`](../../Canteen/Transactions/DonatingShares.lean#L43)
 
 **Rests on:** facts F1.
 
@@ -160,7 +180,7 @@ $50,000 of gifts is within the limit either way: 14% of $200 and 29% of $49,800,
 
 At $220,000 more of the enhanced basic personal amount is phased out: $1,889.06 against $1,989.22.
 
-**Lean:** [`Canteen.Transactions.DonatingShares.personal_credits`](../../Canteen/Transactions/DonatingShares.lean#L43)
+**Lean:** [`Canteen.Transactions.DonatingShares.personal_credits`](../../Canteen/Transactions/DonatingShares.lean#L47)
 
 **Rests on:** facts F1.
 
@@ -170,7 +190,7 @@ At $220,000 more of the enhanced basic personal amount is phased out: $1,889.06 
 
 $26,163.69 in kind; $32,063.85 selling first.
 
-**Lean:** [`Canteen.Transactions.DonatingShares.federal_tax`](../../Canteen/Transactions/DonatingShares.lean#L47)
+**Lean:** [`Canteen.Transactions.DonatingShares.federal_tax`](../../Canteen/Transactions/DonatingShares.lean#L51)
 
 **Rests on:** facts F1.
 
@@ -182,9 +202,37 @@ $26,163.69 in kind; $32,063.85 selling first.
 
 The difference in federal tax is $5,900.16, all from the gain that selling first makes taxable.
 
-**Lean:** [`Canteen.Transactions.DonatingShares.saving`](../../Canteen/Transactions/DonatingShares.lean#L51)
+**Lean:** [`Canteen.Transactions.DonatingShares.saving`](../../Canteen/Transactions/DonatingShares.lean#L55)
 
 **Rests on:** facts F1.
+
+## What if
+
+### L3. The minimum tax
+
+**Status:** encoded · **Citation:** ITA 127.5; 127.51; 127.52(1)(d), (d.1); 127.531 · **Uses:** L2
+
+At least 20.5% of adjusted taxable income over $177,882, less half the personal credit and 4/5 of the donation credit; for it, capital gains count in full and gains on gifts of listed securities at 3/10.
+
+**Lean:** [`Canteen.ITA.MinimumTax.adjustedTaxableIncome`](../../Canteen/ITA/S127_5/MinimumTax.lean#L56), [`Canteen.ITA.MinimumTax.minimumAmount`](../../Canteen/ITA/S127_5/MinimumTax.lean#L66), [`Canteen.ITA.MinimumTax.taxPayable`](../../Canteen/ITA/S127_5/MinimumTax.lean#L70)
+
+### A6. No minimum tax on this gift
+
+**Status:** proven · **Citation:** ITA 127.5 · **Uses:** F1, L3
+
+The minimum amount is nil in kind and $213.66 selling first, below regular tax either way.
+
+**Lean:** [`Canteen.Transactions.DonatingShares.no_minimum_tax`](../../Canteen/Transactions/DonatingShares.lean#L58)
+
+**Rests on:** facts F1.
+
+### W1. A $1,000,000 gift
+
+**Status:** proven · **Citation:** ITA 127.52(1)(d.1) · **Uses:** L1, L2, L3
+
+Shares worth $1,000,000 that cost $200,000: in kind, no regular tax but $17,963.58 of minimum tax; selling first, $52,206.58 of minimum tax. In kind saves $34,243.00. Unclaimed gifts carry forward five years.
+
+**Lean:** [`Canteen.Transactions.DonatingShares.bigShares`](../../Canteen/Transactions/DonatingShares.lean#L66), [`Canteen.Transactions.DonatingShares.bigYear`](../../Canteen/Transactions/DonatingShares.lean#L69), [`Canteen.Transactions.DonatingShares.big_in_kind`](../../Canteen/Transactions/DonatingShares.lean#L73), [`Canteen.Transactions.DonatingShares.big_cash`](../../Canteen/Transactions/DonatingShares.lean#L78), [`Canteen.Transactions.DonatingShares.big_saving`](../../Canteen/Transactions/DonatingShares.lean#L83)
 
 ## Appendix: the argument as Lean renders it
 

@@ -9,9 +9,9 @@ An overview of the project, drawn from the Lean.
 Every statement in every blueprint, by the status Lean computes for it.
 
 ```mermaid
-pie showData title All 270 statements in the memos and blueprints, by status
-    "encoded" : 47
-    "proven" : 173
+pie showData title All 273 statements in the memos and blueprints, by status
+    "encoded" : 48
+    "proven" : 175
     "not formalized" : 3
     "fact" : 39
     "judgment call" : 8
