@@ -96,6 +96,7 @@ def bpaEnhanced : Specified := ⟨"118(1.1) F (d)", 15000, 2023⟩
 def infirm : Specified := ⟨"118(1) B (a) C, (b) D", 2150, 2017⟩
 def caregiver : Specified := ⟨"118(1) B (d)", 6883, 2017⟩
 def caregiverThreshold : Specified := ⟨"118(1) B (d) E", 16163, 2017⟩
+def adoptionLimit : Specified := ⟨"118.01(2) B (a)", 15000, 2014⟩
 def ageAmount : Specified := ⟨"118(2)", 6408, 2009⟩
 def ageThreshold : Specified := ⟨"118(2) B", 25921, 1999⟩
 def employmentAmount : Specified := ⟨"118(10)", 1000, 2007⟩
@@ -108,7 +109,8 @@ def capitalGainsLimit : Specified := ⟨"110.6(2)(a)", 625000, 2025⟩
 
 def all : List Specified :=
   [bracket1, bracket2, bracket3, bracket4, bpaBase, bpaEnhanced, infirm, caregiver, caregiverThreshold, ageAmount, ageThreshold,
-   employmentAmount, medicalThreshold, disability, disabilitySupplement, disabilityCare, oasThreshold, capitalGainsLimit]
+   employmentAmount, medicalThreshold, disability, disabilitySupplement, disabilityCare, oasThreshold, capitalGainsLimit,
+   adoptionLimit]
 
 /-- The years for which every specified amount can be computed. -/
 def covered (year : Nat) : Bool := all.all fun s => (s.forYear year).isSome
@@ -131,6 +133,9 @@ theorem amounts_2026 :
 
 /-- The Canada caregiver amount and its income threshold for 2025, as published. -/
 theorem caregiver_2025 : caregiver.forYear 2025 = some 8601 ∧ caregiverThreshold.forYear 2025 = some 20197 := by decide +kernel
+
+/-- The adoption expense limit: $19,066 for 2024, $19,580 for 2025. -/
+theorem adoption_2024_2025 : adoptionLimit.forYear 2024 = some 19066 ∧ adoptionLimit.forYear 2025 = some 19580 := by decide +kernel
 
 /-- 2028 needs CPI months not yet published: no amounts. -/
 theorem not_yet : covered 2027 = true ∧ covered 2028 = false := by decide +kernel

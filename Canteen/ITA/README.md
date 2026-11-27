@@ -65,5 +65,6 @@ The verbatim statute text for each is in `statute/`. Review notes are in `docs/r
 - `S60_03/PensionSplitting.lean`: subsections 118(2), (3), (7) and (8), section 60.03, paragraphs 60(c) and 56(1)(a.2)
 - `S84/PaidUpCapitalIncrease.lean`: subsection 84(1) and paragraph 53(1)(b)
 - `S117_1/Indexation.lean`, `S117_1/YearAmounts.lean`, `S117_1/Cpi.lean` (generated): section 117.1
+- `S118_01/SmallCredits.lean`: subsections 118.01(2), (3), 118.041(3), 118.05(3), (4), 118.06(2) and 118.07(2)
 - `S118_7/EmploymentCredits.lean`: subsection 118(10), section 118.7 and paragraph 60(e.1)
 - `S180_2/OasRecovery.lean`: subsections 180.2(1) ("adjusted income") and (2), and paragraph 60(w)

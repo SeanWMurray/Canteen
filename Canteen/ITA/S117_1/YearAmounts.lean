@@ -42,6 +42,8 @@ structure YearAmounts where
   oasThreshold : Cents
   /-- 110.6(2)(a). -/
   capitalGainsLimit : Cents
+  /-- 118.01(2) B (a). -/
+  adoptionLimit : Cents
   deriving Repr, DecidableEq, Inhabited
 
 namespace YearAmounts
@@ -58,19 +60,19 @@ def computed (year : Nat) : Option YearAmounts := do
     employmentAmount := ← Indexation.employmentAmount.cents year, medicalThreshold := ← Indexation.medicalThreshold.cents year,
     disability := ← Indexation.disability.cents year, disabilitySupplement := ← Indexation.disabilitySupplement.cents year,
     disabilityCare := ← Indexation.disabilityCare.cents year, oasThreshold := ← Indexation.oasThreshold.cents year,
-    capitalGainsLimit := ← Indexation.capitalGainsLimit.cents year }
+    capitalGainsLimit := ← Indexation.capitalGainsLimit.cents year, adoptionLimit := ← Indexation.adoptionLimit.cents year }
 
 /-- The years computed so far. -/
 def table : List (Nat × YearAmounts) := [
   (2025, { brackets := ⟨5737500, 11475000, 17788200, 25341400⟩, bpaBase := 1453800, bpaEnhanced := 1612900, infirm := 268700, caregiver := 860100, caregiverThreshold := 2019700,
            age := 902800, ageThreshold := 4552200, employmentAmount := 147100, medicalThreshold := 283400, disability := 1013800,
-           disabilitySupplement := 591400, disabilityCare := 346400, oasThreshold := 9345400, capitalGainsLimit := 62500000 }),
+           disabilitySupplement := 591400, disabilityCare := 346400, oasThreshold := 9345400, capitalGainsLimit := 62500000, adoptionLimit := 1958000 }),
   (2026, { brackets := ⟨5852300, 11704500, 18144000, 25848200⟩, bpaBase := 1482900, bpaEnhanced := 1645200, infirm := 274000, caregiver := 877300, caregiverThreshold := 2060100,
            age := 920800, ageThreshold := 4643200, employmentAmount := 150100, medicalThreshold := 289000, disability := 1034100,
-           disabilitySupplement := 603200, disabilityCare := 353300, oasThreshold := 9532300, capitalGainsLimit := 63750000 }),
+           disabilitySupplement := 603200, disabilityCare := 353300, oasThreshold := 9532300, capitalGainsLimit := 63750000, adoptionLimit := 1997200 }),
   (2027, { brackets := ⟨6004400, 12008800, 18615700, 26520300⟩, bpaBase := 1521400, bpaEnhanced := 1687900, infirm := 281200, caregiver := 900100, caregiverThreshold := 2113600,
            age := 944800, ageThreshold := 4763900, employmentAmount := 154000, medicalThreshold := 296600, disability := 1061000,
-           disabilitySupplement := 618900, disabilityCare := 362500, oasThreshold := 9780200, capitalGainsLimit := 65407500 })]
+           disabilitySupplement := 618900, disabilityCare := 362500, oasThreshold := 9780200, capitalGainsLimit := 65407500, adoptionLimit := 2049100 })]
 
 /-- Each row is the computation from the Act and the CPI. -/
 theorem table_correct : table.all (fun (y, a) => computed y == some a) = true := by decide +kernel

@@ -85,6 +85,7 @@ import Canteen.ITA.S118_7.EmploymentCredits
 import Canteen.ITA.S117_1.Cpi
 import Canteen.ITA.S117_1.Indexation
 import Canteen.ITA.S117_1.YearAmounts
+import Canteen.ITA.S118_01.SmallCredits
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.ITA.S40.ShareToAffiliate
@@ -211,3 +212,4 @@ import Canteen.Tests.PensionSplitting
 import Canteen.Tests.OasRecovery
 import Canteen.Tests.PaidUpCapitalIncrease
 import Canteen.Tests.EmploymentCredits
+import Canteen.Tests.SmallCredits

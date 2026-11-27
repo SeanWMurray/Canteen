@@ -95,7 +95,7 @@ graph TD
 
 Half the gain is a taxable capital gain, which the capital gains deduction shelters; tax at the 117(2) rates, less the personal credit.
 
-**Lean:** [`Canteen.ITA.IndividualYear.taxableIncome`](../../Canteen/ITA/S3/IndividualYear.lean#L201), [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L251)
+**Lean:** [`Canteen.ITA.IndividualYear.taxableIncome`](../../Canteen/ITA/S3/IndividualYear.lean#L205), [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L258)
 
 ### L2. The minimum tax
 
@@ -103,7 +103,7 @@ Half the gain is a taxable capital gain, which the capital gains deduction shelt
 
 Tax payable is at least 20.5% of adjusted taxable income over $177,882, less the basic minimum tax credit (half the personal credit). Adjusted taxable income counts capital gains in full and allows 7/5 of the capital gains deduction.
 
-**Lean:** [`Canteen.ITA.MinimumTax.adjustedTaxableIncome`](../../Canteen/ITA/S127_5/MinimumTax.lean#L59), [`Canteen.ITA.MinimumTax.minimumAmount`](../../Canteen/ITA/S127_5/MinimumTax.lean#L70), [`Canteen.ITA.MinimumTax.taxPayable`](../../Canteen/ITA/S127_5/MinimumTax.lean#L74)
+**Lean:** [`Canteen.ITA.MinimumTax.adjustedTaxableIncome`](../../Canteen/ITA/S127_5/MinimumTax.lean#L59), [`Canteen.ITA.MinimumTax.minimumAmount`](../../Canteen/ITA/S127_5/MinimumTax.lean#L71), [`Canteen.ITA.MinimumTax.taxPayable`](../../Canteen/ITA/S127_5/MinimumTax.lean#L75)
 
 ## Facts
 
@@ -167,7 +167,7 @@ A $600,000 gain gives $180,000 of adjusted taxable income, within what the exemp
 
 Minimum tax over regular tax is carried forward seven years, and deducted from a later year's tax to the extent that year's regular tax exceeds its minimum amount. Proven: never below the minimum amount.
 
-**Lean:** [`Canteen.ITA.MinimumTax.additional`](../../Canteen/ITA/S127_5/MinimumTax.lean#L77), [`Canteen.ITA.MinimumTax.recovery`](../../Canteen/ITA/S127_5/MinimumTax.lean#L90), [`Canteen.ITA.MinimumTax.taxAfterRecovery`](../../Canteen/ITA/S127_5/MinimumTax.lean#L94), [`Canteen.ITA.MinimumTax.recovery_floor`](../../Canteen/ITA/S127_5/MinimumTax.lean#L129)
+**Lean:** [`Canteen.ITA.MinimumTax.additional`](../../Canteen/ITA/S127_5/MinimumTax.lean#L78), [`Canteen.ITA.MinimumTax.recovery`](../../Canteen/ITA/S127_5/MinimumTax.lean#L91), [`Canteen.ITA.MinimumTax.taxAfterRecovery`](../../Canteen/ITA/S127_5/MinimumTax.lean#L95), [`Canteen.ITA.MinimumTax.recovery_floor`](../../Canteen/ITA/S127_5/MinimumTax.lean#L130)
 
 ### W2. Recovered in 2026
 
@@ -198,7 +198,7 @@ Relies on no judgment calls.
 3. Losses: business $0.00, terminal $0.00, attributed $0.00; interest deducted $0.00. [ITA 3(d); 20(16); 74.1; 20(1)(c)]
 4. Income for the year: $625,000.00. [ITA 3]
 5. Less the net capital loss deduction $0.00, the capital gains deduction $625,000.00, and other deductions $0.00: taxable income $0.00. [ITA 2(2); 111(1)(b); 110.6(2), (2.1)]
-6. Tax under 117(2) on taxable income, $0.00, less the dividend tax credit of $0.00, the personal credit of $2,035.32, the age and pension credits of $0.00, the employment, CPP and EI credits of $0.00, the donation credit of $0.00, the medical expense credit of $0.00, the disability credit of $0.00 and other credits of $0.00: $0.00. [ITA 117(2); 120.4(2); 121; 118; 118.1; 118.2; 118.3; 118.7]
+6. Tax under 117(2) on taxable income, $0.00, less the dividend tax credit of $0.00, the personal credit of $2,035.32, the age and pension credits of $0.00, the employment, CPP and EI credits of $0.00, the adoption, accessibility, home buyers' and volunteer credits of $0.00, the donation credit of $0.00, the medical expense credit of $0.00, the disability credit of $0.00 and other credits of $0.00: $0.00. [ITA 117(2); 120.4(2); 121; 118 to 118.07; 118.1; 118.2; 118.3; 118.7]
 Relies on no judgment calls.
 ```
 

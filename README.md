@@ -101,6 +101,7 @@ Canteen/
     S118_2/MedicalExpenses.lean   118.2(1): the medical expense credit
     S118_3/Disability.lean     118.3(1), (2): the disability tax credit, and its transfer
     S60_03/PensionSplitting.lean   118(2), (3), 60.03: the age and pension credits, and pension splitting
+    S118_01/SmallCredits.lean   118.01 to 118.07: adoption, home accessibility, home buyers', volunteer credits
     S118_7/EmploymentCredits.lean   118(10), 118.7, 60(e.1): the employment, CPP and EI credits
     S180_2/OasRecovery.lean    180.2, 60(w): the Old Age Security recovery tax
     S82/Dividends.lean         82(1), 121: taxable dividends, the gross-up, and the dividend tax credit

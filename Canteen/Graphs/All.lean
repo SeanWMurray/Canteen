@@ -43,6 +43,7 @@ import Canteen.ITA.S180_2.OasRecovery
 import Canteen.ITA.S84.PaidUpCapitalIncrease
 import Canteen.ITA.S118_7.EmploymentCredits
 import Canteen.ITA.S117_1.YearAmounts
+import Canteen.ITA.S118_01.SmallCredits
 import Canteen.Transactions.DebtSwap
 import Canteen.ITA.S87.Amalgamation
 import Canteen.ITA.S39.CanadianSecurities
@@ -199,7 +200,8 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S180_2.OasRecovery, "180.2, 60(w) the OAS recovery tax"),
    (`Canteen.ITA.S84.PaidUpCapitalIncrease, "84(1), 53(1)(b) an increase in paid-up capital"),
    (`Canteen.ITA.S118_7.EmploymentCredits, "118(10), 118.7, 60(e.1) employment, CPP and EI"),
-   (`Canteen.ITA.S117_1.YearAmounts, "117.1 indexation, and each year's amounts")]
+   (`Canteen.ITA.S117_1.YearAmounts, "117.1 indexation, and each year's amounts"),
+   (`Canteen.ITA.S118_01.SmallCredits, "118.01 to 118.07 adoption, accessibility, home buyers', volunteers")]
 
 /-! ## The dashboard -/
 
@@ -311,6 +313,7 @@ def actMindmap : String := Id.run do
     (2, "s. 118"), (3, "118(1.1): basic personal amount"), (3, "118(1)(a): spouse amount"), (3, "118(1)(b): eligible dependant"), (3, "118(1)(b.1), (d), (e): caregiver amounts"), (3, "118(2): age credit"), (3, "118(10): Canada employment credit"), (3, "118(3), (7): pension credit"),
     (2, "s. 118.2"), (3, "118.2(1): the medical expense credit"),
     (2, "s. 118.3"), (3, "118.3(1): the disability credit"), (3, "118.3(2): transfer to a supporting person"),
+    (2, "ss. 118.01 to 118.07"), (3, "118.01: adoption"), (3, "118.041: home accessibility"), (3, "118.05: home buyers"), (3, "118.06, 118.07: volunteers"),
     (2, "s. 118.1"), (3, "118.1(1): total gifts"), (3, "118.1(3): the credit"),
     (2, "s. 118.7"), (3, "118.7: CPP and EI credits"),
     (2, "s. 120.4"), (3, "120.4(1): split income, excluded amounts"), (3, "120.4(2), (3): the tax"),

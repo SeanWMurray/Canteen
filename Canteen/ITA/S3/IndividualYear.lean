@@ -15,6 +15,7 @@ import Canteen.ITA.S60_03.PensionSplitting
 import Canteen.ITA.S180_2.OasRecovery
 import Canteen.ITA.S118_7.EmploymentCredits
 import Canteen.ITA.S117_1.YearAmounts
+import Canteen.ITA.S118_01.SmallCredits
 
 /-!
 # An individual's year: income from the encoded sources, and taxable income
@@ -117,6 +118,9 @@ structure Facts where
   disability : Option Disability.Facts := none
   /-- 118.3(2): disability credits transferred from dependants (see `disabilityTransferFrom`). -/
   disabilityTransferred : Cents := 0
+  /-- 118.01 to 118.07: adoption, home accessibility, home buyers' and volunteer credits (the adoption limit
+  is the year's). -/
+  smallCredits : SmallCredits.Facts := {}
   /-- Other non-refundable credits, given. -/
   otherCredits : Cents := 0
   deriving Inhabited
@@ -238,9 +242,12 @@ def disabilityFacts (f : Facts) (d : Disability.Facts) : Disability.Facts :=
 /-- 118.3(1): the disability credit. -/
 def disabilityCredit (f : Facts) : Cents := (f.disability.map fun d => Disability.credit (disabilityFacts f d)).getD 0
 
+/-- 118.01 to 118.07, with the year's adoption limit. -/
+def smallCredits (f : Facts) : Cents := SmallCredits.credit { f.smallCredits with adoptionLimit := (amounts f).adoptionLimit }
+
 /-- 118.3(2)(d): tax before Division E deductions other than 118 to 118.07 and 118.7. -/
 def taxBeforeCredits (f : Facts) : Cents :=
-  (Rates.tax (taxableIncome f / 2) (amounts f).brackets + (f.split.map SplitIncome.tax).getD 0) - (personalCredit f + employmentCredits f)
+  (Rates.tax (taxableIncome f / 2) (amounts f).brackets + (f.split.map SplitIncome.tax).getD 0) - (personalCredit f + employmentCredits f + smallCredits f)
 
 /-- 118.3(2): what a supporter may deduct for this person's unused disability credit. -/
 def disabilityTransferFrom (s : Disability.Supporter) (dependant : Facts) : Cents :=
@@ -252,7 +259,7 @@ def disabilityTransferFrom (s : Disability.Supporter) (dependant : Facts) : Cent
 credit, the personal credit, the donation credit, the medical expense credit and other credits. -/
 def federalTax (f : Facts) : Cents :=
   (Rates.tax (taxableIncome f / 2) (amounts f).brackets + (f.split.map SplitIncome.tax).getD 0) -
-    (Dividends.credit (dividendFacts f) + personalCredit f + ageAndPensionCredits f + employmentCredits f + donationCredit f + medicalCredit f + disabilityCredit f + f.disabilityTransferred +
+    (Dividends.credit (dividendFacts f) + personalCredit f + ageAndPensionCredits f + employmentCredits f + smallCredits f + donationCredit f + medicalCredit f + disabilityCredit f + f.disabilityTransferred +
       f.otherCredits)
 
 def explain (f : Facts) : Finding :=
@@ -276,10 +283,10 @@ def explain (f : Facts) : Finding :=
       (if splitIncome f > 0 then s!", plus tax on split income of {c ((f.split.map SplitIncome.tax).getD 0)}" else "") ++
       s!", less the dividend tax credit of {c (Dividends.credit (dividendFacts f))}, the personal credit of {c (personalCredit f)}, " ++
       s!"the age and pension credits of {c (ageAndPensionCredits f)}, the employment, CPP and EI credits of " ++
-      s!"{c (employmentCredits f)}, " ++
+      s!"{c (employmentCredits f)}, the adoption, accessibility, home buyers' and volunteer credits of {c (smallCredits f)}, " ++
       s!"the donation credit of {c (donationCredit f)}, the medical expense credit of {c (medicalCredit f)}, " ++
       s!"the disability credit of {c (disabilityCredit f + f.disabilityTransferred)} and other credits of {c f.otherCredits}: {c (federalTax f)}.",
-      "ITA 117(2); 120.4(2); 121; 118; 118.1; 118.2; 118.3; 118.7"⟩], (f.disability.map (·.impairment.judgments)).getD []⟩
+      "ITA 117(2); 120.4(2); 121; 118 to 118.07; 118.1; 118.2; 118.3; 118.7"⟩], (f.disability.map (·.impairment.judgments)).getD []⟩
 
 /-! ## Truths about the year -/
 
