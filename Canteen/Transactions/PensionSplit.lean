@@ -10,7 +10,7 @@ A constructed example under 60.03, 60(c), 56(1)(a.2), 118(1), (2), (3) and 117(2
 * They may jointly elect to split up to half of the pensioner's eligible pension income, $45,000.
   How much should they split?
 
-Old Age Security and its recovery tax, and provincial tax, are not computed.
+What if both also receive $8,700 of Old Age Security? Provincial tax is not computed.
 -/
 
 namespace Canteen.Transactions.PensionSplit
@@ -53,5 +53,26 @@ theorem best : ∀ k, k ≤ 45 → total 4000000 ≤ total (k * 100000) := by de
 
 /-- Splitting the whole $45,000 overshoots: $10.96 more. -/
 theorem overshoot : total 4500000 - total 4000000 = 1096 := by decide
+
+/-! ## What if: with Old Age Security -/
+
+def oas : PensionSplitting.Payment := ⟨"Old Age Security", 870000, .oldAgeSecurity⟩
+
+def pensionerOas (split : Cents) : IndividualYear.Facts := { pensioner split with pensions := (pensioner split).pensions ++ [oas] }
+def transfereeOas (split : Cents) : IndividualYear.Facts := { transferee split with pensions := (transferee split).pensions ++ [oas] }
+
+/-- Federal tax under Part I and Part I.2, for both. -/
+def totalOas (split : Cents) : Cents :=
+  IndividualYear.federalTax (pensionerOas split) + IndividualYear.oasRecovery (pensionerOas split) +
+    IndividualYear.federalTax (transfereeOas split) + IndividualYear.oasRecovery (transfereeOas split)
+
+/-- Without splitting, the pensioner's $98,700 of adjusted income is $5,246 over the threshold: $786.90
+of the OAS is recovered. Splitting $40,000 avoids it, and saves $4,712.13 in all. -/
+theorem with_oas :
+    IndividualYear.oasRecovery (pensionerOas 0) = 78690 ∧ IndividualYear.oasRecovery (pensionerOas 4000000) = 0 ∧
+    totalOas 0 = 1458601 ∧ totalOas 4000000 = 987388 ∧ totalOas 0 - totalOas 4000000 = 471213 := by decide
+
+/-- Still no split in $1,000 steps up to the limit does better. -/
+theorem best_with_oas : ∀ k, k ≤ 45 → totalOas 4000000 ≤ totalOas (k * 100000) := by decide +kernel
 
 end Canteen.Transactions.PensionSplit

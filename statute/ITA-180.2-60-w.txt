@@ -1,0 +1,11 @@
+Income Tax Act, R.S.C. 1985, c. 1 (5th Supp.), subsections 180.2(1) ("adjusted income") and (2), and paragraph 60(w)
+
+Source: Justice Canada consolidated Acts (XML), https://github.com/justicecanada/laws-lois-xml, file eng/acts/I-3.3.xml
+Current to: 2026-10-29. Last amended: 2026-06-18.
+Extracted verbatim; whitespace normalized; each provision on one line.
+
+60(w) the amount of the taxpayer’s tax payable under Part I.2 for the year;
+180.2(1) adjusted income of an individual for a taxation year means the amount that would be the individual’s income under Part I for the year if in computing that income no amount were(a)included(i)under paragraph 56(1)(q.1) or subsection 56(6),(ii)in respect of a gain from a disposition of property to which section 79 applies, or(iii)in respect of a gain described in subsection 40(3.21), or(b)deductible under paragraph 20(1)(ww) or 60(w), (y) or (z). (revenu modifié)
+
+180.2(2) Every individual shall pay a tax under this Part for each taxation year equal to the amount determined by the formulaA(1 - B)whereAis the lesser of(a)the amount, if any, by which(i)the total of all amounts each of which is the amount of any pension, supplement or spouse’s or common-law partner’s allowance under the Old Age Security Act included in computing the individual’s income under Part I for the yearexceeds(ii)the amount of any deduction allowed under subparagraph 60(n)(i) in computing the individual’s income under Part I for the year, and(b)15% of the amount, if any, by which the individual’s adjusted income for the year exceeds $50,000; andBis the rate of tax payable by the individual under Part XIII on amounts described in paragraph (a) of the description of A.
+

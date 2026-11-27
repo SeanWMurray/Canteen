@@ -4,43 +4,51 @@
 
 **Issue.** Spouses over 65: one receives a $90,000 pension plan annuity in 2025, the other $10,000 of RRIF payments. How much of the pension should they elect to split?
 
-**Conclusion.** $40,000, which leaves each with $50,000 of income: their federal tax falls from $12,010.74 to $6,900.24, a saving of $5,110.50 (K). Besides the lower rates, the pensioner's age credit, mostly clawed back at $90,000, comes back (A2, A3). No split in $1,000 steps up to the $45,000 limit does better, and splitting the whole $45,000 costs $10.96 more (W1). Old Age Security and its recovery tax, and provincial tax, are not computed.
+**Conclusion.** $40,000, which leaves each with $50,000 of income: their federal tax falls from $12,010.74 to $6,900.24, a saving of $5,110.50 (K). Besides the lower rates, the pensioner's age credit, mostly clawed back at $90,000, comes back (A2, A3). No split in $1,000 steps up to the $45,000 limit does better, and splitting the whole $45,000 costs $10.96 more (W1). With Old Age Security as well, splitting also avoids $786.90 of OAS recovery tax and saves $4,712.13 (W2). Provincial tax is not computed.
 
 This is a constructed example, not advice.
 
-**Status of the 9 statements:** 6 proven, 2 encoded, 1 fact.
+**Status of the 11 statements:** 7 proven, 3 encoded, 1 fact.
 
 ## Dependency graph
 
 ```mermaid
 graph TD
   n0["L1 · Pension splitting"]:::proven
-  n1["L2 · The age and pension credits"]:::encoded
-  n2["L3 · Federal tax"]:::encoded
-  n3["F1 · The spouses"]:::fact
-  n4["A1 · Up to $45,000 may be split"]:::proven
-  n5["A2 · Without splitting: $12,010.74"]:::proven
-  n6["A3 · Splitting $40,000: $3,450.12 each"]:::proven
-  n7["K · Split $40,000: $5,110.50 saved"]:::proven
-  n8["W1 · Splitting the whole $45,000"]:::proven
+  n1["L4 · The OAS recovery tax"]:::encoded
+  n2["L2 · The age and pension credits"]:::encoded
+  n3["L3 · Federal tax"]:::encoded
+  n4["F1 · The spouses"]:::fact
+  n5["A1 · Up to $45,000 may be split"]:::proven
+  n6["A2 · Without splitting: $12,010.74"]:::proven
+  n7["A3 · Splitting $40,000: $3,450.12 each"]:::proven
+  n8["K · Split $40,000: $5,110.50 saved"]:::proven
+  n9["W1 · Splitting the whole $45,000"]:::proven
+  n10["W2 · With $8,700 of OAS each"]:::proven
   n0 --> n1
   n0 --> n2
   n1 --> n2
-  n3 --> n4
-  n0 --> n4
-  n3 --> n5
-  n2 --> n5
+  n0 --> n3
+  n2 --> n3
+  n4 --> n5
+  n0 --> n5
   n4 --> n6
   n3 --> n6
-  n2 --> n6
   n5 --> n7
-  n6 --> n7
+  n4 --> n7
   n3 --> n7
-  n2 --> n7
+  n6 --> n8
+  n7 --> n8
   n4 --> n8
   n3 --> n8
-  n7 --> n8
-  n2 --> n8
+  n5 --> n9
+  n4 --> n9
+  n8 --> n9
+  n3 --> n9
+  n4 --> n10
+  n0 --> n10
+  n3 --> n10
+  n1 --> n10
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -58,35 +66,45 @@ The same statements, with the dependencies Lean finds in the proofs themselves (
 ```mermaid
 graph TD
   n0["L1"]:::proven
-  n1["L2"]:::encoded
-  n2["L3"]:::encoded
-  n3["F1"]:::fact
-  n4["A1"]:::proven
-  n5["A2"]:::proven
-  n6["A3"]:::proven
-  n7["K"]:::proven
-  n8["W1"]:::proven
+  n1["L4"]:::encoded
+  n2["L2"]:::encoded
+  n3["L3"]:::encoded
+  n4["F1"]:::fact
+  n5["A1"]:::proven
+  n6["A2"]:::proven
+  n7["A3"]:::proven
+  n8["K"]:::proven
+  n9["W1"]:::proven
+  n10["W2"]:::proven
   n0 --> n1
   n0 --> n2
   n1 --> n2
-  n0 --> n4
-  n3 --> n4
-  n2 --> n5
-  n3 --> n5
-  n1 --> n5
-  n2 --> n6
-  n0 --> n6
+  n0 --> n3
+  n1 --> n3
+  n2 --> n3
+  n0 --> n5
+  n4 --> n5
   n3 --> n6
-  n1 --> n6
-  n4 -.-> n6
-  n2 --> n7
+  n4 --> n6
+  n2 --> n6
   n3 --> n7
+  n0 --> n7
+  n1 --> n7
+  n4 --> n7
+  n2 --> n7
   n5 -.-> n7
-  n6 -.-> n7
-  n7 --> n8
-  n4 -.-> n8
-  n3 -.-> n8
-  n2 -.-> n8
+  n3 --> n8
+  n4 --> n8
+  n6 -.-> n8
+  n7 -.-> n8
+  n8 --> n9
+  n5 -.-> n9
+  n4 -.-> n9
+  n3 -.-> n9
+  n4 --> n10
+  n3 --> n10
+  n1 --> n10
+  n0 -.-> n10
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -102,15 +120,23 @@ graph TD
 
 Spouses may jointly elect to move up to half the pensioner's eligible pension income to the other: deducted by the pensioner, included by the transferee, and treated as the transferee's pension income for the pension credit. Proven: never more than half.
 
-**Lean:** [`Canteen.ITA.PensionSplitting.splitLimit`](../../Canteen/ITA/S60_03/PensionSplitting.lean#L56), [`Canteen.ITA.PensionSplitting.split_le_half`](../../Canteen/ITA/S60_03/PensionSplitting.lean#L83), [`Canteen.ITA.IndividualYear.splitOutAllowed`](../../Canteen/ITA/S3/IndividualYear.lean#L122)
+**Lean:** [`Canteen.ITA.PensionSplitting.splitLimit`](../../Canteen/ITA/S60_03/PensionSplitting.lean#L61), [`Canteen.ITA.PensionSplitting.split_le_half`](../../Canteen/ITA/S60_03/PensionSplitting.lean#L88), [`Canteen.ITA.IndividualYear.splitOutAllowed`](../../Canteen/ITA/S3/IndividualYear.lean#L125)
+
+### L4. The OAS recovery tax
+
+**Status:** encoded · **Citation:** ITA 180.2(2); 60(w) · **Uses:** L1
+
+15% of adjusted income over $93,454 (2025), up to the OAS received; deducted in computing income.
+
+**Lean:** [`Canteen.ITA.OasRecovery.tax`](../../Canteen/ITA/S180_2/OasRecovery.lean#L21), [`Canteen.ITA.IndividualYear.oasRecovery`](../../Canteen/ITA/S3/IndividualYear.lean#L146)
 
 ### L2. The age and pension credits
 
-**Status:** encoded · **Citation:** ITA 118(2), (3), (7) · **Uses:** L1
+**Status:** encoded · **Citation:** ITA 118(2), (3), (7) · **Uses:** L1, L4
 
 14% of $9,028 less 15% of income over $45,522, for those 65 or over; 14% of up to $2,000 of eligible pension income.
 
-**Lean:** [`Canteen.ITA.PensionSplitting.ageCredit`](../../Canteen/ITA/S60_03/PensionSplitting.lean#L68), [`Canteen.ITA.PensionSplitting.pensionCredit`](../../Canteen/ITA/S60_03/PensionSplitting.lean#L71), [`Canteen.ITA.IndividualYear.ageAndPensionCredits`](../../Canteen/ITA/S3/IndividualYear.lean#L181)
+**Lean:** [`Canteen.ITA.PensionSplitting.ageCredit`](../../Canteen/ITA/S60_03/PensionSplitting.lean#L73), [`Canteen.ITA.PensionSplitting.pensionCredit`](../../Canteen/ITA/S60_03/PensionSplitting.lean#L76), [`Canteen.ITA.IndividualYear.ageAndPensionCredits`](../../Canteen/ITA/S3/IndividualYear.lean#L197)
 
 ### L3. Federal tax
 
@@ -118,7 +144,7 @@ Spouses may jointly elect to move up to half the pensioner's eligible pension in
 
 Tax at the 117(2) rates, less the personal, age and pension credits.
 
-**Lean:** [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L198)
+**Lean:** [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L214)
 
 ## Facts
 
@@ -183,6 +209,16 @@ $6,900.24 between them, against $12,010.74; no split in $1,000 steps up to the l
 The transferee's income then exceeds the pensioner's: $10.96 more than at $40,000.
 
 **Lean:** [`Canteen.Transactions.PensionSplit.overshoot`](../../Canteen/Transactions/PensionSplit.lean#L54)
+
+**Rests on:** facts F1.
+
+### W2. With $8,700 of OAS each
+
+**Status:** proven · **Citation:** ITA 180.2(2) · **Uses:** F1, L1, L3, L4
+
+Unsplit, $786.90 of the pensioner's OAS is recovered; split $40,000 and none is: $9,873.88 in all against $14,586.01, still the best split in $1,000 steps.
+
+**Lean:** [`Canteen.Transactions.PensionSplit.oas`](../../Canteen/Transactions/PensionSplit.lean#L59), [`Canteen.Transactions.PensionSplit.pensionerOas`](../../Canteen/Transactions/PensionSplit.lean#L61), [`Canteen.Transactions.PensionSplit.transfereeOas`](../../Canteen/Transactions/PensionSplit.lean#L62), [`Canteen.Transactions.PensionSplit.totalOas`](../../Canteen/Transactions/PensionSplit.lean#L64), [`Canteen.Transactions.PensionSplit.with_oas`](../../Canteen/Transactions/PensionSplit.lean#L69), [`Canteen.Transactions.PensionSplit.best_with_oas`](../../Canteen/Transactions/PensionSplit.lean#L75)
 
 **Rests on:** facts F1.
 

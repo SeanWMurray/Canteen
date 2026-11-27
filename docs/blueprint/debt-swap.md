@@ -180,7 +180,7 @@ Interest under a legal obligation on money borrowed and used for the purpose of 
 
 Income with the gain and dividends, less the interest; tax less the personal and dividend credits.
 
-**Lean:** [`Canteen.ITA.IndividualYear.interestDeduction`](../../Canteen/ITA/S3/IndividualYear.lean#L119), [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L198)
+**Lean:** [`Canteen.ITA.IndividualYear.interestDeduction`](../../Canteen/ITA/S3/IndividualYear.lean#L122), [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L214)
 
 ### L3. The minimum tax
 
@@ -188,7 +188,7 @@ Income with the gain and dividends, less the interest; tax less the personal and
 
 For the minimum tax, only half the interest on money borrowed to earn property income is deducted.
 
-**Lean:** [`Canteen.ITA.MinimumTax.adjustedTaxableIncome`](../../Canteen/ITA/S127_5/MinimumTax.lean#L58), [`Canteen.ITA.MinimumTax.taxPayable`](../../Canteen/ITA/S127_5/MinimumTax.lean#L73)
+**Lean:** [`Canteen.ITA.MinimumTax.adjustedTaxableIncome`](../../Canteen/ITA/S127_5/MinimumTax.lean#L59), [`Canteen.ITA.MinimumTax.taxPayable`](../../Canteen/ITA/S127_5/MinimumTax.lean#L74)
 
 ## Facts
 

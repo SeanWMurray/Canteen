@@ -79,6 +79,7 @@ import Canteen.ITA.S20.InterestDeductibility
 import Canteen.ITA.S118_2.MedicalExpenses
 import Canteen.ITA.S118_3.Disability
 import Canteen.ITA.S60_03.PensionSplitting
+import Canteen.ITA.S180_2.OasRecovery
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.ITA.S40.ShareToAffiliate
@@ -200,3 +201,4 @@ import Canteen.Tests.InterestDeductibility
 import Canteen.Tests.MedicalExpenses
 import Canteen.Tests.Disability
 import Canteen.Tests.PensionSplitting
+import Canteen.Tests.OasRecovery

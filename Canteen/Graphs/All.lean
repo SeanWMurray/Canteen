@@ -39,6 +39,7 @@ import Canteen.ITA.S20.InterestDeductibility
 import Canteen.ITA.S118_2.MedicalExpenses
 import Canteen.ITA.S118_3.Disability
 import Canteen.ITA.S60_03.PensionSplitting
+import Canteen.ITA.S180_2.OasRecovery
 import Canteen.Transactions.DebtSwap
 import Canteen.ITA.S87.Amalgamation
 import Canteen.ITA.S39.CanadianSecurities
@@ -191,7 +192,8 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S20.InterestDeductibility, "20(1)(c), 20(3) interest on borrowed money"),
    (`Canteen.ITA.S118_2.MedicalExpenses, "118.2(1) the medical expense credit"),
    (`Canteen.ITA.S118_3.Disability, "118.3(1), (2) the disability credit"),
-   (`Canteen.ITA.S60_03.PensionSplitting, "118(2), (3), 60.03 pension income and splitting")]
+   (`Canteen.ITA.S60_03.PensionSplitting, "118(2), (3), 60.03 pension income and splitting"),
+   (`Canteen.ITA.S180_2.OasRecovery, "180.2, 60(w) the OAS recovery tax")]
 
 /-! ## The dashboard -/
 
@@ -309,6 +311,7 @@ def actMindmap : String := Id.run do
     (2, "ss. 123 to 125"), (3, "123(1), 124(1): 38%, the abatement"), (3, "123.4(2): general rate reduction"), (3, "125(1): small business deduction"),
     (2, "ss. 123.3, 129"), (3, "123.3: refundable tax on investment income"), (3, "129(1), (4): the dividend refund"),
     (2, "s. 185.1"), (3, "185.1(1): Part III.1 tax on excessive designations"), (3, "185.1(2), (3): the election"),
+    (2, "s. 180.2"), (3, "180.2(2): OAS recovery tax"),
     (2, "s. 186"), (3, "186(1): Part IV tax"), (3, "186(4): connected corporations"), (3, "186(2): control with non-arm's length persons"),
     (2, "s. 248"), (3, "248(1): majority-interest partner"),
     (2, "s. 251"), (3, "251(1): arm's length"), (3, "251(2), (3): related persons"), (3, "251(3.1), (3.2): amalgamations"),

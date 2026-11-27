@@ -130,7 +130,7 @@ The taxable capital gain on a gift of a listed security to a qualified donee is 
 
 Income, taxable income, tax at the 117(2) rates, less the personal and donation credits.
 
-**Lean:** [`Canteen.ITA.IndividualYear.income`](../../Canteen/ITA/S3/IndividualYear.lean#L137), [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L198), [`Canteen.ITA.IndividualYear.personalCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L161), [`Canteen.ITA.IndividualYear.donationCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L169)
+**Lean:** [`Canteen.ITA.IndividualYear.income`](../../Canteen/ITA/S3/IndividualYear.lean#L153), [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L214), [`Canteen.ITA.IndividualYear.personalCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L177), [`Canteen.ITA.IndividualYear.donationCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L185)
 
 ## Facts
 
@@ -214,7 +214,7 @@ The difference in federal tax is $5,900.16, all from the gain that selling first
 
 At least 20.5% of adjusted taxable income over $177,882, less half the personal credit and 4/5 of the donation credit; for it, capital gains count in full and gains on gifts of listed securities at 3/10.
 
-**Lean:** [`Canteen.ITA.MinimumTax.adjustedTaxableIncome`](../../Canteen/ITA/S127_5/MinimumTax.lean#L58), [`Canteen.ITA.MinimumTax.minimumAmount`](../../Canteen/ITA/S127_5/MinimumTax.lean#L69), [`Canteen.ITA.MinimumTax.taxPayable`](../../Canteen/ITA/S127_5/MinimumTax.lean#L73)
+**Lean:** [`Canteen.ITA.MinimumTax.adjustedTaxableIncome`](../../Canteen/ITA/S127_5/MinimumTax.lean#L59), [`Canteen.ITA.MinimumTax.minimumAmount`](../../Canteen/ITA/S127_5/MinimumTax.lean#L70), [`Canteen.ITA.MinimumTax.taxPayable`](../../Canteen/ITA/S127_5/MinimumTax.lean#L74)
 
 ### A6. No minimum tax on this gift
 

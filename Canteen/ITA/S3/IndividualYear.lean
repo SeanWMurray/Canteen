@@ -12,6 +12,7 @@ import Canteen.ITA.S20.InterestDeductibility
 import Canteen.ITA.S118_2.MedicalExpenses
 import Canteen.ITA.S118_3.Disability
 import Canteen.ITA.S60_03.PensionSplitting
+import Canteen.ITA.S180_2.OasRecovery
 
 /-!
 # An individual's year: income from the encoded sources, and taxable income
@@ -101,6 +102,8 @@ structure Facts where
   pension income to the pensioner (60.03(2)(b)(ii)). -/
   splitIn : Cents := 0
   splitInQualified : Bool := true
+  /-- 180.2(2): the indexed threshold (2025: $93,454). -/
+  oasThreshold : Cents := 9345400
   /-- 118.3(1): the individual's disability facts, if the credit is claimed. -/
   disability : Option Disability.Facts := none
   /-- 118.3(2): disability credits transferred from dependants (see `disabilityTransferFrom`). -/
@@ -127,12 +130,25 @@ def pensionTotal (f : Facts) : Cents := (f.pensions.map (·.amount)).sum
 /-- Split income (120.4), deducted in computing income (20(1)(ww)). -/
 def splitIncome (f : Facts) : Cents := (f.split.map SplitIncome.splitIncome).getD 0
 
-/-- Section 3, from the components. -/
-def incomeFacts (f : Facts) : Income.Facts :=
+/-- Section 3, from the components, before the 60(w) deduction. -/
+def incomeFactsBase (f : Facts) : Income.Facts :=
   { incomeFromSources := (f.employmentAndBusiness + Dividends.inclusion (dividendFacts f) + recapture f + attributedIncome f +
         pensionTotal f + f.splitIn) - splitIncome f,
     capital := f.capital, subdivisionE := f.subdivisionE + splitOutAllowed f,
     sourceLosses := f.businessLosses + terminalLosses f + attributedLoss f + interestDeduction f }
+
+/-- Old Age Security benefits included in income. -/
+def oasReceived (f : Facts) : Cents := ((f.pensions.filter (·.kind == .oldAgeSecurity)).map (·.amount)).sum
+
+/-- 180.2(1): adjusted income, without the 60(w) deduction, in half-cents. -/
+def adjustedIncome (f : Facts) : HalfCents := Income.income (incomeFactsBase f)
+
+/-- 180.2(2): the Part I.2 tax, deducted in computing income under 60(w). -/
+def oasRecovery (f : Facts) : Cents := OasRecovery.tax (oasReceived f) (adjustedIncome f / 2) f.oasThreshold
+
+/-- Section 3, with the 60(w) deduction in 3(c). -/
+def incomeFacts (f : Facts) : Income.Facts :=
+  { incomeFactsBase f with subdivisionE := (incomeFactsBase f).subdivisionE + oasRecovery f }
 
 def income (f : Facts) : HalfCents := Income.income (incomeFacts f)
 

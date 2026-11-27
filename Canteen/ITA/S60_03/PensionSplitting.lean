@@ -31,8 +31,10 @@ inductive Kind where
   | pensionPlan
   /-- (a)(ii) to (vi): RRSP annuities, RRIF payments and the like. Qualified only if received on a spouse's death. -/
   | registeredFund (onSpouseDeath : Bool := false)
-  /-- 118(8)(a), (b): Old Age Security and Canada Pension Plan benefits; not pension income. -/
+  /-- 118(8)(b): Canada Pension Plan and provincial plan benefits; not pension income. -/
   | government
+  /-- 118(8)(a): Old Age Security; not pension income, and subject to the Part I.2 recovery tax. -/
+  | oldAgeSecurity
   deriving Repr, DecidableEq, Inhabited
 
 structure Payment where
@@ -41,13 +43,16 @@ structure Payment where
   kind : Kind
   deriving Repr, DecidableEq, Inhabited
 
-def Payment.isPensionIncome (p : Payment) : Bool := p.kind != .government
+def Payment.isPensionIncome (p : Payment) : Bool :=
+  match p.kind with
+  | .government | .oldAgeSecurity => false
+  | _ => true
 
 def Payment.isQualified (p : Payment) : Bool :=
   match p.kind with
   | .pensionPlan => true
   | .registeredFund onSpouseDeath => onSpouseDeath
-  | .government => false
+  | .government | .oldAgeSecurity => false
 
 /-- 118(7) "eligible pension income". -/
 def eligiblePensionIncome (age65 : Bool) (ps : List Payment) : Cents :=
