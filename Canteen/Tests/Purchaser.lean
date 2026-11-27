@@ -28,4 +28,10 @@ example : (explain { shares with noReasonToBelieve := .judged "J-INQ" true }).re
 -- Listed shares of a public company (excluded property): none.
 example : ({ shares with kind := .excluded } : Purchase).liability = 0 := by decide
 
+-- With the property given: Landco's shares drew 70% of their value from Ontario land within 60 months.
+def landcoShares : Purchase := { shares with property := some (.unlisted (List.replicate 60 ⟨70, 0⟩)) }
+example : landcoShares.liability = 25000000 := by decide
+-- Shares of a software company with no Canadian real property: not taxable Canadian property.
+example : ({ shares with property := some (.unlisted (List.replicate 60 ⟨5, 0⟩)) } : Purchase).liability = 0 := by decide
+
 end Canteen.Tests.Purchaser

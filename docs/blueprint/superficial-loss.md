@@ -125,8 +125,8 @@ graph TD
   n112["R81 · Thin capitalization"]:::proven
   n113["R82 · Part XIII tax on management fees, interest and dividends"]:::proven
   n114["R83 · A non-resident's rent: Part XIII or the 216 election"]:::proven
-  n115["R84 · Buying from a non-resident"]:::proven
-  n116["R85 · Taxable Canadian property"]:::proven
+  n115["R85 · Taxable Canadian property"]:::proven
+  n116["R84 · Buying from a non-resident"]:::proven
   n117["R70 · A corporation's year, to taxable income and tax"]:::proven
   n118["R35 · An individual's year, to taxable income and tax"]:::proven
   n119["R48 · The minimum tax"]:::proven
@@ -257,6 +257,7 @@ graph TD
   n39 --> n104
   n74 --> n114
   n88 --> n114
+  n115 --> n116
   n44 --> n117
   n45 --> n117
   n57 --> n117
@@ -439,8 +440,8 @@ graph TD
   n112["R81"]:::proven
   n113["R82"]:::proven
   n114["R83"]:::proven
-  n115["R84"]:::proven
-  n116["R85"]:::proven
+  n115["R85"]:::proven
+  n116["R84"]:::proven
   n117["R70"]:::proven
   n118["R35"]:::proven
   n119["R48"]:::proven
@@ -651,6 +652,7 @@ graph TD
   n39 -.-> n104
   n74 --> n114
   n88 -.-> n114
+  n115 --> n116
   n44 --> n117
   n57 --> n117
   n45 --> n117
@@ -1650,14 +1652,6 @@ A non-resident individual's rent from Canadian real property bears 25% of the gr
 
 **Lean:** [`Canteen.ITA.RentalElection.partXIII`](../../Canteen/ITA/S216/RentalElection.lean#L39), [`Canteen.ITA.RentalElection.credits`](../../Canteen/ITA/S216/RentalElection.lean#L42), [`Canteen.ITA.RentalElection.basicTax`](../../Canteen/ITA/S216/RentalElection.lean#L45), [`Canteen.ITA.RentalElection.surtax`](../../Canteen/ITA/S216/RentalElection.lean#L48), [`Canteen.ITA.RentalElection.electedTax`](../../Canteen/ITA/S216/RentalElection.lean#L51), [`Canteen.ITA.RentalElection.saving`](../../Canteen/ITA/S216/RentalElection.lean#L54), [`Canteen.ITA.RentalElection.no_net_income`](../../Canteen/ITA/S216/RentalElection.lean#L68)
 
-### R84. Buying from a non-resident
-
-**Status:** proven · **Citation:** ITA 116(5), (5.01), (5.3)
-
-A purchaser of taxable Canadian property from a non-resident must remit 25% of the cost over any certificate limit (50% for depreciable, resource and similar property), unless it had no reason after reasonable inquiry to think the vendor non-resident, the property is treaty-protected with notice given, or a 116(4) certificate was issued. Proven: never more than half the cost, and nothing when the certificate covers it.
-
-**Lean:** [`Canteen.ITA.Purchaser.Purchase.rate`](../../Canteen/ITA/S116/Purchaser.lean#L57), [`Canteen.ITA.Purchaser.Purchase.excepted`](../../Canteen/ITA/S116/Purchaser.lean#L59), [`Canteen.ITA.Purchaser.Purchase.liability`](../../Canteen/ITA/S116/Purchaser.lean#L62), [`Canteen.ITA.Purchaser.Purchase.liability_le`](../../Canteen/ITA/S116/Purchaser.lean#L80), [`Canteen.ITA.Purchaser.Purchase.full_certificate`](../../Canteen/ITA/S116/Purchaser.lean#L87)
-
 ### R85. Taxable Canadian property
 
 **Status:** proven · **Citation:** ITA 248(1) "taxable Canadian property" (a) to (f)
@@ -1665,6 +1659,14 @@ A purchaser of taxable Canadian property from a non-resident must remit 25% of t
 Canadian real property and Canadian business property are taxable Canadian property; so is an unlisted share or a partnership or trust interest that drew more than half its value from Canadian real, resource or timber property at any time in the last 60 months, and a listed share if at the same time the taxpayer's non-arm's length group also held 25% of the class; and options on any of them. Proven: an unlisted share at 50% or less throughout is not, a listed share held under 25% throughout is not, and an option follows what it is over.
 
 **Lean:** [`Canteen.ITA.TaxableCanadianProperty.Property.isTCP`](../../Canteen/ITA/S248/TaxableCanadianProperty.lean#L55), [`Canteen.ITA.TaxableCanadianProperty.unlisted_below_half`](../../Canteen/ITA/S248/TaxableCanadianProperty.lean#L85), [`Canteen.ITA.TaxableCanadianProperty.listed_small_holding`](../../Canteen/ITA/S248/TaxableCanadianProperty.lean#L90), [`Canteen.ITA.TaxableCanadianProperty.option_iff`](../../Canteen/ITA/S248/TaxableCanadianProperty.lean#L95)
+
+### R84. Buying from a non-resident
+
+**Status:** proven · **Citation:** ITA 116(5), (5.01), (5.3) · **Uses:** R85
+
+A purchaser of taxable Canadian property from a non-resident must remit 25% of the cost over any certificate limit (50% for depreciable, resource and similar property), unless it had no reason after reasonable inquiry to think the vendor non-resident, the property is treaty-protected with notice given, or a 116(4) certificate was issued. Proven: never more than half the cost, and nothing when the certificate covers it.
+
+**Lean:** [`Canteen.ITA.Purchaser.Purchase.rate`](../../Canteen/ITA/S116/Purchaser.lean#L61), [`Canteen.ITA.Purchaser.Purchase.notTCP`](../../Canteen/ITA/S116/Purchaser.lean#L63), [`Canteen.ITA.Purchaser.Purchase.excepted`](../../Canteen/ITA/S116/Purchaser.lean#L66), [`Canteen.ITA.Purchaser.Purchase.liability`](../../Canteen/ITA/S116/Purchaser.lean#L69), [`Canteen.ITA.Purchaser.Purchase.liability_le`](../../Canteen/ITA/S116/Purchaser.lean#L88), [`Canteen.ITA.Purchaser.Purchase.full_certificate`](../../Canteen/ITA/S116/Purchaser.lean#L95)
 
 ### R70. A corporation's year, to taxable income and tax
 

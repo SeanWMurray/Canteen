@@ -122,8 +122,8 @@ flowchart BT
     m114["ITA.S18.ThinCapitalization"]
     m115["ITA.S212.Withholding"]
     m116["ITA.S216.RentalElection"]
-    m117["ITA.S116.Purchaser"]
-    m118["ITA.S248.TaxableCanadianProperty"]
+    m117["ITA.S248.TaxableCanadianProperty"]
+    m118["ITA.S116.Purchaser"]
     m119["ITA.S3.CorporateYear"]
     m120["ITA.S50.BadDebtPersonalUse"]
     m121["ITA.S54.Timeline"]
@@ -403,9 +403,10 @@ flowchart BT
   m2 --> m115
   m4 --> m115
   m80 --> m116
-  m2 --> m117
-  m10 --> m117
-  m4 --> m118
+  m4 --> m117
+  m2 --> m118
+  m10 --> m118
+  m117 --> m118
   m43 --> m119
   m44 --> m119
   m56 --> m119
@@ -500,7 +501,6 @@ flowchart BT
   m114 --> m142
   m115 --> m142
   m116 --> m142
-  m117 --> m142
   m118 --> m142
   m119 --> m142
   m120 --> m142
@@ -602,7 +602,6 @@ flowchart BT
   m114 --> m162
   m115 --> m162
   m116 --> m162
-  m117 --> m162
   m118 --> m162
   m119 --> m162
   m136 --> m162

@@ -97,8 +97,8 @@ flowchart BT
   v88["18(4), 214(16) thin capitalization and the deemed dividend"]:::prov
   v89["212(1)(a), (b), (2) Part XIII on management fees, interest and dividends"]:::prov
   v90["212(1)(d), 216(1), 120(1) a non-resident's rent and the election"]:::prov
-  v91["116(5), (5.3) buying from a non-resident"]:::prov
-  v92["248(1) taxable Canadian property"]:::prov
+  v91["248(1) taxable Canadian property"]:::prov
+  v92["116(5), (5.3) buying from a non-resident"]:::prov
   v93["2(2), 3, 129(4) a corporation's year, to taxable income and tax"]:::prov
   v94["50(2) bad personal-use debts"]:::prov
   v0 --> v1
@@ -190,6 +190,7 @@ flowchart BT
   v17 --> v77
   v6 --> v80
   v54 --> v90
+  v91 --> v92
   v19 --> v93
   v20 --> v93
   v32 --> v93

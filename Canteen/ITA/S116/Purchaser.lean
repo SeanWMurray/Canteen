@@ -1,6 +1,7 @@
 import Canteen.Core.Money
 import Canteen.Core.Finding
 import Canteen.Core.Answer
+import Canteen.ITA.S248.TaxableCanadianProperty
 
 /-!
 # Section 116: the purchaser's liability on buying from a non-resident
@@ -22,7 +23,8 @@ resource and timber resource property, real property inventory, life insurance p
 50% of the amount payable over the amount fixed in any 116(5.2) certificate, with the same exceptions
 but (b).
 
-What is taxable Canadian, excluded (116(6)) or 116(5.2) property, the reasonable inquiries and the
+Whether the property is taxable Canadian property is decided by `TaxableCanadianProperty` when the
+property is given. What is excluded (116(6)) or 116(5.2) property, the reasonable inquiries and the
 treaty conditions are facts (the inquiry often a judgment call). The vendor's own notices and the
 certificates' issue (116(1) to (4), (5.2)) are given as their limits. 116(5.4) and the penalties are
 not encoded.
@@ -52,12 +54,17 @@ structure Purchase where
   noReasonToBelieve : Answer := .fact false
   /-- 116(5.01): treaty residence concluded after reasonable inquiry, treaty-protected property, notice given. -/
   treatyProtected : Bool := false
+  /-- The property, to test whether it is taxable Canadian property (248(1)); if not given, `kind` says. -/
+  property : Option TaxableCanadianProperty.Property := none
   deriving Repr, DecidableEq, Inhabited
 
 def Purchase.rate (p : Purchase) : Nat := if p.kind == .listed then 50 else 25
 
+/-- Not taxable Canadian property, where the property is given. -/
+def Purchase.notTCP (p : Purchase) : Bool := (p.property.map (!·.isTCP)).getD false
+
 def Purchase.excepted (p : Purchase) : Bool :=
-  p.kind == .excluded || p.noReasonToBelieve.value || p.treatyProtected || (p.kind == .capital && p.section116_4)
+  p.kind == .excluded || p.notTCP || p.noReasonToBelieve.value || p.treatyProtected || (p.kind == .capital && p.section116_4)
 
 /-- The tax the purchaser is liable to remit, and may withhold. -/
 def Purchase.liability (p : Purchase) : Cents :=
@@ -66,7 +73,8 @@ def Purchase.liability (p : Purchase) : Cents :=
 def explain (p : Purchase) : Finding :=
   let c := formatCents
   ⟨p.liability > 0,
-    [if p.kind == .excluded then ⟨s!"{p.description}: excluded property; no liability.", "ITA 116(6)"⟩
+    [if p.notTCP then ⟨s!"{p.description}: not taxable Canadian property; no liability.", "ITA 116(5); 248(1) \"taxable Canadian property\""⟩
+     else if p.kind == .excluded then ⟨s!"{p.description}: excluded property; no liability.", "ITA 116(6)"⟩
      else if p.excepted then ⟨s!"{p.description}: " ++
         (if p.noReasonToBelieve.value then "after reasonable inquiry, no reason to believe the vendor was non-resident"
          else if p.treatyProtected then "treaty-protected property, with the notice given"
