@@ -71,6 +71,7 @@ The verbatim statute text for each is in `statute/`. Review notes are in `docs/r
 - `S125/BusinessLimit.lean`: subsections 125(2), (3) and (5.1), paragraph 125(5)(b), and the 125(7) definition "adjusted aggregate investment income" (computed in `CorporateYear`)
 - `S256/Associated.lean`: subsections 256(1), (1.1), (1.2), (1.3), (1.4), (1.5), (2), (2.1) and (5.1)
 - `S67_1/MealsEntertainment.lean`: section 67.1
+- `S20/FinancingExpenses.lean`: paragraphs 20(1)(e) and (e.1)
 - `S3/CorporateYear.lean`: a corporation's year, from its sources to taxable income and tax (2(2), 3), and the 129(4) definitions "aggregate investment income", "eligible portion" and "income or loss"
 - `S112/StopLoss.lean`: subsections 112(3), (3.01) and (6.1)
 - `S7/StockOptions.lean`: paragraph 7(1)(a), subsection 7(1.1), and paragraphs 110(1)(d) and (d.1)

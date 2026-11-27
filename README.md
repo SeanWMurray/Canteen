@@ -140,6 +140,7 @@ Canteen/
     S125/BusinessLimit.lean    125(2), (3), (5)(b), (5.1): the business limit, shared, prorated and ground
     S256/Associated.lean       256(1), (2): associated corporations, directly and through a third
     S67_1/MealsEntertainment.lean   67.1: meals and entertainment, the 50% limit and its exceptions
+    S20/FinancingExpenses.lean   20(1)(e), (e.1): financing expenses, over five years
     S3/CorporateYear.lean      2(2), 3, 129(4): a corporation's year, to taxable income, investment income and tax
     S110_6/CapitalGainsDeduction.lean   110.6: qualified small business corporation shares, the gains limits, the deduction
     S251_2/LossRestrictionEvent.lean   251.2(2)(a), 256(7)(a): acquisitions of control, and when they are not

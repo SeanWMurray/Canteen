@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 114 statements:** 95 proven, 16 encoded, 3 not formalized.
+**Status of the 115 statements:** 96 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -116,14 +116,15 @@ graph TD
   n103["R72 · The business limit"]:::proven
   n104["R73 · Associated corporations"]:::proven
   n105["R74 · Meals and entertainment"]:::proven
-  n106["R70 · A corporation's year, to taxable income and tax"]:::proven
-  n107["R35 · An individual's year, to taxable income and tax"]:::proven
-  n108["R48 · The minimum tax"]:::proven
-  n109["R11 · The principal residence exemption"]:::proven
-  n110["R2 · Cost of the substituted property"]:::proven
-  n111["N1 · Inputs decided by other provisions"]:::notFormalized
-  n112["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n113["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n106["R75 · Financing expenses"]:::proven
+  n107["R70 · A corporation's year, to taxable income and tax"]:::proven
+  n108["R35 · An individual's year, to taxable income and tax"]:::proven
+  n109["R48 · The minimum tax"]:::proven
+  n110["R11 · The principal residence exemption"]:::proven
+  n111["R2 · Cost of the substituted property"]:::proven
+  n112["N1 · Inputs decided by other provisions"]:::notFormalized
+  n113["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n114["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -244,57 +245,57 @@ graph TD
   n77 --> n78
   n77 --> n80
   n39 --> n104
-  n44 --> n106
-  n45 --> n106
-  n57 --> n106
-  n60 --> n106
-  n77 --> n106
-  n78 --> n106
-  n80 --> n106
-  n101 --> n106
-  n102 --> n106
-  n103 --> n106
   n44 --> n107
   n45 --> n107
-  n53 --> n107
-  n55 --> n107
-  n56 --> n107
-  n58 --> n107
-  n73 --> n107
-  n74 --> n107
-  n75 --> n107
-  n76 --> n107
-  n81 --> n107
-  n82 --> n107
-  n83 --> n107
-  n84 --> n107
-  n85 --> n107
-  n87 --> n107
-  n88 --> n107
-  n89 --> n107
-  n90 --> n107
-  n91 --> n107
-  n92 --> n107
-  n93 --> n107
-  n94 --> n107
-  n97 --> n107
-  n100 --> n107
-  n107 --> n108
-  n44 --> n109
-  n50 --> n109
-  n11 --> n110
-  n1 --> n111
-  n5 --> n111
-  n6 --> n111
-  n8 --> n111
-  n37 --> n111
-  n110 --> n111
-  n38 --> n111
-  n30 --> n112
-  n32 --> n113
-  n34 --> n113
-  n39 --> n113
-  n42 --> n113
+  n57 --> n107
+  n60 --> n107
+  n77 --> n107
+  n78 --> n107
+  n80 --> n107
+  n101 --> n107
+  n102 --> n107
+  n103 --> n107
+  n44 --> n108
+  n45 --> n108
+  n53 --> n108
+  n55 --> n108
+  n56 --> n108
+  n58 --> n108
+  n73 --> n108
+  n74 --> n108
+  n75 --> n108
+  n76 --> n108
+  n81 --> n108
+  n82 --> n108
+  n83 --> n108
+  n84 --> n108
+  n85 --> n108
+  n87 --> n108
+  n88 --> n108
+  n89 --> n108
+  n90 --> n108
+  n91 --> n108
+  n92 --> n108
+  n93 --> n108
+  n94 --> n108
+  n97 --> n108
+  n100 --> n108
+  n108 --> n109
+  n44 --> n110
+  n50 --> n110
+  n11 --> n111
+  n1 --> n112
+  n5 --> n112
+  n6 --> n112
+  n8 --> n112
+  n37 --> n112
+  n111 --> n112
+  n38 --> n112
+  n30 --> n113
+  n32 --> n114
+  n34 --> n114
+  n39 --> n114
+  n42 --> n114
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -417,14 +418,15 @@ graph TD
   n103["R72"]:::proven
   n104["R73"]:::proven
   n105["R74"]:::proven
-  n106["R70"]:::proven
-  n107["R35"]:::proven
-  n108["R48"]:::proven
-  n109["R11"]:::proven
-  n110["R2"]:::proven
-  n111["N1"]:::notFormalized
-  n112["N2"]:::notFormalized
-  n113["N4"]:::notFormalized
+  n106["R75"]:::proven
+  n107["R70"]:::proven
+  n108["R35"]:::proven
+  n109["R48"]:::proven
+  n110["R11"]:::proven
+  n111["R2"]:::proven
+  n112["N1"]:::notFormalized
+  n113["N2"]:::notFormalized
+  n114["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -625,66 +627,66 @@ graph TD
   n77 --> n78
   n77 --> n80
   n39 -.-> n104
-  n44 --> n106
-  n57 --> n106
-  n45 --> n106
-  n101 --> n106
-  n102 --> n106
-  n103 --> n106
-  n78 --> n106
-  n77 --> n106
-  n80 --> n106
-  n60 -.-> n106
-  n93 --> n107
-  n55 --> n107
-  n94 --> n107
-  n81 --> n107
-  n91 --> n107
-  n84 --> n107
-  n58 --> n107
-  n97 --> n107
   n44 --> n107
-  n87 --> n107
-  n73 --> n107
-  n56 --> n107
-  n100 --> n107
-  n92 --> n107
-  n85 --> n107
+  n57 --> n107
   n45 --> n107
-  n53 --> n107
-  n89 --> n107
-  n90 --> n107
-  n82 --> n107
-  n74 --> n107
-  n83 --> n107
-  n76 --> n107
-  n75 --> n107
-  n88 -.-> n107
+  n101 --> n107
+  n102 --> n107
+  n103 --> n107
+  n78 --> n107
+  n77 --> n107
+  n80 --> n107
+  n60 -.-> n107
+  n93 --> n108
   n55 --> n108
-  n107 --> n108
+  n94 --> n108
   n81 --> n108
   n91 --> n108
   n84 --> n108
   n58 --> n108
-  n45 --> n108
+  n97 --> n108
+  n44 --> n108
   n87 --> n108
   n73 --> n108
+  n56 --> n108
   n100 --> n108
-  n44 -.-> n109
-  n50 -.-> n109
-  n11 -.-> n110
-  n1 -.-> n111
-  n5 -.-> n111
-  n6 -.-> n111
-  n8 -.-> n111
-  n37 -.-> n111
-  n110 -.-> n111
-  n38 -.-> n111
-  n30 -.-> n112
-  n32 -.-> n113
-  n34 -.-> n113
-  n39 -.-> n113
-  n42 -.-> n113
+  n92 --> n108
+  n85 --> n108
+  n45 --> n108
+  n53 --> n108
+  n89 --> n108
+  n90 --> n108
+  n82 --> n108
+  n74 --> n108
+  n83 --> n108
+  n76 --> n108
+  n75 --> n108
+  n88 -.-> n108
+  n55 --> n109
+  n108 --> n109
+  n81 --> n109
+  n91 --> n109
+  n84 --> n109
+  n58 --> n109
+  n45 --> n109
+  n87 --> n109
+  n73 --> n109
+  n100 --> n109
+  n44 -.-> n110
+  n50 -.-> n110
+  n11 -.-> n111
+  n1 -.-> n112
+  n5 -.-> n112
+  n6 -.-> n112
+  n8 -.-> n112
+  n37 -.-> n112
+  n111 -.-> n112
+  n38 -.-> n112
+  n30 -.-> n113
+  n32 -.-> n114
+  n34 -.-> n114
+  n39 -.-> n114
+  n42 -.-> n114
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -1551,6 +1553,14 @@ Two corporations are associated if one controls the other, the same person or gr
 An amount for food, beverages or entertainment is deemed to be 50% of the lesser of what was paid and a reasonable amount (a long-haul truck driver's road meals, 80%), except where the business sells them, for a charity fundraiser, when billed to a client, as a taxable benefit, at a remote site or camp, or for up to six staff events a year; a conference fee that does not identify its food part includes $50 of food a day. Proven: never more than was paid, half without an exception, and a seventh staff event loses the exception.
 
 **Lean:** [`Canteen.ITA.MealsEntertainment.specifiedPercentage`](../../Canteen/ITA/S67_1/MealsEntertainment.lean#L79), [`Canteen.ITA.MealsEntertainment.Expense.deemed`](../../Canteen/ITA/S67_1/MealsEntertainment.lean#L96), [`Canteen.ITA.MealsEntertainment.Conference.deemed`](../../Canteen/ITA/S67_1/MealsEntertainment.lean#L113), [`Canteen.ITA.MealsEntertainment.deductible`](../../Canteen/ITA/S67_1/MealsEntertainment.lean#L125), [`Canteen.ITA.MealsEntertainment.Expense.deemed_le`](../../Canteen/ITA/S67_1/MealsEntertainment.lean#L153), [`Canteen.ITA.MealsEntertainment.Expense.half`](../../Canteen/ITA/S67_1/MealsEntertainment.lean#L163), [`Canteen.ITA.MealsEntertainment.Expense.seventh_event`](../../Canteen/ITA/S67_1/MealsEntertainment.lean#L168)
+
+### R75. Financing expenses
+
+**Status:** proven · **Citation:** ITA 20(1)(e), (e.1)
+
+The costs of issuing shares or of borrowing for a business or property are deducted at 20% a year (prorated for a short year), up to what is left; when the debt is repaid at arm's length, the rest. Annual standby and similar fees are deducted in their year. Principal, interest and profit-based amounts are excluded. Proven: never more than what is left, and a fifth in a full year.
+
+**Lean:** [`Canteen.ITA.FinancingExpenses.Expense.deduction`](../../Canteen/ITA/S20/FinancingExpenses.lean#L66), [`Canteen.ITA.FinancingExpenses.Expense.schedule`](../../Canteen/ITA/S20/FinancingExpenses.lean#L70), [`Canteen.ITA.FinancingExpenses.Fee.deduction`](../../Canteen/ITA/S20/FinancingExpenses.lean#L85), [`Canteen.ITA.FinancingExpenses.deduction`](../../Canteen/ITA/S20/FinancingExpenses.lean#L94), [`Canteen.ITA.FinancingExpenses.Expense.deduction_le_remaining`](../../Canteen/ITA/S20/FinancingExpenses.lean#L110), [`Canteen.ITA.FinancingExpenses.Expense.full_year`](../../Canteen/ITA/S20/FinancingExpenses.lean#L119)
 
 ### R70. A corporation's year, to taxable income and tax
 

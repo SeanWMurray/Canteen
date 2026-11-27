@@ -60,6 +60,7 @@ import Canteen.ITA.S111.NonCapitalLoss
 import Canteen.ITA.S125.BusinessLimit
 import Canteen.ITA.S256.Associated
 import Canteen.ITA.S67_1.MealsEntertainment
+import Canteen.ITA.S20.FinancingExpenses
 import Canteen.ITA.S3.CorporateYear
 import Canteen.Transactions.DebtSwap
 import Canteen.ITA.S87.Amalgamation
@@ -235,6 +236,7 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S125.BusinessLimit, "125(2), (3), (5)(b), (5.1) the business limit, shared and ground"),
    (`Canteen.ITA.S256.Associated, "256(1), (2) associated corporations"),
    (`Canteen.ITA.S67_1.MealsEntertainment, "67.1 meals and entertainment"),
+   (`Canteen.ITA.S20.FinancingExpenses, "20(1)(e), (e.1) financing expenses"),
    (`Canteen.ITA.S3.CorporateYear, "2(2), 3, 129(4) a corporation's year, to taxable income and tax")]
 
 /-! ## The dashboard -/
@@ -307,7 +309,7 @@ def actMindmap : String := Id.run do
     (2, "s. 7"), (3, "7(1)(a): the option benefit"), (3, "7(1.1): CCPC deferral"),
     (2, "s. 13"), (3, "13(21): undepreciated capital cost"), (3, "13(1): recapture"),
     (2, "s. 15"), (3, "15(1): shareholder benefits"), (3, "15(2), (2.6): shareholder loans"),
-    (2, "s. 20"), (3, "20(16): terminal loss"), (3, "20(1)(j): loan repaid"), (3, "20(1)(c): interest"), (3, "20(3): refinancing"),
+    (2, "s. 20"), (3, "20(16): terminal loss"), (3, "20(1)(j): loan repaid"), (3, "20(1)(c): interest"), (3, "20(1)(e), (e.1): financing expenses"), (3, "20(3): refinancing"),
     (2, "ss. 38 to 41"), (3, "38: inclusion rates"), (3, "39(1): capital gains and losses"), (3, "39(4): the Canadian securities election"),
     (3, "40(1): gains and losses, reserves"), (3, "41: listed personal property"),
     (2, "s. 40"), (3, "40(2)(b): the principal residence exemption"), (3, "40(2)(g): losses that are nil"),

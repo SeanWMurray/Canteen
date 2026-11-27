@@ -75,6 +75,7 @@ import Canteen.ITA.S111.NonCapitalLoss
 import Canteen.ITA.S125.BusinessLimit
 import Canteen.ITA.S256.Associated
 import Canteen.ITA.S67_1.MealsEntertainment
+import Canteen.ITA.S20.FinancingExpenses
 import Canteen.ITA.S3.CorporateYear
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
@@ -764,6 +765,13 @@ def blueprint : Blueprint where
           lean := [``MealsEntertainment.specifiedPercentage, ``MealsEntertainment.Expense.deemed, ``MealsEntertainment.Conference.deemed,
             ``MealsEntertainment.deductible, ``MealsEntertainment.Expense.deemed_le, ``MealsEntertainment.Expense.half,
             ``MealsEntertainment.Expense.seventh_event] },
+        { id := "R75", kind := .law, title := "Financing expenses", citation := "ITA 20(1)(e), (e.1)"
+          statement := "The costs of issuing shares or of borrowing for a business or property are deducted at 20% a year " ++
+            "(prorated for a short year), up to what is left; when the debt is repaid at arm's length, the rest. Annual " ++
+            "standby and similar fees are deducted in their year. Principal, interest and profit-based amounts are " ++
+            "excluded. Proven: never more than what is left, and a fifth in a full year."
+          lean := [``FinancingExpenses.Expense.deduction, ``FinancingExpenses.Expense.schedule, ``FinancingExpenses.Fee.deduction,
+            ``FinancingExpenses.deduction, ``FinancingExpenses.Expense.deduction_le_remaining, ``FinancingExpenses.Expense.full_year] },
         { id := "R70", kind := .law, title := "A corporation's year, to taxable income and tax", citation := "ITA 2(2); 3; 110.1; 111(1), (8); 112(1); 125(7); 129(4)"
           statement := "A corporation's income from active business, personal services business, property and dividends " ++
             "received, with its net taxable capital gains (a 55(2) dividend as a gain); taxable income after gifts, the " ++
