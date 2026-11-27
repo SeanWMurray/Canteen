@@ -55,17 +55,18 @@ flowchart BT
   v46["120.4 tax on split income"]:::prov
   v47["20(1)(c), 20(3) interest on borrowed money"]:::prov
   v48["118.2(1) the medical expense credit"]:::prov
-  v49["2(2), 3 an individual's year, to taxable income"]:::prov
-  v50["39(4) to (6) the Canadian securities election"]:::prov
-  v51["50(1) bad debts and worthless shares"]:::prov
-  v52["43(1) part of a property"]:::prov
-  v53["74.4(2) corporate attribution"]:::prov
-  v54["123 to 125 corporate rates"]:::prov
-  v55["123.3, 129, 186 refundable taxes"]:::prov
-  v56["15(2), 80.4 shareholder loans"]:::prov
-  v57["89(1), 185.1 the general rate income pool"]:::prov
-  v58["127.5 to 127.531, 120.2 the minimum tax"]:::prov
-  v59["50(2) bad personal-use debts"]:::prov
+  v49["118.3(1) the disability credit"]:::prov
+  v50["2(2), 3 an individual's year, to taxable income"]:::prov
+  v51["39(4) to (6) the Canadian securities election"]:::prov
+  v52["50(1) bad debts and worthless shares"]:::prov
+  v53["43(1) part of a property"]:::prov
+  v54["74.4(2) corporate attribution"]:::prov
+  v55["123 to 125 corporate rates"]:::prov
+  v56["123.3, 129, 186 refundable taxes"]:::prov
+  v57["15(2), 80.4 shareholder loans"]:::prov
+  v58["89(1), 185.1 the general rate income pool"]:::prov
+  v59["127.5 to 127.531, 120.2 the minimum tax"]:::prov
+  v60["50(2) bad personal-use debts"]:::prov
   v0 --> v1
   v0 --> v2
   v0 --> v3
@@ -117,21 +118,22 @@ flowchart BT
   v43 --> v44
   v43 --> v45
   v30 --> v46
-  v19 --> v49
-  v27 --> v49
-  v32 --> v49
-  v29 --> v49
-  v44 --> v49
-  v45 --> v49
-  v46 --> v49
-  v47 --> v49
-  v48 --> v49
-  v17 --> v50
+  v19 --> v50
+  v27 --> v50
+  v32 --> v50
+  v29 --> v50
+  v44 --> v50
+  v45 --> v50
+  v46 --> v50
+  v47 --> v50
+  v48 --> v50
+  v49 --> v50
   v17 --> v51
   v17 --> v52
-  v30 --> v53
-  v54 --> v55
-  v54 --> v57
-  v49 --> v58
+  v17 --> v53
+  v30 --> v54
+  v55 --> v56
+  v55 --> v58
+  v50 --> v59
   classDef prov fill:#bbdefb,stroke:#1565c0,color:#0d47a1
 ```

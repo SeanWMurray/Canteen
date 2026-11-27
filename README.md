@@ -97,6 +97,7 @@ Canteen/
     S127_5/MinimumTax.lean     127.5 to 127.531, 120.2: the minimum tax, and recovering it
     S20/InterestDeductibility.lean   20(1)(c), 20(3): interest on borrowed money
     S118_2/MedicalExpenses.lean   118.2(1): the medical expense credit
+    S118_3/Disability.lean     118.3(1): the disability tax credit
     S82/Dividends.lean         82(1), 121: taxable dividends, the gross-up, and the dividend tax credit
     S55/IntercorporateDividends.lean   112(1), 55(2): intercorporate dividends, and when they are capital gains
     S13/Depreciable.lean       13(1), (21), 20(16): undepreciated capital cost, recapture, terminal loss

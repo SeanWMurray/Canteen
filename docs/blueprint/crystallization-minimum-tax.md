@@ -95,7 +95,7 @@ graph TD
 
 Half the gain is a taxable capital gain, which the capital gains deduction shelters; tax at the 117(2) rates, less the personal credit.
 
-**Lean:** [`Canteen.ITA.IndividualYear.taxableIncome`](../../Canteen/ITA/S3/IndividualYear.lean#L127), [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L149)
+**Lean:** [`Canteen.ITA.IndividualYear.taxableIncome`](../../Canteen/ITA/S3/IndividualYear.lean#L130), [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L155)
 
 ### L2. The minimum tax
 
@@ -198,7 +198,7 @@ Relies on no judgment calls.
 3. Losses: business $0.00, terminal $0.00, attributed $0.00; interest deducted $0.00. [ITA 3(d); 20(16); 74.1; 20(1)(c)]
 4. Income for the year: $625,000.00. [ITA 3]
 5. Less the net capital loss deduction $0.00, the capital gains deduction $625,000.00, and other deductions $0.00: taxable income $0.00. [ITA 2(2); 111(1)(b); 110.6(2), (2.1)]
-6. Tax under 117(2) on taxable income, $0.00, less the dividend tax credit of $0.00, the personal credit of $1,721.72, the donation credit of $0.00, the medical expense credit of $0.00 and other credits of $0.00: $0.00. [ITA 117(2); 120.4(2); 121; 118; 118.1; 118.2]
+6. Tax under 117(2) on taxable income, $0.00, less the dividend tax credit of $0.00, the personal credit of $1,721.72, the donation credit of $0.00, the medical expense credit of $0.00, the disability credit of $0.00 and other credits of $0.00: $0.00. [ITA 117(2); 120.4(2); 121; 118; 118.1; 118.2; 118.3]
 Relies on no judgment calls.
 ```
 

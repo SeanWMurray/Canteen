@@ -10,6 +10,7 @@ import Canteen.ITA.S118_1.Donations
 import Canteen.ITA.S120_4.SplitIncome
 import Canteen.ITA.S20.InterestDeductibility
 import Canteen.ITA.S118_2.MedicalExpenses
+import Canteen.ITA.S118_3.Disability
 
 /-!
 # An individual's year: income from the encoded sources, and taxable income
@@ -31,7 +32,7 @@ Recapture is treated as income from the business, and a terminal loss as a busin
 year. Split income (120.4) is deducted from income (20(1)(ww)) and taxed at the highest rate. Federal
 tax is 117(2) on taxable income plus the split income tax, less the dividend tax credit (121) and
 the basic personal and spouse credit (118(1)), the donation credit (118.1), the medical expense
-credit (118.2), and other non-refundable credits (given). Amounts
+credit (118.2), the disability credit (118.3), and other non-refundable credits (given). Amounts
 are in cents, except section 3 and taxable income, in half-cents.
 -/
 
@@ -85,6 +86,8 @@ structure Facts where
   deathYear : Bool := false
   /-- 118.2: medical expenses. -/
   medicalExpenses : List MedicalExpenses.Expense := []
+  /-- 118.3(1): the individual's disability facts, if the credit is claimed. -/
+  disability : Option Disability.Facts := none
   /-- Other non-refundable credits, given. -/
   otherCredits : Cents := 0
   deriving Inhabited
@@ -146,11 +149,14 @@ def donationCredit (f : Facts) : Cents := Donations.credit (donationFacts f)
 /-- 118.2(1): the medical expense credit, on the individual's income for the year. -/
 def medicalCredit (f : Facts) : Cents := MedicalExpenses.credit { income := income f / 2, expenses := f.medicalExpenses }
 
+/-- 118.3(1): the disability credit. -/
+def disabilityCredit (f : Facts) : Cents := (f.disability.map Disability.credit).getD 0
+
 /-- Tax under 117(2) on taxable income, plus tax on split income (120.4(2)), less the dividend tax
 credit, the personal credit, the donation credit, the medical expense credit and other credits. -/
 def federalTax (f : Facts) : Cents :=
   (Rates.tax (taxableIncome f / 2) f.brackets + (f.split.map SplitIncome.tax).getD 0) -
-    (Dividends.credit (dividendFacts f) + personalCredit f + donationCredit f + medicalCredit f + f.otherCredits)
+    (Dividends.credit (dividendFacts f) + personalCredit f + donationCredit f + medicalCredit f + disabilityCredit f + f.otherCredits)
 
 def explain (f : Facts) : Finding :=
   let h := formatHalfCents
@@ -169,8 +175,9 @@ def explain (f : Facts) : Finding :=
     ⟨s!"Tax under 117(2) on taxable income, {c (Rates.tax (taxableIncome f / 2) f.brackets)}" ++
       (if splitIncome f > 0 then s!", plus tax on split income of {c ((f.split.map SplitIncome.tax).getD 0)}" else "") ++
       s!", less the dividend tax credit of {c (Dividends.credit (dividendFacts f))}, the personal credit of {c (personalCredit f)}, " ++
-      s!"the donation credit of {c (donationCredit f)}, the medical expense credit of {c (medicalCredit f)} and other " ++
-      s!"credits of {c f.otherCredits}: {c (federalTax f)}.", "ITA 117(2); 120.4(2); 121; 118; 118.1; 118.2"⟩], []⟩
+      s!"the donation credit of {c (donationCredit f)}, the medical expense credit of {c (medicalCredit f)}, " ++
+      s!"the disability credit of {c (disabilityCredit f)} and other credits of {c f.otherCredits}: {c (federalTax f)}.",
+      "ITA 117(2); 120.4(2); 121; 118; 118.1; 118.2; 118.3"⟩], (f.disability.map (·.impairment.judgments)).getD []⟩
 
 /-! ## Truths about the year -/
 

@@ -857,6 +857,34 @@ flowchart TD
   classDef start fill:#ffffff,stroke:#212121,color:#212121
 ```
 
+## Subsection 118.3(1): the disability credit
+
+```mermaid
+flowchart TD
+  S(["subsection 118.3(1) · ITA 118.3(1)"]):::start
+  C0["<b>(a), (a.1)</b> The individual has a severe and prolonged<br/>impairment that markedly restricts a basic<br/>activity of daily living<br/><i>judgment call: judgment calls computed from the facts</i><br/>[ITA 118.3(1)(a), (a.1)]"]:::judgment
+  C1["<b>(a.2), (a.3)</b> A medical practitioner has certified it in<br/>prescribed form<br/>[ITA 118.3(1)(a.2), (a.3)]"]:::fact
+  C2["<b>(b)</b> The certificate has been filed with the<br/>Minister<br/>[ITA 118.3(1)(b)]"]:::fact
+  E0["<b>(c)</b> Attendant or nursing home care for the<br/>individual is claimed as a medical expense<br/>[ITA 118.3(1)(c)]"]:::fact
+  Y(["subsection 118.3(1) applies"]):::yes
+  N(["subsection 118.3(1) does not apply"]):::no
+  S --> C0
+  C0 -->|met| C1
+  C0 -->|not met| N
+  C1 -->|met| C2
+  C1 -->|not met| N
+  C2 -->|met| E0
+  C2 -->|not met| N
+  E0 -->|does not apply| Y
+  E0 -->|applies| N
+  classDef fact fill:#eeeeee,stroke:#616161,color:#212121
+  classDef judgment fill:#ffe0b2,stroke:#ef6c00,color:#e65100
+  classDef rule fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+  classDef yes fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
+  classDef no fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+  classDef start fill:#ffffff,stroke:#212121,color:#212121
+```
+
 ## Subparagraph 40(2)(g)(iv): transfers to registered plans
 
 ```mermaid

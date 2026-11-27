@@ -52,6 +52,7 @@ import Canteen.ITA.S89.GeneralRateIncomePool
 import Canteen.ITA.S127_5.MinimumTax
 import Canteen.ITA.S20.InterestDeductibility
 import Canteen.ITA.S118_2.MedicalExpenses
+import Canteen.ITA.S118_3.Disability
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -556,15 +557,22 @@ def blueprint : Blueprint where
             "receipted expenses, paid in a 12-month period ending in the year, not claimed elsewhere. Proven: nothing below " ++
             "the floor."
           lean := [``MedicalExpenses.amount, ``MedicalExpenses.credit, ``MedicalExpenses.reduction_le, ``MedicalExpenses.below_floor] },
+        { id := "R51", kind := .law, title := "The disability tax credit", citation := "ITA 118.3(1)"
+          statement := "14% of $10,138 (2025), plus for a minor $5,914 less care expenses over $3,464, for a severe and " ++
+            "prolonged impairment markedly restricting a basic activity of daily living, certified and filed, where no " ++
+            "attendant or nursing home care for the individual is claimed as a medical expense. Proven: the supplement never " ++
+            "exceeds its amount, and claiming attendant care rules the credit out."
+          lean := [``Disability.eligible, ``Disability.amount, ``Disability.credit, ``Disability.supplement_le,
+            ``Disability.not_with_attendant_care] },
         { id := "R35", kind := .law, title := "An individual's year, to taxable income and tax", citation := "ITA 2(2); 3; 111(1)(b); 110.6; 117(2)"
           statement := "Income from sources (employment and business, dividends with the gross-up, recapture, attributed " ++
             "income), net taxable capital gains, less terminal and other losses; then taxable income, after the net capital " ++
             "loss deduction and the capital gains deduction (which the former reduces). Proven: taxable income never exceeds " ++
             "income, and the capital gains deduction never exceeds the net taxable capital gains."
           lean := [``IndividualYear.incomeFacts, ``IndividualYear.taxableIncome, ``IndividualYear.capitalGainsDeduction,
-            ``IndividualYear.federalTax, ``IndividualYear.personalCredit, ``IndividualYear.donationCredit, ``IndividualYear.interestDeduction, ``IndividualYear.medicalCredit,
+            ``IndividualYear.federalTax, ``IndividualYear.personalCredit, ``IndividualYear.donationCredit, ``IndividualYear.interestDeduction, ``IndividualYear.medicalCredit, ``IndividualYear.disabilityCredit,
             ``IndividualYear.taxable_le_income, ``IndividualYear.capital_gains_deduction_le],
-          uses := ["R8", "R9", "R19", "R21", "R22", "R24", "R40", "R41", "R42", "R43", "R49", "R50"] },
+          uses := ["R8", "R9", "R19", "R21", "R22", "R24", "R40", "R41", "R42", "R43", "R49", "R50", "R51"] },
         { id := "R48", kind := .law, title := "The minimum tax", citation := "ITA 127.5; 127.51; 127.52(1); 127.531; 120.2"
           statement := "An individual pays at least 20.5% of adjusted taxable income over the 117(2)(d) threshold, less half " ++
             "the personal credits and 4/5 of the donation credit; adjusted taxable income counts capital gains in full (3/10 " ++
