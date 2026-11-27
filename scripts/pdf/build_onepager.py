@@ -51,7 +51,7 @@ ul {{ margin:2pt 0 3pt; padding-left:12pt }} li {{ margin:2.5pt 0 }}
 .lg {{ display:inline-block; margin-right:9pt; white-space:nowrap }}
 .lg i {{ display:inline-block; width:9px; height:9px; border:1.5px solid; border-radius:2px; margin-right:3px; vertical-align:-1px }}
 .sub {{ font-size:7.8pt; color:{T2}; margin:0 0 2pt }}
-#map svg {{ width:100% !important; max-width:100% !important; height:auto; max-height:86mm }}
+#map svg {{ width:100% !important; max-width:100% !important; height:auto; max-height:66mm }}
 #map {{ margin:0 0 2pt }}
 .result {{ background:#eef7ef; border:1px solid #cfe8d2; border-radius:6px; padding:6pt 9pt; font-size:8.4pt }}
 .cov {{ font-size:7.5pt; margin:2pt 0 3pt; line-height:1.33 }} .cov b {{ color:{T1} }}
@@ -62,12 +62,13 @@ ul {{ margin:2pt 0 3pt; padding-left:12pt }} li {{ margin:2.5pt 0 }}
 '''
 page=f'''<!DOCTYPE html><html><head><meta charset="utf-8"><title>Canteen</title><style>{css}</style>
 <script src="{S}/mermaid.min.js"></script></head><body>
-<div class="top"><div><h1>Canteen</h1><div class="tag">Tax analysis you can check, step by step, against the Act.</div></div>
+<div class="top"><div><h1>Canteen</h1><div class="tag">Tax analysis as a logical argument you can check, step by step, against the Act.</div></div>
 <div class="meta">Income Tax Act (Canada), consolidated to 2026-10-29<br/>github.com/SeanWMurray/Canteen</div></div>
 
 <p class="lead">Canteen is the <i>Income Tax Act</i> written as precise rules a computer can apply. Give it the facts of a file
-and it tells you which provisions apply, computes the amounts to the cent, and writes out its reasoning like a working paper, each
-step citing the Act. Then a mathematical checker <b>proves</b> that every conclusion follows from the provisions and your facts.</p>
+and it tells you which provisions apply, computes the amounts to the cent, and writes out its reasoning as a logical chain, like a
+working paper, each step citing the Act. Then a mathematical checker <b>proves</b> that every conclusion follows, by strict logical
+steps, from the provisions and your facts.</p>
 
 <h2>How it works</h2>
 <div class="steps">
@@ -77,12 +78,12 @@ exceptions intact.</span></div>
 is worked out, not assumed.</span></div>
 <div class="step"><b><span class="n">3</span>Judgment calls, flagged</b><span>Named, with the result either way and a risk
 rating.</span></div>
-<div class="step"><b><span class="n">4</span>A checked conclusion</b><span>Every amount and cross-reference verified end to end,
-not spot-checked.</span></div>
+<div class="step"><b><span class="n">4</span>A checked conclusion</b><span>Every amount, cross-reference and logical step verified
+end to end, not spot-checked.</span></div>
 </div>
 
 <h2>What a conclusion looks like: the reasoning map</h2>
-<p class="sub">A crystallization followed by a surplus strip, simplified from the memo Canteen produces. Each arrow is a reliance:
+<p class="sub">A crystallization followed by a surplus strip, simplified from the memo Canteen produces. Each arrow is a logical reliance:
 change a fact, a provision or the judgment call, and everything downstream is recomputed and rechecked.</p>
 <div class="lgs">{legend}</div>
 <div id="map">{open(S+'/map.svg').read()}</div>
@@ -102,11 +103,12 @@ change a fact, a provision or the judgment call, and everything downstream is re
 $1,250,000 is a deemed dividend under 84.1 ($1,437,500 of income after the gross-up), and the matching $1,250,000 capital loss is
 denied as superficial and added to Newco's cost. Every step verified; the result rests on one judgment call, rated low risk.</div>
 <h2>What's covered so far</h2>
-<p class="cov"><b>55</b> provisions and groups of provisions · <b>11</b> worked transactions, each a full memo · <b>850</b> test
-cases with known answers · <b>78</b> interpretation choices open for review.</p>
+<p class="cov"><b>62</b> provisions and groups of provisions · <b>16</b> worked transactions, each a full memo · <b>951</b> test
+cases with known answers · <b>87</b> interpretation choices open for review.</p>
 <p class="cov"><b>Losses:</b> superficial and suspended losses, 40(2)(g), bad debts. <b>Gains:</b> 38–41, principal residence,
 45, 44, 47, depreciable property, 110.6. <b>Corporate:</b> 85, 86, 87, 88(1), 84, 84.1, 55(2), capital dividends, corporate and
-refundable taxes. <b>Individuals:</b> 69, 70, 73, attribution, TOSI, dividends, federal rates and credits. <b>Relationships:</b>
+refundable taxes, GRIP. <b>Individuals:</b> 69, 70, 73, attribution, TOSI, dividends, interest, rates, credits,
+minimum tax, pension splitting. <b>Relationships:</b>
 related, affiliated, connected, loss restriction events.</p>
 </div></div>
 
