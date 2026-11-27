@@ -5,8 +5,10 @@ from a working directory `DIR` holding `mermaid.min.js` (from the `mermaid` npm 
 memo, `axioms.txt` (the output of `#print axioms` for the theorems it quotes):
 
     python3 scripts/pdf/build_memo.py DIR        # DIR/memo.html, from docs/blueprint/crystallization.md
-    python3 scripts/pdf/build_onepager.py DIR    # DIR/onepager2.html, from docs/graphs/provisions.md and the crystallization memo
+    (cd DIR && python3 scripts/pdf/reasoning_map.py)   # DIR/map.svg, the one-pager's reasoning map
+    python3 scripts/pdf/build_onepager.py DIR    # DIR/onepager3.html
     node scripts/pdf/render.js DIR/memo.html docs/pdf/crystallization-memo.pdf
 
-Rendering uses Playwright's Chromium. The one-pager's dependency graphs are read from the generated
-docs; its headline counts were taken from the repository when it was built.
+Rendering uses Playwright's Chromium. The one-pager is written for tax professionals; its reasoning map is a
+simplified, hand-laid-out version of the crystallization memo's dependency graph, and its counts were taken
+from the repository when it was built.

@@ -1,106 +1,120 @@
-import sys, re, html
-S=sys.argv[1]; repo='/home/user/Canteen'
-T1='#191919'; T2='#666666'; GRID='#e6e6e6'
-prov=open(repo+'/docs/graphs/provisions.md').read()
-edges=re.findall(r'(v\d+) --> (v\d+)', prov)
-short={0:'54 "superficial loss"',1:'40(2)(g)(i)',2:'54, statute form',3:'53(1)(f)',4:'251.1(1)(a)',5:'251.1 affiliated',6:'251 related',
-7:'251.1(2), 251(3.1)',8:'40(2)(g) facts',9:'40(2)(g)(ii)',10:'40(2)(g)(iii)',11:'40(2)(g)(iv)',12:'40(2)(g)',13:'40(3.3)–(3.5)',
-14:'40(3.6)',15:'40(2)(e.1)',16:'40(2)(b) residence',17:'38–41 capital gains',18:'3 income',19:'111 net capital loss',20:'69(1)',
-21:'73(1) rollover',22:'70(5), (6) death',23:'74.2',24:'45 change in use',25:'85(1) rollover',26:'84.1',27:'110.6 exemption',
-28:'251.2 loss restriction',29:'74.1',30:'82(1), 121 dividends',31:'112, 55(2)',32:'13, 20(16)',33:'84(3) redemptions',
-34:'83(2), 89(1)',35:'86 freeze',36:'44(1)',37:'47(1)',38:'186(4) connected',39:'84(4), 40(3)',40:'88(1) wind-up',41:'87 amalgamation',
-42:'51 convertible',43:'117(2) rates',44:'118 personal',45:'118.1 donations',46:'120.4 split income',47:'2(2), 3 the year',
-48:'39(4) election',49:'50(1)',50:'43(1)',51:'74.4(2)',52:'123–125 corporate rates',53:'50(2)'}
-area={}
-for v in [0,1,2,3,8,9,10,11,12,13,14,15,53]: area[v]='loss'
-for v in [4,5,6,7,28,38]: area[v]='persons'
-for v in [16,17,24,32,36,37,48,49,50]: area[v]='gains'
-for v in [25,26,31,33,34,35,39,40,41,42,52]: area[v]='corp'
-for v in [18,19,20,21,22,23,27,29,30,43,44,45,46,47,51]: area[v]='indiv'
-assert len(area)==54
-cols={'loss':'#257de0','persons':'#f47230','gains':'#00b894','corp':'#f2a600','indiv':'#ee7fac'}
-tints={'loss':'#dbe9fa','persons':'#fde3d6','gains':'#ccf1ea','corp':'#fdedc7','indiv':'#fbe2ec'}
-names=[('loss','Superficial and denied losses'),('persons','Related and affiliated persons'),('gains','Capital gains and property'),
-       ('corp','Corporations'),('indiv','Individuals: attribution, death, income and tax')]
-lines=['flowchart LR']
-for v in range(54):
-    lab=short[v].replace('"','#quot;')
-    lines.append(f'  v{v}["{lab}"]:::{area[v]}')
+import sys, html
+S=sys.argv[1]
+T1='#191919'; T2='#5f5f5f'; GRID='#e3e3e3'
+# Plain-language reasoning map of the crystallization memo (simplified from its full graph)
+nodes = [
+ ('L1','law','Section 85(1)<br/>rollover'),('L2','law','Section 84.1'),('L3','law','Capital gains<br/>deduction, 110.6'),
+ ('L4','law','Superficial loss rules,<br/>40(2)(g), 53(1)(f)'),('L5','law','Dividend gross-up,<br/>82(1)'),
+ ('F1','fact','Taxpayer controls<br/>Opco, Holdco, Newco'),('F2','fact','Opco shares:<br/>cost $100, worth $2M'),
+ ('F3','fact','Step 1: Opco shares to<br/>Holdco, elect $1,250,100'),('F4','fact','Step 2: Holdco shares sold<br/>to Newco for a $1,250,100 note'),
+ ('J','judg','Judgment call: is Opco a<br/>small business corporation?<br/><i>assumed yes, low risk</i>'),
+ ('A1','step','Elected amount<br/>$1,250,100'),('A2','step','84.1 grinds paid-up<br/>capital to $100'),
+ ('A3','step','$1.25M gain<br/>fully sheltered'),('A4','step','Hard cost of the<br/>Holdco shares: $100'),
+ ('A5','step','$1.25M of the note is<br/>a deemed dividend'),('A6','step','$1.25M capital loss is<br/>superficial: denied'),
+ ("A7","step","Loss added to<br/>Newco's cost"),('A8','step','Dividend taxed:<br/>$1,437,500 income'),
+ ('K','concl','Conclusion: the crystallization works;<br/>the strip does not'),
+]
+edges = [('L1','A1'),('F3','A1'),('L2','A2'),('F1','A2'),('A1','A3'),('A2','A3'),('L3','A3'),('F2','A3'),('J','A3'),
+ ('A3','A4'),('L2','A4'),('F4','A4'),('A4','A5'),('A5','A8'),('L5','A8'),('A5','A6'),('L4','A6'),('A6','A7'),
+ ('A3','K'),('A8','K'),('A7','K')]
+styles={'law':'fill:#dbe9fa,stroke:#257de0','fact':'fill:#f0f0f0,stroke:#8a8a8a','judg':'fill:#fde3d0,stroke:#e8590c',
+        'step':'fill:#d9f2dc,stroke:#2e7d32','concl':'fill:#2e7d32,stroke:#1b5e20,color:#ffffff'}
+lines=['flowchart TD']
+for i,k,lab in nodes: lines.append(f'  {i}["{lab}"]:::{k}')
 for a,b in edges: lines.append(f'  {a} --> {b}')
-for k in cols: lines.append(f'  classDef {k} fill:{tints[k]},stroke:{cols[k]},stroke-width:1.5px,color:{T1}')
-provgraph='\n'.join(lines)
-legend=''.join(f'<span class="lg"><i style="background:{tints[k]};border-color:{cols[k]}"></i>{n}</span>' for k,n in names)
+for k,v in styles.items(): lines.append(f'  classDef {k} {v},stroke-width:1.5px,color:{T1}' if k!='concl' else f'  classDef {k} {v},stroke-width:1.5px')
+graph='\n'.join(lines)
+legend=''.join(f'<span class="lg"><i style="{st}"></i>{n}</span>' for st,n in [
+  ('background:#f0f0f0;border-color:#8a8a8a','Your facts'),
+  ('background:#fde3d0;border-color:#e8590c','Judgment call'),('background:#d9f2dc;border-color:#2e7d32','Verified step, with its citation')])
 
-memo=open(repo+'/docs/blueprint/crystallization.md').read()
-i=memo.index('### What the Lean proofs use'); j=memo.index('```mermaid',i)+len('```mermaid'); k=memo.index('```',j)
-memograph=memo[j:k].strip()
-
-mlegend=''.join(f'<span class="lg"><i style="background:{f};border-color:{s}"></i>{n}</span>' for f,s,n in
-  [('#c8e6c9','#2e7d32','Proven (a theorem)'),('#bbdefb','#1565c0','Encoded law'),('#eeeeee','#616161','Fact'),('#ffe0b2','#ef6c00','Judgment call')])
-
-tiles=[('55','modules of the Income Tax Act'),('347','theorems, kernel-checked'),('850','tests and read-back checks'),
-       ('7,353','declarations audited for axioms'),('11','memos, 10 worked transactions'),('78','interpretation choices for review')]
-tiles_html=''.join(f'<div class="tile"><div class="v">{v}</div><div class="l">{l}</div></div>' for v,l in tiles)
-memokey=('L1–L5 the law: 85(1), 84.1, 110.6, the superficial loss rule and 53(1)(f), 82(1). F1–F4 the facts. J-SBC: is Opco a small '
- 'business corporation? A1–A7 the steps: the elected amount, the paid-up capital grind, the sheltered gain, the hard cost, the '
- '$1,250,000 dividend, its tax, the denied loss and Newco\'s cost. K the conclusion; W1 the other answer to J-SBC.')
 css=f'''
-@page {{ size: Letter; margin: 10mm 11mm; }}
+@page {{ size: Letter; margin: 11mm 12mm; }}
 * {{ box-sizing: border-box }}
 body {{ font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color:{T1}; margin:0; font-size:8.6pt; line-height:1.36 }}
-.top {{ display:flex; justify-content:space-between; align-items:flex-end; border-bottom:2px solid {T1}; padding-bottom:4pt }}
-h1 {{ font-size:21pt; margin:0 }}
-.tag {{ font-size:10pt; color:{T2}; margin-top:1pt }}
-.meta {{ font-size:7.3pt; color:{T2}; text-align:right; white-space:nowrap; margin-left:12pt }}
-.tiles {{ display:grid; grid-template-columns: repeat(6,1fr); gap:5pt; margin:6pt 0 5pt }}
-.tile {{ background:#f6f8fb; border-radius:6px; padding:4pt 7pt }}
-.tile .v {{ font-size:14pt; font-weight:600; line-height:1.1 }}
-.tile .l {{ font-size:7.2pt; color:{T2}; margin-top:1pt }}
-h2 {{ font-size:10pt; margin:4pt 0 1pt }}
-.sub {{ font-size:7.5pt; color:{T2}; margin:0 0 2pt }}
-p {{ margin:2pt 0 4pt }}
-.lgs {{ margin:2pt 0 2pt; font-size:7.4pt; color:{T1} }}
+.top {{ border-bottom:2px solid {T1}; padding-bottom:5pt; display:flex; justify-content:space-between; align-items:flex-end }}
+h1 {{ font-size:21pt; margin:0; letter-spacing:-.01em }}
+.tag {{ font-size:11pt; color:{T2}; margin-top:2pt }}
+.meta {{ font-size:7.5pt; color:{T2}; text-align:right; white-space:nowrap }}
+h2 {{ font-size:10.2pt; margin:6pt 0 2pt }}
+p {{ margin:2pt 0 5pt }}
+.lead {{ font-size:9.2pt; margin:6pt 0 3pt }}
+.steps {{ display:grid; grid-template-columns:repeat(4,1fr); gap:7pt; margin:3pt 0 4pt }}
+.step {{ background:#f5f8fc; border-radius:6px; padding:6pt 8pt; border-top:3px solid #257de0 }}
+.step b {{ display:block; font-size:9pt; margin-bottom:2pt }}
+.step span {{ font-size:8pt; color:#333 }}
+.n {{ display:inline-block; width:15px; height:15px; border-radius:50%; background:#257de0; color:#fff; font-size:8pt; text-align:center;
+     line-height:15px; margin-right:4px; font-weight:600 }}
+.cols {{ display:grid; grid-template-columns: 1fr 1.1fr; gap:14pt; align-items:start }}
+ul {{ margin:2pt 0 3pt; padding-left:12pt }} li {{ margin:2.5pt 0 }}
+.lgs {{ font-size:7.6pt; margin:2pt 0 3pt }}
 .lg {{ display:inline-block; margin-right:9pt; white-space:nowrap }}
 .lg i {{ display:inline-block; width:9px; height:9px; border:1.5px solid; border-radius:2px; margin-right:3px; vertical-align:-1px }}
-.mermaid {{ text-align:center }}
-#prov svg {{ width:100% !important; max-width:100% !important; height:auto; max-height:100mm }}
-#memo svg {{ width:100% !important; max-width:100% !important; height:auto; max-height:54mm }}
-.two {{ display:grid; grid-template-columns: 1.7fr 1fr; gap:12pt; align-items:start; margin-top:4pt }}
-.key {{ font-size:7.4pt; margin:3pt 0 }}
-.two .lg {{ margin-right:7pt }}
-.foot {{ margin-top:4pt; border-top:1px solid {GRID}; padding-top:3pt; font-size:7.2pt; color:{T2} }}
+.sub {{ font-size:7.8pt; color:{T2}; margin:0 0 2pt }}
+#map svg {{ width:100% !important; max-width:100% !important; height:auto; max-height:86mm }}
+#map {{ margin:0 0 2pt }}
+.result {{ background:#eef7ef; border:1px solid #cfe8d2; border-radius:6px; padding:6pt 9pt; font-size:8.4pt }}
+.cov {{ font-size:7.5pt; margin:2pt 0 3pt; line-height:1.33 }} .cov b {{ color:{T1} }}
+.nums {{ display:grid; grid-template-columns:repeat(4,1fr); gap:6pt; margin:4pt 0 2pt }}
+.num {{ background:#f6f6f6; border-radius:6px; padding:5pt 7pt }}
+.num .v {{ font-size:14pt; font-weight:600; line-height:1.1 }} .num .l {{ font-size:7.4pt; color:{T2} }}
+.foot {{ margin-top:6pt; border-top:1px solid {GRID}; padding-top:4pt; font-size:7.4pt; color:{T2} }}
 '''
 page=f'''<!DOCTYPE html><html><head><meta charset="utf-8"><title>Canteen</title><style>{css}</style>
 <script src="{S}/mermaid.min.js"></script></head><body>
-<div class="top"><div><h1>Canteen</h1>
-<div class="tag">Canadian income tax law in Lean 4: every conclusion is a theorem the computer has checked.</div></div>
-<div class="meta">Income Tax Act, consolidated to 2026-10-29<br/>Lean 4.36<br/>github.com/SeanWMurray/Canteen</div></div>
-<div class="tiles">{tiles_html}</div>
-<p>Each provision is written in Lean in the statute's own shape: its conditions, exceptions and citations. Given a transaction's
-facts, a rule decides whether it applies, computes the amounts to the cent, and explains itself in numbered English steps citing
-the Act. Judgment calls ("identical property", "all or substantially all") are never silently decided: each is named, both
-answers are explored, and every conclusion lists the calls it relies on. The Lean kernel checks every claimed result.</p>
+<div class="top"><div><h1>Canteen</h1><div class="tag">Tax analysis you can check, step by step, against the Act.</div></div>
+<div class="meta">Income Tax Act (Canada), consolidated to 2026-10-29<br/>github.com/SeanWMurray/Canteen</div></div>
 
-<h2>How the encoded provisions build on each other</h2>
-<p class="sub">Each box is a provision encoded in Lean; an arrow runs from a provision to one whose encoding uses it. Read from the
-compiled modules, not drawn by hand (arrows implied by others are left out).</p>
-<div class="lgs">{legend}</div>
-<div class="mermaid" id="prov">{html.escape(provgraph)}</div>
-<h2>One memo, statement by statement: crystallizing the exemption, then stripping the cost</h2>
-<p class="sub">The dependencies Lean finds inside the proofs (solid) and those stated only in the memo's reasoning (dotted). A memo
-that uses something it does not declare fails to build.</p>
-<div class="two">
-<div class="mermaid" id="memo">{html.escape(memograph.replace('graph TD','graph LR',1))}</div>
-<div><div class="lgs">{mlegend}</div>
-<p class="key">{html.escape(memokey)}</p>
-<p class="key">Result, all checked by the kernel: the 2025 gain of $1,250,000 is sheltered; the 2026 note is a $1,250,000
-dividend under 84.1(2)(a.1); the matching capital loss is superficial, nil, and moves to Newco's cost. Every proof uses only
-Lean's three standard axioms.</p></div>
+<p class="lead">Canteen is the <i>Income Tax Act</i> written as precise rules a computer can apply. Give it the facts of a file
+and it tells you which provisions apply, computes the amounts to the cent, and writes out its reasoning like a working paper, each
+step citing the Act. Then a mathematical checker <b>proves</b> that every conclusion follows from the provisions and your facts.</p>
+
+<h2>How it works</h2>
+<div class="steps">
+<div class="step"><b><span class="n">1</span>The law, written once</b><span>Translated from the consolidated Act, conditions and
+exceptions intact.</span></div>
+<div class="step"><b><span class="n">2</span>Your facts</b><span>Dates, amounts, ownership. Who is related or affiliated
+is worked out, not assumed.</span></div>
+<div class="step"><b><span class="n">3</span>Judgment calls, flagged</b><span>Named, with the result either way and a risk
+rating.</span></div>
+<div class="step"><b><span class="n">4</span>A checked conclusion</b><span>Every amount and cross-reference verified end to end,
+not spot-checked.</span></div>
 </div>
-<div class="foot">Constructed examples, not advice. The verbatim statute text for every encoded provision is in the repository.</div>
+
+<h2>What a conclusion looks like: the reasoning map</h2>
+<p class="sub">A crystallization followed by a surplus strip, simplified from the memo Canteen produces. Each arrow is a reliance:
+change a fact, a provision or the judgment call, and everything downstream is recomputed and rechecked.</p>
+<div class="lgs">{legend}</div>
+<div id="map">{open(S+'/map.svg').read()}</div>
+<div class="cols">
+<div>
+<h2>Why it helps your practice</h2>
+<ul>
+<li><b>Reviewable.</b> It reads like a memo, a citation on every line; no technical knowledge needed.</li>
+<li><b>Interactions caught.</b> Here, 84.1(2)(a.1) undoes the crystallized cost, and the loss it creates is superficial.</li>
+<li><b>Assumptions on the record.</b> Each conclusion lists its judgment calls; the other answer is already computed.</li>
+<li><b>What-ifs in seconds.</b> Change a date, amount or shareholder; the analysis reruns, verified.</li>
+<li><b>Consistent and open.</b> Same rules on every file; each interpretation chosen is written down for your review.</li>
+</ul></div>
+<div>
+<h2>The example's result</h2>
+<div class="result">The 2025 crystallization shelters a $1,250,000 gain. The 2026 sale for a $1,250,100 note fails as a strip:
+$1,250,000 is a deemed dividend under 84.1 ($1,437,500 of income after the gross-up), and the matching $1,250,000 capital loss is
+denied as superficial and added to Newco's cost. Every step verified; the result rests on one judgment call, rated low risk.</div>
+<h2>What's covered so far</h2>
+<p class="cov"><b>55</b> provisions and groups of provisions · <b>11</b> worked transactions, each a full memo · <b>850</b> test
+cases with known answers · <b>78</b> interpretation choices open for review.</p>
+<p class="cov"><b>Losses:</b> superficial and suspended losses, 40(2)(g), bad debts. <b>Gains:</b> 38–41, principal residence,
+45, 44, 47, depreciable property, 110.6. <b>Corporate:</b> 85, 86, 87, 88(1), 84, 84.1, 55(2), capital dividends, corporate and
+refundable taxes. <b>Individuals:</b> 69, 70, 73, attribution, TOSI, dividends, federal rates and credits. <b>Relationships:</b>
+related, affiliated, connected, loss restriction events.</p>
+</div></div>
+
+<div class="foot">Federal tax only; provincial tax is not computed. The examples are constructed, not client files. Canteen supports
+professional judgment; it does not replace it, and nothing here is tax advice.</div>
 <script>
-mermaid.initialize({{ startOnLoad:false, theme:'base', themeVariables:{{ fontFamily:'Helvetica Neue, Arial', fontSize:'15px', lineColor:'#9e9e9e' }},
-  flowchart:{{ htmlLabels:true, useMaxWidth:true, nodeSpacing:8, rankSpacing:30, curve:'basis' }} }});
-mermaid.run({{ querySelector: '.mermaid' }}).then(()=>{{ window.__ready = true; }}).catch(e=>{{ document.body.insertAdjacentHTML('afterbegin','<p>'+e+'</p>'); window.__ready=true; }});
+mermaid.initialize({{ startOnLoad:false, theme:'base', themeVariables:{{ fontFamily:'Helvetica Neue, Arial', fontSize:'14px', lineColor:'#8c8c8c' }},
+  flowchart:{{ htmlLabels:true, useMaxWidth:true, nodeSpacing:14, rankSpacing:26, curve:'basis' }} }});
+Promise.resolve().then(()=>{{ window.__ready = true; }}).catch(e=>{{ document.body.insertAdjacentHTML('afterbegin','<p>'+e+'</p>'); window.__ready=true; }});
 </script></body></html>'''
-open(S+'/onepager2.html','w').write(page)
+open(S+'/onepager3.html','w').write(page)
