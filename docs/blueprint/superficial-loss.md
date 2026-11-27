@@ -1616,11 +1616,11 @@ An amount paid for services, interest, taxes, rent, royalties or insurance for a
 
 ### R81. Thin capitalization
 
-**Status:** proven · **Citation:** ITA 18(4); 18(5) "equity amount"
+**Status:** proven · **Citation:** ITA 18(4); 18(5) "equity amount"; 212(2); 214(16)(a), (17)(a)
 
-A Canadian corporation cannot deduct the part of its interest on debts to specified non-residents that corresponds to the average debt over 1.5 times its equity (retained earnings at the start of the year, and the average contributed surplus and paid-up capital from specified non-resident shareholders). Proven: never more than the interest, and nothing within the 1.5 to 1 ratio.
+A Canadian corporation cannot deduct the part of its interest on debts to specified non-residents that corresponds to the average debt over 1.5 times its equity (retained earnings at the start of the year, and the average contributed surplus and paid-up capital from specified non-resident shareholders); the interest denied is a dividend to the non-resident, for Part XIII withholding. Proven: never more than the interest, nothing within the 1.5 to 1 ratio, and a treaty rate under 25% withholds less.
 
-**Lean:** [`Canteen.ITA.ThinCapitalization.averageDebt`](../../Canteen/ITA/S18/ThinCapitalization.lean#L50), [`Canteen.ITA.ThinCapitalization.equityAmount`](../../Canteen/ITA/S18/ThinCapitalization.lean#L53), [`Canteen.ITA.ThinCapitalization.excessDebt`](../../Canteen/ITA/S18/ThinCapitalization.lean#L56), [`Canteen.ITA.ThinCapitalization.denied`](../../Canteen/ITA/S18/ThinCapitalization.lean#L59), [`Canteen.ITA.ThinCapitalization.denied_le`](../../Canteen/ITA/S18/ThinCapitalization.lean#L81), [`Canteen.ITA.ThinCapitalization.within_ratio`](../../Canteen/ITA/S18/ThinCapitalization.lean#L87)
+**Lean:** [`Canteen.ITA.ThinCapitalization.averageDebt`](../../Canteen/ITA/S18/ThinCapitalization.lean#L59), [`Canteen.ITA.ThinCapitalization.equityAmount`](../../Canteen/ITA/S18/ThinCapitalization.lean#L62), [`Canteen.ITA.ThinCapitalization.excessDebt`](../../Canteen/ITA/S18/ThinCapitalization.lean#L65), [`Canteen.ITA.ThinCapitalization.denied`](../../Canteen/ITA/S18/ThinCapitalization.lean#L68), [`Canteen.ITA.ThinCapitalization.deemedDividend`](../../Canteen/ITA/S18/ThinCapitalization.lean#L73), [`Canteen.ITA.ThinCapitalization.partXIII`](../../Canteen/ITA/S18/ThinCapitalization.lean#L77), [`Canteen.ITA.ThinCapitalization.denied_le`](../../Canteen/ITA/S18/ThinCapitalization.lean#L99), [`Canteen.ITA.ThinCapitalization.within_ratio`](../../Canteen/ITA/S18/ThinCapitalization.lean#L105), [`Canteen.ITA.ThinCapitalization.treaty_le`](../../Canteen/ITA/S18/ThinCapitalization.lean#L110)
 
 ### R70. A corporation's year, to taxable income and tax
 

@@ -248,7 +248,7 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S20.AdvancePayments, "12(1)(a), (e), 20(1)(m) amounts received in advance"),
    (`Canteen.ITA.S20.InstalmentSales, "20(1)(n), 20(8) the reserve for unpaid amounts on property sold"),
    (`Canteen.ITA.S18.PrepaidExpenses, "18(9) prepaid expenses"),
-   (`Canteen.ITA.S18.ThinCapitalization, "18(4) thin capitalization"),
+   (`Canteen.ITA.S18.ThinCapitalization, "18(4), 214(16) thin capitalization and the deemed dividend"),
    (`Canteen.ITA.S3.CorporateYear, "2(2), 3, 129(4) a corporation's year, to taxable income and tax")]
 
 /-! ## The dashboard -/

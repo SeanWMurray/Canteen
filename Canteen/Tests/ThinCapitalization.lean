@@ -26,4 +26,9 @@ example : denied { canco with months := List.replicate 6 (month 600000000) ++ Li
 -- Contributed surplus from the parent counts as equity.
 example : equityAmount { canco with months := List.replicate 12 { month 500000000 with contributedSurplus := 50000000 } } = 250000000 := by decide
 
+-- 214(16): the $120,000 denied is a dividend to the parent: $30,000 of Part XIII tax at 25%, or $6,000
+-- at a 5% treaty rate.
+example : deemedDividend canco = 12000000 ∧ partXIII canco = 3000000 := by decide
+example : partXIII { canco with dividendRate := 5 } = 600000 := by decide
+
 end Canteen.Tests.ThinCapitalization

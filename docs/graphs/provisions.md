@@ -94,7 +94,7 @@ flowchart BT
   v85["12(1)(a), (e), 20(1)(m) amounts received in advance"]:::prov
   v86["20(1)(n), 20(8) the reserve for unpaid amounts on property sold"]:::prov
   v87["18(9) prepaid expenses"]:::prov
-  v88["18(4) thin capitalization"]:::prov
+  v88["18(4), 214(16) thin capitalization and the deemed dividend"]:::prov
   v89["2(2), 3, 129(4) a corporation's year, to taxable income and tax"]:::prov
   v90["50(2) bad personal-use debts"]:::prov
   v0 --> v1
