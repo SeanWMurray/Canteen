@@ -1,0 +1,38 @@
+Income Tax Act, R.S.C. 1985, c. 1 (5th Supp.), subsections 15(2) and (2.6), 80.4(2) and (3), and paragraph 20(1)(j)
+
+Source: Justice Canada consolidated Acts (XML), https://github.com/justicecanada/laws-lois-xml, file eng/acts/I-3.3.xml
+Current to: 2026-10-29. Last amended: 2026-06-18.
+Extracted verbatim; whitespace normalized; paragraph labels kept.
+
+15
+  [Shareholder debt]
+  (2) Where a person (other than a corporation resident in Canada) or a partnership (other than a partnership each member of which is a corporation resident in Canada) is
+    (a) a shareholder of a particular corporation,
+    (b) connected with a shareholder of a particular corporation, or
+    (c) a member of a partnership, or a beneficiary of a trust, that is a shareholder of a particular corporation
+    [continued] and the person or partnership has in a taxation year received a loan from or become indebted to (otherwise than by way of a pertinent loan or indebtedness) the particular corporation, any other corporation related to the particular corporation or a partnership of which the particular corporation or a corporation related to the particular corporation is a member, the amount of the loan or indebtedness is included in computing the income for the year of the person or partnership.
+  [When s. 15(2) not to apply — repayment within one year]
+  (2.6) Subsection 15(2) does not apply to a loan or an indebtedness repaid within one year after the end of the taxation year of the lender or creditor in which the loan was made or the indebtedness arose, where it is established, by subsequent events or otherwise, that the repayment was not part of a series of loans or other transactions and repayments.
+
+80.4
+  [Idem]
+  (2) Where a person (other than a corporation resident in Canada) or a partnership (other than a partnership each member of which is a corporation resident in Canada) was
+    (a) a shareholder of a corporation,
+    (b) connected with a shareholder of a corporation, or
+    (c) a member of a partnership, or a beneficiary of a trust, that was a shareholder of a corporation,
+    [continued] and by virtue of that shareholding that person or partnership received a loan from, or otherwise incurred a debt to, that corporation, any other corporation related thereto or a partnership of which that corporation or any corporation related thereto was a member, the person or partnership shall be deemed to have received a benefit in a taxation year equal to the amount, if any, by which
+    (d) all interest on all such loans and debts computed at the prescribed rate on each such loan and debt for the period in the year during which it was outstanding
+    [continued] exceeds
+    (e) the total of
+      (i) the amount of interest for the year paid on all such loans and debts (other than loans deemed to have been made under subsection 15(2.17)) not later than 30 days after the end of the year, and
+      (ii) the specified interest amounts, for the year, in respect of all such loans that are deemed to have been made under subsection 15(2.17).
+  [Where ss. (1) and (2) do not apply]
+  (3) Subsections 80.4(1) and (2) do not apply in respect of any loan or debt, or any part thereof,
+    (a) on which the rate of interest was equal to or greater than the rate that would, having regard to all the circumstances (including the terms and conditions of the loan or debt), have been agreed on, at the time the loan was received or the debt was incurred, between parties dealing with each other at arm’s length if
+      (i) none of the parties received the loan or incurred the debt by virtue of an office or employment or by virtue of the shareholding of a person or partnership, and
+      (ii) the ordinary business of the creditor included the lending of money,
+      [continued] except where an amount is paid or payable in any taxation year to the creditor in respect of interest on the loan or debt by a party other than the debtor,
+    (b) that was included in computing the income of a person or partnership under this Part; or
+    (c) that satisfies the conditions set out in subsection 15(2.51) and is repaid within 15 years after the qualifying business transfer referred to in that subsection.
+
+20(1)(j) such part of any loan or indebtedness repaid by the taxpayer in the year as was by virtue of subsection 15(2) included in computing the taxpayer’s income for a preceding taxation year (except to the extent that the amount of the loan or indebtedness was deductible from the taxpayer’s income for the purpose of computing the taxpayer’s taxable income for that preceding taxation year), if it is established by subsequent events or otherwise that the repayment was not made as part of a series of loans or other transactions and repayments;

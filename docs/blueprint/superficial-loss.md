@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 85 statements:** 66 proven, 16 encoded, 3 not formalized.
+**Status of the 86 statements:** 67 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -89,12 +89,13 @@ graph TD
   n76["R43 · The charitable donation credit"]:::proven
   n77["R44 · Corporate rates"]:::proven
   n78["R45 · Refundable taxes and the dividend refund"]:::proven
-  n79["R35 · An individual's year, to taxable income and tax"]:::proven
-  n80["R11 · The principal residence exemption"]:::proven
-  n81["R2 · Cost of the substituted property"]:::proven
-  n82["N1 · Inputs decided by other provisions"]:::notFormalized
-  n83["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n84["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n79["R46 · Shareholder loans"]:::proven
+  n80["R35 · An individual's year, to taxable income and tax"]:::proven
+  n81["R11 · The principal residence exemption"]:::proven
+  n82["R2 · Cost of the substituted property"]:::proven
+  n83["N1 · Inputs decided by other provisions"]:::notFormalized
+  n84["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n85["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -213,31 +214,31 @@ graph TD
   n74 --> n75
   n74 --> n76
   n77 --> n78
-  n44 --> n79
-  n45 --> n79
-  n53 --> n79
-  n55 --> n79
-  n56 --> n79
-  n58 --> n79
-  n73 --> n79
-  n74 --> n79
-  n75 --> n79
-  n76 --> n79
   n44 --> n80
-  n50 --> n80
-  n11 --> n81
-  n1 --> n82
-  n5 --> n82
-  n6 --> n82
-  n8 --> n82
-  n37 --> n82
-  n81 --> n82
-  n38 --> n82
-  n30 --> n83
-  n32 --> n84
-  n34 --> n84
-  n39 --> n84
-  n42 --> n84
+  n45 --> n80
+  n53 --> n80
+  n55 --> n80
+  n56 --> n80
+  n58 --> n80
+  n73 --> n80
+  n74 --> n80
+  n75 --> n80
+  n76 --> n80
+  n44 --> n81
+  n50 --> n81
+  n11 --> n82
+  n1 --> n83
+  n5 --> n83
+  n6 --> n83
+  n8 --> n83
+  n37 --> n83
+  n82 --> n83
+  n38 --> n83
+  n30 --> n84
+  n32 --> n85
+  n34 --> n85
+  n39 --> n85
+  n42 --> n85
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -333,12 +334,13 @@ graph TD
   n76["R43"]:::proven
   n77["R44"]:::proven
   n78["R45"]:::proven
-  n79["R35"]:::proven
-  n80["R11"]:::proven
-  n81["R2"]:::proven
-  n82["N1"]:::notFormalized
-  n83["N2"]:::notFormalized
-  n84["N4"]:::notFormalized
+  n79["R46"]:::proven
+  n80["R35"]:::proven
+  n81["R11"]:::proven
+  n82["R2"]:::proven
+  n83["N1"]:::notFormalized
+  n84["N2"]:::notFormalized
+  n85["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -537,31 +539,31 @@ graph TD
   n74 -.-> n75
   n74 -.-> n76
   n77 --> n78
-  n55 --> n79
-  n58 --> n79
-  n73 --> n79
-  n56 --> n79
-  n45 --> n79
-  n44 --> n79
-  n53 --> n79
-  n74 --> n79
-  n76 --> n79
-  n75 --> n79
-  n44 -.-> n80
-  n50 -.-> n80
-  n11 -.-> n81
-  n1 -.-> n82
-  n5 -.-> n82
-  n6 -.-> n82
-  n8 -.-> n82
-  n37 -.-> n82
-  n81 -.-> n82
-  n38 -.-> n82
-  n30 -.-> n83
-  n32 -.-> n84
-  n34 -.-> n84
-  n39 -.-> n84
-  n42 -.-> n84
+  n55 --> n80
+  n58 --> n80
+  n73 --> n80
+  n56 --> n80
+  n45 --> n80
+  n44 --> n80
+  n53 --> n80
+  n74 --> n80
+  n76 --> n80
+  n75 --> n80
+  n44 -.-> n81
+  n50 -.-> n81
+  n11 -.-> n82
+  n1 -.-> n83
+  n5 -.-> n83
+  n6 -.-> n83
+  n8 -.-> n83
+  n37 -.-> n83
+  n82 -.-> n83
+  n38 -.-> n83
+  n30 -.-> n84
+  n32 -.-> n85
+  n34 -.-> n85
+  n39 -.-> n85
+  n42 -.-> n85
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -1212,6 +1214,14 @@ A corporation pays 38%, less the 10% provincial abatement, less 13% of its full 
 A CCPC pays an extra 10⅔% on investment income and Part IV tax of 38⅓% on portfolio dividends; 30⅔% of the investment income and the Part IV tax go into two refundable accounts, refunded at 38⅓% of dividends paid (eligible dividends only from the eligible account). Proven: the refund never exceeds the accounts, and a portfolio dividend paid straight out gets all its Part IV tax back.
 
 **Lean:** [`Canteen.ITA.RefundableTax.additionalTax`](../../Canteen/ITA/S129/RefundableTax.lean#L53), [`Canteen.ITA.RefundableTax.partIV`](../../Canteen/ITA/S129/RefundableTax.lean#L62), [`Canteen.ITA.RefundableTax.nonEligibleAccount`](../../Canteen/ITA/S129/RefundableTax.lean#L67), [`Canteen.ITA.RefundableTax.dividendRefund`](../../Canteen/ITA/S129/RefundableTax.lean#L82), [`Canteen.ITA.RefundableTax.refund_le_accounts`](../../Canteen/ITA/S129/RefundableTax.lean#L100), [`Canteen.ITA.RefundableTax.flow_through`](../../Canteen/ITA/S129/RefundableTax.lean#L111)
+
+### R46. Shareholder loans
+
+**Status:** proven · **Citation:** ITA 15(2), (2.6); 80.4(2), (3); 20(1)(j)
+
+A loan from a corporation to a shareholder (or a person connected with one) is income, unless repaid within a year after the corporation's year end, not as part of a series; if it is not income, interest at the prescribed rate (less interest paid) is a benefit; a loan taxed under 15(2) is deducted when repaid. Proven: never both, and a repayment restores what was included.
+
+**Lean:** [`Canteen.ITA.ShareholderLoans.included`](../../Canteen/ITA/S15/ShareholderLoans.lean#L63), [`Canteen.ITA.ShareholderLoans.inclusion`](../../Canteen/ITA/S15/ShareholderLoans.lean#L78), [`Canteen.ITA.ShareholderLoans.deemedInterest`](../../Canteen/ITA/S15/ShareholderLoans.lean#L81), [`Canteen.ITA.ShareholderLoans.not_both`](../../Canteen/ITA/S15/ShareholderLoans.lean#L102), [`Canteen.ITA.ShareholderLoans.repaid_in_time`](../../Canteen/ITA/S15/ShareholderLoans.lean#L107), [`Canteen.ITA.ShareholderLoans.repayment_restores`](../../Canteen/ITA/S15/ShareholderLoans.lean#L111)
 
 ### R35. An individual's year, to taxable income and tax
 

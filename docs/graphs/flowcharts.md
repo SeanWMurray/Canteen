@@ -804,6 +804,31 @@ flowchart TD
   classDef start fill:#ffffff,stroke:#212121,color:#212121
 ```
 
+## Subsection 15(2): shareholder loans
+
+```mermaid
+flowchart TD
+  S(["subsection 15(2) · ITA 15(2)"]):::start
+  C0["<b>(a)–(c)</b> The borrower is a shareholder (or connected<br/>with one, or a partner or beneficiary of<br/>one), not a corporation resident in Canada<br/>[ITA 15(2)(a)–(c)]"]:::fact
+  C1["<b>loan</b> It received a loan from the corporation, a<br/>related corporation or a partnership of<br/>either, not a pertinent loan<br/>[ITA 15(2) loan]"]:::fact
+  E0["<b>15(2.6)</b> 15(2.6) applies<br/>[ITA 15(2.6)]"]:::rule
+  Y(["subsection 15(2) applies"]):::yes
+  N(["subsection 15(2) does not apply"]):::no
+  S --> C0
+  C0 -->|met| C1
+  C0 -->|not met| N
+  C1 -->|met| E0
+  C1 -->|not met| N
+  E0 -->|does not apply| Y
+  E0 -->|applies| N
+  classDef fact fill:#eeeeee,stroke:#616161,color:#212121
+  classDef judgment fill:#ffe0b2,stroke:#ef6c00,color:#e65100
+  classDef rule fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+  classDef yes fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
+  classDef no fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+  classDef start fill:#ffffff,stroke:#212121,color:#212121
+```
+
 ## Subparagraph 40(2)(g)(iv): transfers to registered plans
 
 ```mermaid

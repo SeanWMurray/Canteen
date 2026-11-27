@@ -47,6 +47,7 @@ import Canteen.ITA.S118.PersonalCredits
 import Canteen.ITA.S118_1.Donations
 import Canteen.ITA.S123.CorporateRates
 import Canteen.ITA.S129.RefundableTax
+import Canteen.ITA.S15.ShareholderLoans
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -521,6 +522,13 @@ def blueprint : Blueprint where
             "portfolio dividend paid straight out gets all its Part IV tax back."
           lean := [``RefundableTax.additionalTax, ``RefundableTax.partIV, ``RefundableTax.nonEligibleAccount,
             ``RefundableTax.dividendRefund, ``RefundableTax.refund_le_accounts, ``RefundableTax.flow_through], uses := ["R44"] },
+        { id := "R46", kind := .law, title := "Shareholder loans", citation := "ITA 15(2), (2.6); 80.4(2), (3); 20(1)(j)"
+          statement := "A loan from a corporation to a shareholder (or a person connected with one) is income, unless repaid " ++
+            "within a year after the corporation's year end, not as part of a series; if it is not income, interest at the " ++
+            "prescribed rate (less interest paid) is a benefit; a loan taxed under 15(2) is deducted when repaid. Proven: " ++
+            "never both, and a repayment restores what was included."
+          lean := [``ShareholderLoans.included, ``ShareholderLoans.inclusion, ``ShareholderLoans.deemedInterest,
+            ``ShareholderLoans.not_both, ``ShareholderLoans.repaid_in_time, ``ShareholderLoans.repayment_restores] },
         { id := "R35", kind := .law, title := "An individual's year, to taxable income and tax", citation := "ITA 2(2); 3; 111(1)(b); 110.6; 117(2)"
           statement := "Income from sources (employment and business, dividends with the gross-up, recapture, attributed " ++
             "income), net taxable capital gains, less terminal and other losses; then taxable income, after the net capital " ++

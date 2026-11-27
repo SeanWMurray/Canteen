@@ -32,6 +32,7 @@ import Canteen.ITA.S86.ShareExchange
 import Canteen.ITA.S44.ReplacementProperty
 import Canteen.ITA.S186.Connected
 import Canteen.ITA.S88.WindingUp
+import Canteen.ITA.S15.ShareholderLoans
 import Canteen.ITA.S87.Amalgamation
 import Canteen.ITA.S39.CanadianSecurities
 import Canteen.ITA.S50.BadDebtOrShare
@@ -176,7 +177,8 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S118.PersonalCredits, "118(1), (1.1) personal amounts"),
    (`Canteen.ITA.S118_1.Donations, "118.1 the donation credit"),
    (`Canteen.ITA.S123.CorporateRates, "123 to 125 corporate rates"),
-   (`Canteen.ITA.S129.RefundableTax, "123.3, 129, 186 refundable taxes")]
+   (`Canteen.ITA.S129.RefundableTax, "123.3, 129, 186 refundable taxes"),
+   (`Canteen.ITA.S15.ShareholderLoans, "15(2), 80.4 shareholder loans")]
 
 /-! ## The dashboard -/
 
@@ -244,7 +246,8 @@ def actMindmap : String := Id.run do
   let tree : List (Nat × String) := [
     (2, "ss. 2, 3"), (3, "income for the year: (a) to (f)"), (3, "2(2): taxable income"),
     (2, "s. 13"), (3, "13(21): undepreciated capital cost"), (3, "13(1): recapture"),
-    (2, "s. 20"), (3, "20(16): terminal loss"),
+    (2, "s. 15"), (3, "15(2), (2.6): shareholder loans"),
+    (2, "s. 20"), (3, "20(16): terminal loss"), (3, "20(1)(j): loan repaid"),
     (2, "ss. 38 to 41"), (3, "38: inclusion rates"), (3, "39(1): capital gains and losses"), (3, "39(4): the Canadian securities election"),
     (3, "40(1): gains and losses, reserves"), (3, "41: listed personal property"),
     (2, "s. 40"), (3, "40(2)(b): the principal residence exemption"), (3, "40(2)(g): losses that are nil"),
@@ -266,6 +269,7 @@ def actMindmap : String := Id.run do
     (2, "s. 73"), (3, "73(1), (1.01): the spousal rollover"),
     (2, "ss. 74.1, 74.2, 74.4, 74.5"), (3, "74.1(1), (2): income attributed back"), (3, "74.1(3): repaying debt"),
     (3, "74.2(1): capital gains attributed back"), (3, "74.4(2): corporate attribution"), (3, "74.5(1) to (3): fair market value, loans for value, separation"),
+    (2, "s. 80.4"), (3, "80.4(2): deemed interest on shareholder loans"),
     (2, "s. 82"), (3, "82(1): taxable dividends and the gross-up"),
     (2, "s. 83"), (3, "83(2): capital dividends"),
     (2, "s. 84"), (3, "84(3): redemptions, the deemed dividend"), (3, "84(4), (4.1): returns of capital"),
@@ -334,6 +338,7 @@ def pages : List Page := [
       ("Subsection 39(4): the Canadian securities election", flowchart CanadianSecurities.deemedCapital.outline),
       ("Subsection 50(1): bad debts and worthless shares", flowchart BadDebtOrShare.applies.outline),
       ("Subsection 74.4(2): corporate attribution", flowchart CorporateAttribution.applies.outline),
+      ("Subsection 15(2): shareholder loans", flowchart ShareholderLoans.included.outline),
       ("Subparagraph 40(2)(g)(iv): transfers to registered plans", flowchart Paragraph40_2_g.planTransferLoss.outline),
       ("Clause 40(2)(g)(iv)(A)", flowchart Paragraph40_2_g.planTransferA.outline),
       ("Clause 40(2)(g)(iv)(B)", flowchart Paragraph40_2_g.planTransferB.outline),

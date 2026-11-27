@@ -60,7 +60,8 @@ flowchart BT
   v51["74.4(2) corporate attribution"]:::prov
   v52["123 to 125 corporate rates"]:::prov
   v53["123.3, 129, 186 refundable taxes"]:::prov
-  v54["50(2) bad personal-use debts"]:::prov
+  v54["15(2), 80.4 shareholder loans"]:::prov
+  v55["50(2) bad personal-use debts"]:::prov
   v0 --> v1
   v0 --> v2
   v0 --> v3
