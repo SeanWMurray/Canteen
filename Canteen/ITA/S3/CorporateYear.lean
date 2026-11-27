@@ -1,5 +1,6 @@
 import Canteen.ITA.S3.Income
 import Canteen.ITA.S111.NetCapitalLoss
+import Canteen.ITA.S111.NonCapitalLoss
 import Canteen.ITA.S55.IntercorporateDividends
 import Canteen.ITA.S110_1.CorporateDonations
 import Canteen.ITA.S129.RefundableTax
@@ -24,8 +25,9 @@ are computed.
   gain (55(2)(c)) as a disposition of its own;
 * **3(d)** losses from active businesses and from property;
 * **taxable income (2(2))**: income less charitable gifts (110.1(1)(a), with its 75% limit on the
-  year's income), intercorporate dividends (112(1)), non-capital losses (111(1)(a), given) and net
-  capital losses (111(1)(b), limited to 3(b));
+  year's income), intercorporate dividends (112(1)), net capital losses (111(1)(b), limited to 3(b))
+  and non-capital losses of other years (111(1)(a), oldest first, by default as much as is needed);
+* **111(8)**: the year's own non-capital loss, such as a 112(1) deduction over income creates;
 * **129(4) "aggregate investment income"**: (a) taxable capital gains less allowable capital losses
   and the 111(1)(b) deduction, and (b) income from property other than the part of a dividend
   deductible in computing taxable income, less losses from property.
@@ -40,8 +42,7 @@ the caller's classification. Every taxable capital gain and allowable capital lo
 "eligible portion" (the property did not accrue its gain outside a CCPC). A 55(2) dividend received
 on a redemption is added to the redeemed share's proceeds (55(2)(b)): the caller includes it in the
 disposition; the explanation gives the amount. Not encoded: 113 (dividends from foreign affiliates),
-126 (foreign tax credits), 186(1)(c) and (d) (losses against Part IV tax), and the non-capital loss
-that a 112(1) deduction over income creates (111(8)). Section 3 and taxable income are in half-cents;
+126 (foreign tax credits), and 186(1)(c) and (d) (losses against Part IV tax). Section 3 and taxable income are in half-cents;
 the amounts handed to the corporate rate modules are in cents, rounded down.
 -/
 
@@ -102,8 +103,10 @@ structure Facts where
   giftGains : Cents := 0
   gains40_1_01 : Cents := 0
   giftRecapture : Cents := 0
-  /-- 111(1)(a): non-capital losses deducted (given). -/
-  nonCapitalLossDeduction : Cents := 0
+  /-- 111(1)(a): non-capital losses of other years, with what is left of each, and the amount claimed
+  (by default, as much as brings taxable income to nil). -/
+  nonCapitalLosses : List NonCapitalLoss.Loss := []
+  nonCapitalLossClaim : Option HalfCents := none
   netCapitalLossClaims : List NetCapitalLoss.Claim := []
   /-- 129(4): the refundable dividend tax accounts at the start of the year (last year's balances
   less last year's refunds from them). -/
@@ -157,9 +160,33 @@ def donationDeduction (f : Facts) : Cents := CorporateDonations.deduction (donat
 def netCapitalLossDeduction (f : Facts) : HalfCents :=
   NetCapitalLoss.deduction f.taxationYear (Income.paraB (incomeFacts f)) f.netCapitalLossClaims
 
+/-- Taxable income before 111(1)(a). -/
+def beforeNonCapitalLosses (f : Facts) : HalfCents :=
+  income f - 2 * donationDeduction f - 2 * dividendDeduction f - netCapitalLossDeduction f
+
+/-- 111(1)(a), oldest losses first (111(3)(b)). -/
+def nonCapitalLossDeduction (f : Facts) : HalfCents :=
+  NonCapitalLoss.deduction f.taxationYear (f.nonCapitalLossClaim.getD (beforeNonCapitalLosses f)) f.nonCapitalLosses
+
 /-- Taxable income (2(2)), in half-cents. -/
-def taxableIncome (f : Facts) : HalfCents :=
-  income f - 2 * donationDeduction f - 2 * dividendDeduction f - 2 * f.nonCapitalLossDeduction - netCapitalLossDeduction f
+def taxableIncome (f : Facts) : HalfCents := beforeNonCapitalLosses f - nonCapitalLossDeduction f
+
+/-- 111(8): the year's own non-capital loss. E counts losses from business and property, the 112(1)
+deduction and the 111(1)(b) deduction, and the allowable business investment loss; F is 3(c). -/
+def nonCapitalLossFacts (f : Facts) : NonCapitalLoss.Facts :=
+  { taxationYear := f.taxationYear, sourceLosses := f.activeBusinessLosses + f.propertyLosses,
+    divisionC := 2 * dividendDeduction f + netCapitalLossDeduction f,
+    abil := (capitalYear f).allowableBusinessInvestmentLosses, para3c := Income.paraC (incomeFacts f) }
+
+def nonCapitalLoss (f : Facts) : HalfCents := NonCapitalLoss.amount (nonCapitalLossFacts f)
+
+/-- The non-capital losses at the start of next year: what is left of those available, those of later
+years not yet available, and the year's own. -/
+def nonCapitalLossesForward (f : Facts) : List NonCapitalLoss.Loss :=
+  let claim := f.nonCapitalLossClaim.getD (beforeNonCapitalLosses f)
+  (NonCapitalLoss.remaining f.taxationYear claim f.nonCapitalLosses).filter (0 < ·.unused) ++
+    f.nonCapitalLosses.filter (fun l => f.taxationYear + 3 < l.year) ++
+    (if nonCapitalLoss f = 0 then [] else [⟨f.taxationYear, nonCapitalLoss f⟩])
 
 /-- 129(4) "aggregate investment income" (a): net taxable capital gains, less the 111(1)(b) deduction. -/
 def netGains (f : Facts) : HalfCents :=
@@ -226,8 +253,9 @@ def explain (f : Facts) : Finding :=
     ⟨s!"Taxable capital gains less allowable capital losses: {h (Income.paraB (incomeFacts f))}. Losses from sources: " ++
       s!"{c (f.activeBusinessLosses + f.propertyLosses)}. Income for the year: {h (income f)}.", "ITA 3(b), (d); 38"⟩,
     ⟨s!"Deducted: charitable gifts {c (donationDeduction f)} (at most {c (CorporateDonations.limit (donationFacts f))}), " ++
-      s!"intercorporate dividends {c (dividendDeduction f)}, non-capital losses {c f.nonCapitalLossDeduction}, and net capital " ++
-      s!"losses {h (netCapitalLossDeduction f)}. Taxable income: {h (taxableIncome f)}.", "ITA 2(2); 110.1(1)(a); 111(1)(a), (b); 112(1)"⟩,
+      s!"intercorporate dividends {c (dividendDeduction f)}, net capital losses {h (netCapitalLossDeduction f)}, " ++
+      s!"and non-capital losses {h (nonCapitalLossDeduction f)}. Taxable income: {h (taxableIncome f)}. The year's own non-capital " ++
+      s!"loss: {h (nonCapitalLoss f)}.", "ITA 2(2); 110.1(1)(a); 111(1)(a), (b); 111(8); 112(1)"⟩,
     ⟨s!"Aggregate investment income: net taxable capital gains {h (netGains f)}, and income from property, with dividends not " ++
       s!"deducted, less property losses: {h (aggregateInvestmentIncome f)}.", "ITA 129(4) \"aggregate investment income\""⟩,
     ⟨s!"Part I tax {c (partITax f)}, of which {c (RefundableTax.additionalTax (refundableFacts f))} is the 123.3 additional tax; " ++
@@ -242,7 +270,17 @@ private theorem sub5 (a b c d e : Nat) : a - b - c - d - e ≤ a := by omega
 
 /-- Taxable income never exceeds income. -/
 theorem taxableIncome_le_income (f : Facts) : taxableIncome f ≤ income f := by
+  unfold taxableIncome beforeNonCapitalLosses
   exact sub5 _ _ _ _ _
+
+private theorem loss_nil (a s b c d g x : Nat) (h : 0 < s + (d + g) + b - a - 0) : a - (s + b) - c - d - g - x = 0 := by omega
+
+/-- A year with a non-capital loss has no taxable income: the loss is what is left over. -/
+theorem loss_year_no_taxable_income (f : Facts) (h : 0 < nonCapitalLoss f) : taxableIncome f = 0 := by
+  simp only [nonCapitalLoss, NonCapitalLoss.amount, NonCapitalLoss.amountAt, NonCapitalLoss.e, nonCapitalLossFacts,
+    Nat.lt_add_of_pos_right (by decide : 0 < 11), ite_true] at h
+  unfold taxableIncome beforeNonCapitalLosses income Income.income Income.paraD
+  exact loss_nil _ _ _ _ _ _ _ h
 
 /-- 112(1) never deducts more of a dividend than income includes. -/
 theorem Received.deduction_le (r : Received) : r.deduction ≤ r.included := by

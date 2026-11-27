@@ -38,6 +38,7 @@ import Canteen.ITA.S251.Amalgamation
 import Canteen.ITA.S38.CapitalGains
 import Canteen.ITA.S3.Income
 import Canteen.ITA.S111.NetCapitalLoss
+import Canteen.ITA.S111.NonCapitalLoss
 import Canteen.ITA.S69.NonArmsLength
 import Canteen.ITA.S73.SpousalRollover
 import Canteen.ITA.S70.Death
@@ -241,3 +242,4 @@ import Canteen.Tests.PersonalUse
 import Canteen.Tests.StockOptions
 import Canteen.Tests.CorporateDonations
 import Canteen.Tests.CorporateYear
+import Canteen.Tests.NonCapitalLoss

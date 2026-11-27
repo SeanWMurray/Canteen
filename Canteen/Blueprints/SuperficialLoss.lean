@@ -71,6 +71,7 @@ import Canteen.ITA.S44_1.SmallBusinessRollover
 import Canteen.ITA.S46.PersonalUse
 import Canteen.ITA.S7.StockOptions
 import Canteen.ITA.S110_1.CorporateDonations
+import Canteen.ITA.S111.NonCapitalLoss
 import Canteen.ITA.S3.CorporateYear
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
@@ -717,18 +718,29 @@ def blueprint : Blueprint where
             "never more than income, no more than 75% of it without gains on gifts, and deducted plus carried is what was available."
           lean := [``CorporateDonations.limit, ``CorporateDonations.deduction, ``CorporateDonations.carriedForward,
             ``CorporateDonations.deduction_le_income, ``CorporateDonations.three_quarters, ``CorporateDonations.deducted_plus_carried] },
-        { id := "R70", kind := .law, title := "A corporation's year, to taxable income and tax", citation := "ITA 2(2); 3; 110.1; 111(1); 112(1); 129(4)"
+        { id := "R71", kind := .law, title := "Non-capital losses", citation := "ITA 111(1)(a), (3), (8)"
+          statement := "A year's non-capital loss is its losses from business and property, the 112(1) and other listed " ++
+            "deductions and (until the eleventh year after) its allowable business investment loss, over its 3(c) amount. " ++
+            "It is deducted in the 20 following years or the 3 before, oldest losses first. Proven: a claim takes the " ++
+            "lesser of itself and the losses available, a later loss is used only once an earlier one is used up, and a " ++
+            "loss of the same year or more than 20 years old cannot be deducted."
+          lean := [``NonCapitalLoss.amount, ``NonCapitalLoss.amountAt, ``NonCapitalLoss.queue, ``NonCapitalLoss.deduction,
+            ``NonCapitalLoss.remaining, ``NonCapitalLoss.deduction_eq, ``NonCapitalLoss.deduction_le_claim,
+            ``NonCapitalLoss.deduction_le_available, ``NonCapitalLoss.earlier_first, ``NonCapitalLoss.not_same_year,
+            ``NonCapitalLoss.expired, ``NonCapitalLoss.no_losses] },
+        { id := "R70", kind := .law, title := "A corporation's year, to taxable income and tax", citation := "ITA 2(2); 3; 110.1; 111(1), (8); 112(1); 129(4)"
           statement := "A corporation's income from active business, personal services business, property and dividends " ++
             "received, with its net taxable capital gains (a 55(2) dividend as a gain); taxable income after gifts, the " ++
-            "112(1) deduction and losses; aggregate investment income, leaving out the deducted dividends; then Part I, " ++
+            "112(1) deduction and losses (other years' non-capital losses oldest first); the year's own non-capital loss; aggregate investment income, leaving out the deducted dividends; then Part I, " ++
             "Part IV and Part III.1 tax, the dividend refund, the pool and the capital dividend account. Proven: taxable " ++
             "income never exceeds income, 112(1) never deducts more than income includes, and a deductible dividend 55(2) " ++
-            "does not reach is not investment income."
+            "does not reach is not investment income, and a year with a non-capital loss has no taxable income."
           lean := [``CorporateYear.income, ``CorporateYear.taxableIncome, ``CorporateYear.aggregateInvestmentIncome,
             ``CorporateYear.ratesFacts, ``CorporateYear.refundableFacts, ``CorporateYear.gripFacts, ``CorporateYear.cdaFacts,
             ``CorporateYear.netTax, ``CorporateYear.taxableIncome_le_income, ``CorporateYear.dividendDeduction_le,
-            ``CorporateYear.deductible_dividend_not_investment_income],
-          uses := ["R8", "R9", "R23", "R26", "R44", "R45", "R47", "R69"] },
+            ``CorporateYear.deductible_dividend_not_investment_income, ``CorporateYear.nonCapitalLossDeduction,
+            ``CorporateYear.nonCapitalLoss, ``CorporateYear.nonCapitalLossesForward, ``CorporateYear.loss_year_no_taxable_income],
+          uses := ["R8", "R9", "R23", "R26", "R44", "R45", "R47", "R69", "R71"] },
         { id := "R35", kind := .law, title := "An individual's year, to taxable income and tax", citation := "ITA 2(2); 3; 111(1)(b); 110.6; 117(2)"
           statement := "Income from sources (employment and business, dividends with the gross-up, recapture, attributed " ++
             "income), net taxable capital gains, less terminal and other losses; then taxable income, after the net capital " ++

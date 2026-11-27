@@ -84,3 +84,33 @@ def judged : Facts := { holdco with dividends := [{ strip with dividend := { str
 example : (explain judged).reliesOn = ["J-55"] := by decide
 
 end Canteen.Tests.CorporateYear
+
+namespace Canteen.Tests.CorporateYear.Losses
+
+open Canteen Canteen.ITA Canteen.ITA.CorporateYear Canteen.Tests.CorporateYear
+
+-- Opco with a $100,000 non-capital loss of 2023: by default all of it is deducted, $355,000 left.
+def opcoNcl : Facts := { opco with nonCapitalLosses := [⟨2023, 2 * 10000000⟩] }
+example : taxableIncome opcoNcl = 2 * 35500000 := by decide
+example : nonCapitalLossesForward opcoNcl = [] := by decide
+-- A claim of $40,000 only: $415,000 taxable, $60,000 carried forward.
+def opcoPart : Facts := { opcoNcl with nonCapitalLossClaim := some (2 * 4000000) }
+example : taxableIncome opcoPart = 2 * 41500000 := by decide
+example : nonCapitalLossesForward opcoPart = [⟨2023, 2 * 6000000⟩] := by decide
+-- The default claim never takes more than taxable income: a small year leaves the rest for later.
+def smallYear : Facts := { taxationYear := 2025, propertyIncome := 3000000, nonCapitalLosses := [⟨2023, 2 * 10000000⟩] }
+example : taxableIncome smallYear = 0 ∧ nonCapitalLossesForward smallYear = [⟨2023, 2 * 7000000⟩] := by decide
+
+-- Holdco: a $100,000 portfolio dividend and $30,000 of interest over its property income. The dividend
+-- is deducted in full; the property loss is a non-capital loss of $30,000 (111(8)), though income is $70,000.
+def holdcoLoss : Facts := { taxationYear := 2025, propertyLosses := 3000000, dividends := [Received.portfolio "a dividend from Bankco" 10000000] }
+example : income holdcoLoss = 2 * 7000000 := by decide
+example : taxableIncome holdcoLoss = 0 := by decide
+example : nonCapitalLoss holdcoLoss = 2 * 3000000 := by decide
+example : nonCapitalLossesForward holdcoLoss = [⟨2025, 2 * 3000000⟩] := by decide
+-- No Part I tax, but Part IV tax on the dividend all the same (186(1)(c), (d) not encoded).
+example : partITax holdcoLoss = 0 ∧ partIVTax holdcoLoss = 3833333 := by decide
+-- Next year that loss reduces income from a $50,000 interest year to $20,000.
+example : taxableIncome { taxationYear := 2026, propertyIncome := 5000000, nonCapitalLosses := nonCapitalLossesForward holdcoLoss } = 2 * 2000000 := by decide
+
+end Canteen.Tests.CorporateYear.Losses
