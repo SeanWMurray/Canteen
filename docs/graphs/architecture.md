@@ -84,40 +84,41 @@ flowchart BT
     m76["ITA.S123.CorporateRates"]
     m77["ITA.S129.RefundableTax"]
     m78["ITA.S15.ShareholderLoans"]
-    m79["ITA.S50.BadDebtPersonalUse"]
-    m80["ITA.S54.Timeline"]
+    m79["ITA.S89.GeneralRateIncomePool"]
+    m80["ITA.S50.BadDebtPersonalUse"]
+    m81["ITA.S54.Timeline"]
   end
   subgraph Lemmas["Layer 2: reusable lemmas"]
-    m81["Lemmas.SuperficialLoss"]
-    m82["Lemmas.SuspendedLoss"]
+    m82["Lemmas.SuperficialLoss"]
+    m83["Lemmas.SuspendedLoss"]
   end
   subgraph Transactions["Layer 3: transactions"]
-    m83["Transactions.SpouseRepurchase"]
-    m84["Transactions.SiblingAndLateRepurchase"]
-    m85["Transactions.TfsaContribution"]
-    m86["Transactions.HoldcoRepurchase"]
-    m87["Transactions.Crystallization"]
-    m88["Transactions.SaleThroughHoldco"]
-    m89["Transactions.PostMortemPipeline"]
-    m90["Transactions.EstateFreeze"]
-    m91["Transactions.DonatingShares"]
-    m92["Transactions.InvestmentIncomeIntegration"]
-    m93["Transactions.SisterCompanyRepurchase"]
+    m84["Transactions.SpouseRepurchase"]
+    m85["Transactions.SiblingAndLateRepurchase"]
+    m86["Transactions.TfsaContribution"]
+    m87["Transactions.HoldcoRepurchase"]
+    m88["Transactions.Crystallization"]
+    m89["Transactions.SaleThroughHoldco"]
+    m90["Transactions.PostMortemPipeline"]
+    m91["Transactions.EstateFreeze"]
+    m92["Transactions.DonatingShares"]
+    m93["Transactions.InvestmentIncomeIntegration"]
+    m94["Transactions.SisterCompanyRepurchase"]
   end
   subgraph Blueprints["Blueprints"]
-    m94["Blueprints.SuperficialLoss"]
-    m95["Blueprints.SpouseRepurchase"]
-    m96["Blueprints.SiblingAndLateRepurchase"]
-    m97["Blueprints.TfsaContribution"]
-    m98["Blueprints.HoldcoRepurchase"]
-    m99["Blueprints.Crystallization"]
-    m100["Blueprints.SaleThroughHoldco"]
-    m101["Blueprints.PostMortemPipeline"]
-    m102["Blueprints.EstateFreeze"]
-    m103["Blueprints.DonatingShares"]
-    m104["Blueprints.InvestmentIncomeIntegration"]
-    m105["Blueprints.SisterCompanyRepurchase"]
-    m106["Blueprints.All"]
+    m95["Blueprints.SuperficialLoss"]
+    m96["Blueprints.SpouseRepurchase"]
+    m97["Blueprints.SiblingAndLateRepurchase"]
+    m98["Blueprints.TfsaContribution"]
+    m99["Blueprints.HoldcoRepurchase"]
+    m100["Blueprints.Crystallization"]
+    m101["Blueprints.SaleThroughHoldco"]
+    m102["Blueprints.PostMortemPipeline"]
+    m103["Blueprints.EstateFreeze"]
+    m104["Blueprints.DonatingShares"]
+    m105["Blueprints.InvestmentIncomeIntegration"]
+    m106["Blueprints.SisterCompanyRepurchase"]
+    m107["Blueprints.All"]
   end
   subgraph Examples["Examples"]
     m19["Examples.RuleX"]
@@ -126,10 +127,10 @@ flowchart BT
     m22["Examples.RuleXStatute"]
   end
   subgraph Graphs["Graphs"]
-    m107["Graphs.All"]
+    m108["Graphs.All"]
   end
   subgraph Root["Root"]
-    m108["Canteen"]
+    m109["Canteen"]
   end
   m0 --> m3
   m3 --> m4
@@ -261,88 +262,89 @@ flowchart BT
   m10 --> m78
   m1 --> m78
   m2 --> m78
-  m12 --> m79
+  m76 --> m79
   m10 --> m79
-  m2 --> m79
-  m23 --> m80
+  m12 --> m80
+  m10 --> m80
+  m2 --> m80
   m23 --> m81
-  m37 --> m82
-  m24 --> m83
-  m81 --> m83
-  m27 --> m83
-  m28 --> m83
+  m23 --> m82
+  m37 --> m83
   m24 --> m84
+  m82 --> m84
+  m27 --> m84
   m28 --> m84
-  m81 --> m84
-  m36 --> m85
+  m24 --> m85
   m28 --> m85
+  m82 --> m85
   m36 --> m86
-  m27 --> m86
-  m29 --> m86
-  m50 --> m87
-  m51 --> m87
-  m54 --> m87
+  m28 --> m86
+  m36 --> m87
   m27 --> m87
-  m55 --> m88
-  m58 --> m88
-  m46 --> m89
-  m50 --> m89
-  m54 --> m89
-  m59 --> m90
-  m75 --> m90
-  m71 --> m91
+  m29 --> m87
+  m50 --> m88
+  m51 --> m88
+  m54 --> m88
+  m27 --> m88
+  m55 --> m89
+  m58 --> m89
+  m46 --> m90
+  m50 --> m90
+  m54 --> m90
+  m59 --> m91
+  m75 --> m91
   m71 --> m92
-  m77 --> m92
-  m37 --> m93
-  m29 --> m93
-  m16 --> m94
-  m81 --> m94
-  m26 --> m94
-  m27 --> m94
-  m28 --> m94
-  m31 --> m94
-  m45 --> m94
-  m46 --> m94
-  m48 --> m94
-  m50 --> m94
-  m52 --> m94
-  m57 --> m94
-  m58 --> m94
-  m59 --> m94
-  m60 --> m94
-  m61 --> m94
-  m62 --> m94
-  m63 --> m94
-  m64 --> m94
-  m65 --> m94
-  m66 --> m94
-  m71 --> m94
-  m72 --> m94
-  m73 --> m94
-  m74 --> m94
-  m75 --> m94
-  m77 --> m94
-  m78 --> m94
-  m79 --> m94
-  m82 --> m94
+  m71 --> m93
+  m77 --> m93
+  m37 --> m94
+  m29 --> m94
   m16 --> m95
-  m83 --> m95
-  m25 --> m95
+  m82 --> m95
+  m26 --> m95
+  m27 --> m95
+  m28 --> m95
+  m31 --> m95
+  m45 --> m95
+  m46 --> m95
+  m48 --> m95
+  m50 --> m95
+  m52 --> m95
+  m57 --> m95
+  m58 --> m95
+  m59 --> m95
+  m60 --> m95
+  m61 --> m95
+  m62 --> m95
+  m63 --> m95
+  m64 --> m95
+  m65 --> m95
+  m66 --> m95
+  m71 --> m95
+  m72 --> m95
+  m73 --> m95
+  m74 --> m95
+  m75 --> m95
+  m77 --> m95
+  m78 --> m95
+  m79 --> m95
   m80 --> m95
-  m42 --> m95
+  m83 --> m95
   m16 --> m96
-  m17 --> m96
   m84 --> m96
-  m80 --> m96
+  m25 --> m96
+  m81 --> m96
+  m42 --> m96
   m16 --> m97
   m17 --> m97
   m85 --> m97
-  m80 --> m97
+  m81 --> m97
   m16 --> m98
+  m17 --> m98
   m86 --> m98
-  m80 --> m98
+  m81 --> m98
   m16 --> m99
   m87 --> m99
+  m81 --> m99
   m16 --> m100
   m88 --> m100
   m16 --> m101
@@ -355,46 +357,49 @@ flowchart BT
   m92 --> m104
   m16 --> m105
   m93 --> m105
+  m16 --> m106
   m94 --> m106
-  m95 --> m106
-  m96 --> m106
-  m97 --> m106
-  m98 --> m106
-  m105 --> m106
-  m99 --> m106
-  m100 --> m106
-  m101 --> m106
-  m102 --> m106
-  m103 --> m106
-  m104 --> m106
-  m22 --> m107
-  m21 --> m107
-  m80 --> m107
-  m26 --> m107
-  m83 --> m107
-  m84 --> m107
-  m85 --> m107
-  m86 --> m107
-  m31 --> m107
-  m79 --> m107
-  m45 --> m107
-  m46 --> m107
-  m48 --> m107
-  m52 --> m107
-  m53 --> m107
-  m60 --> m107
-  m62 --> m107
-  m64 --> m107
-  m78 --> m107
-  m65 --> m107
-  m72 --> m107
-  m73 --> m107
-  m93 --> m107
-  m87 --> m107
-  m88 --> m107
-  m90 --> m107
-  m18 --> m108
-  m20 --> m108
-  m106 --> m108
-  m107 --> m108
+  m95 --> m107
+  m96 --> m107
+  m97 --> m107
+  m98 --> m107
+  m99 --> m107
+  m106 --> m107
+  m100 --> m107
+  m101 --> m107
+  m102 --> m107
+  m103 --> m107
+  m104 --> m107
+  m105 --> m107
+  m22 --> m108
+  m21 --> m108
+  m81 --> m108
+  m26 --> m108
+  m84 --> m108
+  m85 --> m108
+  m86 --> m108
+  m87 --> m108
+  m31 --> m108
+  m80 --> m108
+  m45 --> m108
+  m46 --> m108
+  m48 --> m108
+  m52 --> m108
+  m53 --> m108
+  m60 --> m108
+  m62 --> m108
+  m64 --> m108
+  m78 --> m108
+  m79 --> m108
+  m65 --> m108
+  m72 --> m108
+  m73 --> m108
+  m94 --> m108
+  m88 --> m108
+  m89 --> m108
+  m91 --> m108
+  m18 --> m109
+  m20 --> m109
+  m107 --> m109
+  m108 --> m109
 ```

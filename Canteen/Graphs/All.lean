@@ -33,6 +33,7 @@ import Canteen.ITA.S44.ReplacementProperty
 import Canteen.ITA.S186.Connected
 import Canteen.ITA.S88.WindingUp
 import Canteen.ITA.S15.ShareholderLoans
+import Canteen.ITA.S89.GeneralRateIncomePool
 import Canteen.ITA.S87.Amalgamation
 import Canteen.ITA.S39.CanadianSecurities
 import Canteen.ITA.S50.BadDebtOrShare
@@ -178,7 +179,8 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S118_1.Donations, "118.1 the donation credit"),
    (`Canteen.ITA.S123.CorporateRates, "123 to 125 corporate rates"),
    (`Canteen.ITA.S129.RefundableTax, "123.3, 129, 186 refundable taxes"),
-   (`Canteen.ITA.S15.ShareholderLoans, "15(2), 80.4 shareholder loans")]
+   (`Canteen.ITA.S15.ShareholderLoans, "15(2), 80.4 shareholder loans"),
+   (`Canteen.ITA.S89.GeneralRateIncomePool, "89(1), 185.1 the general rate income pool")]
 
 /-! ## The dashboard -/
 
@@ -278,7 +280,7 @@ def actMindmap : String := Id.run do
     (2, "s. 86"), (3, "86(1): share exchange in a reorganization"), (3, "86(2): benefit to a related person"),
     (2, "s. 87"), (3, "87(1): amalgamation"), (3, "87(2)(e): cost of capital property"), (3, "87(4): shareholders"),
     (2, "s. 88"), (3, "88(1): winding up a subsidiary"), (3, "88(1)(c), (d): the bump"),
-    (2, "s. 89"), (3, "89(1): capital dividend account"),
+    (2, "s. 89"), (3, "89(1): capital dividend account"), (3, "89(1): general rate income pool"),
     (2, "s. 110.6"), (3, "qualified small business corporation share"), (3, "annual and cumulative gains limits"),
     (3, "110.6(2.1): the deduction"),
     (2, "s. 111"), (3, "111(8): net capital loss"), (3, "111(1)(b), (1.1): deduction"),
@@ -290,6 +292,7 @@ def actMindmap : String := Id.run do
     (2, "s. 121"), (3, "121: the dividend tax credit"),
     (2, "ss. 123 to 125"), (3, "123(1), 124(1): 38%, the abatement"), (3, "123.4(2): general rate reduction"), (3, "125(1): small business deduction"),
     (2, "ss. 123.3, 129"), (3, "123.3: refundable tax on investment income"), (3, "129(1), (4): the dividend refund"),
+    (2, "s. 185.1"), (3, "185.1(1): Part III.1 tax on excessive designations"),
     (2, "s. 186"), (3, "186(1): Part IV tax"), (3, "186(4): connected corporations"), (3, "186(2): control with non-arm's length persons"),
     (2, "s. 248"), (3, "248(1): majority-interest partner"),
     (2, "s. 251"), (3, "251(1): arm's length"), (3, "251(2), (3): related persons"), (3, "251(3.1), (3.2): amalgamations"),

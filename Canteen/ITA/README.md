@@ -57,3 +57,4 @@ The verbatim statute text for each is in `statute/`. Review notes are in `docs/r
 - `S123/CorporateRates.lean`: subsections 123(1), 124(1), 123.4(2) and 125(1)
 - `S129/RefundableTax.lean`: section 123.3, subsections 129(1), (4) and 186(1)
 - `S15/ShareholderLoans.lean`: subsections 15(2), (2.6), 80.4(2), (3) and paragraph 20(1)(j)
+- `S89/GeneralRateIncomePool.lean`: the 89(1) definitions "general rate income pool", "adjusted taxable income" and "excessive eligible dividend designation", and subsection 185.1(1)

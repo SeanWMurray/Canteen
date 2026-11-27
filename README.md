@@ -93,6 +93,7 @@ Canteen/
     S123/CorporateRates.lean   123 to 125: corporate rates and the small business deduction
     S129/RefundableTax.lean    123.3, 129, 186(1): refundable taxes and the dividend refund
     S15/ShareholderLoans.lean  15(2), (2.6), 80.4, 20(1)(j): shareholder loans
+    S89/GeneralRateIncomePool.lean   89(1), 185.1(1): the general rate income pool, excessive eligible dividends
     S82/Dividends.lean         82(1), 121: taxable dividends, the gross-up, and the dividend tax credit
     S55/IntercorporateDividends.lean   112(1), 55(2): intercorporate dividends, and when they are capital gains
     S13/Depreciable.lean       13(1), (21), 20(16): undepreciated capital cost, recapture, terminal loss

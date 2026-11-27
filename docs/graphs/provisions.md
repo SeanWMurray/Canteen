@@ -61,7 +61,8 @@ flowchart BT
   v52["123 to 125 corporate rates"]:::prov
   v53["123.3, 129, 186 refundable taxes"]:::prov
   v54["15(2), 80.4 shareholder loans"]:::prov
-  v55["50(2) bad personal-use debts"]:::prov
+  v55["89(1), 185.1 the general rate income pool"]:::prov
+  v56["50(2) bad personal-use debts"]:::prov
   v0 --> v1
   v0 --> v2
   v0 --> v3
@@ -125,5 +126,6 @@ flowchart BT
   v17 --> v50
   v30 --> v51
   v52 --> v53
+  v52 --> v55
   classDef prov fill:#bbdefb,stroke:#1565c0,color:#0d47a1
 ```

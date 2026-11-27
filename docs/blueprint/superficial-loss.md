@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 86 statements:** 67 proven, 16 encoded, 3 not formalized.
+**Status of the 87 statements:** 68 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -90,12 +90,13 @@ graph TD
   n77["R44 · Corporate rates"]:::proven
   n78["R45 · Refundable taxes and the dividend refund"]:::proven
   n79["R46 · Shareholder loans"]:::proven
-  n80["R35 · An individual's year, to taxable income and tax"]:::proven
-  n81["R11 · The principal residence exemption"]:::proven
-  n82["R2 · Cost of the substituted property"]:::proven
-  n83["N1 · Inputs decided by other provisions"]:::notFormalized
-  n84["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n85["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n80["R47 · The general rate income pool"]:::proven
+  n81["R35 · An individual's year, to taxable income and tax"]:::proven
+  n82["R11 · The principal residence exemption"]:::proven
+  n83["R2 · Cost of the substituted property"]:::proven
+  n84["N1 · Inputs decided by other provisions"]:::notFormalized
+  n85["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n86["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -214,31 +215,32 @@ graph TD
   n74 --> n75
   n74 --> n76
   n77 --> n78
-  n44 --> n80
-  n45 --> n80
-  n53 --> n80
-  n55 --> n80
-  n56 --> n80
-  n58 --> n80
-  n73 --> n80
-  n74 --> n80
-  n75 --> n80
-  n76 --> n80
+  n77 --> n80
   n44 --> n81
-  n50 --> n81
-  n11 --> n82
-  n1 --> n83
-  n5 --> n83
-  n6 --> n83
-  n8 --> n83
-  n37 --> n83
-  n82 --> n83
-  n38 --> n83
-  n30 --> n84
-  n32 --> n85
-  n34 --> n85
-  n39 --> n85
-  n42 --> n85
+  n45 --> n81
+  n53 --> n81
+  n55 --> n81
+  n56 --> n81
+  n58 --> n81
+  n73 --> n81
+  n74 --> n81
+  n75 --> n81
+  n76 --> n81
+  n44 --> n82
+  n50 --> n82
+  n11 --> n83
+  n1 --> n84
+  n5 --> n84
+  n6 --> n84
+  n8 --> n84
+  n37 --> n84
+  n83 --> n84
+  n38 --> n84
+  n30 --> n85
+  n32 --> n86
+  n34 --> n86
+  n39 --> n86
+  n42 --> n86
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -335,12 +337,13 @@ graph TD
   n77["R44"]:::proven
   n78["R45"]:::proven
   n79["R46"]:::proven
-  n80["R35"]:::proven
-  n81["R11"]:::proven
-  n82["R2"]:::proven
-  n83["N1"]:::notFormalized
-  n84["N2"]:::notFormalized
-  n85["N4"]:::notFormalized
+  n80["R47"]:::proven
+  n81["R35"]:::proven
+  n82["R11"]:::proven
+  n83["R2"]:::proven
+  n84["N1"]:::notFormalized
+  n85["N2"]:::notFormalized
+  n86["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -539,31 +542,32 @@ graph TD
   n74 -.-> n75
   n74 -.-> n76
   n77 --> n78
-  n55 --> n80
-  n58 --> n80
-  n73 --> n80
-  n56 --> n80
-  n45 --> n80
-  n44 --> n80
-  n53 --> n80
-  n74 --> n80
-  n76 --> n80
-  n75 --> n80
-  n44 -.-> n81
-  n50 -.-> n81
-  n11 -.-> n82
-  n1 -.-> n83
-  n5 -.-> n83
-  n6 -.-> n83
-  n8 -.-> n83
-  n37 -.-> n83
-  n82 -.-> n83
-  n38 -.-> n83
-  n30 -.-> n84
-  n32 -.-> n85
-  n34 -.-> n85
-  n39 -.-> n85
-  n42 -.-> n85
+  n77 --> n80
+  n55 --> n81
+  n58 --> n81
+  n73 --> n81
+  n56 --> n81
+  n45 --> n81
+  n44 --> n81
+  n53 --> n81
+  n74 --> n81
+  n76 --> n81
+  n75 --> n81
+  n44 -.-> n82
+  n50 -.-> n82
+  n11 -.-> n83
+  n1 -.-> n84
+  n5 -.-> n84
+  n6 -.-> n84
+  n8 -.-> n84
+  n37 -.-> n84
+  n83 -.-> n84
+  n38 -.-> n84
+  n30 -.-> n85
+  n32 -.-> n86
+  n34 -.-> n86
+  n39 -.-> n86
+  n42 -.-> n86
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -1222,6 +1226,14 @@ A CCPC pays an extra 10⅔% on investment income and Part IV tax of 38⅓% on po
 A loan from a corporation to a shareholder (or a person connected with one) is income, unless repaid within a year after the corporation's year end, not as part of a series; if it is not income, interest at the prescribed rate (less interest paid) is a benefit; a loan taxed under 15(2) is deducted when repaid. Proven: never both, and a repayment restores what was included.
 
 **Lean:** [`Canteen.ITA.ShareholderLoans.included`](../../Canteen/ITA/S15/ShareholderLoans.lean#L63), [`Canteen.ITA.ShareholderLoans.inclusion`](../../Canteen/ITA/S15/ShareholderLoans.lean#L78), [`Canteen.ITA.ShareholderLoans.deemedInterest`](../../Canteen/ITA/S15/ShareholderLoans.lean#L81), [`Canteen.ITA.ShareholderLoans.not_both`](../../Canteen/ITA/S15/ShareholderLoans.lean#L102), [`Canteen.ITA.ShareholderLoans.repaid_in_time`](../../Canteen/ITA/S15/ShareholderLoans.lean#L107), [`Canteen.ITA.ShareholderLoans.repayment_restores`](../../Canteen/ITA/S15/ShareholderLoans.lean#L111)
+
+### R47. The general rate income pool
+
+**Status:** proven · **Citation:** ITA 89(1); 185.1(1) · **Uses:** R44
+
+A CCPC's pool grows by 72% of its income taxed at the general rate (taxable income less the small business amount and investment income) and by eligible dividends received, and shrinks by last year's eligible dividends; eligible dividends beyond it are excessive and bear Part III.1 tax of 20% (30%, and the whole dividend, where the pool was artificially increased). Proven: dividends within the pool are never excessive.
+
+**Lean:** [`Canteen.ITA.GeneralRateIncomePool.adjustedTaxableIncome`](../../Canteen/ITA/S89/GeneralRateIncomePool.lean#L45), [`Canteen.ITA.GeneralRateIncomePool.pool`](../../Canteen/ITA/S89/GeneralRateIncomePool.lean#L50), [`Canteen.ITA.GeneralRateIncomePool.excessive`](../../Canteen/ITA/S89/GeneralRateIncomePool.lean#L55), [`Canteen.ITA.GeneralRateIncomePool.partIII1`](../../Canteen/ITA/S89/GeneralRateIncomePool.lean#L59), [`Canteen.ITA.GeneralRateIncomePool.within_pool`](../../Canteen/ITA/S89/GeneralRateIncomePool.lean#L73), [`Canteen.ITA.GeneralRateIncomePool.excessive_le`](../../Canteen/ITA/S89/GeneralRateIncomePool.lean#L80)
 
 ### R35. An individual's year, to taxable income and tax
 

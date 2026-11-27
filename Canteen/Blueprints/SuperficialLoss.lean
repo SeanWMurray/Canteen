@@ -48,6 +48,7 @@ import Canteen.ITA.S118_1.Donations
 import Canteen.ITA.S123.CorporateRates
 import Canteen.ITA.S129.RefundableTax
 import Canteen.ITA.S15.ShareholderLoans
+import Canteen.ITA.S89.GeneralRateIncomePool
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.Lemmas.SuspendedLoss
@@ -529,6 +530,14 @@ def blueprint : Blueprint where
             "never both, and a repayment restores what was included."
           lean := [``ShareholderLoans.included, ``ShareholderLoans.inclusion, ``ShareholderLoans.deemedInterest,
             ``ShareholderLoans.not_both, ``ShareholderLoans.repaid_in_time, ``ShareholderLoans.repayment_restores] },
+        { id := "R47", kind := .law, title := "The general rate income pool", citation := "ITA 89(1); 185.1(1)"
+          statement := "A CCPC's pool grows by 72% of its income taxed at the general rate (taxable income less the small " ++
+            "business amount and investment income) and by eligible dividends received, and shrinks by last year's eligible " ++
+            "dividends; eligible dividends beyond it are excessive and bear Part III.1 tax of 20% (30%, and the whole dividend, " ++
+            "where the pool was artificially increased). Proven: dividends within the pool are never excessive."
+          lean := [``GeneralRateIncomePool.adjustedTaxableIncome, ``GeneralRateIncomePool.pool, ``GeneralRateIncomePool.excessive,
+            ``GeneralRateIncomePool.partIII1, ``GeneralRateIncomePool.within_pool, ``GeneralRateIncomePool.excessive_le],
+          uses := ["R44"] },
         { id := "R35", kind := .law, title := "An individual's year, to taxable income and tax", citation := "ITA 2(2); 3; 111(1)(b); 110.6; 117(2)"
           statement := "Income from sources (employment and business, dividends with the gross-up, recapture, attributed " ++
             "income), net taxable capital gains, less terminal and other losses; then taxable income, after the net capital " ++
