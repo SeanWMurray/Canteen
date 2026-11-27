@@ -42,8 +42,11 @@ the caller's classification. Every taxable capital gain and allowable capital lo
 "eligible portion" (the property did not accrue its gain outside a CCPC). A 55(2) dividend received
 on a redemption is added to the redeemed share's proceeds (55(2)(b)): the caller includes it in the
 disposition; the explanation gives the amount. Not encoded: 113 (dividends from foreign affiliates),
-126 (foreign tax credits), and 186(1)(c) and (d) (losses against Part IV tax). Section 3 and taxable income are in half-cents;
-the amounts handed to the corporate rate modules are in cents, rounded down.
+126 (foreign tax credits), and farm losses (in 186(1)(c), (d) as in 111). Non-capital losses claimed
+against Part IV tax (186(1)(c), (d)) are limited to the year's own loss and to what is left of other
+years' after 111(1)(a), and are taken off the losses carried forward (111(3)(a)(ii)). Section 3 and
+taxable income are in half-cents; the amounts handed to the corporate rate modules are in cents,
+rounded down.
 -/
 
 namespace Canteen.ITA.CorporateYear
@@ -107,6 +110,10 @@ structure Facts where
   (by default, as much as brings taxable income to nil). -/
   nonCapitalLosses : List NonCapitalLoss.Loss := []
   nonCapitalLossClaim : Option HalfCents := none
+  /-- 186(1)(c): the part of the year's own non-capital loss claimed against Part IV tax; (d): the part of
+  other years' losses (what is left after 111(1)(a), oldest first). -/
+  partIVOwnLossClaim : HalfCents := 0
+  partIVCarriedLossClaim : HalfCents := 0
   netCapitalLossClaims : List NetCapitalLoss.Claim := []
   /-- 129(4): the refundable dividend tax accounts at the start of the year (last year's balances
   less last year's refunds from them). -/
@@ -180,13 +187,26 @@ def nonCapitalLossFacts (f : Facts) : NonCapitalLoss.Facts :=
 
 def nonCapitalLoss (f : Facts) : HalfCents := NonCapitalLoss.amount (nonCapitalLossFacts f)
 
+/-- The available losses of other years, after the 111(1)(a) deduction, oldest first. -/
+def afterDeduction (f : Facts) : List NonCapitalLoss.Loss :=
+  NonCapitalLoss.remaining f.taxationYear (f.nonCapitalLossClaim.getD (beforeNonCapitalLosses f)) f.nonCapitalLosses
+
+/-- 186(1)(c): at most the year's own loss. -/
+def partIVOwnClaim (f : Facts) : HalfCents := min f.partIVOwnLossClaim (nonCapitalLoss f)
+
+/-- 186(1)(d): at most what is deductible of other years' losses, oldest first (111(3)). -/
+def partIVCarriedTaken (f : Facts) : List HalfCents := NonCapitalLoss.take f.partIVCarriedLossClaim (afterDeduction f)
+def partIVCarriedClaim (f : Facts) : HalfCents := (partIVCarriedTaken f).sum
+
+/-- 111(3)(a)(ii): the year's own loss, less what was claimed against Part IV tax. -/
+def ownLossForward (f : Facts) : HalfCents := nonCapitalLoss f - partIVOwnClaim f
+
 /-- The non-capital losses at the start of next year: what is left of those available, those of later
 years not yet available, and the year's own. -/
 def nonCapitalLossesForward (f : Facts) : List NonCapitalLoss.Loss :=
-  let claim := f.nonCapitalLossClaim.getD (beforeNonCapitalLosses f)
-  (NonCapitalLoss.remaining f.taxationYear claim f.nonCapitalLosses).filter (0 < ·.unused) ++
+  (List.zipWith (fun (l : NonCapitalLoss.Loss) d => { l with unused := l.unused - d }) (afterDeduction f) (partIVCarriedTaken f)).filter (0 < ·.unused) ++
     f.nonCapitalLosses.filter (fun l => f.taxationYear + 3 < l.year) ++
-    (if nonCapitalLoss f = 0 then [] else [⟨f.taxationYear, nonCapitalLoss f⟩])
+    (if ownLossForward f = 0 then [] else [⟨f.taxationYear, ownLossForward f⟩])
 
 /-- 129(4) "aggregate investment income" (a): net taxable capital gains, less the 111(1)(b) deduction. -/
 def netGains (f : Facts) : HalfCents :=
@@ -209,7 +229,8 @@ def refundableFacts (f : Facts) : RefundableTax.Facts :=
     connectedFromEligible := ((f.dividends.filter (·.connected)).map (·.refundFromEligible)).sum,
     connectedFromNonEligible := ((f.dividends.filter (·.connected)).map (·.refundFromNonEligible)).sum,
     openingEligible := f.openingEligible, openingNonEligible := f.openingNonEligible,
-    eligibleDividendsPaid := f.eligibleDividendsPaid, nonEligibleDividendsPaid := f.nonEligibleDividendsPaid }
+    eligibleDividendsPaid := f.eligibleDividendsPaid, nonEligibleDividendsPaid := f.nonEligibleDividendsPaid,
+    lossesClaimed := (partIVOwnClaim f + partIVCarriedClaim f) / 2 }
 
 def gripFacts (f : Facts) : GeneralRateIncomePool.Facts :=
   { priorPool := f.priorPool, rates := ratesFacts f,
@@ -308,5 +329,9 @@ theorem deductible_dividend_not_investment_income (f : Facts) (r : Received)
     simp [hd, hc]
   simp [aggregateInvestmentIncome, netGains, dividendsNotDeducted, netCapitalLossDeduction, incomeFacts, capitalYear,
     section55Gains, dividendsIncluded, Income.paraB, hg, hn]
+
+/-- A non-capital loss claimed against Part IV tax is not lost: what is claimed and what carries forward make up the loss. -/
+theorem own_loss_conserved (f : Facts) : partIVOwnClaim f + ownLossForward f = nonCapitalLoss f :=
+  Nat.add_sub_cancel' (Nat.min_le_right _ _)
 
 end Canteen.ITA.CorporateYear

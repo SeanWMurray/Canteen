@@ -114,3 +114,27 @@ example : partITax holdcoLoss = 0 ∧ partIVTax holdcoLoss = 3833333 := by decid
 example : taxableIncome { taxationYear := 2026, propertyIncome := 5000000, nonCapitalLosses := nonCapitalLossesForward holdcoLoss } = 2 * 2000000 := by decide
 
 end Canteen.Tests.CorporateYear.Losses
+
+namespace Canteen.Tests.CorporateYear.PartIVLosses
+
+open Canteen Canteen.ITA Canteen.ITA.CorporateYear Canteen.Tests.CorporateYear Canteen.Tests.CorporateYear.Losses
+
+-- 186(1)(c): Holdco claims its $30,000 loss of the year against Part IV tax: 38⅓% of it, $11,500, off
+-- the $38,333.33; nothing of the loss is left to carry forward.
+def holdcoClaim : Facts := { holdcoLoss with partIVOwnLossClaim := 2 * 3000000 }
+example : partIVTax holdcoClaim = 3833333 - 1150000 := by decide
+example : nonCapitalLossesForward holdcoClaim = [] := by decide
+-- A claim over the loss is limited to it.
+example : partIVTax { holdcoLoss with partIVOwnLossClaim := 2 * 9000000 } = 3833333 - 1150000 := by decide
+-- Half claimed: $15,000 carries forward.
+example : nonCapitalLossesForward { holdcoLoss with partIVOwnLossClaim := 2 * 1500000 } = [⟨2025, 2 * 1500000⟩] := by decide
+-- The reduction comes off the non-eligible part: with the dividend eligible, the eligible account keeps
+-- what is left of the Part IV tax.
+def holdcoEligible : Facts := { holdcoClaim with dividends := [Received.portfolio "a dividend from Bankco" 10000000 (eligible := true)] }
+example : RefundableTax.partIVEligible (refundableFacts holdcoEligible) = 3833333 - 1150000 := by decide
+-- 186(1)(d): a $20,000 loss of 2023, not needed against Part I (no taxable income), claimed against Part IV.
+def holdcoCarried : Facts := { holdcoLoss with nonCapitalLosses := [⟨2023, 2 * 2000000⟩], partIVCarriedLossClaim := 2 * 2000000 }
+example : partIVTax holdcoCarried = 3833333 - 766666 := by decide
+example : nonCapitalLossesForward holdcoCarried = [⟨2025, 2 * 3000000⟩] := by decide
+
+end Canteen.Tests.CorporateYear.PartIVLosses

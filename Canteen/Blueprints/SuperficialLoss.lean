@@ -547,13 +547,14 @@ def blueprint : Blueprint where
             "active business income within the limit is taxed at 9%, and a corporation that is not a CCPC pays 15%."
           lean := [``CorporateRates.tax, ``CorporateRates.smallBusinessAmount, ``CorporateRates.fullRateTaxableIncome,
             ``CorporateRates.small_business_rate, ``CorporateRates.general_rate] },
-        { id := "R45", kind := .law, title := "Refundable taxes and the dividend refund", citation := "ITA 123.3; 129(1), (4); 186(1)"
+        { id := "R45", kind := .law, title := "Refundable taxes and the dividend refund", citation := "ITA 123.3; 129(1), (4); 186(1)(a) to (d)"
           statement := "A CCPC pays an extra 10⅔% on investment income and Part IV tax of 38⅓% on portfolio dividends; 30⅔% of " ++
             "the investment income and the Part IV tax go into two refundable accounts, refunded at 38⅓% of dividends paid " ++
-            "(eligible dividends only from the eligible account). Proven: the refund never exceeds the accounts, and a " ++
-            "portfolio dividend paid straight out gets all its Part IV tax back."
-          lean := [``RefundableTax.additionalTax, ``RefundableTax.partIV, ``RefundableTax.nonEligibleAccount,
-            ``RefundableTax.dividendRefund, ``RefundableTax.refund_le_accounts, ``RefundableTax.flow_through], uses := ["R44"] },
+            "(eligible dividends only from the eligible account); non-capital losses claimed take 38⅓% of themselves off " ++
+            "Part IV tax. Proven: the refund never exceeds the accounts, a portfolio dividend paid straight out gets all " ++
+            "its Part IV tax back, and losses claimed never raise Part IV tax."
+          lean := [``RefundableTax.additionalTax, ``RefundableTax.partIV, ``RefundableTax.lossReduction, ``RefundableTax.nonEligibleAccount,
+            ``RefundableTax.dividendRefund, ``RefundableTax.refund_le_accounts, ``RefundableTax.flow_through, ``RefundableTax.partIV_le_gross], uses := ["R44"] },
         { id := "R46", kind := .law, title := "Shareholder loans", citation := "ITA 15(2), (2.6); 80.4(2), (3); 20(1)(j)"
           statement := "A loan from a corporation to a shareholder (or a person connected with one) is income, unless repaid " ++
             "within a year after the corporation's year end, not as part of a series; if it is not income, interest at the " ++
@@ -734,12 +735,14 @@ def blueprint : Blueprint where
             "112(1) deduction and losses (other years' non-capital losses oldest first); the year's own non-capital loss; aggregate investment income, leaving out the deducted dividends; then Part I, " ++
             "Part IV and Part III.1 tax, the dividend refund, the pool and the capital dividend account. Proven: taxable " ++
             "income never exceeds income, 112(1) never deducts more than income includes, and a deductible dividend 55(2) " ++
-            "does not reach is not investment income, and a year with a non-capital loss has no taxable income."
+            "does not reach is not investment income, a year with a non-capital loss has no taxable income, and a loss " ++
+            "claimed against Part IV tax plus what carries forward is the loss."
           lean := [``CorporateYear.income, ``CorporateYear.taxableIncome, ``CorporateYear.aggregateInvestmentIncome,
             ``CorporateYear.ratesFacts, ``CorporateYear.refundableFacts, ``CorporateYear.gripFacts, ``CorporateYear.cdaFacts,
             ``CorporateYear.netTax, ``CorporateYear.taxableIncome_le_income, ``CorporateYear.dividendDeduction_le,
             ``CorporateYear.deductible_dividend_not_investment_income, ``CorporateYear.nonCapitalLossDeduction,
-            ``CorporateYear.nonCapitalLoss, ``CorporateYear.nonCapitalLossesForward, ``CorporateYear.loss_year_no_taxable_income],
+            ``CorporateYear.nonCapitalLoss, ``CorporateYear.nonCapitalLossesForward, ``CorporateYear.loss_year_no_taxable_income,
+            ``CorporateYear.partIVOwnClaim, ``CorporateYear.partIVCarriedClaim, ``CorporateYear.own_loss_conserved],
           uses := ["R8", "R9", "R23", "R26", "R44", "R45", "R47", "R69", "R71"] },
         { id := "R35", kind := .law, title := "An individual's year, to taxable income and tax", citation := "ITA 2(2); 3; 111(1)(b); 110.6; 117(2)"
           statement := "Income from sources (employment and business, dividends with the gross-up, recapture, attributed " ++

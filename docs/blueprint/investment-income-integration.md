@@ -86,7 +86,7 @@ graph TD
 
 28% plus 10⅔% on a CCPC's investment income; 30⅔% of it is refunded at 38⅓% of dividends paid.
 
-**Lean:** [`Canteen.ITA.RefundableTax.partITax`](../../Canteen/ITA/S129/RefundableTax.lean#L57), [`Canteen.ITA.RefundableTax.dividendRefund`](../../Canteen/ITA/S129/RefundableTax.lean#L82)
+**Lean:** [`Canteen.ITA.RefundableTax.partITax`](../../Canteen/ITA/S129/RefundableTax.lean#L60), [`Canteen.ITA.RefundableTax.dividendRefund`](../../Canteen/ITA/S129/RefundableTax.lean#L90)
 
 ### L2. The individual's tax
 

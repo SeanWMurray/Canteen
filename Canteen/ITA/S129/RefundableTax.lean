@@ -9,7 +9,7 @@ import Canteen.ITA.S123.CorporateRates
   investment income and its taxable income in excess of the small business amount (125(1)(a) to (c)).
 * **186(1)** A private corporation pays Part IV tax of (a) 38⅓% of assessable dividends from
   corporations not connected with it, and (b) for each dividend from a connected private corporation,
-  that dividend's share of the payer's dividend refund (less 38⅓% of losses it claims, not encoded).
+  that dividend's share of the payer's dividend refund; less (c), (d) 38⅓% of the non-capital losses it claims.
 * **129(4) "non-eligible refundable dividend tax on hand"**: for a CCPC, the least of 30⅔% of aggregate
   investment income (less foreign tax credits), 30⅔% of taxable income in excess of the small business
   amount, and Part I tax; plus Part IV tax other than the eligible part; plus last year's balance, less
@@ -21,8 +21,9 @@ import Canteen.ITA.S123.CorporateRates
   and (B) if 38⅓% of the non-eligible dividends is more than the non-eligible account, the lesser of the
   excess and what is left of the eligible account.
 
-The opening balances (last year's balance less last year's refunds) are given; foreign tax credits and
-the Part IV loss reduction are nil. 38⅓%, 10⅔% and 30⅔% are 115/300, 32/300 and 92/300, each product
+The opening balances (last year's balance less last year's refunds) are given; foreign tax credits are
+nil. The losses claimed under 186(1)(c) and (d) are given (see `CorporateYear` for their limits); their
+reduction comes off the Part IV tax on non-eligible dividends first, and only then off the eligible part. 38⅓%, 10⅔% and 30⅔% are 115/300, 32/300 and 92/300, each product
 rounded down to the cent. The 129(4) Part I tax cap uses the tax from `CorporateRates`.
 -/
 
@@ -43,6 +44,8 @@ structure Facts where
   /-- Taxable dividends paid in the year. -/
   eligibleDividendsPaid : Cents := 0
   nonEligibleDividendsPaid : Cents := 0
+  /-- 186(1)(c), (d): non-capital losses claimed against Part IV tax. -/
+  lossesClaimed : Cents := 0
   deriving Repr, DecidableEq, Inhabited
 
 def frac (x n : Nat) : Cents := x * n / 300
@@ -58,8 +61,13 @@ def additionalTax (f : Facts) : Cents :=
 def partITax (f : Facts) : Cents := CorporateRates.tax f.rates + additionalTax f
 
 /-- 186(1): Part IV tax, and its eligible part. -/
-def partIVEligible (f : Facts) : Cents := frac f.portfolioEligible 115 + f.connectedFromEligible
-def partIV (f : Facts) : Cents := frac (f.portfolioEligible + f.portfolioNonEligible) 115 + f.connectedFromEligible + f.connectedFromNonEligible
+def partIVEligibleGross (f : Facts) : Cents := frac f.portfolioEligible 115 + f.connectedFromEligible
+def partIVGross (f : Facts) : Cents := frac (f.portfolioEligible + f.portfolioNonEligible) 115 + f.connectedFromEligible + f.connectedFromNonEligible
+/-- 186(1)(c), (d): 38⅓% of the losses claimed. -/
+def lossReduction (f : Facts) : Cents := frac f.lossesClaimed 115
+def partIV (f : Facts) : Cents := partIVGross f - lossReduction f
+/-- The eligible part, after the reduction (which comes off the non-eligible part first). -/
+def partIVEligible (f : Facts) : Cents := min (partIVEligibleGross f) (partIV f)
 
 /-- 129(4): the eligible account at year end. -/
 def eligibleAccount (f : Facts) : Cents := f.openingEligible + partIVEligible f
@@ -113,6 +121,10 @@ them all out as eligible dividends gets back all of its Part IV tax. -/
 theorem flow_through (d : Cents) :
     dividendRefund { rates := { taxableIncome := 0, ccpc := false }, portfolioEligible := d, eligibleDividendsPaid := d } =
       partIV { rates := { taxableIncome := 0, ccpc := false }, portfolioEligible := d, eligibleDividendsPaid := d } := by
-  simp [dividendRefund, refundEligible, refundNonEligible, refundCross, eligibleAccount, nonEligibleAccount, partIV, partIVEligible]
+  simp [dividendRefund, refundEligible, refundNonEligible, refundCross, eligibleAccount, nonEligibleAccount, partIV, partIVEligible,
+    partIVGross, partIVEligibleGross, lossReduction, frac]
+
+/-- Losses claimed never make Part IV tax more than it would be without them. -/
+theorem partIV_le_gross (f : Facts) : partIV f ≤ partIVGross f := Nat.sub_le _ _
 
 end Canteen.ITA.RefundableTax

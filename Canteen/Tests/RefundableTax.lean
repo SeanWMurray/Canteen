@@ -32,6 +32,13 @@ example : refundCross { portfolio with nonEligibleDividendsPaid := 1000000 } = 3
 example : dividendRefund { holdco with eligibleDividendsPaid := 8000000 } = 0 := by decide
 -- A dividend from a connected subsidiary carries the subsidiary's refund (186(1)(b)).
 example : partIV { rates := { taxableIncome := 0 }, connectedFromNonEligible := 3066666 } = 3066666 := by decide
+-- 186(1)(c), (d): $6,000 of non-capital losses claimed take $2,300 off the Part IV tax on a $10,000 dividend.
+example : partIV { portfolio with lossesClaimed := 600000 } = 383333 - 230000 := by decide
+-- The reduction comes off the non-eligible part first: here there is none, so the eligible part falls.
+example : partIVEligible { portfolio with lossesClaimed := 600000 } = 153333 := by decide
+example : partIVEligible { portfolio with portfolioNonEligible := 1000000, lossesClaimed := 600000 } = 383333 := by decide
+-- Losses beyond the tax leave none.
+example : partIV { portfolio with lossesClaimed := 5000000 } = 0 := by decide
 -- A public corporation: no 10⅔% and no non-eligible account from Part I.
 example : additionalTax { holdco with rates := { holdco.rates with ccpc := false } } = 0 := by decide
 -- Active business income is not investment income: no refundable tax on it.
