@@ -88,7 +88,7 @@ graph TD
 
 14% of medical expenses over the lesser of $2,834 and 3% of income. Full-time attendant care is a medical expense under (b); up to $10,000 of attendant care can be claimed under (b.1) instead.
 
-**Lean:** [`Canteen.ITA.MedicalExpenses.credit`](../../Canteen/ITA/S118_2/MedicalExpenses.lean#L83), [`Canteen.ITA.IndividualYear.medicalCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L200)
+**Lean:** [`Canteen.ITA.MedicalExpenses.credit`](../../Canteen/ITA/S118_2/MedicalExpenses.lean#L83), [`Canteen.ITA.IndividualYear.medicalCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L217)
 
 ### L2. The disability credit
 
@@ -96,7 +96,7 @@ graph TD
 
 14% of $10,138, unless attendant care for the individual is claimed as a medical expense other than under 118.2(2)(b.1).
 
-**Lean:** [`Canteen.ITA.Disability.eligible`](../../Canteen/ITA/S118_3/Disability.lean#L59), [`Canteen.ITA.Disability.credit`](../../Canteen/ITA/S118_3/Disability.lean#L83), [`Canteen.ITA.IndividualYear.disabilityCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L213)
+**Lean:** [`Canteen.ITA.Disability.eligible`](../../Canteen/ITA/S118_3/Disability.lean#L59), [`Canteen.ITA.Disability.credit`](../../Canteen/ITA/S118_3/Disability.lean#L83), [`Canteen.ITA.IndividualYear.disabilityCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L234)
 
 ### L3. Federal tax
 
@@ -104,7 +104,7 @@ graph TD
 
 Tax at the 117(2) rates, less the personal, medical and disability credits.
 
-**Lean:** [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L226)
+**Lean:** [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L247)
 
 ## Facts
 
@@ -182,7 +182,7 @@ Relies on no judgment calls.
 3. Losses: business $0.00, terminal $0.00, attributed $0.00; interest deducted $0.00. [ITA 3(d); 20(16); 74.1; 20(1)(c)]
 4. Income for the year: $60,000.00. [ITA 3]
 5. Less the net capital loss deduction $0.00, the capital gains deduction $0.00, and other deductions $0.00: taxable income $60,000.00. [ITA 2(2); 111(1)(b); 110.6(2), (2.1)]
-6. Tax under 117(2) on taxable income, $8,570.62, less the dividend tax credit of $0.00, the personal credit of $2,100.00, the age and pension credits of $0.00, the employment, CPP and EI credits of $0.00, the donation credit of $0.00, the medical expense credit of $3,248.00, the disability credit of $0.00 and other credits of $0.00: $3,222.62. [ITA 117(2); 120.4(2); 121; 118; 118.1; 118.2; 118.3; 118.7]
+6. Tax under 117(2) on taxable income, $8,570.62, less the dividend tax credit of $0.00, the personal credit of $2,258.06, the age and pension credits of $0.00, the employment, CPP and EI credits of $0.00, the donation credit of $0.00, the medical expense credit of $3,248.00, the disability credit of $0.00 and other credits of $0.00: $3,064.56. [ITA 117(2); 120.4(2); 121; 118; 118.1; 118.2; 118.3; 118.7]
 Relies on no judgment calls.
 ```
 
@@ -194,7 +194,7 @@ Relies on no judgment calls.
 3. Losses: business $0.00, terminal $0.00, attributed $0.00; interest deducted $0.00. [ITA 3(d); 20(16); 74.1; 20(1)(c)]
 4. Income for the year: $60,000.00. [ITA 3]
 5. Less the net capital loss deduction $0.00, the capital gains deduction $0.00, and other deductions $0.00: taxable income $60,000.00. [ITA 2(2); 111(1)(b); 110.6(2), (2.1)]
-6. Tax under 117(2) on taxable income, $8,570.62, less the dividend tax credit of $0.00, the personal credit of $2,100.00, the age and pension credits of $0.00, the employment, CPP and EI credits of $0.00, the donation credit of $0.00, the medical expense credit of $1,148.00, the disability credit of $1,419.32 and other credits of $0.00: $3,903.30. [ITA 117(2); 120.4(2); 121; 118; 118.1; 118.2; 118.3; 118.7]
+6. Tax under 117(2) on taxable income, $8,570.62, less the dividend tax credit of $0.00, the personal credit of $2,258.06, the age and pension credits of $0.00, the employment, CPP and EI credits of $0.00, the donation credit of $0.00, the medical expense credit of $1,148.00, the disability credit of $1,419.32 and other credits of $0.00: $3,745.24. [ITA 117(2); 120.4(2); 121; 118; 118.1; 118.2; 118.3; 118.7]
 Relies on no judgment calls.
 ```
 

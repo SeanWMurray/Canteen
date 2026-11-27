@@ -15,7 +15,7 @@ example : tax 870000 10000000 = 98190 ∧ tax 870000 9000000 = 0 ∧ tax 870000 
 
 def oas : PensionSplitting.Payment := ⟨"Old Age Security", 870000, .oldAgeSecurity⟩
 def senior (pension : Cents) : IndividualYear.Facts :=
-  { taxationYear := 2025, age65 := true, personalAmounts := some {}, pensions := [⟨"pension", pension, .pensionPlan⟩, oas] }
+  { taxationYear := 2025, age65 := true, claimsPersonal := true, pensions := [⟨"pension", pension, .pensionPlan⟩, oas] }
 
 -- OAS is income but not pension income.
 example : IndividualYear.oasReceived (senior 9000000) = 870000 ∧ IndividualYear.eligiblePension (senior 9000000) = 9000000 := by decide

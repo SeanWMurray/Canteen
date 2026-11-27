@@ -4,7 +4,7 @@
 
 **Issue.** An individual with no other income in 2025 realizes a $1,250,000 gain on qualified small business corporation shares and shelters all of it with the capital gains deduction. Is any federal tax payable?
 
-**Conclusion.** No regular tax (A1), but $39,548.33 of minimum tax (K): for the minimum tax the gain counts in full and only 7/5 of the deduction comes off, leaving $375,000 of adjusted taxable income (A2). A gain of $600,000 stays within the exemption; $620,000 does not (W1). The minimum tax is not lost: with a $250,000 salary in 2026, all of it is recovered against that year's regular tax (W2). Provincial tax is not computed.
+**Conclusion.** No regular tax (A1), but $39,391.53 of minimum tax (K): for the minimum tax the gain counts in full and only 7/5 of the deduction comes off, leaving $375,000 of adjusted taxable income (A2). A gain of $600,000 stays within the exemption; $620,000 does not (W1). The minimum tax is not lost: with a $250,000 salary in 2026, all of it is recovered against that year's regular tax (W2). Provincial tax is not computed.
 
 This is a constructed example, not advice.
 
@@ -19,7 +19,7 @@ graph TD
   n2["F1 · The gain"]:::fact
   n3["A1 · No regular tax"]:::proven
   n4["A2 · $375,000 of adjusted taxable income"]:::proven
-  n5["K · $39,548.33 of minimum tax"]:::proven
+  n5["K · $39,391.53 of minimum tax"]:::proven
   n6["W1 · A smaller gain"]:::proven
   n7["L3 · Recovering minimum tax"]:::proven
   n8["W2 · Recovered in 2026"]:::proven
@@ -95,7 +95,7 @@ graph TD
 
 Half the gain is a taxable capital gain, which the capital gains deduction shelters; tax at the 117(2) rates, less the personal credit.
 
-**Lean:** [`Canteen.ITA.IndividualYear.taxableIncome`](../../Canteen/ITA/S3/IndividualYear.lean#L180), [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L226)
+**Lean:** [`Canteen.ITA.IndividualYear.taxableIncome`](../../Canteen/ITA/S3/IndividualYear.lean#L198), [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L247)
 
 ### L2. The minimum tax
 
@@ -139,11 +139,11 @@ The $1,250,000 gain in full, less 7/5 of the $625,000 deduction.
 
 ## Conclusion
 
-### K. $39,548.33 of minimum tax
+### K. $39,391.53 of minimum tax
 
 **Status:** proven · **Uses:** A1, A2, F1, L2
 
-20.5% of the $197,118 over the exemption is $40,409.19; less half the $1,721.72 personal credit.
+20.5% of the $197,118 over the exemption is $40,409.19; less half the $2,035.32 personal credit.
 
 **Lean:** [`Canteen.Transactions.CrystallizationMinimumTax.minimum_tax`](../../Canteen/Transactions/CrystallizationMinimumTax.lean#L40)
 
@@ -155,7 +155,7 @@ The $1,250,000 gain in full, less 7/5 of the $625,000 deduction.
 
 **Status:** proven · **Citation:** ITA 127.51 · **Uses:** F1, L2
 
-A $600,000 gain gives $180,000 of adjusted taxable income, within what the exemption and credit cover: no tax. A $620,000 gain gives $803.33.
+A $600,000 gain gives $180,000 of adjusted taxable income, within what the exemption and credit cover: no tax. A $620,000 gain gives $646.53.
 
 **Lean:** [`Canteen.Transactions.CrystallizationMinimumTax.smaller_gain`](../../Canteen/Transactions/CrystallizationMinimumTax.lean#L43), [`Canteen.Transactions.CrystallizationMinimumTax.slightly_larger`](../../Canteen/Transactions/CrystallizationMinimumTax.lean#L48)
 
@@ -173,7 +173,7 @@ Minimum tax over regular tax is carried forward seven years, and deducted from a
 
 **Status:** proven · **Citation:** ITA 120.2(1) · **Uses:** K, L1, L3
 
-With a $250,000 salary, 2026 regular tax of $55,384.10 is $41,469.31 over the minimum amount, so all $39,548.33 is deducted. With $200,000, $37,094.11 is, and $2,454.22 waits.
+With a $250,000 salary, 2026 regular tax of $54,714.26 (at 2026 amounts) exceeds its minimum amount by more than $39,391.53, so all of it is deducted. With $200,000, $37,386.26 is, and $2,005.27 waits.
 
 **Lean:** [`Canteen.Transactions.CrystallizationMinimumTax.nextYear`](../../Canteen/Transactions/CrystallizationMinimumTax.lean#L53), [`Canteen.Transactions.CrystallizationMinimumTax.carried`](../../Canteen/Transactions/CrystallizationMinimumTax.lean#L57), [`Canteen.Transactions.CrystallizationMinimumTax.carried_forward`](../../Canteen/Transactions/CrystallizationMinimumTax.lean#L59), [`Canteen.Transactions.CrystallizationMinimumTax.recovered`](../../Canteen/Transactions/CrystallizationMinimumTax.lean#L62), [`Canteen.Transactions.CrystallizationMinimumTax.partly_recovered`](../../Canteen/Transactions/CrystallizationMinimumTax.lean#L68)
 
@@ -185,8 +185,8 @@ With a $250,000 salary, 2026 regular tax of $55,384.10 is $41,469.31 over the mi
 
 ```
 1. Adjusted taxable income, with capital gains at 1/1 (3/10 on gifts of listed securities), dividends without the gross-up and 7/5 of the capital gains deduction: $375,000.00. [ITA 127.52(1)(d), (d.1), (f), (h), (i)]
-2. 20.5% of the amount over $177,882.00, less the basic minimum tax credit of $860.86: a minimum amount of $39,548.33. [ITA 127.51; 127.531]
-3. Tax under Division E is $0.00; tax payable is $39,548.33. [ITA 127.5]
+2. 20.5% of the amount over $177,882.00, less the basic minimum tax credit of $1,017.66: a minimum amount of $39,391.53. [ITA 127.51; 127.531]
+3. Tax under Division E is $0.00; tax payable is $39,391.53. [ITA 127.5]
 Relies on no judgment calls.
 ```
 
@@ -198,7 +198,7 @@ Relies on no judgment calls.
 3. Losses: business $0.00, terminal $0.00, attributed $0.00; interest deducted $0.00. [ITA 3(d); 20(16); 74.1; 20(1)(c)]
 4. Income for the year: $625,000.00. [ITA 3]
 5. Less the net capital loss deduction $0.00, the capital gains deduction $625,000.00, and other deductions $0.00: taxable income $0.00. [ITA 2(2); 111(1)(b); 110.6(2), (2.1)]
-6. Tax under 117(2) on taxable income, $0.00, less the dividend tax credit of $0.00, the personal credit of $1,721.72, the age and pension credits of $0.00, the employment, CPP and EI credits of $0.00, the donation credit of $0.00, the medical expense credit of $0.00, the disability credit of $0.00 and other credits of $0.00: $0.00. [ITA 117(2); 120.4(2); 121; 118; 118.1; 118.2; 118.3; 118.7]
+6. Tax under 117(2) on taxable income, $0.00, less the dividend tax credit of $0.00, the personal credit of $2,035.32, the age and pension credits of $0.00, the employment, CPP and EI credits of $0.00, the donation credit of $0.00, the medical expense credit of $0.00, the disability credit of $0.00 and other credits of $0.00: $0.00. [ITA 117(2); 120.4(2); 121; 118; 118.1; 118.2; 118.3; 118.7]
 Relies on no judgment calls.
 ```
 

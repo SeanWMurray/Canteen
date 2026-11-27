@@ -29,7 +29,7 @@ example : pensionCredit 5000000 = 28000 ∧ pensionCredit 100000 = 14000 := by d
 /-! ## In the individual's year -/
 
 def senior : IndividualYear.Facts :=
-  { taxationYear := 2025, age65 := true, personalAmounts := some {}, pensions := [rpp, cpp] }
+  { taxationYear := 2025, age65 := true, claimsPersonal := true, pensions := [rpp, cpp] }
 
 -- Pensions are income; the age credit on $40,000 is in full, and the pension credit is $280.
 example : IndividualYear.income senior = 2 * 4000000 ∧ IndividualYear.ageAndPensionCredits senior = 126392 + 28000 := by decide

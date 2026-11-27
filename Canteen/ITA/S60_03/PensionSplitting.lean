@@ -19,7 +19,7 @@ import Canteen.Core.Money
   received it, and the transferee to have received it as pension income (and as qualified pension
   income to the extent it was to the pensioner).
 
-The 118(2) amounts default to their 2025 indexed values, $9,028 and $45,522. Not encoded: 60.03(1)
+The 118(2) amounts default to their 2025 indexed values, $9,028 and $45,522. In an individual's year, the amounts are the taxation year's, from `YearAmounts` (117.1). Not encoded: 60.03(1)
 "eligible pension income" (b) and (c) (retirement compensation arrangements and veterans' benefits),
 the 118(2) adjustments for section 79 and 20(1)(ww), and 118(8.1). Rounded down to the cent.
 -/

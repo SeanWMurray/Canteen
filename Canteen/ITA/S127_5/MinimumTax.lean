@@ -69,7 +69,7 @@ def basicCredit (f : Facts) : Cents :=
 
 /-- 127.51: the minimum amount. -/
 def minimumAmount (f : Facts) : Cents :=
-  2050 * (adjustedTaxableIncome f / 2 - f.brackets.third) / 10000 - basicCredit f
+  2050 * (adjustedTaxableIncome f / 2 - (IndividualYear.amounts f).brackets.third) / 10000 - basicCredit f
 
 /-- 127.5: tax payable is the greater of the Division E amount and the minimum amount. -/
 def taxPayable (f : Facts) : Cents := max (IndividualYear.federalTax f) (minimumAmount f)
@@ -101,7 +101,7 @@ def explain (f : Facts) : Finding :=
     ⟨s!"Adjusted taxable income, with capital gains at 1/1 (3/10 on gifts of listed securities), dividends without " ++
       s!"the gross-up and 7/5 of the capital gains deduction: {h (adjustedTaxableIncome f)}.",
       "ITA 127.52(1)(d), (d.1), (f), (h), (i)"⟩,
-    ⟨s!"20.5% of the amount over {c f.brackets.third}, less the basic minimum tax credit of {c (basicCredit f)}: " ++
+    ⟨s!"20.5% of the amount over {c (IndividualYear.amounts f).brackets.third}, less the basic minimum tax credit of {c (basicCredit f)}: " ++
       s!"a minimum amount of {c (minimumAmount f)}.", "ITA 127.51; 127.531"⟩,
     ⟨s!"Tax under Division E is {c (IndividualYear.federalTax f)}; tax payable is {c (taxPayable f)}.", "ITA 127.5"⟩], []⟩
 
@@ -111,7 +111,7 @@ def explain (f : Facts) : Finding :=
 theorem regular_le (f : Facts) : IndividualYear.federalTax f ≤ taxPayable f := Nat.le_max_left _ _
 
 /-- With adjusted taxable income within the exemption, the minimum tax does not apply. -/
-theorem within_exemption (f : Facts) (h : adjustedTaxableIncome f / 2 ≤ f.brackets.third) :
+theorem within_exemption (f : Facts) (h : adjustedTaxableIncome f / 2 ≤ (IndividualYear.amounts f).brackets.third) :
     taxPayable f = IndividualYear.federalTax f := by
   have h0 : minimumAmount f = 0 := by
     unfold minimumAmount

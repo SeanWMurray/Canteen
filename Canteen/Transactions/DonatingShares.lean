@@ -26,7 +26,7 @@ def shares (gift : Bool) : CapitalGains.Disposition :=
 
 def year (gift : Bool) : IndividualYear.Facts :=
   { taxationYear := 2025, employmentAndBusiness := 20000000, capital := ⟨[shares gift], 0, {}⟩,
-    personalAmounts := some {}, charitableGifts := 5000000 }
+    claimsPersonal := true, charitableGifts := 5000000 }
 
 def inKind : IndividualYear.Facts := year true
 def cash : IndividualYear.Facts := year false
@@ -46,16 +46,16 @@ theorem same_donation_credit :
 
 /-- The higher income also phases out more of the basic personal amount. -/
 theorem personal_credits :
-    IndividualYear.personalCredit inKind = 198922 ∧ IndividualYear.personalCredit cash = 188906 := by decide
+    IndividualYear.personalCredit inKind = 219283 ∧ IndividualYear.personalCredit cash = 213385 := by decide
 
-/-- Federal tax: $26,163.69 in kind, $32,063.85 selling first. -/
+/-- Federal tax: $25,960.08 in kind, $31,819.06 selling first. -/
 theorem federal_tax :
-    IndividualYear.federalTax inKind = 2616369 ∧ IndividualYear.federalTax cash = 3206385 := by decide
+    IndividualYear.federalTax inKind = 2596008 ∧ IndividualYear.federalTax cash = 3181906 := by decide
 
-/-- **Donating in kind saves $5,900.16 of federal tax.** -/
-theorem saving : IndividualYear.federalTax cash - IndividualYear.federalTax inKind = 590016 := by decide
+/-- **Donating in kind saves $5,858.98 of federal tax.** -/
+theorem saving : IndividualYear.federalTax cash - IndividualYear.federalTax inKind = 585898 := by decide
 
-/-- Neither year pays minimum tax: in kind the minimum amount is nil, and selling first it is $213.66,
+/-- Neither year pays minimum tax: in kind the minimum amount is nil, and selling first it is $91.27,
 far below regular tax. -/
 theorem no_minimum_tax :
     MinimumTax.taxPayable inKind = IndividualYear.federalTax inKind ∧ MinimumTax.taxPayable cash = IndividualYear.federalTax cash := by
@@ -68,19 +68,19 @@ def bigShares (gift : Bool) : CapitalGains.Disposition :=
 
 def bigYear (gift : Bool) : IndividualYear.Facts :=
   { taxationYear := 2025, employmentAndBusiness := 20000000, capital := ⟨[bigShares gift], 0, {}⟩,
-    personalAmounts := some {}, charitableGifts := 100000000 }
+    claimsPersonal := true, charitableGifts := 100000000 }
 
-/-- In kind, no regular tax, but 3/10 of the $800,000 gain counts for the minimum tax: $17,963.58. -/
+/-- In kind, no regular tax, but 3/10 of the $800,000 gain counts for the minimum tax: $17,861.78. -/
 theorem big_in_kind :
     IndividualYear.federalTax (bigYear true) = 0 ∧ MinimumTax.adjustedTaxableIncome (bigYear true) = 2 * 44000000 ∧
-    MinimumTax.taxPayable (bigYear true) = 1796358 := by decide
+    MinimumTax.taxPayable (bigYear true) = 1786178 := by decide
 
-/-- Selling first, regular tax is $26,431.19, but the whole gain counts for the minimum tax: $52,206.58. -/
+/-- Selling first, regular tax is $26,117.59, but the whole gain counts for the minimum tax: $52,049.78. -/
 theorem big_cash :
-    IndividualYear.federalTax (bigYear false) = 2643119 ∧ MinimumTax.adjustedTaxableIncome (bigYear false) = 2 * 100000000 ∧
-    MinimumTax.taxPayable (bigYear false) = 5220658 := by decide
+    IndividualYear.federalTax (bigYear false) = 2611759 ∧ MinimumTax.adjustedTaxableIncome (bigYear false) = 2 * 100000000 ∧
+    MinimumTax.taxPayable (bigYear false) = 5204978 := by decide
 
-/-- Donating in kind still saves $34,243.00, though the minimum tax applies either way. -/
-theorem big_saving : MinimumTax.taxPayable (bigYear false) - MinimumTax.taxPayable (bigYear true) = 3424300 := by decide
+/-- Donating in kind still saves $34,188.00, though the minimum tax applies either way. -/
+theorem big_saving : MinimumTax.taxPayable (bigYear false) - MinimumTax.taxPayable (bigYear true) = 3418800 := by decide
 
 end Canteen.Transactions.DonatingShares

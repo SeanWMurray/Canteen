@@ -24,12 +24,12 @@ def attendant (amount : Cents) : MedicalExpenses.Expense := { description := "fu
 
 /-- Option A: all the care as a medical expense, and no disability credit. -/
 def optionA (cost : Cents) : IndividualYear.Facts :=
-  { taxationYear := 2025, employmentAndBusiness := 6000000, personalAmounts := some {}, medicalExpenses := [attendant cost],
+  { taxationYear := 2025, employmentAndBusiness := 6000000, claimsPersonal := true, medicalExpenses := [attendant cost],
     disability := some { impairment with attendantCareClaimed := true } }
 
 /-- Option B: $10,000 of it under 118.2(2)(b.1), and the disability credit. -/
 def optionB (cost : Cents) : IndividualYear.Facts :=
-  { taxationYear := 2025, employmentAndBusiness := 6000000, personalAmounts := some {},
+  { taxationYear := 2025, employmentAndBusiness := 6000000, claimsPersonal := true,
     medicalExpenses := [attendant (min cost 1000000)], disability := some impairment }
 
 /-! ## Analysis -/

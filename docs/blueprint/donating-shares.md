@@ -4,7 +4,7 @@
 
 **Issue.** An individual with a $200,000 salary wants to give a charity $50,000, and owns public-company shares worth $50,000 that cost $10,000. Should they donate the shares, or sell them and donate the cash?
 
-**Conclusion.** Donate the shares. The gain on shares given to a qualified donee is taxed at nil (A1), while selling first adds $20,000 of taxable capital gain (A2). The donation credit is $14,470 either way (A3), but the higher income also trims the basic personal amount (A4). Federal tax is $26,163.69 in kind against $32,063.85 (A5): a saving of $5,900.16 (K). The minimum tax does not apply (A6); for a $1,000,000 gift it would, either way, and donating in kind would still save $34,243.00 (W1). Provincial tax is not computed.
+**Conclusion.** Donate the shares. The gain on shares given to a qualified donee is taxed at nil (A1), while selling first adds $20,000 of taxable capital gain (A2). The donation credit is $14,470 either way (A3), but the higher income also trims the basic personal amount (A4). Federal tax is $25,960.08 in kind against $31,819.06 (A5): a saving of $5,858.98 (K). The minimum tax does not apply (A6); for a $1,000,000 gift it would, either way, and donating in kind would still save $34,188.00 (W1). Provincial tax is not computed.
 
 This is a constructed example, not advice on a real transaction.
 
@@ -22,7 +22,7 @@ graph TD
   n5["A3 · The same donation credit"]:::proven
   n6["A4 · A smaller personal credit when selling"]:::proven
   n7["A5 · Federal tax"]:::proven
-  n8["K · Donating in kind saves $5,900.16"]:::proven
+  n8["K · Donating in kind saves $5,858.98"]:::proven
   n9["L3 · The minimum tax"]:::encoded
   n10["A6 · No minimum tax on this gift"]:::proven
   n11["W1 · A $1,000,000 gift"]:::proven
@@ -130,7 +130,7 @@ The taxable capital gain on a gift of a listed security to a qualified donee is 
 
 Income, taxable income, tax at the 117(2) rates, less the personal and donation credits.
 
-**Lean:** [`Canteen.ITA.IndividualYear.income`](../../Canteen/ITA/S3/IndividualYear.lean#L164), [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L226), [`Canteen.ITA.IndividualYear.personalCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L189), [`Canteen.ITA.IndividualYear.donationCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L197)
+**Lean:** [`Canteen.ITA.IndividualYear.income`](../../Canteen/ITA/S3/IndividualYear.lean#L182), [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L247), [`Canteen.ITA.IndividualYear.personalCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L209), [`Canteen.ITA.IndividualYear.donationCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L214)
 
 ## Facts
 
@@ -178,7 +178,7 @@ $50,000 of gifts is within the limit either way: 14% of $200 and 29% of $49,800,
 
 **Status:** proven · **Citation:** ITA 118(1.1) · **Uses:** A1, A2, L2
 
-At $220,000 more of the enhanced basic personal amount is phased out: $1,889.06 against $1,989.22.
+At $220,000 more of the enhanced basic personal amount is phased out: $2,133.85 against $2,192.83.
 
 **Lean:** [`Canteen.Transactions.DonatingShares.personal_credits`](../../Canteen/Transactions/DonatingShares.lean#L47)
 
@@ -188,7 +188,7 @@ At $220,000 more of the enhanced basic personal amount is phased out: $1,889.06 
 
 **Status:** proven · **Citation:** ITA 117(2) · **Uses:** A1, A2, A3, A4
 
-$26,163.69 in kind; $32,063.85 selling first.
+$25,960.08 in kind; $31,819.06 selling first.
 
 **Lean:** [`Canteen.Transactions.DonatingShares.federal_tax`](../../Canteen/Transactions/DonatingShares.lean#L51)
 
@@ -196,11 +196,11 @@ $26,163.69 in kind; $32,063.85 selling first.
 
 ## Conclusion
 
-### K. Donating in kind saves $5,900.16
+### K. Donating in kind saves $5,858.98
 
 **Status:** proven · **Uses:** A5
 
-The difference in federal tax is $5,900.16, all from the gain that selling first makes taxable.
+The difference in federal tax is $5,858.98, all from the gain that selling first makes taxable.
 
 **Lean:** [`Canteen.Transactions.DonatingShares.saving`](../../Canteen/Transactions/DonatingShares.lean#L55)
 
@@ -220,7 +220,7 @@ At least 20.5% of adjusted taxable income over $177,882, less half the personal 
 
 **Status:** proven · **Citation:** ITA 127.5 · **Uses:** F1, L3
 
-The minimum amount is nil in kind and $213.66 selling first, below regular tax either way.
+The minimum amount is nil in kind and $91.27 selling first, below regular tax either way.
 
 **Lean:** [`Canteen.Transactions.DonatingShares.no_minimum_tax`](../../Canteen/Transactions/DonatingShares.lean#L58)
 
@@ -230,7 +230,7 @@ The minimum amount is nil in kind and $213.66 selling first, below regular tax e
 
 **Status:** proven · **Citation:** ITA 127.52(1)(d.1) · **Uses:** L1, L2, L3
 
-Shares worth $1,000,000 that cost $200,000: in kind, no regular tax but $17,963.58 of minimum tax; selling first, $52,206.58 of minimum tax. In kind saves $34,243.00. Unclaimed gifts carry forward five years.
+Shares worth $1,000,000 that cost $200,000: in kind, no regular tax but $17,861.78 of minimum tax; selling first, $52,049.78 of minimum tax. In kind saves $34,188.00. Unclaimed gifts carry forward five years.
 
 **Lean:** [`Canteen.Transactions.DonatingShares.bigShares`](../../Canteen/Transactions/DonatingShares.lean#L66), [`Canteen.Transactions.DonatingShares.bigYear`](../../Canteen/Transactions/DonatingShares.lean#L69), [`Canteen.Transactions.DonatingShares.big_in_kind`](../../Canteen/Transactions/DonatingShares.lean#L73), [`Canteen.Transactions.DonatingShares.big_cash`](../../Canteen/Transactions/DonatingShares.lean#L78), [`Canteen.Transactions.DonatingShares.big_saving`](../../Canteen/Transactions/DonatingShares.lean#L83)
 
@@ -244,7 +244,7 @@ Shares worth $1,000,000 that cost $200,000: in kind, no regular tax but $17,963.
 3. Losses: business $0.00, terminal $0.00, attributed $0.00; interest deducted $0.00. [ITA 3(d); 20(16); 74.1; 20(1)(c)]
 4. Income for the year: $200,000.00. [ITA 3]
 5. Less the net capital loss deduction $0.00, the capital gains deduction $0.00, and other deductions $0.00: taxable income $200,000.00. [ITA 2(2); 111(1)(b); 110.6(2), (2.1)]
-6. Tax under 117(2) on taxable income, $42,622.91, less the dividend tax credit of $0.00, the personal credit of $1,989.22, the age and pension credits of $0.00, the employment, CPP and EI credits of $0.00, the donation credit of $14,470.00, the medical expense credit of $0.00, the disability credit of $0.00 and other credits of $0.00: $26,163.69. [ITA 117(2); 120.4(2); 121; 118; 118.1; 118.2; 118.3; 118.7]
+6. Tax under 117(2) on taxable income, $42,622.91, less the dividend tax credit of $0.00, the personal credit of $2,192.83, the age and pension credits of $0.00, the employment, CPP and EI credits of $0.00, the donation credit of $14,470.00, the medical expense credit of $0.00, the disability credit of $0.00 and other credits of $0.00: $25,960.08. [ITA 117(2); 120.4(2); 121; 118; 118.1; 118.2; 118.3; 118.7]
 Relies on no judgment calls.
 ```
 
@@ -256,7 +256,7 @@ Relies on no judgment calls.
 3. Losses: business $0.00, terminal $0.00, attributed $0.00; interest deducted $0.00. [ITA 3(d); 20(16); 74.1; 20(1)(c)]
 4. Income for the year: $220,000.00. [ITA 3]
 5. Less the net capital loss deduction $0.00, the capital gains deduction $0.00, and other deductions $0.00: taxable income $220,000.00. [ITA 2(2); 111(1)(b); 110.6(2), (2.1)]
-6. Tax under 117(2) on taxable income, $48,422.91, less the dividend tax credit of $0.00, the personal credit of $1,889.06, the age and pension credits of $0.00, the employment, CPP and EI credits of $0.00, the donation credit of $14,470.00, the medical expense credit of $0.00, the disability credit of $0.00 and other credits of $0.00: $32,063.85. [ITA 117(2); 120.4(2); 121; 118; 118.1; 118.2; 118.3; 118.7]
+6. Tax under 117(2) on taxable income, $48,422.91, less the dividend tax credit of $0.00, the personal credit of $2,133.85, the age and pension credits of $0.00, the employment, CPP and EI credits of $0.00, the donation credit of $14,470.00, the medical expense credit of $0.00, the disability credit of $0.00 and other credits of $0.00: $31,819.06. [ITA 117(2); 120.4(2); 121; 118; 118.1; 118.2; 118.3; 118.7]
 Relies on no judgment calls.
 ```
 

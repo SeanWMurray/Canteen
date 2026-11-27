@@ -13,8 +13,9 @@ import Canteen.Core.Money
   deducted in computing income.
 
 The premiums and contributions are computed under the Employment Insurance Act and the Canada Pension
-Plan, and are given here; the maximums and the 118(10) amount default to their 2025 values: $1,471,
-EI $1,077.48, base CPP $3,356.10, enhanced CPP $678 + $396. Not encoded: self-employed contributions
+Plan, and are given here; the maximums and the 118(10) amount default to their 2025 values ($1,471,
+EI $1,077.48, base CPP $3,356.10, enhanced CPP $678 + $396). In an individual's year, the 118(10) amount
+is the year's indexed amount (`YearAmounts`), and the maximums are the year's from `maxima`. Not encoded: self-employed contributions
 (60(e), 118.7(c)), Quebec plans (118.7(a.1), (a.2)), 56(1)(r)(v). Rounded down to the cent.
 -/
 
@@ -26,6 +27,15 @@ structure Amounts where
   cppBaseMaximum : Cents := 335610
   cppEnhancedMaximum : Cents := 107400
   deriving Repr, DecidableEq, Inhabited
+
+/-- The maximum EI premiums and CPP contributions for each year, set under the Employment Insurance
+Act and the Canada Pension Plan (not the Income Tax Act). Only years whose maximums are confirmed are
+listed. -/
+def maxima : List (Nat × Amounts) := [(2025, {})]
+
+/-- The year's maximums, with the year's 118(10) amount. -/
+def amountsFor (year : Nat) (employmentAmount : Cents) : Option Amounts :=
+  ((maxima.find? (·.1 == year)).map (·.2)).map fun a => { a with employmentAmount }
 
 structure Facts where
   /-- Income from an office or employment. -/

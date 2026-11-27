@@ -240,7 +240,7 @@ Paid-up capital is ground down, and what comes out above the greater of paid-up 
 
 Gains on qualified small business corporation shares may be deducted, up to the lifetime limit.
 
-**Lean:** [`Canteen.ITA.CapitalGainsDeduction.qualifiedShare`](../../Canteen/ITA/S110_6/CapitalGainsDeduction.lean#L96), [`Canteen.ITA.CapitalGainsDeduction.deduction`](../../Canteen/ITA/S110_6/CapitalGainsDeduction.lean#L225)
+**Lean:** [`Canteen.ITA.CapitalGainsDeduction.qualifiedShare`](../../Canteen/ITA/S110_6/CapitalGainsDeduction.lean#L97), [`Canteen.ITA.CapitalGainsDeduction.deduction`](../../Canteen/ITA/S110_6/CapitalGainsDeduction.lean#L226)
 
 ### L4. Superficial losses, and the cost addition
 

@@ -31,7 +31,7 @@ example : credit judged = 0 ∧ (explain judged).reliesOn = ["J-DTC"] := by deci
 /-! ## In the individual's year -/
 
 def year : IndividualYear.Facts :=
-  { taxationYear := 2025, employmentAndBusiness := 5000000, personalAmounts := some {}, disability := some adult }
+  { taxationYear := 2025, employmentAndBusiness := 5000000, claimsPersonal := true, disability := some adult }
 
 example : IndividualYear.federalTax { year with disability := none } - IndividualYear.federalTax year = 141932 := by decide
 -- Half counts toward the basic minimum tax credit.
@@ -46,11 +46,11 @@ namespace Transfer
 
 /-- An adult child with the credit and $8,000 of income: no tax to use it against. -/
 def child (earnings : Cents) : IndividualYear.Facts :=
-  { taxationYear := 2025, employmentAndBusiness := earnings, personalAmounts := some {}, disability := some adult }
+  { taxationYear := 2025, employmentAndBusiness := earnings, claimsPersonal := true, disability := some adult }
 
 example : IndividualYear.taxBeforeCredits (child 800000) = 0 ∧ IndividualYear.disabilityTransferFrom {} (child 800000) = 141932 := by decide
--- With $20,000: $2,800 of tax less the $2,100 personal credit leaves $700; $719.32 transfers.
-example : IndividualYear.taxBeforeCredits (child 2000000) = 70000 ∧ IndividualYear.disabilityTransferFrom {} (child 2000000) = 71932 := by decide
+-- With $20,000: $2,800 of tax less the $2,258.06 personal credit leaves $541.94; $877.38 transfers.
+example : IndividualYear.taxBeforeCredits (child 2000000) = 54194 ∧ IndividualYear.disabilityTransferFrom {} (child 2000000) = 87738 := by decide
 -- Not a supporter, a non-resident, a spouse claiming, or attendant care claimed: nothing.
 example : IndividualYear.disabilityTransferFrom { supports := false } (child 800000) = 0 ∧
     IndividualYear.disabilityTransferFrom { resident := false } (child 800000) = 0 ∧
@@ -61,7 +61,7 @@ example : IndividualYear.disabilityTransferFrom {} { child 800000 with disabilit
 
 /-- The parent, with the transfer. -/
 def parent : IndividualYear.Facts :=
-  { taxationYear := 2025, employmentAndBusiness := 12000000, personalAmounts := some {},
+  { taxationYear := 2025, employmentAndBusiness := 12000000, claimsPersonal := true,
     disabilityTransferred := IndividualYear.disabilityTransferFrom {} (child 800000) }
 example : IndividualYear.federalTax { parent with disabilityTransferred := 0 } - IndividualYear.federalTax parent = 141932 := by decide
 

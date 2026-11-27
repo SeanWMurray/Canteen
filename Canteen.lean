@@ -82,6 +82,9 @@ import Canteen.ITA.S60_03.PensionSplitting
 import Canteen.ITA.S180_2.OasRecovery
 import Canteen.ITA.S84.PaidUpCapitalIncrease
 import Canteen.ITA.S118_7.EmploymentCredits
+import Canteen.ITA.S117_1.Cpi
+import Canteen.ITA.S117_1.Indexation
+import Canteen.ITA.S117_1.YearAmounts
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.ITA.S40.ShareToAffiliate

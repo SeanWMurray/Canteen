@@ -18,11 +18,11 @@ namespace Canteen.Transactions.PensionSplit
 open Canteen Canteen.ITA
 
 def pensioner (split : Cents) : IndividualYear.Facts :=
-  { taxationYear := 2025, age65 := true, personalAmounts := some {}, pensions := [⟨"pension plan annuity", 9000000, .pensionPlan⟩],
+  { taxationYear := 2025, age65 := true, claimsPersonal := true, pensions := [⟨"pension plan annuity", 9000000, .pensionPlan⟩],
     splitOut := split }
 
 def transferee (split : Cents) : IndividualYear.Facts :=
-  { taxationYear := 2025, age65 := true, personalAmounts := some {}, pensions := [⟨"RRIF payments", 1000000, .registeredFund⟩],
+  { taxationYear := 2025, age65 := true, claimsPersonal := true, pensions := [⟨"RRIF payments", 1000000, .registeredFund⟩],
     splitIn := split }
 
 def total (split : Cents) : Cents := IndividualYear.federalTax (pensioner split) + IndividualYear.federalTax (transferee split)
@@ -32,21 +32,21 @@ def total (split : Cents) : Cents := IndividualYear.federalTax (pensioner split)
 /-- Up to $45,000 may be split. -/
 theorem limit : PensionSplitting.splitLimit true (pensioner 0).pensions = 4500000 := by decide
 
-/-- Without splitting: $12,010.74 between them, all of it the pensioner's. The pensioner's age credit is
+/-- Without splitting: $11,852.68 between them, all of it the pensioner's. The pensioner's age credit is
 mostly clawed back ($329.88 left of $1,263.92). -/
 theorem no_split :
-    IndividualYear.federalTax (pensioner 0) = 1201074 ∧ IndividualYear.federalTax (transferee 0) = 0 ∧
+    IndividualYear.federalTax (pensioner 0) = 1185268 ∧ IndividualYear.federalTax (transferee 0) = 0 ∧
     IndividualYear.ageAndPensionCredits (pensioner 0) = 60988 := by decide
 
-/-- Splitting $40,000 gives each $50,000 of income and $3,450.12 of tax: $6,900.24 in all. The pensioner's
+/-- Splitting $40,000 gives each $50,000 of income and $3,292.06 of tax: $6,584.12 in all. The pensioner's
 age credit comes back to $1,169.88. -/
 theorem split_40000 :
     IndividualYear.income (pensioner 4000000) = 2 * 5000000 ∧ IndividualYear.income (transferee 4000000) = 2 * 5000000 ∧
-    IndividualYear.federalTax (pensioner 4000000) = 345012 ∧ IndividualYear.federalTax (transferee 4000000) = 345012 ∧
+    IndividualYear.federalTax (pensioner 4000000) = 329206 ∧ IndividualYear.federalTax (transferee 4000000) = 329206 ∧
     IndividualYear.ageAndPensionCredits (pensioner 4000000) = 144988 := by decide
 
-/-- **Splitting saves $5,110.50.** -/
-theorem saving : total 0 - total 4000000 = 511050 := by decide
+/-- **Splitting saves $5,268.56.** -/
+theorem saving : total 0 - total 4000000 = 526856 := by decide
 
 /-- No split in $1,000 steps up to the limit does better than $40,000. -/
 theorem best : ∀ k, k ≤ 45 → total 4000000 ≤ total (k * 100000) := by decide +kernel
@@ -67,10 +67,10 @@ def totalOas (split : Cents) : Cents :=
     IndividualYear.federalTax (transfereeOas split) + IndividualYear.oasRecovery (transfereeOas split)
 
 /-- Without splitting, the pensioner's $98,700 of adjusted income is $5,246 over the threshold: $786.90
-of the OAS is recovered. Splitting $40,000 avoids it, and saves $4,712.13 in all. -/
+of the OAS is recovered. Splitting $40,000 avoids it, and saves $4,870.19 in all. -/
 theorem with_oas :
     IndividualYear.oasRecovery (pensionerOas 0) = 78690 ∧ IndividualYear.oasRecovery (pensionerOas 4000000) = 0 ∧
-    totalOas 0 = 1458601 ∧ totalOas 4000000 = 987388 ∧ totalOas 0 - totalOas 4000000 = 471213 := by decide
+    totalOas 0 = 1442795 ∧ totalOas 4000000 = 955776 ∧ totalOas 0 - totalOas 4000000 = 487019 := by decide
 
 /-- Still no split in $1,000 steps up to the limit does better. -/
 theorem best_with_oas : ∀ k, k ≤ 45 → totalOas 4000000 ≤ totalOas (k * 100000) := by decide +kernel

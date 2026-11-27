@@ -14,6 +14,7 @@ import Canteen.ITA.S118_3.Disability
 import Canteen.ITA.S60_03.PensionSplitting
 import Canteen.ITA.S180_2.OasRecovery
 import Canteen.ITA.S118_7.EmploymentCredits
+import Canteen.ITA.S117_1.YearAmounts
 
 /-!
 # An individual's year: income from the encoded sources, and taxable income
@@ -30,6 +31,10 @@ This puts the encoded provisions together for one individual and one taxation ye
 * **taxable income (2(2))**: income less the net capital loss deduction (111(1)(b)), the capital
   gains deduction (110.6(2.1)), computed after it as 110.6 requires, and other Division C
   deductions (given).
+
+Every dollar amount 117.1 indexes (the brackets, the personal, age, disability, employment and
+medical amounts, the OAS threshold, the capital gains deduction limit) is the taxation year's, from
+`YearAmounts`; a year not yet computed uses the latest year's, and the explanation warns of it.
 
 Recapture is treated as income from the business, and a terminal loss as a business loss, of the
 year. Split income (120.4) is deducted from income (20(1)(ww)) and taxed at the highest rate. Federal
@@ -52,7 +57,8 @@ structure DeductionHistory where
   qualifying : List Disposition := []
   /-- The year's dispositions of qualified farm or fishing property (part of the year's). -/
   farmOrFishing : List Disposition := []
-  limit : Cents := 62500000
+  /-- 110.6(2)(a): the limit, if not the year's indexed amount. -/
+  limit : Option Cents := none
   priorWeighted : HalfCents := 0
   priorDeductions : HalfCents := 0
   priorA : HalfCents := 0
@@ -79,10 +85,8 @@ structure Facts where
   otherDivisionC : Cents := 0
   /-- Tax on split income: the individual's split income facts (its dividends are also in `dividends`). -/
   split : Option SplitIncome.Facts := none
-  /-- The 117(2) bracket amounts for the year (2025 by default). -/
-  brackets : Rates.Brackets := {}
-  /-- 118(1): the indexed amounts for the year, if the basic personal (and spouse) credit is claimed. -/
-  personalAmounts : Option PersonalCredits.Amounts := none
+  /-- 118(1): the basic personal (and spouse or eligible dependant) credit is claimed. -/
+  claimsPersonal : Bool := false
   supportsSpouse : Bool := false
   spouseIncome : Cents := 0
   spouseInfirm : Bool := false
@@ -98,7 +102,6 @@ structure Facts where
   age65 : Bool := false
   /-- Pension and similar payments received (118(7), (8)), included in income. -/
   pensions : List PensionSplitting.Payment := []
-  ageAmounts : PensionSplitting.AgeAmounts := {}
   /-- 60.03, 60(c): the split-pension amount elected as pensioner (capped at the 60.03(1) limit). -/
   splitOut : Cents := 0
   /-- 56(1)(a.2): the split-pension amount received as transferee, and whether it was qualified
@@ -107,8 +110,6 @@ structure Facts where
   splitInQualified : Bool := true
   /-- 118(10), 118.7, 60(e.1): employment income (part of `employmentAndBusiness`), and the CPP and EI amounts. -/
   employment : Option EmploymentCredits.Facts := none
-  /-- 180.2(2): the indexed threshold (2025: $93,454). -/
-  oasThreshold : Cents := 9345400
   /-- 118.3(1): the individual's disability facts, if the credit is claimed. -/
   disability : Option Disability.Facts := none
   /-- 118.3(2): disability credits transferred from dependants (see `disabilityTransferFrom`). -/
@@ -116,6 +117,23 @@ structure Facts where
   /-- Other non-refundable credits, given. -/
   otherCredits : Cents := 0
   deriving Inhabited
+
+/-- The indexed amounts (117.1) for the taxation year. A year not yet computed takes the latest year's,
+and `amountsKnown` is false: the explanation says so. -/
+def amounts (f : Facts) : YearAmounts := (YearAmounts.forYear f.taxationYear).getD YearAmounts.latest.2
+
+/-- The year's EI and CPP maximums, where an employment credit is claimed. -/
+def employmentAmounts (f : Facts) (e : EmploymentCredits.Facts) : EmploymentCredits.Amounts :=
+  let fallback : EmploymentCredits.Amounts := { e.amounts with employmentAmount := (amounts f).employmentAmount }
+  (EmploymentCredits.amountsFor f.taxationYear (amounts f).employmentAmount).getD fallback
+
+def employmentFacts (f : Facts) : Option EmploymentCredits.Facts :=
+  f.employment.map fun e => { e with amounts := employmentAmounts f e }
+
+/-- Every amount the year uses is the year's own. -/
+def amountsKnown (f : Facts) : Bool :=
+  (YearAmounts.forYear f.taxationYear).isSome &&
+    (f.employment.isNone || (EmploymentCredits.amountsFor f.taxationYear 0).isSome)
 
 def dividendFacts (f : Facts) : Dividends.Facts := { taxationYear := f.taxationYear, dividends := f.dividends }
 
@@ -133,10 +151,10 @@ def splitOutAllowed (f : Facts) : Cents := min f.splitOut (PensionSplitting.spli
 def pensionTotal (f : Facts) : Cents := (f.pensions.map (·.amount)).sum
 
 /-- 60(e.1): enhanced CPP contributions, deducted in 3(c). -/
-def enhancedCpp (f : Facts) : Cents := (f.employment.map EmploymentCredits.enhancedDeduction).getD 0
+def enhancedCpp (f : Facts) : Cents := ((employmentFacts f).map EmploymentCredits.enhancedDeduction).getD 0
 
 /-- 118(10) and 118.7: the employment, CPP and EI credits. -/
-def employmentCredits (f : Facts) : Cents := (f.employment.map EmploymentCredits.credits).getD 0
+def employmentCredits (f : Facts) : Cents := ((employmentFacts f).map EmploymentCredits.credits).getD 0
 
 /-- Split income (120.4), deducted in computing income (20(1)(ww)). -/
 def splitIncome (f : Facts) : Cents := (f.split.map SplitIncome.splitIncome).getD 0
@@ -155,7 +173,7 @@ def oasReceived (f : Facts) : Cents := ((f.pensions.filter (·.kind == .oldAgeSe
 def adjustedIncome (f : Facts) : HalfCents := Income.income (incomeFactsBase f)
 
 /-- 180.2(2): the Part I.2 tax, deducted in computing income under 60(w). -/
-def oasRecovery (f : Facts) : Cents := OasRecovery.tax (oasReceived f) (adjustedIncome f / 2) f.oasThreshold
+def oasRecovery (f : Facts) : Cents := OasRecovery.tax (oasReceived f) (adjustedIncome f / 2) (amounts f).oasThreshold
 
 /-- Section 3, with the 60(w) deduction in 3(c). -/
 def incomeFacts (f : Facts) : Income.Facts :=
@@ -173,7 +191,7 @@ def capitalGainsDeduction (f : Facts) : HalfCents :=
   | none => 0
   | some h => CapitalGainsDeduction.total
       { taxationYear := f.taxationYear, year := f.capital, qualifying := h.qualifying, farmOrFishing := h.farmOrFishing,
-        limit := h.limit,
+        limit := h.limit.getD (amounts f).capitalGainsLimit,
         priorWeighted := h.priorWeighted, priorDeductions := h.priorDeductions, priorA := h.priorA, priorB := h.priorB,
         cumulativeNetInvestmentLoss := h.cumulativeNetInvestmentLoss, netCapitalLossesDeducted := netCapitalLossDeduction f }
 
@@ -182,23 +200,22 @@ def taxableIncome (f : Facts) : HalfCents :=
   income f - netCapitalLossDeduction f - capitalGainsDeduction f - 2 * f.otherDivisionC
 
 /-- 118(1): the basic personal (and spouse) credit, on the individual's income for the year. -/
-def personalFacts (f : Facts) (a : PersonalCredits.Amounts) : PersonalCredits.Facts :=
+def personalFacts (f : Facts) : PersonalCredits.Facts :=
   { income := income f / 2, supportsSpouse := f.supportsSpouse, spouseIncome := f.spouseIncome, spouseInfirm := f.spouseInfirm,
-    dependant := f.eligibleDependant, amounts := a, brackets := f.brackets }
+    dependant := f.eligibleDependant,
+    amounts := { base := (amounts f).bpaBase, enhanced := (amounts f).bpaEnhanced, infirm := (amounts f).infirm },
+    brackets := (amounts f).brackets }
 
-def personalCredit (f : Facts) : Cents :=
-  match f.personalAmounts with
-  | none => 0
-  | some a => PersonalCredits.credit (personalFacts f a)
+def personalCredit (f : Facts) : Cents := if f.claimsPersonal then PersonalCredits.credit (personalFacts f) else 0
 
 def donationFacts (f : Facts) : Donations.Facts :=
-  { charitableGifts := f.charitableGifts, income := income f / 2, amountTaxable := taxableIncome f / 2, deathYear := f.deathYear, giftGains := f.giftGains, brackets := f.brackets }
+  { charitableGifts := f.charitableGifts, income := income f / 2, amountTaxable := taxableIncome f / 2, deathYear := f.deathYear, giftGains := f.giftGains, brackets := (amounts f).brackets }
 
 /-- 118.1(3): the donation credit. -/
 def donationCredit (f : Facts) : Cents := Donations.credit (donationFacts f)
 
 /-- 118.2(1): the medical expense credit, on the individual's income for the year. -/
-def medicalCredit (f : Facts) : Cents := MedicalExpenses.credit { income := income f / 2, expenses := f.medicalExpenses }
+def medicalCredit (f : Facts) : Cents := MedicalExpenses.credit { income := income f / 2, expenses := f.medicalExpenses, threshold := (amounts f).medicalThreshold }
 
 /-- 118(3), with 60.03(2): eligible pension income, less the split-pension amount given, plus the
 amount received to the extent it is eligible for the transferee. -/
@@ -208,32 +225,39 @@ def eligiblePension (f : Facts) : Cents :=
 
 /-- 118(2) and 118(3): the age and pension credits. -/
 def ageAndPensionCredits (f : Facts) : Cents :=
-  PensionSplitting.ageCredit f.ageAmounts f.age65 (income f / 2) + PensionSplitting.pensionCredit (eligiblePension f)
+  PensionSplitting.ageCredit ⟨(amounts f).age, (amounts f).ageThreshold⟩ f.age65 (income f / 2) + PensionSplitting.pensionCredit (eligiblePension f)
+
+/-- The year's 118.3(1) amounts. -/
+def disabilityFacts (f : Facts) (d : Disability.Facts) : Disability.Facts :=
+  { d with amounts := ⟨(amounts f).disability, (amounts f).disabilitySupplement, (amounts f).disabilityCare⟩ }
 
 /-- 118.3(1): the disability credit. -/
-def disabilityCredit (f : Facts) : Cents := (f.disability.map Disability.credit).getD 0
+def disabilityCredit (f : Facts) : Cents := (f.disability.map fun d => Disability.credit (disabilityFacts f d)).getD 0
 
 /-- 118.3(2)(d): tax before Division E deductions other than 118 to 118.07 and 118.7. -/
 def taxBeforeCredits (f : Facts) : Cents :=
-  (Rates.tax (taxableIncome f / 2) f.brackets + (f.split.map SplitIncome.tax).getD 0) - (personalCredit f + employmentCredits f)
+  (Rates.tax (taxableIncome f / 2) (amounts f).brackets + (f.split.map SplitIncome.tax).getD 0) - (personalCredit f + employmentCredits f)
 
 /-- 118.3(2): what a supporter may deduct for this person's unused disability credit. -/
 def disabilityTransferFrom (s : Disability.Supporter) (dependant : Facts) : Cents :=
   match dependant.disability with
   | none => 0
-  | some d => Disability.transfer s d (taxBeforeCredits dependant)
+  | some d => Disability.transfer s (disabilityFacts dependant d) (taxBeforeCredits dependant)
 
 /-- Tax under 117(2) on taxable income, plus tax on split income (120.4(2)), less the dividend tax
 credit, the personal credit, the donation credit, the medical expense credit and other credits. -/
 def federalTax (f : Facts) : Cents :=
-  (Rates.tax (taxableIncome f / 2) f.brackets + (f.split.map SplitIncome.tax).getD 0) -
+  (Rates.tax (taxableIncome f / 2) (amounts f).brackets + (f.split.map SplitIncome.tax).getD 0) -
     (Dividends.credit (dividendFacts f) + personalCredit f + ageAndPensionCredits f + employmentCredits f + donationCredit f + medicalCredit f + disabilityCredit f + f.disabilityTransferred +
       f.otherCredits)
 
 def explain (f : Facts) : Finding :=
   let h := formatHalfCents
   let c := formatCents
-  ⟨taxableIncome f > 0, [
+  ⟨taxableIncome f > 0,
+    (if amountsKnown f then [] else
+      [⟨s!"Warning: the indexed amounts (or CPP and EI maximums) for {f.taxationYear} are not yet computed; those of " ++
+        s!"{YearAmounts.latest.1} (or 2025) are used instead.", "ITA 117.1"⟩]) ++ [
     ⟨s!"Employment and business income {c f.employmentAndBusiness}; dividends included {c (Dividends.inclusion (dividendFacts f))} " ++
       s!"(with the gross-up); recapture {c (recapture f)}; income attributed {c (attributedIncome f)}.",
       "ITA 3(a); 82(1); 13(1); 74.1"⟩,
@@ -244,7 +268,7 @@ def explain (f : Facts) : Finding :=
     ⟨s!"Less the net capital loss deduction {h (netCapitalLossDeduction f)}, the capital gains deduction " ++
       s!"{h (capitalGainsDeduction f)}, and other deductions {c f.otherDivisionC}: taxable income {h (taxableIncome f)}.",
       "ITA 2(2); 111(1)(b); 110.6(2), (2.1)"⟩,
-    ⟨s!"Tax under 117(2) on taxable income, {c (Rates.tax (taxableIncome f / 2) f.brackets)}" ++
+    ⟨s!"Tax under 117(2) on taxable income, {c (Rates.tax (taxableIncome f / 2) (amounts f).brackets)}" ++
       (if splitIncome f > 0 then s!", plus tax on split income of {c ((f.split.map SplitIncome.tax).getD 0)}" else "") ++
       s!", less the dividend tax credit of {c (Dividends.credit (dividendFacts f))}, the personal credit of {c (personalCredit f)}, " ++
       s!"the age and pension credits of {c (ageAndPensionCredits f)}, the employment, CPP and EI credits of " ++

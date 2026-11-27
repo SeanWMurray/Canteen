@@ -14,11 +14,11 @@ def memo : Blueprint where
   summary := [
     "**Issue.** Spouses over 65: one receives a $90,000 pension plan annuity in 2025, the other $10,000 of RRIF payments. " ++
       "How much of the pension should they elect to split?",
-    "**Conclusion.** $40,000, which leaves each with $50,000 of income: their federal tax falls from $12,010.74 to " ++
-      "$6,900.24, a saving of $5,110.50 (K). Besides the lower rates, the pensioner's age credit, mostly clawed back at " ++
+    "**Conclusion.** $40,000, which leaves each with $50,000 of income: their federal tax falls from $11,852.68 to " ++
+      "$6,584.12, a saving of $5,268.56 (K). Besides the lower rates, the pensioner's age credit, mostly clawed back at " ++
       "$90,000, comes back (A2, A3). No split in $1,000 steps up to the $45,000 limit does better, and splitting the whole " ++
       "$45,000 costs $10.96 more (W1). With Old Age Security as well, splitting also avoids $786.90 of OAS recovery tax " ++
-      "and saves $4,712.13 (W2). Provincial tax is not computed.",
+      "and saves $4,870.19 (W2). Provincial tax is not computed.",
     "This is a constructed example, not advice."]
   sections := [
     { heading := "The law"
@@ -50,16 +50,16 @@ def memo : Blueprint where
         { id := "A1", kind := .step, title := "Up to $45,000 may be split", citation := "ITA 60.03(1)"
           statement := "Half the pensioner's $90,000 of eligible pension income."
           lean := [``limit], uses := ["F1", "L1"] },
-        { id := "A2", kind := .step, title := "Without splitting: $12,010.74", citation := "ITA 117(2); 118(2)"
+        { id := "A2", kind := .step, title := "Without splitting: $11,852.68", citation := "ITA 117(2); 118(2)"
           statement := "All of it the pensioner's, whose age credit is down to $329.88."
           lean := [``no_split], uses := ["F1", "L3"] },
-        { id := "A3", kind := .step, title := "Splitting $40,000: $3,450.12 each", citation := "ITA 60(c); 56(1)(a.2)"
+        { id := "A3", kind := .step, title := "Splitting $40,000: $3,292.06 each", citation := "ITA 60(c); 56(1)(a.2)"
           statement := "$50,000 of income each; the pensioner's age credit back to $1,169.88, plus the $280 pension credit."
           lean := [``split_40000], uses := ["A1", "F1", "L3"] } ] },
     { heading := "Conclusion"
       nodes := [
-        { id := "K", kind := .conclusion, title := "Split $40,000: $5,110.50 saved"
-          statement := "$6,900.24 between them, against $12,010.74; no split in $1,000 steps up to the limit does better."
+        { id := "K", kind := .conclusion, title := "Split $40,000: $5,268.56 saved"
+          statement := "$6,584.12 between them, against $11,852.68; no split in $1,000 steps up to the limit does better."
           lean := [``total, ``saving, ``best], uses := ["A2", "A3", "F1", "L3"] } ] },
     { heading := "What if"
       nodes := [
@@ -67,8 +67,8 @@ def memo : Blueprint where
           statement := "The transferee's income then exceeds the pensioner's: $10.96 more than at $40,000."
           lean := [``overshoot], uses := ["A1", "F1", "K", "L3"] },
         { id := "W2", kind := .step, title := "With $8,700 of OAS each", citation := "ITA 180.2(2)"
-          statement := "Unsplit, $786.90 of the pensioner's OAS is recovered; split $40,000 and none is: $9,873.88 in all " ++
-            "against $14,586.01, still the best split in $1,000 steps."
+          statement := "Unsplit, $786.90 of the pensioner's OAS is recovered; split $40,000 and none is: $9,557.76 in all " ++
+            "against $14,427.95, still the best split in $1,000 steps."
           lean := [``oas, ``pensionerOas, ``transfereeOas, ``totalOas, ``with_oas, ``best_with_oas], uses := ["F1", "L1", "L3", "L4"] } ] } ]
   diagrams := []
   appendix := [

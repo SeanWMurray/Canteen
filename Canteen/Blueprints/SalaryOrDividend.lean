@@ -14,7 +14,7 @@ def memo : Blueprint where
   summary := [
     "**Issue.** Opco, a CCPC, has $100,000 of active business income in 2025, within its business limit, before paying " ++
       "its owner, who has no other income. Should it pay a salary or dividends?",
-    "**Conclusion.** Federally, dividends leave the owner $6,552.82 more: $84,826.13 against $78,273.31 (K). Most of the " ++
+    "**Conclusion.** Federally, dividends leave the owner $6,552.82 more: $84,984.19 against $78,431.37 (K). Most of the " ++
       "difference is Canada Pension Plan contributions, $8,860.20 between the owner and Opco (A1), which buy a pension " ++
       "not valued here; on tax alone the salary costs $2,307.38 less (W1). A salary also creates RRSP room. Provincial " ++
       "tax, which changes the balance, is not computed.",
@@ -45,16 +45,16 @@ def memo : Blueprint where
         { id := "A1", kind := .step, title := "A $95,569.90 salary", citation := "CPP 8(1), (1.1), (1.2); ITA 9(1)"
           statement := "With Opco's matching $4,430.10 of CPP, it uses up the $100,000; the owner contributes the same."
           lean := [``salary_uses_it_all], uses := ["F1"] },
-        { id := "A2", kind := .step, title := "The owner's tax on the salary: $12,866.49", citation := "ITA 117(2); 118(10); 118.7; 60(e.1)"
+        { id := "A2", kind := .step, title := "The owner's tax on the salary: $12,708.43", citation := "ITA 117(2); 118(10); 118.7; 60(e.1)"
           statement := "After $675.79 of employment and CPP credits and the $1,074 deduction of enhanced contributions."
           lean := [``withSalary, ``salary_tax], uses := ["A1", "L3"] },
-        { id := "A3", kind := .step, title := "Or $9,000 at Opco and $6,173.87 on a $91,000 dividend", citation := "ITA 125(1); 82(1); 121"
+        { id := "A3", kind := .step, title := "Or $9,000 at Opco and $6,015.81 on a $91,000 dividend", citation := "ITA 125(1); 82(1); 121"
           statement := "Opco pays the small business rate and the rest out as a non-eligible dividend."
           lean := [``dividend, ``withDividend, ``dividend_tax], uses := ["F1", "L1", "L3"] } ] },
     { heading := "Conclusion"
       nodes := [
         { id := "K", kind := .conclusion, title := "Dividends leave $6,552.82 more, federally"
-          statement := "$84,826.13 against $78,273.31; neither pays minimum tax."
+          statement := "$84,984.19 against $78,431.37; neither pays minimum tax."
           lean := [``what_the_owner_keeps, ``no_minimum_tax], uses := ["A1", "A2", "A3"] } ] },
     { heading := "What if"
       nodes := [

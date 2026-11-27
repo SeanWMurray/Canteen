@@ -35,7 +35,8 @@ D)] × E (E being 1 for a current year), (b) the cumulative gains limit less the
 deduction, (c) the annual gains limit less that deduction, and (d) the 3(b) amount if the only
 properties were the individual's qualified small business corporation shares.
 
-The $625,000 is indexed for years beginning after 2025 (117.1(2)(c)); the indexed amount is given.
+The $625,000 is indexed for years beginning after 2025 (117.1(2)(c)); the indexed amount is given ($637,500
+for 2026). In an individual's year, the amounts are the taxation year's, from `YearAmounts` (117.1).
 A + B + C + D (earlier deductions, with the pre-2000 weights) is given, as are the earlier years'
 A and B amounts, the 1985 3(e) amount and the cumulative net investment loss. The "small business
 corporation" test (248(1): all or substantially all of the assets' value attributable to active

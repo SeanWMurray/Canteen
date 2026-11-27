@@ -69,8 +69,8 @@ example : income childYear = 0 ∧ federalTax childYear = 275654 := by decide
 example : federalTax { childYear with split := none } = 57154 := by decide
 
 -- With the basic personal credit: income of $330,500 is above the 117(2)(e) threshold, so only the
--- $12,298 base, a $1,721.72 credit.
-example : personalCredit { year with personalAmounts := some {} } = 172172 ∧ federalTax { year with personalAmounts := some {} } = 2112919 := by
+-- base, $14,538 for 2025, a $2,035.32 credit.
+example : personalCredit { year with claimsPersonal := true } = 203532 ∧ federalTax { year with claimsPersonal := true } = 2081559 := by
   decide
 
 -- Donating $10,000 of shares of a public company (taxed at nil under 38(a.1)): a credit of 14% of
@@ -78,3 +78,22 @@ example : personalCredit { year with personalAmounts := some {} } = 172172 ∧ f
 example : donationCredit { year with charitableGifts := 1000000 } = 287000 := by decide
 
 end Canteen.Tests.IndividualYear
+
+/-! ## The year's own amounts (117.1) -/
+
+namespace Canteen.Tests.IndividualYear.Indexed
+
+open Canteen Canteen.ITA Canteen.ITA.IndividualYear
+
+def salaried (y : Nat) : Facts := { taxationYear := y, employmentAndBusiness := 10000000, claimsPersonal := true }
+
+-- 2025 and 2026 each use their own brackets and basic personal amount.
+example : (amounts (salaried 2025)).brackets.first = 5737500 ∧ (amounts (salaried 2026)).brackets.first = 5852300 := by decide
+example : personalCredit (salaried 2025) = 225806 ∧ personalCredit (salaried 2026) = 230328 := by decide
+-- The same salary pays less tax in 2026: the brackets and credits have risen with prices.
+example : federalTax (salaried 2026) < federalTax (salaried 2025) := by decide
+-- 2028 is beyond the CPI data: the year is flagged, and the explanation says so first.
+example : amountsKnown (salaried 2027) = true ∧ amountsKnown (salaried 2028) = false := by decide
+example : ((explain (salaried 2028)).steps.head?.map (·.claim.startsWith "Warning")) = some true := by decide +kernel
+
+end Canteen.Tests.IndividualYear.Indexed

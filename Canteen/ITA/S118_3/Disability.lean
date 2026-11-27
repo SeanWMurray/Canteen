@@ -25,7 +25,7 @@ nursing home care for the person's impairment claimed under 118.2 other than und
 amount by which the person's 118.3(1) deduction exceeds the person's tax payable before deductions under
 Division E, other than under 118 to 118.07 and 118.7.
 
-The amounts default to their 2025 indexed values: $10,138, $5,914 and $3,464. Whether the impairment
+The amounts default to their 2025 indexed values: $10,138, $5,914 and $3,464. In an individual's year, the amounts are the taxation year's, from `YearAmounts` (117.1). Whether the impairment
 meets (a) and (a.1) is usually a judgment call; the certificate, by the right practitioner for the
 impairment, is a fact. Amounts are credits (the deduction from tax), not the underlying amounts. Not
 encoded: 118.3(3) (sharing between supporting persons). Rounded

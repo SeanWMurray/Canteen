@@ -4,7 +4,7 @@
 
 **Issue.** Opco, a CCPC, earns $1,000,000 of active business income in 2025, half of it over its business limit, and pays the $880,000 left after tax to its shareholder. How much should it designate as eligible dividends?
 
-**Conclusion.** Exactly its general rate income pool, $360,000 (A2): the total federal tax is then $325,430.45, $9,909.57 less than designating nothing (K). Designating the $425,000 it kept from income taxed at the general rate goes $65,000 over the pool: that saves the shareholder $1,789.22 but costs $13,000 of Part III.1 tax (A3, A4). Electing under 185.1(2) to treat the excess as a separate non-eligible dividend undoes it (W1). The minimum tax and provincial tax are not computed.
+**Conclusion.** Exactly its general rate income pool, $360,000 (A2): the total federal tax is then $325,116.85, $9,909.57 less than designating nothing (K). Designating the $425,000 it kept from income taxed at the general rate goes $65,000 over the pool: that saves the shareholder $1,789.22 but costs $13,000 of Part III.1 tax (A3, A4). Electing under 185.1(2) to treat the excess as a separate non-eligible dividend undoes it (W1). The minimum tax and provincial tax are not computed.
 
 This is a constructed example, not advice.
 
@@ -133,7 +133,7 @@ graph TD
 
 Eligible dividends are grossed up by 38% and carry a credit of 6/11 of the gross-up; other dividends 15% and 9/13.
 
-**Lean:** [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L226)
+**Lean:** [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L247)
 
 ## Facts
 
@@ -181,7 +181,7 @@ $65,000 over the pool is excessive, taxed at 20%.
 
 **Status:** proven · **Citation:** ITA 117(2); 121 · **Uses:** F1, L3
 
-$205,430.45 designating $360,000; $215,340.02 designating nothing; $203,641.23 designating $425,000.
+$205,116.85 designating $360,000; $215,026.42 designating nothing; $203,327.63 designating $425,000.
 
 **Lean:** [`Canteen.Transactions.EligibleDesignation.shareholder_tax`](../../Canteen/Transactions/EligibleDesignation.lean#L56)
 
@@ -193,7 +193,7 @@ $205,430.45 designating $360,000; $215,340.02 designating nothing; $203,641.23 d
 
 **Status:** proven · **Uses:** F1, L1, L2, L3, A1, A2, A3, A4
 
-$325,430.45 in all, against $335,340.02 designating nothing and $336,641.23 designating $425,000.
+$325,116.85 in all, against $335,026.42 designating nothing and $336,327.63 designating $425,000.
 
 **Lean:** [`Canteen.Transactions.EligibleDesignation.total`](../../Canteen/Transactions/EligibleDesignation.lean#L38), [`Canteen.Transactions.EligibleDesignation.designate_the_pool`](../../Canteen/Transactions/EligibleDesignation.lean#L61)
 
@@ -213,7 +213,7 @@ With the shareholders' concurrence, the corporation may treat up to the excessiv
 
 **Status:** proven · **Citation:** ITA 185.1(2) · **Uses:** F1, L1, L3, L4, A3, K
 
-Electing the $65,000 excess leaves $360,000 eligible and no Part III.1 tax: $325,430.45 in all.
+Electing the $65,000 excess leaves $360,000 eligible and no Part III.1 tax: $325,116.85 in all.
 
 **Lean:** [`Canteen.Transactions.EligibleDesignation.election`](../../Canteen/Transactions/EligibleDesignation.lean#L70), [`Canteen.Transactions.EligibleDesignation.totalElected`](../../Canteen/Transactions/EligibleDesignation.lean#L73), [`Canteen.Transactions.EligibleDesignation.election_undoes`](../../Canteen/Transactions/EligibleDesignation.lean#L78)
 
@@ -247,7 +247,7 @@ Relies on no judgment calls.
 3. Losses: business $0.00, terminal $0.00, attributed $0.00; interest deducted $0.00. [ITA 3(d); 20(16); 74.1; 20(1)(c)]
 4. Income for the year: $1,094,800.00. [ITA 3]
 5. Less the net capital loss deduction $0.00, the capital gains deduction $0.00, and other deductions $0.00: taxable income $1,094,800.00. [ITA 2(2); 111(1)(b); 110.6(2), (2.1)]
-6. Tax under 117(2) on taxable income, $335,770.35, less the dividend tax credit of $128,618.18, the personal credit of $1,721.72, the age and pension credits of $0.00, the employment, CPP and EI credits of $0.00, the donation credit of $0.00, the medical expense credit of $0.00, the disability credit of $0.00 and other credits of $0.00: $205,430.45. [ITA 117(2); 120.4(2); 121; 118; 118.1; 118.2; 118.3; 118.7]
+6. Tax under 117(2) on taxable income, $335,770.35, less the dividend tax credit of $128,618.18, the personal credit of $2,035.32, the age and pension credits of $0.00, the employment, CPP and EI credits of $0.00, the donation credit of $0.00, the medical expense credit of $0.00, the disability credit of $0.00 and other credits of $0.00: $205,116.85. [ITA 117(2); 120.4(2); 121; 118; 118.1; 118.2; 118.3; 118.7]
 Relies on no judgment calls.
 ```
 

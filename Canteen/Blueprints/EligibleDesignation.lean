@@ -14,7 +14,7 @@ def memo : Blueprint where
   summary := [
     "**Issue.** Opco, a CCPC, earns $1,000,000 of active business income in 2025, half of it over its business limit, and " ++
       "pays the $880,000 left after tax to its shareholder. How much should it designate as eligible dividends?",
-    "**Conclusion.** Exactly its general rate income pool, $360,000 (A2): the total federal tax is then $325,430.45, " ++
+    "**Conclusion.** Exactly its general rate income pool, $360,000 (A2): the total federal tax is then $325,116.85, " ++
       "$9,909.57 less than designating nothing (K). Designating the $425,000 it kept from income taxed at the general rate " ++
       "goes $65,000 over the pool: that saves the shareholder $1,789.22 but costs $13,000 of Part III.1 tax (A3, A4). " ++
       "Electing under 185.1(2) to treat the excess as a separate non-eligible dividend undoes it (W1). The minimum tax " ++
@@ -53,12 +53,12 @@ def memo : Blueprint where
           statement := "$65,000 over the pool is excessive, taxed at 20%."
           lean := [``over_designate], uses := ["A1"] },
         { id := "A4", kind := .step, title := "The shareholder's tax under each", citation := "ITA 117(2); 121"
-          statement := "$205,430.45 designating $360,000; $215,340.02 designating nothing; $203,641.23 designating $425,000."
+          statement := "$205,116.85 designating $360,000; $215,026.42 designating nothing; $203,327.63 designating $425,000."
           lean := [``shareholder_tax], uses := ["F1", "L3"] } ] },
     { heading := "Conclusion"
       nodes := [
         { id := "K", kind := .conclusion, title := "Designate the pool"
-          statement := "$325,430.45 in all, against $335,340.02 designating nothing and $336,641.23 designating $425,000."
+          statement := "$325,116.85 in all, against $335,026.42 designating nothing and $336,327.63 designating $425,000."
           lean := [``total, ``designate_the_pool], uses := ["F1", "L1", "L2", "L3", "A1", "A2", "A3", "A4"] } ] },
     { heading := "What if"
       nodes := [
@@ -69,7 +69,7 @@ def memo : Blueprint where
           lean := [``GeneralRateIncomePool.elected, ``GeneralRateIncomePool.eligibleAfter, ``GeneralRateIncomePool.partIII1After,
             ``GeneralRateIncomePool.full_election], uses := ["L2"] },
         { id := "W1", kind := .step, title := "Over-designating, then electing: as if the pool had been designated", citation := "ITA 185.1(2)"
-          statement := "Electing the $65,000 excess leaves $360,000 eligible and no Part III.1 tax: $325,430.45 in all."
+          statement := "Electing the $65,000 excess leaves $360,000 eligible and no Part III.1 tax: $325,116.85 in all."
           lean := [``election, ``totalElected, ``election_undoes], uses := ["F1", "L1", "L3", "L4", "A3", "K"] } ] } ]
   diagrams := []
   appendix := [

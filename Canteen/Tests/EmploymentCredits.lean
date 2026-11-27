@@ -19,7 +19,7 @@ example : contributionCredit { eiPremiums := 200000, cppBase := 500000 } = 62070
 example : enhancedDeduction { cppEnhanced := 107400 } = 107400 ∧ enhancedDeduction { cppEnhanced := 200000 } = 107400 := by decide
 
 def employee : IndividualYear.Facts :=
-  { taxationYear := 2025, employmentAndBusiness := 6000000, personalAmounts := some {},
+  { taxationYear := 2025, employmentAndBusiness := 6000000, claimsPersonal := true,
     employment := some { employmentIncome := 6000000, eiPremiums := 98400, cppBase := 279675, cppEnhanced := 56500 } }
 
 -- In the year: the enhanced contributions come off income, and the credits off tax.

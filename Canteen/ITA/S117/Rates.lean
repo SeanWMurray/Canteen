@@ -15,7 +15,7 @@ import Canteen.Core.Money
 > paragraph (d), plus 33% of the amount by which [it] exceeds $253,414 for the year.
 
 The bracket amounts are for 2025; for later years they are indexed under 117.1(1), and the indexed
-amounts are given. The rates are those of the consolidated text; any transitional rate for 2025 in
+amounts are given (in an individual's year, the year's from `YearAmounts`). The rates are those of the consolidated text; any transitional rate for 2025 in
 the amending Act (an application provision, not in the consolidated text) is not applied. The tax is
 computed on the whole amount, in hundredths of a basis point of cents, and rounded down to the cent.
 -/

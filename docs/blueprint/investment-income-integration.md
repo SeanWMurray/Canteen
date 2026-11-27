@@ -4,7 +4,7 @@
 
 **Issue.** An individual with a $200,000 salary earns $100,000 of interest a year. Is the federal tax different if a holding company earns it and pays it out as dividends?
 
-**Conclusion.** Barely. Personally, the interest adds $31,130.94 of federal tax (A3). Through Holdco, Holdco pays $38,666.66 but gets $30,666.66 back as a dividend refund when it pays out $92,000 (A1, A2), and the dividend adds $23,491.10 to the individual's tax (A4): $31,491.10 in all, $360.16 more (K). The refundable tax and the dividend gross-up and credit are designed to make the two routes nearly equal. Provincial tax is not computed.
+**Conclusion.** Barely. Personally, the interest adds $31,020.95 of federal tax (A3). Through Holdco, Holdco pays $38,666.66 but gets $30,666.66 back as a dividend refund when it pays out $92,000 (A1, A2), and the dividend adds $23,381.11 to the individual's tax (A4): $31,381.11 in all, $360.16 more (K). The refundable tax and the dividend gross-up and credit are designed to make the two routes nearly equal. Provincial tax is not computed.
 
 This is a constructed example, not advice.
 
@@ -19,8 +19,8 @@ graph TD
   n2["F1 · The individual and the interest"]:::fact
   n3["A1 · Holdco's tax: $8,000 after the refund"]:::proven
   n4["A2 · A $92,000 dividend"]:::proven
-  n5["A3 · Personally: $31,130.94"]:::proven
-  n6["A4 · The dividend: $23,491.10"]:::proven
+  n5["A3 · Personally: $31,020.95"]:::proven
+  n6["A4 · The dividend: $23,381.11"]:::proven
   n7["K · Within $360.16"]:::proven
   n2 --> n3
   n0 --> n3
@@ -94,7 +94,7 @@ graph TD
 
 Income, with non-eligible dividends grossed up by 15%; tax at the 117(2) rates, less the personal and dividend tax credits.
 
-**Lean:** [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L226)
+**Lean:** [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L247)
 
 ## Facts
 
@@ -128,7 +128,7 @@ The interest less the tax, plus the refund that the dividend earns.
 
 **Rests on:** facts F1.
 
-### A3. Personally: $31,130.94
+### A3. Personally: $31,020.95
 
 **Status:** proven · **Citation:** ITA 117(2) · **Uses:** F1, L2
 
@@ -138,7 +138,7 @@ The federal tax the interest adds to a $200,000 salary.
 
 **Rests on:** facts F1.
 
-### A4. The dividend: $23,491.10
+### A4. The dividend: $23,381.11
 
 **Status:** proven · **Citation:** ITA 82(1); 121 · **Uses:** A2, L2
 
@@ -154,7 +154,7 @@ $105,800 of income after the gross-up, less the dividend tax credit.
 
 **Status:** proven · **Uses:** A1, A3, A4
 
-Through Holdco, $31,491.10 of federal tax in all, against $31,130.94 personally.
+Through Holdco, $31,381.11 of federal tax in all, against $31,020.95 personally.
 
 **Lean:** [`Canteen.Transactions.InvestmentIncomeIntegration.integration`](../../Canteen/Transactions/InvestmentIncomeIntegration.lean#L62)
 
@@ -180,7 +180,7 @@ Relies on no judgment calls.
 3. Losses: business $0.00, terminal $0.00, attributed $0.00; interest deducted $0.00. [ITA 3(d); 20(16); 74.1; 20(1)(c)]
 4. Income for the year: $305,800.00. [ITA 3]
 5. Less the net capital loss deduction $0.00, the capital gains deduction $0.00, and other deductions $0.00: taxable income $305,800.00. [ITA 2(2); 111(1)(b); 110.6(2), (2.1)]
-6. Tax under 117(2) on taxable income, $75,400.35, less the dividend tax credit of $9,553.84, the personal credit of $1,721.72, the age and pension credits of $0.00, the employment, CPP and EI credits of $0.00, the donation credit of $0.00, the medical expense credit of $0.00, the disability credit of $0.00 and other credits of $0.00: $64,124.79. [ITA 117(2); 120.4(2); 121; 118; 118.1; 118.2; 118.3; 118.7]
+6. Tax under 117(2) on taxable income, $75,400.35, less the dividend tax credit of $9,553.84, the personal credit of $2,035.32, the age and pension credits of $0.00, the employment, CPP and EI credits of $0.00, the donation credit of $0.00, the medical expense credit of $0.00, the disability credit of $0.00 and other credits of $0.00: $63,811.19. [ITA 117(2); 120.4(2); 121; 118; 118.1; 118.2; 118.3; 118.7]
 Relies on no judgment calls.
 ```
 
@@ -192,7 +192,7 @@ Relies on no judgment calls.
 3. Losses: business $0.00, terminal $0.00, attributed $0.00; interest deducted $0.00. [ITA 3(d); 20(16); 74.1; 20(1)(c)]
 4. Income for the year: $300,000.00. [ITA 3]
 5. Less the net capital loss deduction $0.00, the capital gains deduction $0.00, and other deductions $0.00: taxable income $300,000.00. [ITA 2(2); 111(1)(b); 110.6(2), (2.1)]
-6. Tax under 117(2) on taxable income, $73,486.35, less the dividend tax credit of $0.00, the personal credit of $1,721.72, the age and pension credits of $0.00, the employment, CPP and EI credits of $0.00, the donation credit of $0.00, the medical expense credit of $0.00, the disability credit of $0.00 and other credits of $0.00: $71,764.63. [ITA 117(2); 120.4(2); 121; 118; 118.1; 118.2; 118.3; 118.7]
+6. Tax under 117(2) on taxable income, $73,486.35, less the dividend tax credit of $0.00, the personal credit of $2,035.32, the age and pension credits of $0.00, the employment, CPP and EI credits of $0.00, the donation credit of $0.00, the medical expense credit of $0.00, the disability credit of $0.00 and other credits of $0.00: $71,451.03. [ITA 117(2); 120.4(2); 121; 118; 118.1; 118.2; 118.3; 118.7]
 Relies on no judgment calls.
 ```
 

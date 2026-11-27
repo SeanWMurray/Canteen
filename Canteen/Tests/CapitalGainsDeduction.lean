@@ -43,8 +43,8 @@ def large : Facts := facts [sale 150000000] [sale 150000000]
 example : deduction large = 2 * 62500000 := by decide
 -- Earlier deductions use up the limit.
 example : deduction { large with priorWeighted := 100000000, priorDeductions := 100000000, priorA := 100000000 } = 25000000 := by decide
--- An indexed limit for a later year is given.
-example : deduction { large with taxationYear := 2026, limit := 63500000 } = 2 * 63500000 := by decide
+-- An indexed limit for a later year is given: $637,500 for 2026.
+example : deduction { large with taxationYear := 2026, limit := 63750000 } = 2 * 63750000 := by decide
 
 -- A $100,000 capital loss on other shares in the year comes first (annual gains limit A).
 def otherLoss : Disposition := { description := "other shares", proceeds := 0, adjustedCostBase := 10000000 }

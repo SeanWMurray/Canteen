@@ -11,7 +11,7 @@ import Canteen.Core.Money
   rate on them (nil for a resident).
 * **60(w)** the Part I.2 tax is deducted in computing income under Part I.
 
-The threshold defaults to its 2025 indexed value, $93,454. Not encoded: the other 180.2(1)
+The threshold defaults to its 2025 indexed value, $93,454. In an individual's year, the amounts are the taxation year's, from `YearAmounts` (117.1). Not encoded: the other 180.2(1)
 adjustments (56(1)(q.1), 56(6), section 79, 40(3.21), 20(1)(ww), 60(y), (z)), 60(n)(i), the Part XIII
 rate, and withholding (180.2(3) to (6)). Rounded down to the cent.
 -/

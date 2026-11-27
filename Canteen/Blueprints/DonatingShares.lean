@@ -16,9 +16,9 @@ def memo : Blueprint where
       "worth $50,000 that cost $10,000. Should they donate the shares, or sell them and donate the cash?",
     "**Conclusion.** Donate the shares. The gain on shares given to a qualified donee is taxed at nil (A1), while selling " ++
       "first adds $20,000 of taxable capital gain (A2). The donation credit is $14,470 either way (A3), but the higher " ++
-      "income also trims the basic personal amount (A4). Federal tax is $26,163.69 in kind against $32,063.85 (A5): a " ++
-      "saving of $5,900.16 (K). The minimum tax does not apply (A6); for a $1,000,000 gift it would, either way, and " ++
-      "donating in kind would still save $34,243.00 (W1). Provincial tax is not computed.",
+      "income also trims the basic personal amount (A4). Federal tax is $25,960.08 in kind against $31,819.06 (A5): a " ++
+      "saving of $5,858.98 (K). The minimum tax does not apply (A6); for a $1,000,000 gift it would, either way, and " ++
+      "donating in kind would still save $34,188.00 (W1). Provincial tax is not computed.",
     "This is a constructed example, not advice on a real transaction."]
   sections := [
     { heading := "The law"
@@ -47,15 +47,15 @@ def memo : Blueprint where
           statement := "$50,000 of gifts is within the limit either way: 14% of $200 and 29% of $49,800, $14,470."
           lean := [``same_donation_credit], uses := ["F1", "L2"] },
         { id := "A4", kind := .step, title := "A smaller personal credit when selling", citation := "ITA 118(1.1)"
-          statement := "At $220,000 more of the enhanced basic personal amount is phased out: $1,889.06 against $1,989.22."
+          statement := "At $220,000 more of the enhanced basic personal amount is phased out: $2,133.85 against $2,192.83."
           lean := [``personal_credits], uses := ["A1", "A2", "L2"] },
         { id := "A5", kind := .step, title := "Federal tax", citation := "ITA 117(2)"
-          statement := "$26,163.69 in kind; $32,063.85 selling first."
+          statement := "$25,960.08 in kind; $31,819.06 selling first."
           lean := [``federal_tax], uses := ["A1", "A2", "A3", "A4"] } ] },
     { heading := "Conclusion"
       nodes := [
-        { id := "K", kind := .conclusion, title := "Donating in kind saves $5,900.16"
-          statement := "The difference in federal tax is $5,900.16, all from the gain that selling first makes taxable."
+        { id := "K", kind := .conclusion, title := "Donating in kind saves $5,858.98"
+          statement := "The difference in federal tax is $5,858.98, all from the gain that selling first makes taxable."
           lean := [``saving], uses := ["A5"] } ] },
     { heading := "What if"
       nodes := [
@@ -64,11 +64,11 @@ def memo : Blueprint where
             "donation credit; for it, capital gains count in full and gains on gifts of listed securities at 3/10."
           lean := [``MinimumTax.adjustedTaxableIncome, ``MinimumTax.minimumAmount, ``MinimumTax.taxPayable], uses := ["L2"] },
         { id := "A6", kind := .step, title := "No minimum tax on this gift", citation := "ITA 127.5"
-          statement := "The minimum amount is nil in kind and $213.66 selling first, below regular tax either way."
+          statement := "The minimum amount is nil in kind and $91.27 selling first, below regular tax either way."
           lean := [``no_minimum_tax], uses := ["F1", "L3"] },
         { id := "W1", kind := .step, title := "A $1,000,000 gift", citation := "ITA 127.52(1)(d.1)"
-          statement := "Shares worth $1,000,000 that cost $200,000: in kind, no regular tax but $17,963.58 of minimum tax; " ++
-            "selling first, $52,206.58 of minimum tax. In kind saves $34,243.00. Unclaimed gifts carry forward five years."
+          statement := "Shares worth $1,000,000 that cost $200,000: in kind, no regular tax but $17,861.78 of minimum tax; " ++
+            "selling first, $52,049.78 of minimum tax. In kind saves $34,188.00. Unclaimed gifts carry forward five years."
           lean := [``bigShares, ``bigYear, ``big_in_kind, ``big_cash, ``big_saving], uses := ["L1", "L2", "L3"] } ] } ]
   diagrams := []
   appendix := [

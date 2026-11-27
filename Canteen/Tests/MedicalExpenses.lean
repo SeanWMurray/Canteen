@@ -36,7 +36,7 @@ example : otherDependants { income := 15000000, expenses := [parent, parent] } =
 /-! ## In the individual's year -/
 
 def year : IndividualYear.Facts :=
-  { taxationYear := 2025, employmentAndBusiness := 5000000, personalAmounts := some {}, medicalExpenses := [dental] }
+  { taxationYear := 2025, employmentAndBusiness := 5000000, claimsPersonal := true, medicalExpenses := [dental] }
 
 -- $490 off federal tax, and half of it counts toward the basic minimum tax credit.
 example : IndividualYear.medicalCredit year = 49000 ∧

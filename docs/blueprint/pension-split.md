@@ -4,7 +4,7 @@
 
 **Issue.** Spouses over 65: one receives a $90,000 pension plan annuity in 2025, the other $10,000 of RRIF payments. How much of the pension should they elect to split?
 
-**Conclusion.** $40,000, which leaves each with $50,000 of income: their federal tax falls from $12,010.74 to $6,900.24, a saving of $5,110.50 (K). Besides the lower rates, the pensioner's age credit, mostly clawed back at $90,000, comes back (A2, A3). No split in $1,000 steps up to the $45,000 limit does better, and splitting the whole $45,000 costs $10.96 more (W1). With Old Age Security as well, splitting also avoids $786.90 of OAS recovery tax and saves $4,712.13 (W2). Provincial tax is not computed.
+**Conclusion.** $40,000, which leaves each with $50,000 of income: their federal tax falls from $11,852.68 to $6,584.12, a saving of $5,268.56 (K). Besides the lower rates, the pensioner's age credit, mostly clawed back at $90,000, comes back (A2, A3). No split in $1,000 steps up to the $45,000 limit does better, and splitting the whole $45,000 costs $10.96 more (W1). With Old Age Security as well, splitting also avoids $786.90 of OAS recovery tax and saves $4,870.19 (W2). Provincial tax is not computed.
 
 This is a constructed example, not advice.
 
@@ -20,9 +20,9 @@ graph TD
   n3["L3 · Federal tax"]:::encoded
   n4["F1 · The spouses"]:::fact
   n5["A1 · Up to $45,000 may be split"]:::proven
-  n6["A2 · Without splitting: $12,010.74"]:::proven
-  n7["A3 · Splitting $40,000: $3,450.12 each"]:::proven
-  n8["K · Split $40,000: $5,110.50 saved"]:::proven
+  n6["A2 · Without splitting: $11,852.68"]:::proven
+  n7["A3 · Splitting $40,000: $3,292.06 each"]:::proven
+  n8["K · Split $40,000: $5,268.56 saved"]:::proven
   n9["W1 · Splitting the whole $45,000"]:::proven
   n10["W2 · With $8,700 of OAS each"]:::proven
   n0 --> n1
@@ -120,7 +120,7 @@ graph TD
 
 Spouses may jointly elect to move up to half the pensioner's eligible pension income to the other: deducted by the pensioner, included by the transferee, and treated as the transferee's pension income for the pension credit. Proven: never more than half.
 
-**Lean:** [`Canteen.ITA.PensionSplitting.splitLimit`](../../Canteen/ITA/S60_03/PensionSplitting.lean#L61), [`Canteen.ITA.PensionSplitting.split_le_half`](../../Canteen/ITA/S60_03/PensionSplitting.lean#L88), [`Canteen.ITA.IndividualYear.splitOutAllowed`](../../Canteen/ITA/S3/IndividualYear.lean#L130)
+**Lean:** [`Canteen.ITA.PensionSplitting.splitLimit`](../../Canteen/ITA/S60_03/PensionSplitting.lean#L61), [`Canteen.ITA.PensionSplitting.split_le_half`](../../Canteen/ITA/S60_03/PensionSplitting.lean#L88), [`Canteen.ITA.IndividualYear.splitOutAllowed`](../../Canteen/ITA/S3/IndividualYear.lean#L148)
 
 ### L4. The OAS recovery tax
 
@@ -128,7 +128,7 @@ Spouses may jointly elect to move up to half the pensioner's eligible pension in
 
 15% of adjusted income over $93,454 (2025), up to the OAS received; deducted in computing income.
 
-**Lean:** [`Canteen.ITA.OasRecovery.tax`](../../Canteen/ITA/S180_2/OasRecovery.lean#L21), [`Canteen.ITA.IndividualYear.oasRecovery`](../../Canteen/ITA/S3/IndividualYear.lean#L157)
+**Lean:** [`Canteen.ITA.OasRecovery.tax`](../../Canteen/ITA/S180_2/OasRecovery.lean#L21), [`Canteen.ITA.IndividualYear.oasRecovery`](../../Canteen/ITA/S3/IndividualYear.lean#L175)
 
 ### L2. The age and pension credits
 
@@ -136,7 +136,7 @@ Spouses may jointly elect to move up to half the pensioner's eligible pension in
 
 14% of $9,028 less 15% of income over $45,522, for those 65 or over; 14% of up to $2,000 of eligible pension income.
 
-**Lean:** [`Canteen.ITA.PensionSplitting.ageCredit`](../../Canteen/ITA/S60_03/PensionSplitting.lean#L73), [`Canteen.ITA.PensionSplitting.pensionCredit`](../../Canteen/ITA/S60_03/PensionSplitting.lean#L76), [`Canteen.ITA.IndividualYear.ageAndPensionCredits`](../../Canteen/ITA/S3/IndividualYear.lean#L209)
+**Lean:** [`Canteen.ITA.PensionSplitting.ageCredit`](../../Canteen/ITA/S60_03/PensionSplitting.lean#L73), [`Canteen.ITA.PensionSplitting.pensionCredit`](../../Canteen/ITA/S60_03/PensionSplitting.lean#L76), [`Canteen.ITA.IndividualYear.ageAndPensionCredits`](../../Canteen/ITA/S3/IndividualYear.lean#L226)
 
 ### L3. Federal tax
 
@@ -144,7 +144,7 @@ Spouses may jointly elect to move up to half the pensioner's eligible pension in
 
 Tax at the 117(2) rates, less the personal, age and pension credits.
 
-**Lean:** [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L226)
+**Lean:** [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L247)
 
 ## Facts
 
@@ -168,7 +168,7 @@ Half the pensioner's $90,000 of eligible pension income.
 
 **Rests on:** facts F1.
 
-### A2. Without splitting: $12,010.74
+### A2. Without splitting: $11,852.68
 
 **Status:** proven · **Citation:** ITA 117(2); 118(2) · **Uses:** F1, L3
 
@@ -178,7 +178,7 @@ All of it the pensioner's, whose age credit is down to $329.88.
 
 **Rests on:** facts F1.
 
-### A3. Splitting $40,000: $3,450.12 each
+### A3. Splitting $40,000: $3,292.06 each
 
 **Status:** proven · **Citation:** ITA 60(c); 56(1)(a.2) · **Uses:** A1, F1, L3
 
@@ -190,11 +190,11 @@ $50,000 of income each; the pensioner's age credit back to $1,169.88, plus the $
 
 ## Conclusion
 
-### K. Split $40,000: $5,110.50 saved
+### K. Split $40,000: $5,268.56 saved
 
 **Status:** proven · **Uses:** A2, A3, F1, L3
 
-$6,900.24 between them, against $12,010.74; no split in $1,000 steps up to the limit does better.
+$6,584.12 between them, against $11,852.68; no split in $1,000 steps up to the limit does better.
 
 **Lean:** [`Canteen.Transactions.PensionSplit.total`](../../Canteen/Transactions/PensionSplit.lean#L28), [`Canteen.Transactions.PensionSplit.saving`](../../Canteen/Transactions/PensionSplit.lean#L48), [`Canteen.Transactions.PensionSplit.best`](../../Canteen/Transactions/PensionSplit.lean#L51)
 
@@ -216,7 +216,7 @@ The transferee's income then exceeds the pensioner's: $10.96 more than at $40,00
 
 **Status:** proven · **Citation:** ITA 180.2(2) · **Uses:** F1, L1, L3, L4
 
-Unsplit, $786.90 of the pensioner's OAS is recovered; split $40,000 and none is: $9,873.88 in all against $14,586.01, still the best split in $1,000 steps.
+Unsplit, $786.90 of the pensioner's OAS is recovered; split $40,000 and none is: $9,557.76 in all against $14,427.95, still the best split in $1,000 steps.
 
 **Lean:** [`Canteen.Transactions.PensionSplit.oas`](../../Canteen/Transactions/PensionSplit.lean#L59), [`Canteen.Transactions.PensionSplit.pensionerOas`](../../Canteen/Transactions/PensionSplit.lean#L61), [`Canteen.Transactions.PensionSplit.transfereeOas`](../../Canteen/Transactions/PensionSplit.lean#L62), [`Canteen.Transactions.PensionSplit.totalOas`](../../Canteen/Transactions/PensionSplit.lean#L64), [`Canteen.Transactions.PensionSplit.with_oas`](../../Canteen/Transactions/PensionSplit.lean#L69), [`Canteen.Transactions.PensionSplit.best_with_oas`](../../Canteen/Transactions/PensionSplit.lean#L75)
 
@@ -232,7 +232,7 @@ Unsplit, $786.90 of the pensioner's OAS is recovered; split $40,000 and none is:
 3. Losses: business $0.00, terminal $0.00, attributed $0.00; interest deducted $0.00. [ITA 3(d); 20(16); 74.1; 20(1)(c)]
 4. Income for the year: $50,000.00. [ITA 3]
 5. Less the net capital loss deduction $0.00, the capital gains deduction $0.00, and other deductions $0.00: taxable income $50,000.00. [ITA 2(2); 111(1)(b); 110.6(2), (2.1)]
-6. Tax under 117(2) on taxable income, $7,000.00, less the dividend tax credit of $0.00, the personal credit of $2,100.00, the age and pension credits of $1,449.88, the employment, CPP and EI credits of $0.00, the donation credit of $0.00, the medical expense credit of $0.00, the disability credit of $0.00 and other credits of $0.00: $3,450.12. [ITA 117(2); 120.4(2); 121; 118; 118.1; 118.2; 118.3; 118.7]
+6. Tax under 117(2) on taxable income, $7,000.00, less the dividend tax credit of $0.00, the personal credit of $2,258.06, the age and pension credits of $1,449.88, the employment, CPP and EI credits of $0.00, the donation credit of $0.00, the medical expense credit of $0.00, the disability credit of $0.00 and other credits of $0.00: $3,292.06. [ITA 117(2); 120.4(2); 121; 118; 118.1; 118.2; 118.3; 118.7]
 Relies on no judgment calls.
 ```
 
@@ -244,7 +244,7 @@ Relies on no judgment calls.
 3. Losses: business $0.00, terminal $0.00, attributed $0.00; interest deducted $0.00. [ITA 3(d); 20(16); 74.1; 20(1)(c)]
 4. Income for the year: $50,000.00. [ITA 3]
 5. Less the net capital loss deduction $0.00, the capital gains deduction $0.00, and other deductions $0.00: taxable income $50,000.00. [ITA 2(2); 111(1)(b); 110.6(2), (2.1)]
-6. Tax under 117(2) on taxable income, $7,000.00, less the dividend tax credit of $0.00, the personal credit of $2,100.00, the age and pension credits of $1,449.88, the employment, CPP and EI credits of $0.00, the donation credit of $0.00, the medical expense credit of $0.00, the disability credit of $0.00 and other credits of $0.00: $3,450.12. [ITA 117(2); 120.4(2); 121; 118; 118.1; 118.2; 118.3; 118.7]
+6. Tax under 117(2) on taxable income, $7,000.00, less the dividend tax credit of $0.00, the personal credit of $2,258.06, the age and pension credits of $1,449.88, the employment, CPP and EI credits of $0.00, the donation credit of $0.00, the medical expense credit of $0.00, the disability credit of $0.00 and other credits of $0.00: $3,292.06. [ITA 117(2); 120.4(2); 121; 118; 118.1; 118.2; 118.3; 118.7]
 Relies on no judgment calls.
 ```
 

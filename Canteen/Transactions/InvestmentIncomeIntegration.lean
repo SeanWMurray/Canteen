@@ -24,7 +24,7 @@ def interest : Cents := 10000000
 
 /-- Option A: the individual's year with the interest. -/
 def personal : IndividualYear.Facts :=
-  { taxationYear := 2025, employmentAndBusiness := salary + interest, personalAmounts := some {} }
+  { taxationYear := 2025, employmentAndBusiness := salary + interest, claimsPersonal := true }
 
 /-- Option B: Holdco's year. -/
 def holdco (dividend : Cents) : RefundableTax.Facts :=
@@ -36,10 +36,10 @@ def dividend : Cents := 9200000
 /-- Option B: the individual's year with the dividend. -/
 def throughHoldco : IndividualYear.Facts :=
   { taxationYear := 2025, employmentAndBusiness := salary, dividends := [{ description := "Holdco dividend", amount := dividend }],
-    personalAmounts := some {} }
+    claimsPersonal := true }
 
 /-- The individual's year without the interest at all, to measure the tax on it. -/
-def baseline : IndividualYear.Facts := { taxationYear := 2025, employmentAndBusiness := salary, personalAmounts := some {} }
+def baseline : IndividualYear.Facts := { taxationYear := 2025, employmentAndBusiness := salary, claimsPersonal := true }
 
 /-! ## Analysis -/
 
@@ -53,16 +53,16 @@ theorem holdco_tax :
 theorem dividend_is_whats_left :
     interest - RefundableTax.partITax (holdco dividend) + RefundableTax.dividendRefund (holdco dividend) = dividend := by decide
 
-/-- Earned personally, the interest adds $31,130.94 of federal tax. -/
-theorem personal_tax : IndividualYear.federalTax personal - IndividualYear.federalTax baseline = 3113094 := by decide
+/-- Earned personally, the interest adds $31,020.95 of federal tax. -/
+theorem personal_tax : IndividualYear.federalTax personal - IndividualYear.federalTax baseline = 3102095 := by decide
 
-/-- Paid out as a non-eligible dividend, the $92,000 adds $23,491.10 of federal tax. -/
-theorem dividend_tax : IndividualYear.federalTax throughHoldco - IndividualYear.federalTax baseline = 2349110 := by decide
+/-- Paid out as a non-eligible dividend, the $92,000 adds $23,381.11 of federal tax. -/
+theorem dividend_tax : IndividualYear.federalTax throughHoldco - IndividualYear.federalTax baseline = 2338111 := by decide
 
-/-- **Near integration.** Through Holdco the total federal tax on the interest is $31,491.10 ($8,000
-corporate and $23,491.10 personal), $360.16 more than earning it personally. -/
+/-- **Near integration.** Through Holdco the total federal tax on the interest is $31,381.11 ($8,000
+corporate and $23,381.11 personal), $360.16 more than earning it personally. -/
 theorem integration :
-    800000 + (IndividualYear.federalTax throughHoldco - IndividualYear.federalTax baseline) = 3149110 ∧
+    800000 + (IndividualYear.federalTax throughHoldco - IndividualYear.federalTax baseline) = 3138111 ∧
     800000 + (IndividualYear.federalTax throughHoldco - IndividualYear.federalTax baseline) -
       (IndividualYear.federalTax personal - IndividualYear.federalTax baseline) = 36016 := by decide
 

@@ -52,9 +52,9 @@ example : dependantClaim { income := 5000000, supportsSpouse := true, dependant 
 -- The explanation says why it fails.
 example : (eligibleDependant.explain { child with related := false }).conclusion = false := by decide
 
--- In the individual's year: $2,100 less federal tax.
+-- In the individual's year, at 2025 amounts ($16,129): $2,258.06 less federal tax.
 def parent : IndividualYear.Facts :=
-  { taxationYear := 2025, employmentAndBusiness := 5000000, personalAmounts := some {}, eligibleDependant := some child }
-example : IndividualYear.federalTax { parent with eligibleDependant := none } - IndividualYear.federalTax parent = 210000 := by decide
+  { taxationYear := 2025, employmentAndBusiness := 5000000, claimsPersonal := true, eligibleDependant := some child }
+example : IndividualYear.federalTax { parent with eligibleDependant := none } - IndividualYear.federalTax parent = 225806 := by decide
 
 end Canteen.Tests.PersonalCredits.EligibleDependant

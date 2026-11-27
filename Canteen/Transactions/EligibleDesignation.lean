@@ -31,7 +31,7 @@ def paidOut : Cents := 88000000
 
 /-- The shareholder's year, with `eligible` of the $880,000 designated eligible. -/
 def shareholder (eligible : Cents) : IndividualYear.Facts :=
-  { taxationYear := 2025, personalAmounts := some {},
+  { taxationYear := 2025, claimsPersonal := true,
     dividends := [{ description := "eligible dividends", amount := eligible, eligible := true },
                   { description := "other dividends", amount := paidOut - eligible }] }
 
@@ -53,16 +53,16 @@ theorem designate_pool : GeneralRateIncomePool.excessive (opco 36000000) = 0 := 
 theorem over_designate :
     GeneralRateIncomePool.excessive (opco 42500000) = 6500000 ∧ GeneralRateIncomePool.partIII1 (opco 42500000) = 1300000 := by decide
 
-/-- The shareholder's federal tax: $205,430.45 under A, $215,340.02 under B, $203,641.23 under C. -/
+/-- The shareholder's federal tax: $205,116.85 under A, $215,026.42 under B, $203,327.63 under C. -/
 theorem shareholder_tax :
-    IndividualYear.federalTax (shareholder 36000000) = 20543045 ∧ IndividualYear.federalTax (shareholder 0) = 21534002 ∧
-    IndividualYear.federalTax (shareholder 42500000) = 20364123 := by decide
+    IndividualYear.federalTax (shareholder 36000000) = 20511685 ∧ IndividualYear.federalTax (shareholder 0) = 21502642 ∧
+    IndividualYear.federalTax (shareholder 42500000) = 20332763 := by decide
 
-/-- **Designate the pool.** In total, A costs $325,430.45, B $335,340.02 and C $336,641.23: designating
+/-- **Designate the pool.** In total, A costs $325,116.85, B $335,026.42 and C $336,327.63: designating
 the pool saves $9,909.57 over designating nothing, and the extra $65,000 designated under C saves the
 shareholder $1,789.22 but costs $13,000 of Part III.1 tax. -/
 theorem designate_the_pool :
-    total 36000000 = 32543045 ∧ total 0 = 33534002 ∧ total 42500000 = 33664123 ∧
+    total 36000000 = 32511685 ∧ total 0 = 33502642 ∧ total 42500000 = 33632763 ∧
     total 0 - total 36000000 = 990957 ∧ total 42500000 - total 36000000 = 1121078 := by decide
 
 /-! ## What if: the 185.1(2) election -/
@@ -76,7 +76,7 @@ def totalElected (eligible : Cents) : Cents :=
     IndividualYear.federalTax (shareholder (GeneralRateIncomePool.eligibleAfter (opco eligible) election))
 
 /-- Electing the $65,000 excess undoes the over-designation: $360,000 eligible, no Part III.1 tax, and the
-same $325,430.45 in all as designating the pool. -/
+same $325,116.85 in all as designating the pool. -/
 theorem election_undoes :
     GeneralRateIncomePool.eligibleAfter (opco 42500000) election = 36000000 ∧
     GeneralRateIncomePool.partIII1After (opco 42500000) election = 0 ∧

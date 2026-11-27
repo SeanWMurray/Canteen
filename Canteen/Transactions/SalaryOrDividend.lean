@@ -40,14 +40,14 @@ def salary : Cents := 9556990
 
 /-- Option A: the owner's year with the salary. -/
 def withSalary : IndividualYear.Facts :=
-  { taxationYear := 2025, employmentAndBusiness := salary, personalAmounts := some {},
+  { taxationYear := 2025, employmentAndBusiness := salary, claimsPersonal := true,
     employment := some { employmentIncome := salary, cppBase := cppBase salary, cppEnhanced := cppEnhanced salary } }
 
 /-- Option B: Opco's tax, and the owner's year with the dividend. -/
 def opco : CorporateRates.Facts := { taxableIncome := available, activeBusinessIncome := available }
 def dividend : Cents := available - CorporateRates.tax opco
 def withDividend : IndividualYear.Facts :=
-  { taxationYear := 2025, personalAmounts := some {}, dividends := [{ description := "Opco dividend", amount := dividend }] }
+  { taxationYear := 2025, claimsPersonal := true, dividends := [{ description := "Opco dividend", amount := dividend }] }
 
 /-! ## Analysis -/
 
@@ -55,26 +55,26 @@ def withDividend : IndividualYear.Facts :=
 enhanced contributions each. -/
 theorem salary_uses_it_all : salary + cpp salary = available ∧ cppBase salary = 335610 ∧ cppEnhanced salary = 107400 := by decide
 
-/-- Option A: the owner's federal tax is $12,866.49, after $675.79 of employment and CPP credits and
+/-- Option A: the owner's federal tax is $12,708.43, after $675.79 of employment and CPP credits and
 the 60(e.1) deduction of the enhanced contributions. -/
 theorem salary_tax :
-    IndividualYear.federalTax withSalary = 1286649 ∧ IndividualYear.employmentCredits withSalary = 67579 ∧
+    IndividualYear.federalTax withSalary = 1270843 ∧ IndividualYear.employmentCredits withSalary = 67579 ∧
     IndividualYear.enhancedCpp withSalary = 107400 := by decide
 
-/-- Option B: Opco pays $9,000; the $91,000 dividend costs the owner $6,173.87 of federal tax. -/
-theorem dividend_tax : CorporateRates.tax opco = 900000 ∧ dividend = 9100000 ∧ IndividualYear.federalTax withDividend = 617387 := by
+/-- Option B: Opco pays $9,000; the $91,000 dividend costs the owner $6,015.81 of federal tax. -/
+theorem dividend_tax : CorporateRates.tax opco = 900000 ∧ dividend = 9100000 ∧ IndividualYear.federalTax withDividend = 601581 := by
   decide
 
-/-- **Federally, the dividend leaves the owner $6,552.82 more**: $84,826.13 against $78,273.31. Tax
-and CPP come to $21,726.69 with the salary ($8,860.20 of it CPP, which buys a pension) and $15,173.87
+/-- **Federally, the dividend leaves the owner $6,552.82 more**: $84,984.19 against $78,431.37. Tax
+and CPP come to $21,568.63 with the salary ($8,860.20 of it CPP, which buys a pension) and $15,015.81
 with the dividend. -/
 theorem what_the_owner_keeps :
-    salary - cpp salary - IndividualYear.federalTax withSalary = 7827331 ∧
-    dividend - IndividualYear.federalTax withDividend = 8482613 ∧
-    IndividualYear.federalTax withSalary + 2 * cpp salary = 2172669 ∧
-    CorporateRates.tax opco + IndividualYear.federalTax withDividend = 1517387 := by decide
+    salary - cpp salary - IndividualYear.federalTax withSalary = 7843137 ∧
+    dividend - IndividualYear.federalTax withDividend = 8498419 ∧
+    IndividualYear.federalTax withSalary + 2 * cpp salary = 2156863 ∧
+    CorporateRates.tax opco + IndividualYear.federalTax withDividend = 1501581 := by decide
 
-/-- Without CPP, the two federal routes are close: $12,866.49 of tax on the salary against $15,173.87
+/-- Without CPP, the two federal routes are close: $12,708.43 of tax on the salary against $15,015.81
 on the dividend route, the dividend tax credit not quite integrating at the small business rate. -/
 theorem tax_alone : CorporateRates.tax opco + IndividualYear.federalTax withDividend - IndividualYear.federalTax withSalary = 230738 := by
   decide
