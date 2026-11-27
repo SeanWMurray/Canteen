@@ -99,8 +99,9 @@ flowchart BT
   v90["212(1)(d), 216(1), 120(1) a non-resident's rent and the election"]:::prov
   v91["248(1) taxable Canadian property"]:::prov
   v92["116(5), (5.3) buying from a non-resident"]:::prov
-  v93["2(2), 3, 129(4) a corporation's year, to taxable income and tax"]:::prov
-  v94["50(2) bad personal-use debts"]:::prov
+  v93["128.1(4)(b), (c) departure tax"]:::prov
+  v94["2(2), 3, 129(4) a corporation's year, to taxable income and tax"]:::prov
+  v95["50(2) bad personal-use debts"]:::prov
   v0 --> v1
   v0 --> v2
   v0 --> v3
@@ -191,13 +192,14 @@ flowchart BT
   v6 --> v80
   v54 --> v90
   v91 --> v92
-  v19 --> v93
-  v20 --> v93
-  v32 --> v93
-  v78 --> v93
-  v69 --> v93
-  v79 --> v93
-  v71 --> v93
-  v35 --> v93
+  v17 --> v93
+  v19 --> v94
+  v20 --> v94
+  v32 --> v94
+  v78 --> v94
+  v69 --> v94
+  v79 --> v94
+  v71 --> v94
+  v35 --> v94
   classDef prov fill:#bbdefb,stroke:#1565c0,color:#0d47a1
 ```

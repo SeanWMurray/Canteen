@@ -71,6 +71,7 @@ import Canteen.ITA.S212.Withholding
 import Canteen.ITA.S216.RentalElection
 import Canteen.ITA.S116.Purchaser
 import Canteen.ITA.S248.TaxableCanadianProperty
+import Canteen.ITA.S128_1.Emigration
 import Canteen.ITA.S3.CorporateYear
 import Canteen.Transactions.DebtSwap
 import Canteen.ITA.S87.Amalgamation
@@ -257,6 +258,7 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S216.RentalElection, "212(1)(d), 216(1), 120(1) a non-resident's rent and the election"),
    (`Canteen.ITA.S116.Purchaser, "116(5), (5.3) buying from a non-resident"),
    (`Canteen.ITA.S248.TaxableCanadianProperty, "248(1) taxable Canadian property"),
+   (`Canteen.ITA.S128_1.Emigration, "128.1(4)(b), (c) departure tax"),
    (`Canteen.ITA.S3.CorporateYear, "2(2), 3, 129(4) a corporation's year, to taxable income and tax")]
 
 /-! ## The dashboard -/
@@ -396,6 +398,7 @@ def actMindmap : String := Id.run do
     (2, "s. 185.1"), (3, "185.1(1): Part III.1 tax on excessive designations"), (3, "185.1(2), (3): the election"),
     (2, "s. 180.2"), (3, "180.2(2): OAS recovery tax"),
     (2, "s. 186"), (3, "186(1): Part IV tax"), (3, "186(4): connected corporations"), (3, "186(2): control with non-arm's length persons"),
+    (2, "s. 128.1"), (3, "128.1(4)(b): deemed disposition on emigration"), (3, "128.1(4)(c): reacquired at value"),
     (2, "s. 248"), (3, "248(1): majority-interest partner"),
     (2, "s. 248"), (3, "taxable Canadian property: the 60-month look-back"),
     (2, "s. 251"), (3, "251(1): arm's length"), (3, "251(2), (3): related persons"), (3, "251(3.1), (3.2): amalgamations"),

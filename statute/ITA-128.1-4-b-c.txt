@@ -1,0 +1,11 @@
+Income Tax Act, R.S.C. 1985, c. 1 (5th Supp.), the opening words of subsection 128.1(4) and paragraphs 128.1(4)(b) and (c)
+
+Source: Justice Canada consolidated Acts (XML), https://github.com/justicecanada/laws-lois-xml, file eng/acts/I-3.3.xml
+Current to: 2026-10-29. Last amended: 2026-06-18.
+Extracted verbatim; whitespace normalized; each provision on one line.
+
+128.1(4) For the purposes of this Act, where at a particular time a taxpayer ceases to be resident in Canada,
+
+128.1(4)(b) the taxpayer is deemed to have disposed, at the time (in this paragraph and paragraph (d) referred to as the “time of disposition”) that is immediately before the time that is immediately before the particular time, of each property owned by the taxpayer other than, if the taxpayer is an individual,(i)real or immovable property situated in Canada, a Canadian resource property or a timber resource property,(ii)capital property used in, property included in Class 14.1 of Schedule II to the Income Tax Regulations in respect of or property described in the inventory of, a business carried on by the taxpayer through a permanent establishment (as defined by regulation) in Canada at the particular time,(iii)an excluded right or interest of the taxpayer,(iv)if the taxpayer is not a trust and was not, during the 120-month period that ends at the particular time, resident in Canada for more than 60 months, property that was owned by the taxpayer at the time the taxpayer last became resident in Canada or that was acquired by the taxpayer by inheritance or bequest after the taxpayer last became resident in Canada, and(v)any property in respect of which the taxpayer elects under paragraph (6)(a) for the taxation year that includes the first time, after the particular time, at which the taxpayer becomes resident in Canada,for proceeds equal to its fair market value at the time of disposition, which proceeds are deemed to have become receivable and to have been received by the taxpayer at the time of disposition;
+
+128.1(4)(c) the taxpayer is deemed to have reacquired, at the particular time, each property deemed by paragraph (b) or (b.1) to have been disposed of by the taxpayer, at a cost equal to the proceeds of disposition of the property;

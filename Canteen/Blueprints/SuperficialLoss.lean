@@ -86,6 +86,7 @@ import Canteen.ITA.S212.Withholding
 import Canteen.ITA.S216.RentalElection
 import Canteen.ITA.S116.Purchaser
 import Canteen.ITA.S248.TaxableCanadianProperty
+import Canteen.ITA.S128_1.Emigration
 import Canteen.ITA.S3.CorporateYear
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
@@ -858,6 +859,15 @@ def blueprint : Blueprint where
             "116(4) certificate was issued. Proven: never more than half the cost, and nothing when the certificate covers it."
           lean := [``Purchaser.Purchase.rate, ``Purchaser.Purchase.notTCP, ``Purchaser.Purchase.excepted, ``Purchaser.Purchase.liability,
             ``Purchaser.Purchase.liability_le, ``Purchaser.Purchase.full_certificate], uses := ["R85"] },
+        { id := "R86", kind := .law, title := "Departure tax", citation := "ITA 128.1(4)(b), (c)"
+          statement := "An individual who leaves Canada is deemed to have sold each property at its value and bought it back, " ++
+            "except Canadian real and resource property, property of a business in Canada, excluded rights such as " ++
+            "pensions and RRSPs, property brought to Canada by a short-term resident, and property elected on returning; " ++
+            "the gains and losses are capital gains and losses of the year. Proven: excepted property keeps its cost, " ++
+            "property deemed disposed of costs its value, and Canadian real property is never deemed disposed of."
+          lean := [``Emigration.Holding.deemed, ``Emigration.dispositions, ``Emigration.Holding.costAfter, ``Emigration.netTaxableGains,
+            ``Emigration.Holding.excepted_keeps_cost, ``Emigration.Holding.deemed_cost, ``Emigration.Holding.real_property],
+          uses := ["R8"] },
         { id := "R70", kind := .law, title := "A corporation's year, to taxable income and tax", citation := "ITA 2(2); 3; 110.1; 111(1), (8); 112(1); 125(7); 129(4)"
           statement := "A corporation's income from active business, personal services business, property and dividends " ++
             "received, with its net taxable capital gains (a 55(2) dividend as a gain); taxable income after gifts, the " ++
