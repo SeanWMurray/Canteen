@@ -250,7 +250,7 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S20.InstalmentSales, "20(1)(n), 20(8) the reserve for unpaid amounts on property sold"),
    (`Canteen.ITA.S18.PrepaidExpenses, "18(9) prepaid expenses"),
    (`Canteen.ITA.S18.ThinCapitalization, "18(4), 214(16) thin capitalization and the deemed dividend"),
-   (`Canteen.ITA.S212.Withholding, "212(1)(b), (2) Part XIII on dividends and interest"),
+   (`Canteen.ITA.S212.Withholding, "212(1)(a), (b), (2) Part XIII on management fees, interest and dividends"),
    (`Canteen.ITA.S3.CorporateYear, "2(2), 3, 129(4) a corporation's year, to taxable income and tax")]
 
 /-! ## The dashboard -/
@@ -370,7 +370,7 @@ def actMindmap : String := Id.run do
     (2, "s. 62"), (3, "62(1): moving expenses"), (3, "248(1): eligible relocation, the 40 km test"),
     (2, "s. 63"), (3, "63(1): child care expenses"), (3, "63(2): the higher-income spouse"),
     (2, "s. 60.03"), (3, "60.03(1): split-pension amount"), (3, "60(c), 56(1)(a.2): deducted and included"),
-    (2, "s. 212"), (3, "212(1)(b): non-arm's length and participating interest"), (3, "212(2): dividends"), (3, "214(16): thin cap interest as a dividend"),
+    (2, "s. 212"), (3, "212(1)(a), (4): management fees"), (3, "212(1)(b): non-arm's length and participating interest"), (3, "212(2): dividends"), (3, "214(16): thin cap interest as a dividend"),
     (2, "s. 256"), (3, "256(1): associated corporations, (a) to (e)"), (3, "256(1.2)(b)(i): a member's control is the group's"), (3, "256(5.1): de facto control"), (3, "256(2): through a third corporation"),
     (2, "s. 117"), (3, "117(2): the federal rates"),
     (2, "s. 117.1"), (3, "117.1(1), (4): indexing by the CPI"), (3, "117.1(3): rounding"),

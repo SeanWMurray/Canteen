@@ -822,12 +822,15 @@ def blueprint : Blueprint where
           lean := [``ThinCapitalization.averageDebt, ``ThinCapitalization.equityAmount, ``ThinCapitalization.excessDebt,
             ``ThinCapitalization.denied, ``ThinCapitalization.deemedDividend, ``ThinCapitalization.partXIII,
             ``ThinCapitalization.denied_le, ``ThinCapitalization.within_ratio, ``ThinCapitalization.treaty_le] },
-        { id := "R82", kind := .law, title := "Part XIII tax on dividends and interest", citation := "ITA 212(1)(b), (2), (3)"
+        { id := "R82", kind := .law, title := "Part XIII tax on management fees, interest and dividends", citation := "ITA 212(1)(a), (b), (2), (3), (4)"
           statement := "A non-resident pays 25% (or a lower treaty rate) on dividends from a Canadian corporation, and on " ++
-            "interest that is paid to a non-arm's length person and not fully exempt, or is participating debt interest. " ++
-            "Proven: never more than 25%, and arm's length interest that is not participating bears none."
+            "interest that is paid to a non-arm's length person and not fully exempt, or is participating debt interest, " ++
+            "and on management fees other than reasonable amounts for arm's length services in the ordinary course of the " ++
+            "non-resident's business or reimbursing specific expenses. Proven: never more than 25%, arm's length interest " ++
+            "that is not participating bears none, and neither does a reasonable ordinary-course fee."
           lean := [``Withholding.Payment.taxable, ``Withholding.Payment.rate, ``Withholding.Payment.tax, ``Withholding.tax,
-            ``Withholding.Payment.tax_le, ``Withholding.arms_length_interest] },
+            ``Withholding.Payment.excluded, ``Withholding.Payment.base,
+            ``Withholding.Payment.base_le, ``Withholding.Payment.tax_le, ``Withholding.arms_length_interest, ``Withholding.ordinary_course_fee] },
         { id := "R70", kind := .law, title := "A corporation's year, to taxable income and tax", citation := "ITA 2(2); 3; 110.1; 111(1), (8); 112(1); 125(7); 129(4)"
           statement := "A corporation's income from active business, personal services business, property and dividends " ++
             "received, with its net taxable capital gains (a 55(2) dividend as a gain); taxable income after gifts, the " ++

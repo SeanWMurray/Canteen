@@ -95,7 +95,7 @@ flowchart BT
   v86["20(1)(n), 20(8) the reserve for unpaid amounts on property sold"]:::prov
   v87["18(9) prepaid expenses"]:::prov
   v88["18(4), 214(16) thin capitalization and the deemed dividend"]:::prov
-  v89["212(1)(b), (2) Part XIII on dividends and interest"]:::prov
+  v89["212(1)(a), (b), (2) Part XIII on management fees, interest and dividends"]:::prov
   v90["2(2), 3, 129(4) a corporation's year, to taxable income and tax"]:::prov
   v91["50(2) bad personal-use debts"]:::prov
   v0 --> v1

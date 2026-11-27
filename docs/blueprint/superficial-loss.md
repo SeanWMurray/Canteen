@@ -123,7 +123,7 @@ graph TD
   n110["R79 · The reserve for unpaid amounts on property sold"]:::proven
   n111["R80 · Prepaid expenses"]:::proven
   n112["R81 · Thin capitalization"]:::proven
-  n113["R82 · Part XIII tax on dividends and interest"]:::proven
+  n113["R82 · Part XIII tax on management fees, interest and dividends"]:::proven
   n114["R70 · A corporation's year, to taxable income and tax"]:::proven
   n115["R35 · An individual's year, to taxable income and tax"]:::proven
   n116["R48 · The minimum tax"]:::proven
@@ -1624,13 +1624,13 @@ A Canadian corporation cannot deduct the part of its interest on debts to specif
 
 **Lean:** [`Canteen.ITA.ThinCapitalization.averageDebt`](../../Canteen/ITA/S18/ThinCapitalization.lean#L59), [`Canteen.ITA.ThinCapitalization.equityAmount`](../../Canteen/ITA/S18/ThinCapitalization.lean#L62), [`Canteen.ITA.ThinCapitalization.excessDebt`](../../Canteen/ITA/S18/ThinCapitalization.lean#L65), [`Canteen.ITA.ThinCapitalization.denied`](../../Canteen/ITA/S18/ThinCapitalization.lean#L68), [`Canteen.ITA.ThinCapitalization.deemedDividend`](../../Canteen/ITA/S18/ThinCapitalization.lean#L73), [`Canteen.ITA.ThinCapitalization.partXIII`](../../Canteen/ITA/S18/ThinCapitalization.lean#L77), [`Canteen.ITA.ThinCapitalization.denied_le`](../../Canteen/ITA/S18/ThinCapitalization.lean#L99), [`Canteen.ITA.ThinCapitalization.within_ratio`](../../Canteen/ITA/S18/ThinCapitalization.lean#L105), [`Canteen.ITA.ThinCapitalization.treaty_le`](../../Canteen/ITA/S18/ThinCapitalization.lean#L110)
 
-### R82. Part XIII tax on dividends and interest
+### R82. Part XIII tax on management fees, interest and dividends
 
-**Status:** proven · **Citation:** ITA 212(1)(b), (2), (3)
+**Status:** proven · **Citation:** ITA 212(1)(a), (b), (2), (3), (4)
 
-A non-resident pays 25% (or a lower treaty rate) on dividends from a Canadian corporation, and on interest that is paid to a non-arm's length person and not fully exempt, or is participating debt interest. Proven: never more than 25%, and arm's length interest that is not participating bears none.
+A non-resident pays 25% (or a lower treaty rate) on dividends from a Canadian corporation, and on interest that is paid to a non-arm's length person and not fully exempt, or is participating debt interest, and on management fees other than reasonable amounts for arm's length services in the ordinary course of the non-resident's business or reimbursing specific expenses. Proven: never more than 25%, arm's length interest that is not participating bears none, and neither does a reasonable ordinary-course fee.
 
-**Lean:** [`Canteen.ITA.Withholding.Payment.taxable`](../../Canteen/ITA/S212/Withholding.lean#L47), [`Canteen.ITA.Withholding.Payment.rate`](../../Canteen/ITA/S212/Withholding.lean#L53), [`Canteen.ITA.Withholding.Payment.tax`](../../Canteen/ITA/S212/Withholding.lean#L55), [`Canteen.ITA.Withholding.tax`](../../Canteen/ITA/S212/Withholding.lean#L57), [`Canteen.ITA.Withholding.Payment.tax_le`](../../Canteen/ITA/S212/Withholding.lean#L72), [`Canteen.ITA.Withholding.arms_length_interest`](../../Canteen/ITA/S212/Withholding.lean#L77)
+**Lean:** [`Canteen.ITA.Withholding.Payment.taxable`](../../Canteen/ITA/S212/Withholding.lean#L61), [`Canteen.ITA.Withholding.Payment.rate`](../../Canteen/ITA/S212/Withholding.lean#L68), [`Canteen.ITA.Withholding.Payment.tax`](../../Canteen/ITA/S212/Withholding.lean#L80), [`Canteen.ITA.Withholding.tax`](../../Canteen/ITA/S212/Withholding.lean#L82), [`Canteen.ITA.Withholding.Payment.excluded`](../../Canteen/ITA/S212/Withholding.lean#L70), [`Canteen.ITA.Withholding.Payment.base`](../../Canteen/ITA/S212/Withholding.lean#L74), [`Canteen.ITA.Withholding.Payment.base_le`](../../Canteen/ITA/S212/Withholding.lean#L101), [`Canteen.ITA.Withholding.Payment.tax_le`](../../Canteen/ITA/S212/Withholding.lean#L108), [`Canteen.ITA.Withholding.arms_length_interest`](../../Canteen/ITA/S212/Withholding.lean#L111), [`Canteen.ITA.Withholding.ordinary_course_fee`](../../Canteen/ITA/S212/Withholding.lean#L116)
 
 ### R70. A corporation's year, to taxable income and tax
 

@@ -26,6 +26,18 @@ example : ({ description := "profit-linked interest", kind := .interest, amount 
 -- Interest on a Government of Canada bond held by a related non-resident: fully exempt.
 example : ({ toParent with fullyExempt := true } : Payment).tax = 0 := by decide
 
+-- 212(1)(a): a $40,000 management fee to the foreign parent: 25%, $10,000.
+def fee : Payment := { description := "the head office management fee", kind := .managementFee, amount := 4000000, nonArmsLength := true }
+example : fee.tax = 1000000 := by decide
+-- $15,000 of it reimburses specific travel costs for work done for Canco (212(4)(b)): $25,000 taxed.
+example : ({ fee with reimbursement := true, reasonable := some 1500000 } : Payment).tax = 625000 := by decide
+-- Consulting fees to an arm's length foreign firm, in the ordinary course of its business (212(4)(a)): none.
+example : ({ fee with nonArmsLength := false, ordinaryCourse := true } : Payment).tax = 0 := by decide
+-- The same from the parent: not at arm's length, so (a) does not apply.
+example : ({ fee with ordinaryCourse := true } : Payment).tax = 1000000 := by decide
+-- An arm's length firm charging $40,000 where $30,000 is reasonable: the $10,000 excess is taxed.
+example : ({ fee with nonArmsLength := false, ordinaryCourse := true, reasonable := some 3000000 } : Payment).tax = 250000 := by decide
+
 -- With thin capitalization: Canco's $300,000 of interest to its parent, $120,000 of it denied and deemed a
 -- dividend (5% treaty rate), the $180,000 rest interest (0% treaty rate): $6,000 in all.
 def canco : ThinCapitalization.Facts := { interest := 30000000, retainedEarnings := 100000000, months := List.replicate 12 { maxDebt := 500000000, paidUpCapital := 100000000 }, dividendRate := 5 }
