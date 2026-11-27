@@ -76,6 +76,7 @@ import Canteen.ITA.S125.BusinessLimit
 import Canteen.ITA.S256.Associated
 import Canteen.ITA.S67_1.MealsEntertainment
 import Canteen.ITA.S20.FinancingExpenses
+import Canteen.ITA.S18.WorkSpace
 import Canteen.ITA.S3.CorporateYear
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
@@ -772,6 +773,13 @@ def blueprint : Blueprint where
             "excluded. Proven: never more than what is left, and a fifth in a full year."
           lean := [``FinancingExpenses.Expense.deduction, ``FinancingExpenses.Expense.schedule, ``FinancingExpenses.Fee.deduction,
             ``FinancingExpenses.deduction, ``FinancingExpenses.Expense.deduction_le_remaining, ``FinancingExpenses.Expense.full_year] },
+        { id := "R76", kind := .law, title := "Work space in the home", citation := "ITA 18(12); 8(13)"
+          statement := "A home work space is deductible only if it is the principal place of business (or where an employee " ++
+            "principally works), or used exclusively and regularly for meeting clients; then at most the income from the " ++
+            "business or employment, the rest carried forward. Proven: it never creates a loss, nothing is lost while the " ++
+            "space qualifies, and an unqualified space gives nothing."
+          lean := [``WorkSpace.eligible, ``WorkSpace.deduction, ``WorkSpace.carriedForward, ``WorkSpace.deduction_le_income,
+            ``WorkSpace.nothing_lost, ``WorkSpace.not_eligible] },
         { id := "R70", kind := .law, title := "A corporation's year, to taxable income and tax", citation := "ITA 2(2); 3; 110.1; 111(1), (8); 112(1); 125(7); 129(4)"
           statement := "A corporation's income from active business, personal services business, property and dividends " ++
             "received, with its net taxable capital gains (a 55(2) dividend as a gain); taxable income after gifts, the " ++

@@ -89,8 +89,9 @@ flowchart BT
   v80["256(1), (2) associated corporations"]:::prov
   v81["67.1 meals and entertainment"]:::prov
   v82["20(1)(e), (e.1) financing expenses"]:::prov
-  v83["2(2), 3, 129(4) a corporation's year, to taxable income and tax"]:::prov
-  v84["50(2) bad personal-use debts"]:::prov
+  v83["18(12), 8(13) work space in the home"]:::prov
+  v84["2(2), 3, 129(4) a corporation's year, to taxable income and tax"]:::prov
+  v85["50(2) bad personal-use debts"]:::prov
   v0 --> v1
   v0 --> v2
   v0 --> v3
@@ -179,13 +180,13 @@ flowchart BT
   v31 --> v75
   v17 --> v77
   v6 --> v80
-  v19 --> v83
-  v20 --> v83
-  v32 --> v83
-  v78 --> v83
-  v69 --> v83
-  v79 --> v83
-  v71 --> v83
-  v35 --> v83
+  v19 --> v84
+  v20 --> v84
+  v32 --> v84
+  v78 --> v84
+  v69 --> v84
+  v79 --> v84
+  v71 --> v84
+  v35 --> v84
   classDef prov fill:#bbdefb,stroke:#1565c0,color:#0d47a1
 ```

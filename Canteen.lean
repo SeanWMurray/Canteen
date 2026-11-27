@@ -103,6 +103,7 @@ import Canteen.ITA.S125.BusinessLimit
 import Canteen.ITA.S256.Associated
 import Canteen.ITA.S67_1.MealsEntertainment
 import Canteen.ITA.S20.FinancingExpenses
+import Canteen.ITA.S18.WorkSpace
 import Canteen.ITA.S3.CorporateYear
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
@@ -251,3 +252,4 @@ import Canteen.Tests.BusinessLimit
 import Canteen.Tests.Associated
 import Canteen.Tests.MealsEntertainment
 import Canteen.Tests.FinancingExpenses
+import Canteen.Tests.WorkSpace

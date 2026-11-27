@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 115 statements:** 96 proven, 16 encoded, 3 not formalized.
+**Status of the 116 statements:** 97 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -117,14 +117,15 @@ graph TD
   n104["R73 · Associated corporations"]:::proven
   n105["R74 · Meals and entertainment"]:::proven
   n106["R75 · Financing expenses"]:::proven
-  n107["R70 · A corporation's year, to taxable income and tax"]:::proven
-  n108["R35 · An individual's year, to taxable income and tax"]:::proven
-  n109["R48 · The minimum tax"]:::proven
-  n110["R11 · The principal residence exemption"]:::proven
-  n111["R2 · Cost of the substituted property"]:::proven
-  n112["N1 · Inputs decided by other provisions"]:::notFormalized
-  n113["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n114["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n107["R76 · Work space in the home"]:::proven
+  n108["R70 · A corporation's year, to taxable income and tax"]:::proven
+  n109["R35 · An individual's year, to taxable income and tax"]:::proven
+  n110["R48 · The minimum tax"]:::proven
+  n111["R11 · The principal residence exemption"]:::proven
+  n112["R2 · Cost of the substituted property"]:::proven
+  n113["N1 · Inputs decided by other provisions"]:::notFormalized
+  n114["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n115["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -245,57 +246,57 @@ graph TD
   n77 --> n78
   n77 --> n80
   n39 --> n104
-  n44 --> n107
-  n45 --> n107
-  n57 --> n107
-  n60 --> n107
-  n77 --> n107
-  n78 --> n107
-  n80 --> n107
-  n101 --> n107
-  n102 --> n107
-  n103 --> n107
   n44 --> n108
   n45 --> n108
-  n53 --> n108
-  n55 --> n108
-  n56 --> n108
-  n58 --> n108
-  n73 --> n108
-  n74 --> n108
-  n75 --> n108
-  n76 --> n108
-  n81 --> n108
-  n82 --> n108
-  n83 --> n108
-  n84 --> n108
-  n85 --> n108
-  n87 --> n108
-  n88 --> n108
-  n89 --> n108
-  n90 --> n108
-  n91 --> n108
-  n92 --> n108
-  n93 --> n108
-  n94 --> n108
-  n97 --> n108
-  n100 --> n108
-  n108 --> n109
-  n44 --> n110
-  n50 --> n110
-  n11 --> n111
-  n1 --> n112
-  n5 --> n112
-  n6 --> n112
-  n8 --> n112
-  n37 --> n112
-  n111 --> n112
-  n38 --> n112
-  n30 --> n113
-  n32 --> n114
-  n34 --> n114
-  n39 --> n114
-  n42 --> n114
+  n57 --> n108
+  n60 --> n108
+  n77 --> n108
+  n78 --> n108
+  n80 --> n108
+  n101 --> n108
+  n102 --> n108
+  n103 --> n108
+  n44 --> n109
+  n45 --> n109
+  n53 --> n109
+  n55 --> n109
+  n56 --> n109
+  n58 --> n109
+  n73 --> n109
+  n74 --> n109
+  n75 --> n109
+  n76 --> n109
+  n81 --> n109
+  n82 --> n109
+  n83 --> n109
+  n84 --> n109
+  n85 --> n109
+  n87 --> n109
+  n88 --> n109
+  n89 --> n109
+  n90 --> n109
+  n91 --> n109
+  n92 --> n109
+  n93 --> n109
+  n94 --> n109
+  n97 --> n109
+  n100 --> n109
+  n109 --> n110
+  n44 --> n111
+  n50 --> n111
+  n11 --> n112
+  n1 --> n113
+  n5 --> n113
+  n6 --> n113
+  n8 --> n113
+  n37 --> n113
+  n112 --> n113
+  n38 --> n113
+  n30 --> n114
+  n32 --> n115
+  n34 --> n115
+  n39 --> n115
+  n42 --> n115
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -419,14 +420,15 @@ graph TD
   n104["R73"]:::proven
   n105["R74"]:::proven
   n106["R75"]:::proven
-  n107["R70"]:::proven
-  n108["R35"]:::proven
-  n109["R48"]:::proven
-  n110["R11"]:::proven
-  n111["R2"]:::proven
-  n112["N1"]:::notFormalized
-  n113["N2"]:::notFormalized
-  n114["N4"]:::notFormalized
+  n107["R76"]:::proven
+  n108["R70"]:::proven
+  n109["R35"]:::proven
+  n110["R48"]:::proven
+  n111["R11"]:::proven
+  n112["R2"]:::proven
+  n113["N1"]:::notFormalized
+  n114["N2"]:::notFormalized
+  n115["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -627,66 +629,66 @@ graph TD
   n77 --> n78
   n77 --> n80
   n39 -.-> n104
-  n44 --> n107
-  n57 --> n107
-  n45 --> n107
-  n101 --> n107
-  n102 --> n107
-  n103 --> n107
-  n78 --> n107
-  n77 --> n107
-  n80 --> n107
-  n60 -.-> n107
-  n93 --> n108
-  n55 --> n108
-  n94 --> n108
-  n81 --> n108
-  n91 --> n108
-  n84 --> n108
-  n58 --> n108
-  n97 --> n108
   n44 --> n108
-  n87 --> n108
-  n73 --> n108
-  n56 --> n108
-  n100 --> n108
-  n92 --> n108
-  n85 --> n108
+  n57 --> n108
   n45 --> n108
-  n53 --> n108
-  n89 --> n108
-  n90 --> n108
-  n82 --> n108
-  n74 --> n108
-  n83 --> n108
-  n76 --> n108
-  n75 --> n108
-  n88 -.-> n108
+  n101 --> n108
+  n102 --> n108
+  n103 --> n108
+  n78 --> n108
+  n77 --> n108
+  n80 --> n108
+  n60 -.-> n108
+  n93 --> n109
   n55 --> n109
-  n108 --> n109
+  n94 --> n109
   n81 --> n109
   n91 --> n109
   n84 --> n109
   n58 --> n109
-  n45 --> n109
+  n97 --> n109
+  n44 --> n109
   n87 --> n109
   n73 --> n109
+  n56 --> n109
   n100 --> n109
-  n44 -.-> n110
-  n50 -.-> n110
-  n11 -.-> n111
-  n1 -.-> n112
-  n5 -.-> n112
-  n6 -.-> n112
-  n8 -.-> n112
-  n37 -.-> n112
-  n111 -.-> n112
-  n38 -.-> n112
-  n30 -.-> n113
-  n32 -.-> n114
-  n34 -.-> n114
-  n39 -.-> n114
-  n42 -.-> n114
+  n92 --> n109
+  n85 --> n109
+  n45 --> n109
+  n53 --> n109
+  n89 --> n109
+  n90 --> n109
+  n82 --> n109
+  n74 --> n109
+  n83 --> n109
+  n76 --> n109
+  n75 --> n109
+  n88 -.-> n109
+  n55 --> n110
+  n109 --> n110
+  n81 --> n110
+  n91 --> n110
+  n84 --> n110
+  n58 --> n110
+  n45 --> n110
+  n87 --> n110
+  n73 --> n110
+  n100 --> n110
+  n44 -.-> n111
+  n50 -.-> n111
+  n11 -.-> n112
+  n1 -.-> n113
+  n5 -.-> n113
+  n6 -.-> n113
+  n8 -.-> n113
+  n37 -.-> n113
+  n112 -.-> n113
+  n38 -.-> n113
+  n30 -.-> n114
+  n32 -.-> n115
+  n34 -.-> n115
+  n39 -.-> n115
+  n42 -.-> n115
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -1561,6 +1563,14 @@ An amount for food, beverages or entertainment is deemed to be 50% of the lesser
 The costs of issuing shares or of borrowing for a business or property are deducted at 20% a year (prorated for a short year), up to what is left; when the debt is repaid at arm's length, the rest. Annual standby and similar fees are deducted in their year. Principal, interest and profit-based amounts are excluded. Proven: never more than what is left, and a fifth in a full year.
 
 **Lean:** [`Canteen.ITA.FinancingExpenses.Expense.deduction`](../../Canteen/ITA/S20/FinancingExpenses.lean#L66), [`Canteen.ITA.FinancingExpenses.Expense.schedule`](../../Canteen/ITA/S20/FinancingExpenses.lean#L70), [`Canteen.ITA.FinancingExpenses.Fee.deduction`](../../Canteen/ITA/S20/FinancingExpenses.lean#L85), [`Canteen.ITA.FinancingExpenses.deduction`](../../Canteen/ITA/S20/FinancingExpenses.lean#L94), [`Canteen.ITA.FinancingExpenses.Expense.deduction_le_remaining`](../../Canteen/ITA/S20/FinancingExpenses.lean#L110), [`Canteen.ITA.FinancingExpenses.Expense.full_year`](../../Canteen/ITA/S20/FinancingExpenses.lean#L119)
+
+### R76. Work space in the home
+
+**Status:** proven · **Citation:** ITA 18(12); 8(13)
+
+A home work space is deductible only if it is the principal place of business (or where an employee principally works), or used exclusively and regularly for meeting clients; then at most the income from the business or employment, the rest carried forward. Proven: it never creates a loss, nothing is lost while the space qualifies, and an unqualified space gives nothing.
+
+**Lean:** [`Canteen.ITA.WorkSpace.eligible`](../../Canteen/ITA/S18/WorkSpace.lean#L48), [`Canteen.ITA.WorkSpace.deduction`](../../Canteen/ITA/S18/WorkSpace.lean#L52), [`Canteen.ITA.WorkSpace.carriedForward`](../../Canteen/ITA/S18/WorkSpace.lean#L54), [`Canteen.ITA.WorkSpace.deduction_le_income`](../../Canteen/ITA/S18/WorkSpace.lean#L77), [`Canteen.ITA.WorkSpace.nothing_lost`](../../Canteen/ITA/S18/WorkSpace.lean#L83), [`Canteen.ITA.WorkSpace.not_eligible`](../../Canteen/ITA/S18/WorkSpace.lean#L88)
 
 ### R70. A corporation's year, to taxable income and tax
 
