@@ -76,6 +76,7 @@ import Canteen.ITA.S15.ShareholderLoans
 import Canteen.ITA.S89.GeneralRateIncomePool
 import Canteen.ITA.S127_5.MinimumTax
 import Canteen.ITA.S20.InterestDeductibility
+import Canteen.ITA.S118_2.MedicalExpenses
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
 import Canteen.ITA.S40.ShareToAffiliate
@@ -190,3 +191,4 @@ import Canteen.Tests.ShareholderLoans
 import Canteen.Tests.GeneralRateIncomePool
 import Canteen.Tests.MinimumTax
 import Canteen.Tests.InterestDeductibility
+import Canteen.Tests.MedicalExpenses

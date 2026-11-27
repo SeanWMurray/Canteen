@@ -36,6 +36,7 @@ import Canteen.ITA.S15.ShareholderLoans
 import Canteen.ITA.S89.GeneralRateIncomePool
 import Canteen.ITA.S127_5.MinimumTax
 import Canteen.ITA.S20.InterestDeductibility
+import Canteen.ITA.S118_2.MedicalExpenses
 import Canteen.Transactions.DebtSwap
 import Canteen.ITA.S87.Amalgamation
 import Canteen.ITA.S39.CanadianSecurities
@@ -185,7 +186,8 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S15.ShareholderLoans, "15(2), 80.4 shareholder loans"),
    (`Canteen.ITA.S89.GeneralRateIncomePool, "89(1), 185.1 the general rate income pool"),
    (`Canteen.ITA.S127_5.MinimumTax, "127.5 to 127.531, 120.2 the minimum tax"),
-   (`Canteen.ITA.S20.InterestDeductibility, "20(1)(c), 20(3) interest on borrowed money")]
+   (`Canteen.ITA.S20.InterestDeductibility, "20(1)(c), 20(3) interest on borrowed money"),
+   (`Canteen.ITA.S118_2.MedicalExpenses, "118.2(1) the medical expense credit")]
 
 /-! ## The dashboard -/
 
@@ -293,6 +295,7 @@ def actMindmap : String := Id.run do
     (2, "s. 112"), (3, "112(1): intercorporate dividend deduction"),
     (2, "s. 117"), (3, "117(2): the federal rates"),
     (2, "s. 118"), (3, "118(1.1): basic personal amount"), (3, "118(1)(a): spouse amount"),
+    (2, "s. 118.2"), (3, "118.2(1): the medical expense credit"),
     (2, "s. 118.1"), (3, "118.1(1): total gifts"), (3, "118.1(3): the credit"),
     (2, "s. 120.4"), (3, "120.4(1): split income, excluded amounts"), (3, "120.4(2), (3): the tax"),
     (2, "s. 121"), (3, "121: the dividend tax credit"),
