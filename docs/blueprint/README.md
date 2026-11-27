@@ -16,6 +16,6 @@ Memo-style documents whose statements link to the Lean that proves or encodes th
 - [Memo: an estate freeze in favour of minor children](estate-freeze.md): 10 statements, 5 proven, 0 not yet formalized
 - [Memo: donating shares in kind, or selling them and donating the cash](donating-shares.md): 9 statements, 6 proven, 0 not yet formalized
 - [Memo: investment income earned personally, or through a holding company](investment-income-integration.md): 8 statements, 5 proven, 0 not yet formalized
-- [Memo: how much of a dividend to designate eligible](eligible-designation.md): 9 statements, 5 proven, 0 not yet formalized
+- [Memo: how much of a dividend to designate eligible](eligible-designation.md): 11 statements, 7 proven, 0 not yet formalized
 
 More diagrams: [`docs/graphs/`](../graphs/README.md).

@@ -16,8 +16,9 @@ def memo : Blueprint where
       "pays the $880,000 left after tax to its shareholder. How much should it designate as eligible dividends?",
     "**Conclusion.** Exactly its general rate income pool, $360,000 (A2): the total federal tax is then $325,430.45, " ++
       "$9,909.57 less than designating nothing (K). Designating the $425,000 it kept from income taxed at the general rate " ++
-      "goes $65,000 over the pool: that saves the shareholder $1,789.22 but costs $13,000 of Part III.1 tax (A3, A4). The " ++
-      "185.1(2) election, the minimum tax and provincial tax are not computed.",
+      "goes $65,000 over the pool: that saves the shareholder $1,789.22 but costs $13,000 of Part III.1 tax (A3, A4). " ++
+      "Electing under 185.1(2) to treat the excess as a separate non-eligible dividend undoes it (W1). The minimum tax " ++
+      "and provincial tax are not computed.",
     "This is a constructed example, not advice."]
   sections := [
     { heading := "The law"
@@ -58,7 +59,18 @@ def memo : Blueprint where
       nodes := [
         { id := "K", kind := .conclusion, title := "Designate the pool"
           statement := "$325,430.45 in all, against $335,340.02 designating nothing and $336,641.23 designating $425,000."
-          lean := [``total, ``designate_the_pool], uses := ["F1", "L1", "L2", "L3", "A1", "A2", "A3", "A4"] } ] } ]
+          lean := [``total, ``designate_the_pool], uses := ["F1", "L1", "L2", "L3", "A1", "A2", "A3", "A4"] } ] },
+    { heading := "What if"
+      nodes := [
+        { id := "L4", kind := .law, title := "The election", citation := "ITA 185.1(2), (3)"
+          statement := "With the shareholders' concurrence, the corporation may treat up to the excessive designation as a " ++
+            "separate non-eligible dividend; the eligible dividend is reduced by it. Proven: electing the whole excess leaves " ++
+            "no Part III.1 tax and exactly the pool designated eligible."
+          lean := [``GeneralRateIncomePool.elected, ``GeneralRateIncomePool.eligibleAfter, ``GeneralRateIncomePool.partIII1After,
+            ``GeneralRateIncomePool.full_election], uses := ["L2"] },
+        { id := "W1", kind := .step, title := "Over-designating, then electing: as if the pool had been designated", citation := "ITA 185.1(2)"
+          statement := "Electing the $65,000 excess leaves $360,000 eligible and no Part III.1 tax: $325,430.45 in all."
+          lean := [``election, ``totalElected, ``election_undoes], uses := ["F1", "L1", "L3", "L4", "A3", "K"] } ] } ]
   diagrams := []
   appendix := [
     ("Opco's pool", (GeneralRateIncomePool.explain (opco 36000000)).renderWithJudgments []),

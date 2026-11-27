@@ -292,7 +292,7 @@ def actMindmap : String := Id.run do
     (2, "s. 121"), (3, "121: the dividend tax credit"),
     (2, "ss. 123 to 125"), (3, "123(1), 124(1): 38%, the abatement"), (3, "123.4(2): general rate reduction"), (3, "125(1): small business deduction"),
     (2, "ss. 123.3, 129"), (3, "123.3: refundable tax on investment income"), (3, "129(1), (4): the dividend refund"),
-    (2, "s. 185.1"), (3, "185.1(1): Part III.1 tax on excessive designations"),
+    (2, "s. 185.1"), (3, "185.1(1): Part III.1 tax on excessive designations"), (3, "185.1(2), (3): the election"),
     (2, "s. 186"), (3, "186(1): Part IV tax"), (3, "186(4): connected corporations"), (3, "186(2): control with non-arm's length persons"),
     (2, "s. 248"), (3, "248(1): majority-interest partner"),
     (2, "s. 251"), (3, "251(1): arm's length"), (3, "251(2), (3): related persons"), (3, "251(3.1), (3.2): amalgamations"),

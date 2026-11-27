@@ -15,8 +15,8 @@ A constructed example under 82(1), 89(1), 117(2), 121, 123 to 125 and 185.1(1), 
 Option A designates exactly its general rate income pool, $360,000. Option B designates nothing.
 Option C designates $425,000, the after-tax income it earned at the general rate.
 
-The 185.1(2) election (to treat the excess as a separate non-eligible dividend), the minimum tax
-and provincial tax are not computed.
+What if Opco, having designated $425,000, elects under 185.1(2) to treat the $65,000 excess as a
+separate non-eligible dividend? The minimum tax and provincial tax are not computed.
 -/
 
 namespace Canteen.Transactions.EligibleDesignation
@@ -64,5 +64,22 @@ shareholder $1,789.22 but costs $13,000 of Part III.1 tax. -/
 theorem designate_the_pool :
     total 36000000 = 32543045 ∧ total 0 = 33534002 ∧ total 42500000 = 33664123 ∧
     total 0 - total 36000000 = 990957 ∧ total 42500000 - total 36000000 = 1121078 := by decide
+
+/-! ## What if: the 185.1(2) election -/
+
+/-- The election, with the shareholder's concurrence, claiming the whole excess. -/
+def election : GeneralRateIncomePool.Election := { claimed := 6500000 }
+
+/-- Total federal tax after designating `eligible` and making the election. -/
+def totalElected (eligible : Cents) : Cents :=
+  CorporateRates.tax opcoRates + GeneralRateIncomePool.partIII1After (opco eligible) election +
+    IndividualYear.federalTax (shareholder (GeneralRateIncomePool.eligibleAfter (opco eligible) election))
+
+/-- Electing the $65,000 excess undoes the over-designation: $360,000 eligible, no Part III.1 tax, and the
+same $325,430.45 in all as designating the pool. -/
+theorem election_undoes :
+    GeneralRateIncomePool.eligibleAfter (opco 42500000) election = 36000000 ∧
+    GeneralRateIncomePool.partIII1After (opco 42500000) election = 0 ∧
+    totalElected 42500000 = total 36000000 := by decide
 
 end Canteen.Transactions.EligibleDesignation

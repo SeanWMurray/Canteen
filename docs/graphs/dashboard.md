@@ -9,9 +9,9 @@ An overview of the project, drawn from the Lean.
 Every statement in every blueprint, by the status Lean computes for it.
 
 ```mermaid
-pie showData title All 258 statements in the memos and blueprints, by status
+pie showData title All 260 statements in the memos and blueprints, by status
     "encoded" : 45
-    "proven" : 164
+    "proven" : 166
     "not formalized" : 3
     "fact" : 38
     "judgment call" : 8
@@ -200,23 +200,24 @@ mindmap
       n122["`129(1), (4): the dividend refund`"]
     n123["`s. 185.1`"]
       n124["`185.1(1): Part III.1 tax on excessive designations`"]
-    n125["`s. 186`"]
-      n126["`186(1): Part IV tax`"]
-      n127["`186(4): connected corporations`"]
-      n128["`186(2): control with non-arm's length persons`"]
-    n129["`s. 248`"]
-      n130["`248(1): majority-interest partner`"]
-    n131["`s. 251`"]
-      n132["`251(1): arm's length`"]
-      n133["`251(2), (3): related persons`"]
-      n134["`251(3.1), (3.2): amalgamations`"]
-      n135["`251(6): blood, marriage, adoption`"]
-    n136["`s. 251.1`"]
-      n137["`251.1(1)(a) to (h): affiliated persons`"]
-      n138["`251.1(2): amalgamations`"]
-      n139["`251.1(3), (4): definitions and rules`"]
-    n140["`s. 251.2`"]
-      n141["`251.2(2)(a): loss restriction event`"]
-    n142["`s. 256`"]
-      n143["`256(7)(a): control not acquired`"]
+      n125["`185.1(2), (3): the election`"]
+    n126["`s. 186`"]
+      n127["`186(1): Part IV tax`"]
+      n128["`186(4): connected corporations`"]
+      n129["`186(2): control with non-arm's length persons`"]
+    n130["`s. 248`"]
+      n131["`248(1): majority-interest partner`"]
+    n132["`s. 251`"]
+      n133["`251(1): arm's length`"]
+      n134["`251(2), (3): related persons`"]
+      n135["`251(3.1), (3.2): amalgamations`"]
+      n136["`251(6): blood, marriage, adoption`"]
+    n137["`s. 251.1`"]
+      n138["`251.1(1)(a) to (h): affiliated persons`"]
+      n139["`251.1(2): amalgamations`"]
+      n140["`251.1(3), (4): definitions and rules`"]
+    n141["`s. 251.2`"]
+      n142["`251.2(2)(a): loss restriction event`"]
+    n143["`s. 256`"]
+      n144["`256(7)(a): control not acquired`"]
 ```

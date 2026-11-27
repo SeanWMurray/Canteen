@@ -35,4 +35,20 @@ example : excessive { rates := { taxableIncome := 0 }, priorPool := -1000000, el
 -- Not a CCPC: no small business deduction, so all its income is adjusted taxable income.
 example : adjustedTaxableIncome { rates := { taxableIncome := 10000000, activeBusinessIncome := 10000000, ccpc := false } } = 10000000 := by decide
 
+
+/-! ## The 185.1(2) election -/
+
+def over : Facts := { opco with eligiblePaid := 40000000 }
+-- Electing the whole $40,000 excess: $360,000 stays eligible, $40,000 becomes non-eligible, no Part III.1 tax.
+example : elected over ⟨4000000, true⟩ = 4000000 ∧ eligibleAfter over ⟨4000000, true⟩ = 36000000 ∧
+    partIII1After over ⟨4000000, true⟩ = 0 := by decide
+-- Claiming more than the excess elects only the excess.
+example : elected over ⟨10000000, true⟩ = 4000000 := by decide
+-- Electing half: Part III.1 tax on the other $20,000, $4,000.
+example : partIII1After over ⟨2000000, true⟩ = 400000 := by decide
+-- Without every shareholder's concurrence, the election is not valid.
+example : elected over ⟨4000000, false⟩ = 0 ∧ partIII1After over ⟨4000000, false⟩ = 800000 := by decide
+-- Not where the pool was artificially increased (185.1(1)(b)).
+example : elected { over with artificial := .fact true } ⟨40000000, true⟩ = 0 := by decide
+
 end Canteen.Tests.GeneralRateIncomePool

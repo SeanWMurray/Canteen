@@ -4,11 +4,11 @@
 
 **Issue.** Opco, a CCPC, earns $1,000,000 of active business income in 2025, half of it over its business limit, and pays the $880,000 left after tax to its shareholder. How much should it designate as eligible dividends?
 
-**Conclusion.** Exactly its general rate income pool, $360,000 (A2): the total federal tax is then $325,430.45, $9,909.57 less than designating nothing (K). Designating the $425,000 it kept from income taxed at the general rate goes $65,000 over the pool: that saves the shareholder $1,789.22 but costs $13,000 of Part III.1 tax (A3, A4). The 185.1(2) election, the minimum tax and provincial tax are not computed.
+**Conclusion.** Exactly its general rate income pool, $360,000 (A2): the total federal tax is then $325,430.45, $9,909.57 less than designating nothing (K). Designating the $425,000 it kept from income taxed at the general rate goes $65,000 over the pool: that saves the shareholder $1,789.22 but costs $13,000 of Part III.1 tax (A3, A4). Electing under 185.1(2) to treat the excess as a separate non-eligible dividend undoes it (W1). The minimum tax and provincial tax are not computed.
 
 This is a constructed example, not advice.
 
-**Status of the 9 statements:** 5 proven, 3 encoded, 1 fact.
+**Status of the 11 statements:** 7 proven, 3 encoded, 1 fact.
 
 ## Dependency graph
 
@@ -23,6 +23,8 @@ graph TD
   n6["A3 · Designating $425,000: $13,000 of Part III.1 tax"]:::proven
   n7["A4 · The shareholder's tax under each"]:::proven
   n8["K · Designate the pool"]:::proven
+  n9["L4 · The election"]:::proven
+  n10["W1 · Over-designating, then electing: as if the pool had been designated"]:::proven
   n0 --> n1
   n3 --> n4
   n0 --> n4
@@ -39,6 +41,13 @@ graph TD
   n5 --> n8
   n6 --> n8
   n7 --> n8
+  n1 --> n9
+  n3 --> n10
+  n0 --> n10
+  n2 --> n10
+  n9 --> n10
+  n6 --> n10
+  n8 --> n10
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -64,6 +73,8 @@ graph TD
   n6["A3"]:::proven
   n7["A4"]:::proven
   n8["K"]:::proven
+  n9["L4"]:::proven
+  n10["W1"]:::proven
   n0 -.-> n1
   n3 --> n4
   n0 --> n4
@@ -84,6 +95,13 @@ graph TD
   n5 -.-> n8
   n6 -.-> n8
   n7 -.-> n8
+  n1 --> n9
+  n2 --> n10
+  n0 --> n10
+  n9 --> n10
+  n3 --> n10
+  n8 --> n10
+  n6 -.-> n10
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -107,7 +125,7 @@ graph TD
 
 72% of income taxed at the general rate goes into the pool; eligible dividends beyond it are excessive and bear 20% Part III.1 tax.
 
-**Lean:** [`Canteen.ITA.GeneralRateIncomePool.pool`](../../Canteen/ITA/S89/GeneralRateIncomePool.lean#L50), [`Canteen.ITA.GeneralRateIncomePool.excessive`](../../Canteen/ITA/S89/GeneralRateIncomePool.lean#L55), [`Canteen.ITA.GeneralRateIncomePool.partIII1`](../../Canteen/ITA/S89/GeneralRateIncomePool.lean#L59)
+**Lean:** [`Canteen.ITA.GeneralRateIncomePool.pool`](../../Canteen/ITA/S89/GeneralRateIncomePool.lean#L54), [`Canteen.ITA.GeneralRateIncomePool.excessive`](../../Canteen/ITA/S89/GeneralRateIncomePool.lean#L59), [`Canteen.ITA.GeneralRateIncomePool.partIII1`](../../Canteen/ITA/S89/GeneralRateIncomePool.lean#L63)
 
 ### L3. The shareholder's tax
 
@@ -178,6 +196,26 @@ $205,430.45 designating $360,000; $215,340.02 designating nothing; $203,641.23 d
 $325,430.45 in all, against $335,340.02 designating nothing and $336,641.23 designating $425,000.
 
 **Lean:** [`Canteen.Transactions.EligibleDesignation.total`](../../Canteen/Transactions/EligibleDesignation.lean#L38), [`Canteen.Transactions.EligibleDesignation.designate_the_pool`](../../Canteen/Transactions/EligibleDesignation.lean#L61)
+
+**Rests on:** facts F1.
+
+## What if
+
+### L4. The election
+
+**Status:** proven · **Citation:** ITA 185.1(2), (3) · **Uses:** L2
+
+With the shareholders' concurrence, the corporation may treat up to the excessive designation as a separate non-eligible dividend; the eligible dividend is reduced by it. Proven: electing the whole excess leaves no Part III.1 tax and exactly the pool designated eligible.
+
+**Lean:** [`Canteen.ITA.GeneralRateIncomePool.elected`](../../Canteen/ITA/S89/GeneralRateIncomePool.lean#L76), [`Canteen.ITA.GeneralRateIncomePool.eligibleAfter`](../../Canteen/ITA/S89/GeneralRateIncomePool.lean#L79), [`Canteen.ITA.GeneralRateIncomePool.partIII1After`](../../Canteen/ITA/S89/GeneralRateIncomePool.lean#L82), [`Canteen.ITA.GeneralRateIncomePool.full_election`](../../Canteen/ITA/S89/GeneralRateIncomePool.lean#L111)
+
+### W1. Over-designating, then electing: as if the pool had been designated
+
+**Status:** proven · **Citation:** ITA 185.1(2) · **Uses:** F1, L1, L3, L4, A3, K
+
+Electing the $65,000 excess leaves $360,000 eligible and no Part III.1 tax: $325,430.45 in all.
+
+**Lean:** [`Canteen.Transactions.EligibleDesignation.election`](../../Canteen/Transactions/EligibleDesignation.lean#L70), [`Canteen.Transactions.EligibleDesignation.totalElected`](../../Canteen/Transactions/EligibleDesignation.lean#L73), [`Canteen.Transactions.EligibleDesignation.election_undoes`](../../Canteen/Transactions/EligibleDesignation.lean#L78)
 
 **Rests on:** facts F1.
 

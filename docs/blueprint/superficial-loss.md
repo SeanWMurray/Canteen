@@ -1229,11 +1229,11 @@ A loan from a corporation to a shareholder (or a person connected with one) is i
 
 ### R47. The general rate income pool
 
-**Status:** proven · **Citation:** ITA 89(1); 185.1(1) · **Uses:** R44
+**Status:** proven · **Citation:** ITA 89(1); 185.1(1), (2) · **Uses:** R44
 
-A CCPC's pool grows by 72% of its income taxed at the general rate (taxable income less the small business amount and investment income) and by eligible dividends received, and shrinks by last year's eligible dividends; eligible dividends beyond it are excessive and bear Part III.1 tax of 20% (30%, and the whole dividend, where the pool was artificially increased). Proven: dividends within the pool are never excessive.
+A CCPC's pool grows by 72% of its income taxed at the general rate (taxable income less the small business amount and investment income) and by eligible dividends received, and shrinks by last year's eligible dividends; eligible dividends beyond it are excessive and bear Part III.1 tax of 20% (30%, and the whole dividend, where the pool was artificially increased), unless the excess is elected to be a separate non-eligible dividend. Proven: dividends within the pool are never excessive, and electing the whole excess leaves no Part III.1 tax.
 
-**Lean:** [`Canteen.ITA.GeneralRateIncomePool.adjustedTaxableIncome`](../../Canteen/ITA/S89/GeneralRateIncomePool.lean#L45), [`Canteen.ITA.GeneralRateIncomePool.pool`](../../Canteen/ITA/S89/GeneralRateIncomePool.lean#L50), [`Canteen.ITA.GeneralRateIncomePool.excessive`](../../Canteen/ITA/S89/GeneralRateIncomePool.lean#L55), [`Canteen.ITA.GeneralRateIncomePool.partIII1`](../../Canteen/ITA/S89/GeneralRateIncomePool.lean#L59), [`Canteen.ITA.GeneralRateIncomePool.within_pool`](../../Canteen/ITA/S89/GeneralRateIncomePool.lean#L73), [`Canteen.ITA.GeneralRateIncomePool.excessive_le`](../../Canteen/ITA/S89/GeneralRateIncomePool.lean#L80)
+**Lean:** [`Canteen.ITA.GeneralRateIncomePool.adjustedTaxableIncome`](../../Canteen/ITA/S89/GeneralRateIncomePool.lean#L49), [`Canteen.ITA.GeneralRateIncomePool.pool`](../../Canteen/ITA/S89/GeneralRateIncomePool.lean#L54), [`Canteen.ITA.GeneralRateIncomePool.excessive`](../../Canteen/ITA/S89/GeneralRateIncomePool.lean#L59), [`Canteen.ITA.GeneralRateIncomePool.partIII1`](../../Canteen/ITA/S89/GeneralRateIncomePool.lean#L63), [`Canteen.ITA.GeneralRateIncomePool.partIII1After`](../../Canteen/ITA/S89/GeneralRateIncomePool.lean#L82), [`Canteen.ITA.GeneralRateIncomePool.within_pool`](../../Canteen/ITA/S89/GeneralRateIncomePool.lean#L98), [`Canteen.ITA.GeneralRateIncomePool.excessive_le`](../../Canteen/ITA/S89/GeneralRateIncomePool.lean#L105), [`Canteen.ITA.GeneralRateIncomePool.full_election`](../../Canteen/ITA/S89/GeneralRateIncomePool.lean#L111)
 
 ### R35. An individual's year, to taxable income and tax
 

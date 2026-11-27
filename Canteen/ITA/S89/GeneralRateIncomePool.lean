@@ -18,10 +18,14 @@ import Canteen.Core.Answer
   whole dividend, if one of the main purposes of the transaction or series was to artificially maintain
   or increase the pool.
 * **185.1(1)** Part III.1 tax: 20% of the excessive designation, plus 10% more where (c) applies.
+* **185.1(2), (3)** where (c) does not apply, the corporation may elect, with the concurrence of the
+  shareholders who received the dividend, to treat an amount up to the excessive designation as a
+  separate non-eligible dividend paid just before; the eligible dividend is reduced by it.
 
 Foreign affiliate dividends (E (b)), F (amalgamations and the like, 89(4) to (6)), and the specified
 future tax consequences (B) are not encoded; the 185.1(2) election to treat the excess as an ordinary
-dividend is not encoded. Amounts are rounded down to the cent.
+dividend is taken to be made on time (its 90-day and 30-month limits are not checked), and 185.1(4)
+is not encoded. Amounts are rounded down to the cent.
 -/
 
 namespace Canteen.ITA.GeneralRateIncomePool
@@ -59,6 +63,25 @@ def excessive (f : Facts) : Cents :=
 /-- 185.1(1): Part III.1 tax. -/
 def partIII1 (f : Facts) : Cents := excessive f * (if f.artificial.value then 30 else 20) / 100
 
+/-- A 185.1(2) election: the amount claimed, and whether every shareholder who received the
+dividend (and whose address the corporation knew) concurred (185.1(3)(a)). -/
+structure Election where
+  claimed : Cents
+  concurrence : Bool := true
+  deriving Repr, Inhabited
+
+/-- The election is valid: not a (c) designation, and with the shareholders' concurrence. -/
+def Election.valid (f : Facts) (e : Election) : Bool := !f.artificial.value && e.concurrence
+
+/-- 185.1(2)(a), (b): the amount treated as a separate non-eligible dividend. -/
+def elected (f : Facts) (e : Election) : Cents := if e.valid f then min e.claimed (excessive f) else 0
+
+/-- 185.1(2)(a): the eligible dividends left after the election. -/
+def eligibleAfter (f : Facts) (e : Election) : Cents := f.eligiblePaid - elected f e
+
+/-- 185.1(1) after the election: the designation is excessive only by what was not elected. -/
+def partIII1After (f : Facts) (e : Election) : Cents := partIII1 { f with eligiblePaid := eligibleAfter f e }
+
 def explain (f : Facts) : Finding :=
   let c := formatCents
   let p := pool f
@@ -69,6 +92,8 @@ def explain (f : Facts) : Finding :=
       "ITA 89(1) \"excessive eligible dividend designation\"; 185.1(1)"⟩], f.artificial.judgments⟩
 
 /-! ## Truths about the pool -/
+
+private theorem sub_sub_eq_min (a b : Nat) : a - (a - b) = min a b := by omega
 
 /-- Eligible dividends within the pool are never excessive (absent an artificial purpose). -/
 theorem within_pool (f : Facts) (ha : f.artificial.value = false) (h : (f.eligiblePaid : Int) ≤ pool f) : excessive f = 0 := by
@@ -82,5 +107,25 @@ theorem excessive_le (f : Facts) : excessive f ≤ f.eligiblePaid := by
   unfold excessive; split
   · exact Nat.le_refl _
   · exact Nat.sub_le _ _
+
+/-- Electing the whole excess leaves no Part III.1 tax, and exactly the pool designated eligible. -/
+theorem full_election (f : Facts) (e : Election) (hv : e.valid f = true) (hc : excessive f ≤ e.claimed) :
+    partIII1After f e = 0 ∧ eligibleAfter f e = min f.eligiblePaid (pool f).toNat := by
+  have ha : f.artificial.value = false := by
+    unfold Election.valid at hv; cases h : f.artificial.value <;> simp_all
+  have hx : excessive f = f.eligiblePaid - (pool f).toNat := by
+    unfold excessive; simp only [ha, Bool.false_eq_true, ite_false]
+  have he : elected f e = excessive f := by
+    unfold elected; simp only [hv, ite_true]; exact Nat.min_eq_right hc
+  have hafter : eligibleAfter f e = min f.eligiblePaid (pool f).toNat := by
+    unfold eligibleAfter; rw [he, hx]; exact sub_sub_eq_min _ _
+  refine ⟨?_, hafter⟩
+  unfold partIII1After
+  have hz : excessive { f with eligiblePaid := eligibleAfter f e } = 0 := by
+    unfold excessive
+    simp only [ha, Bool.false_eq_true, ite_false]
+    show eligibleAfter f e - (pool f).toNat = 0
+    rw [hafter]; exact Nat.sub_eq_zero_of_le (Nat.min_le_right _ _)
+  unfold partIII1; rw [hz]; simp
 
 end Canteen.ITA.GeneralRateIncomePool
