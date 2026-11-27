@@ -59,6 +59,7 @@ import Canteen.ITA.S110_1.CorporateDonations
 import Canteen.ITA.S111.NonCapitalLoss
 import Canteen.ITA.S125.BusinessLimit
 import Canteen.ITA.S256.Associated
+import Canteen.ITA.S67_1.MealsEntertainment
 import Canteen.ITA.S3.CorporateYear
 import Canteen.Transactions.DebtSwap
 import Canteen.ITA.S87.Amalgamation
@@ -233,6 +234,7 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S111.NonCapitalLoss, "111(1)(a), (3), (8) non-capital losses"),
    (`Canteen.ITA.S125.BusinessLimit, "125(2), (3), (5)(b), (5.1) the business limit, shared and ground"),
    (`Canteen.ITA.S256.Associated, "256(1), (2) associated corporations"),
+   (`Canteen.ITA.S67_1.MealsEntertainment, "67.1 meals and entertainment"),
    (`Canteen.ITA.S3.CorporateYear, "2(2), 3, 129(4) a corporation's year, to taxable income and tax")]
 
 /-! ## The dashboard -/
@@ -324,6 +326,7 @@ def actMindmap : String := Id.run do
     (2, "s. 54"), (3, "superficial loss"), (3, "principal residence"), (3, "personal-use property"),
     (3, "listed personal property"),
     (2, "s. 55"), (3, "55(2), (2.1): dividends over safe income"), (3, "55(3): related parties, butterflies"),
+    (2, "s. 67.1"), (3, "67.1(1): 50% of food and entertainment"), (3, "67.1(2): the exceptions"), (3, "67.1(3): conference fees"),
     (2, "s. 69"), (3, "69(1): not at arm's length, gifts"),
     (2, "s. 70"), (3, "70(5): deemed disposition on death"), (3, "70(6): rollover to a spouse or spousal trust"),
     (2, "s. 73"), (3, "73(1), (1.01): the spousal rollover"),

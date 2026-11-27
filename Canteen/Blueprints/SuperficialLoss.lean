@@ -74,6 +74,7 @@ import Canteen.ITA.S110_1.CorporateDonations
 import Canteen.ITA.S111.NonCapitalLoss
 import Canteen.ITA.S125.BusinessLimit
 import Canteen.ITA.S256.Associated
+import Canteen.ITA.S67_1.MealsEntertainment
 import Canteen.ITA.S3.CorporateYear
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
@@ -754,6 +755,15 @@ def blueprint : Blueprint where
             ``Associated.uncontrolled, ``Associated.shareOf, ``Associated.classBp, ``Associated.ownedBp, ``Associated.minorsOf, ``Associated.Group.associatedWith, ``Associated.Group.electedNil,
             ``Associated.Group.direct_associated],
           uses := ["R4"] },
+        { id := "R74", kind := .law, title := "Meals and entertainment", citation := "ITA 67.1"
+          statement := "An amount for food, beverages or entertainment is deemed to be 50% of the lesser of what was paid " ++
+            "and a reasonable amount (a long-haul truck driver's road meals, 80%), except where the business sells them, " ++
+            "for a charity fundraiser, when billed to a client, as a taxable benefit, at a remote site or camp, or for up " ++
+            "to six staff events a year; a conference fee that does not identify its food part includes $50 of food a day. " ++
+            "Proven: never more than was paid, half without an exception, and a seventh staff event loses the exception."
+          lean := [``MealsEntertainment.specifiedPercentage, ``MealsEntertainment.Expense.deemed, ``MealsEntertainment.Conference.deemed,
+            ``MealsEntertainment.deductible, ``MealsEntertainment.Expense.deemed_le, ``MealsEntertainment.Expense.half,
+            ``MealsEntertainment.Expense.seventh_event] },
         { id := "R70", kind := .law, title := "A corporation's year, to taxable income and tax", citation := "ITA 2(2); 3; 110.1; 111(1), (8); 112(1); 125(7); 129(4)"
           statement := "A corporation's income from active business, personal services business, property and dividends " ++
             "received, with its net taxable capital gains (a 55(2) dividend as a gain); taxable income after gifts, the " ++

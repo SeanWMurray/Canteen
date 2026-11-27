@@ -87,8 +87,9 @@ flowchart BT
   v78["110.1(1)(a) a corporation's charitable gifts"]:::prov
   v79["125(2), (3), (5)(b), (5.1) the business limit, shared and ground"]:::prov
   v80["256(1), (2) associated corporations"]:::prov
-  v81["2(2), 3, 129(4) a corporation's year, to taxable income and tax"]:::prov
-  v82["50(2) bad personal-use debts"]:::prov
+  v81["67.1 meals and entertainment"]:::prov
+  v82["2(2), 3, 129(4) a corporation's year, to taxable income and tax"]:::prov
+  v83["50(2) bad personal-use debts"]:::prov
   v0 --> v1
   v0 --> v2
   v0 --> v3
@@ -177,13 +178,13 @@ flowchart BT
   v31 --> v75
   v17 --> v77
   v6 --> v80
-  v19 --> v81
-  v20 --> v81
-  v32 --> v81
-  v78 --> v81
-  v69 --> v81
-  v79 --> v81
-  v71 --> v81
-  v35 --> v81
+  v19 --> v82
+  v20 --> v82
+  v32 --> v82
+  v78 --> v82
+  v69 --> v82
+  v79 --> v82
+  v71 --> v82
+  v35 --> v82
   classDef prov fill:#bbdefb,stroke:#1565c0,color:#0d47a1
 ```
