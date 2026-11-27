@@ -5,6 +5,12 @@ import Canteen.ITA.S251.RelatedPersons
 
 *Income Tax Act*, as consolidated to 2026-10-29 (verbatim in `statute/ITA-256-1-2-5.1-associated.txt`):
 
+**256(1.2)(d)** Shares owned (or deemed owned) by a holding corporation are deemed owned by each of its
+shareholders in proportion to the value of the shareholder's shares of it. **256(1.3)** Shares owned by a
+child under 18 are deemed owned by the parent, in determining association with a corporation the parent
+(or a group including the parent) controls, unless the child manages the business without significant
+influence from the parent.
+
 **256(1)** One corporation is associated with another in a taxation year if, at any time in the year,
 (a) one controlled the other; (b) both were controlled by the same person or group of persons; (c)
 each was controlled by a person, the two persons were related, and either of them owned at least 25%
@@ -33,9 +39,11 @@ judgment calls; 256(1.2)(c) is the caller's to apply when stating them. "Related
 computed by `RelatedPersons` on the same world, with a person related to himself (256(1.5)). For (b),
 two controllers are the same if they have the same members; by 256(1.2)(b)(i), they also count as the
 same group when every member of either owns shares of both corporations. Shareholdings are given by
-class, with whether the class is a specified class (256(1.1), a fact). Not encoded: the look-through
-rules of 256(1.2)(d) to (f), 256(1.3) (a child's shares), 256(1.4) (rights) and 256(2.1) (the
-anti-avoidance rule). For 256(2), the corporations to consider are listed; a chain of thirds of any
+class, with whether the class is a specified class (256(1.1), a fact). For the 25% tests, shares owned
+by a corporation are deemed owned by its shareholders in proportion to the value of their shares
+(256(1.2)(d), through any number of holding corporations), and a parent is deemed to own the shares of
+a child under 18 unless the child manages the corporation independently (256(1.3)). Not encoded:
+256(1.2)(e) and (f) (partnerships and trusts), 256(1.4) (rights) and 256(2.1) (the anti-avoidance rule). For 256(2), the corporations to consider are listed; a chain of thirds of any
 length is followed, and for section 125 every third on the chain must be a CCPC that has not elected.
 -/
 
@@ -54,9 +62,26 @@ structure Holding where
   specified : Bool := false
   deriving Repr, DecidableEq, Inhabited
 
+/-- 256(1.2)(d): a shareholder's interest in a corporation, as a percentage of the fair market value of all its issued shares. -/
+structure Equity where
+  corporation : Nat
+  holder : Nat
+  percent : Nat
+  deriving Repr, DecidableEq, Inhabited
+
+/-- 256(1.3): a child under 18 at the time, and whether the child manages the corporation's business and
+affairs without a significant degree of influence by the parent (usually a judgment call). -/
+structure Minor where
+  child : Nat
+  independent : Answer := .fact false
+  deriving Repr, DecidableEq, Inhabited
+
 structure Facts where
   world : World
   holdings : List Holding := []
+  /-- For the look-through of 256(1.2)(d): the shareholders of each holding corporation, by value. -/
+  equity : List Equity := []
+  minors : List Minor := []
   first : Nat
   second : Nat
   deriving Inhabited
@@ -76,10 +101,36 @@ def sameMembers (a b : List Nat) : Bool := a.all (b.contains ·) && b.all (a.con
 
 def shareholder (f : Facts) (c p : Nat) : Bool := f.holdings.any fun h => h.corporation == c && h.holder == p
 
-/-- The persons together own at least 25% of the issued shares of a class of the corporation, other than a specified class. -/
+/-- 256(1.2)(d): `p`'s share of corporation `h`, in basis points of its value: directly, and through
+corporations that are its shareholders (to the given depth). -/
+def shareOf (f : Facts) (p : Nat) : Nat → Nat → Nat
+  | 0, h => 100 * ((f.equity.filter fun e => e.corporation == h && e.holder == p).map (·.percent)).sum
+  | k + 1, h => 100 * ((f.equity.filter fun e => e.corporation == h && e.holder == p).map (·.percent)).sum +
+      ((f.equity.filter fun e => e.corporation == h && e.holder != p && f.world.isKind .corporation e.holder).map
+        fun e => e.percent * shareOf f p k e.holder / 100).sum
+
+/-- The shares of a class of `c` that `p` owns or is deemed by 256(1.2)(d) to own, in basis points of the class. -/
+def ownedBp (f : Facts) (c : Nat) (cls : String) (p : Nat) : Nat :=
+  let ofClass := f.holdings.filter fun g => g.corporation == c && g.shareClass == cls
+  100 * ((ofClass.filter (·.holder == p)).map (·.percent)).sum +
+    ((ofClass.filter fun g => g.holder != p && f.world.isKind .corporation g.holder).map
+      fun g => g.percent * shareOf f p f.equity.length g.holder / 100).sum
+
+/-- 256(1.3): the children under 18 of a parent, whose shares the parent is deemed to own when the other
+corporation is controlled by the parent or by a group of which the parent is a member. -/
+def minorsOf (f : Facts) (other parent : Nat) : List Nat :=
+  if (controllers f.world other).any (fun k => (members k).contains parent) then
+    (f.minors.filter fun m => !m.independent.value &&
+      (f.world.children.contains (parent, m.child) || f.world.adoptions.contains (parent, m.child))).map (·.child)
+  else []
+
+/-- The persons together own (or are deemed to own) at least 25% of the issued shares of a class of the
+corporation, other than a specified class. `other` is the corporation whose association is asked about. -/
 def owns25 (f : Facts) (c : Nat) (ps : List Nat) : Bool :=
+  let other := if c == f.first then f.second else f.first
+  let owners := (ps ++ ps.flatMap (minorsOf f other)).eraseDups
   (f.holdings.filter fun h => h.corporation == c && !h.specified).any fun h =>
-    25 ≤ ((f.holdings.filter fun g => g.corporation == c && g.shareClass == h.shareClass && ps.contains g.holder).map (·.percent)).sum
+    2500 ≤ (owners.map (ownedBp f c h.shareClass)).sum
 
 def D (f : Facts) : List Link := relation f.world
 
@@ -173,7 +224,9 @@ theorem Group.direct_associated (g : Group) (for125 : Bool) (a b : Nat) (h : g.d
 def associatedWithAny (w : World) (holdings : List Holding) (c : Nat) (others : List Nat) : Bool :=
   others.any fun o => o != c && associated { world := w, holdings, first := c, second := o }
 
-def judgments (f : Facts) : List String := mergeIds (controlJudgments f.world f.first) (controlJudgments f.world f.second)
+def judgments (f : Facts) : List String :=
+  mergeIds (mergeIds (controlJudgments f.world f.first) (controlJudgments f.world f.second))
+    (f.minors.foldl (fun ids m => mergeIds ids m.independent.judgments) [])
 
 def explain (f : Facts) : Finding :=
   let n := f.world.name

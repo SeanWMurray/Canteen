@@ -79,4 +79,30 @@ example : ({ group3 with ccpcs := [10, 11] } : Group).associatedWith true 10 11 
 -- A corporation is not associated with itself.
 example : group3.associatedWith false 10 10 = false := by decide +kernel
 
+-- 256(1.2)(d): Ann's 30% of Bco is held through her Holdco (13), which she owns.
+def withHoldco : World :=
+  { persons := people ++ [⟨13, "Holdco", .corporation⟩, ⟨14, "Midco", .corporation⟩], spouses := [(0, 1)], children := [(0, 2), (0, 3), (1, 2), (1, 3)],
+    controls := [⟨10, .person 0, .fact true, false⟩, ⟨11, .person 1, .fact true, false⟩] }
+def viaHoldco (equity : List Equity) : Facts :=
+  { world := withHoldco, holdings := [common 10 0 100, common 11 1 70, common 11 13 30], equity, first := 10, second := 11 }
+example : paraC (viaHoldco [⟨13, 0, 100⟩]) = true := by decide +kernel
+-- Without the look-through facts, Holdco's shares are not Ann's.
+example : associated (viaHoldco []) = false := by decide +kernel
+-- Ann owns 80% of Holdco: 24% of Bco, not enough.
+example : associated (viaHoldco [⟨13, 0, 80⟩, ⟨13, 4, 20⟩]) = false := by decide +kernel
+-- Two levels: Ann owns all of Midco (14), which owns 60% of Holdco: 18%, not enough; with Ann's own 40%
+-- of Holdco as well, 30%.
+example : associated (viaHoldco [⟨13, 14, 60⟩, ⟨13, 4, 40⟩, ⟨14, 0, 100⟩]) = false := by decide +kernel
+example : associated (viaHoldco [⟨13, 14, 60⟩, ⟨13, 0, 40⟩, ⟨14, 0, 100⟩]) = true := by decide +kernel
+
+-- 256(1.3): Carl, Ann's son, under 18, owns 30% of Bco. Ann controls Aco, so she is deemed to own them.
+def minorFacts (minors : List Minor) : Facts :=
+  { world := withHoldco, holdings := [common 10 0 100, common 11 1 70, common 11 2 30], minors, first := 10, second := 11 }
+example : paraC (minorFacts [⟨2, .fact false⟩]) = true := by decide +kernel
+-- Not if he is 18 or over, nor if he runs Bco without significant influence from Ann.
+example : associated (minorFacts []) = false := by decide +kernel
+example : associated (minorFacts [⟨2, .fact true⟩]) = false := by decide +kernel
+-- Usually a judgment call, which is then on the record.
+example : (explain (minorFacts [⟨2, .judged "J-MINOR" false⟩])).reliesOn = ["J-MINOR"] := by decide +kernel
+
 end Canteen.Tests.Associated
