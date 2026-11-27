@@ -147,6 +147,7 @@ Canteen/
     S20/InstalmentSales.lean   20(1)(n), 20(8): the reserve for unpaid amounts on property sold
     S18/PrepaidExpenses.lean   18(9): prepaid expenses, deducted in the years they relate to
     S18/ThinCapitalization.lean   18(4), (5): thin capitalization, the 1.5 to 1 debt-to-equity ratio
+    S212/Withholding.lean      212(1)(b), (2): Part XIII tax on dividends and interest to non-residents
     S3/CorporateYear.lean      2(2), 3, 129(4): a corporation's year, to taxable income, investment income and tax
     S110_6/CapitalGainsDeduction.lean   110.6: qualified small business corporation shares, the gains limits, the deduction
     S251_2/LossRestrictionEvent.lean   251.2(2)(a), 256(7)(a): acquisitions of control, and when they are not

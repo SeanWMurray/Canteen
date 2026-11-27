@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 121 statements:** 102 proven, 16 encoded, 3 not formalized.
+**Status of the 122 statements:** 103 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -123,14 +123,15 @@ graph TD
   n110["R79 · The reserve for unpaid amounts on property sold"]:::proven
   n111["R80 · Prepaid expenses"]:::proven
   n112["R81 · Thin capitalization"]:::proven
-  n113["R70 · A corporation's year, to taxable income and tax"]:::proven
-  n114["R35 · An individual's year, to taxable income and tax"]:::proven
-  n115["R48 · The minimum tax"]:::proven
-  n116["R11 · The principal residence exemption"]:::proven
-  n117["R2 · Cost of the substituted property"]:::proven
-  n118["N1 · Inputs decided by other provisions"]:::notFormalized
-  n119["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n120["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n113["R82 · Part XIII tax on dividends and interest"]:::proven
+  n114["R70 · A corporation's year, to taxable income and tax"]:::proven
+  n115["R35 · An individual's year, to taxable income and tax"]:::proven
+  n116["R48 · The minimum tax"]:::proven
+  n117["R11 · The principal residence exemption"]:::proven
+  n118["R2 · Cost of the substituted property"]:::proven
+  n119["N1 · Inputs decided by other provisions"]:::notFormalized
+  n120["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n121["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -251,57 +252,57 @@ graph TD
   n77 --> n78
   n77 --> n80
   n39 --> n104
-  n44 --> n113
-  n45 --> n113
-  n57 --> n113
-  n60 --> n113
-  n77 --> n113
-  n78 --> n113
-  n80 --> n113
-  n101 --> n113
-  n102 --> n113
-  n103 --> n113
   n44 --> n114
   n45 --> n114
-  n53 --> n114
-  n55 --> n114
-  n56 --> n114
-  n58 --> n114
-  n73 --> n114
-  n74 --> n114
-  n75 --> n114
-  n76 --> n114
-  n81 --> n114
-  n82 --> n114
-  n83 --> n114
-  n84 --> n114
-  n85 --> n114
-  n87 --> n114
-  n88 --> n114
-  n89 --> n114
-  n90 --> n114
-  n91 --> n114
-  n92 --> n114
-  n93 --> n114
-  n94 --> n114
-  n97 --> n114
-  n100 --> n114
-  n114 --> n115
-  n44 --> n116
-  n50 --> n116
-  n11 --> n117
-  n1 --> n118
-  n5 --> n118
-  n6 --> n118
-  n8 --> n118
-  n37 --> n118
-  n117 --> n118
-  n38 --> n118
-  n30 --> n119
-  n32 --> n120
-  n34 --> n120
-  n39 --> n120
-  n42 --> n120
+  n57 --> n114
+  n60 --> n114
+  n77 --> n114
+  n78 --> n114
+  n80 --> n114
+  n101 --> n114
+  n102 --> n114
+  n103 --> n114
+  n44 --> n115
+  n45 --> n115
+  n53 --> n115
+  n55 --> n115
+  n56 --> n115
+  n58 --> n115
+  n73 --> n115
+  n74 --> n115
+  n75 --> n115
+  n76 --> n115
+  n81 --> n115
+  n82 --> n115
+  n83 --> n115
+  n84 --> n115
+  n85 --> n115
+  n87 --> n115
+  n88 --> n115
+  n89 --> n115
+  n90 --> n115
+  n91 --> n115
+  n92 --> n115
+  n93 --> n115
+  n94 --> n115
+  n97 --> n115
+  n100 --> n115
+  n115 --> n116
+  n44 --> n117
+  n50 --> n117
+  n11 --> n118
+  n1 --> n119
+  n5 --> n119
+  n6 --> n119
+  n8 --> n119
+  n37 --> n119
+  n118 --> n119
+  n38 --> n119
+  n30 --> n120
+  n32 --> n121
+  n34 --> n121
+  n39 --> n121
+  n42 --> n121
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -431,14 +432,15 @@ graph TD
   n110["R79"]:::proven
   n111["R80"]:::proven
   n112["R81"]:::proven
-  n113["R70"]:::proven
-  n114["R35"]:::proven
-  n115["R48"]:::proven
-  n116["R11"]:::proven
-  n117["R2"]:::proven
-  n118["N1"]:::notFormalized
-  n119["N2"]:::notFormalized
-  n120["N4"]:::notFormalized
+  n113["R82"]:::proven
+  n114["R70"]:::proven
+  n115["R35"]:::proven
+  n116["R48"]:::proven
+  n117["R11"]:::proven
+  n118["R2"]:::proven
+  n119["N1"]:::notFormalized
+  n120["N2"]:::notFormalized
+  n121["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -639,66 +641,66 @@ graph TD
   n77 --> n78
   n77 --> n80
   n39 -.-> n104
-  n44 --> n113
-  n57 --> n113
-  n45 --> n113
-  n101 --> n113
-  n102 --> n113
-  n103 --> n113
-  n78 --> n113
-  n77 --> n113
-  n80 --> n113
-  n60 -.-> n113
-  n93 --> n114
-  n55 --> n114
-  n94 --> n114
-  n81 --> n114
-  n91 --> n114
-  n84 --> n114
-  n58 --> n114
-  n97 --> n114
   n44 --> n114
-  n87 --> n114
-  n73 --> n114
-  n56 --> n114
-  n100 --> n114
-  n92 --> n114
-  n85 --> n114
+  n57 --> n114
   n45 --> n114
-  n53 --> n114
-  n89 --> n114
-  n90 --> n114
-  n82 --> n114
-  n74 --> n114
-  n83 --> n114
-  n76 --> n114
-  n75 --> n114
-  n88 -.-> n114
+  n101 --> n114
+  n102 --> n114
+  n103 --> n114
+  n78 --> n114
+  n77 --> n114
+  n80 --> n114
+  n60 -.-> n114
+  n93 --> n115
   n55 --> n115
-  n114 --> n115
+  n94 --> n115
   n81 --> n115
   n91 --> n115
   n84 --> n115
   n58 --> n115
-  n45 --> n115
+  n97 --> n115
+  n44 --> n115
   n87 --> n115
   n73 --> n115
+  n56 --> n115
   n100 --> n115
-  n44 -.-> n116
-  n50 -.-> n116
-  n11 -.-> n117
-  n1 -.-> n118
-  n5 -.-> n118
-  n6 -.-> n118
-  n8 -.-> n118
-  n37 -.-> n118
-  n117 -.-> n118
-  n38 -.-> n118
-  n30 -.-> n119
-  n32 -.-> n120
-  n34 -.-> n120
-  n39 -.-> n120
-  n42 -.-> n120
+  n92 --> n115
+  n85 --> n115
+  n45 --> n115
+  n53 --> n115
+  n89 --> n115
+  n90 --> n115
+  n82 --> n115
+  n74 --> n115
+  n83 --> n115
+  n76 --> n115
+  n75 --> n115
+  n88 -.-> n115
+  n55 --> n116
+  n115 --> n116
+  n81 --> n116
+  n91 --> n116
+  n84 --> n116
+  n58 --> n116
+  n45 --> n116
+  n87 --> n116
+  n73 --> n116
+  n100 --> n116
+  n44 -.-> n117
+  n50 -.-> n117
+  n11 -.-> n118
+  n1 -.-> n119
+  n5 -.-> n119
+  n6 -.-> n119
+  n8 -.-> n119
+  n37 -.-> n119
+  n118 -.-> n119
+  n38 -.-> n119
+  n30 -.-> n120
+  n32 -.-> n121
+  n34 -.-> n121
+  n39 -.-> n121
+  n42 -.-> n121
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -1621,6 +1623,14 @@ An amount paid for services, interest, taxes, rent, royalties or insurance for a
 A Canadian corporation cannot deduct the part of its interest on debts to specified non-residents that corresponds to the average debt over 1.5 times its equity (retained earnings at the start of the year, and the average contributed surplus and paid-up capital from specified non-resident shareholders); the interest denied is a dividend to the non-resident, for Part XIII withholding. Proven: never more than the interest, nothing within the 1.5 to 1 ratio, and a treaty rate under 25% withholds less.
 
 **Lean:** [`Canteen.ITA.ThinCapitalization.averageDebt`](../../Canteen/ITA/S18/ThinCapitalization.lean#L59), [`Canteen.ITA.ThinCapitalization.equityAmount`](../../Canteen/ITA/S18/ThinCapitalization.lean#L62), [`Canteen.ITA.ThinCapitalization.excessDebt`](../../Canteen/ITA/S18/ThinCapitalization.lean#L65), [`Canteen.ITA.ThinCapitalization.denied`](../../Canteen/ITA/S18/ThinCapitalization.lean#L68), [`Canteen.ITA.ThinCapitalization.deemedDividend`](../../Canteen/ITA/S18/ThinCapitalization.lean#L73), [`Canteen.ITA.ThinCapitalization.partXIII`](../../Canteen/ITA/S18/ThinCapitalization.lean#L77), [`Canteen.ITA.ThinCapitalization.denied_le`](../../Canteen/ITA/S18/ThinCapitalization.lean#L99), [`Canteen.ITA.ThinCapitalization.within_ratio`](../../Canteen/ITA/S18/ThinCapitalization.lean#L105), [`Canteen.ITA.ThinCapitalization.treaty_le`](../../Canteen/ITA/S18/ThinCapitalization.lean#L110)
+
+### R82. Part XIII tax on dividends and interest
+
+**Status:** proven · **Citation:** ITA 212(1)(b), (2), (3)
+
+A non-resident pays 25% (or a lower treaty rate) on dividends from a Canadian corporation, and on interest that is paid to a non-arm's length person and not fully exempt, or is participating debt interest. Proven: never more than 25%, and arm's length interest that is not participating bears none.
+
+**Lean:** [`Canteen.ITA.Withholding.Payment.taxable`](../../Canteen/ITA/S212/Withholding.lean#L47), [`Canteen.ITA.Withholding.Payment.rate`](../../Canteen/ITA/S212/Withholding.lean#L53), [`Canteen.ITA.Withholding.Payment.tax`](../../Canteen/ITA/S212/Withholding.lean#L55), [`Canteen.ITA.Withholding.tax`](../../Canteen/ITA/S212/Withholding.lean#L57), [`Canteen.ITA.Withholding.Payment.tax_le`](../../Canteen/ITA/S212/Withholding.lean#L72), [`Canteen.ITA.Withholding.arms_length_interest`](../../Canteen/ITA/S212/Withholding.lean#L77)
 
 ### R70. A corporation's year, to taxable income and tax
 

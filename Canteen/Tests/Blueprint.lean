@@ -181,6 +181,7 @@ R78: proven
 R79: proven
 R80: proven
 R81: proven
+R82: proven
 R70: proven
 R35: proven
 R48: proven
