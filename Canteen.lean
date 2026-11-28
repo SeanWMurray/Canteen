@@ -121,6 +121,7 @@ import Canteen.ITA.S104.TwentyOneYear
 import Canteen.ITA.S104.TrustIncome
 import Canteen.ITA.S146_01.HomeBuyersPlan
 import Canteen.ITA.S146_6.FirstHomeSavings
+import Canteen.ITA.S146.RRSP
 import Canteen.ITA.S3.CorporateYear
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
@@ -287,3 +288,4 @@ import Canteen.Tests.TwentyOneYear
 import Canteen.Tests.TrustIncome
 import Canteen.Tests.HomeBuyersPlan
 import Canteen.Tests.FirstHomeSavings
+import Canteen.Tests.RRSP

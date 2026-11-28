@@ -94,7 +94,7 @@ graph TD
 
 Income, with non-eligible dividends grossed up by 15%; tax at the 117(2) rates, less the personal and dividend tax credits.
 
-**Lean:** [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L361)
+**Lean:** [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L368)
 
 ## Facts
 

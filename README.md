@@ -159,6 +159,7 @@ Canteen/
     S104/TrustIncome.lean      104(6)(b), (13), (19), (21), (24), 122(1): a trust's income paid to beneficiaries, and the trust's tax
     S146_01/HomeBuyersPlan.lean   146.01: the Home Buyers' Plan, its limit and its 15-year repayments
     S146_6/FirstHomeSavings.lean   146.6(1), (5): the First Home Savings Account limit and deduction
+    S146/RRSP.lean             146(1), (5), (5.1): the RRSP deduction limit and the deduction
     S3/CorporateYear.lean      2(2), 3, 129(4): a corporation's year, to taxable income, investment income and tax
     S110_6/CapitalGainsDeduction.lean   110.6: qualified small business corporation shares, the gains limits, the deduction
     S251_2/LossRestrictionEvent.lean   251.2(2)(a), 256(7)(a): acquisitions of control, and when they are not

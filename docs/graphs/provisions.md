@@ -70,45 +70,46 @@ flowchart BT
   v61["15(1) shareholder benefits"]:::prov
   v62["7, 110(1)(d), (d.1) employee stock options"]:::prov
   v63["118.62 the student loan interest credit"]:::prov
-  v64["2(2), 3 an individual's year, to taxable income"]:::prov
-  v65["39(4) to (6) the Canadian securities election"]:::prov
-  v66["50(1) bad debts and worthless shares"]:::prov
-  v67["43(1) part of a property"]:::prov
-  v68["74.4(2) corporate attribution"]:::prov
-  v69["123 to 125 corporate rates"]:::prov
-  v70["123.3, 129, 186 refundable taxes"]:::prov
-  v71["15(2), 80.4 shareholder loans"]:::prov
-  v72["89(1), 185.1 the general rate income pool"]:::prov
-  v73["127.5 to 127.531, 120.2 the minimum tax"]:::prov
-  v74["84(1), 53(1)(b) an increase in paid-up capital"]:::prov
-  v75["112(3), (3.01), (6.1) the stop-loss on shares"]:::prov
-  v76["84(2) a distribution on winding-up"]:::prov
-  v77["44.1 the small business investment rollover"]:::prov
-  v78["46 personal-use property, the $1,000 rule"]:::prov
-  v79["110.1(1)(a) a corporation's charitable gifts"]:::prov
-  v80["125(2), (3), (5)(b), (5.1) the business limit, shared and ground"]:::prov
-  v81["256(1), (2) associated corporations"]:::prov
-  v82["67.1 meals and entertainment"]:::prov
-  v83["20(1)(e), (e.1) financing expenses"]:::prov
-  v84["18(12), 8(13) work space in the home"]:::prov
-  v85["12(1)(d), (i), 20(1)(l), (p) doubtful and bad debts"]:::prov
-  v86["12(1)(a), (e), 20(1)(m) amounts received in advance"]:::prov
-  v87["20(1)(n), 20(8) the reserve for unpaid amounts on property sold"]:::prov
-  v88["18(9) prepaid expenses"]:::prov
-  v89["18(4), 214(16) thin capitalization and the deemed dividend"]:::prov
-  v90["212(1)(a), (b), (2) Part XIII on management fees, interest and dividends"]:::prov
-  v91["212(1)(d), 216(1), 120(1) a non-resident's rent and the election"]:::prov
-  v92["248(1) taxable Canadian property"]:::prov
-  v93["116(5), (5.3) buying from a non-resident"]:::prov
-  v94["128.1(1), (4) becoming and ceasing to be resident"]:::prov
-  v95["75(2), (3) reversionary trusts"]:::prov
-  v96["107(2), (2.1), (4.1) distributions of trust property"]:::prov
-  v97["104(4) the 21-year rule"]:::prov
-  v98["104(6), (13), (19), (21), 122(1) a trust's income, paid out or taxed"]:::prov
-  v99["146.01 the Home Buyers' Plan"]:::prov
-  v100["146.6 the First Home Savings Account deduction"]:::prov
-  v101["2(2), 3, 129(4) a corporation's year, to taxable income and tax"]:::prov
-  v102["50(2) bad personal-use debts"]:::prov
+  v64["146(1), (5), (5.1) the RRSP deduction"]:::prov
+  v65["2(2), 3 an individual's year, to taxable income"]:::prov
+  v66["39(4) to (6) the Canadian securities election"]:::prov
+  v67["50(1) bad debts and worthless shares"]:::prov
+  v68["43(1) part of a property"]:::prov
+  v69["74.4(2) corporate attribution"]:::prov
+  v70["123 to 125 corporate rates"]:::prov
+  v71["123.3, 129, 186 refundable taxes"]:::prov
+  v72["15(2), 80.4 shareholder loans"]:::prov
+  v73["89(1), 185.1 the general rate income pool"]:::prov
+  v74["127.5 to 127.531, 120.2 the minimum tax"]:::prov
+  v75["84(1), 53(1)(b) an increase in paid-up capital"]:::prov
+  v76["112(3), (3.01), (6.1) the stop-loss on shares"]:::prov
+  v77["84(2) a distribution on winding-up"]:::prov
+  v78["44.1 the small business investment rollover"]:::prov
+  v79["46 personal-use property, the $1,000 rule"]:::prov
+  v80["110.1(1)(a) a corporation's charitable gifts"]:::prov
+  v81["125(2), (3), (5)(b), (5.1) the business limit, shared and ground"]:::prov
+  v82["256(1), (2) associated corporations"]:::prov
+  v83["67.1 meals and entertainment"]:::prov
+  v84["20(1)(e), (e.1) financing expenses"]:::prov
+  v85["18(12), 8(13) work space in the home"]:::prov
+  v86["12(1)(d), (i), 20(1)(l), (p) doubtful and bad debts"]:::prov
+  v87["12(1)(a), (e), 20(1)(m) amounts received in advance"]:::prov
+  v88["20(1)(n), 20(8) the reserve for unpaid amounts on property sold"]:::prov
+  v89["18(9) prepaid expenses"]:::prov
+  v90["18(4), 214(16) thin capitalization and the deemed dividend"]:::prov
+  v91["212(1)(a), (b), (2) Part XIII on management fees, interest and dividends"]:::prov
+  v92["212(1)(d), 216(1), 120(1) a non-resident's rent and the election"]:::prov
+  v93["248(1) taxable Canadian property"]:::prov
+  v94["116(5), (5.3) buying from a non-resident"]:::prov
+  v95["128.1(1), (4) becoming and ceasing to be resident"]:::prov
+  v96["75(2), (3) reversionary trusts"]:::prov
+  v97["107(2), (2.1), (4.1) distributions of trust property"]:::prov
+  v98["104(4) the 21-year rule"]:::prov
+  v99["104(6), (13), (19), (21), 122(1) a trust's income, paid out or taxed"]:::prov
+  v100["146.01 the Home Buyers' Plan"]:::prov
+  v101["146.6 the First Home Savings Account deduction"]:::prov
+  v102["2(2), 3, 129(4) a corporation's year, to taxable income and tax"]:::prov
+  v103["50(2) bad personal-use debts"]:::prov
   v0 --> v1
   v0 --> v2
   v0 --> v3
@@ -162,58 +163,59 @@ flowchart BT
   v44 --> v46
   v31 --> v47
   v44 --> v54
-  v19 --> v64
-  v28 --> v64
-  v33 --> v64
-  v30 --> v64
-  v45 --> v64
-  v46 --> v64
-  v47 --> v64
-  v48 --> v64
-  v49 --> v64
-  v50 --> v64
-  v51 --> v64
-  v52 --> v64
-  v53 --> v64
-  v54 --> v64
-  v55 --> v64
-  v56 --> v64
-  v57 --> v64
-  v58 --> v64
-  v59 --> v64
-  v60 --> v64
-  v61 --> v64
-  v62 --> v64
-  v63 --> v64
-  v17 --> v65
+  v19 --> v65
+  v28 --> v65
+  v33 --> v65
+  v30 --> v65
+  v45 --> v65
+  v46 --> v65
+  v47 --> v65
+  v48 --> v65
+  v49 --> v65
+  v50 --> v65
+  v51 --> v65
+  v52 --> v65
+  v53 --> v65
+  v54 --> v65
+  v55 --> v65
+  v56 --> v65
+  v57 --> v65
+  v58 --> v65
+  v59 --> v65
+  v60 --> v65
+  v61 --> v65
+  v62 --> v65
+  v63 --> v65
+  v64 --> v65
   v17 --> v66
   v17 --> v67
-  v31 --> v68
-  v69 --> v70
-  v69 --> v72
-  v64 --> v73
-  v31 --> v74
-  v17 --> v75
+  v17 --> v68
+  v31 --> v69
+  v70 --> v71
+  v70 --> v73
+  v65 --> v74
+  v31 --> v75
   v17 --> v76
-  v31 --> v76
-  v17 --> v78
-  v6 --> v81
-  v54 --> v91
-  v92 --> v93
-  v17 --> v94
-  v92 --> v94
+  v17 --> v77
+  v31 --> v77
+  v17 --> v79
+  v6 --> v82
+  v54 --> v92
+  v93 --> v94
   v17 --> v95
-  v17 --> v97
-  v54 --> v98
-  v31 --> v98
-  v46 --> v98
-  v19 --> v101
-  v20 --> v101
-  v32 --> v101
-  v79 --> v101
-  v70 --> v101
-  v80 --> v101
-  v72 --> v101
-  v35 --> v101
+  v93 --> v95
+  v17 --> v96
+  v17 --> v98
+  v54 --> v99
+  v31 --> v99
+  v46 --> v99
+  v19 --> v102
+  v20 --> v102
+  v32 --> v102
+  v80 --> v102
+  v71 --> v102
+  v81 --> v102
+  v73 --> v102
+  v35 --> v102
   classDef prov fill:#bbdefb,stroke:#1565c0,color:#0d47a1
 ```

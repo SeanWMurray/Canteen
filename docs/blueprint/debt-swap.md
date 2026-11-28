@@ -180,7 +180,7 @@ Interest under a legal obligation on money borrowed and used for the purpose of 
 
 Income with the gain and dividends, less the interest; tax less the personal and dividend credits.
 
-**Lean:** [`Canteen.ITA.IndividualYear.interestDeduction`](../../Canteen/ITA/S3/IndividualYear.lean#L185), [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L361)
+**Lean:** [`Canteen.ITA.IndividualYear.interestDeduction`](../../Canteen/ITA/S3/IndividualYear.lean#L188), [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L368)
 
 ### L3. The minimum tax
 

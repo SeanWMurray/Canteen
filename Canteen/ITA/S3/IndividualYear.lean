@@ -24,6 +24,7 @@ import Canteen.ITA.S6.StandbyCharge
 import Canteen.ITA.S15.ShareholderBenefit
 import Canteen.ITA.S7.StockOptions
 import Canteen.ITA.S118_62.StudentLoanInterest
+import Canteen.ITA.S146.RRSP
 
 /-!
 # An individual's year: income from the encoded sources, and taxable income
@@ -152,6 +153,8 @@ structure Facts where
   tuitionCarried : Cents := 0
   tuitionDesignated : Cents := 0
   tuitionTransferredIn : Cents := 0
+  /-- 146(5), (5.1): RRSP premiums, and the facts of the RRSP deduction limit. -/
+  rrsp : Option RRSP.Facts := none
   /-- 118.62: student loan interest paid, this year and in the five before (the year is the taxation year). -/
   studentLoanInterest : List StudentLoanInterest.Payment := []
   /-- Other non-refundable credits, given. -/
@@ -223,8 +226,12 @@ def otherSources (f : Facts) : Cents :=
 /-- 62(1). -/
 def movingDeduction (f : Facts) : Cents := (f.moving.map MovingExpenses.deduction).getD 0
 
-/-- The Subdivision E deductions computed here, other than 63 and 60(w): 60(c), 60(e.1), 60(b), 62. -/
-def otherSubdivisionE (f : Facts) : Cents := splitOutAllowed f + enhancedCpp f + supportDeducted f + movingDeduction f
+/-- 146(5), (5.1): the RRSP deduction. -/
+def rrspDeduction (f : Facts) : Cents := (f.rrsp.map RRSP.deduction).getD 0
+
+/-- The Subdivision E deductions computed here, other than 63 and 60(w): 60(c), 60(e.1), 60(b), 62, 146(5). -/
+
+def otherSubdivisionE (f : Facts) : Cents := splitOutAllowed f + enhancedCpp f + supportDeducted f + movingDeduction f + rrspDeduction f
 
 /-- Split income (120.4), deducted in computing income (20(1)(ww)). -/
 def splitIncome (f : Facts) : Cents := (f.split.map SplitIncome.splitIncome).getD 0
