@@ -36,4 +36,12 @@ example : ({ ltd with amountsOwing := 500000 } : Member).atRisk bad = 250000 := 
 -- 40(3.12): later, with $30,000 of cost back and $20,000 of earlier gains: $20,000 may be elected as a loss.
 example : ({ overdrawn with openingACB := 0, drawings := 0, contributions := 3000000, priorDeemedGains := 2000000 } : Member).electableLoss {} = 2000000 := by decide
 
+-- 111(1)(e): the next year Ben, at nil cost with $67,500 carried, has a $40,000 share of income: $40,000 at
+-- risk, so $40,000 of the carried loss is deducted, and the cost stays at nil.
+def later : Member := { ltd with openingACB := 0, drawings := 0, lossesCarried := 6750000 }
+def goodYear : Year := { income := 16000000 }
+example : later.lplDeduction goodYear = 4000000 ∧ later.nextOpening goodYear = 0 := by decide
+-- A year with losses too: the period's losses come first.
+example : later.lplDeduction { income := 16000000, losses := 8000000 } = 2000000 := by decide
+
 end Canteen.Tests.Partnership

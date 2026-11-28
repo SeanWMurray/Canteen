@@ -22,13 +22,15 @@ in the cost (53(1)(e)(i), 53(2)(c)(i) count periods "ending before that time"), 
 partnership (40(3.11) A(b), B(c)). **96(2.1), (2.2)** A limited partner's share of losses from business or
 property is deductible only up to its at-risk amount (the cost, plus the period's income, less amounts
 owing to the partnership and protections against loss); the rest is a limited partnership loss, carried
-forward (111(1)(e)) and kept out of the cost (53(2)(c)(i)) until deducted. **40(3.12)** Later, a loss may be elected up to the earlier
+forward and kept out of the cost (53(2)(c)(i)) until deducted. **111(1)(e)** It is deductible in a later year
+to the extent the at-risk amount at the end of that year's fiscal period exceeds the share of that
+period's losses; then it comes off the cost (53(2)(c)(i.1)). **40(3.12)** Later, a loss may be elected up to the earlier
 40(3.1) gains not yet reversed, and the adjusted cost base then.
 
 The partnership's incomes and losses by kind, and each member's share (by the agreement; 103 is not
 encoded) are given; so are contributions, drawings, and whether the member is a limited or specified
 member. The 1994 excluded-interest exception, 96(1.1), (1.3) to (9), 96(2.3) (cost from a transferor), (2.4) to
-(2.7), the 111(1)(e) deduction of limited partnership losses in later years, and the investment tax
+(2.7), and the investment tax
 credit and resource expense terms of 96(2.1)(b) are not encoded.
 -/
 
@@ -60,6 +62,8 @@ structure Member where
   protections : Cents := 0
   /-- 40(3.12): earlier 40(3.1) gains not yet reversed by a 40(3.12) loss. -/
   priorDeemedGains : Cents := 0
+  /-- 111(1)(e): limited partnership losses of earlier years not yet deducted. -/
+  lossesCarried : Cents := 0
   deriving Repr, DecidableEq, Inhabited
 
 def share (m : Member) (x : Cents) : Cents := x * m.shareBp / 10000
@@ -94,11 +98,16 @@ def Member.deductibleLoss (m : Member) (y : Year) : Cents := if m.limited then m
 /-- 96(2.1)(e): the limited partnership loss, carried forward (111(1)(e)). -/
 def Member.limitedPartnershipLoss (m : Member) (y : Year) : Cents := m.losses y - m.deductibleLoss y
 
+/-- 111(1)(e): earlier limited partnership losses deductible this year: to the extent the at-risk amount
+exceeds the share of the period's losses from business or property. -/
+def Member.lplDeduction (m : Member) (y : Year) : Cents := min m.lossesCarried (m.atRisk y - m.losses y)
+
 /-- The adjusted cost base at the start of the next period: with the period's income, whole capital gains,
-the deductible part of its losses (53(2)(c)(i) excludes the limited partnership loss) and whole capital losses. -/
+the deductible part of its losses (53(2)(c)(i) excludes the limited partnership loss), whole capital
+losses, and the earlier limited partnership losses deducted (53(2)(c)(i.1)). -/
 def Member.nextOpening (m : Member) (y : Year) : Int :=
-  if m.professional then m.acbAfter y
-  else m.acbAfter y + share m y.income + share m y.capitalGains - m.deductibleLoss y - share m y.capitalLosses
+  (if m.professional then m.acbAfter y
+   else m.acbAfter y + share m y.income + share m y.capitalGains - m.deductibleLoss y - share m y.capitalLosses) - m.lplDeduction y
 
 /-- 40(3.12): the most that may be elected as a loss. -/
 def Member.electableLoss (m : Member) (y : Year) : Cents := min m.priorDeemedGains (m.acbAfter y).toNat
@@ -128,5 +137,7 @@ theorem Member.general_no_gain (m : Member) (y : Year) (h : m.limited = false) :
 theorem Member.at_risk_limit (m : Member) (y : Year) : m.deductibleLoss y + m.limitedPartnershipLoss y = m.losses y := by
   unfold Member.limitedPartnershipLoss
   exact Nat.add_sub_cancel' (by unfold Member.deductibleLoss; split <;> simp [Nat.min_le_left])
+
+theorem Member.lplDeduction_le (m : Member) (y : Year) : m.lplDeduction y ≤ m.lossesCarried := Nat.min_le_left _ _
 
 end Canteen.ITA.Partnership
