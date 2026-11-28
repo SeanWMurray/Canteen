@@ -1,0 +1,7 @@
+Income Tax Act, R.S.C. 1985, c. 1 (5th Supp.), section 118.62
+
+Source: Justice Canada consolidated Acts (XML), https://github.com/justicecanada/laws-lois-xml, file eng/acts/I-3.3.xml
+Current to: 2026-10-29. Last amended: 2026-06-18.
+Extracted verbatim; whitespace normalized; each provision on one line.
+
+118.62 For the purpose of computing an individual’s tax payable under this Part for a taxation year, there may be deducted the amount determined by the formulaA × BwhereAis the appropriate percentage for the year; andBis the total of all amounts (other than any amount paid on account of or in satisfaction of a judgement) each of which is an amount of interest paid in the year (or in any of the five preceding taxation years that are after 1997, to the extent that it was not included in computing a deduction under this section for any other taxation year) by the individual or a person related to the individual on a loan made to, or other amount owing by, the individual under the Canada Student Loans Act, the Canada Student Financial Assistance Act, the Apprentice Loans Act or a law of a province governing the granting of financial assistance to students at the post-secondary school level.

@@ -69,39 +69,40 @@ flowchart BT
   v60["6(1)(e), 6(2) the standby charge"]:::prov
   v61["15(1) shareholder benefits"]:::prov
   v62["7, 110(1)(d), (d.1) employee stock options"]:::prov
-  v63["2(2), 3 an individual's year, to taxable income"]:::prov
-  v64["39(4) to (6) the Canadian securities election"]:::prov
-  v65["50(1) bad debts and worthless shares"]:::prov
-  v66["43(1) part of a property"]:::prov
-  v67["74.4(2) corporate attribution"]:::prov
-  v68["123 to 125 corporate rates"]:::prov
-  v69["123.3, 129, 186 refundable taxes"]:::prov
-  v70["15(2), 80.4 shareholder loans"]:::prov
-  v71["89(1), 185.1 the general rate income pool"]:::prov
-  v72["127.5 to 127.531, 120.2 the minimum tax"]:::prov
-  v73["84(1), 53(1)(b) an increase in paid-up capital"]:::prov
-  v74["112(3), (3.01), (6.1) the stop-loss on shares"]:::prov
-  v75["84(2) a distribution on winding-up"]:::prov
-  v76["44.1 the small business investment rollover"]:::prov
-  v77["46 personal-use property, the $1,000 rule"]:::prov
-  v78["110.1(1)(a) a corporation's charitable gifts"]:::prov
-  v79["125(2), (3), (5)(b), (5.1) the business limit, shared and ground"]:::prov
-  v80["256(1), (2) associated corporations"]:::prov
-  v81["67.1 meals and entertainment"]:::prov
-  v82["20(1)(e), (e.1) financing expenses"]:::prov
-  v83["18(12), 8(13) work space in the home"]:::prov
-  v84["12(1)(d), (i), 20(1)(l), (p) doubtful and bad debts"]:::prov
-  v85["12(1)(a), (e), 20(1)(m) amounts received in advance"]:::prov
-  v86["20(1)(n), 20(8) the reserve for unpaid amounts on property sold"]:::prov
-  v87["18(9) prepaid expenses"]:::prov
-  v88["18(4), 214(16) thin capitalization and the deemed dividend"]:::prov
-  v89["212(1)(a), (b), (2) Part XIII on management fees, interest and dividends"]:::prov
-  v90["212(1)(d), 216(1), 120(1) a non-resident's rent and the election"]:::prov
-  v91["248(1) taxable Canadian property"]:::prov
-  v92["116(5), (5.3) buying from a non-resident"]:::prov
-  v93["128.1(1), (4) becoming and ceasing to be resident"]:::prov
-  v94["2(2), 3, 129(4) a corporation's year, to taxable income and tax"]:::prov
-  v95["50(2) bad personal-use debts"]:::prov
+  v63["118.62 the student loan interest credit"]:::prov
+  v64["2(2), 3 an individual's year, to taxable income"]:::prov
+  v65["39(4) to (6) the Canadian securities election"]:::prov
+  v66["50(1) bad debts and worthless shares"]:::prov
+  v67["43(1) part of a property"]:::prov
+  v68["74.4(2) corporate attribution"]:::prov
+  v69["123 to 125 corporate rates"]:::prov
+  v70["123.3, 129, 186 refundable taxes"]:::prov
+  v71["15(2), 80.4 shareholder loans"]:::prov
+  v72["89(1), 185.1 the general rate income pool"]:::prov
+  v73["127.5 to 127.531, 120.2 the minimum tax"]:::prov
+  v74["84(1), 53(1)(b) an increase in paid-up capital"]:::prov
+  v75["112(3), (3.01), (6.1) the stop-loss on shares"]:::prov
+  v76["84(2) a distribution on winding-up"]:::prov
+  v77["44.1 the small business investment rollover"]:::prov
+  v78["46 personal-use property, the $1,000 rule"]:::prov
+  v79["110.1(1)(a) a corporation's charitable gifts"]:::prov
+  v80["125(2), (3), (5)(b), (5.1) the business limit, shared and ground"]:::prov
+  v81["256(1), (2) associated corporations"]:::prov
+  v82["67.1 meals and entertainment"]:::prov
+  v83["20(1)(e), (e.1) financing expenses"]:::prov
+  v84["18(12), 8(13) work space in the home"]:::prov
+  v85["12(1)(d), (i), 20(1)(l), (p) doubtful and bad debts"]:::prov
+  v86["12(1)(a), (e), 20(1)(m) amounts received in advance"]:::prov
+  v87["20(1)(n), 20(8) the reserve for unpaid amounts on property sold"]:::prov
+  v88["18(9) prepaid expenses"]:::prov
+  v89["18(4), 214(16) thin capitalization and the deemed dividend"]:::prov
+  v90["212(1)(a), (b), (2) Part XIII on management fees, interest and dividends"]:::prov
+  v91["212(1)(d), 216(1), 120(1) a non-resident's rent and the election"]:::prov
+  v92["248(1) taxable Canadian property"]:::prov
+  v93["116(5), (5.3) buying from a non-resident"]:::prov
+  v94["128.1(1), (4) becoming and ceasing to be resident"]:::prov
+  v95["2(2), 3, 129(4) a corporation's year, to taxable income and tax"]:::prov
+  v96["50(2) bad personal-use debts"]:::prov
   v0 --> v1
   v0 --> v2
   v0 --> v3
@@ -155,52 +156,53 @@ flowchart BT
   v44 --> v46
   v31 --> v47
   v44 --> v54
-  v19 --> v63
-  v28 --> v63
-  v33 --> v63
-  v30 --> v63
-  v45 --> v63
-  v46 --> v63
-  v47 --> v63
-  v48 --> v63
-  v49 --> v63
-  v50 --> v63
-  v51 --> v63
-  v52 --> v63
-  v53 --> v63
-  v54 --> v63
-  v55 --> v63
-  v56 --> v63
-  v57 --> v63
-  v58 --> v63
-  v59 --> v63
-  v60 --> v63
-  v61 --> v63
-  v62 --> v63
-  v17 --> v64
+  v19 --> v64
+  v28 --> v64
+  v33 --> v64
+  v30 --> v64
+  v45 --> v64
+  v46 --> v64
+  v47 --> v64
+  v48 --> v64
+  v49 --> v64
+  v50 --> v64
+  v51 --> v64
+  v52 --> v64
+  v53 --> v64
+  v54 --> v64
+  v55 --> v64
+  v56 --> v64
+  v57 --> v64
+  v58 --> v64
+  v59 --> v64
+  v60 --> v64
+  v61 --> v64
+  v62 --> v64
+  v63 --> v64
   v17 --> v65
   v17 --> v66
-  v31 --> v67
-  v68 --> v69
-  v68 --> v71
-  v63 --> v72
-  v31 --> v73
-  v17 --> v74
+  v17 --> v67
+  v31 --> v68
+  v69 --> v70
+  v69 --> v72
+  v64 --> v73
+  v31 --> v74
   v17 --> v75
-  v31 --> v75
-  v17 --> v77
-  v6 --> v80
-  v54 --> v90
-  v91 --> v92
-  v17 --> v93
-  v91 --> v93
-  v19 --> v94
-  v20 --> v94
-  v32 --> v94
-  v78 --> v94
-  v69 --> v94
-  v79 --> v94
-  v71 --> v94
-  v35 --> v94
+  v17 --> v76
+  v31 --> v76
+  v17 --> v78
+  v6 --> v81
+  v54 --> v91
+  v92 --> v93
+  v17 --> v94
+  v92 --> v94
+  v19 --> v95
+  v20 --> v95
+  v32 --> v95
+  v79 --> v95
+  v70 --> v95
+  v80 --> v95
+  v72 --> v95
+  v35 --> v95
   classDef prov fill:#bbdefb,stroke:#1565c0,color:#0d47a1
 ```

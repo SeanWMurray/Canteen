@@ -72,6 +72,7 @@ import Canteen.ITA.S216.RentalElection
 import Canteen.ITA.S116.Purchaser
 import Canteen.ITA.S248.TaxableCanadianProperty
 import Canteen.ITA.S128_1.Emigration
+import Canteen.ITA.S118_62.StudentLoanInterest
 import Canteen.ITA.S3.CorporateYear
 import Canteen.Transactions.DebtSwap
 import Canteen.ITA.S87.Amalgamation
@@ -259,6 +260,7 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S116.Purchaser, "116(5), (5.3) buying from a non-resident"),
    (`Canteen.ITA.S248.TaxableCanadianProperty, "248(1) taxable Canadian property"),
    (`Canteen.ITA.S128_1.Emigration, "128.1(1), (4) becoming and ceasing to be resident"),
+   (`Canteen.ITA.S118_62.StudentLoanInterest, "118.62 the student loan interest credit"),
    (`Canteen.ITA.S3.CorporateYear, "2(2), 3, 129(4) a corporation's year, to taxable income and tax")]
 
 /-! ## The dashboard -/
@@ -390,6 +392,7 @@ def actMindmap : String := Id.run do
     (2, "s. 118.1"), (3, "118.1(1): total gifts"), (3, "118.1(3): the credit"),
     (2, "ss. 118.5, 118.61, 118.81, 118.9"), (3, "118.5(1)(a): tuition"), (3, "118.61: carryforward"), (3, "118.81, 118.9: transfer to a parent"),
     (2, "s. 118.7"), (3, "118.7: CPP and EI credits"),
+    (2, "s. 118.62"), (3, "118.62: student loan interest, five-year carryforward"),
     (2, "s. 120.4"), (3, "120.4(1): split income, excluded amounts"), (3, "120.4(2), (3): the tax"),
     (2, "s. 121"), (3, "121: the dividend tax credit"),
     (2, "ss. 127.5 to 127.531"), (3, "127.51: the minimum amount"), (3, "127.52(1): adjusted taxable income"), (3, "127.531: the basic minimum tax credit"), (3, "120.2: recovering minimum tax"),

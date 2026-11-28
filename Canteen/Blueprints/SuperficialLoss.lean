@@ -87,6 +87,7 @@ import Canteen.ITA.S216.RentalElection
 import Canteen.ITA.S116.Purchaser
 import Canteen.ITA.S248.TaxableCanadianProperty
 import Canteen.ITA.S128_1.Emigration
+import Canteen.ITA.S118_62.StudentLoanInterest
 import Canteen.ITA.S3.CorporateYear
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
@@ -888,15 +889,23 @@ def blueprint : Blueprint where
             ``CorporateYear.partIVOwnClaim, ``CorporateYear.partIVCarriedClaim, ``CorporateYear.own_loss_conserved,
             ``CorporateYear.adjustedAggregateInvestmentIncome, ``CorporateYear.businessLimit],
           uses := ["R8", "R9", "R23", "R26", "R44", "R45", "R47", "R69", "R71", "R72"] },
+        { id := "R87", kind := .law, title := "The student loan interest credit", citation := "ITA 118.62"
+          statement := "Interest paid on government student loans in the year, or in the five years before and not yet used, " ++
+            "gives a credit at the lowest rate; what the year's tax cannot absorb carries forward. Interest paid under a " ++
+            "judgment does not count. Proven: never more claimed than available, claimed plus carried is what was " ++
+            "available, and judgment interest is excluded."
+          lean := [``StudentLoanInterest.availableTotal, ``StudentLoanInterest.claimed, ``StudentLoanInterest.credit,
+            ``StudentLoanInterest.carriedForward, ``StudentLoanInterest.claimed_le, ``StudentLoanInterest.claimed_plus_carried,
+            ``StudentLoanInterest.judgment_excluded] },
         { id := "R35", kind := .law, title := "An individual's year, to taxable income and tax", citation := "ITA 2(2); 3; 111(1)(b); 110.6; 117(2)"
           statement := "Income from sources (employment and business, dividends with the gross-up, recapture, attributed " ++
             "income), net taxable capital gains, less terminal and other losses; then taxable income, after the net capital " ++
             "loss deduction and the capital gains deduction (which the former reduces). Proven: taxable income never exceeds " ++
             "income, and the capital gains deduction never exceeds the net taxable capital gains."
           lean := [``IndividualYear.incomeFacts, ``IndividualYear.taxableIncome, ``IndividualYear.capitalGainsDeduction,
-            ``IndividualYear.federalTax, ``IndividualYear.personalCredit, ``IndividualYear.donationCredit, ``IndividualYear.interestDeduction, ``IndividualYear.medicalCredit, ``IndividualYear.disabilityCredit, ``IndividualYear.ageAndPensionCredits, ``IndividualYear.oasRecovery, ``IndividualYear.employmentCredits, ``IndividualYear.amounts, ``IndividualYear.smallCredits, ``IndividualYear.tuitionCredits, ``IndividualYear.supportDeducted, ``IndividualYear.childCareDeduction, ``IndividualYear.movingDeduction, ``IndividualYear.standbyBenefits, ``IndividualYear.shareholderBenefitIncome, ``IndividualYear.stockOptionDeduction,
+            ``IndividualYear.federalTax, ``IndividualYear.personalCredit, ``IndividualYear.donationCredit, ``IndividualYear.interestDeduction, ``IndividualYear.medicalCredit, ``IndividualYear.disabilityCredit, ``IndividualYear.ageAndPensionCredits, ``IndividualYear.oasRecovery, ``IndividualYear.employmentCredits, ``IndividualYear.amounts, ``IndividualYear.smallCredits, ``IndividualYear.tuitionCredits, ``IndividualYear.supportDeducted, ``IndividualYear.childCareDeduction, ``IndividualYear.movingDeduction, ``IndividualYear.standbyBenefits, ``IndividualYear.shareholderBenefitIncome, ``IndividualYear.stockOptionDeduction, ``IndividualYear.studentLoanCredit,
             ``IndividualYear.taxable_le_income, ``IndividualYear.capital_gains_deduction_le],
-          uses := ["R8", "R9", "R19", "R21", "R22", "R24", "R40", "R41", "R42", "R43", "R49", "R50", "R51", "R52", "R53", "R55", "R56", "R57", "R58", "R59", "R60", "R61", "R62", "R65", "R68"] },
+          uses := ["R8", "R9", "R19", "R21", "R22", "R24", "R40", "R41", "R42", "R43", "R49", "R50", "R51", "R52", "R53", "R55", "R56", "R57", "R58", "R59", "R60", "R61", "R62", "R65", "R68", "R87"] },
         { id := "R48", kind := .law, title := "The minimum tax", citation := "ITA 127.5; 127.51; 127.52(1); 127.531; 120.2"
           statement := "An individual pays at least 20.5% of adjusted taxable income over the 117(2)(d) threshold, less half " ++
             "the personal credits and 4/5 of the donation credit; adjusted taxable income counts capital gains in full (3/10 " ++

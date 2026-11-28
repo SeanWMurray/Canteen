@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 126 statements:** 107 proven, 16 encoded, 3 not formalized.
+**Status of the 127 statements:** 108 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -129,13 +129,14 @@ graph TD
   n116["R84 · Buying from a non-resident"]:::proven
   n117["R86 · Becoming and ceasing to be resident"]:::proven
   n118["R70 · A corporation's year, to taxable income and tax"]:::proven
-  n119["R35 · An individual's year, to taxable income and tax"]:::proven
-  n120["R48 · The minimum tax"]:::proven
-  n121["R11 · The principal residence exemption"]:::proven
-  n122["R2 · Cost of the substituted property"]:::proven
-  n123["N1 · Inputs decided by other provisions"]:::notFormalized
-  n124["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n125["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n119["R87 · The student loan interest credit"]:::proven
+  n120["R35 · An individual's year, to taxable income and tax"]:::proven
+  n121["R48 · The minimum tax"]:::proven
+  n122["R11 · The principal residence exemption"]:::proven
+  n123["R2 · Cost of the substituted property"]:::proven
+  n124["N1 · Inputs decided by other provisions"]:::notFormalized
+  n125["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n126["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -271,47 +272,48 @@ graph TD
   n101 --> n118
   n102 --> n118
   n103 --> n118
-  n44 --> n119
-  n45 --> n119
-  n53 --> n119
-  n55 --> n119
-  n56 --> n119
-  n58 --> n119
-  n73 --> n119
-  n74 --> n119
-  n75 --> n119
-  n76 --> n119
-  n81 --> n119
-  n82 --> n119
-  n83 --> n119
-  n84 --> n119
-  n85 --> n119
-  n87 --> n119
-  n88 --> n119
-  n89 --> n119
-  n90 --> n119
-  n91 --> n119
-  n92 --> n119
-  n93 --> n119
-  n94 --> n119
-  n97 --> n119
-  n100 --> n119
+  n44 --> n120
+  n45 --> n120
+  n53 --> n120
+  n55 --> n120
+  n56 --> n120
+  n58 --> n120
+  n73 --> n120
+  n74 --> n120
+  n75 --> n120
+  n76 --> n120
+  n81 --> n120
+  n82 --> n120
+  n83 --> n120
+  n84 --> n120
+  n85 --> n120
+  n87 --> n120
+  n88 --> n120
+  n89 --> n120
+  n90 --> n120
+  n91 --> n120
+  n92 --> n120
+  n93 --> n120
+  n94 --> n120
+  n97 --> n120
+  n100 --> n120
   n119 --> n120
-  n44 --> n121
-  n50 --> n121
-  n11 --> n122
-  n1 --> n123
-  n5 --> n123
-  n6 --> n123
-  n8 --> n123
-  n37 --> n123
-  n122 --> n123
-  n38 --> n123
-  n30 --> n124
-  n32 --> n125
-  n34 --> n125
-  n39 --> n125
-  n42 --> n125
+  n120 --> n121
+  n44 --> n122
+  n50 --> n122
+  n11 --> n123
+  n1 --> n124
+  n5 --> n124
+  n6 --> n124
+  n8 --> n124
+  n37 --> n124
+  n123 --> n124
+  n38 --> n124
+  n30 --> n125
+  n32 --> n126
+  n34 --> n126
+  n39 --> n126
+  n42 --> n126
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -447,13 +449,14 @@ graph TD
   n116["R84"]:::proven
   n117["R86"]:::proven
   n118["R70"]:::proven
-  n119["R35"]:::proven
-  n120["R48"]:::proven
-  n121["R11"]:::proven
-  n122["R2"]:::proven
-  n123["N1"]:::notFormalized
-  n124["N2"]:::notFormalized
-  n125["N4"]:::notFormalized
+  n119["R87"]:::proven
+  n120["R35"]:::proven
+  n121["R48"]:::proven
+  n122["R11"]:::proven
+  n123["R2"]:::proven
+  n124["N1"]:::notFormalized
+  n125["N2"]:::notFormalized
+  n126["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -669,56 +672,57 @@ graph TD
   n77 --> n118
   n80 --> n118
   n60 -.-> n118
-  n93 --> n119
-  n55 --> n119
-  n94 --> n119
-  n81 --> n119
-  n91 --> n119
-  n84 --> n119
-  n58 --> n119
-  n97 --> n119
-  n44 --> n119
-  n87 --> n119
-  n73 --> n119
-  n56 --> n119
-  n100 --> n119
-  n92 --> n119
-  n85 --> n119
-  n45 --> n119
-  n53 --> n119
-  n89 --> n119
-  n90 --> n119
-  n82 --> n119
-  n74 --> n119
-  n83 --> n119
-  n76 --> n119
-  n75 --> n119
-  n88 -.-> n119
+  n93 --> n120
   n55 --> n120
-  n119 --> n120
+  n94 --> n120
   n81 --> n120
   n91 --> n120
   n84 --> n120
   n58 --> n120
-  n45 --> n120
+  n97 --> n120
+  n44 --> n120
   n87 --> n120
   n73 --> n120
+  n56 --> n120
   n100 --> n120
-  n44 -.-> n121
-  n50 -.-> n121
-  n11 -.-> n122
-  n1 -.-> n123
-  n5 -.-> n123
-  n6 -.-> n123
-  n8 -.-> n123
-  n37 -.-> n123
-  n122 -.-> n123
-  n38 -.-> n123
-  n30 -.-> n124
-  n32 -.-> n125
-  n34 -.-> n125
-  n39 -.-> n125
-  n42 -.-> n125
+  n92 --> n120
+  n85 --> n120
+  n45 --> n120
+  n53 --> n120
+  n89 --> n120
+  n90 --> n120
+  n119 --> n120
+  n82 --> n120
+  n74 --> n120
+  n83 --> n120
+  n76 --> n120
+  n75 --> n120
+  n88 -.-> n120
+  n55 --> n121
+  n120 --> n121
+  n81 --> n121
+  n91 --> n121
+  n84 --> n121
+  n58 --> n121
+  n45 --> n121
+  n87 --> n121
+  n73 --> n121
+  n100 --> n121
+  n44 -.-> n122
+  n50 -.-> n122
+  n11 -.-> n123
+  n1 -.-> n124
+  n5 -.-> n124
+  n6 -.-> n124
+  n8 -.-> n124
+  n37 -.-> n124
+  n123 -.-> n124
+  n38 -.-> n124
+  n30 -.-> n125
+  n32 -.-> n126
+  n34 -.-> n126
+  n39 -.-> n126
+  n42 -.-> n126
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -1690,13 +1694,21 @@ A corporation's income from active business, personal services business, propert
 
 **Lean:** [`Canteen.ITA.CorporateYear.income`](../../Canteen/ITA/S3/CorporateYear.lean#L163), [`Canteen.ITA.CorporateYear.taxableIncome`](../../Canteen/ITA/S3/CorporateYear.lean#L185), [`Canteen.ITA.CorporateYear.aggregateInvestmentIncome`](../../Canteen/ITA/S3/CorporateYear.lean#L222), [`Canteen.ITA.CorporateYear.ratesFacts`](../../Canteen/ITA/S3/CorporateYear.lean#L236), [`Canteen.ITA.CorporateYear.refundableFacts`](../../Canteen/ITA/S3/CorporateYear.lean#L244), [`Canteen.ITA.CorporateYear.gripFacts`](../../Canteen/ITA/S3/CorporateYear.lean#L252), [`Canteen.ITA.CorporateYear.cdaFacts`](../../Canteen/ITA/S3/CorporateYear.lean#L258), [`Canteen.ITA.CorporateYear.netTax`](../../Canteen/ITA/S3/CorporateYear.lean#L269), [`Canteen.ITA.CorporateYear.taxableIncome_le_income`](../../Canteen/ITA/S3/CorporateYear.lean#L309), [`Canteen.ITA.CorporateYear.dividendDeduction_le`](../../Canteen/ITA/S3/CorporateYear.lean#L333), [`Canteen.ITA.CorporateYear.deductible_dividend_not_investment_income`](../../Canteen/ITA/S3/CorporateYear.lean#L337), [`Canteen.ITA.CorporateYear.nonCapitalLossDeduction`](../../Canteen/ITA/S3/CorporateYear.lean#L181), [`Canteen.ITA.CorporateYear.nonCapitalLoss`](../../Canteen/ITA/S3/CorporateYear.lean#L195), [`Canteen.ITA.CorporateYear.nonCapitalLossesForward`](../../Canteen/ITA/S3/CorporateYear.lean#L211), [`Canteen.ITA.CorporateYear.loss_year_no_taxable_income`](../../Canteen/ITA/S3/CorporateYear.lean#L316), [`Canteen.ITA.CorporateYear.partIVOwnClaim`](../../Canteen/ITA/S3/CorporateYear.lean#L201), [`Canteen.ITA.CorporateYear.partIVCarriedClaim`](../../Canteen/ITA/S3/CorporateYear.lean#L206), [`Canteen.ITA.CorporateYear.own_loss_conserved`](../../Canteen/ITA/S3/CorporateYear.lean#L350), [`Canteen.ITA.CorporateYear.adjustedAggregateInvestmentIncome`](../../Canteen/ITA/S3/CorporateYear.lean#L226), [`Canteen.ITA.CorporateYear.businessLimit`](../../Canteen/ITA/S3/CorporateYear.lean#L233)
 
+### R87. The student loan interest credit
+
+**Status:** proven · **Citation:** ITA 118.62
+
+Interest paid on government student loans in the year, or in the five years before and not yet used, gives a credit at the lowest rate; what the year's tax cannot absorb carries forward. Interest paid under a judgment does not count. Proven: never more claimed than available, claimed plus carried is what was available, and judgment interest is excluded.
+
+**Lean:** [`Canteen.ITA.StudentLoanInterest.availableTotal`](../../Canteen/ITA/S118_62/StudentLoanInterest.lean#L41), [`Canteen.ITA.StudentLoanInterest.claimed`](../../Canteen/ITA/S118_62/StudentLoanInterest.lean#L43), [`Canteen.ITA.StudentLoanInterest.credit`](../../Canteen/ITA/S118_62/StudentLoanInterest.lean#L45), [`Canteen.ITA.StudentLoanInterest.carriedForward`](../../Canteen/ITA/S118_62/StudentLoanInterest.lean#L48), [`Canteen.ITA.StudentLoanInterest.claimed_le`](../../Canteen/ITA/S118_62/StudentLoanInterest.lean#L59), [`Canteen.ITA.StudentLoanInterest.claimed_plus_carried`](../../Canteen/ITA/S118_62/StudentLoanInterest.lean#L61), [`Canteen.ITA.StudentLoanInterest.judgment_excluded`](../../Canteen/ITA/S118_62/StudentLoanInterest.lean#L64)
+
 ### R35. An individual's year, to taxable income and tax
 
-**Status:** proven · **Citation:** ITA 2(2); 3; 111(1)(b); 110.6; 117(2) · **Uses:** R8, R9, R19, R21, R22, R24, R40, R41, R42, R43, R49, R50, R51, R52, R53, R55, R56, R57, R58, R59, R60, R61, R62, R65, R68
+**Status:** proven · **Citation:** ITA 2(2); 3; 111(1)(b); 110.6; 117(2) · **Uses:** R8, R9, R19, R21, R22, R24, R40, R41, R42, R43, R49, R50, R51, R52, R53, R55, R56, R57, R58, R59, R60, R61, R62, R65, R68, R87
 
 Income from sources (employment and business, dividends with the gross-up, recapture, attributed income), net taxable capital gains, less terminal and other losses; then taxable income, after the net capital loss deduction and the capital gains deduction (which the former reduces). Proven: taxable income never exceeds income, and the capital gains deduction never exceeds the net taxable capital gains.
 
-**Lean:** [`Canteen.ITA.IndividualYear.incomeFacts`](../../Canteen/ITA/S3/IndividualYear.lean#L259), [`Canteen.ITA.IndividualYear.taxableIncome`](../../Canteen/ITA/S3/IndividualYear.lean#L279), [`Canteen.ITA.IndividualYear.capitalGainsDeduction`](../../Canteen/ITA/S3/IndividualYear.lean#L269), [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L350), [`Canteen.ITA.IndividualYear.personalCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L291), [`Canteen.ITA.IndividualYear.donationCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L296), [`Canteen.ITA.IndividualYear.interestDeduction`](../../Canteen/ITA/S3/IndividualYear.lean#L182), [`Canteen.ITA.IndividualYear.medicalCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L299), [`Canteen.ITA.IndividualYear.disabilityCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L316), [`Canteen.ITA.IndividualYear.ageAndPensionCredits`](../../Canteen/ITA/S3/IndividualYear.lean#L308), [`Canteen.ITA.IndividualYear.oasRecovery`](../../Canteen/ITA/S3/IndividualYear.lean#L256), [`Canteen.ITA.IndividualYear.employmentCredits`](../../Canteen/ITA/S3/IndividualYear.lean#L193), [`Canteen.ITA.IndividualYear.amounts`](../../Canteen/ITA/S3/IndividualYear.lean#L158), [`Canteen.ITA.IndividualYear.smallCredits`](../../Canteen/ITA/S3/IndividualYear.lean#L319), [`Canteen.ITA.IndividualYear.tuitionCredits`](../../Canteen/ITA/S3/IndividualYear.lean#L347), [`Canteen.ITA.IndividualYear.supportDeducted`](../../Canteen/ITA/S3/IndividualYear.lean#L198), [`Canteen.ITA.IndividualYear.childCareDeduction`](../../Canteen/ITA/S3/IndividualYear.lean#L244), [`Canteen.ITA.IndividualYear.movingDeduction`](../../Canteen/ITA/S3/IndividualYear.lean#L220), [`Canteen.ITA.IndividualYear.standbyBenefits`](../../Canteen/ITA/S3/IndividualYear.lean#L200), [`Canteen.ITA.IndividualYear.shareholderBenefitIncome`](../../Canteen/ITA/S3/IndividualYear.lean#L212), [`Canteen.ITA.IndividualYear.stockOptionDeduction`](../../Canteen/ITA/S3/IndividualYear.lean#L209), [`Canteen.ITA.IndividualYear.taxable_le_income`](../../Canteen/ITA/S3/IndividualYear.lean#L389), [`Canteen.ITA.IndividualYear.capital_gains_deduction_le`](../../Canteen/ITA/S3/IndividualYear.lean#L394)
+**Lean:** [`Canteen.ITA.IndividualYear.incomeFacts`](../../Canteen/ITA/S3/IndividualYear.lean#L262), [`Canteen.ITA.IndividualYear.taxableIncome`](../../Canteen/ITA/S3/IndividualYear.lean#L282), [`Canteen.ITA.IndividualYear.capitalGainsDeduction`](../../Canteen/ITA/S3/IndividualYear.lean#L272), [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L361), [`Canteen.ITA.IndividualYear.personalCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L294), [`Canteen.ITA.IndividualYear.donationCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L299), [`Canteen.ITA.IndividualYear.interestDeduction`](../../Canteen/ITA/S3/IndividualYear.lean#L185), [`Canteen.ITA.IndividualYear.medicalCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L302), [`Canteen.ITA.IndividualYear.disabilityCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L319), [`Canteen.ITA.IndividualYear.ageAndPensionCredits`](../../Canteen/ITA/S3/IndividualYear.lean#L311), [`Canteen.ITA.IndividualYear.oasRecovery`](../../Canteen/ITA/S3/IndividualYear.lean#L259), [`Canteen.ITA.IndividualYear.employmentCredits`](../../Canteen/ITA/S3/IndividualYear.lean#L196), [`Canteen.ITA.IndividualYear.amounts`](../../Canteen/ITA/S3/IndividualYear.lean#L161), [`Canteen.ITA.IndividualYear.smallCredits`](../../Canteen/ITA/S3/IndividualYear.lean#L322), [`Canteen.ITA.IndividualYear.tuitionCredits`](../../Canteen/ITA/S3/IndividualYear.lean#L350), [`Canteen.ITA.IndividualYear.supportDeducted`](../../Canteen/ITA/S3/IndividualYear.lean#L201), [`Canteen.ITA.IndividualYear.childCareDeduction`](../../Canteen/ITA/S3/IndividualYear.lean#L247), [`Canteen.ITA.IndividualYear.movingDeduction`](../../Canteen/ITA/S3/IndividualYear.lean#L223), [`Canteen.ITA.IndividualYear.standbyBenefits`](../../Canteen/ITA/S3/IndividualYear.lean#L203), [`Canteen.ITA.IndividualYear.shareholderBenefitIncome`](../../Canteen/ITA/S3/IndividualYear.lean#L215), [`Canteen.ITA.IndividualYear.stockOptionDeduction`](../../Canteen/ITA/S3/IndividualYear.lean#L212), [`Canteen.ITA.IndividualYear.studentLoanCredit`](../../Canteen/ITA/S3/IndividualYear.lean#L359), [`Canteen.ITA.IndividualYear.taxable_le_income`](../../Canteen/ITA/S3/IndividualYear.lean#L400), [`Canteen.ITA.IndividualYear.capital_gains_deduction_le`](../../Canteen/ITA/S3/IndividualYear.lean#L405)
 
 ### R48. The minimum tax
 

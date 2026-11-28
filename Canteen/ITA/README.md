@@ -83,6 +83,7 @@ The verbatim statute text for each is in `statute/`. Review notes are in `docs/r
 - `S116/Purchaser.lean`: subsections 116(5), (5.01) and (5.3)
 - `S248/TaxableCanadianProperty.lean`: the 248(1) definition "taxable Canadian property", paragraphs (a) to (f)
 - `S128_1/Emigration.lean`: the opening words of 128.1(1) and (4), and paragraphs 128.1(1)(b), (c) and 128.1(4)(b), (c)
+- `S118_62/StudentLoanInterest.lean`: section 118.62
 - `S3/CorporateYear.lean`: a corporation's year, from its sources to taxable income and tax (2(2), 3), and the 129(4) definitions "aggregate investment income", "eligible portion" and "income or loss"
 - `S112/StopLoss.lean`: subsections 112(3), (3.01) and (6.1)
 - `S7/StockOptions.lean`: paragraph 7(1)(a), subsection 7(1.1), and paragraphs 110(1)(d) and (d.1)

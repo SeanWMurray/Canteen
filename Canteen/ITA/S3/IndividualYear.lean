@@ -23,6 +23,7 @@ import Canteen.ITA.S62.MovingExpenses
 import Canteen.ITA.S6.StandbyCharge
 import Canteen.ITA.S15.ShareholderBenefit
 import Canteen.ITA.S7.StockOptions
+import Canteen.ITA.S118_62.StudentLoanInterest
 
 /-!
 # An individual's year: income from the encoded sources, and taxable income
@@ -151,6 +152,8 @@ structure Facts where
   tuitionCarried : Cents := 0
   tuitionDesignated : Cents := 0
   tuitionTransferredIn : Cents := 0
+  /-- 118.62: student loan interest paid, this year and in the five before (the year is the taxation year). -/
+  studentLoanInterest : List StudentLoanInterest.Payment := []
   /-- Other non-refundable credits, given. -/
   otherCredits : Cents := 0
   deriving Inhabited
@@ -347,10 +350,18 @@ def tuitionUnused (f : Facts) : Cents := Tuition.unused f.tuitionCarried (tuitio
 /-- 118.5, 118.61, 118.9: the tuition credits used in the year. -/
 def tuitionCredits (f : Facts) : Cents := tuitionCarryUsed f + tuitionCurrentUsed f + f.tuitionTransferredIn
 
+/-- 118.62: the student loan interest credit, claiming no more interest than the tax left after tuition
+needs (the rest carries forward). -/
+def studentLoanFacts (f : Facts) : StudentLoanInterest.Facts :=
+  { taxationYear := f.taxationYear, payments := f.studentLoanInterest,
+    claim := some ((taxBeforeTuition f - tuitionCredits f) * 100 / 14) }
+
+def studentLoanCredit (f : Facts) : Cents := StudentLoanInterest.credit (studentLoanFacts f)
+
 /-- Tax under 117(2) on taxable income, plus tax on split income (120.4(2)), less the dividend tax
 credit, the personal credit, the donation credit, the medical expense credit and other credits. -/
 def federalTax (f : Facts) : Cents :=
-  taxBeforeTuition f - (tuitionCredits f + Dividends.credit (dividendFacts f) + donationCredit f + medicalCredit f + f.otherCredits)
+  taxBeforeTuition f - (tuitionCredits f + studentLoanCredit f + Dividends.credit (dividendFacts f) + donationCredit f + medicalCredit f + f.otherCredits)
 
 def explain (f : Facts) : Finding :=
   let h := formatHalfCents

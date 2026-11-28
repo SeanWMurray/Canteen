@@ -152,6 +152,7 @@ Canteen/
     S116/Purchaser.lean        116(5), (5.01), (5.3): the purchaser's liability on buying from a non-resident
     S248/TaxableCanadianProperty.lean   248(1) "taxable Canadian property", with the 60-month look-back
     S128_1/Emigration.lean     128.1(1), (4): the step-up on arrival, and departure tax
+    S118_62/StudentLoanInterest.lean   118.62: the student loan interest credit
     S3/CorporateYear.lean      2(2), 3, 129(4): a corporation's year, to taxable income, investment income and tax
     S110_6/CapitalGainsDeduction.lean   110.6: qualified small business corporation shares, the gains limits, the deduction
     S251_2/LossRestrictionEvent.lean   251.2(2)(a), 256(7)(a): acquisitions of control, and when they are not

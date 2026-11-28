@@ -95,7 +95,7 @@ graph TD
 
 Half the gain is a taxable capital gain, which the capital gains deduction shelters; tax at the 117(2) rates, less the personal credit.
 
-**Lean:** [`Canteen.ITA.IndividualYear.taxableIncome`](../../Canteen/ITA/S3/IndividualYear.lean#L279), [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L350)
+**Lean:** [`Canteen.ITA.IndividualYear.taxableIncome`](../../Canteen/ITA/S3/IndividualYear.lean#L282), [`Canteen.ITA.IndividualYear.federalTax`](../../Canteen/ITA/S3/IndividualYear.lean#L361)
 
 ### L2. The minimum tax
 
