@@ -110,8 +110,9 @@ flowchart BT
   v101["146.6 the First Home Savings Account deduction"]:::prov
   v102["146.3(1), Reg. 7308 the RRIF minimum amount"]:::prov
   v103["Reg. 1100(1)(a), (2) capital cost allowance"]:::prov
-  v104["2(2), 3, 129(4) a corporation's year, to taxable income and tax"]:::prov
-  v105["50(2) bad personal-use debts"]:::prov
+  v104["13(7)(g), (i), 67.2, 67.3, Reg. 7307 passenger vehicle limits"]:::prov
+  v105["2(2), 3, 129(4) a corporation's year, to taxable income and tax"]:::prov
+  v106["50(2) bad personal-use debts"]:::prov
   v0 --> v1
   v0 --> v2
   v0 --> v3
@@ -211,13 +212,13 @@ flowchart BT
   v54 --> v99
   v31 --> v99
   v46 --> v99
-  v19 --> v104
-  v20 --> v104
-  v32 --> v104
-  v80 --> v104
-  v71 --> v104
-  v81 --> v104
-  v73 --> v104
-  v35 --> v104
+  v19 --> v105
+  v20 --> v105
+  v32 --> v105
+  v80 --> v105
+  v71 --> v105
+  v81 --> v105
+  v73 --> v105
+  v35 --> v105
   classDef prov fill:#bbdefb,stroke:#1565c0,color:#0d47a1
 ```

@@ -97,6 +97,7 @@ import Canteen.ITA.S146_6.FirstHomeSavings
 import Canteen.ITA.S146.RRSP
 import Canteen.ITA.S146_3.RRIFMinimum
 import Canteen.ITA.S13.CapitalCostAllowance
+import Canteen.ITA.S13.PassengerVehicles
 import Canteen.ITA.S3.CorporateYear
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
@@ -944,6 +945,14 @@ def blueprint : Blueprint where
             "halves a new addition's claim, and the claim never exceeds the adjusted UCC."
           lean := [``CapitalCostAllowance.rate, ``CapitalCostAllowance.ClassYear.a, ``CapitalCostAllowance.ClassYear.adjusted, ``CapitalCostAllowance.ClassYear.maximum,
             ``CapitalCostAllowance.ClassYear.closing, ``CapitalCostAllowance.half_year, ``CapitalCostAllowance.maximum_le] },
+        { id := "R97", kind := .law, title := "Passenger vehicle limits", citation := "ITA 13(7)(g), (i); 67.2; 67.3; ITR 7307"
+          statement := "A passenger vehicle's capital cost is capped at the prescribed amount for its year ($38,000 after 2024, " ++
+            "$61,000 for a zero-emission vehicle, each plus sales taxes); interest on the loan at $300 or $350 per 30 days; " ++
+            "lease charges at the lesser of the monthly limit and the charges scaled by the cost limit over 85% of the list " ++
+            "price. Proven: never more than the cost or the charges, and a vehicle under the limit keeps its cost."
+          lean := [``PassengerVehicles.costA, ``PassengerVehicles.capitalCost, ``PassengerVehicles.interest, ``PassengerVehicles.Lease.paraC,
+            ``PassengerVehicles.Lease.paraD, ``PassengerVehicles.Lease.deductible, ``PassengerVehicles.capitalCost_le,
+            ``PassengerVehicles.Lease.deductible_le, ``PassengerVehicles.under_limit] },
         { id := "R70", kind := .law, title := "A corporation's year, to taxable income and tax", citation := "ITA 2(2); 3; 110.1; 111(1), (8); 112(1); 125(7); 129(4)"
           statement := "A corporation's income from active business, personal services business, property and dividends " ++
             "received, with its net taxable capital gains (a 55(2) dividend as a gain); taxable income after gifts, the " ++

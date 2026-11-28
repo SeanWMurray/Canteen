@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 136 statements:** 117 proven, 16 encoded, 3 not formalized.
+**Status of the 137 statements:** 118 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -136,16 +136,17 @@ graph TD
   n123["R93 · The First Home Savings Account deduction"]:::proven
   n124["R95 · The RRIF minimum amount"]:::proven
   n125["R96 · Capital cost allowance"]:::proven
-  n126["R70 · A corporation's year, to taxable income and tax"]:::proven
-  n127["R87 · The student loan interest credit"]:::proven
-  n128["R94 · RRSPs: the deduction, earned income, withdrawals"]:::proven
-  n129["R35 · An individual's year, to taxable income and tax"]:::proven
-  n130["R48 · The minimum tax"]:::proven
-  n131["R11 · The principal residence exemption"]:::proven
-  n132["R2 · Cost of the substituted property"]:::proven
-  n133["N1 · Inputs decided by other provisions"]:::notFormalized
-  n134["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n135["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n126["R97 · Passenger vehicle limits"]:::proven
+  n127["R70 · A corporation's year, to taxable income and tax"]:::proven
+  n128["R87 · The student loan interest credit"]:::proven
+  n129["R94 · RRSPs: the deduction, earned income, withdrawals"]:::proven
+  n130["R35 · An individual's year, to taxable income and tax"]:::proven
+  n131["R48 · The minimum tax"]:::proven
+  n132["R11 · The principal residence exemption"]:::proven
+  n133["R2 · Cost of the substituted property"]:::proven
+  n134["N1 · Inputs decided by other provisions"]:::notFormalized
+  n135["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n136["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -277,59 +278,59 @@ graph TD
   n74 --> n121
   n76 --> n121
   n88 --> n121
-  n44 --> n126
-  n45 --> n126
-  n57 --> n126
-  n60 --> n126
-  n77 --> n126
-  n78 --> n126
-  n80 --> n126
-  n101 --> n126
-  n102 --> n126
-  n103 --> n126
-  n44 --> n129
-  n45 --> n129
-  n53 --> n129
-  n55 --> n129
-  n56 --> n129
-  n58 --> n129
-  n73 --> n129
-  n74 --> n129
-  n75 --> n129
-  n76 --> n129
-  n81 --> n129
-  n82 --> n129
-  n83 --> n129
-  n84 --> n129
-  n85 --> n129
-  n87 --> n129
-  n88 --> n129
-  n89 --> n129
-  n90 --> n129
-  n91 --> n129
-  n92 --> n129
-  n93 --> n129
-  n94 --> n129
-  n97 --> n129
-  n100 --> n129
-  n127 --> n129
-  n128 --> n129
+  n44 --> n127
+  n45 --> n127
+  n57 --> n127
+  n60 --> n127
+  n77 --> n127
+  n78 --> n127
+  n80 --> n127
+  n101 --> n127
+  n102 --> n127
+  n103 --> n127
+  n44 --> n130
+  n45 --> n130
+  n53 --> n130
+  n55 --> n130
+  n56 --> n130
+  n58 --> n130
+  n73 --> n130
+  n74 --> n130
+  n75 --> n130
+  n76 --> n130
+  n81 --> n130
+  n82 --> n130
+  n83 --> n130
+  n84 --> n130
+  n85 --> n130
+  n87 --> n130
+  n88 --> n130
+  n89 --> n130
+  n90 --> n130
+  n91 --> n130
+  n92 --> n130
+  n93 --> n130
+  n94 --> n130
+  n97 --> n130
+  n100 --> n130
+  n128 --> n130
   n129 --> n130
-  n44 --> n131
-  n50 --> n131
-  n11 --> n132
-  n1 --> n133
-  n5 --> n133
-  n6 --> n133
-  n8 --> n133
-  n37 --> n133
-  n132 --> n133
-  n38 --> n133
-  n30 --> n134
-  n32 --> n135
-  n34 --> n135
-  n39 --> n135
-  n42 --> n135
+  n130 --> n131
+  n44 --> n132
+  n50 --> n132
+  n11 --> n133
+  n1 --> n134
+  n5 --> n134
+  n6 --> n134
+  n8 --> n134
+  n37 --> n134
+  n133 --> n134
+  n38 --> n134
+  n30 --> n135
+  n32 --> n136
+  n34 --> n136
+  n39 --> n136
+  n42 --> n136
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -472,16 +473,17 @@ graph TD
   n123["R93"]:::proven
   n124["R95"]:::proven
   n125["R96"]:::proven
-  n126["R70"]:::proven
-  n127["R87"]:::proven
-  n128["R94"]:::proven
-  n129["R35"]:::proven
-  n130["R48"]:::proven
-  n131["R11"]:::proven
-  n132["R2"]:::proven
-  n133["N1"]:::notFormalized
-  n134["N2"]:::notFormalized
-  n135["N4"]:::notFormalized
+  n126["R97"]:::proven
+  n127["R70"]:::proven
+  n128["R87"]:::proven
+  n129["R94"]:::proven
+  n130["R35"]:::proven
+  n131["R48"]:::proven
+  n132["R11"]:::proven
+  n133["R2"]:::proven
+  n134["N1"]:::notFormalized
+  n135["N2"]:::notFormalized
+  n136["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -693,68 +695,68 @@ graph TD
   n56 --> n121
   n74 --> n121
   n88 -.-> n121
-  n44 --> n126
-  n57 --> n126
-  n45 --> n126
-  n101 --> n126
-  n102 --> n126
-  n103 --> n126
-  n78 --> n126
-  n77 --> n126
-  n80 --> n126
-  n60 -.-> n126
-  n93 --> n129
-  n55 --> n129
-  n94 --> n129
-  n81 --> n129
-  n91 --> n129
-  n84 --> n129
-  n58 --> n129
-  n97 --> n129
-  n128 --> n129
-  n44 --> n129
-  n87 --> n129
-  n73 --> n129
-  n56 --> n129
-  n100 --> n129
-  n92 --> n129
-  n85 --> n129
-  n45 --> n129
-  n53 --> n129
-  n89 --> n129
-  n90 --> n129
-  n127 --> n129
-  n82 --> n129
-  n74 --> n129
-  n83 --> n129
-  n76 --> n129
-  n75 --> n129
-  n88 -.-> n129
+  n44 --> n127
+  n57 --> n127
+  n45 --> n127
+  n101 --> n127
+  n102 --> n127
+  n103 --> n127
+  n78 --> n127
+  n77 --> n127
+  n80 --> n127
+  n60 -.-> n127
+  n93 --> n130
   n55 --> n130
-  n129 --> n130
+  n94 --> n130
   n81 --> n130
   n91 --> n130
   n84 --> n130
   n58 --> n130
-  n45 --> n130
+  n97 --> n130
+  n129 --> n130
+  n44 --> n130
   n87 --> n130
   n73 --> n130
+  n56 --> n130
   n100 --> n130
-  n44 -.-> n131
-  n50 -.-> n131
-  n11 -.-> n132
-  n1 -.-> n133
-  n5 -.-> n133
-  n6 -.-> n133
-  n8 -.-> n133
-  n37 -.-> n133
-  n132 -.-> n133
-  n38 -.-> n133
-  n30 -.-> n134
-  n32 -.-> n135
-  n34 -.-> n135
-  n39 -.-> n135
-  n42 -.-> n135
+  n92 --> n130
+  n85 --> n130
+  n45 --> n130
+  n53 --> n130
+  n89 --> n130
+  n90 --> n130
+  n128 --> n130
+  n82 --> n130
+  n74 --> n130
+  n83 --> n130
+  n76 --> n130
+  n75 --> n130
+  n88 -.-> n130
+  n55 --> n131
+  n130 --> n131
+  n81 --> n131
+  n91 --> n131
+  n84 --> n131
+  n58 --> n131
+  n45 --> n131
+  n87 --> n131
+  n73 --> n131
+  n100 --> n131
+  n44 -.-> n132
+  n50 -.-> n132
+  n11 -.-> n133
+  n1 -.-> n134
+  n5 -.-> n134
+  n6 -.-> n134
+  n8 -.-> n134
+  n37 -.-> n134
+  n133 -.-> n134
+  n38 -.-> n134
+  n30 -.-> n135
+  n32 -.-> n136
+  n34 -.-> n136
+  n39 -.-> n136
+  n42 -.-> n136
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -1781,6 +1783,14 @@ A RRIF must pay out at least its value at the start of the year times a factor: 
 The most a taxpayer may claim for a class is its rate of the undepreciated capital cost, adjusted by the half-year rule (half the year's net additions off) and, for accelerated investment incentive property of the general classes available before 2024, half of it added (after 2023, neither). Proven: the half-year rule halves a new addition's claim, and the claim never exceeds the adjusted UCC.
 
 **Lean:** [`Canteen.ITA.CapitalCostAllowance.rate`](../../Canteen/ITA/S13/CapitalCostAllowance.lean#L27), [`Canteen.ITA.CapitalCostAllowance.ClassYear.a`](../../Canteen/ITA/S13/CapitalCostAllowance.lean#L62), [`Canteen.ITA.CapitalCostAllowance.ClassYear.adjusted`](../../Canteen/ITA/S13/CapitalCostAllowance.lean#L69), [`Canteen.ITA.CapitalCostAllowance.ClassYear.maximum`](../../Canteen/ITA/S13/CapitalCostAllowance.lean#L72), [`Canteen.ITA.CapitalCostAllowance.ClassYear.closing`](../../Canteen/ITA/S13/CapitalCostAllowance.lean#L75), [`Canteen.ITA.CapitalCostAllowance.half_year`](../../Canteen/ITA/S13/CapitalCostAllowance.lean#L88), [`Canteen.ITA.CapitalCostAllowance.maximum_le`](../../Canteen/ITA/S13/CapitalCostAllowance.lean#L93)
+
+### R97. Passenger vehicle limits
+
+**Status:** proven · **Citation:** ITA 13(7)(g), (i); 67.2; 67.3; ITR 7307
+
+A passenger vehicle's capital cost is capped at the prescribed amount for its year ($38,000 after 2024, $61,000 for a zero-emission vehicle, each plus sales taxes); interest on the loan at $300 or $350 per 30 days; lease charges at the lesser of the monthly limit and the charges scaled by the cost limit over 85% of the list price. Proven: never more than the cost or the charges, and a vehicle under the limit keeps its cost.
+
+**Lean:** [`Canteen.ITA.PassengerVehicles.costA`](../../Canteen/ITA/S13/PassengerVehicles.lean#L32), [`Canteen.ITA.PassengerVehicles.capitalCost`](../../Canteen/ITA/S13/PassengerVehicles.lean#L51), [`Canteen.ITA.PassengerVehicles.interest`](../../Canteen/ITA/S13/PassengerVehicles.lean#L55), [`Canteen.ITA.PassengerVehicles.Lease.paraC`](../../Canteen/ITA/S13/PassengerVehicles.lean#L78), [`Canteen.ITA.PassengerVehicles.Lease.paraD`](../../Canteen/ITA/S13/PassengerVehicles.lean#L82), [`Canteen.ITA.PassengerVehicles.Lease.deductible`](../../Canteen/ITA/S13/PassengerVehicles.lean#L88), [`Canteen.ITA.PassengerVehicles.capitalCost_le`](../../Canteen/ITA/S13/PassengerVehicles.lean#L99), [`Canteen.ITA.PassengerVehicles.Lease.deductible_le`](../../Canteen/ITA/S13/PassengerVehicles.lean#L101), [`Canteen.ITA.PassengerVehicles.under_limit`](../../Canteen/ITA/S13/PassengerVehicles.lean#L103)
 
 ### R70. A corporation's year, to taxable income and tax
 

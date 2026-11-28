@@ -124,6 +124,7 @@ import Canteen.ITA.S146_6.FirstHomeSavings
 import Canteen.ITA.S146.RRSP
 import Canteen.ITA.S146_3.RRIFMinimum
 import Canteen.ITA.S13.CapitalCostAllowance
+import Canteen.ITA.S13.PassengerVehicles
 import Canteen.ITA.S3.CorporateYear
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
@@ -293,3 +294,4 @@ import Canteen.Tests.FirstHomeSavings
 import Canteen.Tests.RRSP
 import Canteen.Tests.RRIFMinimum
 import Canteen.Tests.CapitalCostAllowance
+import Canteen.Tests.PassengerVehicles
