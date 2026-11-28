@@ -36,6 +36,8 @@ structure Facts where
   /-- B, C, D: taxable capital gains on gifts, 40(1.01) gains, and recapture on gifts. -/
   giftGains : Cents := 0
   brackets : Rates.Brackets := {}
+  /-- 118.1(3) D(a): a trust other than a graduated rate estate or qualified disability trust. -/
+  flatRateTrust : Bool := false
   deriving Repr, DecidableEq, Inhabited
 
 /-- "total gifts". -/
@@ -43,8 +45,10 @@ def totalGifts (f : Facts) : Cents :=
   if f.deathYear then min f.charitableGifts f.income
   else min f.charitableGifts (min f.income ((3 * f.income + f.giftGains) / 4))
 
-/-- 118.1(3) D: the gifts above $200 matched by taxable income in the top bracket. -/
-def topSlice (f : Facts) : Cents := min (totalGifts f - 20000) (f.amountTaxable - f.brackets.fourth)
+/-- 118.1(3) D: (b) the gifts above $200 matched by taxable income in the top bracket; (a) for a flat-rate
+trust, all the gifts above $200. -/
+def topSlice (f : Facts) : Cents :=
+  if f.flatRateTrust then totalGifts f - 20000 else min (totalGifts f - 20000) (f.amountTaxable - f.brackets.fourth)
 
 /-- 118.1(3): the credit. -/
 def credit (f : Facts) : Cents :=

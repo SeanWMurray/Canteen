@@ -1,5 +1,6 @@
 import Canteen.ITA.S117_1.YearAmounts
 import Canteen.ITA.S82.Dividends
+import Canteen.ITA.S118_1.Donations
 
 /-!
 # A trust's income paid out to beneficiaries: 104(6)(b), 104(13), 104(19), 104(21), 104(24)
@@ -64,6 +65,8 @@ structure Facts where
   /-- Resident in Canada throughout the year. -/
   resident : Bool := true
   beneficiaries : List Beneficiary := []
+  /-- 118.1: the trust's total charitable gifts (the year's and those carried forward). -/
+  charitableGifts : Cents := 0
   deriving Repr, DecidableEq, Inhabited
 
 def income (f : Facts) : Cents := f.dividends + f.netTaxableGains + f.otherIncome
@@ -107,14 +110,24 @@ def grossUp (f : Facts) : Cents := Dividends.grossUp (keptDividendFacts f)
 /-- The amount taxable: what the trust keeps, with the gross-up. -/
 def amountTaxable (f : Facts) : Cents := retained f + grossUp f
 
+def brackets (f : Facts) : Rates.Brackets := ((YearAmounts.forYear f.taxationYear).getD YearAmounts.latest.2).brackets
+
+/-- 118.1: the donation credit, which 122(1.1) allows; for a flat-rate trust every dollar over $200 at 33%
+(118.1(3) D(a)). The trust's income for the 75% limit is what it keeps, with the gross-up. -/
+def donationFacts (f : Facts) : Donations.Facts :=
+  { charitableGifts := f.charitableGifts, income := amountTaxable f, amountTaxable := amountTaxable f, brackets := brackets f,
+    flatRateTrust := f.kind == .flat }
+
+def donationCredit (f : Facts) : Cents := Donations.credit (donationFacts f)
+
 /-- 122(1)(a): the highest individual percentage (33%), or for a graduated rate estate or qualified
-disability trust the year's 117(2) rates; less the dividend tax credit (121), which 122(1.1) allows. The
-118.1 and 120.2 credits are not computed. -/
+disability trust the year's 117(2) rates; less the dividend tax credit (121) and the donation credit
+(118.1), which 122(1.1) allows. The 120.2 credit is not computed. -/
 def tax (f : Facts) : Cents :=
   (match f.kind with
    | .flat => amountTaxable f * 33 / 100
-   | .graduated => Rates.tax (amountTaxable f) ((YearAmounts.forYear f.taxationYear).getD YearAmounts.latest.2).brackets) -
-  Dividends.credit (keptDividendFacts f)
+   | .graduated => Rates.tax (amountTaxable f) (brackets f)) -
+  (Dividends.credit (keptDividendFacts f) + donationCredit f)
 
 /-- What each beneficiary includes: as taxable dividends, as taxable capital gains, and as income from
 property (104(13)) for the rest of the amount payable. -/

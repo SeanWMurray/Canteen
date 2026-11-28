@@ -40,4 +40,10 @@ example : tax keepsDividends = 910800 - Dividends.credit (keptDividendFacts keep
 -- Paying it all out: no tax for the trust.
 example : tax allOut = 0 := by decide
 
+-- 118.1: the family trust keeping $20,000 gives $10,000 to a charity: 14% of $200 and 33% of $9,800.
+example : donationCredit { keeps with charitableGifts := 1000000 } = (20000 * 1400 + 980000 * 3300) / 10000 := by decide
+example : tax { keeps with charitableGifts := 1000000 } = 660000 - (20000 * 1400 + 980000 * 3300) / 10000 := by decide
+-- At most 75% of its income: $15,000 of a $30,000 gift.
+example : Donations.totalGifts (donationFacts { keeps with charitableGifts := 3000000 }) = 1500000 := by decide
+
 end Canteen.Tests.TrustIncome
