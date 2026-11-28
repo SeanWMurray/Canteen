@@ -166,6 +166,7 @@ Canteen/
     Reg4301/PrescribedRate.lean   Reg. 4301: the prescribed rate of interest, from the T-bill auctions
     S122_7/WorkersBenefit.lean   122.7(2), (3): the Canada workers benefit, indexed
     S122_5/GstCredit.lean      122.5(3), (4): the GST/HST credit, indexed
+    S96/Partnership.lean       96(1), 53(1)(e), 53(2)(c), 40(3.1), (3.12): partnership allocations, cost, negative ACB
     S3/CorporateYear.lean      2(2), 3, 129(4): a corporation's year, to taxable income, investment income and tax
     S110_6/CapitalGainsDeduction.lean   110.6: qualified small business corporation shares, the gains limits, the deduction
     S251_2/LossRestrictionEvent.lean   251.2(2)(a), 256(7)(a): acquisitions of control, and when they are not

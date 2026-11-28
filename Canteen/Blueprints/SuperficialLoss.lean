@@ -101,6 +101,7 @@ import Canteen.ITA.S13.PassengerVehicles
 import Canteen.ITA.Reg4301.PrescribedRate
 import Canteen.ITA.S122_7.WorkersBenefit
 import Canteen.ITA.S122_5.GstCredit
+import Canteen.ITA.S96.Partnership
 import Canteen.ITA.S3.CorporateYear
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
@@ -978,6 +979,14 @@ def blueprint : Blueprint where
           lean := [``GstCredit.amount, ``GstCredit.paraA, ``GstCredit.paraB, ``GstCredit.annual, ``GstCredit.quarterly,
             ``GstCredit.annual_le],
           uses := ["R56"] },
+        { id := "R101", kind := .law, title := "Partnerships and a limited partner's negative cost", citation := "ITA 96(1); 53(1)(e); 53(2)(c); 40(3.1), (3.11), (3.12)"
+          statement := "A partner includes its share of each of the partnership's incomes, losses and capital gains and losses; " ++
+            "the interest's cost goes up by income (with whole capital gains) and contributions and down by losses and " ++
+            "drawings; a limited partner's negative cost at a fiscal period's end is a gain, later reversible as a loss. " ++
+            "Proven: a limited partner's cost is never negative after 40(3.1), and a general partner has no such gain."
+          lean := [``Partnership.Member.income, ``Partnership.Member.taxableCapitalGains, ``Partnership.Member.acbBefore,
+            ``Partnership.Member.deemedGain, ``Partnership.Member.acbAfter, ``Partnership.Member.electableLoss,
+            ``Partnership.Member.limited_nonneg, ``Partnership.Member.general_no_gain] },
         { id := "R70", kind := .law, title := "A corporation's year, to taxable income and tax", citation := "ITA 2(2); 3; 110.1; 111(1), (8); 112(1); 125(7); 129(4)"
           statement := "A corporation's income from active business, personal services business, property and dividends " ++
             "received, with its net taxable capital gains (a 55(2) dividend as a gain); taxable income after gifts, the " ++

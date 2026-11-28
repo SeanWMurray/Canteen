@@ -114,8 +114,9 @@ flowchart BT
   v105["Reg. 4301 the prescribed rate of interest"]:::prov
   v106["122.7 the Canada workers benefit"]:::prov
   v107["122.5 the GST/HST credit"]:::prov
-  v108["2(2), 3, 129(4) a corporation's year, to taxable income and tax"]:::prov
-  v109["50(2) bad personal-use debts"]:::prov
+  v108["96(1), 53(1)(e), 53(2)(c), 40(3.1) partnerships"]:::prov
+  v109["2(2), 3, 129(4) a corporation's year, to taxable income and tax"]:::prov
+  v110["50(2) bad personal-use debts"]:::prov
   v0 --> v1
   v0 --> v2
   v0 --> v3
@@ -215,13 +216,13 @@ flowchart BT
   v54 --> v99
   v31 --> v99
   v46 --> v99
-  v19 --> v108
-  v20 --> v108
-  v32 --> v108
-  v80 --> v108
-  v71 --> v108
-  v81 --> v108
-  v73 --> v108
-  v35 --> v108
+  v19 --> v109
+  v20 --> v109
+  v32 --> v109
+  v80 --> v109
+  v71 --> v109
+  v81 --> v109
+  v73 --> v109
+  v35 --> v109
   classDef prov fill:#bbdefb,stroke:#1565c0,color:#0d47a1
 ```
