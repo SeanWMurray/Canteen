@@ -75,6 +75,7 @@ import Canteen.ITA.S128_1.Emigration
 import Canteen.ITA.S118_62.StudentLoanInterest
 import Canteen.ITA.S75.ReversionaryTrust
 import Canteen.ITA.S107.TrustDistribution
+import Canteen.ITA.S104.TwentyOneYear
 import Canteen.ITA.S3.CorporateYear
 import Canteen.Transactions.DebtSwap
 import Canteen.ITA.S87.Amalgamation
@@ -265,6 +266,7 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S118_62.StudentLoanInterest, "118.62 the student loan interest credit"),
    (`Canteen.ITA.S75.ReversionaryTrust, "75(2), (3) reversionary trusts"),
    (`Canteen.ITA.S107.TrustDistribution, "107(2), (2.1), (4.1) distributions of trust property"),
+   (`Canteen.ITA.S104.TwentyOneYear, "104(4) the 21-year rule"),
    (`Canteen.ITA.S3.CorporateYear, "2(2), 3, 129(4) a corporation's year, to taxable income and tax")]
 
 /-! ## The dashboard -/
@@ -374,6 +376,7 @@ def actMindmap : String := Id.run do
     (2, "s. 88"), (3, "88(1): winding up a subsidiary"), (3, "88(1)(c), (d): the bump"),
     (2, "s. 89"), (3, "89(1): capital dividend account"), (3, "89(1): general rate income pool"),
     (2, "s. 125"), (3, "125(2), (3): the business limit, shared"), (3, "125(5.1): the capital and passive income grinds"), (3, "125(7): adjusted aggregate investment income"),
+    (2, "s. 104"), (3, "104(4): the 21-year deemed disposition"),
     (2, "s. 107"), (3, "107(2): the rollover to a beneficiary"), (3, "107(4.1): not after 75(2)"),
     (2, "s. 110.1"), (3, "110.1(1)(a): a corporation's gifts"),
     (2, "s. 110.6"), (3, "qualified small business corporation share"), (3, "annual and cumulative gains limits"),

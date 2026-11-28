@@ -90,6 +90,7 @@ import Canteen.ITA.S128_1.Emigration
 import Canteen.ITA.S118_62.StudentLoanInterest
 import Canteen.ITA.S75.ReversionaryTrust
 import Canteen.ITA.S107.TrustDistribution
+import Canteen.ITA.S104.TwentyOneYear
 import Canteen.ITA.S3.CorporateYear
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
@@ -892,6 +893,14 @@ def blueprint : Blueprint where
             ``TrustDistribution.Distribution.no_gain_on_rollover, ``TrustDistribution.Distribution.tainted_at_value,
             ``TrustDistribution.Distribution.to_contributor],
           uses := ["R88"] },
+        { id := "R90", kind := .law, title := "The 21-year rule", citation := "ITA 104(4)(a) to (c)"
+          statement := "A trust is deemed to sell its capital property (other than depreciable property) and land inventory at " ++
+            "value, and buy it back, on its 21st anniversary and every 21 years after; a spousal, alter ego or joint trust " ++
+            "on the life beneficiary's death and every 21 years after. Proven: an ordinary trust's first day is 21 years " ++
+            "after its creation, there is no day before the first, and a spousal trust has none while the spouse lives."
+          lean := [``TwentyOneYear.firstDay, ``TwentyOneYear.dayIn, ``TwentyOneYear.dispositions, ``TwentyOneYear.netTaxableGains,
+            ``TwentyOneYear.ordinary_first, ``TwentyOneYear.none_before, ``TwentyOneYear.life_interest_alive],
+          uses := ["R8"] },
         { id := "R70", kind := .law, title := "A corporation's year, to taxable income and tax", citation := "ITA 2(2); 3; 110.1; 111(1), (8); 112(1); 125(7); 129(4)"
           statement := "A corporation's income from active business, personal services business, property and dividends " ++
             "received, with its net taxable capital gains (a 55(2) dividend as a gain); taxable income after gifts, the " ++
