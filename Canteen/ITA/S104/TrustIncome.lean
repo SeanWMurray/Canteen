@@ -67,6 +67,10 @@ structure Facts where
   beneficiaries : List Beneficiary := []
   /-- 118.1: the trust's total charitable gifts (the year's and those carried forward). -/
   charitableGifts : Cents := 0
+  /-- 120.2(1)(a): additional taxes under 127.5 of earlier years, by year, not yet deducted. -/
+  minimumTaxPaid : List (Nat × Cents) := []
+  /-- 120.2(1)(b): the trust's minimum amount for the year (127.51), given. -/
+  minimumAmount : Cents := 0
   deriving Repr, DecidableEq, Inhabited
 
 def income (f : Facts) : Cents := f.dividends + f.netTaxableGains + f.otherIncome
@@ -122,12 +126,20 @@ def donationCredit (f : Facts) : Cents := Donations.credit (donationFacts f)
 
 /-- 122(1)(a): the highest individual percentage (33%), or for a graduated rate estate or qualified
 disability trust the year's 117(2) rates; less the dividend tax credit (121) and the donation credit
-(118.1), which 122(1.1) allows. The 120.2 credit is not computed. -/
-def tax (f : Facts) : Cents :=
+(118.1), which 122(1.1) allows. -/
+def taxBeforeRecovery (f : Facts) : Cents :=
   (match f.kind with
    | .flat => amountTaxable f * 33 / 100
    | .graduated => Rates.tax (amountTaxable f) (brackets f)) -
   (Dividends.credit (keptDividendFacts f) + donationCredit f)
+
+/-- 120.2(1): minimum tax of the seven preceding years recovered, down to the minimum amount. -/
+def minimumTaxRecovery (f : Facts) : Cents :=
+  min (((f.minimumTaxPaid.filter fun (y, _) => y < f.taxationYear && f.taxationYear ≤ y + 7).map (·.2)).sum)
+    (taxBeforeRecovery f - f.minimumAmount)
+
+/-- The trust's tax under 122(1), after the credits 122(1.1) allows. -/
+def tax (f : Facts) : Cents := taxBeforeRecovery f - minimumTaxRecovery f
 
 /-- What each beneficiary includes: as taxable dividends, as taxable capital gains, and as income from
 property (104(13)) for the rest of the amount payable. -/
@@ -174,8 +186,10 @@ theorem all_out (f : Facts) (h : income f ≤ totalPayable f) : tax f = 0 := by
     cases f.dividendsEligible <;> simp [Dividends.grossUp, Dividends.grossUpI, Dividends.grossUpII, Dividends.paraA,
       Dividends.paraA1, Dividends.total, Dividends.Dividend.cOrD]
   have ha : amountTaxable f = 0 := by unfold amountTaxable; rw [hr, hg]
-  unfold tax; rw [ha]; split
-  · exact Nat.zero_sub _
-  · simp only [Rates.tax, Rates.slices, Rates.slice, Nat.zero_min, Nat.zero_sub]; exact Nat.zero_sub _
+  have hb : taxBeforeRecovery f = 0 := by
+    unfold taxBeforeRecovery; rw [ha]; split
+    · exact Nat.zero_sub _
+    · simp only [Rates.tax, Rates.slices, Rates.slice, Nat.zero_min, Nat.zero_sub]; exact Nat.zero_sub _
+  unfold tax; rw [hb]; exact Nat.zero_sub _
 
 end Canteen.ITA.TrustIncome
