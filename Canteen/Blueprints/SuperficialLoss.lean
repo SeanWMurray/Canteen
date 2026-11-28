@@ -103,6 +103,7 @@ import Canteen.ITA.S122_7.WorkersBenefit
 import Canteen.ITA.S122_5.GstCredit
 import Canteen.ITA.S96.Partnership
 import Canteen.ITA.S96.TransferToPartnership
+import Canteen.ITA.S100.PartnershipInterestSale
 import Canteen.ITA.S3.CorporateYear
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
@@ -1001,6 +1002,13 @@ def blueprint : Blueprint where
             ``TransferToPartnership.interestCostChange, ``TransferToPartnership.interestTCP, ``TransferToPartnership.proceeds_le_value,
             ``TransferToPartnership.rollover],
           uses := ["R17"] },
+        { id := "R103", kind := .law, title := "Selling a partnership interest to an exempt or non-resident person", citation := "ITA 100(1), (1.1)"
+          statement := "When a partnership interest goes to a tax-exempt person or a non-resident, only the part of the gain " ++
+            "from the partnership's non-depreciable capital property is half taxable; the rest is fully taxable. Proven: " ++
+            "never less than the ordinary half, never more than the whole gain, unchanged when all the gain is from " ++
+            "capital property."
+          lean := [``PartnershipInterestSale.applies, ``PartnershipInterestSale.taxableGain, ``PartnershipInterestSale.half_le,
+            ``PartnershipInterestSale.le_gain, ``PartnershipInterestSale.all_capital] },
         { id := "R70", kind := .law, title := "A corporation's year, to taxable income and tax", citation := "ITA 2(2); 3; 110.1; 111(1), (8); 112(1); 125(7); 129(4)"
           statement := "A corporation's income from active business, personal services business, property and dividends " ++
             "received, with its net taxable capital gains (a 55(2) dividend as a gain); taxable income after gifts, the " ++

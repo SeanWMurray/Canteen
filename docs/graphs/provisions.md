@@ -116,8 +116,9 @@ flowchart BT
   v107["122.5 the GST/HST credit"]:::prov
   v108["96(1), 53(1)(e), 53(2)(c), 40(3.1) partnerships"]:::prov
   v109["97(2) transferring property to a partnership"]:::prov
-  v110["2(2), 3, 129(4) a corporation's year, to taxable income and tax"]:::prov
-  v111["50(2) bad personal-use debts"]:::prov
+  v110["100(1) a partnership interest sold to an exempt or non-resident person"]:::prov
+  v111["2(2), 3, 129(4) a corporation's year, to taxable income and tax"]:::prov
+  v112["50(2) bad personal-use debts"]:::prov
   v0 --> v1
   v0 --> v2
   v0 --> v3
@@ -218,13 +219,13 @@ flowchart BT
   v31 --> v99
   v46 --> v99
   v26 --> v109
-  v19 --> v110
-  v20 --> v110
-  v32 --> v110
-  v80 --> v110
-  v71 --> v110
-  v81 --> v110
-  v73 --> v110
-  v35 --> v110
+  v19 --> v111
+  v20 --> v111
+  v32 --> v111
+  v80 --> v111
+  v71 --> v111
+  v81 --> v111
+  v73 --> v111
+  v35 --> v111
   classDef prov fill:#bbdefb,stroke:#1565c0,color:#0d47a1
 ```

@@ -99,6 +99,7 @@ The verbatim statute text for each is in `statute/`. Review notes are in `docs/r
 - `S122_5/GstCredit.lean`: subsections 122.5(3) and (4)
 - `S96/Partnership.lean`: subsections 96(1), (2.1), (2.2), 40(3.1), (3.11) and (3.12), and paragraphs 53(1)(e) and 53(2)(c)
 - `S96/TransferToPartnership.lean`: subsection 97(2)
+- `S100/PartnershipInterestSale.lean`: subsections 100(1) and (1.1)
 - `S3/CorporateYear.lean`: a corporation's year, from its sources to taxable income and tax (2(2), 3), and the 129(4) definitions "aggregate investment income", "eligible portion" and "income or loss"
 - `S112/StopLoss.lean`: subsections 112(3), (3.01) and (6.1)
 - `S7/StockOptions.lean`: paragraph 7(1)(a), subsection 7(1.1), and paragraphs 110(1)(d) and (d.1)
