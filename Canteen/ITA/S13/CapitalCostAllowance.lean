@@ -16,8 +16,8 @@ dispositions (the half-year rule); B (= D − E) the AIIP that became available 
 any excess of dispositions over the other additions; A, for property of the general classes, 1/2 if it
 became available for use before 2024 and nil after 2023.
 
-The rates are for the classes listed here; A for Classes 43.1, 43.2, 44, 46, 50, 53 and 54 to 56 (and the
-1100(1)(v) and Class 43 cases), A.1 and B.1, the excluded classes in C(b), short taxation years (1100(3))
+The rates are for the classes listed here; A for the classes with their own factor (43.1, 43.2, 44, 46, 50
+after April 15, 2024, 53, 54 to 56, the 1100(1)(v) and Class 43 cases) is given, not computed; A.1 and B.1, the excluded classes in C(b), short taxation years (1100(3))
 and the 13(7) rules for automobiles and change of use are not encoded. Whether property is AIIP
 (1104(4)) and the year it became available for use (13(26) to (32)) are facts.
 -/
@@ -48,6 +48,10 @@ structure ClassYear where
   dispositions : Cents := 0
   /-- The year the AIIP became available for use (for A). -/
   availableYear : Nat := 2025
+  /-- A as a fraction, for a class with its own factor (1100(2) A(b) to (c.5): Classes 43.1, 43.2, 44, 46, 50
+  for property acquired after April 15, 2024, 53, 54 to 56 and the others); if not given, the general
+  classes' A(a). -/
+  aFactor : Option (Nat × Nat) := none
   deriving Repr, DecidableEq, Inhabited
 
 /-- C: the half-year rule's net additions. -/
@@ -55,11 +59,15 @@ def ClassYear.c (y : ClassYear) : Cents := y.additions - y.dispositions
 /-- B: the AIIP less the excess of dispositions over other additions. -/
 def ClassYear.b (y : ClassYear) : Cents := y.aiip - (y.dispositions - y.additions)
 
-/-- A, for the general classes: 1/2 before 2024, nil after 2023 (as a fraction over 2). -/
-def ClassYear.aHalves (y : ClassYear) : Nat := if y.availableYear < 2024 then 1 else 0
+/-- A: as given for a class with its own factor, or for the general classes (A(a)) 1/2 before 2024 and
+nil after 2023. -/
+def ClassYear.a (y : ClassYear) : Nat × Nat := y.aFactor.getD (if y.availableYear < 2024 then (1, 2) else (0, 1))
+
+/-- A(B). -/
+def ClassYear.enhancement (y : ClassYear) : Cents := y.b * y.a.1 / max y.a.2 1
 
 /-- The UCC as adjusted by 1100(2). -/
-def ClassYear.adjusted (y : ClassYear) : Cents := (y.ucc + y.aHalves * y.b / 2) - y.c / 2
+def ClassYear.adjusted (y : ClassYear) : Cents := (y.ucc + y.enhancement) - y.c / 2
 
 /-- 1100(1)(a): the most that may be claimed. -/
 def ClassYear.maximum (y : ClassYear) : Cents := y.adjusted * (rate y.cls).getD 0 / 1000
@@ -71,7 +79,7 @@ def explain (y : ClassYear) : Finding :=
   let c := formatCents
   ⟨y.maximum > 0, [
     ⟨s!"Class {y.cls}: UCC before the claim {c y.ucc}; less half the net additions ({c y.c})" ++
-      (if y.aHalves * y.b > 0 then s!", plus half the accelerated investment incentive property ({c y.b})" else "") ++
+      (if y.enhancement > 0 then s!", plus {y.a.1}/{y.a.2} of the accelerated investment incentive property ({c y.enhancement})" else "") ++
       s!": {c y.adjusted}.", "ITR 1100(2)"⟩,
     ⟨s!"At the class rate, the most that may be claimed is {c y.maximum}.", "ITR 1100(1)(a)"⟩], []⟩
 
@@ -80,7 +88,7 @@ def explain (y : ClassYear) : Finding :=
 /-- The half-year rule: an addition in a year with nothing else claims at half the rate. -/
 theorem half_year (cls : String) (x : Cents) (r : Nat) (h : rate cls = some r) :
     ({ cls, ucc := x, additions := x } : ClassYear).maximum = (x - x / 2) * r / 1000 := by
-  simp [ClassYear.maximum, ClassYear.adjusted, ClassYear.c, ClassYear.b, ClassYear.aHalves, h]
+  simp [ClassYear.maximum, ClassYear.adjusted, ClassYear.c, ClassYear.b, ClassYear.enhancement, ClassYear.a, h]
 
 /-- Never more than the UCC itself, for rates of 100% or less. -/
 theorem maximum_le (y : ClassYear) (h : (rate y.cls).getD 0 ≤ 1000) : y.maximum ≤ y.adjusted :=

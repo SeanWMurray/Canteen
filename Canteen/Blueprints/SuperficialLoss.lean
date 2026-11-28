@@ -942,7 +942,7 @@ def blueprint : Blueprint where
             "the half-year rule (half the year's net additions off) and, for accelerated investment incentive property of " ++
             "the general classes available before 2024, half of it added (after 2023, neither). Proven: the half-year rule " ++
             "halves a new addition's claim, and the claim never exceeds the adjusted UCC."
-          lean := [``CapitalCostAllowance.rate, ``CapitalCostAllowance.ClassYear.adjusted, ``CapitalCostAllowance.ClassYear.maximum,
+          lean := [``CapitalCostAllowance.rate, ``CapitalCostAllowance.ClassYear.a, ``CapitalCostAllowance.ClassYear.adjusted, ``CapitalCostAllowance.ClassYear.maximum,
             ``CapitalCostAllowance.ClassYear.closing, ``CapitalCostAllowance.half_year, ``CapitalCostAllowance.maximum_le] },
         { id := "R70", kind := .law, title := "A corporation's year, to taxable income and tax", citation := "ITA 2(2); 3; 110.1; 111(1), (8); 112(1); 125(7); 129(4)"
           statement := "A corporation's income from active business, personal services business, property and dividends " ++
