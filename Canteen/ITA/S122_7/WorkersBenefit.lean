@@ -13,8 +13,9 @@ who may claim the disability tax credit gets C − D more: C the lesser of $720 
 over $1,150; D 15% of adjusted net income over $32,244 (or of the couple's over $42,197; 7.5% where the
 spouse also has the disability credit).
 
-**117.1(1)(q), (r)** index the dollar amounts except $3,000 and $1,150; they are the 2021 amounts (their
-indexed values match those CRA published for 2022 to 2025: $1,428, $1,518, $1,590 and $1,633).
+**117.1(1)(q), (r)** index the dollar amounts except $3,000 and $1,150; they are taken as the 2021 amounts
+(their indexed values for 2022 to 2025, $1,428, $1,518, $1,590 and $1,633, agree with CRA's published
+figures as recalled; canada.ca could not be reached to confirm).
 
 Eligibility (122.7(1): resident, 19 or older or living with a spouse or child, not a full-time student
 for more than 13 weeks unless with a dependant, not confined in prison), working income and adjusted
