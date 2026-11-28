@@ -140,7 +140,7 @@ graph TD
   n127["R98 · The prescribed rate of interest"]:::proven
   n128["R99 · The Canada workers benefit"]:::proven
   n129["R100 · The GST/HST credit"]:::proven
-  n130["R101 · Partnerships and a limited partner's negative cost"]:::proven
+  n130["R101 · Partnerships, the at-risk rules and a limited partner's negative cost"]:::proven
   n131["R70 · A corporation's year, to taxable income and tax"]:::proven
   n132["R87 · The student loan interest credit"]:::proven
   n133["R94 · RRSPs: the deduction, earned income, withdrawals"]:::proven
@@ -1828,13 +1828,13 @@ A lower-income individual is paid, quarterly from July of the next year, a credi
 
 **Lean:** [`Canteen.ITA.GstCredit.amount`](../../Canteen/ITA/S122_5/GstCredit.lean#L34), [`Canteen.ITA.GstCredit.paraA`](../../Canteen/ITA/S122_5/GstCredit.lean#L52), [`Canteen.ITA.GstCredit.paraB`](../../Canteen/ITA/S122_5/GstCredit.lean#L63), [`Canteen.ITA.GstCredit.annual`](../../Canteen/ITA/S122_5/GstCredit.lean#L66), [`Canteen.ITA.GstCredit.quarterly`](../../Canteen/ITA/S122_5/GstCredit.lean#L69), [`Canteen.ITA.GstCredit.annual_le`](../../Canteen/ITA/S122_5/GstCredit.lean#L79)
 
-### R101. Partnerships and a limited partner's negative cost
+### R101. Partnerships, the at-risk rules and a limited partner's negative cost
 
-**Status:** proven · **Citation:** ITA 96(1); 53(1)(e); 53(2)(c); 40(3.1), (3.11), (3.12)
+**Status:** proven · **Citation:** ITA 96(1), (2.1), (2.2); 53(1)(e); 53(2)(c); 40(3.1), (3.11), (3.12)
 
-A partner includes its share of each of the partnership's incomes, losses and capital gains and losses; the interest's cost goes up by income (with whole capital gains) and contributions and down by losses and drawings; a limited partner's negative cost at a fiscal period's end is a gain, later reversible as a loss. Proven: a limited partner's cost is never negative after 40(3.1), and a general partner has no such gain.
+A partner includes its share of each of the partnership's incomes, losses and capital gains and losses; the interest's cost goes up by income (with whole capital gains) and contributions and down by losses and drawings (the period's own income and losses only after its end); a limited partner deducts losses only up to its at-risk amount, the rest a limited partnership loss; its negative cost at a period's end is a gain, later reversible as a loss. Proven: a limited partner's cost is never negative after 40(3.1), a general partner has no such gain, and deductible plus limited partnership loss is the share of losses.
 
-**Lean:** [`Canteen.ITA.Partnership.Member.income`](../../Canteen/ITA/S96/Partnership.lean#L55), [`Canteen.ITA.Partnership.Member.taxableCapitalGains`](../../Canteen/ITA/S96/Partnership.lean#L58), [`Canteen.ITA.Partnership.Member.acbBefore`](../../Canteen/ITA/S96/Partnership.lean#L61), [`Canteen.ITA.Partnership.Member.deemedGain`](../../Canteen/ITA/S96/Partnership.lean#L65), [`Canteen.ITA.Partnership.Member.acbAfter`](../../Canteen/ITA/S96/Partnership.lean#L68), [`Canteen.ITA.Partnership.Member.electableLoss`](../../Canteen/ITA/S96/Partnership.lean#L71), [`Canteen.ITA.Partnership.Member.limited_nonneg`](../../Canteen/ITA/S96/Partnership.lean#L85), [`Canteen.ITA.Partnership.Member.general_no_gain`](../../Canteen/ITA/S96/Partnership.lean#L89)
+**Lean:** [`Canteen.ITA.Partnership.Member.income`](../../Canteen/ITA/S96/Partnership.lean#L67), [`Canteen.ITA.Partnership.Member.taxableCapitalGains`](../../Canteen/ITA/S96/Partnership.lean#L70), [`Canteen.ITA.Partnership.Member.acbBefore`](../../Canteen/ITA/S96/Partnership.lean#L73), [`Canteen.ITA.Partnership.Member.deemedGain`](../../Canteen/ITA/S96/Partnership.lean#L80), [`Canteen.ITA.Partnership.Member.acbAfter`](../../Canteen/ITA/S96/Partnership.lean#L83), [`Canteen.ITA.Partnership.Member.electableLoss`](../../Canteen/ITA/S96/Partnership.lean#L103), [`Canteen.ITA.Partnership.Member.atRisk`](../../Canteen/ITA/S96/Partnership.lean#L86), [`Canteen.ITA.Partnership.Member.deductibleLoss`](../../Canteen/ITA/S96/Partnership.lean#L91), [`Canteen.ITA.Partnership.Member.limitedPartnershipLoss`](../../Canteen/ITA/S96/Partnership.lean#L94), [`Canteen.ITA.Partnership.Member.nextOpening`](../../Canteen/ITA/S96/Partnership.lean#L97), [`Canteen.ITA.Partnership.Member.limited_nonneg`](../../Canteen/ITA/S96/Partnership.lean#L119), [`Canteen.ITA.Partnership.Member.general_no_gain`](../../Canteen/ITA/S96/Partnership.lean#L123), [`Canteen.ITA.Partnership.Member.at_risk_limit`](../../Canteen/ITA/S96/Partnership.lean#L127)
 
 ### R70. A corporation's year, to taxable income and tax
 
