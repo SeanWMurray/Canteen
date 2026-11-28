@@ -153,6 +153,10 @@ structure Facts where
   tuitionCarried : Cents := 0
   tuitionDesignated : Cents := 0
   tuitionTransferredIn : Cents := 0
+  /-- 146(8): benefits received out of RRSPs (the individual's share after 146(8.3), (8.6)), and amounts
+  attributed to the individual under 146(8.3) from a spouse's withdrawal. -/
+  rrspBenefits : Cents := 0
+  rrspAttributed : Cents := 0
   /-- 146(5), (5.1): RRSP premiums, and the facts of the RRSP deduction limit. -/
   rrsp : Option RRSP.Facts := none
   /-- 118.62: student loan interest paid, this year and in the five before (the year is the taxation year). -/
@@ -221,7 +225,8 @@ def shareholderBenefitIncome (f : Facts) : Cents := (f.shareholderBenefits.map S
 /-- The sources of income computed here other than employment and business income, dividends, recapture
 and attribution: standby charges, pensions, split pension received, support, shareholder benefits. -/
 def otherSources (f : Facts) : Cents :=
-  standbyBenefits f + stockOptionBenefits f + pensionTotal f + f.splitIn + supportIncluded f + shareholderBenefitIncome f
+  standbyBenefits f + stockOptionBenefits f + pensionTotal f + f.splitIn + supportIncluded f + shareholderBenefitIncome f +
+    f.rrspBenefits + f.rrspAttributed
 
 /-- 62(1). -/
 def movingDeduction (f : Facts) : Cents := (f.moving.map MovingExpenses.deduction).getD 0

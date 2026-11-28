@@ -955,13 +955,15 @@ def blueprint : Blueprint where
           lean := [``StudentLoanInterest.availableTotal, ``StudentLoanInterest.claimed, ``StudentLoanInterest.credit,
             ``StudentLoanInterest.carriedForward, ``StudentLoanInterest.claimed_le, ``StudentLoanInterest.claimed_plus_carried,
             ``StudentLoanInterest.judgment_excluded] },
-        { id := "R94", kind := .law, title := "The RRSP deduction, and earned income", citation := "ITA 146(1), (5), (5.1)"
+        { id := "R94", kind := .law, title := "RRSPs: the deduction, earned income, withdrawals", citation := "ITA 146(1), (5), (5.1), (8), (8.3), (8.6)"
           statement := "The RRSP deduction limit is the unused room, plus the lesser of the year's dollar limit and 18% of last " ++
             "year's earned income less the pension adjustment, plus the PAR, less the PSPA; premiums to one's own and to " ++
-            "spousal plans are deducted within it as claimed, the rest carried forward. Proven: never more than the " ++
+            "spousal plans are deducted within it as claimed, the rest carried forward. Withdrawals are income, and from a " ++
+            "spousal plan the contributor's to the extent of three years' contributions. Proven: never more than the " ++
             "premiums, nor than the limit."
           lean := [``RRSP.EarnedIncome.amount, ``RRSP.nextRoom, ``RRSP.no_earned_income, ``RRSP.newRoom, ``RRSP.limit, ``RRSP.available, ``RRSP.deduction, ``RRSP.unusedAtEnd, ``RRSP.undeducted,
-            ``RRSP.deduction_le_premiums, ``RRSP.deduction_le_limit] },
+            ``RRSP.deduction_le_premiums, ``RRSP.deduction_le_limit, ``RRSP.Withdrawal.included, ``RRSP.Withdrawal.attributed,
+            ``RRSP.Withdrawal.annuitant, ``RRSP.Withdrawal.split] },
         { id := "R35", kind := .law, title := "An individual's year, to taxable income and tax", citation := "ITA 2(2); 3; 111(1)(b); 110.6; 117(2)"
           statement := "Income from sources (employment and business, dividends with the gross-up, recapture, attributed " ++
             "income), net taxable capital gains, less terminal and other losses; then taxable income, after the net capital " ++

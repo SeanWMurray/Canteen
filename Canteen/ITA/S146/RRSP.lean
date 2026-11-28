@@ -4,7 +4,14 @@ import Canteen.Core.Finding
 /-!
 # The RRSP deduction: 146(1) "RRSP deduction limit" and "unused RRSP deduction room", 146(5), (5.1)
 
-*Income Tax Act*, as consolidated to 2026-10-29 (verbatim in `statute/ITA-146-1-5-5.1.txt`):
+*Income Tax Act*, as consolidated to 2026-10-29 (verbatim in `statute/ITA-146-1-5-5.1.txt` and
+`statute/ITA-146-8-8.3-8.6.txt`):
+
+**146(8)** Benefits out of an RRSP are income, other than excluded withdrawals (HBP, LLP). **146(8.3)**
+A withdrawal from a spousal plan is also the contributor's income (unless separated on breakdown), up
+to the contributor's premiums to such plans in the year and the two before; **(8.6)** the annuitant
+deducts that part, and the premiums attributed no longer count. 146(8.7) (death, emigration and the
+other exceptions) and RRIFs (146.3(5.1)) are not encoded.
 
 **146(1) "RRSP deduction limit"**: A + B + R − C: A the unused RRSP deduction room at the end of the
 preceding year; B the lesser of the RRSP dollar limit for the year and 18% of earned income for the
@@ -96,6 +103,29 @@ year's pension adjustment. -/
 def nextRoom (e : EarnedIncome) (nextDollarLimit pensionAdjustment : Cents) : Cents :=
   min nextDollarLimit (e.amount * 18 / 100) - pensionAdjustment
 
+/-! ## Withdrawals (146(8)) and spousal plans (146(8.3), (8.6)) -/
+
+/-- A benefit received out of an RRSP. -/
+structure Withdrawal where
+  amount : Cents
+  /-- An excluded withdrawal (146.01(1), 146.02(1)): Home Buyers' Plan or Lifelong Learning Plan. -/
+  excluded : Bool := false
+  /-- From a spousal or common-law partner plan: the contributor's premiums to spousal plans for the annuitant
+  in the year and the two preceding years (not already attributed). -/
+  spousalPremiums : Cents := 0
+  /-- Living separate and apart by reason of the breakdown of the relationship. -/
+  separated : Bool := false
+  deriving Repr, DecidableEq, Inhabited
+
+/-- 146(8): included. -/
+def Withdrawal.included (w : Withdrawal) : Cents := if w.excluded then 0 else w.amount
+
+/-- 146(8.3): the contributor's income. -/
+def Withdrawal.attributed (w : Withdrawal) : Cents := if w.separated then 0 else min w.spousalPremiums w.included
+
+/-- 146(8), with the 146(8.6)(b) deduction: the annuitant's income. -/
+def Withdrawal.annuitant (w : Withdrawal) : Cents := w.included - w.attributed
+
 /-! ## Truths -/
 
 theorem deduction_le_premiums (f : Facts) : deduction f ≤ f.premiums + f.spousalPremiums :=
@@ -107,5 +137,9 @@ theorem deduction_le_limit (f : Facts) : deduction f ≤ (limit f).toNat :=
 
 /-- Pension and investment income (other than rent and one's own royalties) are not earned income. -/
 theorem no_earned_income : ({} : EarnedIncome).amount = 0 := rfl
+
+theorem Withdrawal.split (w : Withdrawal) : w.attributed + w.annuitant = w.included := by
+  unfold Withdrawal.annuitant
+  exact Nat.add_sub_cancel' (by unfold Withdrawal.attributed; split <;> simp [Nat.min_le_right])
 
 end Canteen.ITA.RRSP

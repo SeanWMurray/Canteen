@@ -42,4 +42,14 @@ example : ({ earned with supportPaid := 1000000 } : EarnedIncome).amount = 10000
 -- From an individual's year: $100,000 of salary.
 example : (IndividualYear.earnedIncome year).amount = 10000000 := by decide
 
+-- A $10,000 withdrawal from a spousal plan, the contributor having put in $6,000 last year: $6,000 is
+-- the contributor's income, $4,000 the annuitant's.
+def fromSpousal : Withdrawal := { amount := 1000000, spousalPremiums := 600000 }
+example : fromSpousal.attributed = 600000 ∧ fromSpousal.annuitant = 400000 := by decide
+-- After a marriage breakdown: all the annuitant's. A Home Buyers' Plan withdrawal: nobody's.
+example : ({ fromSpousal with separated := true } : Withdrawal).annuitant = 1000000 := by decide
+example : ({ fromSpousal with excluded := true } : Withdrawal).included = 0 := by decide
+-- In an individual's year: $10,000 of RRSP benefits are income.
+example : IndividualYear.income { year with rrsp := none, rrspBenefits := 1000000 } = 2 * 11000000 := by decide
+
 end Canteen.Tests.RRSP
