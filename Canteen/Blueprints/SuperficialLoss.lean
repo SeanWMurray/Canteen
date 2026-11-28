@@ -100,6 +100,7 @@ import Canteen.ITA.S13.CapitalCostAllowance
 import Canteen.ITA.S13.PassengerVehicles
 import Canteen.ITA.Reg4301.PrescribedRate
 import Canteen.ITA.S122_7.WorkersBenefit
+import Canteen.ITA.S122_5.GstCredit
 import Canteen.ITA.S3.CorporateYear
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
@@ -969,6 +970,13 @@ def blueprint : Blueprint where
             "nothing without working income over $3,000."
           lean := [``WorkersBenefit.amount, ``WorkersBenefit.paraA, ``WorkersBenefit.paraB, ``WorkersBenefit.benefit,
             ``WorkersBenefit.supplement, ``WorkersBenefit.benefit_le_max, ``WorkersBenefit.low_working_income],
+          uses := ["R56"] },
+        { id := "R100", kind := .law, title := "The GST/HST credit", citation := "ITA 122.5(3), (4); 117.1(1)(m)"
+          statement := "A lower-income individual is paid, quarterly from July of the next year, a credit for the individual, " ++
+            "a spouse and each dependant (with a single supplement phased in over a low income), less 5% of the family's " ++
+            "adjusted income over a threshold; the amounts are indexed. Proven: never more than A."
+          lean := [``GstCredit.amount, ``GstCredit.paraA, ``GstCredit.paraB, ``GstCredit.annual, ``GstCredit.quarterly,
+            ``GstCredit.annual_le],
           uses := ["R56"] },
         { id := "R70", kind := .law, title := "A corporation's year, to taxable income and tax", citation := "ITA 2(2); 3; 110.1; 111(1), (8); 112(1); 125(7); 129(4)"
           statement := "A corporation's income from active business, personal services business, property and dividends " ++

@@ -127,6 +127,7 @@ import Canteen.ITA.S13.CapitalCostAllowance
 import Canteen.ITA.S13.PassengerVehicles
 import Canteen.ITA.Reg4301.PrescribedRate
 import Canteen.ITA.S122_7.WorkersBenefit
+import Canteen.ITA.S122_5.GstCredit
 import Canteen.ITA.S3.CorporateYear
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
@@ -299,3 +300,4 @@ import Canteen.Tests.CapitalCostAllowance
 import Canteen.Tests.PassengerVehicles
 import Canteen.Tests.PrescribedRate
 import Canteen.Tests.WorkersBenefit
+import Canteen.Tests.GstCredit

@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 139 statements:** 120 proven, 16 encoded, 3 not formalized.
+**Status of the 140 statements:** 121 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -139,16 +139,17 @@ graph TD
   n126["R97 · Passenger vehicle limits"]:::proven
   n127["R98 · The prescribed rate of interest"]:::proven
   n128["R99 · The Canada workers benefit"]:::proven
-  n129["R70 · A corporation's year, to taxable income and tax"]:::proven
-  n130["R87 · The student loan interest credit"]:::proven
-  n131["R94 · RRSPs: the deduction, earned income, withdrawals"]:::proven
-  n132["R35 · An individual's year, to taxable income and tax"]:::proven
-  n133["R48 · The minimum tax"]:::proven
-  n134["R11 · The principal residence exemption"]:::proven
-  n135["R2 · Cost of the substituted property"]:::proven
-  n136["N1 · Inputs decided by other provisions"]:::notFormalized
-  n137["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n138["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n129["R100 · The GST/HST credit"]:::proven
+  n130["R70 · A corporation's year, to taxable income and tax"]:::proven
+  n131["R87 · The student loan interest credit"]:::proven
+  n132["R94 · RRSPs: the deduction, earned income, withdrawals"]:::proven
+  n133["R35 · An individual's year, to taxable income and tax"]:::proven
+  n134["R48 · The minimum tax"]:::proven
+  n135["R11 · The principal residence exemption"]:::proven
+  n136["R2 · Cost of the substituted property"]:::proven
+  n137["N1 · Inputs decided by other provisions"]:::notFormalized
+  n138["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n139["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -281,59 +282,60 @@ graph TD
   n76 --> n121
   n88 --> n121
   n88 --> n128
-  n44 --> n129
-  n45 --> n129
-  n57 --> n129
-  n60 --> n129
-  n77 --> n129
-  n78 --> n129
-  n80 --> n129
-  n101 --> n129
-  n102 --> n129
-  n103 --> n129
-  n44 --> n132
-  n45 --> n132
-  n53 --> n132
-  n55 --> n132
-  n56 --> n132
-  n58 --> n132
-  n73 --> n132
-  n74 --> n132
-  n75 --> n132
-  n76 --> n132
-  n81 --> n132
-  n82 --> n132
-  n83 --> n132
-  n84 --> n132
-  n85 --> n132
-  n87 --> n132
-  n88 --> n132
-  n89 --> n132
-  n90 --> n132
-  n91 --> n132
-  n92 --> n132
-  n93 --> n132
-  n94 --> n132
-  n97 --> n132
-  n100 --> n132
-  n130 --> n132
-  n131 --> n132
+  n88 --> n129
+  n44 --> n130
+  n45 --> n130
+  n57 --> n130
+  n60 --> n130
+  n77 --> n130
+  n78 --> n130
+  n80 --> n130
+  n101 --> n130
+  n102 --> n130
+  n103 --> n130
+  n44 --> n133
+  n45 --> n133
+  n53 --> n133
+  n55 --> n133
+  n56 --> n133
+  n58 --> n133
+  n73 --> n133
+  n74 --> n133
+  n75 --> n133
+  n76 --> n133
+  n81 --> n133
+  n82 --> n133
+  n83 --> n133
+  n84 --> n133
+  n85 --> n133
+  n87 --> n133
+  n88 --> n133
+  n89 --> n133
+  n90 --> n133
+  n91 --> n133
+  n92 --> n133
+  n93 --> n133
+  n94 --> n133
+  n97 --> n133
+  n100 --> n133
+  n131 --> n133
   n132 --> n133
-  n44 --> n134
-  n50 --> n134
-  n11 --> n135
-  n1 --> n136
-  n5 --> n136
-  n6 --> n136
-  n8 --> n136
-  n37 --> n136
-  n135 --> n136
-  n38 --> n136
-  n30 --> n137
-  n32 --> n138
-  n34 --> n138
-  n39 --> n138
-  n42 --> n138
+  n133 --> n134
+  n44 --> n135
+  n50 --> n135
+  n11 --> n136
+  n1 --> n137
+  n5 --> n137
+  n6 --> n137
+  n8 --> n137
+  n37 --> n137
+  n136 --> n137
+  n38 --> n137
+  n30 --> n138
+  n32 --> n139
+  n34 --> n139
+  n39 --> n139
+  n42 --> n139
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -479,16 +481,17 @@ graph TD
   n126["R97"]:::proven
   n127["R98"]:::proven
   n128["R99"]:::proven
-  n129["R70"]:::proven
-  n130["R87"]:::proven
-  n131["R94"]:::proven
-  n132["R35"]:::proven
-  n133["R48"]:::proven
-  n134["R11"]:::proven
-  n135["R2"]:::proven
-  n136["N1"]:::notFormalized
-  n137["N2"]:::notFormalized
-  n138["N4"]:::notFormalized
+  n129["R100"]:::proven
+  n130["R70"]:::proven
+  n131["R87"]:::proven
+  n132["R94"]:::proven
+  n133["R35"]:::proven
+  n134["R48"]:::proven
+  n135["R11"]:::proven
+  n136["R2"]:::proven
+  n137["N1"]:::notFormalized
+  n138["N2"]:::notFormalized
+  n139["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -701,68 +704,69 @@ graph TD
   n74 --> n121
   n88 -.-> n121
   n88 --> n128
-  n44 --> n129
-  n57 --> n129
-  n45 --> n129
-  n101 --> n129
-  n102 --> n129
-  n103 --> n129
-  n78 --> n129
-  n77 --> n129
-  n80 --> n129
-  n60 -.-> n129
-  n93 --> n132
-  n55 --> n132
-  n94 --> n132
-  n81 --> n132
-  n91 --> n132
-  n84 --> n132
-  n58 --> n132
-  n97 --> n132
-  n131 --> n132
-  n44 --> n132
-  n87 --> n132
-  n73 --> n132
-  n56 --> n132
-  n100 --> n132
-  n92 --> n132
-  n85 --> n132
-  n45 --> n132
-  n53 --> n132
-  n89 --> n132
-  n90 --> n132
-  n130 --> n132
-  n82 --> n132
-  n74 --> n132
-  n83 --> n132
-  n76 --> n132
-  n75 --> n132
-  n88 -.-> n132
+  n88 --> n129
+  n44 --> n130
+  n57 --> n130
+  n45 --> n130
+  n101 --> n130
+  n102 --> n130
+  n103 --> n130
+  n78 --> n130
+  n77 --> n130
+  n80 --> n130
+  n60 -.-> n130
+  n93 --> n133
   n55 --> n133
-  n132 --> n133
+  n94 --> n133
   n81 --> n133
   n91 --> n133
   n84 --> n133
   n58 --> n133
-  n45 --> n133
+  n97 --> n133
+  n132 --> n133
+  n44 --> n133
   n87 --> n133
   n73 --> n133
+  n56 --> n133
   n100 --> n133
-  n44 -.-> n134
-  n50 -.-> n134
-  n11 -.-> n135
-  n1 -.-> n136
-  n5 -.-> n136
-  n6 -.-> n136
-  n8 -.-> n136
-  n37 -.-> n136
-  n135 -.-> n136
-  n38 -.-> n136
-  n30 -.-> n137
-  n32 -.-> n138
-  n34 -.-> n138
-  n39 -.-> n138
-  n42 -.-> n138
+  n92 --> n133
+  n85 --> n133
+  n45 --> n133
+  n53 --> n133
+  n89 --> n133
+  n90 --> n133
+  n131 --> n133
+  n82 --> n133
+  n74 --> n133
+  n83 --> n133
+  n76 --> n133
+  n75 --> n133
+  n88 -.-> n133
+  n55 --> n134
+  n133 --> n134
+  n81 --> n134
+  n91 --> n134
+  n84 --> n134
+  n58 --> n134
+  n45 --> n134
+  n87 --> n134
+  n73 --> n134
+  n100 --> n134
+  n44 -.-> n135
+  n50 -.-> n135
+  n11 -.-> n136
+  n1 -.-> n137
+  n5 -.-> n137
+  n6 -.-> n137
+  n8 -.-> n137
+  n37 -.-> n137
+  n136 -.-> n137
+  n38 -.-> n137
+  n30 -.-> n138
+  n32 -.-> n139
+  n34 -.-> n139
+  n39 -.-> n139
+  n42 -.-> n139
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -1813,6 +1817,14 @@ The prescribed rate for a quarter is the mean of the three-month Treasury Bill a
 A low-income worker is credited 27% of working income over $3,000, up to a maximum ($1,633 single, $2,813 family in 2025), less 15% of adjusted net income over a threshold; with the disability credit, a supplement too. The Act's 2021 amounts are indexed from the CPI. Proven: never more than the maximum, and nothing without working income over $3,000.
 
 **Lean:** [`Canteen.ITA.WorkersBenefit.amount`](../../Canteen/ITA/S122_7/WorkersBenefit.lean#L38), [`Canteen.ITA.WorkersBenefit.paraA`](../../Canteen/ITA/S122_7/WorkersBenefit.lean#L56), [`Canteen.ITA.WorkersBenefit.paraB`](../../Canteen/ITA/S122_7/WorkersBenefit.lean#L61), [`Canteen.ITA.WorkersBenefit.benefit`](../../Canteen/ITA/S122_7/WorkersBenefit.lean#L66), [`Canteen.ITA.WorkersBenefit.supplement`](../../Canteen/ITA/S122_7/WorkersBenefit.lean#L69), [`Canteen.ITA.WorkersBenefit.benefit_le_max`](../../Canteen/ITA/S122_7/WorkersBenefit.lean#L92), [`Canteen.ITA.WorkersBenefit.low_working_income`](../../Canteen/ITA/S122_7/WorkersBenefit.lean#L95)
+
+### R100. The GST/HST credit
+
+**Status:** proven · **Citation:** ITA 122.5(3), (4); 117.1(1)(m) · **Uses:** R56
+
+A lower-income individual is paid, quarterly from July of the next year, a credit for the individual, a spouse and each dependant (with a single supplement phased in over a low income), less 5% of the family's adjusted income over a threshold; the amounts are indexed. Proven: never more than A.
+
+**Lean:** [`Canteen.ITA.GstCredit.amount`](../../Canteen/ITA/S122_5/GstCredit.lean#L34), [`Canteen.ITA.GstCredit.paraA`](../../Canteen/ITA/S122_5/GstCredit.lean#L52), [`Canteen.ITA.GstCredit.paraB`](../../Canteen/ITA/S122_5/GstCredit.lean#L63), [`Canteen.ITA.GstCredit.annual`](../../Canteen/ITA/S122_5/GstCredit.lean#L66), [`Canteen.ITA.GstCredit.quarterly`](../../Canteen/ITA/S122_5/GstCredit.lean#L69), [`Canteen.ITA.GstCredit.annual_le`](../../Canteen/ITA/S122_5/GstCredit.lean#L79)
 
 ### R70. A corporation's year, to taxable income and tax
 

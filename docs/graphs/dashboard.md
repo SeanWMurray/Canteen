@@ -9,9 +9,9 @@ An overview of the project, drawn from the Lean.
 Every statement in every blueprint, by the status Lean computes for it.
 
 ```mermaid
-pie showData title All 379 statements in the memos and blueprints, by status
+pie showData title All 380 statements in the memos and blueprints, by status
     "encoded" : 62
-    "proven" : 260
+    "proven" : 261
     "not formalized" : 3
     "fact" : 44
     "judgment call" : 10
@@ -328,27 +328,29 @@ mindmap
       n248["`186(1): Part IV tax`"]
       n249["`186(4): connected corporations`"]
       n250["`186(2): control with non-arm's length persons`"]
-    n251["`s. 122.7`"]
-      n252["`122.7(2), (3): the Canada workers benefit`"]
-    n253["`s. 128.1`"]
-      n254["`128.1(1)(b), (c): the step-up on arrival`"]
-      n255["`128.1(4)(b): deemed disposition on emigration`"]
-      n256["`128.1(4)(c): reacquired at value`"]
-    n257["`s. 248`"]
-      n258["`248(1): majority-interest partner`"]
+    n251["`s. 122.5`"]
+      n252["`122.5(3): the GST/HST credit`"]
+    n253["`s. 122.7`"]
+      n254["`122.7(2), (3): the Canada workers benefit`"]
+    n255["`s. 128.1`"]
+      n256["`128.1(1)(b), (c): the step-up on arrival`"]
+      n257["`128.1(4)(b): deemed disposition on emigration`"]
+      n258["`128.1(4)(c): reacquired at value`"]
     n259["`s. 248`"]
-      n260["`taxable Canadian property: the 60-month look-back`"]
-    n261["`s. 251`"]
-      n262["`251(1): arm's length`"]
-      n263["`251(2), (3): related persons`"]
-      n264["`251(3.1), (3.2): amalgamations`"]
-      n265["`251(6): blood, marriage, adoption`"]
-    n266["`s. 251.1`"]
-      n267["`251.1(1)(a) to (h): affiliated persons`"]
-      n268["`251.1(2): amalgamations`"]
-      n269["`251.1(3), (4): definitions and rules`"]
-    n270["`s. 251.2`"]
-      n271["`251.2(2)(a): loss restriction event`"]
-    n272["`s. 256`"]
-      n273["`256(7)(a): control not acquired`"]
+      n260["`248(1): majority-interest partner`"]
+    n261["`s. 248`"]
+      n262["`taxable Canadian property: the 60-month look-back`"]
+    n263["`s. 251`"]
+      n264["`251(1): arm's length`"]
+      n265["`251(2), (3): related persons`"]
+      n266["`251(3.1), (3.2): amalgamations`"]
+      n267["`251(6): blood, marriage, adoption`"]
+    n268["`s. 251.1`"]
+      n269["`251.1(1)(a) to (h): affiliated persons`"]
+      n270["`251.1(2): amalgamations`"]
+      n271["`251.1(3), (4): definitions and rules`"]
+    n272["`s. 251.2`"]
+      n273["`251.2(2)(a): loss restriction event`"]
+    n274["`s. 256`"]
+      n275["`256(7)(a): control not acquired`"]
 ```

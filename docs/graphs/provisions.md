@@ -113,8 +113,9 @@ flowchart BT
   v104["13(7)(g), (i), 67.2, 67.3, Reg. 7307 passenger vehicle limits"]:::prov
   v105["Reg. 4301 the prescribed rate of interest"]:::prov
   v106["122.7 the Canada workers benefit"]:::prov
-  v107["2(2), 3, 129(4) a corporation's year, to taxable income and tax"]:::prov
-  v108["50(2) bad personal-use debts"]:::prov
+  v107["122.5 the GST/HST credit"]:::prov
+  v108["2(2), 3, 129(4) a corporation's year, to taxable income and tax"]:::prov
+  v109["50(2) bad personal-use debts"]:::prov
   v0 --> v1
   v0 --> v2
   v0 --> v3
@@ -214,13 +215,13 @@ flowchart BT
   v54 --> v99
   v31 --> v99
   v46 --> v99
-  v19 --> v107
-  v20 --> v107
-  v32 --> v107
-  v80 --> v107
-  v71 --> v107
-  v81 --> v107
-  v73 --> v107
-  v35 --> v107
+  v19 --> v108
+  v20 --> v108
+  v32 --> v108
+  v80 --> v108
+  v71 --> v108
+  v81 --> v108
+  v73 --> v108
+  v35 --> v108
   classDef prov fill:#bbdefb,stroke:#1565c0,color:#0d47a1
 ```
