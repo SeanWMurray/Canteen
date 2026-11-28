@@ -115,6 +115,7 @@ import Canteen.ITA.S116.Purchaser
 import Canteen.ITA.S248.TaxableCanadianProperty
 import Canteen.ITA.S128_1.Emigration
 import Canteen.ITA.S118_62.StudentLoanInterest
+import Canteen.ITA.S75.ReversionaryTrust
 import Canteen.ITA.S3.CorporateYear
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
@@ -275,3 +276,4 @@ import Canteen.Tests.Purchaser
 import Canteen.Tests.TaxableCanadianProperty
 import Canteen.Tests.Emigration
 import Canteen.Tests.StudentLoanInterest
+import Canteen.Tests.ReversionaryTrust

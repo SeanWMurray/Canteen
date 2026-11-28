@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 127 statements:** 108 proven, 16 encoded, 3 not formalized.
+**Status of the 128 statements:** 109 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -128,15 +128,16 @@ graph TD
   n115["R85 · Taxable Canadian property"]:::proven
   n116["R84 · Buying from a non-resident"]:::proven
   n117["R86 · Becoming and ceasing to be resident"]:::proven
-  n118["R70 · A corporation's year, to taxable income and tax"]:::proven
-  n119["R87 · The student loan interest credit"]:::proven
-  n120["R35 · An individual's year, to taxable income and tax"]:::proven
-  n121["R48 · The minimum tax"]:::proven
-  n122["R11 · The principal residence exemption"]:::proven
-  n123["R2 · Cost of the substituted property"]:::proven
-  n124["N1 · Inputs decided by other provisions"]:::notFormalized
-  n125["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n126["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n118["R88 · Reversionary trusts"]:::proven
+  n119["R70 · A corporation's year, to taxable income and tax"]:::proven
+  n120["R87 · The student loan interest credit"]:::proven
+  n121["R35 · An individual's year, to taxable income and tax"]:::proven
+  n122["R48 · The minimum tax"]:::proven
+  n123["R11 · The principal residence exemption"]:::proven
+  n124["R2 · Cost of the substituted property"]:::proven
+  n125["N1 · Inputs decided by other provisions"]:::notFormalized
+  n126["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n127["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -262,58 +263,58 @@ graph TD
   n115 --> n116
   n44 --> n117
   n115 --> n117
-  n44 --> n118
-  n45 --> n118
-  n57 --> n118
-  n60 --> n118
-  n77 --> n118
-  n78 --> n118
-  n80 --> n118
-  n101 --> n118
-  n102 --> n118
-  n103 --> n118
-  n44 --> n120
-  n45 --> n120
-  n53 --> n120
-  n55 --> n120
-  n56 --> n120
-  n58 --> n120
-  n73 --> n120
-  n74 --> n120
-  n75 --> n120
-  n76 --> n120
-  n81 --> n120
-  n82 --> n120
-  n83 --> n120
-  n84 --> n120
-  n85 --> n120
-  n87 --> n120
-  n88 --> n120
-  n89 --> n120
-  n90 --> n120
-  n91 --> n120
-  n92 --> n120
-  n93 --> n120
-  n94 --> n120
-  n97 --> n120
-  n100 --> n120
-  n119 --> n120
+  n44 --> n119
+  n45 --> n119
+  n57 --> n119
+  n60 --> n119
+  n77 --> n119
+  n78 --> n119
+  n80 --> n119
+  n101 --> n119
+  n102 --> n119
+  n103 --> n119
+  n44 --> n121
+  n45 --> n121
+  n53 --> n121
+  n55 --> n121
+  n56 --> n121
+  n58 --> n121
+  n73 --> n121
+  n74 --> n121
+  n75 --> n121
+  n76 --> n121
+  n81 --> n121
+  n82 --> n121
+  n83 --> n121
+  n84 --> n121
+  n85 --> n121
+  n87 --> n121
+  n88 --> n121
+  n89 --> n121
+  n90 --> n121
+  n91 --> n121
+  n92 --> n121
+  n93 --> n121
+  n94 --> n121
+  n97 --> n121
+  n100 --> n121
   n120 --> n121
-  n44 --> n122
-  n50 --> n122
-  n11 --> n123
-  n1 --> n124
-  n5 --> n124
-  n6 --> n124
-  n8 --> n124
-  n37 --> n124
-  n123 --> n124
-  n38 --> n124
-  n30 --> n125
-  n32 --> n126
-  n34 --> n126
-  n39 --> n126
-  n42 --> n126
+  n121 --> n122
+  n44 --> n123
+  n50 --> n123
+  n11 --> n124
+  n1 --> n125
+  n5 --> n125
+  n6 --> n125
+  n8 --> n125
+  n37 --> n125
+  n124 --> n125
+  n38 --> n125
+  n30 --> n126
+  n32 --> n127
+  n34 --> n127
+  n39 --> n127
+  n42 --> n127
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -448,15 +449,16 @@ graph TD
   n115["R85"]:::proven
   n116["R84"]:::proven
   n117["R86"]:::proven
-  n118["R70"]:::proven
-  n119["R87"]:::proven
-  n120["R35"]:::proven
-  n121["R48"]:::proven
-  n122["R11"]:::proven
-  n123["R2"]:::proven
-  n124["N1"]:::notFormalized
-  n125["N2"]:::notFormalized
-  n126["N4"]:::notFormalized
+  n118["R88"]:::proven
+  n119["R70"]:::proven
+  n120["R87"]:::proven
+  n121["R35"]:::proven
+  n122["R48"]:::proven
+  n123["R11"]:::proven
+  n124["R2"]:::proven
+  n125["N1"]:::notFormalized
+  n126["N2"]:::notFormalized
+  n127["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -662,67 +664,67 @@ graph TD
   n115 --> n116
   n115 --> n117
   n44 -.-> n117
-  n44 --> n118
-  n57 --> n118
-  n45 --> n118
-  n101 --> n118
-  n102 --> n118
-  n103 --> n118
-  n78 --> n118
-  n77 --> n118
-  n80 --> n118
-  n60 -.-> n118
-  n93 --> n120
-  n55 --> n120
-  n94 --> n120
-  n81 --> n120
-  n91 --> n120
-  n84 --> n120
-  n58 --> n120
-  n97 --> n120
-  n44 --> n120
-  n87 --> n120
-  n73 --> n120
-  n56 --> n120
-  n100 --> n120
-  n92 --> n120
-  n85 --> n120
-  n45 --> n120
-  n53 --> n120
-  n89 --> n120
-  n90 --> n120
-  n119 --> n120
-  n82 --> n120
-  n74 --> n120
-  n83 --> n120
-  n76 --> n120
-  n75 --> n120
-  n88 -.-> n120
+  n44 --> n119
+  n57 --> n119
+  n45 --> n119
+  n101 --> n119
+  n102 --> n119
+  n103 --> n119
+  n78 --> n119
+  n77 --> n119
+  n80 --> n119
+  n60 -.-> n119
+  n93 --> n121
   n55 --> n121
-  n120 --> n121
+  n94 --> n121
   n81 --> n121
   n91 --> n121
   n84 --> n121
   n58 --> n121
-  n45 --> n121
+  n97 --> n121
+  n44 --> n121
   n87 --> n121
   n73 --> n121
+  n56 --> n121
   n100 --> n121
-  n44 -.-> n122
-  n50 -.-> n122
-  n11 -.-> n123
-  n1 -.-> n124
-  n5 -.-> n124
-  n6 -.-> n124
-  n8 -.-> n124
-  n37 -.-> n124
-  n123 -.-> n124
-  n38 -.-> n124
-  n30 -.-> n125
-  n32 -.-> n126
-  n34 -.-> n126
-  n39 -.-> n126
-  n42 -.-> n126
+  n92 --> n121
+  n85 --> n121
+  n45 --> n121
+  n53 --> n121
+  n89 --> n121
+  n90 --> n121
+  n120 --> n121
+  n82 --> n121
+  n74 --> n121
+  n83 --> n121
+  n76 --> n121
+  n75 --> n121
+  n88 -.-> n121
+  n55 --> n122
+  n121 --> n122
+  n81 --> n122
+  n91 --> n122
+  n84 --> n122
+  n58 --> n122
+  n45 --> n122
+  n87 --> n122
+  n73 --> n122
+  n100 --> n122
+  n44 -.-> n123
+  n50 -.-> n123
+  n11 -.-> n124
+  n1 -.-> n125
+  n5 -.-> n125
+  n6 -.-> n125
+  n8 -.-> n125
+  n37 -.-> n125
+  n124 -.-> n125
+  n38 -.-> n125
+  n30 -.-> n126
+  n32 -.-> n127
+  n34 -.-> n127
+  n39 -.-> n127
+  n42 -.-> n127
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -1685,6 +1687,14 @@ A purchaser of taxable Canadian property from a non-resident must remit 25% of t
 An individual who leaves Canada is deemed to have sold each property at its value and bought it back, except Canadian real and resource property, property of a business in Canada, excluded rights such as pensions and RRSPs, property brought to Canada by a short-term resident, and property elected on returning; the gains and losses are capital gains and losses of the year. An individual who arrives takes each property (other than taxable Canadian property, Canadian business property and excluded rights) at its value. Proven: excepted property keeps its cost, property deemed disposed of costs its value, Canadian real property is never deemed disposed of on leaving, and on arriving foreign property is stepped up while taxable Canadian property is not.
 
 **Lean:** [`Canteen.ITA.Emigration.Holding.deemed`](../../Canteen/ITA/S128_1/Emigration.lean#L61), [`Canteen.ITA.Emigration.dispositions`](../../Canteen/ITA/S128_1/Emigration.lean#L65), [`Canteen.ITA.Emigration.Holding.costAfter`](../../Canteen/ITA/S128_1/Emigration.lean#L70), [`Canteen.ITA.Emigration.netTaxableGains`](../../Canteen/ITA/S128_1/Emigration.lean#L73), [`Canteen.ITA.Emigration.Holding.excepted_keeps_cost`](../../Canteen/ITA/S128_1/Emigration.lean#L89), [`Canteen.ITA.Emigration.Holding.deemed_cost`](../../Canteen/ITA/S128_1/Emigration.lean#L93), [`Canteen.ITA.Emigration.Holding.real_property`](../../Canteen/ITA/S128_1/Emigration.lean#L97), [`Canteen.ITA.Emigration.Arriving.deemed`](../../Canteen/ITA/S128_1/Emigration.lean#L118), [`Canteen.ITA.Emigration.Arriving.costOnArrival`](../../Canteen/ITA/S128_1/Emigration.lean#L121), [`Canteen.ITA.Emigration.Arriving.step_up`](../../Canteen/ITA/S128_1/Emigration.lean#L124), [`Canteen.ITA.Emigration.Arriving.tcp_keeps_cost`](../../Canteen/ITA/S128_1/Emigration.lean#L129)
+
+### R88. Reversionary trusts
+
+**Status:** proven · **Citation:** ITA 75(2), (3)
+
+Where a resident trust holds property that may revert to the person who contributed it, pass as that person later decides, or not be sold without that person's consent, the income, losses and taxable gains from it are that person's while alive and resident, unless the trust is a registered plan or another 75(3) trust. Proven: each amount is either the contributor's or the trust's, and an excluded trust is never caught.
+
+**Lean:** [`Canteen.ITA.ReversionaryTrust.applies`](../../Canteen/ITA/S75/ReversionaryTrust.lean#L54), [`Canteen.ITA.ReversionaryTrust.toContributor`](../../Canteen/ITA/S75/ReversionaryTrust.lean#L57), [`Canteen.ITA.ReversionaryTrust.toTrust`](../../Canteen/ITA/S75/ReversionaryTrust.lean#L59), [`Canteen.ITA.ReversionaryTrust.split`](../../Canteen/ITA/S75/ReversionaryTrust.lean#L78), [`Canteen.ITA.ReversionaryTrust.excluded_trust`](../../Canteen/ITA/S75/ReversionaryTrust.lean#L82)
 
 ### R70. A corporation's year, to taxable income and tax
 

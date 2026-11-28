@@ -73,6 +73,7 @@ import Canteen.ITA.S116.Purchaser
 import Canteen.ITA.S248.TaxableCanadianProperty
 import Canteen.ITA.S128_1.Emigration
 import Canteen.ITA.S118_62.StudentLoanInterest
+import Canteen.ITA.S75.ReversionaryTrust
 import Canteen.ITA.S3.CorporateYear
 import Canteen.Transactions.DebtSwap
 import Canteen.ITA.S87.Amalgamation
@@ -261,6 +262,7 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S248.TaxableCanadianProperty, "248(1) taxable Canadian property"),
    (`Canteen.ITA.S128_1.Emigration, "128.1(1), (4) becoming and ceasing to be resident"),
    (`Canteen.ITA.S118_62.StudentLoanInterest, "118.62 the student loan interest credit"),
+   (`Canteen.ITA.S75.ReversionaryTrust, "75(2), (3) reversionary trusts"),
    (`Canteen.ITA.S3.CorporateYear, "2(2), 3, 129(4) a corporation's year, to taxable income and tax")]
 
 /-! ## The dashboard -/
@@ -358,7 +360,7 @@ def actMindmap : String := Id.run do
     (2, "s. 70"), (3, "70(5): deemed disposition on death"), (3, "70(6): rollover to a spouse or spousal trust"),
     (2, "s. 73"), (3, "73(1), (1.01): the spousal rollover"),
     (2, "ss. 74.1, 74.2, 74.4, 74.5"), (3, "74.1(1), (2): income attributed back"), (3, "74.1(3): repaying debt"),
-    (3, "74.2(1): capital gains attributed back"), (3, "74.4(2): corporate attribution"), (3, "74.5(1) to (3): fair market value, loans for value, separation"),
+    (3, "74.2(1): capital gains attributed back"), (3, "74.4(2): corporate attribution"), (3, "74.5(1) to (3): fair market value, loans for value, separation"), (3, "75(2): reversionary trusts"),
     (2, "s. 80.4"), (3, "80.4(2): deemed interest on shareholder loans"),
     (2, "s. 82"), (3, "82(1): taxable dividends and the gross-up"),
     (2, "s. 83"), (3, "83(2): capital dividends"),

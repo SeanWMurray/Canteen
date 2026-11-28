@@ -88,6 +88,7 @@ import Canteen.ITA.S116.Purchaser
 import Canteen.ITA.S248.TaxableCanadianProperty
 import Canteen.ITA.S128_1.Emigration
 import Canteen.ITA.S118_62.StudentLoanInterest
+import Canteen.ITA.S75.ReversionaryTrust
 import Canteen.ITA.S3.CorporateYear
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
@@ -872,6 +873,13 @@ def blueprint : Blueprint where
             ``Emigration.Holding.excepted_keeps_cost, ``Emigration.Holding.deemed_cost, ``Emigration.Holding.real_property,
             ``Emigration.Arriving.deemed, ``Emigration.Arriving.costOnArrival, ``Emigration.Arriving.step_up, ``Emigration.Arriving.tcp_keeps_cost],
           uses := ["R8", "R85"] },
+        { id := "R88", kind := .law, title := "Reversionary trusts", citation := "ITA 75(2), (3)"
+          statement := "Where a resident trust holds property that may revert to the person who contributed it, pass as that " ++
+            "person later decides, or not be sold without that person's consent, the income, losses and taxable gains " ++
+            "from it are that person's while alive and resident, unless the trust is a registered plan or another 75(3) " ++
+            "trust. Proven: each amount is either the contributor's or the trust's, and an excluded trust is never caught."
+          lean := [``ReversionaryTrust.applies, ``ReversionaryTrust.toContributor, ``ReversionaryTrust.toTrust,
+            ``ReversionaryTrust.split, ``ReversionaryTrust.excluded_trust] },
         { id := "R70", kind := .law, title := "A corporation's year, to taxable income and tax", citation := "ITA 2(2); 3; 110.1; 111(1), (8); 112(1); 125(7); 129(4)"
           statement := "A corporation's income from active business, personal services business, property and dividends " ++
             "received, with its net taxable capital gains (a 55(2) dividend as a gain); taxable income after gifts, the " ++
