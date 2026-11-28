@@ -28,4 +28,10 @@ example : shares (trust [⟨"Cy", 2000000, 0, 2000000, false⟩]) = [⟨"Cy", 0,
 -- A trust not resident throughout the year: no designations.
 example : (shares { allOut with resident := false }).map (·.dividends) = [0, 0] := by decide
 
+-- 122(1): $20,000 kept by a family trust: 33%, $6,600. In a graduated rate estate: 14%, $2,800.
+def keeps : Facts := trust [⟨"Ada", 4000000, 0, 0, true⟩]
+example : tax keeps = 660000 ∧ tax { keeps with kind := .graduated } = 280000 := by decide
+-- Paying it all out: no tax for the trust.
+example : tax allOut = 0 := by decide
+
 end Canteen.Tests.TrustIncome

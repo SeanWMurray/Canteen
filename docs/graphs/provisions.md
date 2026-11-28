@@ -104,7 +104,7 @@ flowchart BT
   v95["75(2), (3) reversionary trusts"]:::prov
   v96["107(2), (2.1), (4.1) distributions of trust property"]:::prov
   v97["104(4) the 21-year rule"]:::prov
-  v98["104(6), (13), (19), (21) a trust's income paid to beneficiaries"]:::prov
+  v98["104(6), (13), (19), (21), 122(1) a trust's income, paid out or taxed"]:::prov
   v99["2(2), 3, 129(4) a corporation's year, to taxable income and tax"]:::prov
   v100["50(2) bad personal-use debts"]:::prov
   v0 --> v1
@@ -202,6 +202,7 @@ flowchart BT
   v92 --> v94
   v17 --> v95
   v17 --> v97
+  v54 --> v98
   v19 --> v99
   v20 --> v99
   v32 --> v99

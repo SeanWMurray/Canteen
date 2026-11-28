@@ -131,7 +131,7 @@ graph TD
   n118["R88 · Reversionary trusts"]:::proven
   n119["R89 · Distributions of trust property"]:::proven
   n120["R90 · The 21-year rule"]:::proven
-  n121["R91 · A trust's income paid to beneficiaries"]:::proven
+  n121["R91 · A trust's income paid to beneficiaries, and its tax"]:::proven
   n122["R70 · A corporation's year, to taxable income and tax"]:::proven
   n123["R87 · The student loan interest credit"]:::proven
   n124["R35 · An individual's year, to taxable income and tax"]:::proven
@@ -268,6 +268,8 @@ graph TD
   n115 --> n117
   n118 --> n119
   n44 --> n120
+  n74 --> n121
+  n88 --> n121
   n44 --> n122
   n45 --> n122
   n57 --> n122
@@ -674,6 +676,8 @@ graph TD
   n44 -.-> n117
   n118 -.-> n119
   n44 -.-> n120
+  n74 --> n121
+  n88 -.-> n121
   n44 --> n122
   n57 --> n122
   n45 --> n122
@@ -1722,13 +1726,13 @@ A trust is deemed to sell its capital property (other than depreciable property)
 
 **Lean:** [`Canteen.ITA.TwentyOneYear.firstDay`](../../Canteen/ITA/S104/TwentyOneYear.lean#L36), [`Canteen.ITA.TwentyOneYear.dayIn`](../../Canteen/ITA/S104/TwentyOneYear.lean#L41), [`Canteen.ITA.TwentyOneYear.dispositions`](../../Canteen/ITA/S104/TwentyOneYear.lean#L57), [`Canteen.ITA.TwentyOneYear.netTaxableGains`](../../Canteen/ITA/S104/TwentyOneYear.lean#L64), [`Canteen.ITA.TwentyOneYear.ordinary_first`](../../Canteen/ITA/S104/TwentyOneYear.lean#L74), [`Canteen.ITA.TwentyOneYear.none_before`](../../Canteen/ITA/S104/TwentyOneYear.lean#L79), [`Canteen.ITA.TwentyOneYear.life_interest_alive`](../../Canteen/ITA/S104/TwentyOneYear.lean#L82)
 
-### R91. A trust's income paid to beneficiaries
+### R91. A trust's income paid to beneficiaries, and its tax
 
-**Status:** proven · **Citation:** ITA 104(6)(b), (13)(a), (19), (21), (24)
+**Status:** proven · **Citation:** ITA 104(6)(b), (13)(a), (19), (21), (24); 122(1)(a), (1.1) · **Uses:** R41, R56
 
-A trust deducts the income that became payable to beneficiaries (paid, or enforceable, in the year), and they include it; dividends and capital gains designated for a beneficiary keep their character, within the trust's totals and each beneficiary's share. Proven: the deduction never exceeds the trust's income, and the dividends designated never exceed what the trust received.
+A trust deducts the income that became payable to beneficiaries (paid, or enforceable, in the year), and they include it; dividends and capital gains designated for a beneficiary keep their character, within the trust's totals and each beneficiary's share. What the trust keeps is taxed at 33%, or at the graduated rates for a graduated rate estate or qualified disability trust. Proven: the deduction never exceeds the trust's income, the dividends designated never exceed what the trust received, and a trust that pays it all out pays no tax.
 
-**Lean:** [`Canteen.ITA.TrustIncome.income`](../../Canteen/ITA/S104/TrustIncome.lean#L51), [`Canteen.ITA.TrustIncome.deduction`](../../Canteen/ITA/S104/TrustIncome.lean#L55), [`Canteen.ITA.TrustIncome.retained`](../../Canteen/ITA/S104/TrustIncome.lean#L58), [`Canteen.ITA.TrustIncome.dividendsTo`](../../Canteen/ITA/S104/TrustIncome.lean#L75), [`Canteen.ITA.TrustIncome.gainsTo`](../../Canteen/ITA/S104/TrustIncome.lean#L76), [`Canteen.ITA.TrustIncome.shares`](../../Canteen/ITA/S104/TrustIncome.lean#L88), [`Canteen.ITA.TrustIncome.deduction_le_income`](../../Canteen/ITA/S104/TrustIncome.lean#L101), [`Canteen.ITA.TrustIncome.allowDividends_le`](../../Canteen/ITA/S104/TrustIncome.lean#L105)
+**Lean:** [`Canteen.ITA.TrustIncome.income`](../../Canteen/ITA/S104/TrustIncome.lean#L64), [`Canteen.ITA.TrustIncome.deduction`](../../Canteen/ITA/S104/TrustIncome.lean#L68), [`Canteen.ITA.TrustIncome.retained`](../../Canteen/ITA/S104/TrustIncome.lean#L71), [`Canteen.ITA.TrustIncome.dividendsTo`](../../Canteen/ITA/S104/TrustIncome.lean#L96), [`Canteen.ITA.TrustIncome.gainsTo`](../../Canteen/ITA/S104/TrustIncome.lean#L97), [`Canteen.ITA.TrustIncome.shares`](../../Canteen/ITA/S104/TrustIncome.lean#L109), [`Canteen.ITA.TrustIncome.tax`](../../Canteen/ITA/S104/TrustIncome.lean#L74), [`Canteen.ITA.TrustIncome.deduction_le_income`](../../Canteen/ITA/S104/TrustIncome.lean#L124), [`Canteen.ITA.TrustIncome.allowDividends_le`](../../Canteen/ITA/S104/TrustIncome.lean#L128), [`Canteen.ITA.TrustIncome.all_out`](../../Canteen/ITA/S104/TrustIncome.lean#L136)
 
 ### R70. A corporation's year, to taxable income and tax
 

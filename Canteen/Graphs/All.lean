@@ -268,7 +268,7 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S75.ReversionaryTrust, "75(2), (3) reversionary trusts"),
    (`Canteen.ITA.S107.TrustDistribution, "107(2), (2.1), (4.1) distributions of trust property"),
    (`Canteen.ITA.S104.TwentyOneYear, "104(4) the 21-year rule"),
-   (`Canteen.ITA.S104.TrustIncome, "104(6), (13), (19), (21) a trust's income paid to beneficiaries"),
+   (`Canteen.ITA.S104.TrustIncome, "104(6), (13), (19), (21), 122(1) a trust's income, paid out or taxed"),
    (`Canteen.ITA.S3.CorporateYear, "2(2), 3, 129(4) a corporation's year, to taxable income and tax")]
 
 /-! ## The dashboard -/

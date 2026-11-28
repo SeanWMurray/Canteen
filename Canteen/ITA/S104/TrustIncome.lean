@@ -1,10 +1,13 @@
-import Canteen.Core.Money
-import Canteen.Core.Finding
+import Canteen.ITA.S117_1.YearAmounts
 
 /-!
 # A trust's income paid out to beneficiaries: 104(6)(b), 104(13), 104(19), 104(21), 104(24)
 
-*Income Tax Act*, as consolidated to 2026-10-29 (verbatim in `statute/ITA-104-6-13-19-21-24.txt`):
+*Income Tax Act*, as consolidated to 2026-10-29 (verbatim in `statute/ITA-104-6-13-19-21-24.txt` and
+`statute/ITA-122-1-1.1.txt`):
+
+**122(1)(a)** A trust (other than a graduated rate estate or qualified disability trust) pays the
+highest individual percentage on its amount taxable; **(1.1)** with no credits but 118.1, 120.2 and 121.
 
 **104(6)(b)** A trust (other than the special trusts of (a) to (a.4)) deducts the part of its income for the
 year that became payable in the year to beneficiaries. **104(13)(a)** Each beneficiary includes the part
@@ -37,7 +40,17 @@ structure Beneficiary where
   resident : Bool := true
   deriving Repr, DecidableEq, Inhabited
 
+/-- 122(1): the kind of trust, for its rate. -/
+inductive Kind where
+  /-- A graduated rate estate or qualified disability trust: the 117(2) rates. -/
+  | graduated
+  /-- Any other trust: the highest individual percentage. -/
+  | flat
+  deriving Repr, DecidableEq, Inhabited
+
 structure Facts where
+  taxationYear : Nat := 2025
+  kind : Kind := .flat
   /-- Taxable dividends received from taxable Canadian corporations (actual amounts). -/
   dividends : Cents := 0
   /-- Net taxable capital gains. -/
@@ -57,6 +70,14 @@ def deduction (f : Facts) : Cents := min (totalPayable f) (income f)
 
 /-- The trust's income after the deduction. -/
 def retained (f : Facts) : Cents := income f - deduction f
+
+/-- 122(1)(a): tax on what the trust keeps, taken as its taxable income: the highest individual
+percentage (33%), or for a graduated rate estate or qualified disability trust the year's 117(2) rates.
+122(1.1) leaves only the 118.1, 120.2 and 121 credits, not computed here. -/
+def tax (f : Facts) : Cents :=
+  match f.kind with
+  | .flat => retained f * 33 / 100
+  | .graduated => Rates.tax (retained f) ((YearAmounts.forYear f.taxationYear).getD YearAmounts.latest.2).brackets
 
 /-- 104(19): the designated dividends allowed, beneficiary by beneficiary, in order, within the trust's
 total and each beneficiary's payable amount. -/
@@ -94,7 +115,9 @@ def explain (f : Facts) : Finding :=
     ⟨s!"{s.name}: {c s.dividends} as taxable dividends, {c s.gains} as taxable capital gains, and {c s.other} as income from the trust.",
       "ITA 104(13)(a), (19), (21)"⟩
   ⟨deduction f > 0, [⟨s!"The trust's income of {c (income f)}; {c (totalPayable f)} became payable to beneficiaries, so it deducts " ++
-      s!"{c (deduction f)} and is taxed on {c (retained f)}.", "ITA 104(6)(b), (24)"⟩] ++ steps, []⟩
+      s!"{c (deduction f)} and is taxed on {c (retained f)}" ++ (match f.kind with
+        | .flat => s!", at 33%: {c (tax f)}."
+        | .graduated => s!", at the graduated rates: {c (tax f)}."), "ITA 104(6)(b), (24); 122(1)"⟩] ++ steps, []⟩
 
 /-! ## Truths -/
 
@@ -109,5 +132,12 @@ theorem allowDividends_le (l : Cents) (bs : List Beneficiary) : (allowDividends 
   | cons b bs ih =>
     simp only [allowDividends, List.sum_cons]
     exact add_within _ _ _ (ih _) (Nat.min_le_left _ _)
+
+/-- A trust that pays out all its income pays no tax under 122(1)(a). -/
+theorem all_out (f : Facts) (h : income f ≤ totalPayable f) : tax f = 0 := by
+  have : retained f = 0 := by unfold retained deduction; rw [Nat.min_eq_right h]; exact Nat.sub_self _
+  unfold tax; rw [this]; split
+  · rfl
+  · simp only [Rates.tax, Rates.slices, Rates.slice, Nat.zero_min, Nat.zero_sub]; rfl
 
 end Canteen.ITA.TrustIncome
