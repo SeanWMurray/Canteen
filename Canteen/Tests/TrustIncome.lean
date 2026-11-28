@@ -28,9 +28,15 @@ example : shares (trust [⟨"Cy", 2000000, 0, 2000000, false⟩]) = [⟨"Cy", 0,
 -- A trust not resident throughout the year: no designations.
 example : (shares { allOut with resident := false }).map (·.dividends) = [0, 0] := by decide
 
--- 122(1): $20,000 kept by a family trust: 33%, $6,600. In a graduated rate estate: 14%, $2,800.
-def keeps : Facts := trust [⟨"Ada", 4000000, 0, 0, true⟩]
-example : tax keeps = 660000 ∧ tax { keeps with kind := .graduated } = 280000 := by decide
+-- 122(1): $20,000 kept by a family trust, none of it dividends: 33%, $6,600. In a graduated rate
+-- estate: 14%, $2,800.
+def keeps : Facts := trust [⟨"Ada", 4000000, 3000000, 0, true⟩]
+example : keptDividends keeps = 0 ∧ tax keeps = 660000 ∧ tax { keeps with kind := .graduated } = 280000 := by decide
+-- Keeping $20,000 of eligible dividends instead: grossed up 38% to $27,600, taxed at 33% ($9,108), less
+-- the 15.0198% dividend tax credit ($4,145.46).
+def keepsDividends : Facts := trust [⟨"Ada", 4000000, 1000000, 0, true⟩]
+example : keptDividends keepsDividends = 2000000 ∧ amountTaxable keepsDividends = 2760000 := by decide
+example : tax keepsDividends = 910800 - Dividends.credit (keptDividendFacts keepsDividends) := by decide
 -- Paying it all out: no tax for the trust.
 example : tax allOut = 0 := by decide
 

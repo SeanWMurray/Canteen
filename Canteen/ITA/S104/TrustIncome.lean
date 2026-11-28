@@ -1,4 +1,5 @@
 import Canteen.ITA.S117_1.YearAmounts
+import Canteen.ITA.S82.Dividends
 
 /-!
 # A trust's income paid out to beneficiaries: 104(6)(b), 104(13), 104(19), 104(21), 104(24)
@@ -8,6 +9,8 @@ import Canteen.ITA.S117_1.YearAmounts
 
 **122(1)(a)** A trust (other than a graduated rate estate or qualified disability trust) pays the
 highest individual percentage on its amount taxable; **(1.1)** with no credits but 118.1, 120.2 and 121.
+Dividends the trust keeps are grossed up (82(1)(b); the trust is an individual, 104(2)) and earn the
+dividend tax credit (121); designated dividends are deemed not received by it for 82(1)(b) (104(19)).
 
 **104(6)(b)** A trust (other than the special trusts of (a) to (a.4)) deducts the part of its income for the
 year that became payable in the year to beneficiaries. **104(13)(a)** Each beneficiary includes the part
@@ -23,7 +26,7 @@ the trust must be resident in Canada throughout the year (and, for (21), the ben
 The trust's income is given in three parts: taxable dividends (actual amounts), net taxable capital
 gains, and other income. The amounts payable and the designations are given per beneficiary and capped
 here. 104(6)(b)(i) to (iv) (preferred beneficiary elections, the 104(6)(b)(iii) 120.4 rule), 104(7) to
-(7.1), 104(12), (14) and 105 are not encoded; nor is the trust's own gross-up of retained dividends.
+(7.1), 104(12), (14) and 105 are not encoded; the trust's dividends are all eligible or all not.
 -/
 
 namespace Canteen.ITA.TrustIncome
@@ -53,6 +56,8 @@ structure Facts where
   kind : Kind := .flat
   /-- Taxable dividends received from taxable Canadian corporations (actual amounts). -/
   dividends : Cents := 0
+  /-- Whether those dividends are eligible dividends (all or none). -/
+  dividendsEligible : Bool := true
   /-- Net taxable capital gains. -/
   netTaxableGains : Cents := 0
   otherIncome : Cents := 0
@@ -71,14 +76,6 @@ def deduction (f : Facts) : Cents := min (totalPayable f) (income f)
 /-- The trust's income after the deduction. -/
 def retained (f : Facts) : Cents := income f - deduction f
 
-/-- 122(1)(a): tax on what the trust keeps, taken as its taxable income: the highest individual
-percentage (33%), or for a graduated rate estate or qualified disability trust the year's 117(2) rates.
-122(1.1) leaves only the 118.1, 120.2 and 121 credits, not computed here. -/
-def tax (f : Facts) : Cents :=
-  match f.kind with
-  | .flat => retained f * 33 / 100
-  | .graduated => Rates.tax (retained f) ((YearAmounts.forYear f.taxationYear).getD YearAmounts.latest.2).brackets
-
 /-- 104(19): the designated dividends allowed, beneficiary by beneficiary, in order, within the trust's
 total and each beneficiary's payable amount. -/
 def allowDividends : Cents → List Beneficiary → List Cents
@@ -96,6 +93,28 @@ def allowGains : Cents → List (Beneficiary × Cents) → List Cents
 def dividendsTo (f : Facts) : List Cents := if f.resident then allowDividends f.dividends f.beneficiaries else f.beneficiaries.map fun _ => 0
 def gainsTo (f : Facts) : List Cents :=
   if f.resident then allowGains f.netTaxableGains (f.beneficiaries.zip (dividendsTo f)) else f.beneficiaries.map fun _ => 0
+
+/-- The dividends the trust keeps: those not designated, up to what it keeps. -/
+def keptDividends (f : Facts) : Cents := min (f.dividends - (dividendsTo f).sum) (retained f)
+
+def keptDividendFacts (f : Facts) : Dividends.Facts :=
+  { taxationYear := f.taxationYear, individual := true,
+    dividends := [{ description := "dividends kept by the trust", amount := keptDividends f, eligible := f.dividendsEligible }] }
+
+/-- 82(1)(b): the gross-up on the dividends the trust keeps (a trust is an individual, 104(2)). -/
+def grossUp (f : Facts) : Cents := Dividends.grossUp (keptDividendFacts f)
+
+/-- The amount taxable: what the trust keeps, with the gross-up. -/
+def amountTaxable (f : Facts) : Cents := retained f + grossUp f
+
+/-- 122(1)(a): the highest individual percentage (33%), or for a graduated rate estate or qualified
+disability trust the year's 117(2) rates; less the dividend tax credit (121), which 122(1.1) allows. The
+118.1 and 120.2 credits are not computed. -/
+def tax (f : Facts) : Cents :=
+  (match f.kind with
+   | .flat => amountTaxable f * 33 / 100
+   | .graduated => Rates.tax (amountTaxable f) ((YearAmounts.forYear f.taxationYear).getD YearAmounts.latest.2).brackets) -
+  Dividends.credit (keptDividendFacts f)
 
 /-- What each beneficiary includes: as taxable dividends, as taxable capital gains, and as income from
 property (104(13)) for the rest of the amount payable. -/
@@ -135,9 +154,15 @@ theorem allowDividends_le (l : Cents) (bs : List Beneficiary) : (allowDividends 
 
 /-- A trust that pays out all its income pays no tax under 122(1)(a). -/
 theorem all_out (f : Facts) (h : income f ≤ totalPayable f) : tax f = 0 := by
-  have : retained f = 0 := by unfold retained deduction; rw [Nat.min_eq_right h]; exact Nat.sub_self _
-  unfold tax; rw [this]; split
-  · rfl
-  · simp only [Rates.tax, Rates.slices, Rates.slice, Nat.zero_min, Nat.zero_sub]; rfl
+  have hr : retained f = 0 := by unfold retained deduction; rw [Nat.min_eq_right h]; exact Nat.sub_self _
+  have hk : keptDividends f = 0 := by unfold keptDividends; rw [hr]; exact Nat.min_zero _
+  have hg : grossUp f = 0 := by
+    unfold grossUp keptDividendFacts; rw [hk]
+    cases f.dividendsEligible <;> simp [Dividends.grossUp, Dividends.grossUpI, Dividends.grossUpII, Dividends.paraA,
+      Dividends.paraA1, Dividends.total, Dividends.Dividend.cOrD]
+  have ha : amountTaxable f = 0 := by unfold amountTaxable; rw [hr, hg]
+  unfold tax; rw [ha]; split
+  · exact Nat.zero_sub _
+  · simp only [Rates.tax, Rates.slices, Rates.slice, Nat.zero_min, Nat.zero_sub]; exact Nat.zero_sub _
 
 end Canteen.ITA.TrustIncome
