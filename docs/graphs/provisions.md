@@ -106,8 +106,9 @@ flowchart BT
   v97["104(4) the 21-year rule"]:::prov
   v98["104(6), (13), (19), (21), 122(1) a trust's income, paid out or taxed"]:::prov
   v99["146.01 the Home Buyers' Plan"]:::prov
-  v100["2(2), 3, 129(4) a corporation's year, to taxable income and tax"]:::prov
-  v101["50(2) bad personal-use debts"]:::prov
+  v100["146.6 the First Home Savings Account deduction"]:::prov
+  v101["2(2), 3, 129(4) a corporation's year, to taxable income and tax"]:::prov
+  v102["50(2) bad personal-use debts"]:::prov
   v0 --> v1
   v0 --> v2
   v0 --> v3
@@ -206,13 +207,13 @@ flowchart BT
   v54 --> v98
   v31 --> v98
   v46 --> v98
-  v19 --> v100
-  v20 --> v100
-  v32 --> v100
-  v79 --> v100
-  v70 --> v100
-  v80 --> v100
-  v72 --> v100
-  v35 --> v100
+  v19 --> v101
+  v20 --> v101
+  v32 --> v101
+  v79 --> v101
+  v70 --> v101
+  v80 --> v101
+  v72 --> v101
+  v35 --> v101
   classDef prov fill:#bbdefb,stroke:#1565c0,color:#0d47a1
 ```

@@ -93,6 +93,7 @@ import Canteen.ITA.S107.TrustDistribution
 import Canteen.ITA.S104.TwentyOneYear
 import Canteen.ITA.S104.TrustIncome
 import Canteen.ITA.S146_01.HomeBuyersPlan
+import Canteen.ITA.S146_6.FirstHomeSavings
 import Canteen.ITA.S3.CorporateYear
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
@@ -921,6 +922,13 @@ def blueprint : Blueprint where
             "whole balance is required."
           lean := [``HomeBuyersPlan.withinLimit, ``HomeBuyersPlan.required, ``HomeBuyersPlan.inclusion, ``HomeBuyersPlan.schedule,
             ``HomeBuyersPlan.onEmigration, ``HomeBuyersPlan.onDeath, ``HomeBuyersPlan.repaid, ``HomeBuyersPlan.last_year] },
+        { id := "R93", kind := .law, title := "The First Home Savings Account deduction", citation := "ITA 146.6(1), (5)"
+          statement := "Each year's FHSA limit is the lesser of the year's contributions (with last year's excess) and " ++
+            "$8,000 plus up to $8,000 of unused room carried forward; contributions within the limits are deducted, when " ++
+            "the holder chooses, up to $40,000 in all. Proven: a year's limit is at most $16,000, and the deductions in all " ++
+            "at most $40,000."
+          lean := [``FirstHomeSavings.carryforward, ``FirstHomeSavings.available, ``FirstHomeSavings.step, ``FirstHomeSavings.limits,
+            ``FirstHomeSavings.deductions, ``FirstHomeSavings.carryforward_le, ``FirstHomeSavings.limit_le, ``FirstHomeSavings.deducted_le] },
         { id := "R70", kind := .law, title := "A corporation's year, to taxable income and tax", citation := "ITA 2(2); 3; 110.1; 111(1), (8); 112(1); 125(7); 129(4)"
           statement := "A corporation's income from active business, personal services business, property and dividends " ++
             "received, with its net taxable capital gains (a 55(2) dividend as a gain); taxable income after gifts, the " ++

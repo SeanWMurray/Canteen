@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 132 statements:** 113 proven, 16 encoded, 3 not formalized.
+**Status of the 133 statements:** 114 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -133,15 +133,16 @@ graph TD
   n120["R90 · The 21-year rule"]:::proven
   n121["R91 · A trust's income paid to beneficiaries, and its tax"]:::proven
   n122["R92 · The Home Buyers' Plan"]:::proven
-  n123["R70 · A corporation's year, to taxable income and tax"]:::proven
-  n124["R87 · The student loan interest credit"]:::proven
-  n125["R35 · An individual's year, to taxable income and tax"]:::proven
-  n126["R48 · The minimum tax"]:::proven
-  n127["R11 · The principal residence exemption"]:::proven
-  n128["R2 · Cost of the substituted property"]:::proven
-  n129["N1 · Inputs decided by other provisions"]:::notFormalized
-  n130["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n131["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n123["R93 · The First Home Savings Account deduction"]:::proven
+  n124["R70 · A corporation's year, to taxable income and tax"]:::proven
+  n125["R87 · The student loan interest credit"]:::proven
+  n126["R35 · An individual's year, to taxable income and tax"]:::proven
+  n127["R48 · The minimum tax"]:::proven
+  n128["R11 · The principal residence exemption"]:::proven
+  n129["R2 · Cost of the substituted property"]:::proven
+  n130["N1 · Inputs decided by other provisions"]:::notFormalized
+  n131["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n132["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -273,58 +274,58 @@ graph TD
   n74 --> n121
   n76 --> n121
   n88 --> n121
-  n44 --> n123
-  n45 --> n123
-  n57 --> n123
-  n60 --> n123
-  n77 --> n123
-  n78 --> n123
-  n80 --> n123
-  n101 --> n123
-  n102 --> n123
-  n103 --> n123
-  n44 --> n125
-  n45 --> n125
-  n53 --> n125
-  n55 --> n125
-  n56 --> n125
-  n58 --> n125
-  n73 --> n125
-  n74 --> n125
-  n75 --> n125
-  n76 --> n125
-  n81 --> n125
-  n82 --> n125
-  n83 --> n125
-  n84 --> n125
-  n85 --> n125
-  n87 --> n125
-  n88 --> n125
-  n89 --> n125
-  n90 --> n125
-  n91 --> n125
-  n92 --> n125
-  n93 --> n125
-  n94 --> n125
-  n97 --> n125
-  n100 --> n125
-  n124 --> n125
+  n44 --> n124
+  n45 --> n124
+  n57 --> n124
+  n60 --> n124
+  n77 --> n124
+  n78 --> n124
+  n80 --> n124
+  n101 --> n124
+  n102 --> n124
+  n103 --> n124
+  n44 --> n126
+  n45 --> n126
+  n53 --> n126
+  n55 --> n126
+  n56 --> n126
+  n58 --> n126
+  n73 --> n126
+  n74 --> n126
+  n75 --> n126
+  n76 --> n126
+  n81 --> n126
+  n82 --> n126
+  n83 --> n126
+  n84 --> n126
+  n85 --> n126
+  n87 --> n126
+  n88 --> n126
+  n89 --> n126
+  n90 --> n126
+  n91 --> n126
+  n92 --> n126
+  n93 --> n126
+  n94 --> n126
+  n97 --> n126
+  n100 --> n126
   n125 --> n126
-  n44 --> n127
-  n50 --> n127
-  n11 --> n128
-  n1 --> n129
-  n5 --> n129
-  n6 --> n129
-  n8 --> n129
-  n37 --> n129
-  n128 --> n129
-  n38 --> n129
-  n30 --> n130
-  n32 --> n131
-  n34 --> n131
-  n39 --> n131
-  n42 --> n131
+  n126 --> n127
+  n44 --> n128
+  n50 --> n128
+  n11 --> n129
+  n1 --> n130
+  n5 --> n130
+  n6 --> n130
+  n8 --> n130
+  n37 --> n130
+  n129 --> n130
+  n38 --> n130
+  n30 --> n131
+  n32 --> n132
+  n34 --> n132
+  n39 --> n132
+  n42 --> n132
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -464,15 +465,16 @@ graph TD
   n120["R90"]:::proven
   n121["R91"]:::proven
   n122["R92"]:::proven
-  n123["R70"]:::proven
-  n124["R87"]:::proven
-  n125["R35"]:::proven
-  n126["R48"]:::proven
-  n127["R11"]:::proven
-  n128["R2"]:::proven
-  n129["N1"]:::notFormalized
-  n130["N2"]:::notFormalized
-  n131["N4"]:::notFormalized
+  n123["R93"]:::proven
+  n124["R70"]:::proven
+  n125["R87"]:::proven
+  n126["R35"]:::proven
+  n127["R48"]:::proven
+  n128["R11"]:::proven
+  n129["R2"]:::proven
+  n130["N1"]:::notFormalized
+  n131["N2"]:::notFormalized
+  n132["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -684,67 +686,67 @@ graph TD
   n56 --> n121
   n74 --> n121
   n88 -.-> n121
-  n44 --> n123
-  n57 --> n123
-  n45 --> n123
-  n101 --> n123
-  n102 --> n123
-  n103 --> n123
-  n78 --> n123
-  n77 --> n123
-  n80 --> n123
-  n60 -.-> n123
-  n93 --> n125
-  n55 --> n125
-  n94 --> n125
-  n81 --> n125
-  n91 --> n125
-  n84 --> n125
-  n58 --> n125
-  n97 --> n125
-  n44 --> n125
-  n87 --> n125
-  n73 --> n125
-  n56 --> n125
-  n100 --> n125
-  n92 --> n125
-  n85 --> n125
-  n45 --> n125
-  n53 --> n125
-  n89 --> n125
-  n90 --> n125
-  n124 --> n125
-  n82 --> n125
-  n74 --> n125
-  n83 --> n125
-  n76 --> n125
-  n75 --> n125
-  n88 -.-> n125
+  n44 --> n124
+  n57 --> n124
+  n45 --> n124
+  n101 --> n124
+  n102 --> n124
+  n103 --> n124
+  n78 --> n124
+  n77 --> n124
+  n80 --> n124
+  n60 -.-> n124
+  n93 --> n126
   n55 --> n126
-  n125 --> n126
+  n94 --> n126
   n81 --> n126
   n91 --> n126
   n84 --> n126
   n58 --> n126
-  n45 --> n126
+  n97 --> n126
+  n44 --> n126
   n87 --> n126
   n73 --> n126
+  n56 --> n126
   n100 --> n126
-  n44 -.-> n127
-  n50 -.-> n127
-  n11 -.-> n128
-  n1 -.-> n129
-  n5 -.-> n129
-  n6 -.-> n129
-  n8 -.-> n129
-  n37 -.-> n129
-  n128 -.-> n129
-  n38 -.-> n129
-  n30 -.-> n130
-  n32 -.-> n131
-  n34 -.-> n131
-  n39 -.-> n131
-  n42 -.-> n131
+  n92 --> n126
+  n85 --> n126
+  n45 --> n126
+  n53 --> n126
+  n89 --> n126
+  n90 --> n126
+  n125 --> n126
+  n82 --> n126
+  n74 --> n126
+  n83 --> n126
+  n76 --> n126
+  n75 --> n126
+  n88 -.-> n126
+  n55 --> n127
+  n126 --> n127
+  n81 --> n127
+  n91 --> n127
+  n84 --> n127
+  n58 --> n127
+  n45 --> n127
+  n87 --> n127
+  n73 --> n127
+  n100 --> n127
+  n44 -.-> n128
+  n50 -.-> n128
+  n11 -.-> n129
+  n1 -.-> n130
+  n5 -.-> n130
+  n6 -.-> n130
+  n8 -.-> n130
+  n37 -.-> n130
+  n129 -.-> n130
+  n38 -.-> n130
+  n30 -.-> n131
+  n32 -.-> n132
+  n34 -.-> n132
+  n39 -.-> n132
+  n42 -.-> n132
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -1747,6 +1749,14 @@ A trust deducts the income that became payable to beneficiaries (paid, or enforc
 A first-time buyer may withdraw up to $60,000 a year from an RRSP for a home, starting from a nil balance, and repays it over 15 years: each year's requirement is the balance over the years left, and what is not repaid is income; the balance is income on emigration (less what is repaid within 60 days) or death. Proven: repaying what is required includes nothing, and in the fifteenth year the whole balance is required.
 
 **Lean:** [`Canteen.ITA.HomeBuyersPlan.withinLimit`](../../Canteen/ITA/S146_01/HomeBuyersPlan.lean#L36), [`Canteen.ITA.HomeBuyersPlan.required`](../../Canteen/ITA/S146_01/HomeBuyersPlan.lean#L44), [`Canteen.ITA.HomeBuyersPlan.inclusion`](../../Canteen/ITA/S146_01/HomeBuyersPlan.lean#L39), [`Canteen.ITA.HomeBuyersPlan.schedule`](../../Canteen/ITA/S146_01/HomeBuyersPlan.lean#L47), [`Canteen.ITA.HomeBuyersPlan.onEmigration`](../../Canteen/ITA/S146_01/HomeBuyersPlan.lean#L61), [`Canteen.ITA.HomeBuyersPlan.onDeath`](../../Canteen/ITA/S146_01/HomeBuyersPlan.lean#L64), [`Canteen.ITA.HomeBuyersPlan.repaid`](../../Canteen/ITA/S146_01/HomeBuyersPlan.lean#L69), [`Canteen.ITA.HomeBuyersPlan.last_year`](../../Canteen/ITA/S146_01/HomeBuyersPlan.lean#L73)
+
+### R93. The First Home Savings Account deduction
+
+**Status:** proven · **Citation:** ITA 146.6(1), (5)
+
+Each year's FHSA limit is the lesser of the year's contributions (with last year's excess) and $8,000 plus up to $8,000 of unused room carried forward; contributions within the limits are deducted, when the holder chooses, up to $40,000 in all. Proven: a year's limit is at most $16,000, and the deductions in all at most $40,000.
+
+**Lean:** [`Canteen.ITA.FirstHomeSavings.carryforward`](../../Canteen/ITA/S146_6/FirstHomeSavings.lean#L43), [`Canteen.ITA.FirstHomeSavings.available`](../../Canteen/ITA/S146_6/FirstHomeSavings.lean#L46), [`Canteen.ITA.FirstHomeSavings.step`](../../Canteen/ITA/S146_6/FirstHomeSavings.lean#L49), [`Canteen.ITA.FirstHomeSavings.limits`](../../Canteen/ITA/S146_6/FirstHomeSavings.lean#L63), [`Canteen.ITA.FirstHomeSavings.deductions`](../../Canteen/ITA/S146_6/FirstHomeSavings.lean#L64), [`Canteen.ITA.FirstHomeSavings.carryforward_le`](../../Canteen/ITA/S146_6/FirstHomeSavings.lean#L75), [`Canteen.ITA.FirstHomeSavings.limit_le`](../../Canteen/ITA/S146_6/FirstHomeSavings.lean#L81), [`Canteen.ITA.FirstHomeSavings.deducted_le`](../../Canteen/ITA/S146_6/FirstHomeSavings.lean#L86)
 
 ### R70. A corporation's year, to taxable income and tax
 

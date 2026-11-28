@@ -78,6 +78,7 @@ import Canteen.ITA.S107.TrustDistribution
 import Canteen.ITA.S104.TwentyOneYear
 import Canteen.ITA.S104.TrustIncome
 import Canteen.ITA.S146_01.HomeBuyersPlan
+import Canteen.ITA.S146_6.FirstHomeSavings
 import Canteen.ITA.S3.CorporateYear
 import Canteen.Transactions.DebtSwap
 import Canteen.ITA.S87.Amalgamation
@@ -271,6 +272,7 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S104.TwentyOneYear, "104(4) the 21-year rule"),
    (`Canteen.ITA.S104.TrustIncome, "104(6), (13), (19), (21), 122(1) a trust's income, paid out or taxed"),
    (`Canteen.ITA.S146_01.HomeBuyersPlan, "146.01 the Home Buyers' Plan"),
+   (`Canteen.ITA.S146_6.FirstHomeSavings, "146.6 the First Home Savings Account deduction"),
    (`Canteen.ITA.S3.CorporateYear, "2(2), 3, 129(4) a corporation's year, to taxable income and tax")]
 
 /-! ## The dashboard -/
@@ -412,6 +414,7 @@ def actMindmap : String := Id.run do
     (2, "ss. 123.3, 129"), (3, "123.3: refundable tax on investment income"), (3, "129(1), (4): the dividend refund"),
     (2, "s. 185.1"), (3, "185.1(1): Part III.1 tax on excessive designations"), (3, "185.1(2), (3): the election"),
     (2, "s. 146.01"), (3, "146.01(4): the Home Buyers' Plan repayments"),
+    (2, "s. 146.6"), (3, "146.6(1), (5): the FHSA limit and deduction"),
     (2, "s. 180.2"), (3, "180.2(2): OAS recovery tax"),
     (2, "s. 186"), (3, "186(1): Part IV tax"), (3, "186(4): connected corporations"), (3, "186(2): control with non-arm's length persons"),
     (2, "s. 128.1"), (3, "128.1(1)(b), (c): the step-up on arrival"), (3, "128.1(4)(b): deemed disposition on emigration"), (3, "128.1(4)(c): reacquired at value"),
