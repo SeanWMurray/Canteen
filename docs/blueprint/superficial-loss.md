@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 128 statements:** 109 proven, 16 encoded, 3 not formalized.
+**Status of the 129 statements:** 110 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -129,15 +129,16 @@ graph TD
   n116["R84 · Buying from a non-resident"]:::proven
   n117["R86 · Becoming and ceasing to be resident"]:::proven
   n118["R88 · Reversionary trusts"]:::proven
-  n119["R70 · A corporation's year, to taxable income and tax"]:::proven
-  n120["R87 · The student loan interest credit"]:::proven
-  n121["R35 · An individual's year, to taxable income and tax"]:::proven
-  n122["R48 · The minimum tax"]:::proven
-  n123["R11 · The principal residence exemption"]:::proven
-  n124["R2 · Cost of the substituted property"]:::proven
-  n125["N1 · Inputs decided by other provisions"]:::notFormalized
-  n126["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n127["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n119["R89 · Distributions of trust property"]:::proven
+  n120["R70 · A corporation's year, to taxable income and tax"]:::proven
+  n121["R87 · The student loan interest credit"]:::proven
+  n122["R35 · An individual's year, to taxable income and tax"]:::proven
+  n123["R48 · The minimum tax"]:::proven
+  n124["R11 · The principal residence exemption"]:::proven
+  n125["R2 · Cost of the substituted property"]:::proven
+  n126["N1 · Inputs decided by other provisions"]:::notFormalized
+  n127["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n128["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -263,58 +264,59 @@ graph TD
   n115 --> n116
   n44 --> n117
   n115 --> n117
-  n44 --> n119
-  n45 --> n119
-  n57 --> n119
-  n60 --> n119
-  n77 --> n119
-  n78 --> n119
-  n80 --> n119
-  n101 --> n119
-  n102 --> n119
-  n103 --> n119
-  n44 --> n121
-  n45 --> n121
-  n53 --> n121
-  n55 --> n121
-  n56 --> n121
-  n58 --> n121
-  n73 --> n121
-  n74 --> n121
-  n75 --> n121
-  n76 --> n121
-  n81 --> n121
-  n82 --> n121
-  n83 --> n121
-  n84 --> n121
-  n85 --> n121
-  n87 --> n121
-  n88 --> n121
-  n89 --> n121
-  n90 --> n121
-  n91 --> n121
-  n92 --> n121
-  n93 --> n121
-  n94 --> n121
-  n97 --> n121
-  n100 --> n121
-  n120 --> n121
+  n118 --> n119
+  n44 --> n120
+  n45 --> n120
+  n57 --> n120
+  n60 --> n120
+  n77 --> n120
+  n78 --> n120
+  n80 --> n120
+  n101 --> n120
+  n102 --> n120
+  n103 --> n120
+  n44 --> n122
+  n45 --> n122
+  n53 --> n122
+  n55 --> n122
+  n56 --> n122
+  n58 --> n122
+  n73 --> n122
+  n74 --> n122
+  n75 --> n122
+  n76 --> n122
+  n81 --> n122
+  n82 --> n122
+  n83 --> n122
+  n84 --> n122
+  n85 --> n122
+  n87 --> n122
+  n88 --> n122
+  n89 --> n122
+  n90 --> n122
+  n91 --> n122
+  n92 --> n122
+  n93 --> n122
+  n94 --> n122
+  n97 --> n122
+  n100 --> n122
   n121 --> n122
-  n44 --> n123
-  n50 --> n123
-  n11 --> n124
-  n1 --> n125
-  n5 --> n125
-  n6 --> n125
-  n8 --> n125
-  n37 --> n125
-  n124 --> n125
-  n38 --> n125
-  n30 --> n126
-  n32 --> n127
-  n34 --> n127
-  n39 --> n127
-  n42 --> n127
+  n122 --> n123
+  n44 --> n124
+  n50 --> n124
+  n11 --> n125
+  n1 --> n126
+  n5 --> n126
+  n6 --> n126
+  n8 --> n126
+  n37 --> n126
+  n125 --> n126
+  n38 --> n126
+  n30 --> n127
+  n32 --> n128
+  n34 --> n128
+  n39 --> n128
+  n42 --> n128
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -450,15 +452,16 @@ graph TD
   n116["R84"]:::proven
   n117["R86"]:::proven
   n118["R88"]:::proven
-  n119["R70"]:::proven
-  n120["R87"]:::proven
-  n121["R35"]:::proven
-  n122["R48"]:::proven
-  n123["R11"]:::proven
-  n124["R2"]:::proven
-  n125["N1"]:::notFormalized
-  n126["N2"]:::notFormalized
-  n127["N4"]:::notFormalized
+  n119["R89"]:::proven
+  n120["R70"]:::proven
+  n121["R87"]:::proven
+  n122["R35"]:::proven
+  n123["R48"]:::proven
+  n124["R11"]:::proven
+  n125["R2"]:::proven
+  n126["N1"]:::notFormalized
+  n127["N2"]:::notFormalized
+  n128["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -664,67 +667,68 @@ graph TD
   n115 --> n116
   n115 --> n117
   n44 -.-> n117
-  n44 --> n119
-  n57 --> n119
-  n45 --> n119
-  n101 --> n119
-  n102 --> n119
-  n103 --> n119
-  n78 --> n119
-  n77 --> n119
-  n80 --> n119
-  n60 -.-> n119
-  n93 --> n121
-  n55 --> n121
-  n94 --> n121
-  n81 --> n121
-  n91 --> n121
-  n84 --> n121
-  n58 --> n121
-  n97 --> n121
-  n44 --> n121
-  n87 --> n121
-  n73 --> n121
-  n56 --> n121
-  n100 --> n121
-  n92 --> n121
-  n85 --> n121
-  n45 --> n121
-  n53 --> n121
-  n89 --> n121
-  n90 --> n121
-  n120 --> n121
-  n82 --> n121
-  n74 --> n121
-  n83 --> n121
-  n76 --> n121
-  n75 --> n121
-  n88 -.-> n121
+  n118 -.-> n119
+  n44 --> n120
+  n57 --> n120
+  n45 --> n120
+  n101 --> n120
+  n102 --> n120
+  n103 --> n120
+  n78 --> n120
+  n77 --> n120
+  n80 --> n120
+  n60 -.-> n120
+  n93 --> n122
   n55 --> n122
-  n121 --> n122
+  n94 --> n122
   n81 --> n122
   n91 --> n122
   n84 --> n122
   n58 --> n122
-  n45 --> n122
+  n97 --> n122
+  n44 --> n122
   n87 --> n122
   n73 --> n122
+  n56 --> n122
   n100 --> n122
-  n44 -.-> n123
-  n50 -.-> n123
-  n11 -.-> n124
-  n1 -.-> n125
-  n5 -.-> n125
-  n6 -.-> n125
-  n8 -.-> n125
-  n37 -.-> n125
-  n124 -.-> n125
-  n38 -.-> n125
-  n30 -.-> n126
-  n32 -.-> n127
-  n34 -.-> n127
-  n39 -.-> n127
-  n42 -.-> n127
+  n92 --> n122
+  n85 --> n122
+  n45 --> n122
+  n53 --> n122
+  n89 --> n122
+  n90 --> n122
+  n121 --> n122
+  n82 --> n122
+  n74 --> n122
+  n83 --> n122
+  n76 --> n122
+  n75 --> n122
+  n88 -.-> n122
+  n55 --> n123
+  n122 --> n123
+  n81 --> n123
+  n91 --> n123
+  n84 --> n123
+  n58 --> n123
+  n45 --> n123
+  n87 --> n123
+  n73 --> n123
+  n100 --> n123
+  n44 -.-> n124
+  n50 -.-> n124
+  n11 -.-> n125
+  n1 -.-> n126
+  n5 -.-> n126
+  n6 -.-> n126
+  n8 -.-> n126
+  n37 -.-> n126
+  n125 -.-> n126
+  n38 -.-> n126
+  n30 -.-> n127
+  n32 -.-> n128
+  n34 -.-> n128
+  n39 -.-> n128
+  n42 -.-> n128
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -1695,6 +1699,14 @@ An individual who leaves Canada is deemed to have sold each property at its valu
 Where a resident trust holds property that may revert to the person who contributed it, pass as that person later decides, or not be sold without that person's consent, the income, losses and taxable gains from it are that person's while alive and resident, unless the trust is a registered plan or another 75(3) trust. Proven: each amount is either the contributor's or the trust's, and an excluded trust is never caught.
 
 **Lean:** [`Canteen.ITA.ReversionaryTrust.applies`](../../Canteen/ITA/S75/ReversionaryTrust.lean#L54), [`Canteen.ITA.ReversionaryTrust.toContributor`](../../Canteen/ITA/S75/ReversionaryTrust.lean#L57), [`Canteen.ITA.ReversionaryTrust.toTrust`](../../Canteen/ITA/S75/ReversionaryTrust.lean#L59), [`Canteen.ITA.ReversionaryTrust.split`](../../Canteen/ITA/S75/ReversionaryTrust.lean#L78), [`Canteen.ITA.ReversionaryTrust.excluded_trust`](../../Canteen/ITA/S75/ReversionaryTrust.lean#L82)
+
+### R89. Distributions of trust property
+
+**Status:** proven · **Citation:** ITA 107(2), (2.1), (4.1) · **Uses:** R88
+
+A personal trust that distributes property to a beneficiary for a capital interest does so at its cost, the beneficiary taking that cost (bumped for a capital interest bought for more than its cost amount); but where 75(2) applied to the trust's property and the beneficiary is not the contributor or the contributor's spouse, the distribution is at value. Proven: no gain on a rollover, value both ways when 107(4.1) applies, and a distribution back to the contributor is never caught.
+
+**Lean:** [`Canteen.ITA.TrustDistribution.Distribution.tainted`](../../Canteen/ITA/S107/TrustDistribution.lean#L51), [`Canteen.ITA.TrustDistribution.Distribution.rollover`](../../Canteen/ITA/S107/TrustDistribution.lean#L54), [`Canteen.ITA.TrustDistribution.Distribution.trustGain`](../../Canteen/ITA/S107/TrustDistribution.lean#L62), [`Canteen.ITA.TrustDistribution.Distribution.beneficiaryCost`](../../Canteen/ITA/S107/TrustDistribution.lean#L65), [`Canteen.ITA.TrustDistribution.Distribution.interestProceeds`](../../Canteen/ITA/S107/TrustDistribution.lean#L69), [`Canteen.ITA.TrustDistribution.Distribution.no_gain_on_rollover`](../../Canteen/ITA/S107/TrustDistribution.lean#L85), [`Canteen.ITA.TrustDistribution.Distribution.tainted_at_value`](../../Canteen/ITA/S107/TrustDistribution.lean#L88), [`Canteen.ITA.TrustDistribution.Distribution.to_contributor`](../../Canteen/ITA/S107/TrustDistribution.lean#L92)
 
 ### R70. A corporation's year, to taxable income and tax
 

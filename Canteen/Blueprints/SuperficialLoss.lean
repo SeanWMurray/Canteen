@@ -89,6 +89,7 @@ import Canteen.ITA.S248.TaxableCanadianProperty
 import Canteen.ITA.S128_1.Emigration
 import Canteen.ITA.S118_62.StudentLoanInterest
 import Canteen.ITA.S75.ReversionaryTrust
+import Canteen.ITA.S107.TrustDistribution
 import Canteen.ITA.S3.CorporateYear
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
@@ -880,6 +881,17 @@ def blueprint : Blueprint where
             "trust. Proven: each amount is either the contributor's or the trust's, and an excluded trust is never caught."
           lean := [``ReversionaryTrust.applies, ``ReversionaryTrust.toContributor, ``ReversionaryTrust.toTrust,
             ``ReversionaryTrust.split, ``ReversionaryTrust.excluded_trust] },
+        { id := "R89", kind := .law, title := "Distributions of trust property", citation := "ITA 107(2), (2.1), (4.1)"
+          statement := "A personal trust that distributes property to a beneficiary for a capital interest does so at its " ++
+            "cost, the beneficiary taking that cost (bumped for a capital interest bought for more than its cost amount); " ++
+            "but where 75(2) applied to the trust's property and the beneficiary is not the contributor or the " ++
+            "contributor's spouse, the distribution is at value. Proven: no gain on a rollover, value both ways when " ++
+            "107(4.1) applies, and a distribution back to the contributor is never caught."
+          lean := [``TrustDistribution.Distribution.tainted, ``TrustDistribution.Distribution.rollover, ``TrustDistribution.Distribution.trustGain,
+            ``TrustDistribution.Distribution.beneficiaryCost, ``TrustDistribution.Distribution.interestProceeds,
+            ``TrustDistribution.Distribution.no_gain_on_rollover, ``TrustDistribution.Distribution.tainted_at_value,
+            ``TrustDistribution.Distribution.to_contributor],
+          uses := ["R88"] },
         { id := "R70", kind := .law, title := "A corporation's year, to taxable income and tax", citation := "ITA 2(2); 3; 110.1; 111(1), (8); 112(1); 125(7); 129(4)"
           statement := "A corporation's income from active business, personal services business, property and dividends " ++
             "received, with its net taxable capital gains (a 55(2) dividend as a gain); taxable income after gifts, the " ++

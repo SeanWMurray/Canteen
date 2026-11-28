@@ -102,8 +102,9 @@ flowchart BT
   v93["116(5), (5.3) buying from a non-resident"]:::prov
   v94["128.1(1), (4) becoming and ceasing to be resident"]:::prov
   v95["75(2), (3) reversionary trusts"]:::prov
-  v96["2(2), 3, 129(4) a corporation's year, to taxable income and tax"]:::prov
-  v97["50(2) bad personal-use debts"]:::prov
+  v96["107(2), (2.1), (4.1) distributions of trust property"]:::prov
+  v97["2(2), 3, 129(4) a corporation's year, to taxable income and tax"]:::prov
+  v98["50(2) bad personal-use debts"]:::prov
   v0 --> v1
   v0 --> v2
   v0 --> v3
@@ -198,13 +199,13 @@ flowchart BT
   v17 --> v94
   v92 --> v94
   v17 --> v95
-  v19 --> v96
-  v20 --> v96
-  v32 --> v96
-  v79 --> v96
-  v70 --> v96
-  v80 --> v96
-  v72 --> v96
-  v35 --> v96
+  v19 --> v97
+  v20 --> v97
+  v32 --> v97
+  v79 --> v97
+  v70 --> v97
+  v80 --> v97
+  v72 --> v97
+  v35 --> v97
   classDef prov fill:#bbdefb,stroke:#1565c0,color:#0d47a1
 ```
