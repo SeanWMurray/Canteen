@@ -46,4 +46,9 @@ example : tax { keeps with charitableGifts := 1000000 } = 660000 - (20000 * 1400
 -- At most 75% of its income: $15,000 of a $30,000 gift.
 example : Donations.totalGifts (donationFacts { keeps with charitableGifts := 3000000 }) = 1500000 := by decide
 
+-- 120.2: $5,000 of minimum tax paid in 2021 comes off, down to a minimum amount of $3,000: $3,600 recovered.
+example : minimumTaxRecovery { keeps with minimumTaxPaid := [(2021, 500000)], minimumAmount := 300000 } = 360000 := by decide
+-- Minimum tax of 2017 is more than seven years back.
+example : minimumTaxRecovery { keeps with minimumTaxPaid := [(2017, 500000)] } = 0 := by decide
+
 end Canteen.Tests.TrustIncome

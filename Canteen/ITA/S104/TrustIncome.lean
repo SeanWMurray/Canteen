@@ -27,7 +27,8 @@ the trust must be resident in Canada throughout the year (and, for (21), the ben
 The trust's income is given in three parts: taxable dividends (actual amounts), net taxable capital
 gains, and other income. The amounts payable and the designations are given per beneficiary and capped
 here. 104(6)(b)(i) to (iv) (preferred beneficiary elections, the 104(6)(b)(iii) 120.4 rule), 104(7) to
-(7.1), 104(12), (14) and 105 are not encoded; the trust's dividends are all eligible or all not.
+(7.1), 104(12), (14) and 105 are not encoded; the trust's dividends are all eligible or all not. The 120.2 recovery takes the trust's minimum amount for
+the year as given (the trust's 127.5 computation is not encoded).
 -/
 
 namespace Canteen.ITA.TrustIncome

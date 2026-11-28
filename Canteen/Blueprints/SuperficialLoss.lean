@@ -902,16 +902,16 @@ def blueprint : Blueprint where
           lean := [``TwentyOneYear.firstDay, ``TwentyOneYear.dayIn, ``TwentyOneYear.dispositions, ``TwentyOneYear.netTaxableGains,
             ``TwentyOneYear.ordinary_first, ``TwentyOneYear.none_before, ``TwentyOneYear.life_interest_alive],
           uses := ["R8"] },
-        { id := "R91", kind := .law, title := "A trust's income paid to beneficiaries, and its tax", citation := "ITA 104(6)(b), (13)(a), (19), (21), (24); 122(1)(a), (1.1); 82(1); 121; 118.1(3)"
+        { id := "R91", kind := .law, title := "A trust's income paid to beneficiaries, and its tax", citation := "ITA 104(6)(b), (13)(a), (19), (21), (24); 122(1)(a), (1.1); 82(1); 121; 118.1(3); 120.2(1)"
           statement := "A trust deducts the income that became payable to beneficiaries (paid, or enforceable, in the year), " ++
             "and they include it; dividends and capital gains designated for a beneficiary keep their character, within " ++
             "the trust's totals and each beneficiary's share. What the trust keeps is taxed at 33%, or at the graduated " ++
             "rates for a graduated rate estate or qualified disability trust, with the gross-up and dividend tax credit on " ++
-            "the dividends it keeps and the donation credit (every dollar over $200 at 33% for a flat-rate trust). Proven: the deduction never exceeds the trust's " ++
+            "the dividends it keeps, the donation credit (every dollar over $200 at 33% for a flat-rate trust) and the recovery of earlier minimum tax. Proven: the deduction never exceeds the trust's " ++
             "income, the dividends designated never exceed what the trust received, and a trust that pays it all out pays no tax."
           lean := [``TrustIncome.income, ``TrustIncome.deduction, ``TrustIncome.retained, ``TrustIncome.dividendsTo,
             ``TrustIncome.gainsTo, ``TrustIncome.shares, ``TrustIncome.keptDividends, ``TrustIncome.grossUp, ``TrustIncome.amountTaxable,
-            ``TrustIncome.donationCredit, ``TrustIncome.tax, ``TrustIncome.deduction_le_income,
+            ``TrustIncome.donationCredit, ``TrustIncome.minimumTaxRecovery, ``TrustIncome.tax, ``TrustIncome.deduction_le_income,
             ``TrustIncome.allowDividends_le, ``TrustIncome.all_out], uses := ["R22", "R41", "R43", "R56"] },
         { id := "R70", kind := .law, title := "A corporation's year, to taxable income and tax", citation := "ITA 2(2); 3; 110.1; 111(1), (8); 112(1); 125(7); 129(4)"
           statement := "A corporation's income from active business, personal services business, property and dividends " ++
