@@ -80,6 +80,7 @@ import Canteen.ITA.S104.TrustIncome
 import Canteen.ITA.S146_01.HomeBuyersPlan
 import Canteen.ITA.S146_6.FirstHomeSavings
 import Canteen.ITA.S146.RRSP
+import Canteen.ITA.S146_3.RRIFMinimum
 import Canteen.ITA.S3.CorporateYear
 import Canteen.Transactions.DebtSwap
 import Canteen.ITA.S87.Amalgamation
@@ -275,6 +276,7 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S146_01.HomeBuyersPlan, "146.01 the Home Buyers' Plan"),
    (`Canteen.ITA.S146_6.FirstHomeSavings, "146.6 the First Home Savings Account deduction"),
    (`Canteen.ITA.S146.RRSP, "146(1), (5), (5.1) the RRSP deduction"),
+   (`Canteen.ITA.S146_3.RRIFMinimum, "146.3(1), Reg. 7308 the RRIF minimum amount"),
    (`Canteen.ITA.S3.CorporateYear, "2(2), 3, 129(4) a corporation's year, to taxable income and tax")]
 
 /-! ## The dashboard -/
@@ -416,6 +418,7 @@ def actMindmap : String := Id.run do
     (2, "ss. 123.3, 129"), (3, "123.3: refundable tax on investment income"), (3, "129(1), (4): the dividend refund"),
     (2, "s. 185.1"), (3, "185.1(1): Part III.1 tax on excessive designations"), (3, "185.1(2), (3): the election"),
     (2, "s. 146"), (3, "146(1): the RRSP deduction limit"), (3, "146(5), (5.1): the deduction"),
+    (2, "s. 146.3"), (3, "146.3(1), Reg. 7308: the RRIF minimum"),
     (2, "s. 146.01"), (3, "146.01(4): the Home Buyers' Plan repayments"),
     (2, "s. 146.6"), (3, "146.6(1), (5): the FHSA limit and deduction"),
     (2, "s. 180.2"), (3, "180.2(2): OAS recovery tax"),

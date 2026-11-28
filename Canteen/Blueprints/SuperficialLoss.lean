@@ -95,6 +95,7 @@ import Canteen.ITA.S104.TrustIncome
 import Canteen.ITA.S146_01.HomeBuyersPlan
 import Canteen.ITA.S146_6.FirstHomeSavings
 import Canteen.ITA.S146.RRSP
+import Canteen.ITA.S146_3.RRIFMinimum
 import Canteen.ITA.S3.CorporateYear
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
@@ -930,6 +931,11 @@ def blueprint : Blueprint where
             "at most $40,000."
           lean := [``FirstHomeSavings.carryforward, ``FirstHomeSavings.available, ``FirstHomeSavings.step, ``FirstHomeSavings.limits,
             ``FirstHomeSavings.deductions, ``FirstHomeSavings.carryforward_le, ``FirstHomeSavings.limit_le, ``FirstHomeSavings.deducted_le] },
+        { id := "R95", kind := .law, title := "The RRIF minimum amount", citation := "ITA 146.3(1) \"minimum amount\"; ITR 7308(3), (4)"
+          statement := "A RRIF must pay out at least its value at the start of the year times a factor: 1/(90 - age) before " ++
+            "71, then the Regulation 7308 table, from 5.28% at 71 to 20% at 95 and after; nothing in the year it is set up. " ++
+            "Proven: never more than a fifth of the fund."
+          lean := [``RRIFMinimum.tableFactor, ``RRIFMinimum.minimum, ``RRIFMinimum.tableFactor_le, ``RRIFMinimum.minimum_le] },
         { id := "R70", kind := .law, title := "A corporation's year, to taxable income and tax", citation := "ITA 2(2); 3; 110.1; 111(1), (8); 112(1); 125(7); 129(4)"
           statement := "A corporation's income from active business, personal services business, property and dividends " ++
             "received, with its net taxable capital gains (a 55(2) dividend as a gain); taxable income after gifts, the " ++

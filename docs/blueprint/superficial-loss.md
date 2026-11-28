@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 134 statements:** 115 proven, 16 encoded, 3 not formalized.
+**Status of the 135 statements:** 116 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -134,16 +134,17 @@ graph TD
   n121["R91 · A trust's income paid to beneficiaries, and its tax"]:::proven
   n122["R92 · The Home Buyers' Plan"]:::proven
   n123["R93 · The First Home Savings Account deduction"]:::proven
-  n124["R70 · A corporation's year, to taxable income and tax"]:::proven
-  n125["R87 · The student loan interest credit"]:::proven
-  n126["R94 · RRSPs: the deduction, earned income, withdrawals"]:::proven
-  n127["R35 · An individual's year, to taxable income and tax"]:::proven
-  n128["R48 · The minimum tax"]:::proven
-  n129["R11 · The principal residence exemption"]:::proven
-  n130["R2 · Cost of the substituted property"]:::proven
-  n131["N1 · Inputs decided by other provisions"]:::notFormalized
-  n132["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n133["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n124["R95 · The RRIF minimum amount"]:::proven
+  n125["R70 · A corporation's year, to taxable income and tax"]:::proven
+  n126["R87 · The student loan interest credit"]:::proven
+  n127["R94 · RRSPs: the deduction, earned income, withdrawals"]:::proven
+  n128["R35 · An individual's year, to taxable income and tax"]:::proven
+  n129["R48 · The minimum tax"]:::proven
+  n130["R11 · The principal residence exemption"]:::proven
+  n131["R2 · Cost of the substituted property"]:::proven
+  n132["N1 · Inputs decided by other provisions"]:::notFormalized
+  n133["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n134["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -275,59 +276,59 @@ graph TD
   n74 --> n121
   n76 --> n121
   n88 --> n121
-  n44 --> n124
-  n45 --> n124
-  n57 --> n124
-  n60 --> n124
-  n77 --> n124
-  n78 --> n124
-  n80 --> n124
-  n101 --> n124
-  n102 --> n124
-  n103 --> n124
-  n44 --> n127
-  n45 --> n127
-  n53 --> n127
-  n55 --> n127
-  n56 --> n127
-  n58 --> n127
-  n73 --> n127
-  n74 --> n127
-  n75 --> n127
-  n76 --> n127
-  n81 --> n127
-  n82 --> n127
-  n83 --> n127
-  n84 --> n127
-  n85 --> n127
-  n87 --> n127
-  n88 --> n127
-  n89 --> n127
-  n90 --> n127
-  n91 --> n127
-  n92 --> n127
-  n93 --> n127
-  n94 --> n127
-  n97 --> n127
-  n100 --> n127
-  n125 --> n127
-  n126 --> n127
+  n44 --> n125
+  n45 --> n125
+  n57 --> n125
+  n60 --> n125
+  n77 --> n125
+  n78 --> n125
+  n80 --> n125
+  n101 --> n125
+  n102 --> n125
+  n103 --> n125
+  n44 --> n128
+  n45 --> n128
+  n53 --> n128
+  n55 --> n128
+  n56 --> n128
+  n58 --> n128
+  n73 --> n128
+  n74 --> n128
+  n75 --> n128
+  n76 --> n128
+  n81 --> n128
+  n82 --> n128
+  n83 --> n128
+  n84 --> n128
+  n85 --> n128
+  n87 --> n128
+  n88 --> n128
+  n89 --> n128
+  n90 --> n128
+  n91 --> n128
+  n92 --> n128
+  n93 --> n128
+  n94 --> n128
+  n97 --> n128
+  n100 --> n128
+  n126 --> n128
   n127 --> n128
-  n44 --> n129
-  n50 --> n129
-  n11 --> n130
-  n1 --> n131
-  n5 --> n131
-  n6 --> n131
-  n8 --> n131
-  n37 --> n131
-  n130 --> n131
-  n38 --> n131
-  n30 --> n132
-  n32 --> n133
-  n34 --> n133
-  n39 --> n133
-  n42 --> n133
+  n128 --> n129
+  n44 --> n130
+  n50 --> n130
+  n11 --> n131
+  n1 --> n132
+  n5 --> n132
+  n6 --> n132
+  n8 --> n132
+  n37 --> n132
+  n131 --> n132
+  n38 --> n132
+  n30 --> n133
+  n32 --> n134
+  n34 --> n134
+  n39 --> n134
+  n42 --> n134
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -468,16 +469,17 @@ graph TD
   n121["R91"]:::proven
   n122["R92"]:::proven
   n123["R93"]:::proven
-  n124["R70"]:::proven
-  n125["R87"]:::proven
-  n126["R94"]:::proven
-  n127["R35"]:::proven
-  n128["R48"]:::proven
-  n129["R11"]:::proven
-  n130["R2"]:::proven
-  n131["N1"]:::notFormalized
-  n132["N2"]:::notFormalized
-  n133["N4"]:::notFormalized
+  n124["R95"]:::proven
+  n125["R70"]:::proven
+  n126["R87"]:::proven
+  n127["R94"]:::proven
+  n128["R35"]:::proven
+  n129["R48"]:::proven
+  n130["R11"]:::proven
+  n131["R2"]:::proven
+  n132["N1"]:::notFormalized
+  n133["N2"]:::notFormalized
+  n134["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -689,68 +691,68 @@ graph TD
   n56 --> n121
   n74 --> n121
   n88 -.-> n121
-  n44 --> n124
-  n57 --> n124
-  n45 --> n124
-  n101 --> n124
-  n102 --> n124
-  n103 --> n124
-  n78 --> n124
-  n77 --> n124
-  n80 --> n124
-  n60 -.-> n124
-  n93 --> n127
-  n55 --> n127
-  n94 --> n127
-  n81 --> n127
-  n91 --> n127
-  n84 --> n127
-  n58 --> n127
-  n97 --> n127
-  n126 --> n127
-  n44 --> n127
-  n87 --> n127
-  n73 --> n127
-  n56 --> n127
-  n100 --> n127
-  n92 --> n127
-  n85 --> n127
-  n45 --> n127
-  n53 --> n127
-  n89 --> n127
-  n90 --> n127
-  n125 --> n127
-  n82 --> n127
-  n74 --> n127
-  n83 --> n127
-  n76 --> n127
-  n75 --> n127
-  n88 -.-> n127
+  n44 --> n125
+  n57 --> n125
+  n45 --> n125
+  n101 --> n125
+  n102 --> n125
+  n103 --> n125
+  n78 --> n125
+  n77 --> n125
+  n80 --> n125
+  n60 -.-> n125
+  n93 --> n128
   n55 --> n128
-  n127 --> n128
+  n94 --> n128
   n81 --> n128
   n91 --> n128
   n84 --> n128
   n58 --> n128
-  n45 --> n128
+  n97 --> n128
+  n127 --> n128
+  n44 --> n128
   n87 --> n128
   n73 --> n128
+  n56 --> n128
   n100 --> n128
-  n44 -.-> n129
-  n50 -.-> n129
-  n11 -.-> n130
-  n1 -.-> n131
-  n5 -.-> n131
-  n6 -.-> n131
-  n8 -.-> n131
-  n37 -.-> n131
-  n130 -.-> n131
-  n38 -.-> n131
-  n30 -.-> n132
-  n32 -.-> n133
-  n34 -.-> n133
-  n39 -.-> n133
-  n42 -.-> n133
+  n92 --> n128
+  n85 --> n128
+  n45 --> n128
+  n53 --> n128
+  n89 --> n128
+  n90 --> n128
+  n126 --> n128
+  n82 --> n128
+  n74 --> n128
+  n83 --> n128
+  n76 --> n128
+  n75 --> n128
+  n88 -.-> n128
+  n55 --> n129
+  n128 --> n129
+  n81 --> n129
+  n91 --> n129
+  n84 --> n129
+  n58 --> n129
+  n45 --> n129
+  n87 --> n129
+  n73 --> n129
+  n100 --> n129
+  n44 -.-> n130
+  n50 -.-> n130
+  n11 -.-> n131
+  n1 -.-> n132
+  n5 -.-> n132
+  n6 -.-> n132
+  n8 -.-> n132
+  n37 -.-> n132
+  n131 -.-> n132
+  n38 -.-> n132
+  n30 -.-> n133
+  n32 -.-> n134
+  n34 -.-> n134
+  n39 -.-> n134
+  n42 -.-> n134
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -1761,6 +1763,14 @@ A first-time buyer may withdraw up to $60,000 a year from an RRSP for a home, st
 Each year's FHSA limit is the lesser of the year's contributions (with last year's excess) and $8,000 plus up to $8,000 of unused room carried forward; contributions within the limits are deducted, when the holder chooses, up to $40,000 in all. Proven: a year's limit is at most $16,000, and the deductions in all at most $40,000.
 
 **Lean:** [`Canteen.ITA.FirstHomeSavings.carryforward`](../../Canteen/ITA/S146_6/FirstHomeSavings.lean#L43), [`Canteen.ITA.FirstHomeSavings.available`](../../Canteen/ITA/S146_6/FirstHomeSavings.lean#L46), [`Canteen.ITA.FirstHomeSavings.step`](../../Canteen/ITA/S146_6/FirstHomeSavings.lean#L49), [`Canteen.ITA.FirstHomeSavings.limits`](../../Canteen/ITA/S146_6/FirstHomeSavings.lean#L63), [`Canteen.ITA.FirstHomeSavings.deductions`](../../Canteen/ITA/S146_6/FirstHomeSavings.lean#L64), [`Canteen.ITA.FirstHomeSavings.carryforward_le`](../../Canteen/ITA/S146_6/FirstHomeSavings.lean#L75), [`Canteen.ITA.FirstHomeSavings.limit_le`](../../Canteen/ITA/S146_6/FirstHomeSavings.lean#L81), [`Canteen.ITA.FirstHomeSavings.deducted_le`](../../Canteen/ITA/S146_6/FirstHomeSavings.lean#L86)
+
+### R95. The RRIF minimum amount
+
+**Status:** proven · **Citation:** ITA 146.3(1) "minimum amount"; ITR 7308(3), (4)
+
+A RRIF must pay out at least its value at the start of the year times a factor: 1/(90 - age) before 71, then the Regulation 7308 table, from 5.28% at 71 to 20% at 95 and after; nothing in the year it is set up. Proven: never more than a fifth of the fund.
+
+**Lean:** [`Canteen.ITA.RRIFMinimum.tableFactor`](../../Canteen/ITA/S146_3/RRIFMinimum.lean#L23), [`Canteen.ITA.RRIFMinimum.minimum`](../../Canteen/ITA/S146_3/RRIFMinimum.lean#L45), [`Canteen.ITA.RRIFMinimum.tableFactor_le`](../../Canteen/ITA/S146_3/RRIFMinimum.lean#L62), [`Canteen.ITA.RRIFMinimum.minimum_le`](../../Canteen/ITA/S146_3/RRIFMinimum.lean#L68)
 
 ### R70. A corporation's year, to taxable income and tax
 

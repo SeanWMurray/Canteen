@@ -108,8 +108,9 @@ flowchart BT
   v99["104(6), (13), (19), (21), 122(1) a trust's income, paid out or taxed"]:::prov
   v100["146.01 the Home Buyers' Plan"]:::prov
   v101["146.6 the First Home Savings Account deduction"]:::prov
-  v102["2(2), 3, 129(4) a corporation's year, to taxable income and tax"]:::prov
-  v103["50(2) bad personal-use debts"]:::prov
+  v102["146.3(1), Reg. 7308 the RRIF minimum amount"]:::prov
+  v103["2(2), 3, 129(4) a corporation's year, to taxable income and tax"]:::prov
+  v104["50(2) bad personal-use debts"]:::prov
   v0 --> v1
   v0 --> v2
   v0 --> v3
@@ -209,13 +210,13 @@ flowchart BT
   v54 --> v99
   v31 --> v99
   v46 --> v99
-  v19 --> v102
-  v20 --> v102
-  v32 --> v102
-  v80 --> v102
-  v71 --> v102
-  v81 --> v102
-  v73 --> v102
-  v35 --> v102
+  v19 --> v103
+  v20 --> v103
+  v32 --> v103
+  v80 --> v103
+  v71 --> v103
+  v81 --> v103
+  v73 --> v103
+  v35 --> v103
   classDef prov fill:#bbdefb,stroke:#1565c0,color:#0d47a1
 ```
