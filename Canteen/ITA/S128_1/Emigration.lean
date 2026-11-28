@@ -1,9 +1,17 @@
 import Canteen.ITA.S38.CapitalGains
+import Canteen.ITA.S248.TaxableCanadianProperty
 
 /-!
-# Paragraphs 128.1(4)(b) and (c): the deemed disposition on ceasing to be resident
+# Section 128.1: becoming resident (128.1(1)(b), (c)) and ceasing to be resident (128.1(4)(b), (c))
 
-*Income Tax Act*, as consolidated to 2026-10-29 (verbatim in `statute/ITA-128.1-4-b-c.txt`):
+*Income Tax Act*, as consolidated to 2026-10-29 (verbatim in `statute/ITA-128.1-1-4-b-c.txt`):
+
+**128.1(1)(b)** A taxpayer who becomes resident in Canada is deemed to have disposed, immediately before,
+of each property owned, for its fair market value, other than, for an individual, (i) taxable Canadian
+property, (ii) inventory of a business carried on in Canada, (iii) Class 14.1 property of such a
+business, and (iv) an excluded right or interest (other than one in 128.1(10)(k)). **(c)** It is deemed
+to have acquired each such property at a cost equal to the proceeds. The disposition is made while
+non-resident, so for property other than taxable Canadian property its effect is the new cost.
 
 **128.1(4)(b)** A taxpayer who ceases to be resident in Canada is deemed to have disposed, immediately
 before, of each property owned, for proceeds equal to its fair market value, other than, for an
@@ -89,5 +97,37 @@ theorem Holding.deemed_cost (h : Holding) (f : Facts) (hd : h.deemed f = true) :
 /-- Canadian real property is never deemed disposed of on emigration. -/
 theorem Holding.real_property (h : Holding) (f : Facts) (hr : h.canadianRealProperty = true) : h.deemed f = false := by
   simp [Holding.deemed, hr]
+
+/-! ## Becoming resident (128.1(1)) -/
+
+structure Arriving where
+  description : String
+  fairMarketValue : Cents
+  adjustedCostBase : Cents
+  /-- (i): taxable Canadian property; decided by 248(1) if the property is given. -/
+  taxableCanadian : Bool := false
+  property : Option TaxableCanadianProperty.Property := none
+  /-- (ii), (iii): inventory or Class 14.1 property of a business carried on in Canada. -/
+  canadianBusiness : Bool := false
+  /-- (iv): an excluded right or interest (other than 128.1(10)(k)). -/
+  excludedRight : Bool := false
+  deriving Repr, DecidableEq, Inhabited
+
+def Arriving.isTCP (a : Arriving) : Bool := (a.property.map (·.isTCP)).getD a.taxableCanadian
+
+/-- Deemed disposed of and reacquired under 128.1(1)(b), (c). -/
+def Arriving.deemed (a : Arriving) : Bool := !(a.isTCP || a.canadianBusiness || a.excludedRight)
+
+/-- The cost on becoming resident. -/
+def Arriving.costOnArrival (a : Arriving) : Cents := if a.deemed then a.fairMarketValue else a.adjustedCostBase
+
+/-- Property brought to Canada (other than the exceptions) takes its value as its cost: a gain accrued
+abroad is never taxed in Canada. -/
+theorem Arriving.step_up (a : Arriving) (h : a.deemed = true) : a.costOnArrival = a.fairMarketValue := by
+  simp [Arriving.costOnArrival, h]
+
+/-- Taxable Canadian property keeps its cost: its gain was always taxable in Canada. -/
+theorem Arriving.tcp_keeps_cost (a : Arriving) (h : a.isTCP = true) : a.costOnArrival = a.adjustedCostBase := by
+  simp [Arriving.costOnArrival, Arriving.deemed, h]
 
 end Canteen.ITA.Emigration

@@ -1,8 +1,14 @@
-Income Tax Act, R.S.C. 1985, c. 1 (5th Supp.), the opening words of subsection 128.1(4) and paragraphs 128.1(4)(b) and (c)
+Income Tax Act, R.S.C. 1985, c. 1 (5th Supp.), the opening words of subsections 128.1(1) and (4), and paragraphs 128.1(1)(b) and (c) and 128.1(4)(b) and (c)
 
 Source: Justice Canada consolidated Acts (XML), https://github.com/justicecanada/laws-lois-xml, file eng/acts/I-3.3.xml
 Current to: 2026-10-29. Last amended: 2026-06-18.
 Extracted verbatim; whitespace normalized; each provision on one line.
+
+128.1(1) For the purposes of this Act, where at a particular time a taxpayer becomes resident in Canada,
+
+128.1(1)(b) the taxpayer is deemed to have disposed, at the time (in this subsection referred to as the “time of disposition”) that is immediately before the time that is immediately before the particular time, of each property owned by the taxpayer, other than, if the taxpayer is an individual,(i)property that is a taxable Canadian property,(ii)property that is described in the inventory of a business carried on by the taxpayer in Canada at the time of disposition,(iii)property included in Class 14.1 of Schedule II to the Income Tax Regulations, in respect of a business carried on by the taxpayer in Canada at the time of disposition, and(iv)an excluded right or interest of the taxpayer, other than an interest described in paragraph (k) of the definition excluded right or interest in subsection (10),(v)[Repealed, 2001, c. 17, s. 123]for proceeds equal to its fair market value at the time of disposition;
+
+128.1(1)(c) the taxpayer shall be deemed to have acquired at the particular time each property deemed by paragraph 128.1(1)(b) to have been disposed of by the taxpayer, at a cost equal to the proceeds of disposition of the property;
 
 128.1(4) For the purposes of this Act, where at a particular time a taxpayer ceases to be resident in Canada,
 

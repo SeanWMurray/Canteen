@@ -127,7 +127,7 @@ graph TD
   n114["R83 · A non-resident's rent: Part XIII or the 216 election"]:::proven
   n115["R85 · Taxable Canadian property"]:::proven
   n116["R84 · Buying from a non-resident"]:::proven
-  n117["R86 · Departure tax"]:::proven
+  n117["R86 · Becoming and ceasing to be resident"]:::proven
   n118["R70 · A corporation's year, to taxable income and tax"]:::proven
   n119["R35 · An individual's year, to taxable income and tax"]:::proven
   n120["R48 · The minimum tax"]:::proven
@@ -260,6 +260,7 @@ graph TD
   n88 --> n114
   n115 --> n116
   n44 --> n117
+  n115 --> n117
   n44 --> n118
   n45 --> n118
   n57 --> n118
@@ -656,6 +657,7 @@ graph TD
   n74 --> n114
   n88 -.-> n114
   n115 --> n116
+  n115 --> n117
   n44 -.-> n117
   n44 --> n118
   n57 --> n118
@@ -1672,13 +1674,13 @@ A purchaser of taxable Canadian property from a non-resident must remit 25% of t
 
 **Lean:** [`Canteen.ITA.Purchaser.Purchase.rate`](../../Canteen/ITA/S116/Purchaser.lean#L61), [`Canteen.ITA.Purchaser.Purchase.notTCP`](../../Canteen/ITA/S116/Purchaser.lean#L63), [`Canteen.ITA.Purchaser.Purchase.excepted`](../../Canteen/ITA/S116/Purchaser.lean#L66), [`Canteen.ITA.Purchaser.Purchase.liability`](../../Canteen/ITA/S116/Purchaser.lean#L69), [`Canteen.ITA.Purchaser.Purchase.liability_le`](../../Canteen/ITA/S116/Purchaser.lean#L88), [`Canteen.ITA.Purchaser.Purchase.full_certificate`](../../Canteen/ITA/S116/Purchaser.lean#L95)
 
-### R86. Departure tax
+### R86. Becoming and ceasing to be resident
 
-**Status:** proven · **Citation:** ITA 128.1(4)(b), (c) · **Uses:** R8
+**Status:** proven · **Citation:** ITA 128.1(1)(b), (c); 128.1(4)(b), (c) · **Uses:** R8, R85
 
-An individual who leaves Canada is deemed to have sold each property at its value and bought it back, except Canadian real and resource property, property of a business in Canada, excluded rights such as pensions and RRSPs, property brought to Canada by a short-term resident, and property elected on returning; the gains and losses are capital gains and losses of the year. Proven: excepted property keeps its cost, property deemed disposed of costs its value, and Canadian real property is never deemed disposed of.
+An individual who leaves Canada is deemed to have sold each property at its value and bought it back, except Canadian real and resource property, property of a business in Canada, excluded rights such as pensions and RRSPs, property brought to Canada by a short-term resident, and property elected on returning; the gains and losses are capital gains and losses of the year. An individual who arrives takes each property (other than taxable Canadian property, Canadian business property and excluded rights) at its value. Proven: excepted property keeps its cost, property deemed disposed of costs its value, Canadian real property is never deemed disposed of on leaving, and on arriving foreign property is stepped up while taxable Canadian property is not.
 
-**Lean:** [`Canteen.ITA.Emigration.Holding.deemed`](../../Canteen/ITA/S128_1/Emigration.lean#L53), [`Canteen.ITA.Emigration.dispositions`](../../Canteen/ITA/S128_1/Emigration.lean#L57), [`Canteen.ITA.Emigration.Holding.costAfter`](../../Canteen/ITA/S128_1/Emigration.lean#L62), [`Canteen.ITA.Emigration.netTaxableGains`](../../Canteen/ITA/S128_1/Emigration.lean#L65), [`Canteen.ITA.Emigration.Holding.excepted_keeps_cost`](../../Canteen/ITA/S128_1/Emigration.lean#L81), [`Canteen.ITA.Emigration.Holding.deemed_cost`](../../Canteen/ITA/S128_1/Emigration.lean#L85), [`Canteen.ITA.Emigration.Holding.real_property`](../../Canteen/ITA/S128_1/Emigration.lean#L89)
+**Lean:** [`Canteen.ITA.Emigration.Holding.deemed`](../../Canteen/ITA/S128_1/Emigration.lean#L61), [`Canteen.ITA.Emigration.dispositions`](../../Canteen/ITA/S128_1/Emigration.lean#L65), [`Canteen.ITA.Emigration.Holding.costAfter`](../../Canteen/ITA/S128_1/Emigration.lean#L70), [`Canteen.ITA.Emigration.netTaxableGains`](../../Canteen/ITA/S128_1/Emigration.lean#L73), [`Canteen.ITA.Emigration.Holding.excepted_keeps_cost`](../../Canteen/ITA/S128_1/Emigration.lean#L89), [`Canteen.ITA.Emigration.Holding.deemed_cost`](../../Canteen/ITA/S128_1/Emigration.lean#L93), [`Canteen.ITA.Emigration.Holding.real_property`](../../Canteen/ITA/S128_1/Emigration.lean#L97), [`Canteen.ITA.Emigration.Arriving.deemed`](../../Canteen/ITA/S128_1/Emigration.lean#L118), [`Canteen.ITA.Emigration.Arriving.costOnArrival`](../../Canteen/ITA/S128_1/Emigration.lean#L121), [`Canteen.ITA.Emigration.Arriving.step_up`](../../Canteen/ITA/S128_1/Emigration.lean#L124), [`Canteen.ITA.Emigration.Arriving.tcp_keeps_cost`](../../Canteen/ITA/S128_1/Emigration.lean#L129)
 
 ### R70. A corporation's year, to taxable income and tax
 

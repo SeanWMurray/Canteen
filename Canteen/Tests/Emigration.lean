@@ -28,4 +28,13 @@ example : netTaxableGains { holdings := [{ portfolio with ownedOnArrivalOrInheri
 -- Resident 72 months: it is.
 example : netTaxableGains { holdings := [{ portfolio with ownedOnArrivalOrInherited := true }], monthsResident := 72 } = 2 * 10000000 := by decide
 
+-- 128.1(1): arriving from Australia with shares of an Australian company bought for $100,000, now
+-- worth $300,000: their cost in Canada is $300,000.
+def ausShares : Arriving := { description := "shares of an Australian company", fairMarketValue := 30000000, adjustedCostBase := 10000000 }
+example : ausShares.costOnArrival = 30000000 := by decide
+-- A Toronto rental property already owned (taxable Canadian property): keeps its cost.
+example : ({ description := "a Toronto rental", fairMarketValue := 80000000, adjustedCostBase := 50000000, property := some (.realProperty true) } : Arriving).costOnArrival = 50000000 := by decide
+-- An excluded right (a foreign pension, say): keeps its cost.
+example : ({ ausShares with excludedRight := true } : Arriving).costOnArrival = 10000000 := by decide
+
 end Canteen.Tests.Emigration
