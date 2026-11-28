@@ -955,12 +955,12 @@ def blueprint : Blueprint where
           lean := [``StudentLoanInterest.availableTotal, ``StudentLoanInterest.claimed, ``StudentLoanInterest.credit,
             ``StudentLoanInterest.carriedForward, ``StudentLoanInterest.claimed_le, ``StudentLoanInterest.claimed_plus_carried,
             ``StudentLoanInterest.judgment_excluded] },
-        { id := "R94", kind := .law, title := "The RRSP deduction", citation := "ITA 146(1), (5), (5.1)"
+        { id := "R94", kind := .law, title := "The RRSP deduction, and earned income", citation := "ITA 146(1), (5), (5.1)"
           statement := "The RRSP deduction limit is the unused room, plus the lesser of the year's dollar limit and 18% of last " ++
             "year's earned income less the pension adjustment, plus the PAR, less the PSPA; premiums to one's own and to " ++
             "spousal plans are deducted within it as claimed, the rest carried forward. Proven: never more than the " ++
             "premiums, nor than the limit."
-          lean := [``RRSP.newRoom, ``RRSP.limit, ``RRSP.available, ``RRSP.deduction, ``RRSP.unusedAtEnd, ``RRSP.undeducted,
+          lean := [``RRSP.EarnedIncome.amount, ``RRSP.nextRoom, ``RRSP.no_earned_income, ``RRSP.newRoom, ``RRSP.limit, ``RRSP.available, ``RRSP.deduction, ``RRSP.unusedAtEnd, ``RRSP.undeducted,
             ``RRSP.deduction_le_premiums, ``RRSP.deduction_le_limit] },
         { id := "R35", kind := .law, title := "An individual's year, to taxable income and tax", citation := "ITA 2(2); 3; 111(1)(b); 110.6; 117(2)"
           statement := "Income from sources (employment and business, dividends with the gross-up, recapture, attributed " ++
@@ -968,7 +968,7 @@ def blueprint : Blueprint where
             "loss deduction and the capital gains deduction (which the former reduces). Proven: taxable income never exceeds " ++
             "income, and the capital gains deduction never exceeds the net taxable capital gains."
           lean := [``IndividualYear.incomeFacts, ``IndividualYear.taxableIncome, ``IndividualYear.capitalGainsDeduction,
-            ``IndividualYear.federalTax, ``IndividualYear.personalCredit, ``IndividualYear.donationCredit, ``IndividualYear.interestDeduction, ``IndividualYear.medicalCredit, ``IndividualYear.disabilityCredit, ``IndividualYear.ageAndPensionCredits, ``IndividualYear.oasRecovery, ``IndividualYear.employmentCredits, ``IndividualYear.amounts, ``IndividualYear.smallCredits, ``IndividualYear.tuitionCredits, ``IndividualYear.supportDeducted, ``IndividualYear.childCareDeduction, ``IndividualYear.movingDeduction, ``IndividualYear.standbyBenefits, ``IndividualYear.shareholderBenefitIncome, ``IndividualYear.stockOptionDeduction, ``IndividualYear.studentLoanCredit, ``IndividualYear.rrspDeduction,
+            ``IndividualYear.federalTax, ``IndividualYear.personalCredit, ``IndividualYear.donationCredit, ``IndividualYear.interestDeduction, ``IndividualYear.medicalCredit, ``IndividualYear.disabilityCredit, ``IndividualYear.ageAndPensionCredits, ``IndividualYear.oasRecovery, ``IndividualYear.employmentCredits, ``IndividualYear.amounts, ``IndividualYear.smallCredits, ``IndividualYear.tuitionCredits, ``IndividualYear.supportDeducted, ``IndividualYear.childCareDeduction, ``IndividualYear.movingDeduction, ``IndividualYear.standbyBenefits, ``IndividualYear.shareholderBenefitIncome, ``IndividualYear.stockOptionDeduction, ``IndividualYear.studentLoanCredit, ``IndividualYear.rrspDeduction, ``IndividualYear.earnedIncome,
             ``IndividualYear.taxable_le_income, ``IndividualYear.capital_gains_deduction_le],
           uses := ["R8", "R9", "R19", "R21", "R22", "R24", "R40", "R41", "R42", "R43", "R49", "R50", "R51", "R52", "R53", "R55", "R56", "R57", "R58", "R59", "R60", "R61", "R62", "R65", "R68", "R87", "R94"] },
         { id := "R48", kind := .law, title := "The minimum tax", citation := "ITA 127.5; 127.51; 127.52(1); 127.531; 120.2"

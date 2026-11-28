@@ -18,8 +18,11 @@ deduction. **146(5.1)** The same for premiums to a spousal plan, within the limi
 deduction.
 
 The RRSP dollar limit (the money purchase limit of the preceding year, 147.1(1), indexed to the
-average wage, not the CPI) and the earned income, pension adjustment, PAR and PSPA are given, as on a
-notice of assessment. The excluded portions of premiums (146(5)(a)(i) to (iv.1)) and the 204.2
+average wage, not the CPI), the pension adjustment, PAR and PSPA are given, as on a notice of
+assessment; **earned income** (146(1)) is computed for a resident from its parts: employment income
+(without 8(1)(c), (m), (m.2)), active business income, rent and one's own royalties, support received,
+56(1)(c.2), (g), (n) research, (o), (r)(v) and CPP disability, less business and rental losses and
+60(b) and (c.2) deductions. The non-resident parts ((c), (d), (g)) are not encoded. The excluded portions of premiums (146(5)(a)(i) to (iv.1)) and the 204.2
 overcontribution tax are not encoded.
 -/
 
@@ -67,6 +70,32 @@ def explain (f : Facts) : Finding :=
     ⟨s!"Premiums of {c (f.premiums + f.spousalPremiums)}; {c (deduction f)} deducted, {c (undeducted f)} carried forward; unused room at " ++
       s!"the end of the year {unusedAtEnd f} cents.", "ITA 146(5), (5.1)"⟩], []⟩
 
+/-! ## Earned income (146(1)), for a resident -/
+
+/-- 146(1) "earned income", for a taxpayer resident throughout the year. -/
+structure EarnedIncome where
+  /-- (a)(i): employment income, without the 8(1)(c), (m) and (m.2) deductions. -/
+  employment : Cents := 0
+  /-- (a)(ii): business income, alone or as an active partner. -/
+  business : Cents := 0
+  /-- (a)(iii): rental income from real property, and royalties on one's own work or invention. -/
+  rentalAndRoyalties : Cents := 0
+  /-- (b): support received (56(1)(b)) and 56(1)(c.2), (g), (o), (r)(v) amounts; (b.01) research grants;
+  (b.1) CPP or QPP disability. -/
+  supportAndOther : Cents := 0
+  /-- (e): business and rental losses; (f): support deductible under 60(b), and 60(c.2). -/
+  losses : Cents := 0
+  supportPaid : Cents := 0
+  deriving Repr, DecidableEq, Inhabited
+
+def EarnedIncome.amount (e : EarnedIncome) : Cents :=
+  (e.employment + e.business + e.rentalAndRoyalties + e.supportAndOther) - (e.losses + e.supportPaid)
+
+/-- Next year's B: the lesser of next year's dollar limit and 18% of this year's earned income, less this
+year's pension adjustment. -/
+def nextRoom (e : EarnedIncome) (nextDollarLimit pensionAdjustment : Cents) : Cents :=
+  min nextDollarLimit (e.amount * 18 / 100) - pensionAdjustment
+
 /-! ## Truths -/
 
 theorem deduction_le_premiums (f : Facts) : deduction f ≤ f.premiums + f.spousalPremiums :=
@@ -75,5 +104,8 @@ theorem deduction_le_premiums (f : Facts) : deduction f ≤ f.premiums + f.spous
 /-- The deduction is within the RRSP deduction limit (nil when the limit is negative). -/
 theorem deduction_le_limit (f : Facts) : deduction f ≤ (limit f).toNat :=
   Nat.le_trans (Nat.min_le_right _ _) (Nat.min_le_right _ _)
+
+/-- Pension and investment income (other than rent and one's own royalties) are not earned income. -/
+theorem no_earned_income : ({} : EarnedIncome).amount = 0 := rfl
 
 end Canteen.ITA.RRSP

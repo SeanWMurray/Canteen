@@ -226,6 +226,12 @@ def otherSources (f : Facts) : Cents :=
 /-- 62(1). -/
 def movingDeduction (f : Facts) : Cents := (f.moving.map MovingExpenses.deduction).getD 0
 
+/-- 146(1) "earned income", from the year's components (employment and business income taken together,
+business losses, support received and paid; rent is not separated, nor are 8(1)(m) contributions). -/
+def earnedIncome (f : Facts) : RRSP.EarnedIncome :=
+  { employment := f.employmentAndBusiness + standbyBenefits f + stockOptionBenefits f, supportAndOther := supportIncluded f,
+    losses := f.businessLosses, supportPaid := supportDeducted f }
+
 /-- 146(5), (5.1): the RRSP deduction. -/
 def rrspDeduction (f : Facts) : Cents := (f.rrsp.map RRSP.deduction).getD 0
 

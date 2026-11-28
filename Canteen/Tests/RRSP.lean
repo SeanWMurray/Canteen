@@ -33,4 +33,13 @@ example : IndividualYear.rrspDeduction year = 2000000 ∧ IndividualYear.income 
 -- It saves tax at the marginal rate: 20.5% of $20,000, $4,100.
 example : IndividualYear.federalTax { year with rrsp := none } - IndividualYear.federalTax year = 410000 := by decide
 
+-- Earned income: $100,000 of salary and $12,000 of net rent, less a $2,000 business loss: $110,000;
+-- next year's room at a $33,000 dollar limit: 18%, $19,800.
+def earned : EarnedIncome := { employment := 10000000, rentalAndRoyalties := 1200000, losses := 200000 }
+example : earned.amount = 11000000 ∧ nextRoom earned 3300000 0 = 1980000 := by decide
+-- Support paid comes off; support received counts.
+example : ({ earned with supportPaid := 1000000 } : EarnedIncome).amount = 10000000 := by decide
+-- From an individual's year: $100,000 of salary.
+example : (IndividualYear.earnedIncome year).amount = 10000000 := by decide
+
 end Canteen.Tests.RRSP
