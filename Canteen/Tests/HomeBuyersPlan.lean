@@ -24,4 +24,8 @@ example : (schedule 6000000 0 (List.replicate 15 0)).sum = 6000000 := by decide
 -- In the fifteenth year all that remains is required.
 example : required 123456 14 = 123456 := by decide
 
+-- Emigrating with $40,000 left, repaying $10,000 within 60 days: $30,000 included. Dying with $40,000
+-- left: all of it, less the year's designation.
+example : onEmigration 4000000 1000000 = 3000000 ∧ onDeath 4000000 0 = 4000000 := by decide
+
 end Canteen.Tests.HomeBuyersPlan

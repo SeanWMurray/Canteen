@@ -4,7 +4,7 @@ import Canteen.Core.Finding
 /-!
 # Section 146.01: the Home Buyers' Plan
 
-*Income Tax Act*, as consolidated to 2026-10-29 (verbatim in `statute/ITA-146.01-1-3-4.txt`):
+*Income Tax Act*, as consolidated to 2026-10-29 (verbatim in `statute/ITA-146.01-1-3-6.txt`):
 
 **146.01(1) "regular eligible amount"** and **"supplemental eligible amount"**: amounts withdrawn from an
 RRSP to acquire a qualifying home, among the conditions (h) or (g) that the year's eligible amounts not
@@ -24,7 +24,11 @@ income.
 The repayments designated are given year by year from the first year of repayment (the year after the
 completion date, determined under 146.01(2); the deferral for 2022 to 2025 withdrawals is the caller's).
 The other conditions of an eligible amount (first-time buyer, qualifying home, written agreement) are
-facts. 146.01(5) (death or emigration) and (4.1) are not encoded.
+facts. (4.1) and the surviving spouse's election (146.01(7)) are not encoded.
+
+**146.01(5)** On ceasing to be resident, the eligible amounts less repayments designated for amounts paid
+within 60 days after (and before filing), and less earlier inclusions, are included. **146.01(6)** On
+death, the HBP balance immediately before less the year's designation is included.
 -/
 
 namespace Canteen.ITA.HomeBuyersPlan
@@ -53,6 +57,12 @@ def explain (balance : Cents) (yearsSince : Nat) (designated : Cents) : Finding 
     ⟨s!"The HBP balance is {c balance}; the year's required repayment is {c (required balance yearsSince)} (the balance over " ++
       s!"{15 - min 14 yearsSince} years); {c designated} was designated as repaid, so {c (inclusion balance yearsSince designated)} " ++
       "is included in income.", "ITA 146.01(3), (4)"⟩], []⟩
+
+/-- 146.01(5): on ceasing to be resident, the balance less what is repaid within 60 days after. -/
+def onEmigration (balance repaidWithin60Days : Cents) : Cents := balance - repaidWithin60Days
+
+/-- 146.01(6): on death, the balance less the year's designation. -/
+def onDeath (balance designated : Cents) : Cents := balance - designated
 
 /-! ## Truths -/
 

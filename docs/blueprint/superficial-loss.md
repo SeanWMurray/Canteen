@@ -1742,11 +1742,11 @@ A trust deducts the income that became payable to beneficiaries (paid, or enforc
 
 ### R92. The Home Buyers' Plan
 
-**Status:** proven · **Citation:** ITA 146.01(1), (3), (4)
+**Status:** proven · **Citation:** ITA 146.01(1), (3) to (6)
 
-A first-time buyer may withdraw up to $60,000 a year from an RRSP for a home, starting from a nil balance, and repays it over 15 years: each year's requirement is the balance over the years left, and what is not repaid is income. Proven: repaying what is required includes nothing, and in the fifteenth year the whole balance is required.
+A first-time buyer may withdraw up to $60,000 a year from an RRSP for a home, starting from a nil balance, and repays it over 15 years: each year's requirement is the balance over the years left, and what is not repaid is income; the balance is income on emigration (less what is repaid within 60 days) or death. Proven: repaying what is required includes nothing, and in the fifteenth year the whole balance is required.
 
-**Lean:** [`Canteen.ITA.HomeBuyersPlan.withinLimit`](../../Canteen/ITA/S146_01/HomeBuyersPlan.lean#L32), [`Canteen.ITA.HomeBuyersPlan.required`](../../Canteen/ITA/S146_01/HomeBuyersPlan.lean#L40), [`Canteen.ITA.HomeBuyersPlan.inclusion`](../../Canteen/ITA/S146_01/HomeBuyersPlan.lean#L35), [`Canteen.ITA.HomeBuyersPlan.schedule`](../../Canteen/ITA/S146_01/HomeBuyersPlan.lean#L43), [`Canteen.ITA.HomeBuyersPlan.repaid`](../../Canteen/ITA/S146_01/HomeBuyersPlan.lean#L59), [`Canteen.ITA.HomeBuyersPlan.last_year`](../../Canteen/ITA/S146_01/HomeBuyersPlan.lean#L63)
+**Lean:** [`Canteen.ITA.HomeBuyersPlan.withinLimit`](../../Canteen/ITA/S146_01/HomeBuyersPlan.lean#L36), [`Canteen.ITA.HomeBuyersPlan.required`](../../Canteen/ITA/S146_01/HomeBuyersPlan.lean#L44), [`Canteen.ITA.HomeBuyersPlan.inclusion`](../../Canteen/ITA/S146_01/HomeBuyersPlan.lean#L39), [`Canteen.ITA.HomeBuyersPlan.schedule`](../../Canteen/ITA/S146_01/HomeBuyersPlan.lean#L47), [`Canteen.ITA.HomeBuyersPlan.onEmigration`](../../Canteen/ITA/S146_01/HomeBuyersPlan.lean#L61), [`Canteen.ITA.HomeBuyersPlan.onDeath`](../../Canteen/ITA/S146_01/HomeBuyersPlan.lean#L64), [`Canteen.ITA.HomeBuyersPlan.repaid`](../../Canteen/ITA/S146_01/HomeBuyersPlan.lean#L69), [`Canteen.ITA.HomeBuyersPlan.last_year`](../../Canteen/ITA/S146_01/HomeBuyersPlan.lean#L73)
 
 ### R70. A corporation's year, to taxable income and tax
 
