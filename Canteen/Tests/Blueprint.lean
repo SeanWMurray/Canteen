@@ -190,6 +190,7 @@ R88: proven
 R89: proven
 R90: proven
 R91: proven
+R92: proven
 R70: proven
 R87: proven
 R35: proven

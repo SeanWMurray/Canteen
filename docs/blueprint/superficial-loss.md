@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 131 statements:** 112 proven, 16 encoded, 3 not formalized.
+**Status of the 132 statements:** 113 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -132,15 +132,16 @@ graph TD
   n119["R89 · Distributions of trust property"]:::proven
   n120["R90 · The 21-year rule"]:::proven
   n121["R91 · A trust's income paid to beneficiaries, and its tax"]:::proven
-  n122["R70 · A corporation's year, to taxable income and tax"]:::proven
-  n123["R87 · The student loan interest credit"]:::proven
-  n124["R35 · An individual's year, to taxable income and tax"]:::proven
-  n125["R48 · The minimum tax"]:::proven
-  n126["R11 · The principal residence exemption"]:::proven
-  n127["R2 · Cost of the substituted property"]:::proven
-  n128["N1 · Inputs decided by other provisions"]:::notFormalized
-  n129["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n130["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n122["R92 · The Home Buyers' Plan"]:::proven
+  n123["R70 · A corporation's year, to taxable income and tax"]:::proven
+  n124["R87 · The student loan interest credit"]:::proven
+  n125["R35 · An individual's year, to taxable income and tax"]:::proven
+  n126["R48 · The minimum tax"]:::proven
+  n127["R11 · The principal residence exemption"]:::proven
+  n128["R2 · Cost of the substituted property"]:::proven
+  n129["N1 · Inputs decided by other provisions"]:::notFormalized
+  n130["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n131["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -272,58 +273,58 @@ graph TD
   n74 --> n121
   n76 --> n121
   n88 --> n121
-  n44 --> n122
-  n45 --> n122
-  n57 --> n122
-  n60 --> n122
-  n77 --> n122
-  n78 --> n122
-  n80 --> n122
-  n101 --> n122
-  n102 --> n122
-  n103 --> n122
-  n44 --> n124
-  n45 --> n124
-  n53 --> n124
-  n55 --> n124
-  n56 --> n124
-  n58 --> n124
-  n73 --> n124
-  n74 --> n124
-  n75 --> n124
-  n76 --> n124
-  n81 --> n124
-  n82 --> n124
-  n83 --> n124
-  n84 --> n124
-  n85 --> n124
-  n87 --> n124
-  n88 --> n124
-  n89 --> n124
-  n90 --> n124
-  n91 --> n124
-  n92 --> n124
-  n93 --> n124
-  n94 --> n124
-  n97 --> n124
-  n100 --> n124
-  n123 --> n124
+  n44 --> n123
+  n45 --> n123
+  n57 --> n123
+  n60 --> n123
+  n77 --> n123
+  n78 --> n123
+  n80 --> n123
+  n101 --> n123
+  n102 --> n123
+  n103 --> n123
+  n44 --> n125
+  n45 --> n125
+  n53 --> n125
+  n55 --> n125
+  n56 --> n125
+  n58 --> n125
+  n73 --> n125
+  n74 --> n125
+  n75 --> n125
+  n76 --> n125
+  n81 --> n125
+  n82 --> n125
+  n83 --> n125
+  n84 --> n125
+  n85 --> n125
+  n87 --> n125
+  n88 --> n125
+  n89 --> n125
+  n90 --> n125
+  n91 --> n125
+  n92 --> n125
+  n93 --> n125
+  n94 --> n125
+  n97 --> n125
+  n100 --> n125
   n124 --> n125
-  n44 --> n126
-  n50 --> n126
-  n11 --> n127
-  n1 --> n128
-  n5 --> n128
-  n6 --> n128
-  n8 --> n128
-  n37 --> n128
-  n127 --> n128
-  n38 --> n128
-  n30 --> n129
-  n32 --> n130
-  n34 --> n130
-  n39 --> n130
-  n42 --> n130
+  n125 --> n126
+  n44 --> n127
+  n50 --> n127
+  n11 --> n128
+  n1 --> n129
+  n5 --> n129
+  n6 --> n129
+  n8 --> n129
+  n37 --> n129
+  n128 --> n129
+  n38 --> n129
+  n30 --> n130
+  n32 --> n131
+  n34 --> n131
+  n39 --> n131
+  n42 --> n131
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -462,15 +463,16 @@ graph TD
   n119["R89"]:::proven
   n120["R90"]:::proven
   n121["R91"]:::proven
-  n122["R70"]:::proven
-  n123["R87"]:::proven
-  n124["R35"]:::proven
-  n125["R48"]:::proven
-  n126["R11"]:::proven
-  n127["R2"]:::proven
-  n128["N1"]:::notFormalized
-  n129["N2"]:::notFormalized
-  n130["N4"]:::notFormalized
+  n122["R92"]:::proven
+  n123["R70"]:::proven
+  n124["R87"]:::proven
+  n125["R35"]:::proven
+  n126["R48"]:::proven
+  n127["R11"]:::proven
+  n128["R2"]:::proven
+  n129["N1"]:::notFormalized
+  n130["N2"]:::notFormalized
+  n131["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -682,67 +684,67 @@ graph TD
   n56 --> n121
   n74 --> n121
   n88 -.-> n121
-  n44 --> n122
-  n57 --> n122
-  n45 --> n122
-  n101 --> n122
-  n102 --> n122
-  n103 --> n122
-  n78 --> n122
-  n77 --> n122
-  n80 --> n122
-  n60 -.-> n122
-  n93 --> n124
-  n55 --> n124
-  n94 --> n124
-  n81 --> n124
-  n91 --> n124
-  n84 --> n124
-  n58 --> n124
-  n97 --> n124
-  n44 --> n124
-  n87 --> n124
-  n73 --> n124
-  n56 --> n124
-  n100 --> n124
-  n92 --> n124
-  n85 --> n124
-  n45 --> n124
-  n53 --> n124
-  n89 --> n124
-  n90 --> n124
-  n123 --> n124
-  n82 --> n124
-  n74 --> n124
-  n83 --> n124
-  n76 --> n124
-  n75 --> n124
-  n88 -.-> n124
+  n44 --> n123
+  n57 --> n123
+  n45 --> n123
+  n101 --> n123
+  n102 --> n123
+  n103 --> n123
+  n78 --> n123
+  n77 --> n123
+  n80 --> n123
+  n60 -.-> n123
+  n93 --> n125
   n55 --> n125
-  n124 --> n125
+  n94 --> n125
   n81 --> n125
   n91 --> n125
   n84 --> n125
   n58 --> n125
-  n45 --> n125
+  n97 --> n125
+  n44 --> n125
   n87 --> n125
   n73 --> n125
+  n56 --> n125
   n100 --> n125
-  n44 -.-> n126
-  n50 -.-> n126
-  n11 -.-> n127
-  n1 -.-> n128
-  n5 -.-> n128
-  n6 -.-> n128
-  n8 -.-> n128
-  n37 -.-> n128
-  n127 -.-> n128
-  n38 -.-> n128
-  n30 -.-> n129
-  n32 -.-> n130
-  n34 -.-> n130
-  n39 -.-> n130
-  n42 -.-> n130
+  n92 --> n125
+  n85 --> n125
+  n45 --> n125
+  n53 --> n125
+  n89 --> n125
+  n90 --> n125
+  n124 --> n125
+  n82 --> n125
+  n74 --> n125
+  n83 --> n125
+  n76 --> n125
+  n75 --> n125
+  n88 -.-> n125
+  n55 --> n126
+  n125 --> n126
+  n81 --> n126
+  n91 --> n126
+  n84 --> n126
+  n58 --> n126
+  n45 --> n126
+  n87 --> n126
+  n73 --> n126
+  n100 --> n126
+  n44 -.-> n127
+  n50 -.-> n127
+  n11 -.-> n128
+  n1 -.-> n129
+  n5 -.-> n129
+  n6 -.-> n129
+  n8 -.-> n129
+  n37 -.-> n129
+  n128 -.-> n129
+  n38 -.-> n129
+  n30 -.-> n130
+  n32 -.-> n131
+  n34 -.-> n131
+  n39 -.-> n131
+  n42 -.-> n131
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -1737,6 +1739,14 @@ A trust is deemed to sell its capital property (other than depreciable property)
 A trust deducts the income that became payable to beneficiaries (paid, or enforceable, in the year), and they include it; dividends and capital gains designated for a beneficiary keep their character, within the trust's totals and each beneficiary's share. What the trust keeps is taxed at 33%, or at the graduated rates for a graduated rate estate or qualified disability trust, with the gross-up and dividend tax credit on the dividends it keeps, the donation credit (every dollar over $200 at 33% for a flat-rate trust) and the recovery of earlier minimum tax. Proven: the deduction never exceeds the trust's income, the dividends designated never exceed what the trust received, and a trust that pays it all out pays no tax.
 
 **Lean:** [`Canteen.ITA.TrustIncome.income`](../../Canteen/ITA/S104/TrustIncome.lean#L77), [`Canteen.ITA.TrustIncome.deduction`](../../Canteen/ITA/S104/TrustIncome.lean#L81), [`Canteen.ITA.TrustIncome.retained`](../../Canteen/ITA/S104/TrustIncome.lean#L84), [`Canteen.ITA.TrustIncome.dividendsTo`](../../Canteen/ITA/S104/TrustIncome.lean#L101), [`Canteen.ITA.TrustIncome.gainsTo`](../../Canteen/ITA/S104/TrustIncome.lean#L102), [`Canteen.ITA.TrustIncome.shares`](../../Canteen/ITA/S104/TrustIncome.lean#L154), [`Canteen.ITA.TrustIncome.keptDividends`](../../Canteen/ITA/S104/TrustIncome.lean#L105), [`Canteen.ITA.TrustIncome.grossUp`](../../Canteen/ITA/S104/TrustIncome.lean#L112), [`Canteen.ITA.TrustIncome.amountTaxable`](../../Canteen/ITA/S104/TrustIncome.lean#L115), [`Canteen.ITA.TrustIncome.donationCredit`](../../Canteen/ITA/S104/TrustIncome.lean#L126), [`Canteen.ITA.TrustIncome.minimumTaxRecovery`](../../Canteen/ITA/S104/TrustIncome.lean#L137), [`Canteen.ITA.TrustIncome.tax`](../../Canteen/ITA/S104/TrustIncome.lean#L142), [`Canteen.ITA.TrustIncome.deduction_le_income`](../../Canteen/ITA/S104/TrustIncome.lean#L169), [`Canteen.ITA.TrustIncome.allowDividends_le`](../../Canteen/ITA/S104/TrustIncome.lean#L173), [`Canteen.ITA.TrustIncome.all_out`](../../Canteen/ITA/S104/TrustIncome.lean#L181)
+
+### R92. The Home Buyers' Plan
+
+**Status:** proven · **Citation:** ITA 146.01(1), (3), (4)
+
+A first-time buyer may withdraw up to $60,000 a year from an RRSP for a home, starting from a nil balance, and repays it over 15 years: each year's requirement is the balance over the years left, and what is not repaid is income. Proven: repaying what is required includes nothing, and in the fifteenth year the whole balance is required.
+
+**Lean:** [`Canteen.ITA.HomeBuyersPlan.withinLimit`](../../Canteen/ITA/S146_01/HomeBuyersPlan.lean#L32), [`Canteen.ITA.HomeBuyersPlan.required`](../../Canteen/ITA/S146_01/HomeBuyersPlan.lean#L40), [`Canteen.ITA.HomeBuyersPlan.inclusion`](../../Canteen/ITA/S146_01/HomeBuyersPlan.lean#L35), [`Canteen.ITA.HomeBuyersPlan.schedule`](../../Canteen/ITA/S146_01/HomeBuyersPlan.lean#L43), [`Canteen.ITA.HomeBuyersPlan.repaid`](../../Canteen/ITA/S146_01/HomeBuyersPlan.lean#L59), [`Canteen.ITA.HomeBuyersPlan.last_year`](../../Canteen/ITA/S146_01/HomeBuyersPlan.lean#L63)
 
 ### R70. A corporation's year, to taxable income and tax
 

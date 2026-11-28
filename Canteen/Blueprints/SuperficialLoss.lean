@@ -92,6 +92,7 @@ import Canteen.ITA.S75.ReversionaryTrust
 import Canteen.ITA.S107.TrustDistribution
 import Canteen.ITA.S104.TwentyOneYear
 import Canteen.ITA.S104.TrustIncome
+import Canteen.ITA.S146_01.HomeBuyersPlan
 import Canteen.ITA.S3.CorporateYear
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
@@ -913,6 +914,13 @@ def blueprint : Blueprint where
             ``TrustIncome.gainsTo, ``TrustIncome.shares, ``TrustIncome.keptDividends, ``TrustIncome.grossUp, ``TrustIncome.amountTaxable,
             ``TrustIncome.donationCredit, ``TrustIncome.minimumTaxRecovery, ``TrustIncome.tax, ``TrustIncome.deduction_le_income,
             ``TrustIncome.allowDividends_le, ``TrustIncome.all_out], uses := ["R22", "R41", "R43", "R56"] },
+        { id := "R92", kind := .law, title := "The Home Buyers' Plan", citation := "ITA 146.01(1), (3), (4)"
+          statement := "A first-time buyer may withdraw up to $60,000 a year from an RRSP for a home, starting from a nil " ++
+            "balance, and repays it over 15 years: each year's requirement is the balance over the years left, and what " ++
+            "is not repaid is income. Proven: repaying what is required includes nothing, and in the fifteenth year the " ++
+            "whole balance is required."
+          lean := [``HomeBuyersPlan.withinLimit, ``HomeBuyersPlan.required, ``HomeBuyersPlan.inclusion, ``HomeBuyersPlan.schedule,
+            ``HomeBuyersPlan.repaid, ``HomeBuyersPlan.last_year] },
         { id := "R70", kind := .law, title := "A corporation's year, to taxable income and tax", citation := "ITA 2(2); 3; 110.1; 111(1), (8); 112(1); 125(7); 129(4)"
           statement := "A corporation's income from active business, personal services business, property and dividends " ++
             "received, with its net taxable capital gains (a 55(2) dividend as a gain); taxable income after gifts, the " ++

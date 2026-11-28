@@ -9,9 +9,9 @@ An overview of the project, drawn from the Lean.
 Every statement in every blueprint, by the status Lean computes for it.
 
 ```mermaid
-pie showData title All 371 statements in the memos and blueprints, by status
+pie showData title All 372 statements in the memos and blueprints, by status
     "encoded" : 62
-    "proven" : 252
+    "proven" : 253
     "not formalized" : 3
     "fact" : 44
     "judgment call" : 10
@@ -308,31 +308,33 @@ mindmap
     n228["`s. 185.1`"]
       n229["`185.1(1): Part III.1 tax on excessive designations`"]
       n230["`185.1(2), (3): the election`"]
-    n231["`s. 180.2`"]
-      n232["`180.2(2): OAS recovery tax`"]
-    n233["`s. 186`"]
-      n234["`186(1): Part IV tax`"]
-      n235["`186(4): connected corporations`"]
-      n236["`186(2): control with non-arm's length persons`"]
-    n237["`s. 128.1`"]
-      n238["`128.1(1)(b), (c): the step-up on arrival`"]
-      n239["`128.1(4)(b): deemed disposition on emigration`"]
-      n240["`128.1(4)(c): reacquired at value`"]
-    n241["`s. 248`"]
-      n242["`248(1): majority-interest partner`"]
+    n231["`s. 146.01`"]
+      n232["`146.01(4): the Home Buyers' Plan repayments`"]
+    n233["`s. 180.2`"]
+      n234["`180.2(2): OAS recovery tax`"]
+    n235["`s. 186`"]
+      n236["`186(1): Part IV tax`"]
+      n237["`186(4): connected corporations`"]
+      n238["`186(2): control with non-arm's length persons`"]
+    n239["`s. 128.1`"]
+      n240["`128.1(1)(b), (c): the step-up on arrival`"]
+      n241["`128.1(4)(b): deemed disposition on emigration`"]
+      n242["`128.1(4)(c): reacquired at value`"]
     n243["`s. 248`"]
-      n244["`taxable Canadian property: the 60-month look-back`"]
-    n245["`s. 251`"]
-      n246["`251(1): arm's length`"]
-      n247["`251(2), (3): related persons`"]
-      n248["`251(3.1), (3.2): amalgamations`"]
-      n249["`251(6): blood, marriage, adoption`"]
-    n250["`s. 251.1`"]
-      n251["`251.1(1)(a) to (h): affiliated persons`"]
-      n252["`251.1(2): amalgamations`"]
-      n253["`251.1(3), (4): definitions and rules`"]
-    n254["`s. 251.2`"]
-      n255["`251.2(2)(a): loss restriction event`"]
-    n256["`s. 256`"]
-      n257["`256(7)(a): control not acquired`"]
+      n244["`248(1): majority-interest partner`"]
+    n245["`s. 248`"]
+      n246["`taxable Canadian property: the 60-month look-back`"]
+    n247["`s. 251`"]
+      n248["`251(1): arm's length`"]
+      n249["`251(2), (3): related persons`"]
+      n250["`251(3.1), (3.2): amalgamations`"]
+      n251["`251(6): blood, marriage, adoption`"]
+    n252["`s. 251.1`"]
+      n253["`251.1(1)(a) to (h): affiliated persons`"]
+      n254["`251.1(2): amalgamations`"]
+      n255["`251.1(3), (4): definitions and rules`"]
+    n256["`s. 251.2`"]
+      n257["`251.2(2)(a): loss restriction event`"]
+    n258["`s. 256`"]
+      n259["`256(7)(a): control not acquired`"]
 ```
