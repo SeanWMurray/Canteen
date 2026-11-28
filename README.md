@@ -161,6 +161,7 @@ Canteen/
     S146_6/FirstHomeSavings.lean   146.6(1), (5): the First Home Savings Account limit and deduction
     S146/RRSP.lean             146(1), (5), (5.1): the RRSP deduction limit and the deduction
     S146_3/RRIFMinimum.lean    146.3(1), Reg. 7308: the RRIF minimum amount
+    S13/CapitalCostAllowance.lean   Reg. 1100(1)(a), (2): capital cost allowance rates, the half-year rule, AIIP
     S3/CorporateYear.lean      2(2), 3, 129(4): a corporation's year, to taxable income, investment income and tax
     S110_6/CapitalGainsDeduction.lean   110.6: qualified small business corporation shares, the gains limits, the deduction
     S251_2/LossRestrictionEvent.lean   251.2(2)(a), 256(7)(a): acquisitions of control, and when they are not

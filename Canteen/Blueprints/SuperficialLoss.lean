@@ -96,6 +96,7 @@ import Canteen.ITA.S146_01.HomeBuyersPlan
 import Canteen.ITA.S146_6.FirstHomeSavings
 import Canteen.ITA.S146.RRSP
 import Canteen.ITA.S146_3.RRIFMinimum
+import Canteen.ITA.S13.CapitalCostAllowance
 import Canteen.ITA.S3.CorporateYear
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
@@ -936,6 +937,13 @@ def blueprint : Blueprint where
             "71, then the Regulation 7308 table, from 5.28% at 71 to 20% at 95 and after; nothing in the year it is set up. " ++
             "Proven: never more than a fifth of the fund."
           lean := [``RRIFMinimum.tableFactor, ``RRIFMinimum.minimum, ``RRIFMinimum.tableFactor_le, ``RRIFMinimum.minimum_le] },
+        { id := "R96", kind := .law, title := "Capital cost allowance", citation := "ITR 1100(1)(a), (2)"
+          statement := "The most a taxpayer may claim for a class is its rate of the undepreciated capital cost, adjusted by " ++
+            "the half-year rule (half the year's net additions off) and, for accelerated investment incentive property of " ++
+            "the general classes available before 2024, half of it added (after 2023, neither). Proven: the half-year rule " ++
+            "halves a new addition's claim, and the claim never exceeds the adjusted UCC."
+          lean := [``CapitalCostAllowance.rate, ``CapitalCostAllowance.ClassYear.adjusted, ``CapitalCostAllowance.ClassYear.maximum,
+            ``CapitalCostAllowance.ClassYear.closing, ``CapitalCostAllowance.half_year, ``CapitalCostAllowance.maximum_le] },
         { id := "R70", kind := .law, title := "A corporation's year, to taxable income and tax", citation := "ITA 2(2); 3; 110.1; 111(1), (8); 112(1); 125(7); 129(4)"
           statement := "A corporation's income from active business, personal services business, property and dividends " ++
             "received, with its net taxable capital gains (a 55(2) dividend as a gain); taxable income after gifts, the " ++

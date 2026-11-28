@@ -22,8 +22,8 @@ cost allowance is claimed for the class. **20(1)(a)** Capital cost allowance is 
 regulation.
 
 C, D, D.1 are given as one total of other additions, and E.1, E.2, G, H, I, J, K as one total of
-other deductions. Capital cost allowance (E) for each year is given: its rates and the half-year
-rule are in the Income Tax Regulations (Part XI, Schedule II), which are not encoded. A disposition's
+other deductions. Capital cost allowance (E) for each year is given; `CapitalCostAllowance` computes the most that may
+be claimed under the Income Tax Regulations (1100(1)(a), (2)). A disposition's
 capital gain is computed as for any capital property, with the capital cost as its adjusted cost
 base; depreciable property never has a capital loss (39(1)(b)(i)).
 -/

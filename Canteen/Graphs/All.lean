@@ -81,6 +81,7 @@ import Canteen.ITA.S146_01.HomeBuyersPlan
 import Canteen.ITA.S146_6.FirstHomeSavings
 import Canteen.ITA.S146.RRSP
 import Canteen.ITA.S146_3.RRIFMinimum
+import Canteen.ITA.S13.CapitalCostAllowance
 import Canteen.ITA.S3.CorporateYear
 import Canteen.Transactions.DebtSwap
 import Canteen.ITA.S87.Amalgamation
@@ -277,6 +278,7 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S146_6.FirstHomeSavings, "146.6 the First Home Savings Account deduction"),
    (`Canteen.ITA.S146.RRSP, "146(1), (5), (5.1) the RRSP deduction"),
    (`Canteen.ITA.S146_3.RRIFMinimum, "146.3(1), Reg. 7308 the RRIF minimum amount"),
+   (`Canteen.ITA.S13.CapitalCostAllowance, "Reg. 1100(1)(a), (2) capital cost allowance"),
    (`Canteen.ITA.S3.CorporateYear, "2(2), 3, 129(4) a corporation's year, to taxable income and tax")]
 
 /-! ## The dashboard -/
@@ -347,7 +349,7 @@ def actMindmap : String := Id.run do
     (2, "ss. 2, 3"), (3, "income for the year: (a) to (f)"), (3, "2(2): taxable income"), (3, "a corporation's year"),
     (2, "s. 6"), (3, "6(1)(e), 6(2): automobile standby charge"),
     (2, "s. 7"), (3, "7(1)(a): the option benefit"), (3, "7(1.1): CCPC deferral"),
-    (2, "s. 13"), (3, "13(21): undepreciated capital cost"), (3, "13(1): recapture"),
+    (2, "s. 13"), (3, "13(21): undepreciated capital cost"), (3, "13(1): recapture"), (3, "Reg. 1100: rates, half-year rule, AIIP"),
     (2, "s. 15"), (3, "15(1): shareholder benefits"), (3, "15(2), (2.6): shareholder loans"),
     (2, "ss. 8, 18"), (3, "18(12), 8(13): work space in the home"), (3, "18(9): prepaid expenses"), (3, "18(4): thin capitalization"),
     (2, "s. 20"), (3, "20(16): terminal loss"), (3, "20(1)(j): loan repaid"), (3, "20(1)(c): interest"), (3, "20(1)(e), (e.1): financing expenses"), (3, "20(1)(l), (p), 12(1)(d), (i): doubtful and bad debts"), (3, "12(1)(a), 20(1)(m): amounts received in advance"), (3, "20(1)(n), 20(8): unpaid amounts on property sold"), (3, "20(3): refinancing"),
