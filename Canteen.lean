@@ -129,6 +129,7 @@ import Canteen.ITA.Reg4301.PrescribedRate
 import Canteen.ITA.S122_7.WorkersBenefit
 import Canteen.ITA.S122_5.GstCredit
 import Canteen.ITA.S96.Partnership
+import Canteen.ITA.S96.TransferToPartnership
 import Canteen.ITA.S3.CorporateYear
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
@@ -303,3 +304,4 @@ import Canteen.Tests.PrescribedRate
 import Canteen.Tests.WorkersBenefit
 import Canteen.Tests.GstCredit
 import Canteen.Tests.Partnership
+import Canteen.Tests.TransferToPartnership

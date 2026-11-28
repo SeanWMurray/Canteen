@@ -87,6 +87,7 @@ import Canteen.ITA.Reg4301.PrescribedRate
 import Canteen.ITA.S122_7.WorkersBenefit
 import Canteen.ITA.S122_5.GstCredit
 import Canteen.ITA.S96.Partnership
+import Canteen.ITA.S96.TransferToPartnership
 import Canteen.ITA.S3.CorporateYear
 import Canteen.Transactions.DebtSwap
 import Canteen.ITA.S87.Amalgamation
@@ -289,6 +290,7 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S122_7.WorkersBenefit, "122.7 the Canada workers benefit"),
    (`Canteen.ITA.S122_5.GstCredit, "122.5 the GST/HST credit"),
    (`Canteen.ITA.S96.Partnership, "96(1), 53(1)(e), 53(2)(c), 40(3.1) partnerships"),
+   (`Canteen.ITA.S96.TransferToPartnership, "97(2) transferring property to a partnership"),
    (`Canteen.ITA.S3.CorporateYear, "2(2), 3, 129(4) a corporation's year, to taxable income and tax")]
 
 /-! ## The dashboard -/
@@ -399,7 +401,7 @@ def actMindmap : String := Id.run do
     (2, "s. 88"), (3, "88(1): winding up a subsidiary"), (3, "88(1)(c), (d): the bump"),
     (2, "s. 89"), (3, "89(1): capital dividend account"), (3, "89(1): general rate income pool"),
     (2, "s. 125"), (3, "125(2), (3): the business limit, shared"), (3, "125(5.1): the capital and passive income grinds"), (3, "125(7): adjusted aggregate investment income"),
-    (2, "s. 96"), (3, "96(1): partnership income allocated"), (3, "40(3.1): a limited partner's negative cost"),
+    (2, "s. 96"), (3, "96(1): partnership income allocated"), (3, "40(3.1): a limited partner's negative cost"), (3, "97(2): the partnership rollover"),
     (2, "s. 104"), (3, "104(4): the 21-year deemed disposition"), (3, "104(6), (13): income paid out"), (3, "104(19), (21): designations"),
     (2, "s. 107"), (3, "107(2): the rollover to a beneficiary"), (3, "107(4.1): not after 75(2)"),
     (2, "s. 110.1"), (3, "110.1(1)(a): a corporation's gifts"),

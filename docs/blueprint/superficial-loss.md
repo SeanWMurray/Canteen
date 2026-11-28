@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 141 statements:** 122 proven, 16 encoded, 3 not formalized.
+**Status of the 142 statements:** 123 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -141,16 +141,17 @@ graph TD
   n128["R99 · The Canada workers benefit"]:::proven
   n129["R100 · The GST/HST credit"]:::proven
   n130["R101 · Partnerships, the at-risk rules and a limited partner's negative cost"]:::proven
-  n131["R70 · A corporation's year, to taxable income and tax"]:::proven
-  n132["R87 · The student loan interest credit"]:::proven
-  n133["R94 · RRSPs: the deduction, earned income, withdrawals"]:::proven
-  n134["R35 · An individual's year, to taxable income and tax"]:::proven
-  n135["R48 · The minimum tax"]:::proven
-  n136["R11 · The principal residence exemption"]:::proven
-  n137["R2 · Cost of the substituted property"]:::proven
-  n138["N1 · Inputs decided by other provisions"]:::notFormalized
-  n139["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n140["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n131["R102 · Transferring property to a partnership"]:::proven
+  n132["R70 · A corporation's year, to taxable income and tax"]:::proven
+  n133["R87 · The student loan interest credit"]:::proven
+  n134["R94 · RRSPs: the deduction, earned income, withdrawals"]:::proven
+  n135["R35 · An individual's year, to taxable income and tax"]:::proven
+  n136["R48 · The minimum tax"]:::proven
+  n137["R11 · The principal residence exemption"]:::proven
+  n138["R2 · Cost of the substituted property"]:::proven
+  n139["N1 · Inputs decided by other provisions"]:::notFormalized
+  n140["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n141["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -284,59 +285,60 @@ graph TD
   n88 --> n121
   n88 --> n128
   n88 --> n129
-  n44 --> n131
-  n45 --> n131
-  n57 --> n131
-  n60 --> n131
-  n77 --> n131
-  n78 --> n131
-  n80 --> n131
-  n101 --> n131
-  n102 --> n131
-  n103 --> n131
-  n44 --> n134
-  n45 --> n134
-  n53 --> n134
-  n55 --> n134
-  n56 --> n134
-  n58 --> n134
-  n73 --> n134
-  n74 --> n134
-  n75 --> n134
-  n76 --> n134
-  n81 --> n134
-  n82 --> n134
-  n83 --> n134
-  n84 --> n134
-  n85 --> n134
-  n87 --> n134
-  n88 --> n134
-  n89 --> n134
-  n90 --> n134
-  n91 --> n134
-  n92 --> n134
-  n93 --> n134
-  n94 --> n134
-  n97 --> n134
-  n100 --> n134
-  n132 --> n134
-  n133 --> n134
+  n51 --> n131
+  n44 --> n132
+  n45 --> n132
+  n57 --> n132
+  n60 --> n132
+  n77 --> n132
+  n78 --> n132
+  n80 --> n132
+  n101 --> n132
+  n102 --> n132
+  n103 --> n132
+  n44 --> n135
+  n45 --> n135
+  n53 --> n135
+  n55 --> n135
+  n56 --> n135
+  n58 --> n135
+  n73 --> n135
+  n74 --> n135
+  n75 --> n135
+  n76 --> n135
+  n81 --> n135
+  n82 --> n135
+  n83 --> n135
+  n84 --> n135
+  n85 --> n135
+  n87 --> n135
+  n88 --> n135
+  n89 --> n135
+  n90 --> n135
+  n91 --> n135
+  n92 --> n135
+  n93 --> n135
+  n94 --> n135
+  n97 --> n135
+  n100 --> n135
+  n133 --> n135
   n134 --> n135
-  n44 --> n136
-  n50 --> n136
-  n11 --> n137
-  n1 --> n138
-  n5 --> n138
-  n6 --> n138
-  n8 --> n138
-  n37 --> n138
-  n137 --> n138
-  n38 --> n138
-  n30 --> n139
-  n32 --> n140
-  n34 --> n140
-  n39 --> n140
-  n42 --> n140
+  n135 --> n136
+  n44 --> n137
+  n50 --> n137
+  n11 --> n138
+  n1 --> n139
+  n5 --> n139
+  n6 --> n139
+  n8 --> n139
+  n37 --> n139
+  n138 --> n139
+  n38 --> n139
+  n30 --> n140
+  n32 --> n141
+  n34 --> n141
+  n39 --> n141
+  n42 --> n141
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -484,16 +486,17 @@ graph TD
   n128["R99"]:::proven
   n129["R100"]:::proven
   n130["R101"]:::proven
-  n131["R70"]:::proven
-  n132["R87"]:::proven
-  n133["R94"]:::proven
-  n134["R35"]:::proven
-  n135["R48"]:::proven
-  n136["R11"]:::proven
-  n137["R2"]:::proven
-  n138["N1"]:::notFormalized
-  n139["N2"]:::notFormalized
-  n140["N4"]:::notFormalized
+  n131["R102"]:::proven
+  n132["R70"]:::proven
+  n133["R87"]:::proven
+  n134["R94"]:::proven
+  n135["R35"]:::proven
+  n136["R48"]:::proven
+  n137["R11"]:::proven
+  n138["R2"]:::proven
+  n139["N1"]:::notFormalized
+  n140["N2"]:::notFormalized
+  n141["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -707,68 +710,69 @@ graph TD
   n88 -.-> n121
   n88 --> n128
   n88 --> n129
-  n44 --> n131
-  n57 --> n131
-  n45 --> n131
-  n101 --> n131
-  n102 --> n131
-  n103 --> n131
-  n78 --> n131
-  n77 --> n131
-  n80 --> n131
-  n60 -.-> n131
-  n93 --> n134
-  n55 --> n134
-  n94 --> n134
-  n81 --> n134
-  n91 --> n134
-  n84 --> n134
-  n58 --> n134
-  n97 --> n134
-  n133 --> n134
-  n44 --> n134
-  n87 --> n134
-  n73 --> n134
-  n56 --> n134
-  n100 --> n134
-  n92 --> n134
-  n85 --> n134
-  n45 --> n134
-  n53 --> n134
-  n89 --> n134
-  n90 --> n134
-  n132 --> n134
-  n82 --> n134
-  n74 --> n134
-  n83 --> n134
-  n76 --> n134
-  n75 --> n134
-  n88 -.-> n134
+  n51 -.-> n131
+  n44 --> n132
+  n57 --> n132
+  n45 --> n132
+  n101 --> n132
+  n102 --> n132
+  n103 --> n132
+  n78 --> n132
+  n77 --> n132
+  n80 --> n132
+  n60 -.-> n132
+  n93 --> n135
   n55 --> n135
-  n134 --> n135
+  n94 --> n135
   n81 --> n135
   n91 --> n135
   n84 --> n135
   n58 --> n135
-  n45 --> n135
+  n97 --> n135
+  n134 --> n135
+  n44 --> n135
   n87 --> n135
   n73 --> n135
+  n56 --> n135
   n100 --> n135
-  n44 -.-> n136
-  n50 -.-> n136
-  n11 -.-> n137
-  n1 -.-> n138
-  n5 -.-> n138
-  n6 -.-> n138
-  n8 -.-> n138
-  n37 -.-> n138
-  n137 -.-> n138
-  n38 -.-> n138
-  n30 -.-> n139
-  n32 -.-> n140
-  n34 -.-> n140
-  n39 -.-> n140
-  n42 -.-> n140
+  n92 --> n135
+  n85 --> n135
+  n45 --> n135
+  n53 --> n135
+  n89 --> n135
+  n90 --> n135
+  n133 --> n135
+  n82 --> n135
+  n74 --> n135
+  n83 --> n135
+  n76 --> n135
+  n75 --> n135
+  n88 -.-> n135
+  n55 --> n136
+  n135 --> n136
+  n81 --> n136
+  n91 --> n136
+  n84 --> n136
+  n58 --> n136
+  n45 --> n136
+  n87 --> n136
+  n73 --> n136
+  n100 --> n136
+  n44 -.-> n137
+  n50 -.-> n137
+  n11 -.-> n138
+  n1 -.-> n139
+  n5 -.-> n139
+  n6 -.-> n139
+  n8 -.-> n139
+  n37 -.-> n139
+  n138 -.-> n139
+  n38 -.-> n139
+  n30 -.-> n140
+  n32 -.-> n141
+  n34 -.-> n141
+  n39 -.-> n141
+  n42 -.-> n141
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -1835,6 +1839,14 @@ A lower-income individual is paid, quarterly from July of the next year, a credi
 A partner includes its share of each of the partnership's incomes, losses and capital gains and losses; the interest's cost goes up by income (with whole capital gains) and contributions and down by losses and drawings (the period's own income and losses only after its end); a limited partner deducts losses only up to its at-risk amount, the rest a limited partnership loss; its negative cost at a period's end is a gain, later reversible as a loss. Proven: a limited partner's cost is never negative after 40(3.1), a general partner has no such gain, and deductible plus limited partnership loss is the share of losses.
 
 **Lean:** [`Canteen.ITA.Partnership.Member.income`](../../Canteen/ITA/S96/Partnership.lean#L71), [`Canteen.ITA.Partnership.Member.taxableCapitalGains`](../../Canteen/ITA/S96/Partnership.lean#L74), [`Canteen.ITA.Partnership.Member.acbBefore`](../../Canteen/ITA/S96/Partnership.lean#L77), [`Canteen.ITA.Partnership.Member.deemedGain`](../../Canteen/ITA/S96/Partnership.lean#L84), [`Canteen.ITA.Partnership.Member.acbAfter`](../../Canteen/ITA/S96/Partnership.lean#L87), [`Canteen.ITA.Partnership.Member.electableLoss`](../../Canteen/ITA/S96/Partnership.lean#L112), [`Canteen.ITA.Partnership.Member.atRisk`](../../Canteen/ITA/S96/Partnership.lean#L90), [`Canteen.ITA.Partnership.Member.deductibleLoss`](../../Canteen/ITA/S96/Partnership.lean#L95), [`Canteen.ITA.Partnership.Member.limitedPartnershipLoss`](../../Canteen/ITA/S96/Partnership.lean#L98), [`Canteen.ITA.Partnership.Member.nextOpening`](../../Canteen/ITA/S96/Partnership.lean#L105), [`Canteen.ITA.Partnership.Member.lplDeduction`](../../Canteen/ITA/S96/Partnership.lean#L101), [`Canteen.ITA.Partnership.Member.lplDeduction_le`](../../Canteen/ITA/S96/Partnership.lean#L141), [`Canteen.ITA.Partnership.Member.limited_nonneg`](../../Canteen/ITA/S96/Partnership.lean#L128), [`Canteen.ITA.Partnership.Member.general_no_gain`](../../Canteen/ITA/S96/Partnership.lean#L132), [`Canteen.ITA.Partnership.Member.at_risk_limit`](../../Canteen/ITA/S96/Partnership.lean#L136)
+
+### R102. Transferring property to a partnership
+
+**Status:** proven · **Citation:** ITA 97(2) · **Uses:** R17
+
+By joint election, a member transfers capital property, resource property or inventory to a Canadian partnership at an agreed amount, as under section 85: at least the non-interest consideration and the lesser of value and cost, at most value; the interest's cost goes up by the proceeds over that consideration. Proven: never above value, and no gain at cost without other consideration.
+
+**Lean:** [`Canteen.ITA.TransferToPartnership.applies`](../../Canteen/ITA/S96/TransferToPartnership.lean#L44), [`Canteen.ITA.TransferToPartnership.proceeds`](../../Canteen/ITA/S96/TransferToPartnership.lean#L52), [`Canteen.ITA.TransferToPartnership.gain`](../../Canteen/ITA/S96/TransferToPartnership.lean#L56), [`Canteen.ITA.TransferToPartnership.interestCostChange`](../../Canteen/ITA/S96/TransferToPartnership.lean#L59), [`Canteen.ITA.TransferToPartnership.interestTCP`](../../Canteen/ITA/S96/TransferToPartnership.lean#L62), [`Canteen.ITA.TransferToPartnership.proceeds_le_value`](../../Canteen/ITA/S96/TransferToPartnership.lean#L75), [`Canteen.ITA.TransferToPartnership.rollover`](../../Canteen/ITA/S96/TransferToPartnership.lean#L80)
 
 ### R70. A corporation's year, to taxable income and tax
 

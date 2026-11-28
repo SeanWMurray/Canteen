@@ -115,8 +115,9 @@ flowchart BT
   v106["122.7 the Canada workers benefit"]:::prov
   v107["122.5 the GST/HST credit"]:::prov
   v108["96(1), 53(1)(e), 53(2)(c), 40(3.1) partnerships"]:::prov
-  v109["2(2), 3, 129(4) a corporation's year, to taxable income and tax"]:::prov
-  v110["50(2) bad personal-use debts"]:::prov
+  v109["97(2) transferring property to a partnership"]:::prov
+  v110["2(2), 3, 129(4) a corporation's year, to taxable income and tax"]:::prov
+  v111["50(2) bad personal-use debts"]:::prov
   v0 --> v1
   v0 --> v2
   v0 --> v3
@@ -216,13 +217,14 @@ flowchart BT
   v54 --> v99
   v31 --> v99
   v46 --> v99
-  v19 --> v109
-  v20 --> v109
-  v32 --> v109
-  v80 --> v109
-  v71 --> v109
-  v81 --> v109
-  v73 --> v109
-  v35 --> v109
+  v26 --> v109
+  v19 --> v110
+  v20 --> v110
+  v32 --> v110
+  v80 --> v110
+  v71 --> v110
+  v81 --> v110
+  v73 --> v110
+  v35 --> v110
   classDef prov fill:#bbdefb,stroke:#1565c0,color:#0d47a1
 ```

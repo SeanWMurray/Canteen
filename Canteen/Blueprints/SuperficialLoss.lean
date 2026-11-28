@@ -102,6 +102,7 @@ import Canteen.ITA.Reg4301.PrescribedRate
 import Canteen.ITA.S122_7.WorkersBenefit
 import Canteen.ITA.S122_5.GstCredit
 import Canteen.ITA.S96.Partnership
+import Canteen.ITA.S96.TransferToPartnership
 import Canteen.ITA.S3.CorporateYear
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
@@ -991,6 +992,15 @@ def blueprint : Blueprint where
             ``Partnership.Member.atRisk, ``Partnership.Member.deductibleLoss, ``Partnership.Member.limitedPartnershipLoss,
             ``Partnership.Member.nextOpening, ``Partnership.Member.lplDeduction, ``Partnership.Member.lplDeduction_le, ``Partnership.Member.limited_nonneg, ``Partnership.Member.general_no_gain,
             ``Partnership.Member.at_risk_limit] },
+        { id := "R102", kind := .law, title := "Transferring property to a partnership", citation := "ITA 97(2)"
+          statement := "By joint election, a member transfers capital property, resource property or inventory to a Canadian " ++
+            "partnership at an agreed amount, as under section 85: at least the non-interest consideration and the lesser of " ++
+            "value and cost, at most value; the interest's cost goes up by the proceeds over that consideration. Proven: " ++
+            "never above value, and no gain at cost without other consideration."
+          lean := [``TransferToPartnership.applies, ``TransferToPartnership.proceeds, ``TransferToPartnership.gain,
+            ``TransferToPartnership.interestCostChange, ``TransferToPartnership.interestTCP, ``TransferToPartnership.proceeds_le_value,
+            ``TransferToPartnership.rollover],
+          uses := ["R17"] },
         { id := "R70", kind := .law, title := "A corporation's year, to taxable income and tax", citation := "ITA 2(2); 3; 110.1; 111(1), (8); 112(1); 125(7); 129(4)"
           statement := "A corporation's income from active business, personal services business, property and dividends " ++
             "received, with its net taxable capital gains (a 55(2) dividend as a gain); taxable income after gifts, the " ++
