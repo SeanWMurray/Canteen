@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 137 statements:** 118 proven, 16 encoded, 3 not formalized.
+**Status of the 138 statements:** 119 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -137,16 +137,17 @@ graph TD
   n124["R95 · The RRIF minimum amount"]:::proven
   n125["R96 · Capital cost allowance"]:::proven
   n126["R97 · Passenger vehicle limits"]:::proven
-  n127["R70 · A corporation's year, to taxable income and tax"]:::proven
-  n128["R87 · The student loan interest credit"]:::proven
-  n129["R94 · RRSPs: the deduction, earned income, withdrawals"]:::proven
-  n130["R35 · An individual's year, to taxable income and tax"]:::proven
-  n131["R48 · The minimum tax"]:::proven
-  n132["R11 · The principal residence exemption"]:::proven
-  n133["R2 · Cost of the substituted property"]:::proven
-  n134["N1 · Inputs decided by other provisions"]:::notFormalized
-  n135["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n136["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n127["R98 · The prescribed rate of interest"]:::proven
+  n128["R70 · A corporation's year, to taxable income and tax"]:::proven
+  n129["R87 · The student loan interest credit"]:::proven
+  n130["R94 · RRSPs: the deduction, earned income, withdrawals"]:::proven
+  n131["R35 · An individual's year, to taxable income and tax"]:::proven
+  n132["R48 · The minimum tax"]:::proven
+  n133["R11 · The principal residence exemption"]:::proven
+  n134["R2 · Cost of the substituted property"]:::proven
+  n135["N1 · Inputs decided by other provisions"]:::notFormalized
+  n136["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n137["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -278,59 +279,59 @@ graph TD
   n74 --> n121
   n76 --> n121
   n88 --> n121
-  n44 --> n127
-  n45 --> n127
-  n57 --> n127
-  n60 --> n127
-  n77 --> n127
-  n78 --> n127
-  n80 --> n127
-  n101 --> n127
-  n102 --> n127
-  n103 --> n127
-  n44 --> n130
-  n45 --> n130
-  n53 --> n130
-  n55 --> n130
-  n56 --> n130
-  n58 --> n130
-  n73 --> n130
-  n74 --> n130
-  n75 --> n130
-  n76 --> n130
-  n81 --> n130
-  n82 --> n130
-  n83 --> n130
-  n84 --> n130
-  n85 --> n130
-  n87 --> n130
-  n88 --> n130
-  n89 --> n130
-  n90 --> n130
-  n91 --> n130
-  n92 --> n130
-  n93 --> n130
-  n94 --> n130
-  n97 --> n130
-  n100 --> n130
-  n128 --> n130
-  n129 --> n130
+  n44 --> n128
+  n45 --> n128
+  n57 --> n128
+  n60 --> n128
+  n77 --> n128
+  n78 --> n128
+  n80 --> n128
+  n101 --> n128
+  n102 --> n128
+  n103 --> n128
+  n44 --> n131
+  n45 --> n131
+  n53 --> n131
+  n55 --> n131
+  n56 --> n131
+  n58 --> n131
+  n73 --> n131
+  n74 --> n131
+  n75 --> n131
+  n76 --> n131
+  n81 --> n131
+  n82 --> n131
+  n83 --> n131
+  n84 --> n131
+  n85 --> n131
+  n87 --> n131
+  n88 --> n131
+  n89 --> n131
+  n90 --> n131
+  n91 --> n131
+  n92 --> n131
+  n93 --> n131
+  n94 --> n131
+  n97 --> n131
+  n100 --> n131
+  n129 --> n131
   n130 --> n131
-  n44 --> n132
-  n50 --> n132
-  n11 --> n133
-  n1 --> n134
-  n5 --> n134
-  n6 --> n134
-  n8 --> n134
-  n37 --> n134
-  n133 --> n134
-  n38 --> n134
-  n30 --> n135
-  n32 --> n136
-  n34 --> n136
-  n39 --> n136
-  n42 --> n136
+  n131 --> n132
+  n44 --> n133
+  n50 --> n133
+  n11 --> n134
+  n1 --> n135
+  n5 --> n135
+  n6 --> n135
+  n8 --> n135
+  n37 --> n135
+  n134 --> n135
+  n38 --> n135
+  n30 --> n136
+  n32 --> n137
+  n34 --> n137
+  n39 --> n137
+  n42 --> n137
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -474,16 +475,17 @@ graph TD
   n124["R95"]:::proven
   n125["R96"]:::proven
   n126["R97"]:::proven
-  n127["R70"]:::proven
-  n128["R87"]:::proven
-  n129["R94"]:::proven
-  n130["R35"]:::proven
-  n131["R48"]:::proven
-  n132["R11"]:::proven
-  n133["R2"]:::proven
-  n134["N1"]:::notFormalized
-  n135["N2"]:::notFormalized
-  n136["N4"]:::notFormalized
+  n127["R98"]:::proven
+  n128["R70"]:::proven
+  n129["R87"]:::proven
+  n130["R94"]:::proven
+  n131["R35"]:::proven
+  n132["R48"]:::proven
+  n133["R11"]:::proven
+  n134["R2"]:::proven
+  n135["N1"]:::notFormalized
+  n136["N2"]:::notFormalized
+  n137["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -695,68 +697,68 @@ graph TD
   n56 --> n121
   n74 --> n121
   n88 -.-> n121
-  n44 --> n127
-  n57 --> n127
-  n45 --> n127
-  n101 --> n127
-  n102 --> n127
-  n103 --> n127
-  n78 --> n127
-  n77 --> n127
-  n80 --> n127
-  n60 -.-> n127
-  n93 --> n130
-  n55 --> n130
-  n94 --> n130
-  n81 --> n130
-  n91 --> n130
-  n84 --> n130
-  n58 --> n130
-  n97 --> n130
-  n129 --> n130
-  n44 --> n130
-  n87 --> n130
-  n73 --> n130
-  n56 --> n130
-  n100 --> n130
-  n92 --> n130
-  n85 --> n130
-  n45 --> n130
-  n53 --> n130
-  n89 --> n130
-  n90 --> n130
-  n128 --> n130
-  n82 --> n130
-  n74 --> n130
-  n83 --> n130
-  n76 --> n130
-  n75 --> n130
-  n88 -.-> n130
+  n44 --> n128
+  n57 --> n128
+  n45 --> n128
+  n101 --> n128
+  n102 --> n128
+  n103 --> n128
+  n78 --> n128
+  n77 --> n128
+  n80 --> n128
+  n60 -.-> n128
+  n93 --> n131
   n55 --> n131
-  n130 --> n131
+  n94 --> n131
   n81 --> n131
   n91 --> n131
   n84 --> n131
   n58 --> n131
-  n45 --> n131
+  n97 --> n131
+  n130 --> n131
+  n44 --> n131
   n87 --> n131
   n73 --> n131
+  n56 --> n131
   n100 --> n131
-  n44 -.-> n132
-  n50 -.-> n132
-  n11 -.-> n133
-  n1 -.-> n134
-  n5 -.-> n134
-  n6 -.-> n134
-  n8 -.-> n134
-  n37 -.-> n134
-  n133 -.-> n134
-  n38 -.-> n134
-  n30 -.-> n135
-  n32 -.-> n136
-  n34 -.-> n136
-  n39 -.-> n136
-  n42 -.-> n136
+  n92 --> n131
+  n85 --> n131
+  n45 --> n131
+  n53 --> n131
+  n89 --> n131
+  n90 --> n131
+  n129 --> n131
+  n82 --> n131
+  n74 --> n131
+  n83 --> n131
+  n76 --> n131
+  n75 --> n131
+  n88 -.-> n131
+  n55 --> n132
+  n131 --> n132
+  n81 --> n132
+  n91 --> n132
+  n84 --> n132
+  n58 --> n132
+  n45 --> n132
+  n87 --> n132
+  n73 --> n132
+  n100 --> n132
+  n44 -.-> n133
+  n50 -.-> n133
+  n11 -.-> n134
+  n1 -.-> n135
+  n5 -.-> n135
+  n6 -.-> n135
+  n8 -.-> n135
+  n37 -.-> n135
+  n134 -.-> n135
+  n38 -.-> n135
+  n30 -.-> n136
+  n32 -.-> n137
+  n34 -.-> n137
+  n39 -.-> n137
+  n42 -.-> n137
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -1791,6 +1793,14 @@ The most a taxpayer may claim for a class is its rate of the undepreciated capit
 A passenger vehicle's capital cost is capped at the prescribed amount for its year ($38,000 after 2024, $61,000 for a zero-emission vehicle, each plus sales taxes); interest on the loan at $300 or $350 per 30 days; lease charges at the lesser of the monthly limit and the charges scaled by the cost limit over 85% of the list price. Proven: never more than the cost or the charges, and a vehicle under the limit keeps its cost.
 
 **Lean:** [`Canteen.ITA.PassengerVehicles.costA`](../../Canteen/ITA/S13/PassengerVehicles.lean#L32), [`Canteen.ITA.PassengerVehicles.capitalCost`](../../Canteen/ITA/S13/PassengerVehicles.lean#L51), [`Canteen.ITA.PassengerVehicles.interest`](../../Canteen/ITA/S13/PassengerVehicles.lean#L55), [`Canteen.ITA.PassengerVehicles.Lease.paraC`](../../Canteen/ITA/S13/PassengerVehicles.lean#L78), [`Canteen.ITA.PassengerVehicles.Lease.paraD`](../../Canteen/ITA/S13/PassengerVehicles.lean#L82), [`Canteen.ITA.PassengerVehicles.Lease.deductible`](../../Canteen/ITA/S13/PassengerVehicles.lean#L88), [`Canteen.ITA.PassengerVehicles.capitalCost_le`](../../Canteen/ITA/S13/PassengerVehicles.lean#L99), [`Canteen.ITA.PassengerVehicles.Lease.deductible_le`](../../Canteen/ITA/S13/PassengerVehicles.lean#L101), [`Canteen.ITA.PassengerVehicles.under_limit`](../../Canteen/ITA/S13/PassengerVehicles.lean#L103)
+
+### R98. The prescribed rate of interest
+
+**Status:** proven · **Citation:** ITR 4301
+
+The prescribed rate for a quarter is the mean of the three-month Treasury Bill auction yields in the first month of the quarter before, rounded up to a whole percent; 4% more on amounts owed to the Receiver General, and 2% more (nil for a corporation) on refunds. Proven: the rate is always a whole percent, and the rate on amounts owed is always 4% above it.
+
+**Lean:** [`Canteen.ITA.PrescribedRate.base`](../../Canteen/ITA/Reg4301/PrescribedRate.lean#L23), [`Canteen.ITA.PrescribedRate.general`](../../Canteen/ITA/Reg4301/PrescribedRate.lean#L31), [`Canteen.ITA.PrescribedRate.owing`](../../Canteen/ITA/Reg4301/PrescribedRate.lean#L34), [`Canteen.ITA.PrescribedRate.refund`](../../Canteen/ITA/Reg4301/PrescribedRate.lean#L37), [`Canteen.ITA.PrescribedRate.whole`](../../Canteen/ITA/Reg4301/PrescribedRate.lean#L46), [`Canteen.ITA.PrescribedRate.owing_spread`](../../Canteen/ITA/Reg4301/PrescribedRate.lean#L52)
 
 ### R70. A corporation's year, to taxable income and tax
 

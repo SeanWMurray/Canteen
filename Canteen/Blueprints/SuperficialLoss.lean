@@ -98,6 +98,7 @@ import Canteen.ITA.S146.RRSP
 import Canteen.ITA.S146_3.RRIFMinimum
 import Canteen.ITA.S13.CapitalCostAllowance
 import Canteen.ITA.S13.PassengerVehicles
+import Canteen.ITA.Reg4301.PrescribedRate
 import Canteen.ITA.S3.CorporateYear
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
@@ -953,6 +954,13 @@ def blueprint : Blueprint where
           lean := [``PassengerVehicles.costA, ``PassengerVehicles.capitalCost, ``PassengerVehicles.interest, ``PassengerVehicles.Lease.paraC,
             ``PassengerVehicles.Lease.paraD, ``PassengerVehicles.Lease.deductible, ``PassengerVehicles.capitalCost_le,
             ``PassengerVehicles.Lease.deductible_le, ``PassengerVehicles.under_limit] },
+        { id := "R98", kind := .law, title := "The prescribed rate of interest", citation := "ITR 4301"
+          statement := "The prescribed rate for a quarter is the mean of the three-month Treasury Bill auction yields in the " ++
+            "first month of the quarter before, rounded up to a whole percent; 4% more on amounts owed to the Receiver " ++
+            "General, and 2% more (nil for a corporation) on refunds. Proven: the rate is always a whole percent, and the " ++
+            "rate on amounts owed is always 4% above it."
+          lean := [``PrescribedRate.base, ``PrescribedRate.general, ``PrescribedRate.owing, ``PrescribedRate.refund,
+            ``PrescribedRate.whole, ``PrescribedRate.owing_spread] },
         { id := "R70", kind := .law, title := "A corporation's year, to taxable income and tax", citation := "ITA 2(2); 3; 110.1; 111(1), (8); 112(1); 125(7); 129(4)"
           statement := "A corporation's income from active business, personal services business, property and dividends " ++
             "received, with its net taxable capital gains (a 55(2) dividend as a gain); taxable income after gifts, the " ++

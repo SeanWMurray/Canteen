@@ -94,6 +94,7 @@ The verbatim statute text for each is in `statute/`. Review notes are in `docs/r
 - `S146_3/RRIFMinimum.lean`: the 146.3(1) definition "minimum amount", with Regulation 7308(3) and (4)
 - `S13/CapitalCostAllowance.lean`: Income Tax Regulations paragraph 1100(1)(a) and subsection 1100(2)
 - `S13/PassengerVehicles.lean`: paragraphs 13(7)(g) and (i), sections 67.2 and 67.3, and Regulation 7307
+- `Reg4301/PrescribedRate.lean`: Income Tax Regulations section 4301
 - `S3/CorporateYear.lean`: a corporation's year, from its sources to taxable income and tax (2(2), 3), and the 129(4) definitions "aggregate investment income", "eligible portion" and "income or loss"
 - `S112/StopLoss.lean`: subsections 112(3), (3.01) and (6.1)
 - `S7/StockOptions.lean`: paragraph 7(1)(a), subsection 7(1.1), and paragraphs 110(1)(d) and (d.1)

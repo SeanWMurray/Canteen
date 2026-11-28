@@ -83,6 +83,7 @@ import Canteen.ITA.S146.RRSP
 import Canteen.ITA.S146_3.RRIFMinimum
 import Canteen.ITA.S13.CapitalCostAllowance
 import Canteen.ITA.S13.PassengerVehicles
+import Canteen.ITA.Reg4301.PrescribedRate
 import Canteen.ITA.S3.CorporateYear
 import Canteen.Transactions.DebtSwap
 import Canteen.ITA.S87.Amalgamation
@@ -281,6 +282,7 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S146_3.RRIFMinimum, "146.3(1), Reg. 7308 the RRIF minimum amount"),
    (`Canteen.ITA.S13.CapitalCostAllowance, "Reg. 1100(1)(a), (2) capital cost allowance"),
    (`Canteen.ITA.S13.PassengerVehicles, "13(7)(g), (i), 67.2, 67.3, Reg. 7307 passenger vehicle limits"),
+   (`Canteen.ITA.Reg4301.PrescribedRate, "Reg. 4301 the prescribed rate of interest"),
    (`Canteen.ITA.S3.CorporateYear, "2(2), 3, 129(4) a corporation's year, to taxable income and tax")]
 
 /-! ## The dashboard -/
@@ -380,7 +382,7 @@ def actMindmap : String := Id.run do
     (2, "s. 73"), (3, "73(1), (1.01): the spousal rollover"),
     (2, "ss. 74.1, 74.2, 74.4, 74.5"), (3, "74.1(1), (2): income attributed back"), (3, "74.1(3): repaying debt"),
     (3, "74.2(1): capital gains attributed back"), (3, "74.4(2): corporate attribution"), (3, "74.5(1) to (3): fair market value, loans for value, separation"), (3, "75(2): reversionary trusts"),
-    (2, "s. 80.4"), (3, "80.4(2): deemed interest on shareholder loans"),
+    (2, "s. 80.4"), (3, "80.4(2): deemed interest on shareholder loans"), (3, "Reg. 4301: the prescribed rate"),
     (2, "s. 82"), (3, "82(1): taxable dividends and the gross-up"),
     (2, "s. 83"), (3, "83(2): capital dividends"),
     (2, "s. 84"), (3, "84(1): paid-up capital increased"), (3, "84(2): distributions on winding-up"), (3, "84(3): redemptions, the deemed dividend"), (3, "84(4), (4.1): returns of capital"),
