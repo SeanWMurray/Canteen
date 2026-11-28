@@ -87,6 +87,7 @@ The verbatim statute text for each is in `statute/`. Review notes are in `docs/r
 - `S75/ReversionaryTrust.lean`: subsections 75(2) and (3)
 - `S107/TrustDistribution.lean`: subsections 107(2), (2.1) and (4.1)
 - `S104/TwentyOneYear.lean`: subsection 104(4), paragraphs (a) to (c)
+- `S104/TrustIncome.lean`: paragraphs 104(6)(b) and (13)(a), and subsections 104(19), (21) and (24)
 - `S3/CorporateYear.lean`: a corporation's year, from its sources to taxable income and tax (2(2), 3), and the 129(4) definitions "aggregate investment income", "eligible portion" and "income or loss"
 - `S112/StopLoss.lean`: subsections 112(3), (3.01) and (6.1)
 - `S7/StockOptions.lean`: paragraph 7(1)(a), subsection 7(1.1), and paragraphs 110(1)(d) and (d.1)

@@ -4,7 +4,7 @@
 
 Each paragraph of the definition is quoted from the *Income Tax Act* (consolidation current to 2026-10-29; verbatim in `statute/`) and linked to the Lean definition that encodes it. Lean cannot check that an encoding matches the statute; that is what [`docs/review/superficial-loss.md`](../review/superficial-loss.md) is for. Everything built on the encoding is proven.
 
-**Status of the 130 statements:** 111 proven, 16 encoded, 3 not formalized.
+**Status of the 131 statements:** 112 proven, 16 encoded, 3 not formalized.
 
 ## Dependency graph
 
@@ -131,15 +131,16 @@ graph TD
   n118["R88 · Reversionary trusts"]:::proven
   n119["R89 · Distributions of trust property"]:::proven
   n120["R90 · The 21-year rule"]:::proven
-  n121["R70 · A corporation's year, to taxable income and tax"]:::proven
-  n122["R87 · The student loan interest credit"]:::proven
-  n123["R35 · An individual's year, to taxable income and tax"]:::proven
-  n124["R48 · The minimum tax"]:::proven
-  n125["R11 · The principal residence exemption"]:::proven
-  n126["R2 · Cost of the substituted property"]:::proven
-  n127["N1 · Inputs decided by other provisions"]:::notFormalized
-  n128["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
-  n129["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
+  n121["R91 · A trust's income paid to beneficiaries"]:::proven
+  n122["R70 · A corporation's year, to taxable income and tax"]:::proven
+  n123["R87 · The student loan interest credit"]:::proven
+  n124["R35 · An individual's year, to taxable income and tax"]:::proven
+  n125["R48 · The minimum tax"]:::proven
+  n126["R11 · The principal residence exemption"]:::proven
+  n127["R2 · Cost of the substituted property"]:::proven
+  n128["N1 · Inputs decided by other provisions"]:::notFormalized
+  n129["N2 · How much is #quot;to the extent that#quot;"]:::notFormalized
+  n130["N4 · Inputs for subparagraphs (ii) to (iv)"]:::notFormalized
   n1 --> n11
   n9 --> n11
   n10 --> n11
@@ -267,58 +268,58 @@ graph TD
   n115 --> n117
   n118 --> n119
   n44 --> n120
-  n44 --> n121
-  n45 --> n121
-  n57 --> n121
-  n60 --> n121
-  n77 --> n121
-  n78 --> n121
-  n80 --> n121
-  n101 --> n121
-  n102 --> n121
-  n103 --> n121
-  n44 --> n123
-  n45 --> n123
-  n53 --> n123
-  n55 --> n123
-  n56 --> n123
-  n58 --> n123
-  n73 --> n123
-  n74 --> n123
-  n75 --> n123
-  n76 --> n123
-  n81 --> n123
-  n82 --> n123
-  n83 --> n123
-  n84 --> n123
-  n85 --> n123
-  n87 --> n123
-  n88 --> n123
-  n89 --> n123
-  n90 --> n123
-  n91 --> n123
-  n92 --> n123
-  n93 --> n123
-  n94 --> n123
-  n97 --> n123
-  n100 --> n123
-  n122 --> n123
+  n44 --> n122
+  n45 --> n122
+  n57 --> n122
+  n60 --> n122
+  n77 --> n122
+  n78 --> n122
+  n80 --> n122
+  n101 --> n122
+  n102 --> n122
+  n103 --> n122
+  n44 --> n124
+  n45 --> n124
+  n53 --> n124
+  n55 --> n124
+  n56 --> n124
+  n58 --> n124
+  n73 --> n124
+  n74 --> n124
+  n75 --> n124
+  n76 --> n124
+  n81 --> n124
+  n82 --> n124
+  n83 --> n124
+  n84 --> n124
+  n85 --> n124
+  n87 --> n124
+  n88 --> n124
+  n89 --> n124
+  n90 --> n124
+  n91 --> n124
+  n92 --> n124
+  n93 --> n124
+  n94 --> n124
+  n97 --> n124
+  n100 --> n124
   n123 --> n124
-  n44 --> n125
-  n50 --> n125
-  n11 --> n126
-  n1 --> n127
-  n5 --> n127
-  n6 --> n127
-  n8 --> n127
-  n37 --> n127
-  n126 --> n127
-  n38 --> n127
-  n30 --> n128
-  n32 --> n129
-  n34 --> n129
-  n39 --> n129
-  n42 --> n129
+  n124 --> n125
+  n44 --> n126
+  n50 --> n126
+  n11 --> n127
+  n1 --> n128
+  n5 --> n128
+  n6 --> n128
+  n8 --> n128
+  n37 --> n128
+  n127 --> n128
+  n38 --> n128
+  n30 --> n129
+  n32 --> n130
+  n34 --> n130
+  n39 --> n130
+  n42 --> n130
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -456,15 +457,16 @@ graph TD
   n118["R88"]:::proven
   n119["R89"]:::proven
   n120["R90"]:::proven
-  n121["R70"]:::proven
-  n122["R87"]:::proven
-  n123["R35"]:::proven
-  n124["R48"]:::proven
-  n125["R11"]:::proven
-  n126["R2"]:::proven
-  n127["N1"]:::notFormalized
-  n128["N2"]:::notFormalized
-  n129["N4"]:::notFormalized
+  n121["R91"]:::proven
+  n122["R70"]:::proven
+  n123["R87"]:::proven
+  n124["R35"]:::proven
+  n125["R48"]:::proven
+  n126["R11"]:::proven
+  n127["R2"]:::proven
+  n128["N1"]:::notFormalized
+  n129["N2"]:::notFormalized
+  n130["N4"]:::notFormalized
   n10 --> n11
   n1 --> n11
   n9 -.-> n11
@@ -672,67 +674,67 @@ graph TD
   n44 -.-> n117
   n118 -.-> n119
   n44 -.-> n120
-  n44 --> n121
-  n57 --> n121
-  n45 --> n121
-  n101 --> n121
-  n102 --> n121
-  n103 --> n121
-  n78 --> n121
-  n77 --> n121
-  n80 --> n121
-  n60 -.-> n121
-  n93 --> n123
-  n55 --> n123
-  n94 --> n123
-  n81 --> n123
-  n91 --> n123
-  n84 --> n123
-  n58 --> n123
-  n97 --> n123
-  n44 --> n123
-  n87 --> n123
-  n73 --> n123
-  n56 --> n123
-  n100 --> n123
-  n92 --> n123
-  n85 --> n123
-  n45 --> n123
-  n53 --> n123
-  n89 --> n123
-  n90 --> n123
-  n122 --> n123
-  n82 --> n123
-  n74 --> n123
-  n83 --> n123
-  n76 --> n123
-  n75 --> n123
-  n88 -.-> n123
+  n44 --> n122
+  n57 --> n122
+  n45 --> n122
+  n101 --> n122
+  n102 --> n122
+  n103 --> n122
+  n78 --> n122
+  n77 --> n122
+  n80 --> n122
+  n60 -.-> n122
+  n93 --> n124
   n55 --> n124
-  n123 --> n124
+  n94 --> n124
   n81 --> n124
   n91 --> n124
   n84 --> n124
   n58 --> n124
-  n45 --> n124
+  n97 --> n124
+  n44 --> n124
   n87 --> n124
   n73 --> n124
+  n56 --> n124
   n100 --> n124
-  n44 -.-> n125
-  n50 -.-> n125
-  n11 -.-> n126
-  n1 -.-> n127
-  n5 -.-> n127
-  n6 -.-> n127
-  n8 -.-> n127
-  n37 -.-> n127
-  n126 -.-> n127
-  n38 -.-> n127
-  n30 -.-> n128
-  n32 -.-> n129
-  n34 -.-> n129
-  n39 -.-> n129
-  n42 -.-> n129
+  n92 --> n124
+  n85 --> n124
+  n45 --> n124
+  n53 --> n124
+  n89 --> n124
+  n90 --> n124
+  n123 --> n124
+  n82 --> n124
+  n74 --> n124
+  n83 --> n124
+  n76 --> n124
+  n75 --> n124
+  n88 -.-> n124
+  n55 --> n125
+  n124 --> n125
+  n81 --> n125
+  n91 --> n125
+  n84 --> n125
+  n58 --> n125
+  n45 --> n125
+  n87 --> n125
+  n73 --> n125
+  n100 --> n125
+  n44 -.-> n126
+  n50 -.-> n126
+  n11 -.-> n127
+  n1 -.-> n128
+  n5 -.-> n128
+  n6 -.-> n128
+  n8 -.-> n128
+  n37 -.-> n128
+  n127 -.-> n128
+  n38 -.-> n128
+  n30 -.-> n129
+  n32 -.-> n130
+  n34 -.-> n130
+  n39 -.-> n130
+  n42 -.-> n130
   classDef proven fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
   classDef encoded fill:#bbdefb,stroke:#1565c0,color:#0d47a1
   classDef fact fill:#eeeeee,stroke:#616161,color:#212121
@@ -1719,6 +1721,14 @@ A personal trust that distributes property to a beneficiary for a capital intere
 A trust is deemed to sell its capital property (other than depreciable property) and land inventory at value, and buy it back, on its 21st anniversary and every 21 years after; a spousal, alter ego or joint trust on the life beneficiary's death and every 21 years after. Proven: an ordinary trust's first day is 21 years after its creation, there is no day before the first, and a spousal trust has none while the spouse lives.
 
 **Lean:** [`Canteen.ITA.TwentyOneYear.firstDay`](../../Canteen/ITA/S104/TwentyOneYear.lean#L36), [`Canteen.ITA.TwentyOneYear.dayIn`](../../Canteen/ITA/S104/TwentyOneYear.lean#L41), [`Canteen.ITA.TwentyOneYear.dispositions`](../../Canteen/ITA/S104/TwentyOneYear.lean#L57), [`Canteen.ITA.TwentyOneYear.netTaxableGains`](../../Canteen/ITA/S104/TwentyOneYear.lean#L64), [`Canteen.ITA.TwentyOneYear.ordinary_first`](../../Canteen/ITA/S104/TwentyOneYear.lean#L74), [`Canteen.ITA.TwentyOneYear.none_before`](../../Canteen/ITA/S104/TwentyOneYear.lean#L79), [`Canteen.ITA.TwentyOneYear.life_interest_alive`](../../Canteen/ITA/S104/TwentyOneYear.lean#L82)
+
+### R91. A trust's income paid to beneficiaries
+
+**Status:** proven · **Citation:** ITA 104(6)(b), (13)(a), (19), (21), (24)
+
+A trust deducts the income that became payable to beneficiaries (paid, or enforceable, in the year), and they include it; dividends and capital gains designated for a beneficiary keep their character, within the trust's totals and each beneficiary's share. Proven: the deduction never exceeds the trust's income, and the dividends designated never exceed what the trust received.
+
+**Lean:** [`Canteen.ITA.TrustIncome.income`](../../Canteen/ITA/S104/TrustIncome.lean#L51), [`Canteen.ITA.TrustIncome.deduction`](../../Canteen/ITA/S104/TrustIncome.lean#L55), [`Canteen.ITA.TrustIncome.retained`](../../Canteen/ITA/S104/TrustIncome.lean#L58), [`Canteen.ITA.TrustIncome.dividendsTo`](../../Canteen/ITA/S104/TrustIncome.lean#L75), [`Canteen.ITA.TrustIncome.gainsTo`](../../Canteen/ITA/S104/TrustIncome.lean#L76), [`Canteen.ITA.TrustIncome.shares`](../../Canteen/ITA/S104/TrustIncome.lean#L88), [`Canteen.ITA.TrustIncome.deduction_le_income`](../../Canteen/ITA/S104/TrustIncome.lean#L101), [`Canteen.ITA.TrustIncome.allowDividends_le`](../../Canteen/ITA/S104/TrustIncome.lean#L105)
 
 ### R70. A corporation's year, to taxable income and tax
 

@@ -118,6 +118,7 @@ import Canteen.ITA.S118_62.StudentLoanInterest
 import Canteen.ITA.S75.ReversionaryTrust
 import Canteen.ITA.S107.TrustDistribution
 import Canteen.ITA.S104.TwentyOneYear
+import Canteen.ITA.S104.TrustIncome
 import Canteen.ITA.S3.CorporateYear
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
@@ -281,3 +282,4 @@ import Canteen.Tests.StudentLoanInterest
 import Canteen.Tests.ReversionaryTrust
 import Canteen.Tests.TrustDistribution
 import Canteen.Tests.TwentyOneYear
+import Canteen.Tests.TrustIncome

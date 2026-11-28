@@ -91,6 +91,7 @@ import Canteen.ITA.S118_62.StudentLoanInterest
 import Canteen.ITA.S75.ReversionaryTrust
 import Canteen.ITA.S107.TrustDistribution
 import Canteen.ITA.S104.TwentyOneYear
+import Canteen.ITA.S104.TrustIncome
 import Canteen.ITA.S3.CorporateYear
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
@@ -901,6 +902,13 @@ def blueprint : Blueprint where
           lean := [``TwentyOneYear.firstDay, ``TwentyOneYear.dayIn, ``TwentyOneYear.dispositions, ``TwentyOneYear.netTaxableGains,
             ``TwentyOneYear.ordinary_first, ``TwentyOneYear.none_before, ``TwentyOneYear.life_interest_alive],
           uses := ["R8"] },
+        { id := "R91", kind := .law, title := "A trust's income paid to beneficiaries", citation := "ITA 104(6)(b), (13)(a), (19), (21), (24)"
+          statement := "A trust deducts the income that became payable to beneficiaries (paid, or enforceable, in the year), " ++
+            "and they include it; dividends and capital gains designated for a beneficiary keep their character, within " ++
+            "the trust's totals and each beneficiary's share. Proven: the deduction never exceeds the trust's income, and " ++
+            "the dividends designated never exceed what the trust received."
+          lean := [``TrustIncome.income, ``TrustIncome.deduction, ``TrustIncome.retained, ``TrustIncome.dividendsTo,
+            ``TrustIncome.gainsTo, ``TrustIncome.shares, ``TrustIncome.deduction_le_income, ``TrustIncome.allowDividends_le] },
         { id := "R70", kind := .law, title := "A corporation's year, to taxable income and tax", citation := "ITA 2(2); 3; 110.1; 111(1), (8); 112(1); 125(7); 129(4)"
           statement := "A corporation's income from active business, personal services business, property and dividends " ++
             "received, with its net taxable capital gains (a 55(2) dividend as a gain); taxable income after gifts, the " ++
