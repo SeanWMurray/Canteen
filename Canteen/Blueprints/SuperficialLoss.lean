@@ -99,6 +99,7 @@ import Canteen.ITA.S146_3.RRIFMinimum
 import Canteen.ITA.S13.CapitalCostAllowance
 import Canteen.ITA.S13.PassengerVehicles
 import Canteen.ITA.Reg4301.PrescribedRate
+import Canteen.ITA.S122_7.WorkersBenefit
 import Canteen.ITA.S3.CorporateYear
 import Canteen.ITA.S50.BadDebtPersonalUse
 import Canteen.ITA.S40.SuspendedLoss
@@ -961,6 +962,14 @@ def blueprint : Blueprint where
             "rate on amounts owed is always 4% above it."
           lean := [``PrescribedRate.base, ``PrescribedRate.general, ``PrescribedRate.owing, ``PrescribedRate.refund,
             ``PrescribedRate.whole, ``PrescribedRate.owing_spread] },
+        { id := "R99", kind := .law, title := "The Canada workers benefit", citation := "ITA 122.7(2), (3); 117.1(1)(q), (r)"
+          statement := "A low-income worker is credited 27% of working income over $3,000, up to a maximum ($1,633 single, " ++
+            "$2,813 family in 2025), less 15% of adjusted net income over a threshold; with the disability credit, a " ++
+            "supplement too. The Act's 2021 amounts are indexed from the CPI. Proven: never more than the maximum, and " ++
+            "nothing without working income over $3,000."
+          lean := [``WorkersBenefit.amount, ``WorkersBenefit.paraA, ``WorkersBenefit.paraB, ``WorkersBenefit.benefit,
+            ``WorkersBenefit.supplement, ``WorkersBenefit.benefit_le_max, ``WorkersBenefit.low_working_income],
+          uses := ["R56"] },
         { id := "R70", kind := .law, title := "A corporation's year, to taxable income and tax", citation := "ITA 2(2); 3; 110.1; 111(1), (8); 112(1); 125(7); 129(4)"
           statement := "A corporation's income from active business, personal services business, property and dividends " ++
             "received, with its net taxable capital gains (a 55(2) dividend as a gain); taxable income after gifts, the " ++

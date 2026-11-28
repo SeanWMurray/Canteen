@@ -84,6 +84,7 @@ import Canteen.ITA.S146_3.RRIFMinimum
 import Canteen.ITA.S13.CapitalCostAllowance
 import Canteen.ITA.S13.PassengerVehicles
 import Canteen.ITA.Reg4301.PrescribedRate
+import Canteen.ITA.S122_7.WorkersBenefit
 import Canteen.ITA.S3.CorporateYear
 import Canteen.Transactions.DebtSwap
 import Canteen.ITA.S87.Amalgamation
@@ -283,6 +284,7 @@ def provisions : List (Lean.Name × String) :=
    (`Canteen.ITA.S13.CapitalCostAllowance, "Reg. 1100(1)(a), (2) capital cost allowance"),
    (`Canteen.ITA.S13.PassengerVehicles, "13(7)(g), (i), 67.2, 67.3, Reg. 7307 passenger vehicle limits"),
    (`Canteen.ITA.Reg4301.PrescribedRate, "Reg. 4301 the prescribed rate of interest"),
+   (`Canteen.ITA.S122_7.WorkersBenefit, "122.7 the Canada workers benefit"),
    (`Canteen.ITA.S3.CorporateYear, "2(2), 3, 129(4) a corporation's year, to taxable income and tax")]
 
 /-! ## The dashboard -/
@@ -430,6 +432,7 @@ def actMindmap : String := Id.run do
     (2, "s. 146.6"), (3, "146.6(1), (5): the FHSA limit and deduction"),
     (2, "s. 180.2"), (3, "180.2(2): OAS recovery tax"),
     (2, "s. 186"), (3, "186(1): Part IV tax"), (3, "186(4): connected corporations"), (3, "186(2): control with non-arm's length persons"),
+    (2, "s. 122.7"), (3, "122.7(2), (3): the Canada workers benefit"),
     (2, "s. 128.1"), (3, "128.1(1)(b), (c): the step-up on arrival"), (3, "128.1(4)(b): deemed disposition on emigration"), (3, "128.1(4)(c): reacquired at value"),
     (2, "s. 248"), (3, "248(1): majority-interest partner"),
     (2, "s. 248"), (3, "taxable Canadian property: the 60-month look-back"),

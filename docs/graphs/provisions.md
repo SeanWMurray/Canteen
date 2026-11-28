@@ -112,8 +112,9 @@ flowchart BT
   v103["Reg. 1100(1)(a), (2) capital cost allowance"]:::prov
   v104["13(7)(g), (i), 67.2, 67.3, Reg. 7307 passenger vehicle limits"]:::prov
   v105["Reg. 4301 the prescribed rate of interest"]:::prov
-  v106["2(2), 3, 129(4) a corporation's year, to taxable income and tax"]:::prov
-  v107["50(2) bad personal-use debts"]:::prov
+  v106["122.7 the Canada workers benefit"]:::prov
+  v107["2(2), 3, 129(4) a corporation's year, to taxable income and tax"]:::prov
+  v108["50(2) bad personal-use debts"]:::prov
   v0 --> v1
   v0 --> v2
   v0 --> v3
@@ -213,13 +214,13 @@ flowchart BT
   v54 --> v99
   v31 --> v99
   v46 --> v99
-  v19 --> v106
-  v20 --> v106
-  v32 --> v106
-  v80 --> v106
-  v71 --> v106
-  v81 --> v106
-  v73 --> v106
-  v35 --> v106
+  v19 --> v107
+  v20 --> v107
+  v32 --> v107
+  v80 --> v107
+  v71 --> v107
+  v81 --> v107
+  v73 --> v107
+  v35 --> v107
   classDef prov fill:#bbdefb,stroke:#1565c0,color:#0d47a1
 ```
